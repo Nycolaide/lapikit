@@ -1,1 +1,1 @@
-# lapikit
+# lapikit monorepo
