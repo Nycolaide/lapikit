@@ -6,8 +6,6 @@ on:
       - develop
     paths:
       - "packages/lapikit/**"
-    paths-ignore:
-      - ".github/workflows/text.yml"
 
 env:
   NODE_VERSION: "20"
@@ -40,6 +38,7 @@ jobs:
           cd packages/${{ env.PACKAGE_NAME }}
           sha_version="${{ steps.get_sha_version.outputs.sha_version }}"
           echo "version_release=${VERSION}-${RELEASE_CHANNEL}.${sha_version}" >> $GITHUB_OUTPUT
+
   publish:
     runs-on: ubuntu-latest
     needs: prerelease
@@ -49,42 +48,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup node.js
+      - name: setup node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: setup bun
+        uses: oven-sh/setup-bun@v1.2.2
+
+      - name: update .npmrc
+        run: |
+          echo "engine-strict=false" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+
       - name: install dependencies
-        run: |
-          npm install
+        run: bun install
 
-      - name: add version insider to package.json
+      - name: set insiders version in package.json
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git branch --show-current
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           npm version ${{ env.version_release }} -f
-
-      - name: authenticate to npm
-        run: |
-          cd packages/${{ env.PACKAGE_NAME }}
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: build package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
-          npm run build
+          bun run build
 
       - name: verify package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           npm pack --dry-run
 
-    #   - name: publish to npm
-    #     run: |
-    #       cd packages/${{ env.PACKAGE_NAME }}
-    #       echo "Publishing version ${{ env.version_release }}"
-    #       npm publish --tag insiders
-    #     env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: publish to npm
+        run: |
+          cd packages/${{ env.PACKAGE_NAME }}
+          echo "Publishing version ${{ env.version_release }}"
+          npm publish --tag insiders
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,4 +1,4 @@
 // Reexport your entry components here
 export function helloWorld() {
-	console.log('Hello world , this is lapikit!');
+	console.log('Hello world, this is lapikit!');
 }
