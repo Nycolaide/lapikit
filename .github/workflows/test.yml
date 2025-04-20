@@ -60,8 +60,8 @@ jobs:
       - name: add version insider to package.json
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
-          git config --force user.name "github-actions[bot]"
-          git config --force user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git branch --show-current
           npm version ${{ env.version_release }} -f
 
