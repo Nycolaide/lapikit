@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy using appleboy/ssh-action
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            cd ~/${{ secrets.DEPLOY_PATH_ALPHA }}
+            git pull origin develop
