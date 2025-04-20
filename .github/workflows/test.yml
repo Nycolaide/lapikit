@@ -36,6 +36,7 @@ jobs:
           cd packages/${{ env.PACKAGE_NAME }}
           sha_version="${{ steps.get_sha_version.outputs.sha_version }}"
           echo "version_release=${VERSION}-${RELEASE_CHANNEL}.${sha_version}" >> $GITHUB_OUTPUT
+
   publish:
     runs-on: ubuntu-latest
     needs: prerelease
@@ -45,7 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -53,39 +54,35 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1.2.2
 
-      - name: install dependencies
+      - name: Override .npmrc
         run: |
-          bun install
-          bun remove lapikit
-          bun remove site-kit
+          echo "engine-strict=false" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
 
-      - name: add version insider to package.json
+      - name: Install dependencies
+        run: bun install
+
+      - name: Set insiders version in package.json
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git branch --show-current
           npm version ${{ env.version_release }} -f
 
-      - name: authenticate to npm
-        run: |
-          cd packages/${{ env.PACKAGE_NAME }}
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
-      - name: build package
+      - name: Build package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           bun run build
 
-      - name: verify package
+      - name: Verify package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           npm pack --dry-run
 
-    #   - name: publish to npm
-    #     run: |
-    #       cd packages/${{ env.PACKAGE_NAME }}
-    #       echo "Publishing version ${{ env.version_release }}"
-    #       npm publish --tag insiders
-    #     env:
-    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - name: Publish to npm
+    #   run: |
+    #     cd packages/${{ env.PACKAGE_NAME }}
+    #     echo "Publishing version ${{ env.version_release }}"
+    #     npm publish --tag insiders
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
