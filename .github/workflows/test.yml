@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - develop
-    paths:
-      - "packages/lapikit/**"
 
 env:
   NODE_VERSION: "20"

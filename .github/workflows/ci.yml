@@ -3,7 +3,9 @@ name: CI
 on:
   push:
     branches:
-      - develop
+      - develop,
+    paths-ignore:
+      - ".github/workflows/text.yml"
 
 jobs:
   deploy:
