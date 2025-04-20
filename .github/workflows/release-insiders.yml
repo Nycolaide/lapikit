@@ -29,13 +29,13 @@ jobs:
       - name: resolve version
         id: get_sha_version
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           echo "sha_version=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: generate version
         id: set_version
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           sha_version="${{ steps.get_sha_version.outputs.sha_version }}"
           echo "version_release=${VERSION}-${RELEASE_CHANNEL}.${sha_version}" >> $GITHUB_OUTPUT
   publish:
@@ -54,7 +54,7 @@ jobs:
 
       - name: add version insider to package.json
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git branch --show-current
@@ -62,27 +62,27 @@ jobs:
 
       - name: authenticate to npm
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: install dependencies
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           npm install
 
       - name: build package
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           npm run build
 
       - name: verify package
         run: |
-          cd packages/${PACKAGE_NAME}
+          cd packages/${{ env.PACKAGE_NAME }}
           npm pack --dry-run
 
     #   - name: publish to npm
     #     run: |
-    #       cd packages/${PACKAGE_NAME}
+    #       cd packages/${{ env.PACKAGE_NAME }}
     #       echo "Publishing version ${{ env.version_release }}"
     #       npm publish --tag insiders
     #     env:
