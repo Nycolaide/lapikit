@@ -6,6 +6,8 @@ on:
       - develop
     paths:
       - "packages/lapikit/**"
+    paths-ignore:
+      - ".github/workflows/text.yml"
 
 env:
   NODE_VERSION: "20"

@@ -46,40 +46,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: setup node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Setup Bun
+      - name: setup bun
         uses: oven-sh/setup-bun@v1.2.2
 
-      - name: Override .npmrc
+      - name: update .npmrc
         run: |
           echo "engine-strict=false" > ~/.npmrc
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
 
-      - name: Install dependencies
+      - name: install dependencies
         run: bun install
 
-      - name: Set insiders version in package.json
+      - name: set insiders version in package.json
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           npm version ${{ env.version_release }} -f
 
-      - name: Build package
+      - name: build package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           bun run build
 
-      - name: Verify package
+      - name: verify package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           npm pack --dry-run
 
-    # - name: Publish to npm
+    # - name: publish to npm
     #   run: |
     #     cd packages/${{ env.PACKAGE_NAME }}
     #     echo "Publishing version ${{ env.version_release }}"
