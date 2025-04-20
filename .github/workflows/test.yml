@@ -56,6 +56,8 @@ jobs:
       - name: install dependencies
         run: |
           bun install
+          bun remove lapikit
+          bun remove site-kit
 
       - name: add version insider to package.json
         run: |
