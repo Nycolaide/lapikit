@@ -1,5 +1,11 @@
 <script lang="ts">
 	import { Component } from 'site-kit';
+	import { helloWorld } from 'lapikit';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		helloWorld();
+	});
 </script>
 
 <h1>Welcome to SvelteKit</h1>
