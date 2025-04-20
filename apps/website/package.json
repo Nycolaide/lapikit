@@ -44,5 +44,10 @@
 		"vitest": "^3.0.0",
 		"site-kit": "*",
 		"lapikit": "*"
+	},
+	"dependencies": {
+		"rehype-slug": "^6.0.0",
+		"remark-toc": "^9.0.0",
+		"shiki": "^3.2.2"
 	}
 }
