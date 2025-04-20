@@ -1,4 +1,4 @@
-name: Release Insiders
+name: learn to use CI
 
 on:
   push:
@@ -50,9 +50,12 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1.2.2
+
       - name: install dependencies
         run: |
-          npm install
+          bun install
 
       - name: add version insider to package.json
         run: |
@@ -70,7 +73,7 @@ jobs:
       - name: build package
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
-          npm run build
+          bun run build
 
       - name: verify package
         run: |
