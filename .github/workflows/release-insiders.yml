@@ -67,7 +67,6 @@ jobs:
 
       - name: install dependencies
         run: |
-          cd packages/${{ env.PACKAGE_NAME }}
           npm install
 
       - name: build package
