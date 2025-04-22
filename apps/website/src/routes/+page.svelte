@@ -5,6 +5,9 @@
 	import { onMount } from 'svelte';
 
 	let time: string = $state('');
+	let search = $state('');
+	let results = $state<{ title: string; description: string }[]>([]);
+	let timeout: NodeJS.Timeout;
 
 	onMount(() => {
 		helloWorld();
@@ -19,6 +22,40 @@
 			day: 'numeric'
 		});
 	});
+
+	function handleInput(event: Event) {
+		search = (event.target as HTMLInputElement).value;
+
+		clearTimeout(timeout);
+		timeout = setTimeout(() => {
+			fetchResults();
+		}, 300);
+	}
+
+	async function fetchResults() {
+		if (search.trim() === '') {
+			results = [];
+			return;
+		}
+
+		try {
+			const res = await fetch('/api/content');
+			const data = await res.json();
+
+			if (data.length === 0) {
+				results = [];
+				return;
+			} else {
+				results = data.filter(
+					(item: { title: string; description: string }) =>
+						item.title.toLowerCase().includes(search.toLowerCase()) ||
+						item.description.toLowerCase().includes(search.toLowerCase())
+				);
+			}
+		} catch (error) {
+			console.error('Error while fetching:', error);
+		}
+	}
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -36,3 +73,11 @@
 <h1>{$t('homepage.title')}!</h1>
 <p>{$t('homepage.welcome', { name: 'Jane Doe' })}!</p>
 <p>{$t('homepage.time', { time })}!</p>
+
+<input placeholder="search" bind:value={search} oninput={handleInput} />
+{#each results as result (result)}
+	<div>
+		<p>{result?.title}</p>
+		<p>{result?.description}</p>
+	</div>
+{/each}

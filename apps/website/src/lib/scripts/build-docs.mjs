@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 // Path to the root directory of the project
 const rootDir = path.resolve(__dirname, '../../../../../');
 const sourceDir = path.join(rootDir, 'docs');
-const destDir = path.join(rootDir, 'apps', 'website', 'content');
+const destDir = path.join(rootDir, 'apps', 'website', 'src', 'content');
 
 async function copyDocs() {
 	try {
