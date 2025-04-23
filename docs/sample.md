@@ -8,9 +8,23 @@ categories:
 published: true
 ---
 
+<script>
+  import { ComponentPreview, CommandLine, Counter } from "$lib/components/index.js";
+  import CounterCode from '$lib/components/counter.svelte?raw';
+
+  const commandInstall = [
+    {pkg: "npm", command: "npm i -D lapikit"},
+    {pkg: "yarn", command: "yarn add -D lapikit"}
+  ];
+</script>
+
 # h1
 
+<ComponentPreview name="counter" component={Counter} code={CounterCode}/>
+
 ## h2
+
+<CommandLine name="intall-lapikit" command={commandInstall}/>
 
 ### h3
 
@@ -72,3 +86,9 @@ Lorem ipsum
 > Advises about risks or negative outcomes of certain actions.
 
 <!-- This content will not appear in the rendered Markdown -->
+
+```ts
+function greet(name: string) {
+  console.log(`Cli ${name}! 👋`);
+}
+```

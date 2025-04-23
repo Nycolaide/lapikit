@@ -27,6 +27,9 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
+		},
+		"./actions": {
+			"default": "./dist/actions/index.js"
 		}
 	},
 	"peerDependencies": {
