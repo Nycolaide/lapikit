@@ -1,6 +1,7 @@
 import { dev } from '$app/environment';
+import { PUBLIC_BASE_URL } from '$env/static/public';
 
-export const url: string = dev ? 'http://localhost:5173' : '';
+export const url: string = dev ? 'http://localhost:5173' : PUBLIC_BASE_URL;
 
 export const staticPages: Array<string> = [''];
 
