@@ -1,7 +1,7 @@
 <script lang="ts" module>
-	import { img, blockquote } from '$lib/components/markdown';
+	import { img, blockquote, table } from '$lib/components/markdown';
 	// eslint-disable-next-line no-import-assign
-	export { img, blockquote };
+	export { img, blockquote, table };
 </script>
 
 <script lang="ts">

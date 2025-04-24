@@ -92,3 +92,20 @@ function greet(name: string) {
   console.log(`Cli ${name}! 👋`);
 }
 ```
+
+| Property             | Type            | Default     | Description                                                                                                                |
+| :------------------- | :-------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------- |
+| **open** $bindable() | `boolean`       | `false`     | Controls the open state of the Tooltip component. Useful for programmatic state management.component.                      |
+| **label**            | `string`        | `undefined` | Defines the content displayed inside the tooltip.                                                                          |
+| **dark**             | `boolean`       | `false`     | Forces a `dark` color scheme on the tooltip.                                                                               |
+| **light**            | `boolean`       | `false`     | Forces a `light` color scheme on the tooltip.                                                                              |
+| **rounded**          | `enum` `string` | `undefined` | Sets the shape radius of the Tooltip. Choose from predefined values (`xs`, `sm`, `md`, `lg`, `xl`) or custom values.       |
+| **color**            | `enum` `string` | `undefined` | Customizes the content text color using `X11 color names`, `HEX`, `RGB`, `RGBA`, `HSL`, or `demo theme colors`.            |
+| **background**       | `enum` `string` | `undefined` | Customizes the tooltip’s background color using `X11 color names`, `HEX`, `RGB`, `RGBA`, `HSL`, or `demo theme colors`.    |
+| **location**         | `enum`          | `bottom`    | Sets the tooltip’s position (`top`, `bottom`, `left`, `right`). Adapts dynamically unless **avoidCollisions** is disabled. |
+| **delayDuration**    | `number`        | `850`       | Sets the delay (in milliseconds) before the tooltip appears when hovering or focusing on the trigger element.              |
+| **density**          | `enum`          | `default`   | Adjusts space padding inside the tooltip’s content area (`default`, `comfortable`, `compact`).                             |
+| **variant**          | `enum`          | `undefined` | Allows rendering of styled variants based on the design system or custom styles.                                           |
+| **disabled**         | `boolean`       | `false`     | Disables the functionality of the tooltip when true.                                                                       |
+| **avoidCollisions**  | `boolean`       | `true`      | Ensures the tooltip position automatically adjusts to avoid clipping on the window edges.                                  |
+| **forceMount**       | `boolean`       | `false`     | Pre-renders tooltips for better SEO performance (e.g., for dynamic content like Snippets or large images).                 |
