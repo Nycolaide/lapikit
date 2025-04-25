@@ -1,0 +1,23 @@
+{
+  "name": "lapikit-monorepo",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:packages:site-kit && npm run build:packages:lapikit && npm run build:website",
+    "build:website": "cd ./apps/website && npm run build",
+    "build:packages": "npm run build:packages:site-kit && npm run build:packages:lapikit",
+    "build:packages:site-kit": "cd ./packages/site-kit && npm run build",
+    "build:packages:lapikit": "cd ./packages/lapikit && npm run build"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
