@@ -1,0 +1,123 @@
+html {
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+	line-height: 1.5;
+	box-sizing: border-box;
+	font-family: var(--font-sans, var(--kit-font-family-sans));
+}
+
+pre,
+code {
+	font-family: var(--font-mono, var(--kit-font-family-mono));
+}
+
+body {
+	margin: 0;
+}
+
+main {
+	display: block;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font: inherit;
+}
+
+button {
+	overflow: visible;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+[role='button'] {
+	cursor: pointer;
+	color: inherit;
+}
+
+*:not(body) {
+	outline: none;
+}
+
+*,
+::after,
+::before,
+::backdrop {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0 solid;
+}
+
+*,
+::before,
+::after {
+	background-repeat: no-repeat;
+	box-sizing: inherit;
+}
+
+::before,
+::after {
+	text-decoration: inherit;
+	vertical-align: inherit;
+}
+
+[type='search'] {
+	-webkit-appearance: textfield;
+	appearance: textfield;
+	outline-offset: -2px;
+}
+
+ol,
+ul,
+menu {
+	list-style: initial;
+	margin-left: calc(var(--kit-spacing) * 5);
+}
+
+ol ul,
+ol ol,
+ul ul,
+ul ol {
+	padding-left: 1rem;
+}
+
+code {
+	border-radius: 0.25rem;
+	padding-block: 0.125rem;
+	padding-inline: 0.375rem;
+	position: relative;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+img {
+	border-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+	background-color: transparent;
+	border-style: none;
+}

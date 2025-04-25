@@ -5,7 +5,7 @@ import { lapikit } from 'lapikit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit(), lapikit()],
+	plugins: [tailwindcss(), sveltekit(), lapikit({ minify: false })],
 	test: {
 		workspace: [
 			{
