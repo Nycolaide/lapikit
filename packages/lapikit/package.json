@@ -32,7 +32,11 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./vite": {
+			"default": "./dist/server/vite.js"
+		},
+		"./css": "./dist/styles.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
