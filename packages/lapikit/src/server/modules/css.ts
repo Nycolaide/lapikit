@@ -5,6 +5,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import { ansi, sendConsole } from './ansi.js';
 import { minify } from './minify.js';
+import { colors } from './themes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,6 +33,8 @@ export const processCSS = async (minified?: boolean, normalize?: boolean) => {
 
 	let styles = `${_variables}\n`;
 	if (normalize) styles += `${_normalize}\n`;
+
+	colors();
 
 	if (fs.existsSync(__components) && fs.statSync(__components).isDirectory()) {
 		const tresholds = {
