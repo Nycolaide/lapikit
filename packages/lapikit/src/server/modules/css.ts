@@ -33,8 +33,10 @@ export const processCSS = async (minified?: boolean, normalize?: boolean) => {
 
 	let styles = `${_variables}\n`;
 	if (normalize) styles += `${_normalize}\n`;
+	const colorScheme = colors();
 
-	colors();
+	styles += `${colorScheme.root}\n`;
+	styles += `${colorScheme.className}\n`;
 
 	if (fs.existsSync(__components) && fs.statSync(__components).isDirectory()) {
 		const tresholds = {

@@ -1,6 +1,8 @@
 import { parseColor } from './colors.js';
 
-const colorsList = {
+const colorsList: {
+	[key: string]: { light: string; dark: string } | string;
+} = {
 	primary: { light: 'oklch(45% 0.24 277.023)', dark: 'oklch(45% 0.24 277.023)' },
 	secondary: { light: 'oklch(65% 0.241 354.308)', dark: 'oklch(65% 0.241 354.308)' },
 	tertiary: { light: 'oklch(77% 0.152 181.912)', dark: 'oklch(77% 0.152 181.912)' },
@@ -37,12 +39,68 @@ export const colors = () => {
 				schemes['light'][property] = parseColor(values.light);
 				schemes['dark'][property] = parseColor(values.dark);
 			} else {
-				const _refColor = 'dark' in values ? parseColor(values.dark) : parseColor(values.light);
+				const _refColor =
+					'dark' in values ? parseColor(values['dark']) : parseColor(values['light']);
 				schemes['light'][property] = _refColor;
 				schemes['dark'][property] = _refColor;
 			}
 		}
 	}
 
-	console.log('schemes', schemes);
+	const theming: 'light' | 'dark' | 'mixed' = 'mixed';
+
+	// css variables
+	let cssVariables = '';
+
+	if (theming === 'mixed') {
+		for (const [themeName, colors] of Object.entries(schemes)) {
+			const used = themeName;
+			const inversed = used === 'light' ? 'dark' : 'light';
+
+			cssVariables += `@media (prefers-color-scheme: ${used}) {\n`;
+			cssVariables += `:root, .${used} {\n`;
+			cssVariables += `color-scheme: ${used};\n`;
+			for (const [colorName, colorValue] of Object.entries(colors)) {
+				cssVariables += `--${colorName}: ${colorValue};\n`;
+			}
+			cssVariables += `}\n`;
+			cssVariables += `.${inversed} {\n`;
+			cssVariables += `color-scheme: ${used};\n`;
+			for (const [colorName, colorValue] of Object.entries(schemes[inversed])) {
+				cssVariables += `--${colorName}: ${colorValue};\n`;
+			}
+			cssVariables += `}\n`;
+			cssVariables += `}\n`;
+		}
+	} else {
+		const used = theming;
+		const inversed = theming === 'light' ? 'dark' : 'light';
+
+		cssVariables += `:root, .${used} {\n`;
+		for (const [colorName, colorValue] of Object.entries(schemes[used])) {
+			cssVariables += `--${colorName}: ${colorValue};\n`;
+		}
+		cssVariables += `}\n`;
+
+		cssVariables += `.${inversed} {\n`;
+		for (const [colorName, colorValue] of Object.entries(schemes[inversed])) {
+			cssVariables += `--${colorName}: ${colorValue};\n`;
+		}
+		cssVariables += `}\n`;
+	}
+
+	// class
+	let classStyles = '';
+
+	for (const [property] of Object.entries(schemes.light)) {
+		classStyles += `.${property} {\n`;
+		classStyles += `--background-color: var(--${property});\n`;
+		classStyles += `--color: var(--${property});\n`;
+		classStyles += `}\n`;
+	}
+
+	return {
+		root: cssVariables,
+		className: classStyles
+	};
 };
