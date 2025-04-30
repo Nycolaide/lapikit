@@ -1,0 +1,228 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - "**"
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  dependencies:
+    name: install dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+      - run: bun install
+
+      - name: install dependencies
+        run: bun install
+
+      - name: cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+  lapikit-vitest:
+    name: lapikit vitest
+    needs:
+      - dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: test lapikit with vitest
+        run: cd packages/lapikit && bun test
+
+  lapikit-lint:
+    name: lapikit lint
+    needs:
+      - lapikit-vitest
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: linter on lapikit
+        run: cd packages/lapikit && bun lint
+
+  lapikit-build:
+    name: build lapikit
+    needs:
+      - lapikit-lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: build
+        run: cd packages/lapikit && bun run build
+
+      - name: upload lapikit build
+        uses: actions/upload-artifact@v4
+        with:
+          name: lapikit-dist
+          path: packages/lapikit/dist/
+
+  site-kit-vitest:
+    name: site-kit vitest
+    needs:
+      - dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: test site-kit with vitest
+        run: cd packages/site-kit && bun test
+
+  site-kit-lint:
+    name: site-kit lint
+    needs:
+      - site-kit-vitest
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: linter on site-kit
+        run: cd packages/site-kit && bun lint
+
+  site-kit-build:
+    name: site-kit build
+    needs:
+      - site-kit-lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: build
+        run: cd packages/site-kit && bun run build
+
+      - name: Upload Site-Kit Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-kit-dist
+          path: packages/site-kit/dist/
+
+  website:
+    name: build lapikit.dev
+    runs-on: ubuntu-latest
+    needs:
+      - lapikit-build
+      - site-kit-build
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: download lapikit build
+        uses: actions/download-artifact@v4
+        with:
+          name: lapikit-dist
+          path: packages/lapikit/dist/
+
+      - name: download site-kit build
+        uses: actions/download-artifact@v4
+        with:
+          name: site-kit-dist
+          path: packages/site-kit/dist/
+
+      - name: create .env file
+        run: |
+          cd apps/website
+          echo "PUBLIC_DEV_MODE=false" >> .env
+          echo "PUBLIC_BASE_URL=http://localhost:5173" >> .env
+          echo "PUBLIC_GOOGLE_ANALYTICS_ENABLED=true" >> .env
+          echo "PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX" >> .env
+          echo "PUBLIC_GOOGLE_TAG_MANAGER_ENABLED=true" >> .env
+          echo "PUBLIC_GOOGLE_TAG_MANAGER_ID=GTM-XXXXXX" >> .env
+          echo "PUBLIC_BING_WEBMASTER_TOOLS_ENABLED=true" >> .env
+          echo "PUBLIC_BING_WEBMASTER_TOOLS_ID=XXXXXXXXXX" >> .env
+
+      - name: build
+        run: cd apps/website && bun run build
+
+  deploy-to-vps:
+    name: deploy lapikit.dev
+    needs: website
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit

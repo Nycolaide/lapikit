@@ -1,0 +1,40 @@
+name: "Write Release Notes"
+
+on:
+  workflow_call:
+
+jobs:
+  write-release-notes:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: install jq on env
+        run: sudo apt-get install jq
+
+      - name: install dependencies
+        run: bun install
+
+      - name: build
+        run: |
+          cd packages/lapikit
+          bun run build
+
+      - name: get package version from package.json
+        id: package-version
+        run: version=$(jq -r .version packages/lapikit/package.json)
+
+      - name: add release notes to github release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
+          tag_name: v${{ steps.package-version.outputs.version }}
+          body: |
+            Install this update:
+            ```bash
+            npm i -D lapikit@${{ steps.package-version.outputs.version }}
+            ```
+
+            Thank you for using Lapikit!

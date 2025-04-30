@@ -1,9 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - develop
+  workflow_call:
 
 jobs:
   deploy:
@@ -13,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy using appleboy/ssh-action
+      - name: deploy on alpha environment
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.VPS_HOST }}
