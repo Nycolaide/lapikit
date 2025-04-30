@@ -1,16 +1,14 @@
-name: Release Insiders
+name: Release Latest
 
 on:
   push:
     branches:
-      - develop
+      - main
     paths:
       - "packages/lapikit/**"
-
 env:
   NODE_VERSION: "20"
-  RELEASE_CHANNEL: insiders
-  VERSION: 0.0.0
+  RELEASE_CHANNEL: public
   PACKAGE_NAME: lapikit
 
 permissions:
@@ -19,37 +17,42 @@ permissions:
 
 jobs:
   prerelease:
-    name: set insiders version
+    name: verify version
     runs-on: ubuntu-latest
     timeout-minutes: 1
     permissions:
       contents: write
     outputs:
-      version_release: ${{ steps.set_version.outputs.version_release }}
-      sha_short: ${{ steps.get_sha_version.outputs.version_release }}
-
+      should_publish: ${{ steps.check.outputs.should_publish }}
+      version_release: ${{ steps.get_version.outputs.version_release }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: resolve version
-        id: get_sha_version
+      - name: get local package version
+        id: get_version
         run: |
-          cd packages/${{ env.PACKAGE_NAME }}
-          echo "sha_version=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "PACKAGE_VERSION=$(jq -r .version packages/${{ env.PACKAGE_NAME }}/package.json)" >> $GITHUB_ENV
+          echo "version_release=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
-      - name: generate version
-        id: set_version
+      - name: check if version exists on npm
+        id: check
         run: |
-          cd packages/${{ env.PACKAGE_NAME }}
-          sha_version="${{ steps.get_sha_version.outputs.sha_version }}"
-          echo "version_release=${VERSION}-${RELEASE_CHANNEL}.${sha_version}" >> $GITHUB_OUTPUT
+          if npm view ${{ env.PACKAGE_NAME }}@$PACKAGE_VERSION version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists on NPM."
+            echo "should_publish=false" >> $GITHUB_OUTPUT
+          else
+            echo "Version $PACKAGE_VERSION is new. Valid to publish."
+            echo "should_publish=true" >> $GITHUB_OUTPUT
+          fi
 
   publish:
     name: build and publish
     runs-on: ubuntu-latest
     needs: prerelease
+    if: needs.prerelease.outputs.should_publish == 'true'
     env:
       version_release: ${{ needs.prerelease.outputs.version_release }}
+    timeout-minutes: 4
 
     steps:
       - uses: actions/checkout@v4
@@ -74,7 +77,6 @@ jobs:
           cd packages/${{ env.PACKAGE_NAME }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          npm version ${{ env.version_release }} -f
 
       - name: build package
         run: |
@@ -90,6 +92,12 @@ jobs:
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           echo "Publishing version ${{ env.version_release }}"
-          npm publish --tag ${{ env.RELEASE_CHANNEL }} --provenance
+          npm publish --access ${{ env.RELEASE_CHANNEL }} --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  generate-release-notes:
+    name: write release notes
+    needs: publish
+    uses: ./.github/workflows/release-notes.yml
+    secrets: inherit

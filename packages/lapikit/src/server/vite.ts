@@ -21,7 +21,7 @@ export async function lapikit(options: LapikitPlugin = {}) {
 			console.log('config', config);
 		},
 		async configureServer(server: ViteDevServer) {
-			// console.log(ansi.inverse.red('Vite server configured'), server);
+			console.log(ansi.inverse.red('Vite server configured'), server);
 		}
 	};
 }
