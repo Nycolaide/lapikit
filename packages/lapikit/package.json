@@ -1,6 +1,14 @@
 {
 	"name": "lapikit",
 	"version": "0.0.2",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Nycolaide/lapikit",
+		"directory": "packages/lapikit"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -13,9 +21,6 @@
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run"
-	},
-	"publishConfig": {
-		"access": "public"
 	},
 	"files": [
 		"dist",
