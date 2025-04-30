@@ -48,7 +48,7 @@ export const devices = () => {
 		css += `}\n`;
 		css += `}\n`;
 
-		css += `@media screen and (min-width: ${typeof breakpointValue === 'number' ? breakpointValue + 'px' : breakpointValue}) ${breakpointValueMax ? ('and (max-width:' + typeof breakpointValue === 'number' ? breakpointValue + 'px' : breakpointValue + ')') : ''} {\n`;
+		css += `@media screen and (min-width: ${typeof breakpointValue === 'number' ? breakpointValue + 'px' : breakpointValue}) ${breakpointValueMax ? `and (max-width: ${typeof breakpointValueMax === 'number' ? breakpointValueMax + 'px' : breakpointValueMax})` : ''}{\n`;
 		css += `.only-on-${key} {\n`;
 		css += `display: inherit !important;\n`;
 		css += `}\n`;

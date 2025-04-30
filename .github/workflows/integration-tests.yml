@@ -206,6 +206,17 @@ jobs:
           name: site-kit-dist
           path: packages/site-kit/dist/
 
+      - name: create .env file
+        run: |
+          echo "PUBLIC_DEV_MODE=false" >> .env
+          echo "PUBLIC_BASE_URL=http://localhost:5173" >> .env
+          echo "PUBLIC_GOOGLE_ANALYTICS_ENABLED=true" >> .env
+          echo "PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX" >> .env
+          echo "PUBLIC_GOOGLE_TAG_MANAGER_ENABLED=true" >> .env
+          echo "PUBLIC_GOOGLE_TAG_MANAGER_ID=GTM-XXXXXX" >> .env
+          echo "PUBLIC_BING_WEBMASTER_TOOLS_ENABLED=true" >> .env
+          echo "PUBLIC_BING_WEBMASTER_TOOLS_ID=XXXXXXXXXX" >> .env
+
       - name: build
         run: cd apps/website && bun run build
 
