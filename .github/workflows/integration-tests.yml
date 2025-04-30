@@ -208,6 +208,7 @@ jobs:
 
       - name: create .env file
         run: |
+          cd apps/website
           echo "PUBLIC_DEV_MODE=false" >> .env
           echo "PUBLIC_BASE_URL=http://localhost:5173" >> .env
           echo "PUBLIC_GOOGLE_ANALYTICS_ENABLED=true" >> .env
