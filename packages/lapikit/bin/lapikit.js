@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
-import { color, bold, variant, terminal, envTypescript } from './helper';
-import { preset } from './modules/preset';
-import { adapterCSSConfig, adapterViteConfig } from './modules/adapter';
+import { color, bold, variant, terminal, envTypescript } from './helper.js';
+import { preset } from './modules/preset.js';
+import { adapterCSSConfig, adapterViteConfig } from './modules/adapter.js';
 
 const [, , command] = process.argv;
 const typescriptEnabled = envTypescript();

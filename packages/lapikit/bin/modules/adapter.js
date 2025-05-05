@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { getCssPathFromArgs, terminal } from '../helper';
+import { getCssPathFromArgs, terminal } from '../helper.js';
 
 const importLapikitVite = `import { lapikit } from 'lapikit/vite';`;
 const importLapikitCss = `@import 'lapikit/css';`;
