@@ -39,7 +39,7 @@
 			"svelte": "./dist/index.js"
 		},
 		"./vite": {
-			"default": "./dist/server/vite.js"
+			"default": "./dist/plugin/vitejs.js"
 		},
 		"./css": "./dist/styles.css"
 	},

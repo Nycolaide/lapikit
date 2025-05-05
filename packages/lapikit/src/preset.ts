@@ -1,7 +1,9 @@
-export const config = {
+import type { Lapikit } from '$lib/internal/types.js';
+
+export const config: Lapikit = {
 	options: {
 		normalize: true, // true | false
-		minify: true // true | false
+		minify: false // true | false
 	},
 	theme: {
 		colorScheme: 'dark', // 'light' | 'dark' | 'auto'
@@ -36,6 +38,7 @@ export const config = {
 		}
 	},
 	styles: {
+		spacing: '0.125rem', // 2px
 		corner: {
 			active: true, // true | false
 			radius: {
@@ -47,6 +50,33 @@ export const config = {
 				'3xl': '1.5rem', // 24px
 				full: '9999px' // 9999px
 			}
+		},
+		font: {
+			sans: [
+				'system-ui',
+				'-apple-system',
+				'BlinkMacSystemFont',
+				'Segoe UI',
+				'Roboto',
+				'Helvetica Neue',
+				'Arial',
+				'sans-serif',
+				'Apple Color Emoji',
+				'Segoe UI Emoji',
+				'Segoe UI Symbol'
+			],
+			mono: [
+				'SFMono-Regular',
+				'ui-monospace',
+				'SF Mono',
+				'Menlo',
+				'Monaco',
+				'Consolas',
+				'Liberation Mono',
+				'Courier New',
+				'monospace'
+			],
+			serif: ['Merriweather', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
 		}
 	}
 };

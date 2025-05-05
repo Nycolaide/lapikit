@@ -3,12 +3,12 @@ html {
 	tab-size: 4;
 	line-height: 1.5;
 	box-sizing: border-box;
-	font-family: var(--font-sans, var(--kit-font-family-sans));
+	font-family: var(--kit-font-family-sans);
 }
 
 pre,
 code {
-	font-family: var(--font-mono, var(--kit-font-family-mono));
+	font-family: var(--kit-font-family-mono);
 }
 
 body {
