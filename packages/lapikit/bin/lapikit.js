@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
 import { color, bold, variant, terminal, envTypescript } from './helper';
