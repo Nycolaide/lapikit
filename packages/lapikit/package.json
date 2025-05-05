@@ -23,6 +23,7 @@
 		"test": "npm run test:unit -- --run"
 	},
 	"files": [
+		"bin",
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
