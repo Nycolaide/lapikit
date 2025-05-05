@@ -1,4 +1,4 @@
-import { x11Colors } from './x11.js';
+import { x11Colors } from '$lib/utils/x11.js';
 
 export const parseColor = (input: string) => {
 	input = input.trim();

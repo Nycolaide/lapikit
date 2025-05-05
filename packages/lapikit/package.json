@@ -1,6 +1,6 @@
 {
 	"name": "lapikit",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -39,7 +39,7 @@
 			"svelte": "./dist/index.js"
 		},
 		"./vite": {
-			"default": "./dist/server/vite.js"
+			"default": "./dist/plugin/vitejs.js"
 		},
 		"./css": "./dist/styles.css"
 	},

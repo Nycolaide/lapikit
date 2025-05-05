@@ -24,13 +24,15 @@ jobs:
 
       - name: get package version from package.json
         id: package-version
-        run: version=$(jq -r .version packages/lapikit/package.json)
+        run: |
+          version=$(jq -r .version packages/lapikit/package.json)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: add release notes to github release
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
-          tag_name: v${{ steps.package-version.outputs.version }}
+          tag_name: lapikit@${{ steps.package-version.outputs.version }}
           body: |
             Install this update:
             ```bash
