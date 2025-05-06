@@ -1,17 +1,11 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
-	import { helloWorld } from 'lapikit';
-	import { onMount } from 'svelte';
 
 	let time: string = $state('');
 	let search = $state('');
 	let results = $state<{ title: string; description: string }[]>([]);
 	let timeout: NodeJS.Timeout;
-
-	onMount(() => {
-		helloWorld();
-	});
 
 	$effect(() => {
 		const lang = $locale;
