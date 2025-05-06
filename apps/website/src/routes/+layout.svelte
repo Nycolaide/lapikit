@@ -11,8 +11,8 @@
 	import '$lib/styles/app.css';
 	import { Darkmode, RGPD } from 'site-kit';
 	import { App } from 'lapikit/components';
+	import { colorScheme, setColorScheme } from 'lapikit/stores';
 	import Footer from '$lib/components/footer.svelte';
-	import { colorScheme } from '$lib/stores/app';
 
 	let { children } = $props();
 	let openModalRPGD = $state(false);
@@ -22,7 +22,7 @@
 	<nav>
 		<a href="/">Home</a>
 		<a href="/docs/sample">Sample</a>
-		<Darkmode bind:scheme={$colorScheme} />
+		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 
 	<p>{$colorScheme}</p>

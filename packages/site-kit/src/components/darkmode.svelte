@@ -1,16 +1,21 @@
 <script lang="ts">
-	let { scheme = $bindable() } = $props();
+	let {
+		scheme = $bindable(),
+		handle
+	}: {
+		scheme: 'light' | 'dark' | 'auto';
+		handle: (scheme: 'light' | 'dark' | 'auto') => void;
+	} = $props();
 	let open = $state(false);
 
-	function handleSelect(value: string) {
-		scheme = value;
-		localStorage.setItem('@lapikit/theme', value);
+	function handleSelect(value: 'light' | 'dark' | 'auto') {
+		handle(value);
 		open = false;
 	}
 </script>
 
 <button onclick={() => (open = !open)}>
-	{scheme}
+	{scheme} btn
 </button>
 
 {#if open}

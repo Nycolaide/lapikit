@@ -51,6 +51,9 @@
 		"./vite": {
 			"default": "./dist/plugin/vitejs.js"
 		},
+		"./stores": {
+			"default": "./dist/stores/index.js"
+		},
 		"./css": "./dist/styles.css"
 	},
 	"peerDependencies": {
