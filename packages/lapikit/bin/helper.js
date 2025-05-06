@@ -1,4 +1,4 @@
-export const color = {
+const color = {
 	red: `\x1b[31m${text}\x1b[0m`,
 	green: `\x1b[32m${text}\x1b[0m`,
 	yellow: `\x1b[33m${text}\x1b[0m`,
@@ -7,13 +7,13 @@ export const color = {
 	cyan: `\x1b[36m${text}\x1b[0m`
 };
 
-export const variant = {
+const variant = {
 	bold: `\x1b[1m${text}\x1b[0m`,
 	underline: `\x1b[4m${text}\x1b[0m`,
 	inverse: `\x1b[7m${text}\x1b[0m`
 };
 
-export const bold = {
+const bold = {
 	red: `\x1b[1m\x1b[31m${text}\x1b[0m`,
 	green: `\x1b[1m\x1b[32m${text}\x1b[0m`,
 	yellow: `\x1b[1m\x1b[33m${text}\x1b[0m`,
@@ -22,7 +22,7 @@ export const bold = {
 	cyan: `\x1b[1m\x1b[36m${text}\x1b[0m`
 };
 
-export const inverse = {
+const inverse = {
 	red: `\x1b[7m\x1b[31m${text}\x1b[0m`,
 	green: `\x1b[7m\x1b[32m${text}\x1b[0m`,
 	yellow: `\x1b[7m\x1b[33m${text}\x1b[0m`,
@@ -31,13 +31,21 @@ export const inverse = {
 	cyan: `\x1b[7m\x1b[36m${text}\x1b[0m`
 };
 
-export const underline = {
+const underline = {
 	red: `\x1b[4m\x1b[31m${text}\x1b[0m`,
 	green: `\x1b[4m\x1b[32m${text}\x1b[0m`,
 	yellow: `\x1b[4m\x1b[33m${text}\x1b[0m`,
 	blue: `\x1b[4m\x1b[34m${text}\x1b[0m`,
 	purple: `\x1b[4m\x1b[35m${text}\x1b[0m`,
 	cyan: `\x1b[4m\x1b[36m${text}\x1b[0m`
+};
+
+export const ansi = {
+	color,
+	variant,
+	bold,
+	inverse,
+	underline
 };
 
 export const terminal = (type = 'info', msg) => {

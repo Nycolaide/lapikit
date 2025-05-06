@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
-import { color, bold, variant, terminal, envTypescript } from './helper.js';
+import { ansi, terminal, envTypescript } from './helper.js';
 import { preset } from './modules/preset.js';
 import { adapterCSSConfig, adapterViteConfig } from './modules/adapter.js';
 
@@ -11,8 +11,8 @@ const typescriptEnabled = envTypescript();
 if (process.argv.includes('--help') || process.argv.includes('-h')) {
 	terminal(
 		'info',
-		`usage: ${color.yellow('npx lapikit init {cssPath}')}\n\n ${variant.bold('options:')}\n
-        - {cssPath}: (${color.cyan('src/app.css')}) customize path on your origin css file.\n\n`
+		`usage: ${ansi.color.yellow('npx lapikit init {cssPath}')}\n\n ${ansi.variant.bold('options:')}\n
+        - {cssPath}: (${ansi.color.cyan('src/app.css')}) customize path on your origin css file.\n\n`
 	);
 	process.exit(0);
 } else if (command === 'init') {
@@ -25,7 +25,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 	console.log('             | |                 ');
 	console.log('             |_|                 ');
 
-	terminal('info', `${bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
+	terminal('info', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
 
 	const configPath = path.resolve(process.cwd(), 'lapikit.config.js');
 	try {
@@ -44,7 +44,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 
 	terminal(
 		'info',
-		`${bold.blue('Thank to use lapikit, discover all posibility with lapikit on https://localhost:3000/docs')}\n\n`
+		`${ansi.bold.blue('Thank to use lapikit, discover all posibility with lapikit on https://localhost:3000/docs')}\n\n`
 	);
 
 	console.log('Github: https://github.com/nycolaide/lapikit');
