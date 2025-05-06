@@ -1,6 +1,7 @@
 {
 	"name": "lapikit",
-	"version": "0.0.4",
+	"version": "0.1.0",
+	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -23,13 +24,19 @@
 		"test": "npm run test:unit -- --run"
 	},
 	"files": [
+		"bin",
 		"dist",
+		"README.md",
+		"LICENSE",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
 	"sideEffects": [
 		"**/*.css"
 	],
+	"bin": {
+		"lapikit": "bin/lapikit.js"
+	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
