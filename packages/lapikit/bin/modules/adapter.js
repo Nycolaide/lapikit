@@ -28,7 +28,7 @@ export async function adapterViteConfig(typescript) {
 	} catch (error) {
 		terminal(
 			'error',
-			`lapikit encountered a problem while editing vite.config.(js|ts): \n\n ${error}`
+			`lapikit() encountered a problem while editing vite.config.(js|ts):\n ${error}.\n\n`
 		);
 	}
 }
@@ -46,7 +46,7 @@ export async function adapterCSSConfig() {
 	} catch (error) {
 		terminal(
 			'error',
-			`lapikit encountered a problem while editing ${cssPath}:\n\n  ${error.message}.`
+			`lapikit/css encountered a problem while editing ${cssPath}:\n  ${error.message}.\n\n`
 		);
 	}
 }

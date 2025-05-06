@@ -23,9 +23,9 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 	console.log(' | |___| (_| | |_) | |   <| | |_ ');
 	console.log(' |______\\__,_| .__/|_|_|\\_\\_|\\__|');
 	console.log('             | |                 ');
-	console.log('             |_|                 ');
+	console.log('             |_|                 \n');
 
-	terminal('info', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
+	terminal('none', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
 
 	const configPath = path.resolve(process.cwd(), 'lapikit.config.js');
 	try {
@@ -50,5 +50,5 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 	console.log('Github: https://github.com/nycolaide/lapikit');
 	console.log('Support the developement: https://buymeacoffee.com/nycolaide');
 } else {
-	terminal('error', `Command not recognized. Try 'npx lapikit init'`);
+	terminal('error', `Command not recognized. Try 'npx lapikit -h'`);
 }
