@@ -1,9 +1,10 @@
 /** @type {import('lapikit').Config} */
 export default {
 	theme: {
-		colorScheme: 'light',
+		colorScheme: 'auto',
 		colors: {
-			svelte: 'orange'
+			svelte: 'orange',
+			neutral: 'pink'
 		}
 	}
 };

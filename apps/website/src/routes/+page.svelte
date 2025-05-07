@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
-	import { helloWorld } from 'lapikit';
-	import { onMount } from 'svelte';
+	import { Btn } from 'lapikit/components';
 
 	let time: string = $state('');
 	let search = $state('');
 	let results = $state<{ title: string; description: string }[]>([]);
 	let timeout: NodeJS.Timeout;
-
-	onMount(() => {
-		helloWorld();
-	});
 
 	$effect(() => {
 		const lang = $locale;
@@ -81,3 +76,11 @@
 		<p>{result?.description}</p>
 	</div>
 {/each}
+
+<h3>Btn</h3>
+
+<Btn>button default</Btn>
+<br />
+<Btn size="sm">button sm</Btn>
+<br />
+<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="primary demo">button media</Btn>

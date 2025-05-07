@@ -73,10 +73,24 @@ export const colors = (config: Lapikit) => {
 	let classStyles = '';
 
 	for (const [property] of Object.entries(schemes.light)) {
+		// classStyles += `.${property}:not([class*='--variant-']) {\n`;
+		// classStyles += `--background-color: var(--kit-${property});\n`;
+		// classStyles += `--color: var(--kit-on-${property}, var(--kit-${property}));\n`;
+		// classStyles += `}\n`;
+
+		// classStyles += `.${property}[class*='--variant-'] {\n`;
+		// classStyles += `--color: var(--kit-${property});\n`;
+		// classStyles += `}\n`;
+
 		classStyles += `.${property} {\n`;
-		classStyles += `--background-color: var(--kit-${property});\n`;
-		classStyles += `--color: var(--kit-${property});\n`;
+		classStyles += `--base: var(--kit-${property});\n`;
+		classStyles += `--on: var(--kit-on-${property}, var(--kit-${property}));\n`;
 		classStyles += `}\n`;
+
+		// classStyles += `.${property}:not([class*='kit-']) {\n`;
+		// classStyles += `background-color: var(--kit-${property});\n`;
+		// classStyles += `color: var(--kit-on-${property}, var(--kit-${property}));\n`;
+		// classStyles += `}\n`;
 	}
 
 	return {

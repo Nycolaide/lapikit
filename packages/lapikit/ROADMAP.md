@@ -4,9 +4,9 @@
 
 - [ ] Alert
 - [ ] App Bar
-- [ ] App
+- [x] App
 - [ ] Bottom Navigation
-- [ ] Button
+- [x] Button
 - [ ] Card
 - [ ] Chip
 - [ ] Dialog
