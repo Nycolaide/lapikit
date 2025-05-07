@@ -148,4 +148,4 @@ export const x11Colors: { [key: string]: string } = {
 	yellow: '#FFFF00',
 	yellowgreen: '#9ACD32'
 };
-export const x11ColorNames = Object.keys(x11Colors);
+export const x11ColorNames: Array<string> = Object.keys(x11Colors);

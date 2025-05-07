@@ -1,0 +1,121 @@
+.kit-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	padding-top: var(--btn-spacing-x);
+	padding-bottom: var(--btn-spacing-x);
+	padding-right: var(--btn-spacing-y);
+	padding-left: var(--btn-spacing-y);
+
+	/* theme */
+	color: var(--color, var(--kit-on-neutral));
+	background-color: var(--background-color, var(--kit-neutral));
+}
+
+/* size */
+.kit-btn[breakpoint]kit-btn--size-xs {
+	--btn-height: 1.75rem;
+	--btn-multiplier-y: 2;
+	font-size: 0.75rem;
+	gap: 0.25rem;
+}
+
+.kit-btn[breakpoint]kit-btn--size-sm {
+	--btn-height: 2rem;
+	--btn-multiplier-y: 3;
+	font-size: 0.875rem;
+	gap: 0.5rem;
+}
+
+.kit-btn[breakpoint]kit-btn--size-md {
+	--btn-height: 2.25rem;
+	--btn-multiplier-y: 4;
+	font-size: 0.875rem;
+	gap: 0.5rem;
+}
+
+.kit-btn[breakpoint]kit-btn--size-lg {
+	--btn-height: 2.5rem;
+	--btn-multiplier-y: 5;
+	font-size: 1rem;
+	gap: 0.5rem;
+}
+
+.kit-btn[breakpoint]kit-btn--size-xl {
+	--btn-height: 2.75rem;
+	--btn-multiplier-y: 6;
+	font-size: 1.125rem;
+	gap: 0.675rem;
+}
+
+/* density */
+.kit-btn[breakpoint]kit-btn--density-default {
+	height: calc(var(--btn-height));
+	--btn-spacing-x: 0;
+	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y));
+}
+
+.kit-btn[breakpoint]kit-btn--density-compact {
+	height: calc(var(--btn-height) - 0.25rem);
+	--btn-spacing-x: 0;
+	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
+}
+
+.kit-btn[breakpoint]kit-btn--density-comfortable {
+	height: calc(var(--btn-height) + 0.25rem);
+	--btn-spacing-x: 0;
+	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) + 0.25rem);
+}
+
+/* variant */
+.kit-btn[breakpoint]kit-btn--variant-outline {
+	background-color: transparent;
+	border: 1px solid currentColor;
+}
+
+.kit-btn[breakpoint]kit-btn--variant-text {
+	background-color: transparent;
+}
+
+.kit-btn[breakpoint]kit-btn--variant-dash {
+	background-color: transparent;
+	border: 1px dashed currentColor;
+}
+
+.kit-btn[breakpoint]kit-btn--variant-link {
+	background-color: transparent;
+}
+
+/* state */
+.kit-btn.kit-btn--info:not([class*='btn--variant-']) {
+	--color: var(--kit-on-info);
+	--background-color: var(--kit-info);
+}
+.kit-btn.kit-btn--info[class*='btn--variant-'] {
+	--color: var(--kit-info);
+}
+
+.kit-btn.kit-btn--success:not([class*='btn--variant-']) {
+	--color: var(--kit-on-success);
+	--background-color: var(--kit-success);
+}
+.kit-btn.kit-btn--success[class*='btn--variant-'] {
+	--color: var(--kit-success);
+}
+
+.kit-btn.kit-btn--warning:not([class*='btn--variant-']) {
+	--color: var(--kit-on-warning);
+	--background-color: var(--kit-warning);
+}
+.kit-btn.kit-btn--warning[class*='btn--variant-'] {
+	--color: var(--kit-warning);
+}
+
+.kit-btn.kit-btn--error:not([class*='btn--variant-']) {
+	--color: var(--kit-on-error);
+	--background-color: var(--kit-error);
+}
+.kit-btn.kit-btn--error[class*='btn--variant-'] {
+	--color: var(--kit-error);
+}

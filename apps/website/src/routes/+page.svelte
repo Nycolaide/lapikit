@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
+	import { Btn } from 'lapikit/components';
 
 	let time: string = $state('');
 	let search = $state('');
@@ -75,3 +76,11 @@
 		<p>{result?.description}</p>
 	</div>
 {/each}
+
+<h3>Btn</h3>
+
+<Btn>button default</Btn>
+<br />
+<Btn size="sm">button sm</Btn>
+<br />
+<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="primary demo">button media</Btn>

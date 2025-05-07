@@ -1,5 +1,5 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Snippet } from 'svelte';
 
-export interface AppProps extends Component {
-	init?: boolean;
+export interface AppProps {
+	children?: Snippet;
 }

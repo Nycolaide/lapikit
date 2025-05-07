@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"dev:content": "npm run build:content && vite dev",
 		"build": "npm run build:content && vite build",
 		"build:content": "node src/lib/scripts/build-docs.mjs",
 		"preview": "vite preview",

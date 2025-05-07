@@ -22,6 +22,7 @@
 	<nav>
 		<a href="/">Home</a>
 		<a href="/docs/sample">Sample</a>
+		<a href="/docs/button">Button</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

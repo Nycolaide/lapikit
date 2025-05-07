@@ -11,7 +11,6 @@ import { terminal } from '$lib/internal/terminal.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const __components = path.resolve('src/components');
 
 export const processCSS = async (config: Lapikit) => {
 	const _normalize = fs.readFileSync(path.resolve(__dirname, './normalize.css'), 'utf-8');
@@ -26,9 +25,7 @@ export const processCSS = async (config: Lapikit) => {
 	styles += `${variablesStyles}\n`;
 	styles += `${colorScheme.className}\n`;
 	styles += `${deviceDisplay}\n`;
-
-	if (fs.existsSync(__components) && fs.statSync(__components).isDirectory())
-		styles += component(config);
+	styles += component(config);
 
 	if (config.options.minify) {
 		styles = minify(styles);
