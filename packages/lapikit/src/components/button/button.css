@@ -23,6 +23,13 @@
 	border-color: var(--btn-background);
 }
 
+.kit-btn .kit-btn-content {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+}
+
 .kit-btn:active:hover,
 .kit-btn:active:focus {
 	animation: button-click 0s ease-out;
