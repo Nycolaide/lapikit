@@ -2,9 +2,11 @@
 	import { Btn } from 'lapikit/components';
 </script>
 
-<Btn size="xs" icon>xs icon</Btn>
-<Btn size="sm" icon>sm icon</Btn>
-<Btn icon>Default icon</Btn>
-<Btn size="md" icon>md icon</Btn>
-<Btn size="lg" icon>lg icon</Btn>
-<Btn size="xl" icon>xl icon</Btn>
+<Btn size="xs">
+	<i class="mgc_house_fill"></i>
+</Btn>
+<Btn size="sm"><i class="mgc_house_fill"></i></Btn>
+<Btn><i class="mgc_house_fill"></i></Btn>
+<Btn size="md"><i class="mgc_house_fill"></i></Btn>
+<Btn size="lg" disabled><i class="mgc_house_fill"></i></Btn>
+<Btn size="xl"><i class="mgc_house_fill"></i></Btn>

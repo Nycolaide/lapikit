@@ -9,7 +9,7 @@ published: true
 ---
 
 <script>
-  import { BtnBase, BtnMediaQueries, BtnSize, BtnState, BtnVariant, BtnColor, BtnDensity, BtnDisabled, BtnEvent, BtnType, BtnIcon, BtnComposable } from "$lib/components/docs/index.js";
+  import { BtnBase, BtnMediaQueries, BtnSize, BtnState, BtnVariant, BtnColor, BtnDensity, BtnDisabled, BtnEvent, BtnType, BtnIcon, BtnComposable, BtnLoading } from "$lib/components/docs/index.js";
 </script>
 
 ## base
@@ -59,3 +59,7 @@ published: true
 ## Composable
 
 <BtnComposable/>
+
+## loading
+
+<BtnLoading/>

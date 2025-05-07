@@ -8,6 +8,9 @@
 		PUBLIC_GOOGLE_TAG_MANAGER_ID
 	} from '$env/static/public';
 
+	// icons
+	import 'mingcute_icon/font/Mingcute.css';
+
 	import '$lib/styles/app.css';
 	import { Darkmode, RGPD } from 'site-kit';
 	import { App } from 'lapikit/components';

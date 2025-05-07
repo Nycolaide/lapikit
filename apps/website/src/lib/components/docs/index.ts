@@ -11,3 +11,4 @@ export { default as BtnEvent } from './btn/btn-event.svelte';
 export { default as BtnType } from './btn/btn-type.svelte';
 export { default as BtnIcon } from './btn/btn-icon.svelte';
 export { default as BtnComposable } from './btn/btn-composable.svelte';
+export { default as BtnLoading } from './btn/btn-loading.svelte';

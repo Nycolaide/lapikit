@@ -2,6 +2,12 @@ import { x11ColorNames } from '$lib/utils/x11.js';
 
 export function getAssets() {
 	return {
+		shape(params?: string) {
+			if (params) {
+				if (params === 'none' || params == '0') return '0';
+				return `var(--kit-radius-${params})`;
+			}
+		},
 		className(
 			key: string,
 			type: string,

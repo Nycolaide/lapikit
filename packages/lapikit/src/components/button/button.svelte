@@ -15,17 +15,26 @@
 		info,
 		success,
 		warning,
-		icon,
 		density = 'default',
 		disabled,
 		size = 'md',
 		type = 'button',
 		background,
 		color,
+		label,
+		loading,
+		rounded,
 		...rest
 	}: BtnProps = $props();
 
 	const assets = getAssets();
+
+	$effect(() => {
+		if (type === 'radio') is = 'input';
+		if (type === 'checkbox') is = 'input';
+		if (type === 'submit') is = 'input';
+		if (type === 'reset') is = 'input';
+	});
 </script>
 
 <svelte:element
@@ -46,15 +55,27 @@
 		warning && 'kit-btn--warning',
 		disabled && 'kit-btn--disabled',
 		active && 'kit-btn--active',
-		icon && 'kit-btn--icon',
+		loading && 'kit-btn--loading',
 		rest.class
 	]}
 	tabindex={href && disabled ? -1 : 0}
 	aria-disabled={href ? disabled : undefined}
+	aria-label={type !== 'button' ? label : undefined}
 	disabled={href ? undefined : disabled}
 	type={href ? undefined : type}
-	style:--background-color={assets.color(background)}
-	style:--color={assets.color(color)}
+	style:--base={assets.color(background)}
+	style:--on={assets.color(color)}
+	style:--shape={assets.shape(rounded)}
 >
-	{@render children?.()}
+	{#if loading}
+		<div class="kit-btn-loading">
+			<div>loading ...</div>
+		</div>
+	{/if}
+
+	{#if !label}
+		<span class="kit-btn-content">
+			{@render children?.()}
+		</span>
+	{/if}
 </svelte:element>

@@ -1,4 +1,8 @@
 .kit-btn {
+	--btn-color: var(--on, var(--kit-on-neutral));
+	--btn-background: var(--base, var(--kit-neutral));
+	--btn-radius: var(--shape, var(--kit-radius-md));
+
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -7,10 +11,22 @@
 	padding-bottom: var(--btn-spacing-x);
 	padding-right: var(--btn-spacing-y);
 	padding-left: var(--btn-spacing-y);
+	cursor: pointer;
+
+	border-width: 1px;
+	border-style: solid;
+	border-radius: var(--btn-radius);
 
 	/* theme */
-	color: var(--color, var(--kit-on-neutral));
-	background-color: var(--background-color, var(--kit-neutral));
+	color: var(--btn-color);
+	background-color: var(--btn-background);
+	border-color: var(--btn-background);
+}
+
+.kit-btn:active:hover,
+.kit-btn:active:focus {
+	animation: button-click 0s ease-out;
+	transform: scale(0.97);
 }
 
 /* size */
@@ -52,70 +68,173 @@
 /* density */
 .kit-btn[breakpoint]kit-btn--density-default {
 	height: calc(var(--btn-height));
+	min-width: calc(var(--btn-height));
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y));
 }
 
 .kit-btn[breakpoint]kit-btn--density-compact {
 	height: calc(var(--btn-height) - 0.25rem);
+	min-width: calc(var(--btn-height - 0.25rem));
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
 }
 
 .kit-btn[breakpoint]kit-btn--density-comfortable {
 	height: calc(var(--btn-height) + 0.25rem);
+	min-width: calc(var(--btn-height) + 0.25rem);
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) + 0.25rem);
 }
 
 /* variant */
 .kit-btn[breakpoint]kit-btn--variant-outline {
+	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
 	border: 1px solid currentColor;
 }
 
 .kit-btn[breakpoint]kit-btn--variant-text {
+	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
+	border-color: transparent;
 }
 
 .kit-btn[breakpoint]kit-btn--variant-dash {
+	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
 	border: 1px dashed currentColor;
 }
 
 .kit-btn[breakpoint]kit-btn--variant-link {
+	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
+	border-color: transparent;
 }
 
 /* state */
 .kit-btn.kit-btn--info:not([class*='btn--variant-']) {
-	--color: var(--kit-on-info);
-	--background-color: var(--kit-info);
+	--on: var(--kit-on-info);
+	--base: var(--kit-info);
 }
 .kit-btn.kit-btn--info[class*='btn--variant-'] {
-	--color: var(--kit-info);
+	--base: var(--kit-info);
 }
 
 .kit-btn.kit-btn--success:not([class*='btn--variant-']) {
-	--color: var(--kit-on-success);
-	--background-color: var(--kit-success);
+	--on: var(--kit-on-success);
+	--base: var(--kit-success);
 }
 .kit-btn.kit-btn--success[class*='btn--variant-'] {
-	--color: var(--kit-success);
+	--base: var(--kit-success);
 }
 
 .kit-btn.kit-btn--warning:not([class*='btn--variant-']) {
-	--color: var(--kit-on-warning);
-	--background-color: var(--kit-warning);
+	--on: var(--kit-on-warning);
+	--base: var(--kit-warning);
 }
 .kit-btn.kit-btn--warning[class*='btn--variant-'] {
-	--color: var(--kit-warning);
+	--base: var(--kit-warning);
 }
 
 .kit-btn.kit-btn--error:not([class*='btn--variant-']) {
-	--color: var(--kit-on-error);
-	--background-color: var(--kit-error);
+	--on: var(--kit-on-error);
+	--base: var(--kit-error);
 }
 .kit-btn.kit-btn--error[class*='btn--variant-'] {
-	--color: var(--kit-error);
+	--base: var(--kit-error);
+}
+
+/* types */
+.kit-btn:where(.kit-btn:is(input[type='checkbox'])),
+.kit-btn:where(.kit-btn:is(input[type='radio'])) {
+	width: auto;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	vertical-align: inherit;
+}
+.kit-btn:is(input[type='checkbox']):after,
+.kit-btn:is(input[type='radio']):after {
+	--btn-content: attr(aria-label);
+	content: var(--btn-content);
+}
+
+.kit-btn:is(input[type='checkbox']):focus,
+.kit-btn:is(input[type='radio']):focus {
+	outline: none;
+	outline-offset: inherit;
+	box-shadow: none;
+}
+
+.kit-btn:is(input[type='checkbox']):checked,
+.kit-btn:is(input[type='radio']):checked {
+	background-image: initial;
+}
+
+/* events */
+.kit-btn.kit-btn--active:not([class*='btn--variant-']),
+.kit-btn:not([class*='btn--variant-']):is(input[type='radio']):checked,
+.kit-btn:not([class*='btn--variant-']):is(input[type='checkbox']):checked {
+	background-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
+}
+.kit-btn.kit-btn--active[class*='btn--variant-'],
+.kit-btn[class*='btn--variant-']:is(input[type='radio']):checked,
+.kit-btn[class*='btn--variant-']:is(input[type='checkbox']):checked {
+	background-color: color-mix(in oklab, currentColor 15%, transparent);
+	border-color: color-mix(in oklab, currentColor 15%, transparent);
+}
+
+.kit-btn:hover:not([class*='btn--variant-']),
+.kit-btn:not([class*='btn--variant-']):is(input[type='radio']):hover,
+.kit-btn:not([class*='btn--variant-']):is(input[type='checkbox']):hover {
+	background-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
+}
+.kit-btn:hover[class*='btn--variant-'],
+.kit-btn[class*='btn--variant-']:is(input[type='radio']):hover,
+.kit-btn[class*='btn--variant-']:is(input[type='checkbox']):hover {
+	background-color: color-mix(in oklab, currentColor 25%, transparent);
+}
+
+/* icon */
+.kit-btn i:before {
+	color: var(--btn-color);
+}
+
+/* disabled */
+.kit-btn.kit-btn--disabled,
+.kit-btn[disabled],
+input.kit-btn.kit-btn--disabled,
+input.kit-btn[disabled] {
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
+}
+.kit-btn:not([class*='btn--variant-']).kit-btn--disabled {
+	color: color-mix(in oklab, var(--btn-color) 40%, transparent) !important;
+	background-color: color-mix(in oklab, var(--btn-background) 70%, transparent) !important;
+	border-color: color-mix(in oklab, var(--btn-background) 70%, transparent) !important;
+}
+.kit-btn:not([class*='btn--variant-']).kit-btn--disabled i:before {
+	color: color-mix(in oklab, var(--btn-color) 40%, transparent) !important;
+}
+.kit-btn[class*='btn--variant-'].kit-btn--disabled,
+.kit-btn[class*='btn--variant-'].kit-btn--disabled i:before {
+	color: color-mix(in oklab, var(--btn-background) 40%, transparent) !important;
+}
+
+/* loading */
+.kit-btn.kit-btn--loading {
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
+}
+.kit-btn.kit-btn--loading > .kit-btn-content {
+	color: transparent;
+}
+.kit-btn.kit-btn--loading > .kit-btn-loading {
+	position: absolute;
+	min-width: fit-content;
 }

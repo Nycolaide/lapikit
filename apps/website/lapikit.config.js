@@ -3,7 +3,8 @@ export default {
 	theme: {
 		colorScheme: 'auto',
 		colors: {
-			svelte: 'orange'
+			svelte: 'orange',
+			neutral: 'pink'
 		}
 	}
 };

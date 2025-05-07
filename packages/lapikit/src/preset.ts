@@ -30,7 +30,8 @@ export const config: Lapikit = {
 			'on-surface': { light: 'oklch(14% 0.005 285.823)', dark: 'oklch(100% 0 0)' },
 			container: { light: 'oklch(95% 0 0)', dark: 'oklch(21.15% 0.012 254.09)' },
 			'on-container': { light: 'oklch(14% 0.005 285.823)', dark: 'oklch(100% 0 0)' },
-			shadow: 'black'
+			shadow: 'black',
+			scrim: 'oklch(0.00% 0.000 0)'
 		}
 	},
 	breakpoints: {

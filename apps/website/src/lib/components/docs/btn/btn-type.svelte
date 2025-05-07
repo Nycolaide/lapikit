@@ -3,7 +3,8 @@
 </script>
 
 <Btn href="#click">anchor</Btn>
-<Btn type="radio">radio</Btn>
-<Btn type="checkbox">checkbox</Btn>
+<Btn>button</Btn>
+<Btn type="radio" label="radio" />
+<Btn type="checkbox" label="checkbox" variant="outline" />
 <Btn type="submit">submit</Btn>
 <Btn type="reset">reset</Btn>

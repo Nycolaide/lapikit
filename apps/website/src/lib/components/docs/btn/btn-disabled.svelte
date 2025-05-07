@@ -4,7 +4,7 @@
 
 <Btn disabled>disabled</Btn>
 <Btn href="#click" disabled>anchor</Btn>
-<Btn type="radio">radio disabled</Btn>
-<Btn type="checkbox">checkbox disabled</Btn>
-<Btn type="submit">submit disabled</Btn>
-<Btn type="reset">reset disabled</Btn>
+<Btn type="radio" label="radio disabled" disabled />
+<Btn type="checkbox" label="checkbox disabled" disabled />
+<Btn type="submit" disabled variant="outline">submit disabled</Btn>
+<Btn type="reset" disabled variant="text">reset disabled</Btn>
