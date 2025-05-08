@@ -2,21 +2,21 @@
 	import { Btn, Icon } from 'lapikit/components';
 </script>
 
-<Btn size="xs">
+<Btn size="xs" icon>
 	<Icon icon="mgc_house_fill" />
 </Btn>
-<Btn size="sm">
+<Btn size="sm" icon>
 	<Icon icon="mgc_house_fill" />
 </Btn>
-<Btn>
+<Btn icon>
 	<Icon icon="mgc_house_fill" />
 </Btn>
-<Btn size="md">
+<Btn size="md" icon>
 	<Icon size="xl" icon="mgc_house_fill" />
 </Btn>
-<Btn size="lg" disabled>
+<Btn size="lg" disabled icon>
 	<Icon icon="mgc_house_fill" />
 </Btn>
-<Btn size="xl">
+<Btn size="xl" icon>
 	<Icon icon="mgc_house_fill" />
 </Btn>
