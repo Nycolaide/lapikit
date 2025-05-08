@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { getAssets } from '$lib/internal/index.js';
+	import Icon from '../icon/icon.svelte';
 	import type { BtnProps } from './types.js';
+
+	// external
+	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 
 	let {
 		children,
@@ -24,6 +28,8 @@
 		label,
 		loading,
 		rounded,
+		icon,
+		load,
 		...rest
 	}: BtnProps = $props();
 
@@ -56,6 +62,7 @@
 		disabled && 'kit-btn--disabled',
 		active && 'kit-btn--active',
 		loading && 'kit-btn--loading',
+		icon && 'kit-btn--icon',
 		rest.class
 	]}
 	tabindex={href && disabled ? -1 : 0}
@@ -69,7 +76,13 @@
 >
 	{#if loading}
 		<div class="kit-btn-loading">
-			<div>loading ...</div>
+			{#if load}
+				{@render load?.()}
+			{:else}
+				<Icon class="kit-icon-load">
+					<LoadingFill />
+				</Icon>
+			{/if}
 		</div>
 	{/if}
 

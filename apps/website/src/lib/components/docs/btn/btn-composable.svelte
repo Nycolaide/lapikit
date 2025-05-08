@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Btn } from 'lapikit/components';
+	import { Btn, Icon } from 'lapikit/components';
 </script>
 
-<Btn><i class="mgc_house_fill"></i> Default</Btn>
-<Btn variant="outline">Outline <i class="mgc_house_fill"></i></Btn>
-<Btn variant="outline" icon>Media <i class="mgc_house_fill"></i></Btn>
+<Btn><Icon icon="mgc_house_fill" /> Default</Btn>
+<Btn variant="outline"><Icon icon="mgc_house_fill" /> Outline</Btn>
+<Btn variant="text"><Icon icon="mgc_house_fill" /> Media</Btn>

@@ -1,0 +1,76 @@
+.kit-icon {
+	--icon-size: 1rem;
+	--icon-color: var(--base, var(--kit-on-neutral));
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: color 0.5s;
+	text-indent: 0;
+}
+
+.kit-icon:before {
+	font-size: calc(var(--icon-size-multiplier) * var(--icon-size));
+	color: var(--icon-color);
+}
+
+.kit-icon svg {
+	color: var(--icon-color);
+}
+
+.kit-icon svg,
+.kit-icon img {
+	width: calc(var(--icon-size-multiplier) * var(--icon-size));
+	height: calc(var(--icon-size-multiplier) * var(--icon-size));
+}
+
+/* size */
+.kit-icon[breakpoint]kit-icon--size-xs {
+	--icon-size-multiplier: 0.875;
+}
+
+.kit-icon[breakpoint]kit-icon--size-sm {
+	--icon-size-multiplier: 1;
+}
+
+.kit-icon[breakpoint]kit-icon--size-md {
+	--icon-size-multiplier: 1.125;
+}
+
+.kit-icon[breakpoint]kit-icon--size-lg {
+	--icon-size-multiplier: 1.25;
+}
+
+.kit-icon[breakpoint]kit-icon--size-xl {
+	--icon-size-multiplier: 1.5;
+}
+
+/* state */
+.kit-icon.kit-icon--info {
+	--base: var(--kit-info);
+}
+.kit-icon.kit-icon--success {
+	--base: var(--kit-success);
+}
+.kit-icon.kit-icon--warning {
+	--base: var(--kit-warning);
+}
+.kit-icon.kit-icon--error {
+	--base: var(--kit-error);
+}
+
+/* disabled */
+.kit-icon.kit-icon--disabled {
+	-webkit-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
+
+.kit-icon.kit-icon--disabled img {
+	opacity: 0.38;
+}
+
+.kit-icon.kit-icon--disabled svg,
+.kit-icon.kit-icon--disabled:before {
+	color: color-mix(in oklab, var(--icon-color) 40%, transparent) !important;
+}

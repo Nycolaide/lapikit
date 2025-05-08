@@ -13,7 +13,7 @@
 - [ ] Divider
 - [ ] Expansion Panel
 - [ ] Grid
-- [ ] Icon
+- [x] Icon
 - [ ] Img
 - [ ] List
 - [ ] Menu

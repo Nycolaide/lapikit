@@ -1,4 +1,5 @@
 import type { Component } from '$lib/internal/types.js';
+import type { Snippet } from 'svelte';
 
 export interface BtnProps extends Component {
 	ref?: HTMLElement | null;
@@ -20,4 +21,6 @@ export interface BtnProps extends Component {
 	size?: string | { [key: string]: string };
 	type?: 'button' | 'submit' | 'reset' | 'radio' | 'checkbox';
 	label?: string;
+	icon?: boolean;
+	load?: Snippet;
 }

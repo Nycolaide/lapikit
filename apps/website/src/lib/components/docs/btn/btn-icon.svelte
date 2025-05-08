@@ -1,12 +1,22 @@
 <script lang="ts">
-	import { Btn } from 'lapikit/components';
+	import { Btn, Icon } from 'lapikit/components';
 </script>
 
-<Btn size="xs">
-	<i class="mgc_house_fill"></i>
+<Btn size="xs" icon>
+	<Icon icon="mgc_house_fill" />
 </Btn>
-<Btn size="sm"><i class="mgc_house_fill"></i></Btn>
-<Btn><i class="mgc_house_fill"></i></Btn>
-<Btn size="md"><i class="mgc_house_fill"></i></Btn>
-<Btn size="lg" disabled><i class="mgc_house_fill"></i></Btn>
-<Btn size="xl"><i class="mgc_house_fill"></i></Btn>
+<Btn size="sm" icon>
+	<Icon icon="mgc_house_fill" />
+</Btn>
+<Btn icon>
+	<Icon icon="mgc_house_fill" />
+</Btn>
+<Btn size="md" icon>
+	<Icon size="xl" icon="mgc_house_fill" />
+</Btn>
+<Btn size="lg" disabled icon>
+	<Icon icon="mgc_house_fill" />
+</Btn>
+<Btn size="xl" icon>
+	<Icon icon="mgc_house_fill" />
+</Btn>

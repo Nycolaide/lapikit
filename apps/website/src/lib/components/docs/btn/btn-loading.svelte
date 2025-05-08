@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Btn } from 'lapikit/components';
+	import { Btn, Icon } from 'lapikit/components';
 
 	let loading: boolean = $state(false);
 
@@ -14,3 +14,6 @@
 <Btn {loading} onclick={() => handleClick()}>Default</Btn>
 <Btn variant="outline" {loading} onclick={() => handleClick()}>Outline</Btn>
 <Btn variant="text" {loading} onclick={() => handleClick()}>Text</Btn>
+<Btn {loading} onclick={() => handleClick()} icon>
+	<Icon icon="mgc_house_fill" />
+</Btn>

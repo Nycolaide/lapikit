@@ -12,3 +12,10 @@ export { default as BtnType } from './btn/btn-type.svelte';
 export { default as BtnIcon } from './btn/btn-icon.svelte';
 export { default as BtnComposable } from './btn/btn-composable.svelte';
 export { default as BtnLoading } from './btn/btn-loading.svelte';
+// icon
+export { default as IconBase } from './icon/icon-base.svelte';
+export { default as IconColor } from './icon/icon-color.svelte';
+export { default as IconState } from './icon/icon-state.svelte';
+export { default as IconType } from './icon/icon-type.svelte';
+export { default as IconSize } from './icon/icon-size.svelte';
+export { default as IconDisabled } from './icon/icon-disabled.svelte';
