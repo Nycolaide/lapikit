@@ -25,3 +25,12 @@ export { default as DropdownRef } from './dropdown/dropdown-ref.svelte';
 export { default as DropdownCloseOnClick } from './dropdown/dropdown-close-on-click.svelte';
 export { default as DropdownOpenOnHover } from './dropdown/dropdown-open-on-hover.svelte';
 export { default as DropdownPosition } from './dropdown/dropdown-position.svelte';
+// popover
+export { default as PopoverBase } from './popover/popover-base.svelte';
+export { default as PopoverPosition } from './popover/popover-position.svelte';
+// tooltip
+export { default as TooltipBase } from './tooltip/tooltip-base.svelte';
+export { default as TooltipDensity } from './tooltip/tooltip-density.svelte';
+export { default as TooltipPosition } from './tooltip/tooltip-position.svelte';
+export { default as TooltipSnippet } from './tooltip/tooltip-snippet.svelte';
+export { default as TooltipVariant } from './tooltip/tooltip-variant.svelte';
