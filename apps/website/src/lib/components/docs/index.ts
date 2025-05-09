@@ -19,3 +19,9 @@ export { default as IconState } from './icon/icon-state.svelte';
 export { default as IconType } from './icon/icon-type.svelte';
 export { default as IconSize } from './icon/icon-size.svelte';
 export { default as IconDisabled } from './icon/icon-disabled.svelte';
+// dropdwown
+export { default as DropdownBase } from './dropdown/dropdown-base.svelte';
+export { default as DropdownRef } from './dropdown/dropdown-ref.svelte';
+export { default as DropdownCloseOnClick } from './dropdown/dropdown-close-on-click.svelte';
+export { default as DropdownOpenOnHover } from './dropdown/dropdown-open-on-hover.svelte';
+export { default as DropdownPosition } from './dropdown/dropdown-position.svelte';

@@ -27,6 +27,7 @@
 		<a href="/docs/sample">Sample</a>
 		<a href="/docs/button">Button</a>
 		<a href="/docs/icon">Icon</a>
+		<a href="/docs/dropdown">Dropdown</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 
