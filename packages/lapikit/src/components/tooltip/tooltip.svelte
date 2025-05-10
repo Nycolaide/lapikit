@@ -75,6 +75,7 @@
 	bind:this={ref}
 	onmouseenter={() => handleMouse('enter')}
 	onmouseleave={() => handleMouse('leave')}
+	style:display="inline-flex"
 >
 	{@render children?.()}
 </span>
