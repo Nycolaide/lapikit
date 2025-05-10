@@ -16,14 +16,13 @@
 - [x] Icon
 - [ ] Img
 - [ ] List
-- [ ] Menu
+- [x] Menu (Dropdown)
 - [ ] Responsive
 - [ ] Spacer
 - [ ] Switch
 - [ ] System Bar
 - [ ] Toolbar
-- [ ] Tooltip
-- [ ] Badge
+- [x] Tooltip
 - [ ] Textfield
 - [ ] Textarea
 - [ ] Checkbox
@@ -32,6 +31,10 @@
 - [ ] Avatar
 - [ ] Breadcrumbs
 - [ ] Drawer
+
+## Bonus
+
+- [x] Popover
 
 ## Utils
 
