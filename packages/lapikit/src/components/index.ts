@@ -5,3 +5,4 @@ export { default as Icon } from './icon/icon.svelte';
 export { default as Dropdown } from './dropdown/dropdown.svelte';
 export { default as Popover } from './popover/popover.svelte';
 export { default as Tooltip } from './tooltip/tooltip.svelte';
+export { default as Dialog } from './dialog/dialog.svelte';

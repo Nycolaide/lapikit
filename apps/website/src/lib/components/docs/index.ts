@@ -34,3 +34,10 @@ export { default as TooltipDensity } from './tooltip/tooltip-density.svelte';
 export { default as TooltipPosition } from './tooltip/tooltip-position.svelte';
 export { default as TooltipSnippet } from './tooltip/tooltip-snippet.svelte';
 export { default as TooltipVariant } from './tooltip/tooltip-variant.svelte';
+// dialog
+export { default as DialogBase } from './dialog/dialog-base.svelte';
+export { default as DialogFullscreen } from './dialog/dialog-fullscreen.svelte';
+export { default as DialogKeyboard } from './dialog/dialog-keyboard.svelte';
+export { default as DialogPersistent } from './dialog/dialog-persistent.svelte';
+export { default as DialogPosition } from './dialog/dialog-position.svelte';
+export { default as DialogSize } from './dialog/dialog-size.svelte';
