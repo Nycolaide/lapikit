@@ -13,7 +13,6 @@
 		background,
 		size = 'md',
 		persistent,
-		fullscreen,
 		position = 'center',
 		closeWithEsc,
 		rounded,
@@ -36,7 +35,6 @@
 	class={[
 		'kit-dialog',
 		persistent && 'kit-dialog--persistent',
-		fullscreen && 'kit-dialog--fullscreen',
 		size && assets.className('dialog', 'size', size),
 		position && assets.className('dialog', 'position', position),
 		rest.class

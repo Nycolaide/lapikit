@@ -32,16 +32,11 @@
 	transition-duration: 0.2s;
 }
 
-.kit-dialog.kit-dialog--fullscreen {
-	height: 100%;
-	max-height: 100%;
-}
-
-.kit-dialog.kit-dialog--fullscreen .kit-dialog-container {
+.kit-dialog[class*='kit-dialog--size-full'] .kit-dialog-container {
 	height: 100%;
 }
 
-.kit-dialog.kit-dialog--fullscreen .kit-dialog-container > * {
+.kit-dialog[class*='kit-dialog--size-full'] .kit-dialog-container > * {
 	height: 100%;
 	max-height: 100%;
 	border-radius: 0;
@@ -73,7 +68,7 @@
 	margin: auto;
 }
 
-.kit-dialog[breakpoint]kit-dialog--size-xs {
+.kit-dialog[breakpoint]kit-dialog--size-xs:not() {
 	max-width: var(--kit-dialog-size-xs);
 }
 
@@ -91,6 +86,11 @@
 
 .kit-dialog[breakpoint]kit-dialog--size-xl {
 	max-width: var(--kit-dialog-size-xl);
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-full {
+	height: 100%;
+	max-height: 100%;
 }
 
 @keyframes fade {

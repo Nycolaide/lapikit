@@ -9,7 +9,7 @@ published: true
 ---
 
 <script>
-  import { DialogBase, DialogFullscreen, DialogKeyboard, DialogPersistent, DialogPosition, DialogSize } from "$lib/components/docs/index.js";
+  import { DialogBase, DialogKeyboard, DialogPersistent, DialogPosition, DialogSize } from "$lib/components/docs/index.js";
 </script>
 
 ## base
@@ -27,10 +27,6 @@ published: true
 ## persistent
 
 <DialogPersistent/>
-
-## fullscreen
-
-<DialogFullscreen/>
 
 ## keyboard
 
