@@ -1,0 +1,143 @@
+.kit-dialog {
+	border: 0;
+	padding: 0;
+	margin: auto;
+	width: 100%;
+	max-width: none;
+	background-color: transparent;
+	color: inherit;
+}
+
+.kit-dialog[open] {
+	pointer-events: auto;
+	visibility: visible;
+	opacity: 1;
+}
+
+.kit-dialog::backdrop {
+	background-color: color-mix(in oklab, var(--kit-shadow) 30%, transparent);
+	animation: fade 0.2s ease-out;
+}
+.kit-dialog[open]::backdrop {
+	animation: fade 0.2s ease-out;
+}
+
+.kit-dialog .kit-dialog-container {
+	--dialog-color: var(--on, var(--kit-on-neutral));
+	--dialog-background: var(--base, var(--kit-neutral));
+	--dialog-radius: var(--shape, var(--kit-radius-md));
+
+	border-radius: var(--dialog-radius);
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	transition-duration: 0.2s;
+	padding-top: var(--dialog-spacing-x);
+	padding-bottom: var(--dialog-spacing-x);
+	padding-right: var(--dialog-spacing-y);
+	padding-left: var(--dialog-spacing-y);
+
+	/* theme */
+	color: var(--dialog-color);
+	background-color: var(--dialog-background);
+	border-color: var(--dialog-background);
+}
+
+.kit-dialog[class*='kit-dialog--size-full'] .kit-dialog-container {
+	height: 100%;
+}
+
+.kit-dialog .close-dialog {
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	z-index: -1;
+}
+
+.kit-dialog[breakpoint]kit-dialog--position-bottom {
+	margin-bottom: 0;
+	margin-top: auto;
+}
+
+.kit-dialog[breakpoint]kit-dialog--position-top {
+	margin-top: 0;
+	margin-bottom: auto;
+}
+
+.kit-dialog[breakpoint]kit-dialog--position-center {
+	margin: auto;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-xs {
+	max-width: var(--kit-dialog-size-xs);
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-sm {
+	max-width: var(--kit-dialog-size-sm);
+	height: fit-content;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-md {
+	max-width: var(--kit-dialog-size-md);
+	height: fit-content;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-lg {
+	max-width: var(--kit-dialog-size-lg);
+	height: fit-content;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-xl {
+	max-width: var(--kit-dialog-size-xl);
+	height: fit-content;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-full {
+	height: 100%;
+	max-height: 100%;
+}
+
+.kit-dialog[breakpoint]kit-dialog--size-xs .kit-dialog-container {
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+}
+.kit-dialog[breakpoint]kit-dialog--size-sm .kit-dialog-container {
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+}
+.kit-dialog[breakpoint]kit-dialog--size-md .kit-dialog-container {
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+}
+.kit-dialog[breakpoint]kit-dialog--size-lg .kit-dialog-container {
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+}
+.kit-dialog[breakpoint]kit-dialog--size-xl .kit-dialog-container {
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+}
+
+/* density */
+.kit-dialog .kit-dialog-container[breakpoint]kit-dialog-container--density-default {
+	--dialog-spacing-x: 0.5rem;
+	--dialog-spacing-y: 0.5rem;
+}
+
+.kit-dialog .kit-dialog-container[breakpoint]kit-dialog-container--density-compact {
+	--dialog-spacing-x: 0.25rem;
+	--dialog-spacing-y: 0.25rem;
+}
+
+.kit-dialog .kit-dialog-container[breakpoint]kit-dialog-container--density-comfortable {
+	--dialog-spacing-x: 0.75rem;
+	--dialog-spacing-y: 0.75rem;
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

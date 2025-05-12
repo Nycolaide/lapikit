@@ -15,6 +15,7 @@ const __dirname = dirname(__filename);
 export const processCSS = async (config: Lapikit) => {
 	const _normalize = fs.readFileSync(path.resolve(__dirname, './normalize.css'), 'utf-8');
 	const _animation = fs.readFileSync(path.resolve(__dirname, './animation.css'), 'utf-8');
+	const _variables = fs.readFileSync(path.resolve(__dirname, './variable.css'), 'utf-8');
 
 	let styles = ``;
 	if (config.options.normalize) styles += `${_normalize}\n`;
@@ -24,6 +25,8 @@ export const processCSS = async (config: Lapikit) => {
 
 	styles += `${colorScheme.root}\n`;
 	styles += `${variablesStyles}\n`;
+	styles += `${variablesStyles}\n`;
+	styles += `${_variables}\n`;
 	styles += `${colorScheme.className}\n`;
 	styles += `${deviceDisplay}\n`;
 	styles += component(config);

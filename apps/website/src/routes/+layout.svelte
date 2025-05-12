@@ -30,6 +30,7 @@
 		<a href="/docs/dropdown">Dropdown</a>
 		<a href="/docs/popover">Popover</a>
 		<a href="/docs/tooltip">Tooltip</a>
+		<a href="/docs/dialog">Dialog</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

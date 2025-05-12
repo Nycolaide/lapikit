@@ -9,7 +9,7 @@
 - [x] Button
 - [ ] Card
 - [ ] Chip
-- [ ] Dialog
+- [x] Dialog
 - [ ] Divider
 - [ ] Expansion Panel
 - [ ] Grid
@@ -35,6 +35,7 @@
 ## Bonus
 
 - [x] Popover
+- [ ] Modal
 
 ## Utils
 
