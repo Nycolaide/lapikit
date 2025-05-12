@@ -9,7 +9,7 @@ published: true
 ---
 
 <script>
-  import { DialogBase, DialogKeyboard, DialogPersistent, DialogPosition, DialogSize } from "$lib/components/docs/index.js";
+  import { DialogBase, DialogPersistent, DialogPosition, DialogSize, DialogDensity } from "$lib/components/docs/index.js";
 </script>
 
 ## base
@@ -20,6 +20,10 @@ published: true
 
 <DialogSize/>
 
+## density
+
+<DialogDensity/>
+
 ## position
 
 <DialogPosition/>
@@ -27,7 +31,3 @@ published: true
 ## persistent
 
 <DialogPersistent/>
-
-## keyboard
-
-<DialogKeyboard/>

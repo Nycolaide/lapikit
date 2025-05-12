@@ -14,8 +14,8 @@
 		size = 'md',
 		persistent,
 		position = 'center',
-		closeWithEsc,
 		rounded,
+		density = 'default',
 		...rest
 	}: DialogProps = $props();
 
@@ -40,12 +40,6 @@
 		rest.class
 	]}
 	onclose={() => (!persistent ? (open = false) : null)}
-	onkeydown={(event: KeyboardEvent) => {
-		if (!persistent && event.key === 'Escape' && closeWithEsc) {
-			event.preventDefault();
-			open = false;
-		}
-	}}
 	onclick={(event: MouseEvent) => {
 		if (event.target === ref) {
 			if (!persistent) ref.close();
@@ -56,7 +50,14 @@
 	<button type="button" class="close-dialog">close</button>
 	<div
 		{...rest}
-		class={['kit-dialog-container', light && 'light', dark && 'dark', classContent, rest.class]}
+		class={[
+			'kit-dialog-container',
+			light && 'light',
+			dark && 'dark',
+			classContent,
+			density && assets.className('dialog-container', 'density', density),
+			rest.class
+		]}
 		onclick={(event: MouseEvent) => event.stopPropagation()}
 		style:--base={assets.color(background)}
 		style:--on={assets.color(color)}
