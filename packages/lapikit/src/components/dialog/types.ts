@@ -4,6 +4,7 @@ type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 type DialogPosition = 'bottom' | 'center' | 'top';
 
 export interface DialogProps extends Component {
+	ref?: HTMLDialogElement;
 	open?: boolean;
 	classContent?: string | string[] | undefined;
 	size?: DialogSize | { [key: string]: DialogSize };

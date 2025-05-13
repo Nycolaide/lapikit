@@ -31,6 +31,8 @@
 		<a href="/docs/popover">Popover</a>
 		<a href="/docs/tooltip">Tooltip</a>
 		<a href="/docs/dialog">Dialog</a>
+		<a href="/docs/separator">Separator</a>
+		<a href="/docs/modal">Modal</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

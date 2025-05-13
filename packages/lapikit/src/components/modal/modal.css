@@ -1,0 +1,19 @@
+.kit-modal {
+	width: 100%;
+	height: 100%;
+}
+
+.kit-modal:not(.kit-modal--contain) .kit-modal-overlay {
+	top: 0;
+	left: 0;
+}
+
+.kit-modal-overlay {
+	background-color: var(--kit-shadow);
+	position: fixed;
+}
+
+.kit-modal-container {
+	background-color: aliceblue;
+	color: black;
+}

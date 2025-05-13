@@ -5,6 +5,7 @@
 
 	let {
 		children,
+		ref = $bindable(),
 		open = $bindable(),
 		dark,
 		light,
@@ -20,8 +21,6 @@
 	}: DialogProps = $props();
 
 	const assets = getAssets();
-
-	let ref: HTMLDialogElement;
 
 	$effect(() => {
 		if (ref && open) ref.showModal();

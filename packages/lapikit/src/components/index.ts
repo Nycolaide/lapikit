@@ -6,3 +6,5 @@ export { default as Dropdown } from './dropdown/dropdown.svelte';
 export { default as Popover } from './popover/popover.svelte';
 export { default as Tooltip } from './tooltip/tooltip.svelte';
 export { default as Dialog } from './dialog/dialog.svelte';
+export { default as Separator } from './separator/separator.svelte';
+export { default as Modal } from './modal/modal.svelte';
