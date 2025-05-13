@@ -3,17 +3,93 @@
 	height: 100%;
 }
 
-.kit-modal:not(.kit-modal--contain) .kit-modal-overlay {
+/* .kit-modal:not(.kit-modal--contain) .kit-modal-overlay {
 	top: 0;
 	left: 0;
-}
+} */
 
-.kit-modal-overlay {
+/* .kit-modal-overlay {
 	background-color: var(--kit-shadow);
 	position: fixed;
-}
+} */
 
 .kit-modal-container {
-	background-color: aliceblue;
-	color: black;
+	--modal-color: var(--on, var(--kit-on-neutral));
+	--modal-background: var(--base, var(--kit-neutral));
+	--modal-radius: var(--shape, var(--kit-radius-md));
+	--modal-translate-x: -50%;
+	--modal-translate-y: -50%;
+
+	position: fixed;
+
+	z-index: 9100;
+	width: 100%;
+	height: 100%;
+
+	/* theme */
+	color: var(--modal-color);
+	background-color: var(--modal-background);
+	border-color: var(--modal-background);
+}
+
+/* size */
+.kit-modal [breakpoint]kit-modal-container--size-xs {
+	max-width: var(--kit-modal-size-xs);
+	max-height: calc(100% - 3rem);
+	height: fit-content;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	bottom: initial;
+	translate: var(--modal-translate-x) var(--modal-translate-y);
+}
+.kit-modal [breakpoint]kit-modal-container--size-sm {
+	max-width: var(--kit-modal-size-sm);
+	max-height: calc(100% - 3rem);
+	height: fit-content;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	bottom: initial;
+	translate: var(--modal-translate-x) var(--modal-translate-y);
+}
+.kit-modal [breakpoint]kit-modal-container--size-md {
+	max-width: var(--kit-modal-size-md);
+	max-height: calc(100% - 3rem);
+	height: fit-content;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	bottom: initial;
+	translate: var(--modal-translate-x) var(--modal-translate-y);
+}
+.kit-modal [breakpoint]kit-modal-container--size-lg {
+	max-width: var(--kit-modal-size-lg);
+	max-height: calc(100% - 3rem);
+	height: fit-content;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	bottom: initial;
+	translate: var(--modal-translate-x) var(--modal-translate-y);
+}
+.kit-modal [breakpoint]kit-modal-container--size-xl {
+	max-width: var(--kit-modal-size-xl);
+	max-height: calc(100% - 3rem);
+	height: fit-content;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	bottom: initial;
+	translate: var(--modal-translate-x) var(--modal-translate-y);
+}
+.kit-modal [breakpoint]kit-modal-container--size-full {
+	max-width: 100%;
+	max-height: calc(100% - 3rem);
+	margin: 0 auto;
+	bottom: 0;
+	translate: 0 0;
+	left: 0;
+	top: initial;
+	height: 100%;
 }

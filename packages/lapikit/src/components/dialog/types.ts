@@ -1,6 +1,6 @@
 import type { Component } from '$lib/internal/types.js';
 
-type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
+type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type DialogPosition = 'bottom' | 'center' | 'top';
 
 export interface DialogProps extends Component {

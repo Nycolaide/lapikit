@@ -1,0 +1,16 @@
+.kit-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: color-mix(in oklab, var(--kit-shadow) 45%, transparent);
+	z-index: 9000;
+	cursor: pointer;
+}
+
+.kit-overlay.kit-overlay-persistent {
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
+}
