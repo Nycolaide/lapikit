@@ -2,6 +2,7 @@ import type { Component } from '$lib/internal/types.js';
 
 type ModalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 type ModalPosition = 'bottom' | 'center' | 'top';
+type ModalDensity = 'compact' | 'comfortable' | 'default';
 
 export interface ModalProps extends Component {
 	ref?: HTMLDivElement;
@@ -14,5 +15,7 @@ export interface ModalProps extends Component {
 	light?: boolean;
 	color?: string;
 	background?: string;
-	density?: 'compact' | 'comfortable' | 'default';
+	density?: ModalDensity | { [key: string]: ModalDensity };
+	contain?: boolean;
+	closeWithEsc?: boolean;
 }

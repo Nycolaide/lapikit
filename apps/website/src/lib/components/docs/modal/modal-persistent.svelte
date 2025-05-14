@@ -6,4 +6,4 @@
 
 <Btn onclick={() => (open = true)}>Open Modal</Btn>
 
-<Modal bind:open>Modal content</Modal>
+<Modal bind:open persistent>Modal content <Btn onclick={() => (open = false)}>Close</Btn></Modal>

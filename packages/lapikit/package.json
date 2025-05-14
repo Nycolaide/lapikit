@@ -1,6 +1,6 @@
 {
 	"name": "lapikit",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
@@ -42,7 +42,8 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts"
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
 		},
 		"./components": {
 			"svelte": "./dist/components/index.js",

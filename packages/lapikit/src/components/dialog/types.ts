@@ -2,6 +2,7 @@ import type { Component } from '$lib/internal/types.js';
 
 type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type DialogPosition = 'bottom' | 'center' | 'top';
+type DialogDensity = 'compact' | 'comfortable' | 'default';
 
 export interface DialogProps extends Component {
 	ref?: HTMLDialogElement;
@@ -14,5 +15,5 @@ export interface DialogProps extends Component {
 	light?: boolean;
 	color?: string;
 	background?: string;
-	density?: 'compact' | 'comfortable' | 'default';
+	density?: DialogDensity | { [key: string]: DialogDensity };
 }

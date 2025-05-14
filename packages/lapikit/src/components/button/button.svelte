@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getAssets } from '$lib/internal/index.js';
-	import Icon from '../icon/icon.svelte';
+	import { Icon } from '../index.js';
 	import type { BtnProps } from './types.js';
 
 	// external

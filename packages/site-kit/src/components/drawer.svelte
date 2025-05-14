@@ -9,7 +9,7 @@
 		</div>
 		<button class="backdrop" onclick={() => (open = false)}> // backdrop </button>
 	</div>
-	<div>
+	<div style:position="relative">
 		{@render children?.()}
 	</div>
 </div>

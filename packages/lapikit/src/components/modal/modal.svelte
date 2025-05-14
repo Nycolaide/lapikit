@@ -1,36 +1,48 @@
 <script lang="ts">
 	// import { disabledScroll } from '$lib/internal/index.js';
 	import { getAssets } from '$lib/internal/index.js';
-	import { modalOpen, setOpenModal } from '$lib/stores/index.js';
+	import { modalOpen, modalStack, popModal, pushModal, setOpenModal } from '$lib/stores/index.js';
+	import { onDestroy } from 'svelte';
 	import type { ModalProps } from './types.js';
+	import { get } from 'svelte/store';
+
+	const modalId = crypto.randomUUID();
+	let wasPushed = $state(false);
 
 	let {
 		children,
 		ref = $bindable(),
 		open = $bindable(),
 		contain,
-		size,
+		size = 'md',
 		persistent,
 		dark,
 		light,
-		// classContent,
-		// color,
-		// background,
-		// size = 'md',
-		// persistent,
-		// position = 'center',
-		// rounded,
-		// density = 'default',
+		classContent,
+		color,
+		background,
+		position = 'center',
+		rounded,
+		density = 'default',
+		closeWithEsc,
 		...rest
 	}: ModalProps = $props();
 
 	const assets = getAssets();
 
-	// $effect(() => {
-	// 	if (ref && open) ref.showModal();
-	// 	if (ref && !open) ref.close();
-	// 	disabledScroll(open ? true : false);
-	// });
+	$effect(() => {
+		if (open && !wasPushed) {
+			pushModal(modalId);
+			wasPushed = true;
+		} else if (!open && wasPushed) {
+			popModal(modalId);
+			wasPushed = false;
+		}
+	});
+
+	onDestroy(() => {
+		if (wasPushed) popModal(modalId);
+	});
 
 	$effect(() => {
 		if (open !== undefined && !contain)
@@ -40,48 +52,61 @@
 	$effect(() => {
 		if ($modalOpen === false && !contain) open = false;
 	});
+
+	$effect(() => {
+		if (!closeWithEsc || persistent || !open) return;
+
+		const onKeyDown = (event: KeyboardEvent) => {
+			const stack = get(modalStack);
+			const isTop = stack[stack.length - 1] === modalId;
+
+			if (event.key === 'Escape' && isTop) {
+				event.preventDefault();
+				open = false;
+			}
+		};
+
+		document.addEventListener('keydown', onKeyDown);
+		return () => {
+			document.removeEventListener('keydown', onKeyDown);
+		};
+	});
+
+	const handleClose = () => {
+		if (!persistent) open = false;
+	};
 </script>
 
 {#if open}
-	<div class={['kit-modal', contain && 'kit-modal--contain', rest.class]}>
+	<div
+		bind:this={ref}
+		class={['kit-modal', contain && 'kit-modal--contain', rest.class]}
+		role="dialog"
+	>
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		{#if contain}
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<div
 				class={['kit-overlay', persistent && 'kit-overlay--persistent']}
-				onclick={() => (open = false)}
+				onclick={() => handleClose()}
 			></div>
 		{/if}
 
 		<div
 			class={[
 				'kit-modal-container',
+				classContent,
 				light && 'light',
 				dark && 'dark',
-				size && assets.className('modal-container', 'size', size)
+				size && assets.className('modal-container', 'size', size),
+				density && assets.className('modal-container', 'density', density),
+				position && assets.className('modal-container', 'position', position)
 			]}
-			role="dialog"
+			style:--base={assets.color(background)}
+			style:--on={assets.color(color)}
+			style:--shape={assets.shape(rounded)}
 		>
 			{@render children?.()}
 		</div>
-		<!-- surcharge-dialog autofocus-action-element -->
-		<!-- <button type="button" class="close-dialog">close</button>
-	<div
-		{...rest}
-		class={[
-			'kit-modal-container',
-			light && 'light',
-			dark && 'dark',
-			classContent,
-			density && assets.className('dialog-container', 'density', density),
-			rest.class
-		]}
-		onclick={(event: MouseEvent) => event.stopPropagation()}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
-	>
-		{@render children?.()}
-	</div> -->
 	</div>
 {/if}

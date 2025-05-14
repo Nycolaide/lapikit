@@ -11,13 +11,15 @@
 	});
 </script>
 
+{$modalOpen ? ($modalOpen === 'persistent' ? 'persistent' : 'true') : 'false'}
+
 {@render children?.()}
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 {#if $modalOpen}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
-		class={['kit-overlay', $modalOpen !== 'persistent' && 'kit-overlay--persistent']}
+		class={['kit-overlay', $modalOpen === 'persistent' && 'kit-overlay--persistent']}
 		onclick={() => $modalOpen !== 'persistent' && setOpenModal(false)}
 	></div>
 {/if}

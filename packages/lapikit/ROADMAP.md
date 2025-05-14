@@ -6,7 +6,7 @@
 - [ ] App Bar
 - [x] App
 - [ ] Bottom Navigation
-- [x] Button
+- [x] Button (Btn)
 - [ ] Card
 - [ ] Chip
 - [x] Dialog
@@ -30,12 +30,11 @@
 - [ ] Table
 - [ ] Avatar
 - [ ] Breadcrumbs
-- [ ] Drawer
 
 ## Bonus
 
 - [x] Popover
-- [ ] Modal
+- [x] Modal
 
 ## Utils
 
