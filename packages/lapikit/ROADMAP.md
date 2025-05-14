@@ -10,7 +10,7 @@
 - [ ] Card
 - [ ] Chip
 - [x] Dialog
-- [ ] Divider
+- [x] Divider (Separator)
 - [ ] Expansion Panel
 - [ ] Grid
 - [x] Icon
