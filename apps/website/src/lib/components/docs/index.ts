@@ -40,3 +40,19 @@ export { default as DialogPersistent } from './dialog/dialog-persistent.svelte';
 export { default as DialogPosition } from './dialog/dialog-position.svelte';
 export { default as DialogSize } from './dialog/dialog-size.svelte';
 export { default as DialogDensity } from './dialog/dialog-density.svelte';
+// separator
+export { default as SeparatorBase } from './separator/separator-base.svelte';
+export { default as SeparatorColor } from './separator/separator-color.svelte';
+export { default as SeparatorInset } from './separator/separator-inset.svelte';
+export { default as SeparatorOpacity } from './separator/separator-opacity.svelte';
+export { default as SeparatorOrientation } from './separator/separator-orientation.svelte';
+export { default as SeparatorSize } from './separator/separator-size.svelte';
+// modal
+export { default as ModalBase } from './modal/modal-base.svelte';
+export { default as ModalContain } from './modal/modal-contain.svelte';
+export { default as ModalDensity } from './modal/modal-density.svelte';
+export { default as ModalKeyboard } from './modal/modal-keyboard.svelte';
+export { default as ModalPersistent } from './modal/modal-persistent.svelte';
+export { default as ModalPosition } from './modal/modal-position.svelte';
+export { default as ModalSize } from './modal/modal-size.svelte';
+export { default as ModalStack } from './modal/modal-stack.svelte';

@@ -1,0 +1,46 @@
+.kit-separator {
+	--separator-opacity: var(--opacity, 0.12);
+	--separator-color: var(--base, var(--kit-scrim));
+
+	display: block;
+	flex: 1 1 100%;
+	height: 0px;
+	max-height: 0px;
+	opacity: var(--separator-opacity);
+	transition: inherit;
+	border-color: var(--separator-color);
+	transition: border-color 0.5s;
+	border-style: solid;
+}
+
+.kit-separator:not(.kit-separator--orientation-vertical) {
+	border-width: var(--border-top-width, thin) 0 0 0;
+}
+
+.kit-separator--orientation-vertical {
+	align-self: stretch;
+	border-width: 0 thin 0 0;
+	display: inline-flex;
+	height: auto;
+	margin-left: 0px;
+	max-height: 100%;
+	max-width: 0px;
+	vertical-align: text-bottom;
+	width: 0px;
+	border-width: 0 var(--border-right-width, thin) 0 0;
+}
+
+.kit-separator--inset:not(.kit-separator--orientation-vertical) {
+	max-width: calc(100% - 4.5rem);
+	margin-inline-start: 4.5rem;
+}
+
+.kit-separator--inset.kit-separator--orientation-vertical {
+	margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+	max-height: calc(100% - 1rem);
+}
+
+.kit-separator:not(.kit-separator--orientation-vertical) {
+	width: 100%;
+}

@@ -5,37 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2025-05-14
+
+### Added
+
+- Create **Modal** component
+- Create **Separator** component
+
+### Changed
+
+- Add `$bindable` ref on **Dialog** component
+- Add `overlay` on **App** component global
+- Create global store
+
+### Fix
+
+- Fix **Dialog** size not working
+
 ## [0.1.4] - 2025-05-12
 
 ### Added
 
-- Create Dialog component
+- Create **Dialog** component
 
 ## [0.1.3] - 2025-05-10
 
 ### Added
 
-- Create Dropdown component
-- Create Tooltip component
-- Create Popover component
+- Create **Dropdown** component
+- Create **Tooltip** component
+- Create **Popover** component
 
 ## [0.1.2] - 2025-05-08
 
 ### Added
 
-- Create Icon component
+- Create **Icon** component
 
 ### Changed
 
-- Change size format for Btn
-- Add new props for load and loading state for Btn component
+- Change size format for **Btn**
+- Add new props for load and loading state for **Btn** component
 
 ## [0.1.1] - 2025-05-07
 
 ### Added
 
-- Create App component for generate and control colorScheme in all component lapikit
-- Create Btn component
+- Create **App** component for generate and control `colorScheme` in all component lapikit
+- Create **Btn** component
 
 ### Changed
 

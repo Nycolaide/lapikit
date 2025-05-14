@@ -6,11 +6,11 @@
 - [ ] App Bar
 - [x] App
 - [ ] Bottom Navigation
-- [x] Button
+- [x] Button (Btn)
 - [ ] Card
 - [ ] Chip
 - [x] Dialog
-- [ ] Divider
+- [x] Divider (Separator)
 - [ ] Expansion Panel
 - [ ] Grid
 - [x] Icon
@@ -30,12 +30,11 @@
 - [ ] Table
 - [ ] Avatar
 - [ ] Breadcrumbs
-- [ ] Drawer
 
 ## Bonus
 
 - [x] Popover
-- [ ] Modal
+- [x] Modal
 
 ## Utils
 
