@@ -4,6 +4,8 @@
 
 	let {
 		children,
+		append,
+		prepend,
 		ref = $bindable(),
 		is = 'div',
 		dark,
@@ -11,26 +13,56 @@
 		background,
 		color,
 		rounded,
+		disabled,
+		active,
+		href,
 		...rest
 	}: ListItemProps = $props();
 
 	const assets = getAssets();
+
+	$effect(() => {
+		const refProps = { ...rest };
+		if (refProps?.onclick) is = 'button';
+	});
 </script>
 
 <svelte:element
-	this={is}
+	this={href ? 'a' : is}
 	bind:this={ref}
 	{...rest}
+	href={href && !disabled ? href : undefined}
 	class={[
 		'kit-list-item',
 		light && 'light',
 		dark && 'dark',
-		// orientation && assets.className('list', 'orientation', orientation),
+		append && 'kit-list-item--append',
+		prepend && 'kit-list-item--prepend',
+		active && 'kit-list-item--active',
+		disabled && 'kit-list-item--disabled',
 		rest.class
 	]}
+	role={is === 'button' ? 'listitem' : undefined}
+	tabindex={href && disabled ? -2 : 0}
+	aria-disabled={href ? disabled : undefined}
+	disabled={href ? undefined : disabled}
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
 >
-	{@render children?.()}
+	{#if append}
+		<div class="kit-list-item-content--append">
+			{@render append?.()}
+		</div>
+	{/if}
+
+	<div class="kit-list-item-content">
+		{@render children?.()}
+	</div>
+
+	{#if prepend}
+		<div class="kit-list-item-content--prepend">
+			{@render prepend?.()}
+		</div>
+	{/if}
 </svelte:element>

@@ -7,11 +7,14 @@
 	width: 100%;
 }
 
+.kit-list--nav {
+	padding-inline: 8px;
+}
+
 /* orientation */
 .kit-list[breakpoint]kit-list--orientation-vertical {
 	flex-direction: column;
 }
-
 .kit-list[breakpoint]kit-list--orientation-horizontal {
 	flex-direction: row;
 }
@@ -103,20 +106,20 @@
 }
 
 /* events */
-.kit-list:not([class*='list--variant-']) kit-list-item.kit-list--active {
+.kit-list:not([class*='list--variant-']) .kit-list-item.kit-list-item--active {
 	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
 }
-.kit-list[class*='list--variant-'] .kit-list-item.kit-list--active {
+.kit-list[class*='list--variant-'] .kit-list-item.kit-list-item--active {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 	border-color: color-mix(in oklab, currentColor 15%, transparent);
 }
 
-.kit-list:not([class*='list--variant-']) .kit-list-item:hover {
+.kit-list:not([class*='list--variant-']) .kit-list-item:not(div):hover {
 	background-color: color-mix(in oklab, var(--list-item-background) 85%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--list-item-background) 85%, var(--kit-scrim));
 }
-.kit-list[class*='list--variant-'] .kit-list-item:hover {
+.kit-list[class*='list--variant-'] .kit-list-item:not(div):hover {
 	background-color: color-mix(in oklab, currentColor 25%, transparent);
 }
 
@@ -152,7 +155,6 @@
 	padding-bottom: var(--list-spacing-x);
 	padding-right: var(--list-spacing-y);
 	padding-left: var(--list-spacing-y);
-	cursor: pointer;
 	align-items: center;
 	white-space: nowrap;
 	gap: var(--list-gap);
@@ -167,6 +169,25 @@
 	border-color: var(--list-item-background);
 }
 
-.kit-list-item:hover {
-	background-color: aliceblue;
+.kit-list .kit-list-item:not(div) {
+	cursor: pointer;
+}
+
+.kit-list .kit-list-item > .kit-list-item-content {
+	display: flex;
+}
+
+.kit-list .kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.kit-list .kit-list-item.kit-list-item--prepend:not(.kit-list-item--append) {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+
+.kit-list .kit-list-item.kit-list-item--prepend.kit-list-item--append {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 }

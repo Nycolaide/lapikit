@@ -15,6 +15,7 @@
 		size = 'md',
 		density = 'default',
 		variant,
+		nav,
 		...rest
 	}: ListProps = $props();
 
@@ -33,8 +34,10 @@
 		size && assets.className('list', 'size', size),
 		variant && assets.className('list', 'variant', variant),
 		density && assets.className('list', 'density', density),
+		nav && 'kit-list--nav',
 		rest.class
 	]}
+	role="listbox"
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
