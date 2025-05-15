@@ -33,6 +33,7 @@
 		<a href="/docs/dialog">Dialog</a>
 		<a href="/docs/separator">Separator</a>
 		<a href="/docs/modal">Modal</a>
+		<a href="/docs/list">List</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

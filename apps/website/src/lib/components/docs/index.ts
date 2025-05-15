@@ -56,3 +56,5 @@ export { default as ModalPersistent } from './modal/modal-persistent.svelte';
 export { default as ModalPosition } from './modal/modal-position.svelte';
 export { default as ModalSize } from './modal/modal-size.svelte';
 export { default as ModalStack } from './modal/modal-stack.svelte';
+// list
+export { default as ListBase } from './list/list-base.svelte';
