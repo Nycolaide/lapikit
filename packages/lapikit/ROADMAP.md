@@ -2,7 +2,7 @@
 
 ## COMPONENTS
 
-- [ ] Alert
+- [x] Alert
 - [ ] App Bar
 - [x] App
 - [ ] Bottom Navigation
@@ -11,14 +11,11 @@
 - [ ] Chip
 - [x] Dialog
 - [x] Divider (Separator)
-- [ ] Expansion Panel
-- [ ] Grid
+- [x] Expansion Panel (Accordion)
 - [x] Icon
-- [ ] Img
-- [ ] List
+- [x] List
 - [x] Menu (Dropdown)
-- [ ] Responsive
-- [ ] Spacer
+- [x] Responsive (AspectRatio)
 - [ ] Switch
 - [ ] System Bar
 - [ ] Toolbar
@@ -28,7 +25,7 @@
 - [ ] Checkbox
 - [ ] Radio
 - [ ] Table
-- [ ] Avatar
+- [x] Avatar
 - [ ] Breadcrumbs
 
 ## Bonus

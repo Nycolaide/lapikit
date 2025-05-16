@@ -1,0 +1,18 @@
+<script lang="ts">
+	import { Alert, Btn } from 'lapikit/components';
+
+	let open = $state(true);
+</script>
+
+{#if !open}
+	<Btn onclick={() => (open = true)}>Open alert</Btn>
+{/if}
+
+<Alert closable bind:open>
+	<h3>Lorem ipsum</h3>
+	<p>
+		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est quaerat vel, blanditiis laboriosam
+		tempora ad quia perferendis fugiat autem, modi voluptate accusantium minima itaque aperiam
+		dolore enim numquam laborum veniam.
+	</p>
+</Alert>

@@ -1,0 +1,127 @@
+.kit-alert {
+	--alert-color: var(--on, var(--kit-on-neutral));
+	--alert-background: var(--base, var(--kit-neutral));
+	--alert-radius: var(--shape, var(--kit-radius-md));
+
+	display: grid;
+	flex: 1 1;
+	grid-template-areas:
+		'prepend content append close'
+		'. content . .';
+	grid-template-columns: max-content auto max-content max-content;
+	position: relative;
+	padding: 1rem;
+	overflow: hidden;
+	color: var(--alert-color);
+	background-color: var(--alert-background);
+	border-radius: var(--alert-radius);
+	transition:
+		color 0.5s,
+		background-color 0.5s;
+}
+
+.kit-alert .kit-alert--underlay {
+	grid-area: none;
+	position: absolute;
+	background-color: var(--alert-background);
+	border-radius: inherit;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.kit-alert.kit-alert--outline {
+	border: thin solid currentColor;
+	background-color: transparent;
+}
+
+/* density */
+.kit-alert[breakpoint]kit-alert--density-default {
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+}
+
+.kit-alert[breakpoint]kit-alert--density-compact {
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+.kit-alert[breakpoint]kit-alert--density-comfortable {
+	padding-bottom: 0.75rem;
+	padding-top: 0.75rem;
+}
+
+.kit-alert .kit-alert--prepend {
+	align-self: flex-start;
+	display: flex;
+	align-items: center;
+	grid-area: prepend;
+	margin-inline-end: 1rem;
+}
+
+.kit-alert .kit-alert--content {
+	align-self: center;
+	grid-area: content;
+	overflow: hidden;
+}
+
+.kit-alert .kit-alert--close {
+	align-self: flex-start;
+	margin-inline-start: 1rem;
+	flex: 0 1 auto;
+	grid-area: close;
+}
+
+/* state */
+.kit-alert.kit-alert--info:not([class*='alert--variant-']) {
+	--on: var(--kit-on-info);
+	--base: var(--kit-info);
+}
+.kit-alert.kit-alert--info[class*='alert--variant-'] {
+	--base: var(--kit-info);
+}
+
+.kit-alert.kit-alert--success:not([class*='alert--variant-']) {
+	--on: var(--kit-on-success);
+	--base: var(--kit-success);
+}
+.kit-alert.kit-alert--success[class*='alert--variant-'] {
+	--base: var(--kit-success);
+}
+
+.kit-alert.kit-alert--warning:not([class*='alert--variant-']) {
+	--on: var(--kit-on-warning);
+	--base: var(--kit-warning);
+}
+.kit-alert.kit-alert--warning[class*='alert--variant-'] {
+	--base: var(--kit-warning);
+}
+
+.kit-alert.kit-alert--error:not([class*='alert--variant-']) {
+	--on: var(--kit-on-error);
+	--base: var(--kit-error);
+}
+.kit-alert.kit-alert--error[class*='alert--variant-'] {
+	--base: var(--kit-error);
+}
+
+/* variant */
+.kit-alert[breakpoint]kit-alert--variant-outline {
+	--alert-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+	border: 1px solid currentColor;
+}
+
+.kit-alert[breakpoint]kit-alert--variant-text {
+	--alert-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.kit-alert[breakpoint]kit-alert--variant-dash {
+	--alert-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+	border: 1px dashed currentColor;
+}
