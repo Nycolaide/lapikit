@@ -65,3 +65,17 @@ export { default as ListNav } from './list/list-nav.svelte';
 export { default as ListOrientation } from './list/list-orientation.svelte';
 export { default as ListSize } from './list/list-size.svelte';
 export { default as ListVariant } from './list/list-variant.svelte';
+export { default as ListSnippet } from './list/list-snippet.svelte';
+// avatar
+export { default as AvatarBase } from './avatar/avatar-base.svelte';
+export { default as AvatarSize } from './avatar/avatar-size.svelte';
+export { default as AvatarDensity } from './avatar/avatar-density.svelte';
+export { default as AvatarImage } from './avatar/avatar-image.svelte';
+export { default as AvatarVariant } from './avatar/avatar-variant.svelte';
+// accordion
+export { default as AccordionBase } from './accordion/accordion-base.svelte';
+export { default as AccordionIcon } from './accordion/accordion-icon.svelte';
+export { default as AccordionMultiple } from './accordion/accordion-multiple.svelte';
+export { default as AccordionReadOnly } from './accordion/accordion-read-only.svelte';
+export { default as AccordionSnippet } from './accordion/accordion-snippet.svelte';
+export { default as AccordionSpacer } from './accordion/accordion-spacer.svelte';

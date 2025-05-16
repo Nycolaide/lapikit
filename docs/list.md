@@ -9,7 +9,7 @@ published: true
 ---
 
 <script>
-  import { ListBase, ListActive, ListDensity, ListDisabled, ListNav, ListSize, ListOrientation, ListVariant } from "$lib/components/docs/index.js";
+  import { ListBase, ListActive, ListDensity, ListDisabled, ListNav, ListSize, ListOrientation, ListVariant, ListSnippet } from "$lib/components/docs/index.js";
 </script>
 
 ## base
@@ -43,3 +43,7 @@ published: true
 ## variant
 
 <ListVariant/>
+
+## snippet 
+
+<ListSnippet/>

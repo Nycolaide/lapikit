@@ -55,6 +55,9 @@
 		"./stores": {
 			"default": "./dist/stores/index.js"
 		},
+		"./actions": {
+			"default": "./dist/actions/index.js"
+		},
 		"./css": "./dist/styles.css"
 	},
 	"peerDependencies": {

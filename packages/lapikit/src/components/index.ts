@@ -10,3 +10,6 @@ export { default as Separator } from './separator/separator.svelte';
 export { default as Modal } from './modal/modal.svelte';
 export { default as List } from './list/list.svelte';
 export { default as ListItem } from './list/modules/list-item.svelte';
+export { default as Avatar } from './avatar/avatar.svelte';
+export { default as Accordion } from './accordion/accordion.svelte';
+export { default as AccordionItem } from './accordion/modules/accordion-item.svelte';
