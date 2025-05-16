@@ -13,3 +13,5 @@ export { default as ListItem } from './list/modules/list-item.svelte';
 export { default as Avatar } from './avatar/avatar.svelte';
 export { default as Accordion } from './accordion/accordion.svelte';
 export { default as AccordionItem } from './accordion/modules/accordion-item.svelte';
+export { default as AspectRatio } from './aspect-ratio/aspect-ratio.svelte';
+export { default as Alert } from './alert/alert.svelte';

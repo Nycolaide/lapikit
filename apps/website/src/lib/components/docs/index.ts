@@ -79,3 +79,13 @@ export { default as AccordionMultiple } from './accordion/accordion-multiple.sve
 export { default as AccordionReadOnly } from './accordion/accordion-read-only.svelte';
 export { default as AccordionSnippet } from './accordion/accordion-snippet.svelte';
 export { default as AccordionSpacer } from './accordion/accordion-spacer.svelte';
+// aspect ratio
+export { default as AspectRatioBase } from './aspect-ratio/aspect-ratio-base.svelte';
+export { default as AspectRatioInline } from './aspect-ratio/aspect-ratio-inline.svelte';
+// alert
+export { default as AlertBase } from './alert/alert-base.svelte';
+export { default as AlertClosable } from './alert/alert-closable.svelte';
+export { default as AlertDensity } from './alert/alert-density.svelte';
+export { default as AlertSnippet } from './alert/alert-snippet.svelte';
+export { default as AlertState } from './alert/alert-state.svelte';
+export { default as AlertVariant } from './alert/alert-variant.svelte';

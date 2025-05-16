@@ -36,6 +36,8 @@
 		<a href="/docs/list">List</a>
 		<a href="/docs/avatar">Avatar</a>
 		<a href="/docs/accordion">Accordion</a>
+		<a href="/docs/aspect-ratio">Aspect Ratio</a>
+		<a href="/docs/alert">Alert</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 
