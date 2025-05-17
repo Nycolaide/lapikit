@@ -1,0 +1,17 @@
+/* loading */
+.kit-chip.kit-chip--loading {
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
+}
+.kit-chip.kit-chip--loading > .kit-chip-content {
+	color: transparent;
+	opacity: 0;
+}
+.kit-chip.kit-chip--loading > .kit-chip-loading {
+	position: absolute;
+	min-width: fit-content;
+}
+.kit-chip.kit-chip--loading > .kit-chip-loading .kit-icon-load {
+	animation: icon-rotate 1s ease-out infinite;
+}
