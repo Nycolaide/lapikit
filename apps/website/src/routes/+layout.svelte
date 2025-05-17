@@ -38,6 +38,7 @@
 		<a href="/docs/accordion">Accordion</a>
 		<a href="/docs/aspect-ratio">Aspect Ratio</a>
 		<a href="/docs/alert">Alert</a>
+		<a href="/docs/chip">Chip</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

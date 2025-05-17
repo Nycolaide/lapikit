@@ -1,3 +1,186 @@
+.kit-chip {
+	--chip-color: var(--on, var(--kit-on-neutral));
+	--chip-background: var(--base, var(--kit-neutral));
+	--chip-radius: var(--shape, var(--kit-radius-full));
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	padding-top: var(--chip-spacing-x);
+	padding-bottom: var(--chip-spacing-x);
+	padding-right: var(--chip-spacing-y);
+	padding-left: var(--chip-spacing-y);
+
+	border-width: 1px;
+	border-style: solid;
+	border-radius: var(--chip-radius);
+
+	/* theme */
+	color: var(--chip-color);
+	background-color: var(--chip-background);
+	border-color: var(--chip-background);
+}
+
+a.kit-chip,
+button.kit-chip {
+	cursor: pointer;
+}
+
+.kit-chip .kit-chip-content,
+.kit-chip .kit-chip-loading {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	gap: var(--chip-gap);
+}
+
+/* size */
+.kit-chip[breakpoint]kit-chip--size-xs {
+	--chip-height: 1.25rem;
+	--chip-multiplier-y: 2;
+	--chip-gap: 0.25rem;
+	font-size: 0.625rem;
+	gap: var(--chip-gap);
+}
+
+.kit-chip[breakpoint]kit-chip--size-sm {
+	--chip-height: 1.625rem;
+	--chip-multiplier-y: 3;
+	--chip-gap: 0.5rem;
+	font-size: 0.75rem;
+	gap: var(--chip-gap);
+}
+
+.kit-chip[breakpoint]kit-chip--size-md {
+	--chip-height: 2rem;
+	--chip-multiplier-y: 4;
+	--chip-gap: 0.5rem;
+	font-size: 0.875rem;
+	gap: var(--chip-gap);
+}
+
+.kit-chip[breakpoint]kit-chip--size-lg {
+	--chip-height: 2.375rem;
+	--chip-multiplier-y: 5;
+	--chip-gap: 0.5rem;
+	font-size: 1rem;
+	gap: var(--chip-gap);
+}
+
+.kit-chip[breakpoint]kit-chip--size-xl {
+	--chip-height: 2.75rem;
+	--chip-multiplier-y: 6;
+	--chip-gap: 0.675rem;
+	font-size: 1.125rem;
+	gap: var(--chip-gap);
+}
+
+/* variant */
+.kit-chip[breakpoint]kit-chip--variant-outline {
+	--chip-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+	border: 1px solid currentColor;
+}
+
+.kit-chip[breakpoint]kit-chip--variant-label {
+	border-radius: var(--kit-radius-md);
+}
+
+/* density */
+.kit-chip[breakpoint]kit-chip--density-default {
+	height: calc(var(--chip-height));
+	min-width: calc(var(--chip-height));
+	--chip-spacing-x: 0;
+	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y));
+}
+
+.kit-chip[breakpoint]kit-chip--density-compact {
+	height: calc(var(--chip-height) - 0.25rem);
+	min-width: calc(var(--chip-height - 0.25rem));
+	--chip-spacing-x: 0;
+	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y) - 0.25rem);
+}
+
+.kit-chip[breakpoint]kit-chip--density-comfortable {
+	height: calc(var(--chip-height) + 0.25rem);
+	min-width: calc(var(--chip-height) + 0.25rem);
+	--chip-spacing-x: 0;
+	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y) + 0.25rem);
+}
+
+/* state */
+.kit-chip.kit-chip--info:not([class*='chip--variant-']) {
+	--on: var(--kit-on-info);
+	--base: var(--kit-info);
+}
+.kit-chip.kit-chip--info[class*='chip--variant-'] {
+	--base: var(--kit-info);
+}
+
+.kit-chip.kit-chip--success:not([class*='chip--variant-']) {
+	--on: var(--kit-on-success);
+	--base: var(--kit-success);
+}
+.kit-chip.kit-chip--success[class*='chip--variant-'] {
+	--base: var(--kit-success);
+}
+
+.kit-chip.kit-chip--warning:not([class*='chip--variant-']) {
+	--on: var(--kit-on-warning);
+	--base: var(--kit-warning);
+}
+.kit-chip.kit-chip--warning[class*='chip--variant-'] {
+	--base: var(--kit-warning);
+}
+
+.kit-chip.kit-chip--error:not([class*='chip--variant-']) {
+	--on: var(--kit-on-error);
+	--base: var(--kit-error);
+}
+.kit-chip.kit-chip--error[class*='chip--variant-'] {
+	--base: var(--kit-error);
+}
+
+/* events */
+.kit-chip.kit-chip--active:not([class*='chip--variant-']) {
+	background-color: color-mix(in oklab, var(--chip-background) 90%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--chip-background) 90%, var(--kit-scrim));
+}
+.kit-chip.kit-chip--active[class*='chip--variant-'] {
+	background-color: color-mix(in oklab, currentColor 15%, transparent);
+	border-color: color-mix(in oklab, currentColor 15%, transparent);
+}
+
+.kit-chip:hover:not([class*='chip--variant-']) {
+	background-color: color-mix(in oklab, var(--chip-background) 85%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--chip-background) 85%, var(--kit-scrim));
+}
+.kit-chip:hover[class*='chip--variant-'] {
+	background-color: color-mix(in oklab, currentColor 25%, transparent);
+}
+
+/* disabled */
+.kit-chip.kit-chip--disabled,
+.kit-chip[disabled] {
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
+}
+.kit-chip:not([class*='chip--variant-']).kit-chip--disabled {
+	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
+	background-color: color-mix(in oklab, var(--chip-background) 70%, transparent) !important;
+	border-color: color-mix(in oklab, var(--chip-background) 70%, transparent) !important;
+}
+.kit-chip:not([class*='chip--variant-']).kit-chip--disabled i:before {
+	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
+}
+.kit-chip[class*='chip--variant-'].kit-chip--disabled,
+.kit-chip[class*='chip--variant-'].kit-chip--disabled i:before {
+	color: color-mix(in oklab, var(--chip-background) 40%, transparent) !important;
+}
+
 /* loading */
 .kit-chip.kit-chip--loading {
 	pointer-events: none;

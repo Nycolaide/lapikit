@@ -20,11 +20,6 @@
 - [ ] System Bar
 - [ ] Toolbar
 - [x] Tooltip
-- [ ] Textfield
-- [ ] Textarea
-- [ ] Checkbox
-- [ ] Radio
-- [ ] Table
 - [x] Avatar
 - [ ] Breadcrumbs
 

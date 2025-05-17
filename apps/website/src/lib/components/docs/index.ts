@@ -89,3 +89,5 @@ export { default as AlertDensity } from './alert/alert-density.svelte';
 export { default as AlertSnippet } from './alert/alert-snippet.svelte';
 export { default as AlertState } from './alert/alert-state.svelte';
 export { default as AlertVariant } from './alert/alert-variant.svelte';
+// chip
+export { default as ChipBase } from './chip/chip-base.svelte';
