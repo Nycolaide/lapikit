@@ -28,6 +28,9 @@ button.kit-chip {
 }
 
 .kit-chip .kit-chip-content,
+.kit-chip .kit-chip-append,
+.kit-chip .kit-chip-prepend,
+.kit-chip .kit-chip--close,
 .kit-chip .kit-chip-loading {
 	display: inline-flex;
 	align-items: center;
@@ -82,10 +85,6 @@ button.kit-chip {
 	--chip-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
 	border: 1px solid currentColor;
-}
-
-.kit-chip[breakpoint]kit-chip--variant-label {
-	border-radius: var(--kit-radius-md);
 }
 
 /* density */

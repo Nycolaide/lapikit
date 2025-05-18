@@ -1,0 +1,142 @@
+.kit-toolbar {
+	--toolbar-color: var(--on, var(--kit-on-neutral));
+	--toolbar-background: var(--base, var(--kit-neutral));
+	--toolbar-radius: var(--shape, var(--kit-radius-md));
+
+	display: flex;
+	align-items: center;
+	min-width: max-content;
+	border-style: solid;
+	transition:
+		color 0.5s,
+		border-color 0.5s,
+		background-color 0.5s;
+
+	border-width: 1px;
+	border-style: solid;
+	border-radius: var(--toolbar-radius);
+
+	/* theme */
+	color: var(--toolbar-color);
+	background-color: var(--toolbar-background);
+	border-color: var(--toolbar-background);
+}
+
+/* density */
+.kit-card[breakpoint]kit-card--density-default {
+	--card-spacing-x: 0.25rem;
+	--card-spacing-y: 0.25rem;
+}
+
+.kit-card[breakpoint]kit-card--density-compact {
+	--card-spacing-x: 0;
+	--card-spacing-y: 0;
+}
+
+.kit-card[breakpoint]kit-card--density-comfortable {
+	--card-spacing-x: 0.5rem;
+	--card-spacing-y: 0.5rem;
+}
+
+/* density */
+.kit-toolbar[breakpoint]kit-toolbar--density-default {
+	border-radius: calc(var(--kit-spacing) * 2.25);
+}
+.kit-toolbar[breakpoint]kit-toolbar--density-default:not([class*='toolbar--orientation-vertical']) {
+	height: 3rem;
+	padding-inline: calc(var(--kit-spacing) * 1.5);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-default[class*='toolbar--orientation-vertical'] {
+	width: 3rem;
+	padding: calc(var(--kit-spacing) * 1.5) 0;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-compact {
+	border-radius: calc(var(--kit-spacing) * 1.75);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-compact:not([class*='toolbar--orientation-vertical']) {
+	height: 2.625rem;
+	padding-inline: calc(var(--kit-spacing) * 0.75);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-compact[class*='toolbar--orientation-vertical'] {
+	width: 2.625rem;
+	padding: calc(var(--kit-spacing) * 0.75) 0;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-comfortable {
+	border-radius: calc(var(--kit-spacing) * 3.5);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-comfortable:not(
+		[class*='toolbar--orientation-vertical']
+	) {
+	height: 3.5rem;
+	padding-inline: calc(var(--kit-spacing) * 2.25);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--density-comfortable[class*='toolbar--orientation-vertical'] {
+	width: 3.5rem;
+	padding: calc(var(--kit-spacing) * 2.25) 0;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--variant-text,
+.kit-toolbar[breakpoint]kit-toolbar--variant-outline,
+.kit-toolbar[breakpoint]kit-toolbar--variant-dash {
+	--toolbar-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--variant-outline {
+	border-color: currentColor;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--variant-dash {
+	border-style: dashed;
+	border-color: currentColor;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--orientation-horizontal {
+	flex-direction: row;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--orientation-vertical {
+	flex-direction: column;
+	min-height: fit-content;
+}
+
+/* wrapper */
+.kit-toolbar .kit-toolbar--wrapper {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	flex-direction: row;
+	height: auto;
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--orientation-vertical .kit-toolbar--wrapper {
+	flex-direction: column;
+	height: 100%;
+}
+
+/* location */
+.kit-toolbar[breakpoint]kit-toolbar--location-top {
+	top: 0px;
+	z-index: 1004;
+	transform: translateY(0px);
+	position: fixed;
+	left: 0px;
+	width: calc(100% + 0px);
+}
+
+.kit-toolbar[breakpoint]kit-toolbar--location-bottom {
+	z-index: 1004;
+	transform: translateY(0px);
+	position: fixed;
+	left: 0px;
+	width: calc(100% + 0px);
+	bottom: 0px;
+}

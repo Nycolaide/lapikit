@@ -1,0 +1,109 @@
+.kit-card {
+	--card-color: var(--on, var(--kit-on-neutral));
+	--card-background: var(--base, var(--kit-neutral));
+	--card-radius: var(--shape, var(--kit-radius-md));
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	text-align: start;
+	overflow: hidden;
+	transition:
+		color 0.5s,
+		background-color 0.5s;
+
+	padding-top: var(--card-spacing-x);
+	padding-bottom: var(--card-spacing-x);
+	padding-right: var(--card-spacing-y);
+	padding-left: var(--card-spacing-y);
+
+	border-width: 1px;
+	border-style: solid;
+	border-radius: var(--card-radius);
+
+	/* theme */
+	color: var(--card-color);
+	background-color: var(--card-background);
+	border-color: var(--card-background);
+}
+
+/* density */
+.kit-card[breakpoint]kit-card--density-default {
+	--card-spacing-x: 0.25rem;
+	--card-spacing-y: 0.25rem;
+}
+
+.kit-card[breakpoint]kit-card--density-compact {
+	--card-spacing-x: 0;
+	--card-spacing-y: 0;
+}
+
+.kit-card[breakpoint]kit-card--density-comfortable {
+	--card-spacing-x: 0.5rem;
+	--card-spacing-y: 0.5rem;
+}
+
+a.kit-card {
+	text-decoration: none;
+}
+
+.kit-card:hover:not(div) {
+	background-color: color-mix(in oklab, var(--card-background) 90%, black);
+}
+
+.kit-card:focus:not(div) {
+	background-color: color-mix(in oklab, var(--card-background) 95%, black);
+}
+
+.kit-card:active:not(div),
+.kit-card.kit-card--active {
+	background-color: color-mix(in oklab, var(--card-background) 95%, black);
+}
+
+.kit-card:not(div) {
+	cursor: pointer;
+}
+
+.kit-card.kit-card--variant-outline {
+	border-color: currentColor;
+}
+
+.kit-card.kit-card--variant-text {
+	border-color: transparent;
+}
+
+.kit-card.kit-card--variant-outline,
+.kit-card.kit-card--variant-text {
+	--card-color: var(--base, var(--kit-neutral));
+	background-color: transparent;
+}
+
+.kit-card.kit-card--variant-outline:hover:not(div),
+.kit-card.kit-card--variant-text:hover:not(div) {
+	background-color: color-mix(in oklab, currentColor 7%, transparent);
+}
+
+.kit-card.kit-card--variant-outline:focus:not(div),
+.kit-card.kit-card--variant-text:focus:not(div) {
+	background-color: color-mix(in oklab, currentColor 15%, transparent);
+}
+
+.kit-card.kit-card--variant-outline:active:not(div),
+.kit-card.kit-card--variant-text:active:not(div),
+.kit-card.kit-card--variant-outline.kit-card--active,
+.kit-card.kit-card--variant-text.kit-card--active {
+	background-color: color-mix(in oklab, currentColor 10%, transparent);
+}
+
+.kit-card.kit-card--disabled,
+.kit-card[disabled],
+.kit-card:disabled {
+	pointer-events: none;
+	user-select: none;
+	opacity: 0.6;
+}
+.kit-card.kit-card--disabled > *,
+.kit-card[disabled] > *,
+.kit-card:disabled > * {
+	opacity: 0.6;
+}

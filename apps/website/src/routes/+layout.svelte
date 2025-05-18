@@ -39,6 +39,8 @@
 		<a href="/docs/aspect-ratio">Aspect Ratio</a>
 		<a href="/docs/alert">Alert</a>
 		<a href="/docs/chip">Chip</a>
+		<a href="/docs/card">Card</a>
+		<a href="/docs/toolbar">Toolbar</a>
 		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 	</nav>
 

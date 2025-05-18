@@ -15,7 +15,7 @@
 		prepend,
 		ref = $bindable(),
 		open = $bindable(true),
-		is = 'span',
+		is = 'div',
 		href,
 		dark,
 		light,
@@ -85,17 +85,17 @@
 		{/if}
 
 		{#if prepend}
-			<div class="kit-chip-prepend">
+			<span class="kit-chip-prepend">
 				{@render prepend?.()}
-			</div>
+			</span>
 		{/if}
 		<span class="kit-chip-content">
 			{@render children?.()}
 		</span>
 		{#if append}
-			<div class="kit-chip-append">
+			<span class="kit-chip-append">
 				{@render append?.()}
-			</div>
+			</span>
 		{/if}
 
 		{#if closable}
