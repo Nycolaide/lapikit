@@ -15,3 +15,6 @@ export { default as Accordion } from './accordion/accordion.svelte';
 export { default as AccordionItem } from './accordion/modules/accordion-item.svelte';
 export { default as AspectRatio } from './aspect-ratio/aspect-ratio.svelte';
 export { default as Alert } from './alert/alert.svelte';
+export { default as Chip } from './chip/chip.svelte';
+export { default as Card } from './card/card.svelte';
+export { default as Toolbar } from './toolbar/toolbar.svelte';

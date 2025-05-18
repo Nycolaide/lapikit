@@ -34,6 +34,8 @@ jobs:
           token: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
           tag_name: lapikit@${{ steps.package-version.outputs.version }}
           body: |
+            Read changelog: https://github.com/Nycolaide/lapikit/blob/main/packages/lapikit/CHANGELOG.md
+
             Install this update:
             ```bash
             npm i -D lapikit@${{ steps.package-version.outputs.version }}

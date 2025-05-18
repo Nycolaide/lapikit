@@ -3,38 +3,22 @@
 ## COMPONENTS
 
 - [x] Alert
-- [ ] App Bar
 - [x] App
-- [ ] Bottom Navigation
-- [x] Button (Btn)
-- [ ] Card
-- [ ] Chip
+- [x] Btn
+- [x] Card
+- [x] Chip
 - [x] Dialog
-- [x] Divider (Separator)
-- [x] Expansion Panel (Accordion)
+- [x] Separator
+- [x] Accordion
 - [x] Icon
 - [x] List
-- [x] Menu (Dropdown)
-- [x] Responsive (AspectRatio)
-- [ ] Switch
-- [ ] System Bar
-- [ ] Toolbar
+- [x] Dropdown
+- [x] AspectRatio
+- [x] Toolbar
 - [x] Tooltip
-- [ ] Textfield
-- [ ] Textarea
-- [ ] Checkbox
-- [ ] Radio
-- [ ] Table
 - [x] Avatar
-- [ ] Breadcrumbs
 
 ## Bonus
 
 - [x] Popover
 - [x] Modal
-
-## Utils
-
-- [ ] Darkmode component ?
-- [ ] Capitalize
-- [ ] Devices

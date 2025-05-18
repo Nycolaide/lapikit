@@ -53,7 +53,7 @@
 	padding-top: 0.75rem;
 }
 
-.kit-alert .kit-alert--prepend {
+.kit-alert .kit-alert-prepend {
 	align-self: flex-start;
 	display: flex;
 	align-items: center;
@@ -61,7 +61,7 @@
 	margin-inline-end: 1rem;
 }
 
-.kit-alert .kit-alert--content {
+.kit-alert .kit-alert-content {
 	align-self: center;
 	grid-area: content;
 	overflow: hidden;
