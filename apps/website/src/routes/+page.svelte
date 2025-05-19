@@ -58,7 +58,7 @@
 <Component />
 
 <p>
-	<select bind:value={$locale}>
+	<select bind:value={$locale} aria-label="lang">
 		{#each locales as l (l)}
 			<option value={l}>{l}</option>
 		{/each}

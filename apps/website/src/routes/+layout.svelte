@@ -21,6 +21,10 @@
 	let openModalRPGD = $state(false);
 </script>
 
+<svelte:head>
+	<title>lapikit</title>
+</svelte:head>
+
 <App>
 	<nav>
 		<a href="/">Home</a>
