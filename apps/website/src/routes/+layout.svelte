@@ -66,3 +66,10 @@
 		bingID={PUBLIC_BING_WEBMASTER_TOOLS_ID}
 	/>
 </App>
+
+<style>
+	nav {
+		display: flex;
+		gap: 10px;
+	}
+</style>

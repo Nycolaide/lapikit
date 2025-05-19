@@ -77,7 +77,7 @@
 	</div>
 {/each}
 
-<h3>Btn</h3>
+<h2>Btn</h2>
 
 <Btn>button default</Btn>
 <br />

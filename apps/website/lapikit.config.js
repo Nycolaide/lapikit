@@ -4,7 +4,7 @@ export default {
 		colorScheme: 'auto',
 		colors: {
 			svelte: 'orange',
-			neutral: 'pink'
+			neutral: 'purple'
 		}
 	}
 };
