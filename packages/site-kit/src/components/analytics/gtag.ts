@@ -6,6 +6,7 @@ export function loadGtag(gtaID: string): Promise<void> {
 
 		const script = document.createElement('script');
 		script.async = true;
+		script.defer = true;
 		script.src = `https://www.googletagmanager.com/gtag/js?id=${gtaID}`;
 		script.onload = () => {
 			window.dataLayer = window.dataLayer || [];
