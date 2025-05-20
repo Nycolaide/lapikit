@@ -83,4 +83,4 @@
 <br />
 <Btn size="sm">button sm</Btn>
 <br />
-<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="primary demo">button media</Btn>
+<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="demo">button media</Btn>
