@@ -72,7 +72,7 @@
 	height: calc(var(--list-height) - 0.25rem);
 	min-width: calc(var(--list-height - 0.25rem));
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--list-spacing) * var(--list-multiplier-y) - 0.25rem);
+	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
 .kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
-	import { Btn } from 'lapikit/components';
+	import { Btn, List, ListItem, Toolbar } from 'lapikit/components';
 
 	let time: string = $state('');
 	let search = $state('');
@@ -84,3 +84,13 @@
 <Btn size="sm">button sm</Btn>
 <br />
 <Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="demo">button media</Btn>
+
+<Toolbar>
+	<p>Lapikit</p>
+	<List orientation="horizontal" rounded="full" density="compact">
+		<ListItem href="/">Home</ListItem>
+		<ListItem href="/docs">Docs</ListItem>
+		<ListItem href="https://github.com/Nycolaide/lapikit" target="_blank">GitHub</ListItem>
+	</List>
+	<Btn density="comfortable">Get started</Btn>
+</Toolbar>

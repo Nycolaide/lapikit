@@ -41,7 +41,7 @@
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
 >
-	<div class={['myt-toolbar--wrapper', classContent]}>
+	<div class={['kit-toolbar--wrapper', classContent]}>
 		{@render children?.()}
 	</div>
 </svelte:element>
