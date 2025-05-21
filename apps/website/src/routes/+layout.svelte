@@ -30,7 +30,7 @@
 </svelte:head>
 
 <App>
-	<button onclick={() => (openMenu = true)}>open Menu</button>
+	<button onclick={() => (openMenu = !openMenu)}>open Menu</button>
 	{#if openMenu}
 		<nav>
 			<a href="/">Home</a>
@@ -51,6 +51,7 @@
 			<a href="/docs/chip">Chip</a>
 			<a href="/docs/card">Card</a>
 			<a href="/docs/toolbar">Toolbar</a>
+			<a href="/docs/appbar">Appbar</a>
 			<a href="/docs/navbar">Navbar</a>
 			<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 		</nav>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
-	import { Btn, List, ListItem, Navbar } from 'lapikit/components';
+	import { Btn, List, ListItem, Appbar, Navbar } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 
@@ -89,7 +89,10 @@
 
 <div class="flex lg:flex">demo</div>
 
-<Navbar classContent="flex lg:grid lg:grid-cols-3 max-lg:justify-between" density="comfortable">
+<Appbar
+	classContent="flex lg:grid lg:grid-cols-[auto_auto_auto] max-lg:justify-between"
+	density={{ _default: 'default', md: 'comfortable' }}
+>
 	<p class="text-2xl font-bold">Lapikit</p>
 	<List
 		orientation="horizontal"
@@ -105,4 +108,12 @@
 	<div class="justify-end gap-3 lg:flex">
 		<Btn density="comfortable">Get started</Btn>
 	</div>
+</Appbar>
+
+<Navbar location="bottom" class="display-mobile">
+	{#each navigationMain as { key, path, external } (key)}
+		<Btn href={path} target={external && '_blank'} active={page.url.pathname === path}>
+			{$t(`navigation.${key}`)}
+		</Btn>
+	{/each}
 </Navbar>

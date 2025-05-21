@@ -3,7 +3,7 @@
 	--navbar-color: var(--on, var(--kit-on-neutral));
 	--navbar-background: var(--base, var(--kit-neutral));
 	--navbar-radius: var(--shape, 0);
-	--navbar-padding-wrapper: var(--kit-spacing) * 4;
+	--navbar-padding-wrapper: var(--kit-spacing) * 2;
 }
 
 .kit-navbar {
@@ -24,49 +24,49 @@
 
 /* wrapper */
 .kit-navbar .kit-navbar--wrapper {
-	display: flex;
+	display: grid;
 	align-items: center;
 }
 .kit-navbar[breakpoint]kit-navbar--orientation-horizontal .kit-navbar--wrapper {
-	flex-direction: row;
+	grid-auto-flow: column;
 	height: calc(100% - (var(--navbar-padding-wrapper) * 2));
-	width: calc(100% - (var(--navbar-padding-wrapper) * 2));
+	width: calc(100% - (var(--navbar-padding-wrapper) * 4));
 	margin: 0 auto;
 }
 .kit-navbar[breakpoint]kit-navbar--orientation-vertical .kit-navbar--wrapper {
-	flex-direction: column;
-	height: calc(100% - (var(--navbar-padding-wrapper) * 2));
+	grid-auto-flow: row;
+	height: calc(100% - (var(--navbar-padding-wrapper) * 4));
 	width: calc(100% - (var(--navbar-padding-wrapper) * 2));
 	margin: auto;
 }
 
 /* density */
 .kit-navbar[breakpoint]kit-navbar--density-default:not([class*='navbar--orientation-vertical']) {
-	height: 4rem;
+	height: 2.5rem;
 	padding-inline: calc(var(--kit-spacing) * 1.5);
 }
 .kit-navbar[breakpoint]kit-navbar--density-default[class*='navbar--orientation-vertical'] {
-	width: 4rem;
+	width: 3.5rem;
 	padding: calc(var(--kit-spacing) * 1.5);
 }
 
 .kit-navbar[breakpoint]kit-navbar--density-compact:not([class*='navbar--orientation-vertical']) {
-	height: 3.5rem;
+	height: 2rem;
 	padding-inline: calc(var(--kit-spacing) * 0.75);
 }
 .kit-navbar[breakpoint]kit-navbar--density-compact[class*='navbar--orientation-vertical'] {
-	width: 3.5rem;
+	width: 3rem;
 	padding: calc(var(--kit-spacing) * 0.75);
 }
 
 .kit-navbar[breakpoint]kit-navbar--density-comfortable:not(
 		[class*='navbar--orientation-vertical']
 	) {
-	height: 4.5rem;
+	height: 3rem;
 	padding-inline: calc(var(--kit-spacing) * 2.25);
 }
 .kit-navbar[breakpoint]kit-navbar--density-comfortable[class*='navbar--orientation-vertical'] {
-	width: 4.5rem;
+	width: 4rem;
 	padding: calc(var(--kit-spacing) * 2.25);
 }
 

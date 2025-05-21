@@ -12,7 +12,7 @@
 	padding-right: var(--btn-spacing-y);
 	padding-left: var(--btn-spacing-y);
 	cursor: pointer;
-
+	width: fit-content;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--btn-radius);

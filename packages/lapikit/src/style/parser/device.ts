@@ -15,14 +15,32 @@ export const devices = (config: Lapikit) => {
 	css += `}\n`;
 	css += `}\n`;
 
+	css += `@media screen and (min-width: ${setUnit(config.breakpoints.thresholds[list.tablet])}) {\n`;
+	css += `.display-mobile {\n`;
+	css += `display: none !important;\n`;
+	css += `}\n`;
+	css += `}\n`;
+
 	css += `@media screen and (min-width: ${setUnit(config.breakpoints.thresholds[list.tablet])}) and (max-width: ${setUnit(config.breakpoints.thresholds[list.laptop])})  {\n`;
 	css += `.hidden-tablet {\n`;
 	css += `display: none !important;\n`;
 	css += `}\n`;
 	css += `}\n`;
 
+	css += `@media screen and (max-width: ${setUnit(config.breakpoints.thresholds[list.tablet])}) and (min-width: ${setUnit(config.breakpoints.thresholds[list.laptop])}){\n`;
+	css += `.display-tablet {\n`;
+	css += `display: none !important;\n`;
+	css += `}\n`;
+	css += `}\n`;
+
 	css += `@media screen and (min-width: ${setUnit(config.breakpoints.thresholds[list.laptop])})  {\n`;
 	css += `.hidden-laptop {\n`;
+	css += `display: none !important;\n`;
+	css += `}\n`;
+	css += `}\n`;
+
+	css += `@media screen and (max-width: ${setUnit(config.breakpoints.thresholds[list.laptop])}) {\n`;
+	css += `.display-laptop {\n`;
 	css += `display: none !important;\n`;
 	css += `}\n`;
 	css += `}\n`;

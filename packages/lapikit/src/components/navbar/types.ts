@@ -6,7 +6,7 @@ type Orientation = 'horizontal' | 'vertical';
 type Location = 'top' | 'bottom';
 
 export interface NavbarProps extends Component {
-	is?: 'div' | 'header' | 'nav';
+	is?: 'div' | 'nav';
 	variant?: Variant | { [key: string]: Variant };
 	rounded?: string;
 	density?: Density | { [key: string]: Density };

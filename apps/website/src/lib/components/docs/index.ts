@@ -113,5 +113,7 @@ export { default as ToolbarBase } from './toolbar/toolbar-base.svelte';
 export { default as ToolbarDensity } from './toolbar/toolbar-density.svelte';
 export { default as ToolbarOrientation } from './toolbar/toolbar-orientation.svelte';
 export { default as ToolbarVariant } from './toolbar/toolbar-variant.svelte';
+// appbar
+export { default as AppbarBase } from './appbar/appbar-base.svelte';
 // navbar
 export { default as NavbarBase } from './navbar/navbar-base.svelte';
