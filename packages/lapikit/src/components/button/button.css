@@ -95,7 +95,7 @@
 
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-compact {
 	height: calc(var(--btn-height) - 0.25rem);
-	/* min-width: calc(var(--btn-height - 0.25rem)); */
+	/* min-width: calc(var(--btn-height) - 0.25rem); */
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
 }

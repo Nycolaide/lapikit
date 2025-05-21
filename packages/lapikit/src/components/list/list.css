@@ -2,9 +2,7 @@
 	--list-color: var(--on, var(--kit-on-neutral));
 	--list-background: var(--base, var(--kit-neutral));
 	--list-radius: var(--shape, var(--kit-radius-md));
-
 	display: flex;
-	width: 100%;
 }
 
 .kit-list.kit-list--nav {
@@ -16,9 +14,11 @@
 /* orientation */
 .kit-list[breakpoint]kit-list--orientation-vertical {
 	flex-direction: column;
+	width: 100%;
 }
 .kit-list[breakpoint]kit-list--orientation-horizontal {
 	flex-direction: row;
+	width: fit-content;
 }
 .kit-list[breakpoint]kit-list--orientation-horizontal .kit-list-item {
 	justify-content: center;
@@ -70,14 +70,14 @@
 
 .kit-list[breakpoint]kit-list--density-compact .kit-list-item {
 	height: calc(var(--list-height) - 0.25rem);
-	min-width: calc(var(--list-height - 0.25rem));
+	min-width: calc(var(--list-height) - 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
 .kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {
 	height: calc(var(--list-height) + 0.25rem);
-	min-width: calc(var(--list-height + 0.25rem));
+	min-width: calc(var(--list-height) + 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) + 0.25rem);
 }

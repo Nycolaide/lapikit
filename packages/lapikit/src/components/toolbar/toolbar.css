@@ -23,22 +23,6 @@
 }
 
 /* density */
-.kit-card[breakpoint]kit-card--density-default {
-	--card-spacing-x: 0.25rem;
-	--card-spacing-y: 0.25rem;
-}
-
-.kit-card[breakpoint]kit-card--density-compact {
-	--card-spacing-x: 0;
-	--card-spacing-y: 0;
-}
-
-.kit-card[breakpoint]kit-card--density-comfortable {
-	--card-spacing-x: 0.5rem;
-	--card-spacing-y: 0.5rem;
-}
-
-/* density */
 .kit-toolbar[breakpoint]kit-toolbar--density-default {
 	border-radius: calc(var(--kit-spacing) * 2.25);
 }
@@ -100,11 +84,13 @@
 
 .kit-toolbar[breakpoint]kit-toolbar--orientation-horizontal {
 	flex-direction: row;
+	width: 100%;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--orientation-vertical {
 	flex-direction: column;
 	min-height: fit-content;
+	width: fit-content;
 }
 
 /* wrapper */
@@ -115,6 +101,7 @@
 	margin-right: auto; */
 	flex-direction: row;
 	height: auto;
+	width: 100%;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--orientation-vertical .kit-toolbar--wrapper {

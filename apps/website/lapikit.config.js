@@ -9,5 +9,10 @@ export default {
 			svelte: 'orange',
 			neutral: 'purple'
 		}
+	},
+	styles: {
+		font: {
+			sans: ['Roboto Variable', 'sans-serif']
+		}
 	}
 };

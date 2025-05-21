@@ -22,6 +22,7 @@
 
 	let { children } = $props();
 	let openModalRPGD = $state(false);
+	let openMenu = $state(false);
 </script>
 
 <svelte:head>
@@ -29,27 +30,31 @@
 </svelte:head>
 
 <App>
-	<nav>
-		<a href="/">Home</a>
-		<a href="/docs/sample">Sample</a>
-		<a href="/docs/button">Button</a>
-		<a href="/docs/icon">Icon</a>
-		<a href="/docs/dropdown">Dropdown</a>
-		<a href="/docs/popover">Popover</a>
-		<a href="/docs/tooltip">Tooltip</a>
-		<a href="/docs/dialog">Dialog</a>
-		<a href="/docs/separator">Separator</a>
-		<a href="/docs/modal">Modal</a>
-		<a href="/docs/list">List</a>
-		<a href="/docs/avatar">Avatar</a>
-		<a href="/docs/accordion">Accordion</a>
-		<a href="/docs/aspect-ratio">Aspect Ratio</a>
-		<a href="/docs/alert">Alert</a>
-		<a href="/docs/chip">Chip</a>
-		<a href="/docs/card">Card</a>
-		<a href="/docs/toolbar">Toolbar</a>
-		<Darkmode scheme={$colorScheme} handle={setColorScheme} />
-	</nav>
+	<button onclick={() => (openMenu = true)}>open Menu</button>
+	{#if openMenu}
+		<nav>
+			<a href="/">Home</a>
+			<a href="/docs/sample">Sample</a>
+			<a href="/docs/button">Button</a>
+			<a href="/docs/icon">Icon</a>
+			<a href="/docs/dropdown">Dropdown</a>
+			<a href="/docs/popover">Popover</a>
+			<a href="/docs/tooltip">Tooltip</a>
+			<a href="/docs/dialog">Dialog</a>
+			<a href="/docs/separator">Separator</a>
+			<a href="/docs/modal">Modal</a>
+			<a href="/docs/list">List</a>
+			<a href="/docs/avatar">Avatar</a>
+			<a href="/docs/accordion">Accordion</a>
+			<a href="/docs/aspect-ratio">Aspect Ratio</a>
+			<a href="/docs/alert">Alert</a>
+			<a href="/docs/chip">Chip</a>
+			<a href="/docs/card">Card</a>
+			<a href="/docs/toolbar">Toolbar</a>
+			<a href="/docs/navbar">Navbar</a>
+			<Darkmode scheme={$colorScheme} handle={setColorScheme} />
+		</nav>
+	{/if}
 
 	<p>{$colorScheme}</p>
 
