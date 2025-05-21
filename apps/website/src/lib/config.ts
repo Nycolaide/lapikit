@@ -15,3 +15,19 @@ export const packageManagers: { name: string; icon: string }[] = [
 		icon: 'mdi:yarn'
 	}
 ];
+
+export const navigationMain: { key: string; path: string; external?: boolean }[] = [
+	{
+		key: 'home',
+		path: '/'
+	},
+	{
+		key: 'docs',
+		path: '/docs/button'
+	},
+	{
+		key: 'github',
+		path: 'https://github.com/Nycolaide/lapikit',
+		external: true
+	}
+];

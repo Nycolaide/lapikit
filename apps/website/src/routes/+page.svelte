@@ -2,6 +2,8 @@
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component } from 'site-kit';
 	import { Btn, List, ListItem, Navbar } from 'lapikit/components';
+	import { navigationMain } from '$lib/config';
+	import { page } from '$app/state';
 
 	let time: string = $state('');
 	let search = $state('');
@@ -85,12 +87,20 @@
 <br />
 <Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="demo">button media</Btn>
 
-<Navbar classContent="flex lg:flex" density="comfortable">
+<div class="flex lg:flex">demo</div>
+
+<Navbar classContent="flex lg:grid lg:grid-cols-3 max-lg:justify-between" density="comfortable">
 	<p class="text-2xl font-bold">Lapikit</p>
-	<List orientation="horizontal" rounded="full" class="mr-auto ml-auto gap-2">
-		<ListItem href="/">Home</ListItem>
-		<ListItem href="/docs">Docs</ListItem>
-		<ListItem href="https://github.com/Nycolaide/lapikit" target="_blank">GitHub</ListItem>
+	<List
+		orientation="horizontal"
+		rounded="full"
+		class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto "
+	>
+		{#each navigationMain as { key, path, external } (key)}
+			<ListItem href={path} target={external && '_blank'} active={page.url.pathname === path}>
+				{$t(`navigation.${key}`)}
+			</ListItem>
+		{/each}
 	</List>
 	<div class="justify-end gap-3 lg:flex">
 		<Btn density="comfortable">Get started</Btn>
