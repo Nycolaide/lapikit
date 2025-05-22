@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
-	import { Component } from 'site-kit';
-	import { Btn, List, ListItem, Appbar } from 'lapikit/components';
+	import { Component, BottomNavigation, BottomNavigationItem } from 'site-kit';
+	import { Btn, List, ListItem, Appbar, Icon } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 
@@ -109,3 +109,17 @@
 		<Btn density="comfortable">Get started</Btn>
 	</div>
 </Appbar>
+
+<BottomNavigation>
+	{#each navigationMain as { key, path, external, icon } (key)}
+		<BottomNavigationItem
+			is="a"
+			active={page.url.pathname === path}
+			href={path}
+			target={external && '_blank'}
+		>
+			<Icon {icon} size="xl" {path} target={external && '_blank'} />
+			{$t(`navigation.${key}`)}
+		</BottomNavigationItem>
+	{/each}
+</BottomNavigation>

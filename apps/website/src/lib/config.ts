@@ -16,18 +16,21 @@ export const packageManagers: { name: string; icon: string }[] = [
 	}
 ];
 
-export const navigationMain: { key: string; path: string; external?: boolean }[] = [
+export const navigationMain: { key: string; path: string; external?: boolean; icon?: string }[] = [
 	{
 		key: 'home',
-		path: '/'
+		path: '/',
+		icon: 'mgc_home_1_line'
 	},
 	{
 		key: 'docs',
-		path: '/docs/button'
+		path: '/docs/button',
+		icon: 'mgc_album_2_line'
 	},
 	{
 		key: 'github',
 		path: 'https://github.com/Nycolaide/lapikit',
-		external: true
+		external: true,
+		icon: 'mgc_github_line'
 	}
 ];

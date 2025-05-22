@@ -8,6 +8,9 @@ export default {
 		colors: {
 			svelte: 'orange',
 			neutral: 'purple',
+			secondary: { light: '#716b7f', dark: '#bfb5ce' },
+			'secondary-container': { light: '#e8def8', dark: '##4a4458' },
+			'on-secondary-container': { light: '#322f35', dark: '#e8def8' },
 			surface: { light: '#FEF7FF', dark: '#141218' },
 			'on-surface': { light: '#1F1D22', dark: '#E6E0E9' },
 			'on-surface-variant': { light: '#49454F', dark: '#CAC4D0' },
