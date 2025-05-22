@@ -52,7 +52,6 @@
 			<a href="/docs/card">Card</a>
 			<a href="/docs/toolbar">Toolbar</a>
 			<a href="/docs/appbar">Appbar</a>
-			<a href="/docs/navbar">Navbar</a>
 			<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 		</nav>
 	{/if}
