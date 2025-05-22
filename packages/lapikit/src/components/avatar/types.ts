@@ -10,7 +10,7 @@ export interface AvatarProps extends Component {
 	light?: boolean;
 	color?: string;
 	background?: string;
-	image?: string;
+	src?: string;
 	size?: AvatarSize | { [key: string]: AvatarSize };
 	variant?: AvatarVariant | { [key: string]: AvatarVariant };
 	density?: AvatarDensity | { [key: string]: AvatarDensity };

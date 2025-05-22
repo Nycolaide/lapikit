@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { t, locale, locales } from '$lib/i18n';
 	import { Component, BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Btn, List, ListItem, Appbar, Icon } from 'lapikit/components';
+	import { Btn, List, ListItem, Appbar, Icon, Chip, Separator } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
+	import CardContact from '$lib/components/card-contact.svelte';
 
 	let time: string = $state('');
 	let search = $state('');
@@ -109,6 +110,35 @@
 		<Btn density="comfortable">Get started</Btn>
 	</div>
 </Appbar>
+
+<section
+	class="desktop:max-h-[900px] flex flex-col justify-between overflow-hidden pt-20 lg:pt-[7em]"
+>
+	<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
+		<Chip href="/" variant="outline">
+			<Icon icon="mgc_box_2_line" />
+			<Separator orientation="vertical" />
+			{$t('homepage.new_stable_version', { version: '0.0.0' })}
+		</Chip>
+		<h1
+			class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"
+		>
+			{$t('homepage.main_title')}
+		</h1>
+		<p
+			class="mx-auto mb-[2em] max-w-sm text-sm leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+		>
+			{$t('homepage.main_introduction')}
+		</p>
+		<div>
+			<Btn size="lg" href="/docs">
+				{$t('homepage.main_cta')}
+			</Btn>
+		</div>
+	</div>
+</section>
+
+<CardContact />
 
 <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}
