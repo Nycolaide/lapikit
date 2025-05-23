@@ -10,7 +10,7 @@
 		handleActionDisplay
 	} from './helper';
 	import type { Direction, Position } from './types';
-	import { Btn, Icon, Tooltip } from 'lapikit/components';
+	import { Btn, Icon } from 'lapikit/components';
 
 	// images
 	import rabbitCarrot from '$lib/assets/games/rabbit-carrot.png';
@@ -126,15 +126,13 @@
 	<div class="flex min-h-[3rem] items-center justify-between">
 		<span>Count: {player.length - 1}</span>
 
-		<Tooltip label={displayControls ? 'Hide controls' : 'Show controls'} location="left">
-			<Btn icon onclick={() => (displayControls = !displayControls)}>
-				{#if displayControls}
-					<Icon size="xl" icon="mgc_game_2_fill" color="on-surface" />
-				{:else}
-					<Icon size="xl" icon="mgc_game_2_line" color="on-surface" />
-				{/if}
-			</Btn>
-		</Tooltip>
+		<Btn icon onclick={() => (displayControls = !displayControls)}>
+			{#if displayControls}
+				<Icon size="xl" icon="mgc_game_2_fill" color="on-surface" />
+			{:else}
+				<Icon size="xl" icon="mgc_game_2_line" color="on-surface" />
+			{/if}
+		</Btn>
 
 		{#if isPlaying}
 			<Btn onclick={() => pauseGame()}>
