@@ -11,7 +11,7 @@
 		alt,
 		background,
 		color,
-		image,
+		src,
 		variant,
 		density = 'default',
 		...rest
@@ -28,7 +28,7 @@
 		'kit-avatar',
 		light && 'light',
 		dark && 'dark',
-		image && 'kit-avatar--image',
+		src && 'kit-avatar--image',
 		size && assets.className('avatar', 'size', size),
 		variant && assets.className('avatar', 'variant', variant),
 		density && assets.className('avatar', 'density', density),
@@ -38,8 +38,8 @@
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
 >
-	{#if image}
-		<img src={image} {alt} />
+	{#if src}
+		<img {src} {alt} />
 	{:else}
 		{@render children?.()}
 	{/if}

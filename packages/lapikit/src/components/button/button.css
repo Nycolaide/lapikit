@@ -12,7 +12,7 @@
 	padding-right: var(--btn-spacing-y);
 	padding-left: var(--btn-spacing-y);
 	cursor: pointer;
-
+	width: fit-content;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--btn-radius);
@@ -82,7 +82,7 @@
 /* density */
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-default {
 	height: calc(var(--btn-height));
-	min-width: calc(var(--btn-height));
+	/* min-width: calc(var(--btn-height)); */
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y));
 }
@@ -95,7 +95,7 @@
 
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-compact {
 	height: calc(var(--btn-height) - 0.25rem);
-	min-width: calc(var(--btn-height - 0.25rem));
+	/* min-width: calc(var(--btn-height) - 0.25rem); */
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
 }
@@ -108,7 +108,7 @@
 
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-comfortable {
 	height: calc(var(--btn-height) + 0.25rem);
-	min-width: calc(var(--btn-height) + 0.25rem);
+	/* min-width: calc(var(--btn-height) + 0.25rem); */
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) + 0.25rem);
 }

@@ -1,4 +1,12 @@
 @import 'tailwindcss';
+
+@theme {
+	--breakpoint-lg: 64rem;
+}
+
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-@import 'lapikit/css';
+
+@layer components {
+	@import 'lapikit/css';
+}

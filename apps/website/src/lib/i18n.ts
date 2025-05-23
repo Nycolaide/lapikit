@@ -22,6 +22,8 @@ function translate(locale: string, key: string, vars: TranslationVariables): str
 
 	// Grab the translation from the translations object.
 	const translate: Translations = translations;
+
+	if (!translate[locale] || !translate[locale][key]) return `${locale}.${key}`;
 	let text = translate[locale][key];
 
 	if (!text) throw new Error(`no translation found for ${locale}.${key}`);

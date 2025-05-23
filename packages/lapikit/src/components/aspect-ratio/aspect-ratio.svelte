@@ -23,3 +23,26 @@
 	<div class="kit-aspect-ratio--sizer" style={`padding-bottom: ${paddingBottom}%;`}></div>
 	{@render children?.()}
 </div>
+
+<style>
+	.kit-aspect-ratio {
+		background-color: aqua;
+		display: flex;
+		flex: 1 0 auto;
+		max-height: 100%;
+		max-width: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.kit-aspect-ratio--inline {
+		display: inline-flex;
+		flex: 0 0 auto;
+	}
+
+	.kit-aspect-ratio--sizer {
+		flex: 1 0 0px;
+		transition: padding-bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		pointer-events: none;
+	}
+</style>
