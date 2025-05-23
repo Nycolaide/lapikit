@@ -19,7 +19,8 @@ export default {
 	},
 	styles: {
 		font: {
-			sans: ['Roboto Variable', 'sans-serif']
+			sans: ['"Roboto Variable"', 'sans-serif'],
+			game: ['"Press Start 2P"', 'system-ui']
 		}
 	}
 };

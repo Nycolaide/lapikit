@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Size compact **Toolbar** and **Btn** not working
 - Fix size **List** on orientation `horizontal`
 - Fix size ref for **Btn**
+- Scroll not working on **Modal** container
+- DisabledScroll not working if **Modal** is open
 
 ## [0.1.7] - 2025-05-18
 

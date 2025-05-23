@@ -12,6 +12,7 @@
 	import 'mingcute_icon/font/Mingcute.css';
 	// fonts
 	import '@fontsource/roboto';
+	import '@fontsource/press-start-2p';
 	// css
 	import '$lib/styles/app.css';
 

@@ -1,3 +1,4 @@
+import { disabledScroll } from '$lib/internal/scroll.js';
 import { writable, type Writable } from 'svelte/store';
 
 // states
@@ -34,14 +35,17 @@ export function setOpenModal(state: boolean | 'persistent') {
 }
 export const pushModal = (id: string) => {
 	modalStack.update((stack) => {
-		if (!stack.includes(id)) return [...stack, id];
-		return stack;
+		let values = stack;
+		if (!stack.includes(id)) values = [...stack, id];
+		disabledScroll(values.length !== 0 ? true : false);
+		return values;
 	});
 };
 
 export const popModal = (id: string) => {
 	modalStack.update((stack) => {
 		const newStack = stack.filter((m) => m !== id);
+		disabledScroll(newStack.length !== 0 ? true : false);
 		return newStack.length === 0 ? [] : newStack;
 	});
 };

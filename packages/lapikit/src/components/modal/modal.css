@@ -11,7 +11,7 @@
 	--modal-translate-y: -50%;
 
 	position: fixed;
-
+	overflow-y: auto;
 	z-index: 9100;
 	width: 100%;
 	height: 100%;

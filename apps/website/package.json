@@ -51,6 +51,7 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@fontsource/press-start-2p": "^5.2.5",
 		"@fontsource/roboto": "^5.2.5",
 		"rehype-slug": "^6.0.0",
 		"remark-toc": "^9.0.0",

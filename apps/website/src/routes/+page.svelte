@@ -5,6 +5,7 @@
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 	import CardContact from '$lib/components/card-contact.svelte';
+	import CardGame from '$lib/components/card-game.svelte';
 
 	let time: string = $state('');
 	let search = $state('');
@@ -139,6 +140,7 @@
 </section>
 
 <CardContact />
+<CardGame />
 
 <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}
