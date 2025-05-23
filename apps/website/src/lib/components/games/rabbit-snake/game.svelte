@@ -13,9 +13,9 @@
 	import { Btn, Icon } from 'lapikit/components';
 
 	// images
-	import rabbitCarrot from '$lib/assets/games/rabbit-carrot.png';
-	import rabbit from '$lib/assets/games/rabbit.png';
-	import carrot from '$lib/assets/games/carrot.png';
+	import rabbitCarrot from '$lib/components/games/rabbit-snake/images/rabbit-carrot.png';
+	import rabbit from '$lib/components/games/rabbit-snake/images/rabbit.png';
+	import carrot from '$lib/components/games/rabbit-snake/images/carrot.png';
 
 	let { open = $bindable() } = $props();
 	// elements
