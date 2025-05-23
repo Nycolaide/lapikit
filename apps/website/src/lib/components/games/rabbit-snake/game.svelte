@@ -280,13 +280,13 @@
 	}
 
 	.rabbit-lead {
-		background-image: url('images/games/rabbit-carrot.png');
+		background-image: url('/images/games/rabbit-carrot.png');
 	}
 	.rabbit {
-		background-image: url('images/games/rabbit.png');
+		background-image: url('/images/games/rabbit.png');
 	}
 	.carrot {
-		background-image: url('images/games/carrot.png');
+		background-image: url('/images/games/carrot.png');
 		background-color: oklch(0.414 0.112 45.904);
 		background-size: 74% !important;
 	}
