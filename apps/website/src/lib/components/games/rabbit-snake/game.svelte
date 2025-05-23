@@ -12,6 +12,11 @@
 	import type { Direction, Position } from './types';
 	import { Btn, Icon, Tooltip } from 'lapikit/components';
 
+	// images
+	import rabbitCarrot from '$lib/assets/games/rabbit-carrot.png';
+	import rabbit from '$lib/assets/games/rabbit.png';
+	import carrot from '$lib/assets/games/carrot.png';
+
 	let { open = $bindable() } = $props();
 	// elements
 	let player: Position[] = $state([]);
@@ -185,6 +190,13 @@
 							player.some((p, idx) => idx !== 0 && p.x === x && p.y === y) && 'rabbit',
 							food.x === x && food.y === y && 'carrot'
 						]}
+						style:background-image="url({player[0].x === x && player[0].y === y
+							? rabbitCarrot
+							: player.some((p, idx) => idx !== 0 && p.x === x && p.y === y)
+								? rabbit
+								: food.x === x && food.y === y
+									? carrot
+									: ''})"
 					></div>
 				{/each}
 			</div>
@@ -279,14 +291,14 @@
 		font-size: 2rem;
 	}
 
-	.rabbit-lead {
+	/* .rabbit-lead {
 		background-image: url('/images/games/rabbit-carrot.png');
 	}
 	.rabbit {
 		background-image: url('/images/games/rabbit.png');
-	}
+	} */
 	.carrot {
-		background-image: url('/images/games/carrot.png');
+		/* background-image: url('/images/games/carrot.png'); */
 		background-color: oklch(0.414 0.112 45.904);
 		background-size: 74% !important;
 	}
