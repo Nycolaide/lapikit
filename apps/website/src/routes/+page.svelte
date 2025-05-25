@@ -29,7 +29,7 @@
 			{/each}
 		</List>
 		<div class="justify-end gap-3 lg:flex">
-			<Btn density="comfortable">Get started</Btn>
+			<Btn density="comfortable">{$t('homepage.top_cta')}</Btn>
 		</div>
 	</Appbar>
 
