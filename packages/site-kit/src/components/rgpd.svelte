@@ -6,7 +6,7 @@
 	// components
 	import Analytics from './analytics/gtag.svelte';
 
-	let { gta, gtaID, gtm, gtmID, bing, bingID, open = $bindable(), ...rest } = $props();
+	let { dialog, gta, gtaID, gtm, gtmID, bing, bingID, open = $bindable() } = $props();
 
 	onMount(() => {
 		const cookie = getCookie('consent');
@@ -24,6 +24,21 @@
 		if (state === 'accept' && gtm) loadGTM(gtmID);
 		open = false;
 	}
+
+	type Model = {
+		open: boolean;
+		action: (state: 'accept' | 'refuse') => void;
+	};
+
+	let model: Model = {
+		get open() {
+			return open !== undefined ? open : false;
+		},
+		set open(value: boolean) {
+			open = value;
+		},
+		action: (state: 'accept' | 'refuse') => handleSetConsentMode(state)
+	};
 </script>
 
 <svelte:head>
@@ -34,10 +49,4 @@
 
 <Analytics {gta} {gtaID} />
 
-<div {...rest} style:display={!open ? 'none' : 'block'}>
-	rgpd modal
-	<div>
-		<button onclick={() => handleSetConsentMode('refuse')}>refuse</button>
-		<button onclick={() => handleSetConsentMode('accept')}>accept</button>
-	</div>
-</div>
+{@render dialog?.(model)}

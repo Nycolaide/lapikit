@@ -34,7 +34,7 @@
 	</Appbar>
 
 	<section
-		class="desktop:max-h-[900px] flex flex-col justify-between overflow-hidden pt-20 lg:pt-[13em]"
+		class="desktop:max-h-[900px] flex h-[82vh] flex-col items-center justify-between justify-center overflow-hidden"
 	>
 		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
 			<Chip href="/" variant="outline">
@@ -64,13 +64,31 @@
 <section
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid gap-4">
+		<div class="text-center">
+			<h2>{$t('homepage.dev_with_lapikit.title')}</h2>
+			<p>{$t('homepage.dev_with_lapikit.paragraph1')}</p>
+		</div>
 		<div>
+			<ComponentPreview name="counter" code={CounterCode}>
+				{#snippet component()}
+					<Counter />
+				{/snippet}
+			</ComponentPreview>
+		</div>
+	</div>
+</section>
+
+<section
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+>
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+		<div class="text-center md:text-start">
 			<h2>{$t('homepage.lapikit_the_best.title')}</h2>
 			<p>{$t('homepage.lapikit_the_best.paragraph1')}</p>
 			<p>{$t('homepage.lapikit_the_best.paragraph2')}</p>
 		</div>
-		<div class=" flex flex-col flex-wrap gap-5 text-start sm:flex-row">
+		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
 			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
 				<h2>{$t('homepage.lapikit_the_best.changelog.title')}</h2>
 			</Card>
@@ -88,29 +106,21 @@
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<div class="grid gap-4">
-		<div>
-			<h2>{$t('homepage.dev_with_lapikit.title')}</h2>
-			<p>{$t('homepage.dev_with_lapikit.paragraph1')}</p>
-		</div>
-		<div>
-			<ComponentPreview name="counter" code={CounterCode}>
-				{#snippet component()}
-					<Counter />
-				{/snippet}
-			</ComponentPreview>
-		</div>
-	</div>
-</section>
-
-<section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
->
-	<div class="grid gap-4">
-		<div>
+		<div class="text-center">
 			<h2>{$t('homepage.customize_component.title')}</h2>
 			<p>{$t('homepage.customize_component.paragraph1')}</p>
 		</div>
-		<div>Demo config</div>
+		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.themes')}
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.components')}
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.tools')}
+			</Card>
+		</div>
 	</div>
 </section>
 

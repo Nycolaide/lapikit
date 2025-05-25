@@ -3,6 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import { copyToClipboard } from 'site-kit/actions';
 	import { getHighlighterSingleton } from '$lib/shiki';
+	import { Btn, Icon, Separator } from 'lapikit/components';
 
 	type Props = {
 		name: string;
@@ -47,39 +48,88 @@
 	});
 </script>
 
-<div id={name}>
+<div id={name} class="component-preview--wrapper rounded-xl">
 	{#if !header}
-		<nav>
-			<button onclick={() => (tab = 'preview')}>{$t('sandbox.preview')}</button>
-			<button onclick={() => (tab = 'code')}>{$t('sandbox.code')}</button>
-		</nav>
-	{/if}
+		<div class="mx-2 flex items-center gap-2 py-2">
+			<p>{name}</p>
+		</div>
 
-	<div>
+		<div class="flex items-center gap-2 md:justify-between">
+			<div>
+				<Btn onclick={() => (tab = 'preview')} active={tab === 'preview'}>
+					{$t('sandbox.preview')}
+				</Btn>
+				<Btn onclick={() => (tab = 'code')} active={tab === 'code'}>
+					{$t('sandbox.code')}
+				</Btn>
+			</div>
+			<div>
+				{#if header || tab === 'code'}
+					<Btn onclick={() => (expanded = !expanded)} active={expanded}>
+						{#if expanded}
+							{$t('sandbox.collapse_editor')}
+						{:else}
+							{$t('sandbox.expand_editor')}
+						{/if}
+					</Btn>
+				{/if}
+			</div>
+		</div>
+	{/if}
+	<Separator />
+
+	<div class="relative">
 		{#if header || tab === 'preview'}
-			<div>{@render component?.()}</div>
+			<div
+				class="preview-component rounded-b-xl"
+				style:display="flex"
+				style:align-items="center"
+				style:justify-content="center"
+				style:max-width="100%"
+				style:min-height="280px"
+			>
+				{@render component?.()}
+			</div>
 		{/if}
 		{#if header || tab === 'code'}
-			<nav>
-				<button onclick={() => (expanded = !expanded)}>
-					{#if expanded}
-						{$t('sandbox.collapse_editor')}
-					{:else}
-						{$t('sandbox.expand_editor')}
-					{/if}
-				</button>
-				<button onclick={() => (copy = true)}>
-					{#if copy}
-						{$t('sandbox.code_copied')}
-					{:else}
-						{$t('sandbox.copy_code')}
-					{/if}
-				</button>
-			</nav>
-			<div style:height={expanded ? '' : '320px'}>
+			<div
+				class="rounded-b-xl"
+				style:height={expanded ? '' : '280px'}
+				style:overflow="auto"
+				style:position="relative"
+				style:width="100%"
+			>
+				<Btn
+					class="sticky top-[10px] float-right mt-[10px] mr-[10px]"
+					icon
+					onclick={() => (copy = true)}
+					active={copy}
+				>
+					<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
+				</Btn>
+
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				<div bind:this={ref}>{@html codeHTML}</div>
 			</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+	.component-preview--wrapper {
+		border: 1px solid var(--kit-scrim);
+	}
+	.preview-component {
+		--pattern-fg: color-mix(in oklab, var(--kit-on-surface) 5%, transparent);
+		--opacity-pattern: 50%;
+		background-image: repeating-linear-gradient(
+			315deg,
+			var(--pattern-fg) 0,
+			var(--pattern-fg) 1px,
+			transparent 0,
+			transparent var(--opacity-pattern)
+		);
+		background-size: 16px 16px;
+		background-repeat: repeat;
+	}
+</style>

@@ -12,12 +12,12 @@
 	let year = new Date().getFullYear();
 </script>
 
-<footer {...rest}>
+<footer {...rest} class="max-md:mb-[5rem]">
 	{@render children?.()}
 
-	<div class="flex items-center justify-between">
+	<div class="grid items-center justify-center text-center sm:flex sm:justify-between">
 		<p>©{year} Lapikit.</p>
-		<div class="flex items-center gap-2">
+		<div class="order-first flex items-center gap-2 sm:order-none">
 			<Btn href="https://nycolaide.dev" target="_blank" size="sm" variant="text">Nycolaide</Btn>
 			<Separator orientation="vertical" />
 			<Btn variant="text" size="sm" onclick={() => (accessOnRGPD = true)}>
