@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/i18n';
 	import type { Snippet } from 'svelte';
 	import { copyToClipboard } from 'site-kit/actions';
 	import { getHighlighterSingleton } from '$lib/shiki';
@@ -49,8 +50,8 @@
 <div id={name}>
 	{#if !header}
 		<nav>
-			<button onclick={() => (tab = 'preview')}>preview</button>
-			<button onclick={() => (tab = 'code')}>code</button>
+			<button onclick={() => (tab = 'preview')}>{$t('sandbox.preview')}</button>
+			<button onclick={() => (tab = 'code')}>{$t('sandbox.code')}</button>
 		</nav>
 	{/if}
 
@@ -62,16 +63,16 @@
 			<nav>
 				<button onclick={() => (expanded = !expanded)}>
 					{#if expanded}
-						collapse code
+						{$t('sandbox.collapse_editor')}
 					{:else}
-						expand code
+						{$t('sandbox.expand_editor')}
 					{/if}
 				</button>
 				<button onclick={() => (copy = true)}>
 					{#if copy}
-						copied
+						{$t('sandbox.code_copied')}
 					{:else}
-						copy code
+						{$t('sandbox.copy_code')}
 					{/if}
 				</button>
 			</nav>
