@@ -1,0 +1,71 @@
+<script lang="ts">
+	import type { SandboxProps } from './types';
+
+	//modules
+	import SandboxAction from './action.svelte';
+	import SandboxCode from './code.svelte';
+	import SandboxComponent from './component.svelte';
+
+	let { name, presentation, component, code }: SandboxProps = $props();
+
+	//state
+	let expanded: string = $state('300px');
+	let tab: string = $state('preview');
+
+	$effect(() => {
+		if (!component) tab = 'code-only';
+		if (!code) tab = 'preview-only';
+	});
+
+	const handleExpand = (value: string) => {
+		expanded = value;
+	};
+	const handleTab = (value: string) => {
+		tab = value;
+	};
+</script>
+
+<div id={name} class="lapikit-sandbox relative overflow-hidden rounded-xl">
+	{#if presentation && component}
+		<!-- presentation content -->
+		{#if component}
+			<div>
+				<SandboxComponent>
+					{@render component?.()}
+				</SandboxComponent>
+			</div>
+		{/if}
+
+		{#if code}
+			<SandboxAction {presentation} bind:expanded bind:tab {handleExpand} {handleTab} />
+
+			<div style:height={expanded}>
+				<SandboxCode bind:expanded {code} />
+			</div>
+		{/if}
+	{:else}
+		<!-- tab content -->
+		<SandboxAction {presentation} bind:expanded bind:tab {handleExpand} {handleTab} />
+		<div>
+			{#if component && (tab === 'preview' || tab === 'preview-only')}
+				<div>
+					<SandboxComponent>
+						{@render component?.()}
+					</SandboxComponent>
+				</div>
+			{/if}
+
+			{#if code && (tab === 'code' || tab === 'code-only')}
+				<div style:height={expanded} class="relative">
+					<SandboxCode bind:expanded {code} />
+				</div>
+			{/if}
+		</div>
+	{/if}
+</div>
+
+<style>
+	.lapikit-sandbox {
+		border: 1px solid var(--kit-scrim);
+	}
+</style>

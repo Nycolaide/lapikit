@@ -6,7 +6,7 @@
 	import { page } from '$app/state';
 
 	// demo code
-	import { ComponentPreview, Counter } from '$lib/components/index.js';
+	import { Sandbox, Counter } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
 </script>
 
@@ -69,13 +69,12 @@
 			<h2>{$t('homepage.dev_with_lapikit.title')}</h2>
 			<p>{$t('homepage.dev_with_lapikit.paragraph1')}</p>
 		</div>
-		<div>
-			<ComponentPreview name="counter" code={CounterCode}>
-				{#snippet component()}
-					<Counter />
-				{/snippet}
-			</ComponentPreview>
-		</div>
+
+		<Sandbox name="counter" code={CounterCode}>
+			{#snippet component()}
+				<Counter />
+			{/snippet}
+		</Sandbox>
 	</div>
 </section>
 
