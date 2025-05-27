@@ -9,13 +9,13 @@ export const devices = (config: Lapikit) => {
 		laptop: config.breakpoints.laptopBreakpoint
 	};
 
-	css += `@media screen and (max-width: ${setUnit(config.breakpoints.thresholds[list.tablet])}) {\n`;
+	css += `@media screen and (max-width: ${setUnit(config.breakpoints.thresholds[list.mobile])}) {\n`;
 	css += `.hidden-mobile {\n`;
 	css += `display: none !important;\n`;
 	css += `}\n`;
 	css += `}\n`;
 
-	css += `@media screen and (min-width: ${setUnit(config.breakpoints.thresholds[list.tablet])}) {\n`;
+	css += `@media screen and (min-width: ${setUnit(config.breakpoints.thresholds[list.mobile])}) {\n`;
 	css += `.display-mobile {\n`;
 	css += `display: none !important;\n`;
 	css += `}\n`;

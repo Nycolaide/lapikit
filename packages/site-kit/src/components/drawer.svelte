@@ -29,31 +29,38 @@
 
 	#drawer .drawer-navigation > div {
 		position: fixed;
-		z-index: 2;
+		z-index: 1000;
 		height: fit-content;
 		max-height: 80dvh;
 		overflow-y: auto;
 		width: 100%;
 		bottom: 0;
+		background-color: var(--kit-neutral);
+		color: var(--kit-on-neutral);
+		padding-bottom: 3.5rem;
 	}
 
 	#drawer .drawer-navigation .backdrop {
+		top: 0;
 		width: 100%;
 		height: 100%;
 		position: fixed;
 		color: transparent;
-		z-index: 1;
+		background-color: color-mix(in oklab, var(--kit-shadow) 45%, transparent);
+		z-index: 900;
+		user-select: none;
 	}
 
-	@media screen and (min-width: 480px) {
+	@media screen and (min-width: 40rem) {
 		#drawer .drawer-navigation > div {
 			width: 300px;
 			height: 100dvh;
 			max-height: 100%;
+			padding-bottom: 0;
 		}
 	}
 
-	@media screen and (min-width: 780px) {
+	@media screen and (min-width: 64rem) {
 		#drawer {
 			grid-template-columns: max-content 1fr;
 		}

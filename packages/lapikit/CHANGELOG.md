@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.9]
 
+### Changed
+
+- Update breakpoint devices for mobile and laptop
+
 ### Fix
 
 - Delete message on **App** component
+- Fix hidden and display mobile not working correctly
 
 ## [0.1.8] - 2025-05-23
 
