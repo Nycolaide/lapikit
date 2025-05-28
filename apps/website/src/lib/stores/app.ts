@@ -15,6 +15,7 @@ type Page = {
 	description: string;
 	date: string;
 	section?: string;
+	slug?: string;
 	categories?: Array<string>;
 	published: boolean;
 	keywords?: Array<string> | string;
