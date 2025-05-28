@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
 	import { filteredPages, rawSearchQuery } from '$lib/stores/app';
 	import { isMac } from '$lib/stores/device';
@@ -30,8 +32,10 @@
 		historyResult = result;
 	});
 
-	const handleClick = (page: { title: string }) => {
+	const handleClick = (page: { title: string; slug?: string }) => {
 		recentSearches.add(page.title);
+		goto('/' + page.slug!);
+		open = false;
 	};
 
 	function handleKeyDown(event: KeyboardEvent) {
@@ -42,11 +46,15 @@
 	}
 
 	onMount(() => {
-		window.addEventListener('keydown', handleKeyDown);
+		if (browser) {
+			window.addEventListener('keydown', handleKeyDown);
+		}
 	});
 
 	onDestroy(() => {
-		window.removeEventListener('keydown', handleKeyDown);
+		if (browser) {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
 	});
 </script>
 
@@ -82,7 +90,7 @@
 			{/if}
 			<List>
 				{#each $filteredPages as page (page.title)}
-					<ListItem href={`/${page.slug}`} onclick={() => handleClick(page)}>
+					<ListItem onclick={() => handleClick(page)}>
 						<div>
 							<p>{page.title}</p>
 							<p>{page.description}</p>
@@ -96,7 +104,7 @@
 					<p>{$t(`search.period.${key}`)}</p>
 					<List>
 						{#each pages as page (page.title)}
-							<ListItem href={`/${page.slug}`}>
+							<ListItem onclick={() => handleClick(page)}>
 								<div>
 									<p>{page.title}</p>
 									<p>{page.description}</p>
