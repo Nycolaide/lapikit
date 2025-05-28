@@ -6,6 +6,9 @@
 	import { colorScheme, setColorScheme } from 'lapikit/stores';
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
 	import { Footer } from '$lib/components/index.js';
+	import { onMount } from 'svelte';
+	import { pagesNavigation, setPages } from '$lib/stores/app.js';
+	import SearchBar from '$lib/components/search-bar.svelte';
 	let { children, data } = $props();
 
 	type PagesFilter = {
@@ -24,6 +27,10 @@
 	let sizeWidthScreen = $state(0);
 	let selectedSection = $state<number | null>(null);
 	let pagesGrouped: PagesFilter = $state([]);
+
+	onMount(() => {
+		setPages(data?.pages);
+	});
 
 	$effect(() => {
 		const lang = $locale;
@@ -127,6 +134,7 @@
 	</a>
 
 	<Spacer />
+	<SearchBar />
 	<Btn icon>
 		<Icon icon="mgc_github_line" />
 	</Btn>
@@ -136,7 +144,7 @@
 	{#snippet navigation()}
 		<p>Navigation</p>
 
-		{#each pagesGrouped as section, index (section.key)}
+		{#each $pagesNavigation as section, index (section.key)}
 			<List class="hidden-mobile">
 				{#if section.submenu}
 					<ListItem>
