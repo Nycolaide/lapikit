@@ -16,8 +16,12 @@
 
 <style>
 	#drawer {
+		--drawer-height: calc(100dvh - 0px - 4.5rem);
+		--drawer-top: calc(0px + 4.5rem + 0px);
 		display: grid;
 		grid-template-columns: 1fr;
+		position: relative;
+		top: var(--drawer-top);
 	}
 
 	#drawer .drawer-navigation {
@@ -66,9 +70,10 @@
 		}
 
 		#drawer .drawer-navigation {
+			height: var(--drawer-height);
 			display: block !important;
 			position: sticky;
-			top: 0;
+			top: var(--drawer-top);
 		}
 
 		#drawer .drawer-navigation > div {

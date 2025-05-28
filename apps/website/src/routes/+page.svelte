@@ -8,6 +8,7 @@
 	// demo code
 	import { Sandbox, Counter } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
+	import Footer from '$lib/components/footer.svelte';
 </script>
 
 <div id="head-lapikit">
@@ -122,6 +123,8 @@
 		</div>
 	</div>
 </section>
+
+<Footer />
 
 <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}

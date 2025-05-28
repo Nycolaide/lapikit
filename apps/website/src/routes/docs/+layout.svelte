@@ -4,9 +4,9 @@
 	import { Appbar, Btn, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer, Component, Darkmode } from 'site-kit';
 	import { colorScheme, setColorScheme } from 'lapikit/stores';
-	let { children, data } = $props();
-
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
+	import { Footer } from '$lib/components/index.js';
+	let { children, data } = $props();
 
 	type PagesFilter = {
 		key: string;
@@ -16,7 +16,6 @@
 	}[];
 
 	let open = $state(false);
-	// let openMenu = $state(false);
 	let time: string = $state('');
 	let search = $state('');
 	let results = $state<{ title: string; description: string }[]>([]);
@@ -123,7 +122,10 @@
 <svelte:window bind:innerWidth={sizeWidthScreen} />
 
 <Appbar density={{ _default: 'default', md: 'comfortable' }} class="fixed top-0 z-100 w-full">
-	<p class="text-2xl font-bold">Lapikit</p>
+	<a href="/">
+		<p class="text-2xl font-bold">Lapikit</p>
+	</a>
+
 	<Spacer />
 	<Btn icon>
 		<Icon icon="mgc_github_line" />
@@ -230,15 +232,7 @@
 		</div>
 	{/each}
 
-	<h2>Btn</h2>
-
-	<Btn>button default</Btn>
-	<br />
-	<Btn size="sm">button sm</Btn>
-	<br />
-	<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="demo">button media</Btn>
-
-	<div class="flex lg:flex">demo</div>
-
 	{@render children?.()}
+
+	<Footer />
 </Drawer>
