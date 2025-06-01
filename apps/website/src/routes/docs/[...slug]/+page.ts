@@ -5,6 +5,7 @@ const pages = import.meta.glob('../../../content/**/*.md', { eager: true });
 
 interface Frontmatter {
 	title: string;
+	headings: { id: string; text: string; level: number }[];
 }
 
 interface MarkdownModule {
@@ -25,7 +26,8 @@ export async function load({ params }) {
 
 		return {
 			content: post.default,
-			meta: post.metadata
+			meta: post.metadata,
+			headings: post.metadata.headings
 		};
 	} catch {
 		error(404, `Could not find ${params.slug}`);

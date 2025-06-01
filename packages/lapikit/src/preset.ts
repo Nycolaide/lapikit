@@ -37,7 +37,7 @@ export const config: Lapikit = {
 	breakpoints: {
 		mobileBreakpoint: 'sm',
 		tabletBreakpoint: 'md',
-		laptopBreakpoint: 'xl',
+		laptopBreakpoint: 'lg',
 		thresholds: {
 			_default: 0, // 0px
 			xs: '28rem', //448px

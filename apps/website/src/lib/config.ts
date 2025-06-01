@@ -34,3 +34,26 @@ export const navigationMain: { key: string; path: string; external?: boolean; ic
 		icon: 'mgc_github_line'
 	}
 ];
+
+export const sectionDocs = [
+	{
+		key: 'global',
+		icon: 'mgc_album_2_line'
+	},
+	{
+		key: 'components',
+		icon: 'mgc_github_line',
+		submenu: true
+	},
+	{
+		key: 'undefined',
+		icon: 'mgc_github_line'
+	}
+];
+
+export interface MetaDataPages {
+	title: string;
+	description: string;
+	section?: string;
+	[key: string]: unknown;
+}

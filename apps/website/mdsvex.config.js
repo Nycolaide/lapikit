@@ -2,6 +2,7 @@ import { escapeSvelte } from 'mdsvex';
 import { createHighlighter } from 'shiki';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
+import extractHeadings from './remark-extract-headings.js';
 
 // node
 import { fileURLToPath } from 'node:url';
@@ -24,6 +25,6 @@ export const mdsvexOptions = {
 			return `{@html \`${html}\` }`;
 		}
 	},
-	remarkPlugins: [[remarkToc, { tight: true }]],
+	remarkPlugins: [[remarkToc, { tight: true }], extractHeadings],
 	rehypePlugins: [rehypeSlug]
 };

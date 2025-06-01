@@ -3,12 +3,12 @@
 		scheme = $bindable(),
 		handle
 	}: {
-		scheme: 'light' | 'dark' | 'auto';
-		handle: (scheme: 'light' | 'dark' | 'auto') => void;
+		scheme: 'light' | 'dark' | 'system';
+		handle: (scheme: 'light' | 'dark' | 'system') => void;
 	} = $props();
 	let open = $state(false);
 
-	function handleSelect(value: 'light' | 'dark' | 'auto') {
+	function handleSelect(value: 'light' | 'dark' | 'system') {
 		handle(value);
 		open = false;
 	}
@@ -37,9 +37,9 @@
 			</button>
 		</li>
 		<li>
-			<button onclick={() => handleSelect('auto')}>
-				auto mode
-				{#if scheme === 'auto'}
+			<button onclick={() => handleSelect('system')}>
+				system mode
+				{#if scheme === 'system'}
 					<span>*</span>
 				{/if}
 			</button>

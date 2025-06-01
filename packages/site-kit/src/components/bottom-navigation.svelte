@@ -15,6 +15,7 @@
 		position: fixed;
 		width: 100%;
 		bottom: 0;
+		z-index: 1000;
 	}
 
 	#bottom-navigation > :global(div) {

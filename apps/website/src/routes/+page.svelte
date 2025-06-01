@@ -1,146 +1,132 @@
 <script lang="ts">
-	import { t, locale, locales } from '$lib/i18n';
-	import { Component, BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Btn, List, ListItem, Appbar, Icon, Chip, Separator } from 'lapikit/components';
+	import { t } from '$lib/i18n';
+	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
+	import { Btn, List, ListItem, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
-	import CardContact from '$lib/components/card-contact.svelte';
-	import CardGame from '$lib/components/card-game.svelte';
 
-	let time: string = $state('');
-	let search = $state('');
-	let results = $state<{ title: string; description: string }[]>([]);
-	let timeout: NodeJS.Timeout;
-
-	$effect(() => {
-		const lang = $locale;
-		time = new Date().toLocaleDateString(lang, {
-			weekday: 'long',
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	});
-
-	function handleInput(event: Event) {
-		search = (event.target as HTMLInputElement).value;
-
-		clearTimeout(timeout);
-		timeout = setTimeout(() => {
-			fetchResults();
-		}, 300);
-	}
-
-	async function fetchResults() {
-		if (search.trim() === '') {
-			results = [];
-			return;
-		}
-
-		try {
-			const res = await fetch('/api/content');
-			const data = await res.json();
-
-			if (data.length === 0) {
-				results = [];
-				return;
-			} else {
-				results = data.filter(
-					(item: { title: string; description: string }) =>
-						item.title.toLowerCase().includes(search.toLowerCase()) ||
-						item.description.toLowerCase().includes(search.toLowerCase())
-				);
-			}
-		} catch (error) {
-			console.error('Error while fetching:', error);
-		}
-	}
+	// demo code
+	import { Sandbox, Counter } from '$lib/components/index.js';
+	import CounterCode from '$lib/components/counter.svelte?raw';
+	import Footer from '$lib/components/footer.svelte';
+	import DarkmodeV2 from '$lib/components/darkmode-v2.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<Component />
-
-<p>
-	<select bind:value={$locale} aria-label="lang">
-		{#each locales as l (l)}
-			<option value={l}>{l}</option>
-		{/each}
-	</select>
-</p>
-
-<h1>{$t('homepage.title')}!</h1>
-<p>{$t('homepage.welcome', { name: 'Jane Doe' })}!</p>
-<p>{$t('homepage.time', { time })}!</p>
-
-<input placeholder="search" bind:value={search} oninput={handleInput} />
-{#each results as result (result)}
-	<div>
-		<p>{result?.title}</p>
-		<p>{result?.description}</p>
-	</div>
-{/each}
-
-<h2>Btn</h2>
-
-<Btn>button default</Btn>
-<br />
-<Btn size="sm">button sm</Btn>
-<br />
-<Btn size={{ xs: 'sm', md: 'lg', xl: 'xs' }} class="demo">button media</Btn>
-
-<div class="flex lg:flex">demo</div>
-
-<Appbar
-	classContent="flex lg:grid lg:grid-cols-[auto_auto_auto] max-lg:justify-between"
-	density={{ _default: 'default', md: 'comfortable' }}
->
-	<p class="text-2xl font-bold">Lapikit</p>
-	<List
-		orientation="horizontal"
-		rounded="full"
-		class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto "
+<div id="head-lapikit">
+	<Appbar
+		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
+		density={{ _default: 'default', md: 'comfortable' }}
+		style="background: transparent;"
 	>
-		{#each navigationMain as { key, path, external } (key)}
-			<ListItem href={path} target={external && '_blank'} active={page.url.pathname === path}>
-				{$t(`navigation.${key}`)}
-			</ListItem>
-		{/each}
-	</List>
-	<div class="justify-end gap-3 lg:flex">
-		<Btn density="comfortable">Get started</Btn>
-	</div>
-</Appbar>
+		<p class="text-2xl font-bold">Lapikit</p>
+		<List
+			orientation="horizontal"
+			rounded="full"
+			class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto "
+		>
+			{#each navigationMain as { key, path, external } (key)}
+				<ListItem href={path} target={external && '_blank'} active={page.url.pathname === path}>
+					{$t(`navigation.${key}`)}
+				</ListItem>
+			{/each}
+		</List>
+		<div class="justify-end gap-3 lg:flex">
+			<DarkmodeV2 />
+			<Btn density="comfortable">{$t('homepage.top_cta')}</Btn>
+		</div>
+	</Appbar>
+
+	<section
+		class="desktop:max-h-[900px] flex h-[82vh] flex-col items-center justify-between justify-center overflow-hidden"
+	>
+		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
+			<Chip href="/" variant="outline">
+				<Icon icon="mgc_box_2_line" />
+				<Separator orientation="vertical" />
+				{$t('homepage.new_stable_version', { version: '0.0.0' })}
+			</Chip>
+			<h1
+				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"
+			>
+				{$t('homepage.main_title')}
+			</h1>
+			<p
+				class="mx-auto mb-[2em] max-w-sm text-sm leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+			>
+				{$t('homepage.main_introduction')}
+			</p>
+			<div>
+				<Btn size="lg" href="/docs/button">
+					{$t('homepage.main_cta')}
+				</Btn>
+			</div>
+		</div>
+	</section>
+</div>
 
 <section
-	class="desktop:max-h-[900px] flex flex-col justify-between overflow-hidden pt-20 lg:pt-[7em]"
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
-	<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
-		<Chip href="/" variant="outline">
-			<Icon icon="mgc_box_2_line" />
-			<Separator orientation="vertical" />
-			{$t('homepage.new_stable_version', { version: '0.0.0' })}
-		</Chip>
-		<h1
-			class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"
-		>
-			{$t('homepage.main_title')}
-		</h1>
-		<p
-			class="mx-auto mb-[2em] max-w-sm text-sm leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
-		>
-			{$t('homepage.main_introduction')}
-		</p>
-		<div>
-			<Btn size="lg" href="/docs">
-				{$t('homepage.main_cta')}
-			</Btn>
+	<div class="grid gap-4">
+		<div class="text-center">
+			<h2>{$t('homepage.dev_with_lapikit.title')}</h2>
+			<p>{$t('homepage.dev_with_lapikit.paragraph1')}</p>
+		</div>
+
+		<Sandbox name="counter" code={CounterCode}>
+			{#snippet component()}
+				<Counter />
+			{/snippet}
+		</Sandbox>
+	</div>
+</section>
+
+<section
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+>
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+		<div class="text-center md:text-start">
+			<h2>{$t('homepage.lapikit_the_best.title')}</h2>
+			<p>{$t('homepage.lapikit_the_best.paragraph1')}</p>
+			<p>{$t('homepage.lapikit_the_best.paragraph2')}</p>
+		</div>
+		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
+			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
+				<h2>{$t('homepage.lapikit_the_best.changelog.title')}</h2>
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
+				<h2>{$t('homepage.lapikit_the_best.roadmap.title')}</h2>
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
+				<h2>{$t('homepage.lapikit_the_best.install.title')}</h2>
+			</Card>
 		</div>
 	</div>
 </section>
 
-<CardContact />
-<CardGame />
+<section
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+>
+	<div class="grid gap-4">
+		<div class="text-center">
+			<h2>{$t('homepage.customize_component.title')}</h2>
+			<p>{$t('homepage.customize_component.paragraph1')}</p>
+		</div>
+		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.themes')}
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.components')}
+			</Card>
+			<Card class="min-w-[40%] flex-1 text-start">
+				{$t('homepage.customize_component.tools')}
+			</Card>
+		</div>
+	</div>
+</section>
+
+<Footer />
 
 <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}
@@ -155,3 +141,15 @@
 		</BottomNavigationItem>
 	{/each}
 </BottomNavigation>
+
+<style>
+	#head-lapikit {
+		--opacity-pattern: 35%;
+		--pattern: color-mix(in oklab, var(--kit-on-surface) var(--opacity-pattern), transparent);
+		background-image: radial-gradient(var(--pattern) 1px, transparent 0);
+		background-size: 16px 16px;
+		background-repeat: repeat;
+		width: 100%;
+		min-height: 90vh;
+	}
+</style>

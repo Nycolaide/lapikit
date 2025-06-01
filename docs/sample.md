@@ -2,6 +2,7 @@
 title: title
 description: description.
 date: "2025-4-22"
+section: "global"
 categories:
   - sveltekit
   - svelte

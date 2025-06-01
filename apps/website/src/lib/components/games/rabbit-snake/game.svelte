@@ -11,6 +11,7 @@
 	} from './helper';
 	import type { Direction, Position } from './types';
 	import { Btn, Icon } from 'lapikit/components';
+	import { t } from '$lib/i18n';
 
 	// images
 	import rabbitCarrot from '$lib/components/games/rabbit-snake/images/rabbit-carrot.png';
@@ -24,7 +25,6 @@
 	// game state
 	let direction: Direction = $state('right');
 	let interval: number | NodeJS.Timeout | null = $state(null);
-	let displayControls = $state(false);
 
 	// state variables
 	let isPlaying = $state(false);
@@ -124,19 +124,11 @@
 
 <div id="rabbit-snake" class="max-w=[547px] mx-auto w-full sm:w-[75vh] sm:max-w-full">
 	<div class="flex min-h-[3rem] items-center justify-between">
-		<span>Count: {player.length - 1}</span>
-
-		<Btn icon onclick={() => (displayControls = !displayControls)}>
-			{#if displayControls}
-				<Icon size="xl" icon="mgc_game_2_fill" color="on-surface" />
-			{:else}
-				<Icon size="xl" icon="mgc_game_2_line" color="on-surface" />
-			{/if}
-		</Btn>
+		<span>{$t('game.score', { count: player.length - 1 })}</span>
 
 		{#if isPlaying}
 			<Btn onclick={() => pauseGame()}>
-				Pause
+				{$t('game.pause')}
 				<Icon icon="mgc_pause_fill" color="on-surface" />
 			</Btn>
 		{/if}
@@ -148,7 +140,7 @@
 				class="overlay-game absolute z-1 flex aspect-[1] h-full w-full items-center justify-center rounded-lg"
 			>
 				<div class="grid items-center justify-items-center gap-14 text-2xl">
-					<div class="flex flex-row items-center">
+					<div class="grid grid-flow-col items-center gap-10">
 						{#each handleAction as { key, icon, display, action } (key)}
 							{#if display.includes(isFinished ? 'finish' : isPaused ? 'pause' : 'start')}
 								<button
@@ -161,14 +153,14 @@
 											'mx-auto flex h-[5rem] w-[5rem] items-center justify-center text-[3rem]'
 										]}
 									></i>
-									<p class="text-md">{key}</p>
+									<p class="md:text-md text-sm">{$t(`game.${key}`)}</p>
 								</button>
 							{/if}
 						{/each}
 					</div>
 
 					{#if isFinished}
-						<p class="text-sm">Your score is: {player.length - 1}</p>
+						<p class="text-sm">{$t('game.your_score', { count: player.length - 1 })}</p>
 					{/if}
 				</div>
 			</div>
@@ -199,29 +191,25 @@
 				{/each}
 			</div>
 		</div>
+	</div>
+</div>
 
-		{#if displayControls}
-			<div
-				class={['controls-game', 'hidden-laptop absolute bottom-4 z-2 flex w-full justify-between']}
-			>
-				<div class="grid gap-2">
-					<button class="ml-14" onclick={() => changeDirection('down')} aria-label="down">
-						<i class="mgc_arrow_down_fill"></i>
-					</button>
-					<button class="ml-4" onclick={() => changeDirection('left')} aria-label="left">
-						<i class="mgc_arrow_left_fill"></i>
-					</button>
-				</div>
-				<div class="grid gap-2">
-					<button class="mr-14" onclick={() => changeDirection('up')} aria-label="up">
-						<i class="mgc_arrow_up_fill"></i>
-					</button>
-					<button class="ml-10" onclick={() => changeDirection('right')} aria-label="right">
-						<i class="mgc_arrow_right_fill"></i>
-					</button>
-				</div>
-			</div>
-		{/if}
+<div class={['controls-game', 'hidden-tablet absolute bottom-4 z-2 flex w-full justify-between']}>
+	<div class="grid gap-2">
+		<button class="ml-10" onclick={() => changeDirection('right')} aria-label="right">
+			<i class="mgc_arrow_right_fill"></i>
+		</button>
+		<button class="ml-4" onclick={() => changeDirection('left')} aria-label="left">
+			<i class="mgc_arrow_left_fill"></i>
+		</button>
+	</div>
+	<div class="grid gap-2">
+		<button class="mr-14" onclick={() => changeDirection('up')} aria-label="up">
+			<i class="mgc_arrow_up_fill"></i>
+		</button>
+		<button class="ml-6" onclick={() => changeDirection('down')} aria-label="down">
+			<i class="mgc_arrow_down_fill"></i>
+		</button>
 	</div>
 </div>
 
@@ -232,6 +220,10 @@
 
 	.overlay-game {
 		background-color: color-mix(in oklab, var(--kit-shadow) 45%, transparent);
+	}
+
+	.controls-game {
+		max-width: calc(100% - var(--modal-spacing-x) * 2);
 	}
 
 	.btn-play-game,
@@ -289,14 +281,7 @@
 		font-size: 2rem;
 	}
 
-	/* .rabbit-lead {
-		background-image: url('/images/games/rabbit-carrot.png');
-	}
-	.rabbit {
-		background-image: url('/images/games/rabbit.png');
-	} */
 	.carrot {
-		/* background-image: url('/images/games/carrot.png'); */
 		background-color: oklch(0.414 0.112 45.904);
 		background-size: 74% !important;
 	}
