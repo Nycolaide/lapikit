@@ -2,19 +2,20 @@ import { disabledScroll } from '$lib/internal/scroll.js';
 import { writable, type Writable } from 'svelte/store';
 
 // states
-const colorScheme_default = 'light';
+const colorScheme_default = 'system';
 const modalOpen_default = false;
 const isBrowser = typeof window !== 'undefined';
-export const colorScheme: Writable<'auto' | 'dark' | 'light'> = writable(colorScheme_default);
+export const colorScheme: Writable<'system' | 'dark' | 'light'> = writable(colorScheme_default);
+export const colorSchemeSystem: Writable<'dark' | 'light'> = writable('light');
 export const modalOpen: Writable<boolean | 'persistent'> = writable(modalOpen_default);
 export const modalStack = writable<string[]>([]);
 
-export function updateThemeStore(update: 'auto' | 'dark' | 'light') {
+export function updateThemeStore(update: 'system' | 'dark' | 'light') {
 	colorScheme.update(() => {
 		if (isBrowser) {
 			const ref = document.documentElement.classList;
 
-			if (update === 'auto') ref.remove('light', 'dark');
+			if (update === 'system') ref.remove('light', 'dark');
 			else {
 				ref.remove(update === 'dark' ? 'light' : 'dark');
 				ref.add(update === 'dark' ? 'dark' : 'light');
@@ -26,7 +27,7 @@ export function updateThemeStore(update: 'auto' | 'dark' | 'light') {
 	});
 }
 
-export function setColorScheme(scheme: 'auto' | 'dark' | 'light') {
+export function setColorScheme(scheme: 'system' | 'dark' | 'light') {
 	updateThemeStore(scheme);
 }
 

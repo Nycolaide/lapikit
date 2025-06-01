@@ -41,6 +41,7 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
+		"remark-extract-toc": "^1.1.0",
 		"site-kit": "*",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -55,6 +56,7 @@
 		"@fontsource/roboto": "^5.2.5",
 		"rehype-slug": "^6.0.0",
 		"remark-toc": "^9.0.0",
-		"shiki": "^3.2.2"
+		"shiki": "^3.2.2",
+		"unist-util-visit": "^5.0.0"
 	}
 }

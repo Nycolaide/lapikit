@@ -9,6 +9,7 @@
 	import { onMount } from 'svelte';
 	import { pagesNavigation, setPages } from '$lib/stores/app.js';
 	import SearchBar from '$lib/components/search-bar.svelte';
+	import DarkmodeV2 from '$lib/components/darkmode-v2.svelte';
 	let { children, data } = $props();
 
 	type PagesFilter = {
@@ -135,6 +136,7 @@
 
 	<Spacer />
 	<SearchBar />
+	<DarkmodeV2 />
 	<Btn icon>
 		<Icon icon="mgc_github_line" />
 	</Btn>

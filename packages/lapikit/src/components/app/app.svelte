@@ -1,13 +1,33 @@
 <script lang="ts">
 	import { BROWSER } from 'esm-env';
-	import { modalOpen, setOpenModal, updateThemeStore } from '$lib/stores/index.js';
+	import {
+		colorSchemeSystem,
+		modalOpen,
+		setOpenModal,
+		updateThemeStore
+	} from '$lib/stores/index.js';
 	import type { Snippet } from 'svelte';
 	let { children }: { children: Snippet } = $props();
 
 	$effect.pre(() => {
 		if (!BROWSER) return;
+		// system
+		if (window.matchMedia) {
+			colorSchemeSystem.set(
+				window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+			);
+		}
+
+		// listener
+		window
+			.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', (event: MediaQueryListEvent) => {
+				colorSchemeSystem.set(event.matches ? 'dark' : 'light');
+			});
+
+		// local
 		const local = localStorage.getItem('@lapikit/theme');
-		if (local !== null) updateThemeStore(local as 'dark' | 'light' | 'auto');
+		if (local !== null) updateThemeStore(local as 'dark' | 'light' | 'system');
 	});
 </script>
 

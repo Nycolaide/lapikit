@@ -5,11 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.9]
+## [0.1.9] - 2025-06-01
 
 ### Changed
 
 - Update breakpoint devices for mobile and laptop
+- Update component **App** with init directly a colorScheme system
+- Update store for `colorScheme` and add `colorSchemeSystem` for refer color used on device.
+- Add new event listener for update `colorSchemeSystem` directly
 
 ### Fix
 

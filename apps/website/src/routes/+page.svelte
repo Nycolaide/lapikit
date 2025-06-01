@@ -9,11 +9,12 @@
 	import { Sandbox, Counter } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
 	import Footer from '$lib/components/footer.svelte';
+	import DarkmodeV2 from '$lib/components/darkmode-v2.svelte';
 </script>
 
 <div id="head-lapikit">
 	<Appbar
-		classContent="flex lg:grid lg:grid-cols-[auto_auto_auto] max-lg:justify-between"
+		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
 		density={{ _default: 'default', md: 'comfortable' }}
 		style="background: transparent;"
 	>
@@ -30,6 +31,7 @@
 			{/each}
 		</List>
 		<div class="justify-end gap-3 lg:flex">
+			<DarkmodeV2 />
 			<Btn density="comfortable">{$t('homepage.top_cta')}</Btn>
 		</div>
 	</Appbar>
@@ -54,7 +56,7 @@
 				{$t('homepage.main_introduction')}
 			</p>
 			<div>
-				<Btn size="lg" href="/docs">
+				<Btn size="lg" href="/docs/button">
 					{$t('homepage.main_cta')}
 				</Btn>
 			</div>
