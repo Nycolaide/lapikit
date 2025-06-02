@@ -31,6 +31,7 @@
 
 	onMount(() => {
 		setPages(data?.pages);
+		console.log('data', data);
 	});
 
 	$effect(() => {
