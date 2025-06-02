@@ -19,8 +19,9 @@ export interface BtnProps extends Component {
 	color?: string;
 	background?: string;
 	size?: string | { [key: string]: string };
-	type?: 'button' | 'submit' | 'reset' | 'radio' | 'checkbox';
-	label?: string;
+	type?: 'button' | 'submit' | 'reset';
 	icon?: boolean;
 	load?: Snippet;
+	append?: Snippet;
+	prepend?: Snippet;
 }

@@ -10,3 +10,12 @@
 @layer components {
 	@import 'lapikit/css';
 }
+
+/** 
+	config mgc
+	@link https://github.com/Richard9394/MingCute
+**/
+[class^='mgc_']::before,
+[class*=' mgc_']::before {
+	color: inherit !important;
+}

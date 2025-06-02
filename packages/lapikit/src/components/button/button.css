@@ -19,7 +19,10 @@
 	background-color: var(--btn-background);
 }
 
+.kit-btn,
 .kit-btn .kit-btn-content,
+.kit-btn .kit-btn-append,
+.kit-btn .kit-btn-prepend,
 .kit-btn .kit-btn-loading {
 	display: inline-flex;
 	align-items: center;
@@ -39,15 +42,12 @@
 	pointer-events: none;
 	border-radius: inherit;
 }
-
 .kit-btn:hover::after {
 	opacity: 0.08;
 }
-
 .kit-btn:active::after {
 	opacity: 0.12;
 }
-
 .kit-btn:focus-visible::after {
 	opacity: 0.12;
 }
@@ -59,12 +59,18 @@
 	--btn-multiplier-gap: 2;
 	--btn-multiplier-font-size: 6;
 }
+.kit-btn[breakpoint]kit-btn--size-xs .kit-icon.kit-icon--size-md {
+	--icon-size-multiplier-parent: 7;
+}
 
 .kit-btn[breakpoint]kit-btn--size-sm {
 	--btn-multiplier-x: 16;
 	--btn-multiplier-y: 3;
 	--btn-multiplier-gap: 4;
 	--btn-multiplier-font-size: 7;
+}
+.kit-btn[breakpoint]kit-btn--size-sm .kit-icon.kit-icon--size-md {
+	--icon-size-multiplier-parent: 8;
 }
 
 .kit-btn[breakpoint]kit-btn--size-md {
@@ -73,6 +79,9 @@
 	--btn-multiplier-gap: 4;
 	--btn-multiplier-font-size: 8;
 }
+.kit-btn[breakpoint]kit-btn--size-md .kit-icon.kit-icon--size-md {
+	--icon-size-multiplier-parent: 9;
+}
 
 .kit-btn[breakpoint]kit-btn--size-lg {
 	--btn-multiplier-x: 24;
@@ -80,12 +89,18 @@
 	--btn-multiplier-gap: 4;
 	--btn-multiplier-font-size: 9;
 }
+.kit-btn[breakpoint]kit-btn--size-lg .kit-icon.kit-icon--size-md {
+	--icon-size-multiplier-parent: 10;
+}
 
 .kit-btn[breakpoint]kit-btn--size-xl {
 	--btn-multiplier-x: 28;
 	--btn-multiplier-y: 6;
 	--btn-multiplier-gap: 5;
 	--btn-multiplier-font-size: 10;
+}
+.kit-btn[breakpoint]kit-btn--size-xl .kit-icon.kit-icon--size-md {
+	--icon-size-multiplier-parent: 11;
 }
 
 /* density */
@@ -131,9 +146,12 @@
 	background-color: transparent;
 }
 .kit-btn[breakpoint]kit-btn--variant-outline::before {
-	border: 1px solid currentColor;
-	inset: 0;
+	content: '';
 	position: absolute;
+	inset: 0;
+	border: 1px solid currentColor;
+	pointer-events: none;
+	border-radius: inherit;
 }
 
 .kit-btn[breakpoint]kit-btn--variant-text {
@@ -150,7 +168,6 @@
 .kit-btn.kit-btn--info[class*='btn--variant-'] {
 	--base: var(--kit-info);
 }
-
 .kit-btn.kit-btn--success:not([class*='btn--variant-']) {
 	--on: var(--kit-on-success);
 	--base: var(--kit-success);
@@ -158,7 +175,6 @@
 .kit-btn.kit-btn--success[class*='btn--variant-'] {
 	--base: var(--kit-success);
 }
-
 .kit-btn.kit-btn--warning:not([class*='btn--variant-']) {
 	--on: var(--kit-on-warning);
 	--base: var(--kit-warning);
@@ -166,7 +182,6 @@
 .kit-btn.kit-btn--warning[class*='btn--variant-'] {
 	--base: var(--kit-warning);
 }
-
 .kit-btn.kit-btn--error:not([class*='btn--variant-']) {
 	--on: var(--kit-on-error);
 	--base: var(--kit-error);
@@ -175,69 +190,33 @@
 	--base: var(--kit-error);
 }
 
-/* types */
-.kit-btn:where(.kit-btn:is(input[type='checkbox'])),
-.kit-btn:where(.kit-btn:is(input[type='radio'])) {
-	width: auto;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	vertical-align: inherit;
-}
-.kit-btn:is(input[type='checkbox']):after,
-.kit-btn:is(input[type='radio']):after {
-	--btn-content: attr(aria-label);
-	content: var(--btn-content);
-}
-
-.kit-btn:is(input[type='checkbox']):focus,
-.kit-btn:is(input[type='radio']):focus {
-	outline: none;
-	outline-offset: inherit;
-	box-shadow: none;
-}
-
-.kit-btn:is(input[type='checkbox']):checked,
-.kit-btn:is(input[type='radio']):checked {
-	background-image: initial;
-}
-
 /* events */
-.kit-btn.kit-btn--active:not([class*='btn--variant-']),
-.kit-btn:not([class*='btn--variant-']):is(input[type='radio']):checked,
-.kit-btn:not([class*='btn--variant-']):is(input[type='checkbox']):checked {
+.kit-btn.kit-btn--active:not([class*='btn--variant-']) {
 	background-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
 }
-.kit-btn.kit-btn--active[class*='btn--variant-'],
-.kit-btn[class*='btn--variant-']:is(input[type='radio']):checked,
-.kit-btn[class*='btn--variant-']:is(input[type='checkbox']):checked {
+.kit-btn.kit-btn--active[class*='btn--variant-'] {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 	border-color: color-mix(in oklab, currentColor 15%, transparent);
 }
-
-.kit-btn:hover:not([class*='btn--variant-']),
-.kit-btn:not([class*='btn--variant-']):is(input[type='radio']):hover,
-.kit-btn:not([class*='btn--variant-']):is(input[type='checkbox']):hover {
+/* .kit-btn:hover:not([class*='btn--variant-']) {
 	background-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
 }
-.kit-btn:hover[class*='btn--variant-'],
-.kit-btn[class*='btn--variant-']:is(input[type='radio']):hover,
-.kit-btn[class*='btn--variant-']:is(input[type='checkbox']):hover {
+.kit-btn:hover[class*='btn--variant-'] {
 	background-color: color-mix(in oklab, currentColor 25%, transparent);
-}
+} */
 
 /* icon */
-.kit-btn i:before {
-	color: var(--btn-color);
+.kit-btn i::before,
+.kit-btn .kit-icon {
+	--base-parent: var(--btn-color);
 }
 
 /* disabled */
 .kit-btn.kit-btn--disabled,
 .kit-btn[disabled],
-input.kit-btn.kit-btn--disabled,
-input.kit-btn[disabled] {
+.kit-btn.kit-btn--loading {
 	pointer-events: none;
 	user-select: none;
 	cursor: default;
@@ -251,16 +230,11 @@ input.kit-btn[disabled] {
 	color: color-mix(in oklab, var(--btn-color) 40%, transparent) !important;
 }
 .kit-btn[class*='btn--variant-'].kit-btn--disabled,
-.kit-btn[class*='btn--variant-'].kit-btn--disabled i:before {
+.kit-btn[class*='btn--variant-'].kit-btn--disabled i::before {
 	color: color-mix(in oklab, var(--btn-background) 40%, transparent) !important;
 }
 
 /* loading */
-.kit-btn.kit-btn--loading {
-	pointer-events: none;
-	user-select: none;
-	cursor: default;
-}
 .kit-btn.kit-btn--loading > .kit-btn-content {
 	color: transparent;
 	opacity: 0;

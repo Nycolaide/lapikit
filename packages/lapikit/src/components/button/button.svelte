@@ -5,9 +5,12 @@
 
 	// external
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
+	import { ripple } from '$lib/internal/ripple.js';
 
 	let {
 		children,
+		prepend,
+		append,
 		ref = $bindable(),
 		is = 'button',
 		href,
@@ -25,7 +28,6 @@
 		type = 'button',
 		background,
 		color,
-		label,
 		loading,
 		rounded,
 		icon,
@@ -36,8 +38,6 @@
 	const assets = getAssets();
 
 	$effect(() => {
-		if (type === 'radio') is = 'input';
-		if (type === 'checkbox') is = 'input';
 		if (type === 'submit') is = 'input';
 		if (type === 'reset') is = 'input';
 	});
@@ -66,10 +66,9 @@
 		rest.class
 	]}
 	tabindex={href && disabled ? -1 : 0}
-	aria-disabled={href ? disabled : undefined}
-	aria-label={type !== 'button' ? label : undefined}
 	disabled={href ? undefined : disabled}
 	type={href ? undefined : type}
+	use:ripple
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
@@ -86,9 +85,19 @@
 		</div>
 	{/if}
 
-	{#if !label}
-		<span class="kit-btn-content">
-			{@render children?.()}
+	{#if prepend}
+		<span class="kit-btn-prepend">
+			{@render prepend?.()}
+		</span>
+	{/if}
+
+	<span class="kit-btn-content">
+		{@render children?.()}
+	</span>
+
+	{#if append}
+		<span class="kit-btn-append">
+			{@render append?.()}
 		</span>
 	{/if}
 </svelte:element>

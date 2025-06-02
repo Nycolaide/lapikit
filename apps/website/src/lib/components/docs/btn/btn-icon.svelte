@@ -6,7 +6,7 @@
 	<Icon icon="mgc_house_fill" />
 </Btn>
 <Btn size="sm" icon>
-	<Icon icon="mgc_house_fill" />
+	<Icon icon="mgc_house_fill" color="primary" />
 </Btn>
 <Btn icon>
 	<Icon icon="mgc_house_fill" />
