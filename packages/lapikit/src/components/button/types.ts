@@ -7,7 +7,7 @@ export interface BtnProps extends Component {
 	dark?: boolean;
 	light?: boolean;
 	href?: string;
-	variant?: 'outline' | 'text' | 'dash' | 'link';
+	variant?: 'outline' | 'text';
 	density?: 'compact' | 'comfortable' | 'default';
 	active?: boolean;
 	loading?: boolean;

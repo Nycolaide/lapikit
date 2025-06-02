@@ -5,5 +5,3 @@
 <Btn>Default</Btn>
 <Btn variant="outline">Outline</Btn>
 <Btn variant="text">Text</Btn>
-<Btn variant="dash">Dashed</Btn>
-<Btn variant="link">link</Btn>

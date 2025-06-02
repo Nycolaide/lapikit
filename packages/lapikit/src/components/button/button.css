@@ -1,26 +1,22 @@
+/* root */
 .kit-btn {
 	--btn-color: var(--on, var(--kit-on-neutral));
 	--btn-background: var(--base, var(--kit-neutral));
 	--btn-radius: var(--shape, var(--kit-radius-md));
+}
 
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	white-space: nowrap;
+.kit-btn {
+	position: relative;
+	cursor: pointer;
+	border: none;
+	outline: none;
 	padding-top: var(--btn-spacing-x);
 	padding-bottom: var(--btn-spacing-x);
 	padding-right: var(--btn-spacing-y);
 	padding-left: var(--btn-spacing-y);
-	cursor: pointer;
-	width: fit-content;
-	border-width: 1px;
-	border-style: solid;
 	border-radius: var(--btn-radius);
-
-	/* theme */
 	color: var(--btn-color);
 	background-color: var(--btn-background);
-	border-color: var(--btn-background);
 }
 
 .kit-btn .kit-btn-content,
@@ -29,92 +25,102 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: var(--btn-gap);
+	gap: calc(var(--kit-spacing) * var(--btn-multiplier-gap));
+	font-size: calc(var(--kit-spacing) * var(--btn-multiplier-font-size));
 }
 
-.kit-btn:active:hover,
-.kit-btn:active:focus {
-	animation: button-click 0s ease-out;
-	transform: scale(0.97);
+.kit-btn::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: currentColor;
+	opacity: 0;
+	transition: opacity 150ms ease;
+	pointer-events: none;
+	border-radius: inherit;
+}
+
+.kit-btn:hover::after {
+	opacity: 0.08;
+}
+
+.kit-btn:active::after {
+	opacity: 0.12;
+}
+
+.kit-btn:focus-visible::after {
+	opacity: 0.12;
 }
 
 /* size */
 .kit-btn[breakpoint]kit-btn--size-xs {
-	--btn-height: 1.75rem;
+	--btn-multiplier-x: 12;
 	--btn-multiplier-y: 2;
-	--btn-gap: 0.25rem;
-	font-size: 0.75rem;
-	gap: var(--btn-gap);
+	--btn-multiplier-gap: 2;
+	--btn-multiplier-font-size: 6;
 }
 
 .kit-btn[breakpoint]kit-btn--size-sm {
-	--btn-height: 2rem;
+	--btn-multiplier-x: 16;
 	--btn-multiplier-y: 3;
-	--btn-gap: 0.5rem;
-	font-size: 0.875rem;
-	gap: var(--btn-gap);
+	--btn-multiplier-gap: 4;
+	--btn-multiplier-font-size: 7;
 }
 
 .kit-btn[breakpoint]kit-btn--size-md {
-	--btn-height: 2.25rem;
+	--btn-multiplier-x: 20;
 	--btn-multiplier-y: 4;
-	--btn-gap: 0.5rem;
-	font-size: 0.875rem;
-	gap: var(--btn-gap);
+	--btn-multiplier-gap: 4;
+	--btn-multiplier-font-size: 8;
 }
 
 .kit-btn[breakpoint]kit-btn--size-lg {
-	--btn-height: 2.5rem;
+	--btn-multiplier-x: 24;
 	--btn-multiplier-y: 5;
-	--btn-gap: 0.5rem;
-	font-size: 1rem;
-	gap: var(--btn-gap);
+	--btn-multiplier-gap: 4;
+	--btn-multiplier-font-size: 9;
 }
 
 .kit-btn[breakpoint]kit-btn--size-xl {
-	--btn-height: 2.75rem;
+	--btn-multiplier-x: 28;
 	--btn-multiplier-y: 6;
-	--btn-gap: 0.675rem;
-	font-size: 1.125rem;
-	gap: var(--btn-gap);
+	--btn-multiplier-gap: 5;
+	--btn-multiplier-font-size: 10;
 }
 
 /* density */
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-default {
-	height: calc(var(--btn-height));
-	/* min-width: calc(var(--btn-height)); */
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x));
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y));
 }
 .kit-btn.kit-btn--icon[breakpoint]kit-btn--density-default {
-	height: calc(var(--btn-height));
-	width: calc(var(--btn-height));
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x));
+	width: calc(var(--kit-spacing) * var(--btn-multiplier-x));
 	--btn-spacing-x: 0;
 	--btn-spacing-y: 0;
 }
 
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-compact {
-	height: calc(var(--btn-height) - 0.25rem);
-	/* min-width: calc(var(--btn-height) - 0.25rem); */
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
 }
 .kit-btn.kit-btn--icon[breakpoint]kit-btn--density-compact {
-	height: calc(var(--btn-height) - 0.25rem);
-	width: calc(var(--btn-height) - 0.25rem);
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
+	width: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
 	--btn-spacing-x: 0;
 	--btn-spacing-y: 0;
 }
 
 .kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-comfortable {
-	height: calc(var(--btn-height) + 0.25rem);
-	/* min-width: calc(var(--btn-height) + 0.25rem); */
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
 	--btn-spacing-x: 0;
 	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) + 0.25rem);
 }
 .kit-btn.kit-btn--icon[breakpoint]kit-btn--density-comfortable {
-	height: calc(var(--btn-height) + 0.25rem);
-	width: calc(var(--btn-height) + 0.25rem);
+	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
+	width: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
 	--btn-spacing-x: 0;
 	--btn-spacing-y: 0;
 }
@@ -123,25 +129,17 @@
 .kit-btn[breakpoint]kit-btn--variant-outline {
 	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
+}
+.kit-btn[breakpoint]kit-btn--variant-outline::before {
 	border: 1px solid currentColor;
+	inset: 0;
+	position: absolute;
 }
 
 .kit-btn[breakpoint]kit-btn--variant-text {
 	--btn-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
-	border-color: transparent;
-}
-
-.kit-btn[breakpoint]kit-btn--variant-dash {
-	--btn-color: var(--base, var(--kit-neutral));
-	background-color: transparent;
-	border: 1px dashed currentColor;
-}
-
-.kit-btn[breakpoint]kit-btn--variant-link {
-	--btn-color: var(--base, var(--kit-neutral));
-	background-color: transparent;
-	border-color: transparent;
+	border: none;
 }
 
 /* state */
