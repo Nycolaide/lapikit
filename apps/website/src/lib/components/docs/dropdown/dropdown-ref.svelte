@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Btn, Dropdown, Icon } from 'lapikit/components';
+	import { Button, Dropdown, Icon } from 'lapikit/components';
 
 	let ref = $state(null);
 </script>
 
 <Dropdown>
 	{#snippet activator(model)}
-		<Btn bind:ref onclick={() => model.toggle(ref)}>
+		<Button bind:ref onclick={() => model.toggle(ref)}>
 			Dropdown
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>

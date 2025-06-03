@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Modal, Btn } from 'lapikit/components';
+	import { Modal, Button } from 'lapikit/components';
 
 	let open: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (open = true)}>Open Modal</Btn>
+<Button onclick={() => (open = true)}>Open Modal</Button>
 
 <Modal bind:open closeWithEsc>Modal content</Modal>

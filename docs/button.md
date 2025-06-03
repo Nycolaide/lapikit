@@ -10,57 +10,65 @@ published: true
 ---
 
 <script>
-  import { BtnBase, BtnMediaQueries, BtnSize, BtnState, BtnVariant, BtnColor, BtnDensity, BtnDisabled, BtnEvent, BtnType, BtnIcon, BtnComposable, BtnLoading } from "$lib/components/docs/index.js";
+  import { ButtonBase, ButtonMediaQueries, ButtonSize, ButtonState, ButtonVariant, ButtonColor, ButtonDensity, ButtonDisabled, ButtonEvent, ButtonType, ButtonIcon, ButtonComposable, ButtonLoading, ButtonSnippet, ButtonRipple} from "$lib/components/docs/index.js";
 </script>
 
 ## base
 
-<BtnBase/>
+<ButtonBase/>
 
 ## Media Queries
 
-<BtnMediaQueries/>
+<ButtonMediaQueries/>
 
 ## Size
 
-<BtnSize/>
+<ButtonSize/>
 
 ## State
 
-<BtnState/>
+<ButtonState/>
 
 ## Variant
 
-<BtnVariant/>
+<ButtonVariant/>
 
 ## Color
 
-<BtnColor/>
+<ButtonColor/>
 
 ## Density
 
-<BtnDensity/>
+<ButtonDensity/>
 
 ## Disabled
 
-<BtnDisabled/>
+<ButtonDisabled/>
 
 ## Event
 
-<BtnEvent/>
+<ButtonEvent/>
 
 ## Type
 
-<BtnType/>
+<ButtonType/>
 
 ## Icon
 
-<BtnIcon/>
+<ButtonIcon/>
 
 ## Composable
 
-<BtnComposable/>
+<ButtonComposable/>
 
 ## loading
 
-<BtnLoading/>
+<ButtonLoading/>
+
+## snippet
+
+<ButtonSnippet/>
+
+## ripple
+
+<ButtonRipple/>

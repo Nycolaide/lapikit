@@ -1,5 +1,4 @@
 .kit-icon {
-	--icon-size: 1rem;
 	--icon-color: var(--base, var(--base-parent, var(--kit-on-neutral)));
 
 	display: inline-flex;
@@ -7,10 +6,12 @@
 	justify-content: center;
 	transition: color 0.5s;
 	text-indent: 0;
+	font-size: calc(
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing)
+	);
 }
 
 .kit-icon:before {
-	font-size: calc(var(--icon-size-multiplier) * var(--icon-size));
 	color: var(--icon-color);
 }
 
@@ -20,29 +21,31 @@
 
 .kit-icon svg,
 .kit-icon img {
-	width: calc(var(--icon-size-multiplier) * var(--icon-size));
-	height: calc(var(--icon-size-multiplier) * var(--icon-size));
+	width: calc(var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing));
+	height: calc(
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing)
+	);
 }
 
 /* size */
 .kit-icon[breakpoint]kit-icon--size-xs {
-	--icon-size-multiplier: 0.875;
+	--icon-multiplier-size: 7;
 }
 
 .kit-icon[breakpoint]kit-icon--size-sm {
-	--icon-size-multiplier: 1;
+	--icon-multiplier-size: 8;
 }
 
 .kit-icon[breakpoint]kit-icon--size-md {
-	--icon-size-multiplier: 1.125;
+	--icon-multiplier-size: 9;
 }
 
 .kit-icon[breakpoint]kit-icon--size-lg {
-	--icon-size-multiplier: 1.25;
+	--icon-multiplier-size: 10;
 }
 
 .kit-icon[breakpoint]kit-icon--size-xl {
-	--icon-size-multiplier: 1.5;
+	--icon-multiplier-size: 11;
 }
 
 /* state */

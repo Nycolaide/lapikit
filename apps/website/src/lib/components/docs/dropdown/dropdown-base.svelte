@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Btn, Dropdown, Icon } from 'lapikit/components';
+	import { Button, Dropdown, Icon } from 'lapikit/components';
 </script>
 
 <Dropdown>
 	{#snippet activator(model)}
-		<Btn onclick={(el: PointerEvent) => model.toggle(el)}>
+		<Button onclick={(el: PointerEvent) => model.toggle(el)}>
 			Dropdown
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>

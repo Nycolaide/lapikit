@@ -1,17 +1,19 @@
-// btn
-export { default as BtnBase } from './btn/btn-base.svelte';
-export { default as BtnMediaQueries } from './btn/btn-media-queries.svelte';
-export { default as BtnSize } from './btn/btn-size.svelte';
-export { default as BtnState } from './btn/btn-state.svelte';
-export { default as BtnVariant } from './btn/btn-variant.svelte';
-export { default as BtnColor } from './btn/btn-color.svelte';
-export { default as BtnDensity } from './btn/btn-density.svelte';
-export { default as BtnDisabled } from './btn/btn-disabled.svelte';
-export { default as BtnEvent } from './btn/btn-event.svelte';
-export { default as BtnType } from './btn/btn-type.svelte';
-export { default as BtnIcon } from './btn/btn-icon.svelte';
-export { default as BtnComposable } from './btn/btn-composable.svelte';
-export { default as BtnLoading } from './btn/btn-loading.svelte';
+// Button
+export { default as ButtonBase } from './button/button-base.svelte';
+export { default as ButtonMediaQueries } from './button/button-media-queries.svelte';
+export { default as ButtonSize } from './button/button-size.svelte';
+export { default as ButtonState } from './button/button-state.svelte';
+export { default as ButtonVariant } from './button/button-variant.svelte';
+export { default as ButtonColor } from './button/button-color.svelte';
+export { default as ButtonDensity } from './button/button-density.svelte';
+export { default as ButtonDisabled } from './button/button-disabled.svelte';
+export { default as ButtonEvent } from './button/button-event.svelte';
+export { default as ButtonType } from './button/button-type.svelte';
+export { default as ButtonIcon } from './button/button-icon.svelte';
+export { default as ButtonComposable } from './button/button-composable.svelte';
+export { default as ButtonLoading } from './button/button-loading.svelte';
+export { default as ButtonSnippet } from './button/button-snippet.svelte';
+export { default as ButtonRipple } from './button/button-ripple.svelte';
 // icon
 export { default as IconBase } from './icon/icon-base.svelte';
 export { default as IconColor } from './icon/icon-color.svelte';

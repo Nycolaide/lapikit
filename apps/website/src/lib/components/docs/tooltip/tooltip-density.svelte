@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Btn, Tooltip } from 'lapikit/components';
+	import { Button, Tooltip } from 'lapikit/components';
 </script>
 
 <Tooltip label="Small tooltip" density="compact">
-	<Btn>Compact</Btn>
+	<Button>Compact</Button>
 </Tooltip>
 
 <Tooltip label="Default style">
-	<Btn>Default</Btn>
+	<Button>Default</Button>
 </Tooltip>
 
 <Tooltip label="It's large !" density="comfortable">
-	<Btn>Comfortable</Btn>
+	<Button>Comfortable</Button>
 </Tooltip>

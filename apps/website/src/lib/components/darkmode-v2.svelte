@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Btn, Icon } from 'lapikit/components';
+	import { Button, Icon } from 'lapikit/components';
 	import { setColorScheme, colorScheme, colorSchemeSystem } from 'lapikit/stores';
 </script>
 
-<Btn
+<Button
 	icon
 	onclick={() =>
 		setColorScheme(
@@ -17,4 +17,4 @@
 	{:else}
 		<Icon icon="mgc_moon_line" />
 	{/if}
-</Btn>
+</Button>

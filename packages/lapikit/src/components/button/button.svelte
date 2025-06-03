@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { getAssets } from '$lib/internal/index.js';
-	import { Icon } from '../index.js';
-	import type { BtnProps } from './types.js';
+	import type { ButtonProps } from './types.js';
 
 	// external
+	import { Icon } from '../index.js';
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 	import { ripple } from '$lib/internal/ripple.js';
 
@@ -32,8 +32,9 @@
 		rounded,
 		icon,
 		load,
+		noRipple,
 		...rest
-	}: BtnProps = $props();
+	}: ButtonProps = $props();
 
 	const assets = getAssets();
 
@@ -49,32 +50,34 @@
 	{...rest}
 	href={href && !disabled ? href : undefined}
 	class={[
-		'kit-btn',
+		'kit-button',
 		light && 'light',
 		dark && 'dark',
-		size && assets.className('btn', 'size', size),
-		variant && assets.className('btn', 'variant', variant),
-		density && assets.className('btn', 'density', density),
-		error && 'kit-btn--error',
-		info && 'kit-btn--info',
-		success && 'kit-btn--success',
-		warning && 'kit-btn--warning',
-		disabled && 'kit-btn--disabled',
-		active && 'kit-btn--active',
-		loading && 'kit-btn--loading',
-		icon && 'kit-btn--icon',
+		size && assets.className('button', 'size', size),
+		variant && assets.className('button', 'variant', variant),
+		density && assets.className('button', 'density', density),
+		error && 'kit-button--error',
+		info && 'kit-button--info',
+		success && 'kit-button--success',
+		warning && 'kit-button--warning',
+		disabled && 'kit-button--disabled',
+		active && 'kit-button--active',
+		loading && 'kit-button--loading',
+		icon && 'kit-button--icon',
 		rest.class
 	]}
 	tabindex={href && disabled ? -1 : 0}
 	disabled={href ? undefined : disabled}
 	type={href ? undefined : type}
-	use:ripple
+	use:ripple={{
+		disabled: noRipple || disabled
+	}}
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
 >
 	{#if loading}
-		<div class="kit-btn-loading">
+		<div class="kit-button-loading">
 			{#if load}
 				{@render load?.()}
 			{:else}
@@ -86,17 +89,17 @@
 	{/if}
 
 	{#if prepend}
-		<span class="kit-btn-prepend">
+		<span class="kit-button-prepend">
 			{@render prepend?.()}
 		</span>
 	{/if}
 
-	<span class="kit-btn-content">
+	<span class="kit-button-content">
 		{@render children?.()}
 	</span>
 
 	{#if append}
-		<span class="kit-btn-append">
+		<span class="kit-button-append">
 			{@render append?.()}
 		</span>
 	{/if}

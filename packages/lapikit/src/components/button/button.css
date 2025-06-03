@@ -1,38 +1,38 @@
 /* root */
-.kit-btn {
-	--btn-color: var(--on, var(--kit-on-neutral));
-	--btn-background: var(--base, var(--kit-neutral));
-	--btn-radius: var(--shape, var(--kit-radius-md));
+.kit-button {
+	--button-color: var(--on, var(--kit-on-neutral));
+	--button-background: var(--base, var(--kit-neutral));
+	--button-radius: var(--shape, var(--kit-radius-md));
 }
 
-.kit-btn {
+.kit-button {
 	position: relative;
 	cursor: pointer;
 	border: none;
 	outline: none;
-	padding-top: var(--btn-spacing-x);
-	padding-bottom: var(--btn-spacing-x);
-	padding-right: var(--btn-spacing-y);
-	padding-left: var(--btn-spacing-y);
-	border-radius: var(--btn-radius);
-	color: var(--btn-color);
-	background-color: var(--btn-background);
+	padding-top: var(--button-spacing-x);
+	padding-bottom: var(--button-spacing-x);
+	padding-right: var(--button-spacing-y);
+	padding-left: var(--button-spacing-y);
+	border-radius: var(--button-radius);
+	color: var(--button-color);
+	background-color: var(--button-background);
 }
 
-.kit-btn,
-.kit-btn .kit-btn-content,
-.kit-btn .kit-btn-append,
-.kit-btn .kit-btn-prepend,
-.kit-btn .kit-btn-loading {
+.kit-button,
+.kit-button .kit-button-content,
+.kit-button .kit-button-append,
+.kit-button .kit-button-prepend,
+.kit-button .kit-button-loading {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: calc(var(--kit-spacing) * var(--btn-multiplier-gap));
-	font-size: calc(var(--kit-spacing) * var(--btn-multiplier-font-size));
+	gap: calc(var(--kit-spacing) * var(--button-multiplier-gap));
+	font-size: calc(var(--kit-spacing) * var(--button-multiplier-font-size));
 }
 
-.kit-btn::after {
+.kit-button::after {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -42,110 +42,110 @@
 	pointer-events: none;
 	border-radius: inherit;
 }
-.kit-btn:hover::after {
+.kit-button:hover::after {
 	opacity: 0.08;
 }
-.kit-btn:active::after {
+.kit-button:active::after {
 	opacity: 0.12;
 }
-.kit-btn:focus-visible::after {
+.kit-button:focus-visible::after {
 	opacity: 0.12;
 }
 
 /* size */
-.kit-btn[breakpoint]kit-btn--size-xs {
-	--btn-multiplier-x: 12;
-	--btn-multiplier-y: 2;
-	--btn-multiplier-gap: 2;
-	--btn-multiplier-font-size: 6;
+.kit-button[breakpoint]kit-button--size-xs {
+	--button-multiplier-x: 12;
+	--button-multiplier-y: 2;
+	--button-multiplier-gap: 2;
+	--button-multiplier-font-size: 6;
 }
-.kit-btn[breakpoint]kit-btn--size-xs .kit-icon.kit-icon--size-md {
-	--icon-size-multiplier-parent: 7;
-}
-
-.kit-btn[breakpoint]kit-btn--size-sm {
-	--btn-multiplier-x: 16;
-	--btn-multiplier-y: 3;
-	--btn-multiplier-gap: 4;
-	--btn-multiplier-font-size: 7;
-}
-.kit-btn[breakpoint]kit-btn--size-sm .kit-icon.kit-icon--size-md {
-	--icon-size-multiplier-parent: 8;
+.kit-button[breakpoint]kit-button--size-xs .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 7;
 }
 
-.kit-btn[breakpoint]kit-btn--size-md {
-	--btn-multiplier-x: 20;
-	--btn-multiplier-y: 4;
-	--btn-multiplier-gap: 4;
-	--btn-multiplier-font-size: 8;
+.kit-button[breakpoint]kit-button--size-sm {
+	--button-multiplier-x: 16;
+	--button-multiplier-y: 3;
+	--button-multiplier-gap: 4;
+	--button-multiplier-font-size: 7;
 }
-.kit-btn[breakpoint]kit-btn--size-md .kit-icon.kit-icon--size-md {
-	--icon-size-multiplier-parent: 9;
-}
-
-.kit-btn[breakpoint]kit-btn--size-lg {
-	--btn-multiplier-x: 24;
-	--btn-multiplier-y: 5;
-	--btn-multiplier-gap: 4;
-	--btn-multiplier-font-size: 9;
-}
-.kit-btn[breakpoint]kit-btn--size-lg .kit-icon.kit-icon--size-md {
-	--icon-size-multiplier-parent: 10;
+.kit-button[breakpoint]kit-button--size-sm .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 8;
 }
 
-.kit-btn[breakpoint]kit-btn--size-xl {
-	--btn-multiplier-x: 28;
-	--btn-multiplier-y: 6;
-	--btn-multiplier-gap: 5;
-	--btn-multiplier-font-size: 10;
+.kit-button[breakpoint]kit-button--size-md {
+	--button-multiplier-x: 20;
+	--button-multiplier-y: 4;
+	--button-multiplier-gap: 4;
+	--button-multiplier-font-size: 8;
 }
-.kit-btn[breakpoint]kit-btn--size-xl .kit-icon.kit-icon--size-md {
-	--icon-size-multiplier-parent: 11;
+.kit-button[breakpoint]kit-button--size-md .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 9;
+}
+
+.kit-button[breakpoint]kit-button--size-lg {
+	--button-multiplier-x: 24;
+	--button-multiplier-y: 5;
+	--button-multiplier-gap: 4;
+	--button-multiplier-font-size: 9;
+}
+.kit-button[breakpoint]kit-button--size-lg .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 10;
+}
+
+.kit-button[breakpoint]kit-button--size-xl {
+	--button-multiplier-x: 28;
+	--button-multiplier-y: 6;
+	--button-multiplier-gap: 5;
+	--button-multiplier-font-size: 10;
+}
+.kit-button[breakpoint]kit-button--size-xl .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 11;
 }
 
 /* density */
-.kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-default {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x));
-	--btn-spacing-x: 0;
-	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y));
+.kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-default {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	--button-spacing-x: 0;
+	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y));
 }
-.kit-btn.kit-btn--icon[breakpoint]kit-btn--density-default {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x));
-	width: calc(var(--kit-spacing) * var(--btn-multiplier-x));
-	--btn-spacing-x: 0;
-	--btn-spacing-y: 0;
-}
-
-.kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-compact {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
-	--btn-spacing-x: 0;
-	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) - 0.25rem);
-}
-.kit-btn.kit-btn--icon[breakpoint]kit-btn--density-compact {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
-	width: calc(var(--kit-spacing) * var(--btn-multiplier-x) - 0.25rem);
-	--btn-spacing-x: 0;
-	--btn-spacing-y: 0;
+.kit-button.kit-button--icon[breakpoint]kit-button--density-default {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	width: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	--button-spacing-x: 0;
+	--button-spacing-y: 0;
 }
 
-.kit-btn:not(.kit-btn--icon)[breakpoint]kit-btn--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
-	--btn-spacing-x: 0;
-	--btn-spacing-y: calc(var(--kit-spacing) * var(--btn-multiplier-y) + 0.25rem);
+.kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-compact {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	--button-spacing-x: 0;
+	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) - 0.25rem);
 }
-.kit-btn.kit-btn--icon[breakpoint]kit-btn--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
-	width: calc(var(--kit-spacing) * var(--btn-multiplier-x) + 0.25rem);
-	--btn-spacing-x: 0;
-	--btn-spacing-y: 0;
+.kit-button.kit-button--icon[breakpoint]kit-button--density-compact {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	width: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	--button-spacing-x: 0;
+	--button-spacing-y: 0;
+}
+
+.kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-comfortable {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	--button-spacing-x: 0;
+	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) + 0.25rem);
+}
+.kit-button.kit-button--icon[breakpoint]kit-button--density-comfortable {
+	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	width: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	--button-spacing-x: 0;
+	--button-spacing-y: 0;
 }
 
 /* variant */
-.kit-btn[breakpoint]kit-btn--variant-outline {
-	--btn-color: var(--base, var(--kit-neutral));
+.kit-button[breakpoint]kit-button--variant-outline {
+	--button-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
 }
-.kit-btn[breakpoint]kit-btn--variant-outline::before {
+.kit-button[breakpoint]kit-button--variant-outline::before {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -154,95 +154,91 @@
 	border-radius: inherit;
 }
 
-.kit-btn[breakpoint]kit-btn--variant-text {
-	--btn-color: var(--base, var(--kit-neutral));
+.kit-button[breakpoint]kit-button--variant-text {
+	--button-color: var(--base, var(--kit-neutral));
 	background-color: transparent;
 	border: none;
 }
 
 /* state */
-.kit-btn.kit-btn--info:not([class*='btn--variant-']) {
+.kit-button.kit-button--info:not([class*='button--variant-']) {
 	--on: var(--kit-on-info);
 	--base: var(--kit-info);
 }
-.kit-btn.kit-btn--info[class*='btn--variant-'] {
+.kit-button.kit-button--info[class*='button--variant-'] {
 	--base: var(--kit-info);
 }
-.kit-btn.kit-btn--success:not([class*='btn--variant-']) {
+.kit-button.kit-button--success:not([class*='button--variant-']) {
 	--on: var(--kit-on-success);
 	--base: var(--kit-success);
 }
-.kit-btn.kit-btn--success[class*='btn--variant-'] {
+.kit-button.kit-button--success[class*='button--variant-'] {
 	--base: var(--kit-success);
 }
-.kit-btn.kit-btn--warning:not([class*='btn--variant-']) {
+.kit-button.kit-button--warning:not([class*='button--variant-']) {
 	--on: var(--kit-on-warning);
 	--base: var(--kit-warning);
 }
-.kit-btn.kit-btn--warning[class*='btn--variant-'] {
+.kit-button.kit-button--warning[class*='button--variant-'] {
 	--base: var(--kit-warning);
 }
-.kit-btn.kit-btn--error:not([class*='btn--variant-']) {
+.kit-button.kit-button--error:not([class*='button--variant-']) {
 	--on: var(--kit-on-error);
 	--base: var(--kit-error);
 }
-.kit-btn.kit-btn--error[class*='btn--variant-'] {
+.kit-button.kit-button--error[class*='button--variant-'] {
 	--base: var(--kit-error);
 }
 
 /* events */
-.kit-btn.kit-btn--active:not([class*='btn--variant-']) {
-	background-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--btn-background) 90%, var(--kit-scrim));
+.kit-button:not([class*='button--variant-']):active,
+.kit-button.kit-button--active:not([class*='button--variant-']) {
+	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
 }
-.kit-btn.kit-btn--active[class*='btn--variant-'] {
+.kit-button.kit-button--active[class*='button--variant-']:active,
+.kit-button.kit-button--active[class*='button--variant-'] {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 	border-color: color-mix(in oklab, currentColor 15%, transparent);
 }
-/* .kit-btn:hover:not([class*='btn--variant-']) {
-	background-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--btn-background) 85%, var(--kit-scrim));
-}
-.kit-btn:hover[class*='btn--variant-'] {
-	background-color: color-mix(in oklab, currentColor 25%, transparent);
-} */
 
 /* icon */
-.kit-btn i::before,
-.kit-btn .kit-icon {
-	--base-parent: var(--btn-color);
+.kit-button i::before,
+.kit-button .kit-icon {
+	--base-parent: var(--button-color);
 }
 
 /* disabled */
-.kit-btn.kit-btn--disabled,
-.kit-btn[disabled],
-.kit-btn.kit-btn--loading {
+.kit-button.kit-button--disabled,
+.kit-button[disabled],
+.kit-button.kit-button--loading {
 	pointer-events: none;
 	user-select: none;
 	cursor: default;
 }
-.kit-btn:not([class*='btn--variant-']).kit-btn--disabled {
-	color: color-mix(in oklab, var(--btn-color) 40%, transparent) !important;
-	background-color: color-mix(in oklab, var(--btn-background) 70%, transparent) !important;
-	border-color: color-mix(in oklab, var(--btn-background) 70%, transparent) !important;
+.kit-button:not([class*='button--variant-']).kit-button--disabled {
+	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
+	background-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
+	border-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
 }
-.kit-btn:not([class*='btn--variant-']).kit-btn--disabled i:before {
-	color: color-mix(in oklab, var(--btn-color) 40%, transparent) !important;
+.kit-button:not([class*='button--variant-']).kit-button--disabled i:before {
+	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
 }
-.kit-btn[class*='btn--variant-'].kit-btn--disabled,
-.kit-btn[class*='btn--variant-'].kit-btn--disabled i::before {
-	color: color-mix(in oklab, var(--btn-background) 40%, transparent) !important;
+.kit-button[class*='button--variant-'].kit-button--disabled,
+.kit-button[class*='button--variant-'].kit-button--disabled i::before {
+	color: color-mix(in oklab, var(--button-background) 40%, transparent) !important;
 }
 
 /* loading */
-.kit-btn.kit-btn--loading > .kit-btn-content {
-	color: transparent;
-	opacity: 0;
+.kit-button.kit-button--loading > .kit-button-content,
+.kit-button.kit-button--loading > .kit-button-append,
+.kit-button.kit-button--loading > .kit-button-prepend {
+	visibility: hidden;
 }
-.kit-btn.kit-btn--loading > .kit-btn-loading {
+.kit-button.kit-button--loading > .kit-button-loading {
 	position: absolute;
 	min-width: fit-content;
 }
-.kit-btn.kit-btn--loading > .kit-btn-loading .kit-icon-load {
+.kit-button.kit-button--loading > .kit-button-loading .kit-icon-load {
 	animation: icon-rotate 1s ease-out infinite;
 }

@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Btn, Dialog } from 'lapikit/components';
+	import { Button, Dialog } from 'lapikit/components';
 
 	let open: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (open = true)}>Open dialog</Btn>
+<Button onclick={() => (open = true)}>Open dialog</Button>
 
 <Dialog bind:open persistent>
 	<div>
-		<Btn onclick={() => (open = false)}>Close</Btn>
+		<Button onclick={() => (open = false)}>Close</Button>
 	</div>
 	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae

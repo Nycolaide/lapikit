@@ -10,7 +10,7 @@
 		recentSearchesWithData,
 		type RecencyGroups
 	} from '$lib/stores/history';
-	import { Btn, Chip, Dialog, Icon, List, ListItem } from 'lapikit/components';
+	import { Button, Chip, Dialog, Icon, List, ListItem } from 'lapikit/components';
 	import { onDestroy, onMount } from 'svelte';
 
 	let open: boolean = $state(false);
@@ -28,7 +28,6 @@
 
 	$effect(() => {
 		const result = groupByRecency($recentSearchesWithData);
-		console.log('result', result);
 		historyResult = result;
 	});
 
@@ -58,11 +57,11 @@
 	});
 </script>
 
-<Btn class="display-mobile" onclick={() => (open = true)} icon>
+<Button class="display-mobile" onclick={() => (open = true)} icon>
 	<Icon icon="mgc_search_line" />
-</Btn>
+</Button>
 
-<Btn class="hidden-mobile" onclick={() => (open = true)}>
+<Button class="hidden-mobile" onclick={() => (open = true)}>
 	<Icon icon="mgc_search_line" />
 
 	<span class="pr-[2rem]">
@@ -73,7 +72,7 @@
 		{$isMac ? '⌘' : 'ctrl'}
 	</Chip>
 	<Chip size="sm">k</Chip>
-</Btn>
+</Button>
 
 <Dialog bind:open position="top" classContent="mt-[2rem] md:mt-[5rem]">
 	<input

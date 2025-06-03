@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Btn, Dialog } from 'lapikit/components';
+	import { Button, Dialog } from 'lapikit/components';
 
 	let openDefault: boolean = $state(false);
 	let openCompact: boolean = $state(false);
 	let openComfortable: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (openDefault = true)}>Default</Btn>
-<Btn onclick={() => (openCompact = true)}>Comptact</Btn>
-<Btn onclick={() => (openComfortable = true)}>Comfortable</Btn>
+<Button onclick={() => (openDefault = true)}>Default</Button>
+<Button onclick={() => (openCompact = true)}>Comptact</Button>
+<Button onclick={() => (openComfortable = true)}>Comfortable</Button>
 
 <Dialog bind:open={openDefault}>
 	<div>

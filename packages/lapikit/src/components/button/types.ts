@@ -1,7 +1,7 @@
 import type { Component } from '$lib/internal/types.js';
 import type { Snippet } from 'svelte';
 
-export interface BtnProps extends Component {
+export interface ButtonProps extends Component {
 	ref?: HTMLElement | null;
 	is?: 'button' | 'a' | 'input';
 	dark?: boolean;
@@ -24,4 +24,5 @@ export interface BtnProps extends Component {
 	load?: Snippet;
 	append?: Snippet;
 	prepend?: Snippet;
+	noRipple?: boolean;
 }

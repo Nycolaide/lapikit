@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	import { Btn, Separator } from 'lapikit/components';
+	import { Button, Separator } from 'lapikit/components';
 	import type { SandboxActionsProps } from './types';
 
 	let {
@@ -18,17 +18,17 @@
 
 <div>
 	{#if !presentation && !tab?.includes('only')}
-		<Btn onclick={() => handleTab('preview')} active={tab === 'preview'}>
+		<Button onclick={() => handleTab('preview')} active={tab === 'preview'}>
 			{$t('sandbox.preview')}
-		</Btn>
+		</Button>
 
-		<Btn onclick={() => handleTab('code')} active={tab === 'code'}>
+		<Button onclick={() => handleTab('code')} active={tab === 'code'}>
 			{$t('sandbox.code')}
-		</Btn>
+		</Button>
 	{/if}
 
 	{#if presentation || tab === 'code' || tab === 'code-only'}
-		<Btn
+		<Button
 			onclick={() => handleExpand(expanded !== 'fit-content' ? 'fit-content' : '300px')}
 			active={expanded === 'fit-content'}
 		>
@@ -37,7 +37,7 @@
 			{:else}
 				{$t('sandbox.expand_editor')}
 			{/if}
-		</Btn>
+		</Button>
 	{/if}
 </div>
 

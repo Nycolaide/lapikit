@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Btn, List, ListItem, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
+	import { Button, List, ListItem, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 
@@ -32,7 +32,7 @@
 		</List>
 		<div class="justify-end gap-3 lg:flex">
 			<DarkmodeV2 />
-			<Btn density="comfortable">{$t('homepage.top_cta')}</Btn>
+			<Button density="comfortable">{$t('homepage.top_cta')}</Button>
 		</div>
 	</Appbar>
 
@@ -56,9 +56,9 @@
 				{$t('homepage.main_introduction')}
 			</p>
 			<div>
-				<Btn size="lg" href="/docs/button">
+				<Button size="lg" href="/docs/button">
 					{$t('homepage.main_cta')}
-				</Btn>
+				</Button>
 			</div>
 		</div>
 	</section>

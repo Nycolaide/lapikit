@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Btn, Dialog } from 'lapikit/components';
+	import { Button, Dialog } from 'lapikit/components';
 
 	let openTop: boolean = $state(false);
 	let openCenter: boolean = $state(false);
@@ -7,10 +7,10 @@
 	let openResponsive: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (openTop = true)}>Dialog top</Btn>
-<Btn onclick={() => (openCenter = true)}>Dialog center</Btn>
-<Btn onclick={() => (openBottom = true)}>Dialog bottom</Btn>
-<Btn onclick={() => (openResponsive = true)}>Dialog responsive</Btn>
+<Button onclick={() => (openTop = true)}>Dialog top</Button>
+<Button onclick={() => (openCenter = true)}>Dialog center</Button>
+<Button onclick={() => (openBottom = true)}>Dialog bottom</Button>
+<Button onclick={() => (openResponsive = true)}>Dialog responsive</Button>
 
 <Dialog bind:open={openTop} position="top">
 	<div>

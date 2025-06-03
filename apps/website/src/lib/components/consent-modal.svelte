@@ -8,7 +8,7 @@
 		PUBLIC_GOOGLE_TAG_MANAGER_ID
 	} from '$env/static/public';
 	import { t } from '$lib/i18n';
-	import { Btn, Modal, Separator } from 'lapikit/components';
+	import { Button, Modal, Separator } from 'lapikit/components';
 	import { RGPD } from 'site-kit';
 
 	let { open = $bindable() } = $props();
@@ -32,7 +32,7 @@
 		<Modal bind:open={model.open} size="sm" persistent>
 			<div class="flex items-center justify-between">
 				<p>{$t('rgpd.title')}</p>
-				<Btn onclick={() => model.action('refuse')}>{$t('rgpd.decline')}</Btn>
+				<Button onclick={() => model.action('refuse')}>{$t('rgpd.decline')}</Button>
 			</div>
 			<Separator />
 			<div class="mt-4 text-center">
@@ -40,7 +40,7 @@
 			</div>
 			<Separator />
 			<div class="mt-4 flex items-center justify-end gap-2">
-				<Btn onclick={() => model.action('accept')}>{$t('rgpd.accept')}</Btn>
+				<Button onclick={() => model.action('accept')}>{$t('rgpd.accept')}</Button>
 			</div>
 		</Modal>
 	{/snippet}
