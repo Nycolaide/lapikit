@@ -1,11 +1,12 @@
 /* root */
 .kit-chip {
-	--chip-color: var(--on, var(--kit-on-neutral));
-	--chip-background: var(--base, var(--kit-neutral));
+	--chip-color: var(--on, var(--kit-on-container));
+	--chip-background: var(--base, var(--kit-container));
 	--chip-radius: var(--shape, var(--kit-radius-full));
 }
 
 .kit-chip {
+	min-width: calc(var(--kit-spacing) * var(--chip-multiplier-x));
 	position: relative;
 	border: none;
 	outline: none;
@@ -63,12 +64,18 @@
 	--chip-multiplier-gap: 2;
 	--chip-multiplier-font-size: 6;
 }
+.kit-chip[breakpoint]kit-chip--size-xs .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 7;
+}
 
 .kit-chip[breakpoint]kit-chip--size-sm {
 	--chip-multiplier-x: 14;
 	--chip-multiplier-y: 2;
 	--chip-multiplier-gap: 2;
 	--chip-multiplier-font-size: 6.5;
+}
+.kit-chip[breakpoint]kit-chip--size-sm .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 8;
 }
 
 .kit-chip[breakpoint]kit-chip--size-md {
@@ -77,12 +84,18 @@
 	--chip-multiplier-gap: 4;
 	--chip-multiplier-font-size: 7;
 }
+.kit-chip[breakpoint]kit-chip--size-md .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 9;
+}
 
 .kit-chip[breakpoint]kit-chip--size-lg {
 	--chip-multiplier-x: 18;
 	--chip-multiplier-y: 3;
 	--chip-multiplier-gap: 4;
 	--chip-multiplier-font-size: 8;
+}
+.kit-chip[breakpoint]kit-chip--size-lg .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 10;
 }
 
 .kit-chip[breakpoint]kit-chip--size-xl {
@@ -91,6 +104,9 @@
 	--chip-multiplier-gap: 4;
 	--chip-multiplier-font-size: 9;
 }
+.kit-chip[breakpoint]kit-chip--size-xl .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 11;
+}
 
 /* variant */
 .kit-chip[breakpoint]kit-chip--variant-filled {
@@ -98,7 +114,7 @@
 }
 
 .kit-chip[breakpoint]kit-chip--variant-outline {
-	--chip-color: var(--base, var(--kit-neutral));
+	--chip-color: var(--base, var(--kit-oncontainer));
 	background-color: transparent;
 }
 .kit-chip[breakpoint]kit-chip--variant-outline::before {
@@ -163,42 +179,46 @@
 }
 
 /* events */
+.kit-chip[class*='chip--variant-filled']:active,
 .kit-chip.kit-chip--active[class*='chip--variant-filled'] {
 	background-color: color-mix(in oklab, var(--chip-background) 90%, var(--kit-scrim));
 }
+.kit-chip.kit-chip--active[class*='chip--variant-']:not([class*='variant-filled']):active,
 .kit-chip.kit-chip--active[class*='chip--variant-']:not([class*='variant-filled']) {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 }
 
 /* disabled */
 .kit-chip.kit-chip--disabled,
-.kit-chip[disabled] {
-	pointer-events: none;
-	user-select: none;
-	cursor: default;
-}
-.kit-chip:not([class*='chip--variant-']).kit-chip--disabled {
-	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
-	background-color: color-mix(in oklab, var(--chip-background) 70%, transparent) !important;
-	border-color: color-mix(in oklab, var(--chip-background) 70%, transparent) !important;
-}
-.kit-chip:not([class*='chip--variant-']).kit-chip--disabled i:before {
-	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
-}
-.kit-chip[class*='chip--variant-'].kit-chip--disabled,
-.kit-chip[class*='chip--variant-'].kit-chip--disabled i:before {
-	color: color-mix(in oklab, var(--chip-background) 40%, transparent) !important;
-}
-
-/* loading */
+.kit-chip[disabled],
 .kit-chip.kit-chip--loading {
 	pointer-events: none;
 	user-select: none;
 	cursor: default;
 }
-.kit-chip.kit-chip--loading > .kit-chip-content {
-	color: transparent;
-	opacity: 0;
+.kit-chip[class*='chip--variant-filled'].kit-chip--disabled {
+	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
+	background-color: color-mix(in oklab, var(--chip-background) 70%, transparent) !important;
+}
+.kit-chip[class*='chip--variant-filled'].kit-chip--disabled i:before {
+	color: color-mix(in oklab, var(--chip-color) 40%, transparent) !important;
+}
+.kit-chip[class*='chip--variant-']:not([class*='variant-filled']).kit-chip--disabled,
+.kit-chip[class*='chip--variant-']:not([class*='variant-filled']).kit-chip--disabled i::before {
+	color: color-mix(in oklab, var(--chip-background) 40%, transparent) !important;
+}
+
+/* icon */
+.kit-chip i::before,
+.kit-chip .kit-icon {
+	--base-parent: var(--chip-color);
+}
+
+/* loading */
+.kit-chip.kit-chip--loading > .kit-chip-content,
+.kit-chip.kit-chip--loading > .kit-chip-append,
+.kit-chip.kit-chip--loading > .kit-chip-prepend {
+	visibility: hidden;
 }
 .kit-chip.kit-chip--loading > .kit-chip-loading {
 	position: absolute;

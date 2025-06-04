@@ -26,4 +26,5 @@ export interface ChipProps extends Component {
 	type?: 'button';
 	label?: string;
 	closable?: boolean;
+	noRipple?: boolean;
 }

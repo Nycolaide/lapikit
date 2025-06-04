@@ -6,6 +6,7 @@
 	// external
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 	import Close from '../../assets/icons/close-fill.svelte';
+	import { ripple } from '$lib/internal/ripple.js';
 
 	let {
 		children,
@@ -35,6 +36,7 @@
 		loading,
 		rounded,
 		closable,
+		noRipple,
 		...rest
 	}: ChipProps = $props();
 
@@ -73,6 +75,9 @@
 		aria-label={type !== 'button' ? label : undefined}
 		disabled={href ? undefined : disabled}
 		type={href ? undefined : type}
+		use:ripple={{
+			disabled: noRipple || disabled || is === 'div' || is === 'span'
+		}}
 		style:--base={assets.color(background)}
 		style:--on={assets.color(color)}
 		style:--shape={assets.shape(rounded)}

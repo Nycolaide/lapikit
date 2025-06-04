@@ -221,7 +221,6 @@
 .kit-button[class*='button--variant-filled'].kit-button--disabled {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
 	background-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
-	border-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
 }
 .kit-button[class*='button--variant-filled'].kit-button--disabled i:before {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
