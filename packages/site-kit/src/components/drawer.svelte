@@ -39,8 +39,8 @@
 		overflow-y: auto;
 		width: 100%;
 		bottom: 0;
-		background-color: var(--kit-neutral);
-		color: var(--kit-on-neutral);
+		background-color: var(--kit-surface);
+		color: var(--kit-on-surface);
 		padding-bottom: 3.5rem;
 	}
 

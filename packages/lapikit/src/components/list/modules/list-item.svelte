@@ -2,6 +2,9 @@
 	import { getAssets } from '$lib/internal/index.js';
 	import type { ListItemProps } from '../types.js';
 
+	// external
+	import { ripple } from '$lib/internal/ripple.js';
+
 	let {
 		children,
 		append,
@@ -16,6 +19,7 @@
 		disabled,
 		active,
 		href,
+		noRipple,
 		...rest
 	}: ListItemProps = $props();
 
@@ -42,6 +46,9 @@
 		disabled && 'kit-list-item--disabled',
 		rest.class
 	]}
+	use:ripple={{
+		disabled: noRipple || disabled || is === 'div'
+	}}
 	role={is === 'button' ? 'listitem' : undefined}
 	tabindex={href && disabled ? -2 : 0}
 	aria-disabled={href ? disabled : undefined}

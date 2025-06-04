@@ -8,13 +8,12 @@
 		is = 'div',
 		dark,
 		light,
-		orientation = 'vertical',
 		background,
 		color,
 		rounded,
 		size = 'md',
 		density = 'default',
-		variant,
+		variant = 'filled',
 		nav,
 		...rest
 	}: ListProps = $props();
@@ -30,7 +29,6 @@
 		'kit-list',
 		light && 'light',
 		dark && 'dark',
-		orientation && assets.className('list', 'orientation', orientation),
 		size && assets.className('list', 'size', size),
 		variant && assets.className('list', 'variant', variant),
 		density && assets.className('list', 'density', density),

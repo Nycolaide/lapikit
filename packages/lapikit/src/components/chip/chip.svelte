@@ -20,7 +20,7 @@
 		dark,
 		light,
 		active,
-		variant,
+		variant = 'filled',
 		error,
 		info,
 		success,
@@ -39,6 +39,11 @@
 	}: ChipProps = $props();
 
 	const assets = getAssets();
+
+	$effect(() => {
+		const refProps = { ...rest };
+		if (refProps?.onclick) is = 'button';
+	});
 </script>
 
 {#if !closable || (open && closable)}

@@ -11,7 +11,7 @@ export interface ChipProps extends Component {
 	dark?: boolean;
 	light?: boolean;
 	href?: string;
-	variant?: 'outline';
+	variant?: 'outline' | 'filled';
 	density?: 'compact' | 'comfortable' | 'default';
 	active?: boolean;
 	loading?: boolean;

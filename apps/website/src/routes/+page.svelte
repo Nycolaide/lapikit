@@ -19,11 +19,7 @@
 		style="background: transparent;"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
-		<List
-			orientation="horizontal"
-			rounded="full"
-			class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto "
-		>
+		<List rounded="full" class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto ">
 			{#each navigationMain as { key, path, external } (key)}
 				<ListItem href={path} target={external && '_blank'} active={page.url.pathname === path}>
 					{$t(`navigation.${key}`)}

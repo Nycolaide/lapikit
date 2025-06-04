@@ -148,7 +148,7 @@
 		<p>Navigation</p>
 
 		{#each $pagesNavigation as section, index (section.key)}
-			<List class="hidden-mobile">
+			<List class="hidden-mobile" nav>
 				{#if section.submenu}
 					<ListItem>
 						{section.key}
