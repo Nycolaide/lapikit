@@ -3,11 +3,11 @@ import type { Snippet } from 'svelte';
 
 export interface ButtonProps extends Component {
 	ref?: HTMLElement | null;
-	is?: 'button' | 'a' | 'input';
+	is?: 'button' | 'a';
 	dark?: boolean;
 	light?: boolean;
 	href?: string;
-	variant?: 'outline' | 'text';
+	variant?: 'outline' | 'text' | 'filled';
 	density?: 'compact' | 'comfortable' | 'default';
 	active?: boolean;
 	loading?: boolean;

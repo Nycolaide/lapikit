@@ -1,3 +1,5 @@
+<script lang="ts"></script>
+
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
 	><defs
 		><linearGradient id="a" x1="50%" x2="50%" y1="5.271%" y2="91.793%"

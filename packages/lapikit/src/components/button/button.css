@@ -1,7 +1,7 @@
 /* root */
 .kit-button {
-	--button-color: var(--on, var(--kit-on-neutral));
-	--button-background: var(--base, var(--kit-neutral));
+	--button-color: var(--on, var(--kit-on-container));
+	--button-background: var(--base, var(--kit-container));
 	--button-radius: var(--shape, var(--kit-radius-md));
 }
 
@@ -16,7 +16,7 @@
 	padding-left: var(--button-spacing-y);
 	border-radius: var(--button-radius);
 	color: var(--button-color);
-	background-color: var(--button-background);
+	font-weight: 500;
 }
 
 .kit-button,
@@ -141,8 +141,12 @@
 }
 
 /* variant */
+.kit-button[breakpoint]kit-button--variant-filled {
+	background-color: var(--button-background);
+}
+
 .kit-button[breakpoint]kit-button--variant-outline {
-	--button-color: var(--base, var(--kit-neutral));
+	--button-color: var(--base, var(--kit-on-container));
 	background-color: transparent;
 }
 .kit-button[breakpoint]kit-button--variant-outline::before {
@@ -155,7 +159,7 @@
 }
 
 .kit-button[breakpoint]kit-button--variant-text {
-	--button-color: var(--base, var(--kit-neutral));
+	--button-color: var(--base, var(--kit-on-container));
 	background-color: transparent;
 	border: none;
 }
@@ -191,13 +195,13 @@
 }
 
 /* events */
-.kit-button:not([class*='button--variant-']):active,
-.kit-button.kit-button--active:not([class*='button--variant-']) {
+.kit-button[class*='button--variant-filled']:active,
+.kit-button.kit-button--active[class*='button--variant-filled'] {
 	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
 }
-.kit-button.kit-button--active[class*='button--variant-']:active,
-.kit-button.kit-button--active[class*='button--variant-'] {
+.kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']):active,
+.kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']) {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 	border-color: color-mix(in oklab, currentColor 15%, transparent);
 }
@@ -216,16 +220,17 @@
 	user-select: none;
 	cursor: default;
 }
-.kit-button:not([class*='button--variant-']).kit-button--disabled {
+.kit-button[class*='button--variant-filled'].kit-button--disabled {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
 	background-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
 	border-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
 }
-.kit-button:not([class*='button--variant-']).kit-button--disabled i:before {
+.kit-button[class*='button--variant-filled'].kit-button--disabled i:before {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
 }
-.kit-button[class*='button--variant-'].kit-button--disabled,
-.kit-button[class*='button--variant-'].kit-button--disabled i::before {
+.kit-button[class*='button--variant-']:not([class*='variant-filled']).kit-button--disabled,
+.kit-button[class*='button--variant-']:not([class*='variant-filled']).kit-button--disabled
+	i::before {
 	color: color-mix(in oklab, var(--button-background) 40%, transparent) !important;
 }
 

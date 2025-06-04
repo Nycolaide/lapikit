@@ -17,7 +17,7 @@
 		dark,
 		light,
 		active,
-		variant,
+		variant = 'filled',
 		error,
 		info,
 		success,
@@ -37,11 +37,6 @@
 	}: ButtonProps = $props();
 
 	const assets = getAssets();
-
-	$effect(() => {
-		if (type === 'submit') is = 'input';
-		if (type === 'reset') is = 'input';
-	});
 </script>
 
 <svelte:element

@@ -2,6 +2,6 @@
 	import { Button } from 'lapikit/components';
 </script>
 
-<Button>Default</Button>
+<Button>Filled</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="text">Text</Button>

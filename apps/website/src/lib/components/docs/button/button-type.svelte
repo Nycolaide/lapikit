@@ -4,5 +4,3 @@
 
 <Button href="#click">anchor</Button>
 <Button>button</Button>
-<Button type="submit" value="valid">submit</Button>
-<Button type="reset" value="reset button">reset</Button>
