@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Btn, Dialog } from 'lapikit/components';
+	import { Button, Dialog } from 'lapikit/components';
 
 	let open: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (open = true)}>Open dialog</Btn>
+<Button onclick={() => (open = true)}>Open dialog</Button>
 
 <Dialog bind:open>
 	<div>

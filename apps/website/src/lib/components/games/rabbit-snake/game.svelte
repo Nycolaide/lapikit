@@ -10,7 +10,7 @@
 		handleActionDisplay
 	} from './helper';
 	import type { Direction, Position } from './types';
-	import { Btn, Icon } from 'lapikit/components';
+	import { Button, Icon } from 'lapikit/components';
 	import { t } from '$lib/i18n';
 
 	// images
@@ -127,10 +127,10 @@
 		<span>{$t('game.score', { count: player.length - 1 })}</span>
 
 		{#if isPlaying}
-			<Btn onclick={() => pauseGame()}>
+			<Button onclick={() => pauseGame()}>
 				{$t('game.pause')}
 				<Icon icon="mgc_pause_fill" color="on-surface" />
-			</Btn>
+			</Button>
 		{/if}
 	</div>
 
@@ -144,7 +144,7 @@
 						{#each handleAction as { key, icon, display, action } (key)}
 							{#if display.includes(isFinished ? 'finish' : isPaused ? 'pause' : 'start')}
 								<button
-									class={[`btn-${key}-game`, 'btn-close-game grid items-center gap-6']}
+									class={[`Button-${key}-game`, 'Button-close-game grid items-center gap-6']}
 									onclick={action}
 								>
 									<i
@@ -226,24 +226,24 @@
 		max-width: calc(100% - var(--modal-spacing-x) * 2);
 	}
 
-	.btn-play-game,
-	.btn-replay-game,
-	.btn-close-game {
+	.Button-play-game,
+	.Button-replay-game,
+	.Button-close-game {
 		color: var(--kit-on-primary);
 	}
 
-	.btn-play-game i,
-	.btn-close-game i,
-	.btn-replay-game i {
+	.Button-play-game i,
+	.Button-close-game i,
+	.Button-replay-game i {
 		background-color: var(--kit-primary);
 	}
 
-	.btn-close-game i {
+	.Button-close-game i {
 		border-radius: var(--kit-radius-xl);
 	}
 
-	.btn-play-game i,
-	.btn-replay-game i {
+	.Button-play-game i,
+	.Button-replay-game i {
 		border-radius: var(--kit-radius-full);
 	}
 

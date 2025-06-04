@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Btn, Dropdown, Icon } from 'lapikit/components';
+	import { Button, Dropdown, Icon } from 'lapikit/components';
 
 	let refTop = $state(null);
 	let refBottom = $state(null);
@@ -9,7 +9,7 @@
 
 <Dropdown openOnHover position="top">
 	{#snippet activator(model, handleMouseEvent)}
-		<Btn
+		<Button
 			bind:ref={refTop}
 			onclick={() => model.toggle(refTop)}
 			onmouseover={() => handleMouseEvent('open', refTop)}
@@ -17,7 +17,7 @@
 		>
 			Top
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>
@@ -30,7 +30,7 @@
 
 <Dropdown openOnHover position="left">
 	{#snippet activator(model, handleMouseEvent)}
-		<Btn
+		<Button
 			bind:ref={refLeft}
 			onclick={() => model.toggle(refLeft)}
 			onmouseover={() => handleMouseEvent('open', refLeft)}
@@ -38,7 +38,7 @@
 		>
 			Left
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>
@@ -51,7 +51,7 @@
 
 <Dropdown openOnHover position="right">
 	{#snippet activator(model, handleMouseEvent)}
-		<Btn
+		<Button
 			bind:ref={refRight}
 			onclick={() => model.toggle(refRight)}
 			onmouseover={() => handleMouseEvent('open', refRight)}
@@ -59,7 +59,7 @@
 		>
 			Right
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>
@@ -72,7 +72,7 @@
 
 <Dropdown openOnHover position="bottom">
 	{#snippet activator(model, handleMouseEvent)}
-		<Btn
+		<Button
 			bind:ref={refBottom}
 			onclick={() => model.toggle(refBottom)}
 			onmouseover={() => handleMouseEvent('open', refBottom)}
@@ -80,7 +80,7 @@
 		>
 			Bottom
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>

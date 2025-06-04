@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Accordion, AccordionItem, Icon, Btn } from 'lapikit/components';
+	import { Accordion, AccordionItem, Icon, Button } from 'lapikit/components';
 	import { useAccordion } from 'lapikit/actions';
 
 	let items = [
@@ -20,7 +20,7 @@
 		>
 			{#snippet activator()}
 				<p>{item.title}</p>
-				<Btn info onclick={() => alert('hello')}>Info</Btn>
+				<Button info onclick={() => alert('hello')}>Info</Button>
 			{/snippet}
 
 			<p>{item.content}</p>

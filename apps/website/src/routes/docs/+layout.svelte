@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { BROWSER } from 'esm-env';
 	import { t, locale, locales } from '$lib/i18n';
-	import { Appbar, Btn, Icon, List, ListItem, Spacer } from 'lapikit/components';
+	import { Appbar, Button, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer, Component, Darkmode } from 'site-kit';
 	import { colorScheme, setColorScheme } from 'lapikit/stores';
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
@@ -31,6 +31,7 @@
 
 	onMount(() => {
 		setPages(data?.pages);
+		console.log('data', data);
 	});
 
 	$effect(() => {
@@ -137,9 +138,9 @@
 	<Spacer />
 	<SearchBar />
 	<DarkmodeV2 />
-	<Btn icon>
+	<Button icon>
 		<Icon icon="mgc_github_line" />
-	</Btn>
+	</Button>
 </Appbar>
 
 <Drawer bind:open>
@@ -203,7 +204,7 @@
 		{/each}
 	{/snippet}
 
-	<Btn
+	<Button
 		onclick={() => (open = !open)}
 		size="xl"
 		density="comfortable"
@@ -211,7 +212,7 @@
 		class="hidden-laptop fixed right-[0.75rem] bottom-[0.75rem] z-1100"
 	>
 		{open ? $t('navigation.close') : $t('navigation.open')}
-	</Btn>
+	</Button>
 	<Darkmode scheme={$colorScheme} handle={setColorScheme} />
 
 	<p>{$colorScheme}</p>

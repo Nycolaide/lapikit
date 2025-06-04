@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Alert, Btn } from 'lapikit/components';
+	import { Alert, Button } from 'lapikit/components';
 
 	let open = $state(true);
 </script>
 
 {#if !open}
-	<Btn onclick={() => (open = true)}>Open alert</Btn>
+	<Button onclick={() => (open = true)}>Open alert</Button>
 {/if}
 
 <Alert closable bind:open>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Appbar, List, ListItem, Btn } from 'lapikit/components';
+	import { Appbar, List, ListItem, Button } from 'lapikit/components';
 </script>
 
 <Appbar classContent="grid grid-cols-3" density="comfortable">
@@ -10,16 +10,16 @@
 		<ListItem href="https://github.com/Nycolaide/lapikit" target="_blank">GitHub</ListItem>
 	</List>
 	<div class="justify-end gap-3 lg:flex">
-		<Btn density="comfortable">Get started</Btn>
+		<Button density="comfortable">Get started</Button>
 	</div>
 </Appbar>
 
 <!-- <div class="container-exemple">
 	<Navbar orientation="vertical">
-		<Btn>Home</Btn>
+		<Button>Home</Button>
 		<Spacer />
-		<Btn>Setting</Btn>
-		<Btn>Administration</Btn>
+		<Button>Setting</Button>
+		<Button>Administration</Button>
 	</Navbar>
 </div>
 

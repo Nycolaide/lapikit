@@ -2,7 +2,7 @@
 	import type { SandboxCodeProps } from './types';
 	import { getHighlighterSingleton } from '$lib/shiki';
 	import { copyToClipboard } from 'site-kit/actions';
-	import { Btn, Icon } from 'lapikit/components';
+	import { Button, Icon } from 'lapikit/components';
 
 	let { code, expanded = $bindable() }: SandboxCodeProps = $props();
 
@@ -39,14 +39,14 @@
 	});
 </script>
 
-<Btn
+<Button
 	class="absolute right-[0.5rem] z-2 mt-[0.5rem]"
 	icon
 	onclick={() => (copy = true)}
 	active={copy}
 >
 	<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
-</Btn>
+</Button>
 
 <div class="lapikit-sandbox--code overflow-auto" style:height={expanded}>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->

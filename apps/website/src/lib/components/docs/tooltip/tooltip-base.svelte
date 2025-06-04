@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Btn, Tooltip } from 'lapikit/components';
+	import { Button, Tooltip } from 'lapikit/components';
 </script>
 
 <Tooltip label="Hello word !">
-	<Btn>Show Tooltip</Btn>
+	<Button>Show Tooltip</Button>
 </Tooltip>

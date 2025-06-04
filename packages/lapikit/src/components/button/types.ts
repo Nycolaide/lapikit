@@ -1,13 +1,13 @@
 import type { Component } from '$lib/internal/types.js';
 import type { Snippet } from 'svelte';
 
-export interface BtnProps extends Component {
+export interface ButtonProps extends Component {
 	ref?: HTMLElement | null;
-	is?: 'button' | 'a' | 'input';
+	is?: 'button' | 'a';
 	dark?: boolean;
 	light?: boolean;
 	href?: string;
-	variant?: 'outline' | 'text' | 'dash' | 'link';
+	variant?: 'outline' | 'text' | 'filled';
 	density?: 'compact' | 'comfortable' | 'default';
 	active?: boolean;
 	loading?: boolean;
@@ -19,8 +19,10 @@ export interface BtnProps extends Component {
 	color?: string;
 	background?: string;
 	size?: string | { [key: string]: string };
-	type?: 'button' | 'submit' | 'reset' | 'radio' | 'checkbox';
-	label?: string;
+	type?: 'button' | 'submit' | 'reset';
 	icon?: boolean;
 	load?: Snippet;
+	append?: Snippet;
+	prepend?: Snippet;
+	noRipple?: boolean;
 }

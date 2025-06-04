@@ -1,20 +1,23 @@
 <script lang="ts">
 	import { getAssets } from '$lib/internal/index.js';
-	import { Icon } from '../index.js';
-	import type { BtnProps } from './types.js';
+	import type { ButtonProps } from './types.js';
 
 	// external
+	import { Icon } from '../index.js';
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
+	import { ripple } from '$lib/internal/ripple.js';
 
 	let {
 		children,
+		prepend,
+		append,
 		ref = $bindable(),
 		is = 'button',
 		href,
 		dark,
 		light,
 		active,
-		variant,
+		variant = 'filled',
 		error,
 		info,
 		success,
@@ -25,22 +28,15 @@
 		type = 'button',
 		background,
 		color,
-		label,
 		loading,
 		rounded,
 		icon,
 		load,
+		noRipple,
 		...rest
-	}: BtnProps = $props();
+	}: ButtonProps = $props();
 
 	const assets = getAssets();
-
-	$effect(() => {
-		if (type === 'radio') is = 'input';
-		if (type === 'checkbox') is = 'input';
-		if (type === 'submit') is = 'input';
-		if (type === 'reset') is = 'input';
-	});
 </script>
 
 <svelte:element
@@ -49,33 +45,34 @@
 	{...rest}
 	href={href && !disabled ? href : undefined}
 	class={[
-		'kit-btn',
+		'kit-button',
 		light && 'light',
 		dark && 'dark',
-		size && assets.className('btn', 'size', size),
-		variant && assets.className('btn', 'variant', variant),
-		density && assets.className('btn', 'density', density),
-		error && 'kit-btn--error',
-		info && 'kit-btn--info',
-		success && 'kit-btn--success',
-		warning && 'kit-btn--warning',
-		disabled && 'kit-btn--disabled',
-		active && 'kit-btn--active',
-		loading && 'kit-btn--loading',
-		icon && 'kit-btn--icon',
+		size && assets.className('button', 'size', size),
+		variant && assets.className('button', 'variant', variant),
+		density && assets.className('button', 'density', density),
+		error && 'kit-button--error',
+		info && 'kit-button--info',
+		success && 'kit-button--success',
+		warning && 'kit-button--warning',
+		disabled && 'kit-button--disabled',
+		active && 'kit-button--active',
+		loading && 'kit-button--loading',
+		icon && 'kit-button--icon',
 		rest.class
 	]}
 	tabindex={href && disabled ? -1 : 0}
-	aria-disabled={href ? disabled : undefined}
-	aria-label={type !== 'button' ? label : undefined}
 	disabled={href ? undefined : disabled}
 	type={href ? undefined : type}
+	use:ripple={{
+		disabled: noRipple || disabled
+	}}
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
 >
 	{#if loading}
-		<div class="kit-btn-loading">
+		<div class="kit-button-loading">
 			{#if load}
 				{@render load?.()}
 			{:else}
@@ -86,9 +83,19 @@
 		</div>
 	{/if}
 
-	{#if !label}
-		<span class="kit-btn-content">
-			{@render children?.()}
+	{#if prepend}
+		<span class="kit-button-prepend">
+			{@render prepend?.()}
+		</span>
+	{/if}
+
+	<span class="kit-button-content">
+		{@render children?.()}
+	</span>
+
+	{#if append}
+		<span class="kit-button-append">
+			{@render append?.()}
 		</span>
 	{/if}
 </svelte:element>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Btn, Dialog } from 'lapikit/components';
+	import { Button, Dialog } from 'lapikit/components';
 
 	let openXs: boolean = $state(false);
 	let openSm: boolean = $state(false);
@@ -9,12 +9,12 @@
 	let openResponsive: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (openXs = true)}>Open dialog xs</Btn>
-<Btn onclick={() => (openSm = true)}>Open dialog sm</Btn>
-<Btn onclick={() => (openMd = true)}>Open dialog md</Btn>
-<Btn onclick={() => (openLg = true)}>Open dialog lg</Btn>
-<Btn onclick={() => (openXl = true)}>Open dialog xl</Btn>
-<Btn onclick={() => (openResponsive = true)}>Open dialog responsive</Btn>
+<Button onclick={() => (openXs = true)}>Open dialog xs</Button>
+<Button onclick={() => (openSm = true)}>Open dialog sm</Button>
+<Button onclick={() => (openMd = true)}>Open dialog md</Button>
+<Button onclick={() => (openLg = true)}>Open dialog lg</Button>
+<Button onclick={() => (openXl = true)}>Open dialog xl</Button>
+<Button onclick={() => (openResponsive = true)}>Open dialog responsive</Button>
 
 <Dialog bind:open={openXs} size="xs">
 	<div>
@@ -53,7 +53,7 @@
 </Dialog>
 <Dialog bind:open={openResponsive} size={{ _default: 'xs', md: 'sm', lg: 'lg' }}>
 	<div>
-		<Btn onclick={() => (openResponsive = false)}>Close</Btn>
+		<Button onclick={() => (openResponsive = false)}>Close</Button>
 	</div>
 	<div>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae

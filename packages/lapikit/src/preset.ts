@@ -6,7 +6,7 @@ export const config: Lapikit = {
 		minify: false // true | false
 	},
 	theme: {
-		colorScheme: 'dark', // 'light' | 'dark' | 'auto'
+		colorScheme: 'system', // 'light' | 'dark' | 'system'
 		colors: {
 			primary: { light: 'oklch(45% 0.24 277.023)', dark: 'oklch(45% 0.24 277.023)' },
 			'on-primary': { light: 'oklch(14% 0.005 285.823)', dark: 'oklch(14% 0.005 285.823)' },

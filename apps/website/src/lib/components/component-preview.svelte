@@ -3,7 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import { copyToClipboard } from 'site-kit/actions';
 	import { getHighlighterSingleton } from '$lib/shiki';
-	import { Btn, Icon, Separator } from 'lapikit/components';
+	import { Button, Icon, Separator } from 'lapikit/components';
 
 	type Props = {
 		name: string;
@@ -56,22 +56,22 @@
 
 		<div class="flex items-center gap-2 md:justify-between">
 			<div>
-				<Btn onclick={() => (tab = 'preview')} active={tab === 'preview'}>
+				<Button onclick={() => (tab = 'preview')} active={tab === 'preview'}>
 					{$t('sandbox.preview')}
-				</Btn>
-				<Btn onclick={() => (tab = 'code')} active={tab === 'code'}>
+				</Button>
+				<Button onclick={() => (tab = 'code')} active={tab === 'code'}>
 					{$t('sandbox.code')}
-				</Btn>
+				</Button>
 			</div>
 			<div>
 				{#if header || tab === 'code'}
-					<Btn onclick={() => (expanded = !expanded)} active={expanded}>
+					<Button onclick={() => (expanded = !expanded)} active={expanded}>
 						{#if expanded}
 							{$t('sandbox.collapse_editor')}
 						{:else}
 							{$t('sandbox.expand_editor')}
 						{/if}
-					</Btn>
+					</Button>
 				{/if}
 			</div>
 		</div>
@@ -99,14 +99,14 @@
 				style:position="relative"
 				style:width="100%"
 			>
-				<Btn
+				<Button
 					class="sticky top-[10px] float-right mt-[10px] mr-[10px]"
 					icon
 					onclick={() => (copy = true)}
 					active={copy}
 				>
 					<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
-				</Btn>
+				</Button>
 
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				<div bind:this={ref}>{@html codeHTML}</div>

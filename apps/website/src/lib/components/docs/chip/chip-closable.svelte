@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Btn, Chip, Icon } from 'lapikit/components';
+	import { Button, Chip, Icon } from 'lapikit/components';
 
 	let open = $state(true);
 </script>
 
 {#if !open}
-	<Btn onclick={() => (open = true)}>Reset chip</Btn>
+	<Button onclick={() => (open = true)}>Reset chip</Button>
 {/if}
 
 <Chip closable bind:open>

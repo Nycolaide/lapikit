@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Btn, Tooltip } from 'lapikit/components';
+	import { Button, Tooltip } from 'lapikit/components';
 </script>
 
 <Tooltip>
-	<Btn>Show Tooltip</Btn>
+	<Button>Show Tooltip</Button>
 
 	{#snippet tooltip()}
 		<img
@@ -14,7 +14,7 @@
 </Tooltip>
 
 <Tooltip>
-	<Btn>See message</Btn>
+	<Button>See message</Button>
 
 	{#snippet tooltip()}
 		<div style="max-width: 200px;">

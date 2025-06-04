@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Modal, Btn } from 'lapikit/components';
+	import { Modal, Button } from 'lapikit/components';
 
 	let openXs: boolean = $state(false);
 	let openSm: boolean = $state(false);
@@ -10,13 +10,13 @@
 	let openResponsive: boolean = $state(false);
 </script>
 
-<Btn onclick={() => (openXs = true)}>xs</Btn>
-<Btn onclick={() => (openSm = true)}>sm</Btn>
-<Btn onclick={() => (openMd = true)}>md</Btn>
-<Btn onclick={() => (openLg = true)}>lg</Btn>
-<Btn onclick={() => (openXl = true)}>xl</Btn>
-<Btn onclick={() => (openFull = true)}>full</Btn>
-<Btn onclick={() => (openResponsive = true)}>Responsive</Btn>
+<Button onclick={() => (openXs = true)}>xs</Button>
+<Button onclick={() => (openSm = true)}>sm</Button>
+<Button onclick={() => (openMd = true)}>md</Button>
+<Button onclick={() => (openLg = true)}>lg</Button>
+<Button onclick={() => (openXl = true)}>xl</Button>
+<Button onclick={() => (openFull = true)}>full</Button>
+<Button onclick={() => (openResponsive = true)}>Responsive</Button>
 
 <Modal bind:open={openXs} size="xs">Modal content</Modal>
 <Modal bind:open={openSm} size="sm">Modal content</Modal>

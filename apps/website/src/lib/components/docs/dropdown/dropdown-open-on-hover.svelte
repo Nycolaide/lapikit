@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Btn, Dropdown, Icon } from 'lapikit/components';
+	import { Button, Dropdown, Icon } from 'lapikit/components';
 
 	let ref = $state(null);
 </script>
 
 <Dropdown openOnHover>
 	{#snippet activator(model, handleMouseEvent)}
-		<Btn
+		<Button
 			bind:ref
 			onclick={() => model.toggle(ref)}
 			onmouseover={() => handleMouseEvent('open', ref)}
@@ -14,7 +14,7 @@
 		>
 			Hover Me !
 			<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<ul>

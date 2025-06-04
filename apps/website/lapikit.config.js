@@ -1,7 +1,7 @@
 /** @type {import('lapikit').Config} */
 export default {
 	options: {
-		minify: true
+		minify: false
 	},
 	theme: {
 		colorScheme: 'auto',

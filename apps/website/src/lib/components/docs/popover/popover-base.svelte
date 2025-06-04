@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Btn, Popover, Icon } from 'lapikit/components';
+	import { Button, Popover, Icon } from 'lapikit/components';
 
 	let ref = $state(null);
 	let open = $state(false);
@@ -7,10 +7,10 @@
 
 <Popover bind:open>
 	{#snippet activator(model)}
-		<Btn bind:ref onclick={() => model.toggle(ref)}>
+		<Button bind:ref onclick={() => model.toggle(ref)}>
 			Add comment
 			<Icon icon="mgc_comment_2_fill" />
-		</Btn>
+		</Button>
 	{/snippet}
 	<div>
 		<div>
@@ -18,14 +18,14 @@
 			<p>Please describe your impression</p>
 			<hr />
 			<textarea placeholder="your text"></textarea>
-			<Btn variant="text" onclick={() => (open = false)}>
+			<Button variant="text" onclick={() => (open = false)}>
 				Undo
 				<Icon icon="mgc_close_fill" />
-			</Btn>
-			<Btn onclick={() => (open = false)}>
+			</Button>
+			<Button onclick={() => (open = false)}>
 				Send
 				<Icon icon="mgc_send_fill" />
-			</Btn>
+			</Button>
 		</div>
 	</div>
 </Popover>
