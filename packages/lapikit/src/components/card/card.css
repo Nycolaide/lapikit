@@ -1,8 +1,11 @@
+/* root */
 .kit-card {
-	--card-color: var(--on, var(--kit-on-neutral));
-	--card-background: var(--base, var(--kit-neutral));
+	--card-color: var(--on, var(--kit-on-surface));
+	--card-background: var(--base, var(--kit-surface));
 	--card-radius: var(--shape, var(--kit-radius-md));
+}
 
+.kit-card {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -11,90 +14,93 @@
 	transition:
 		color 0.5s,
 		background-color 0.5s;
-
 	padding-top: var(--card-spacing-x);
 	padding-bottom: var(--card-spacing-x);
 	padding-right: var(--card-spacing-y);
 	padding-left: var(--card-spacing-y);
-
-	border-width: 1px;
-	border-style: solid;
 	border-radius: var(--card-radius);
-
-	/* theme */
+	font-weight: 500;
 	color: var(--card-color);
-	background-color: var(--card-background);
-	border-color: var(--card-background);
+	text-decoration: none;
+}
+
+.kit-card.kit-card--clickable {
+	cursor: pointer;
+}
+
+.kit-card.kit-card--clickable::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: currentColor;
+	opacity: 0;
+	transition: opacity 150ms ease;
+	pointer-events: none;
+	border-radius: inherit;
+}
+.kit-card.kit-card--clickable:hover::after {
+	opacity: 0.08;
+}
+.kit-card.kit-card--clickable:active::after {
+	opacity: 0.12;
+}
+.kit-card.kit-card--clickable:focus-visible::after {
+	opacity: 0.12;
 }
 
 /* density */
 .kit-card[breakpoint]kit-card--density-default {
-	--card-spacing-x: 0.25rem;
-	--card-spacing-y: 0.25rem;
+	--card-spacing-x: calc(var(--kit-spacing) * 2);
+	--card-spacing-y: calc(var(--kit-spacing) * 2);
 }
-
 .kit-card[breakpoint]kit-card--density-compact {
 	--card-spacing-x: 0;
 	--card-spacing-y: 0;
 }
-
 .kit-card[breakpoint]kit-card--density-comfortable {
-	--card-spacing-x: 0.5rem;
-	--card-spacing-y: 0.5rem;
+	--card-spacing-x: calc(var(--kit-spacing) * 4);
+	--card-spacing-y: calc(var(--kit-spacing) * 4);
 }
 
-a.kit-card {
-	text-decoration: none;
+/* variant */
+.kit-card[breakpoint]kit-card--variant-filled {
+	background-color: var(--card-background);
 }
 
-.kit-card:hover:not(div) {
-	background-color: color-mix(in oklab, var(--card-background) 90%, black);
-}
-
-.kit-card:focus:not(div) {
-	background-color: color-mix(in oklab, var(--card-background) 95%, black);
-}
-
-.kit-card:active:not(div),
-.kit-card.kit-card--active {
-	background-color: color-mix(in oklab, var(--card-background) 95%, black);
-}
-
-.kit-card:not(div) {
-	cursor: pointer;
-}
-
-.kit-card.kit-card--variant-outline {
-	border-color: currentColor;
-}
-
-.kit-card.kit-card--variant-text {
-	border-color: transparent;
-}
-
-.kit-card.kit-card--variant-outline,
-.kit-card.kit-card--variant-text {
-	--card-color: var(--base, var(--kit-neutral));
+.kit-card[breakpoint]kit-card--variant-outline {
+	--card-color: var(--base, var(--kit-on-surface));
 	background-color: transparent;
 }
-
-.kit-card.kit-card--variant-outline:hover:not(div),
-.kit-card.kit-card--variant-text:hover:not(div) {
-	background-color: color-mix(in oklab, currentColor 7%, transparent);
+.kit-card[breakpoint]kit-card--variant-outline::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border: 1px solid currentColor;
+	pointer-events: none;
+	border-radius: inherit;
 }
 
-.kit-card.kit-card--variant-outline:focus:not(div),
-.kit-card.kit-card--variant-text:focus:not(div) {
+.kit-card[breakpoint]kit-card--variant-text {
+	--card-color: var(--base, var(--kit-on-surface));
+	background-color: transparent;
+	border: none;
+}
+
+/* events */
+.kit-card[class*='card--variant-filled'].kit-card--clickable:active,
+.kit-card.kit-card--active[class*='card--variant-filled'].kit-card--clickable {
+	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-scrim));
+}
+.kit-card.kit-card--active[class*='card--variant-']:not(
+		[class*='variant-filled']
+	).kit-card--clickable:active,
+.kit-card.kit-card--active[class*='card--variant-']:not(
+		[class*='variant-filled']
+	).kit-card--clickable {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 }
 
-.kit-card.kit-card--variant-outline:active:not(div),
-.kit-card.kit-card--variant-text:active:not(div),
-.kit-card.kit-card--variant-outline.kit-card--active,
-.kit-card.kit-card--variant-text.kit-card--active {
-	background-color: color-mix(in oklab, currentColor 10%, transparent);
-}
-
+/* disabled */
 .kit-card.kit-card--disabled,
 .kit-card[disabled],
 .kit-card:disabled {

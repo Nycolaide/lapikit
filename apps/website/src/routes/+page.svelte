@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Button, List, ListItem, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
+	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 
@@ -19,13 +19,18 @@
 		style="background: transparent;"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
-		<List rounded="full" class="hidden-mobile mr-0 ml-auto gap-2 lg:mr-auto ">
+		<div class="hidden-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
 			{#each navigationMain as { key, path, external } (key)}
-				<ListItem href={path} target={external && '_blank'} active={page.url.pathname === path}>
+				<Button
+					href={path}
+					target={external && '_blank'}
+					active={page.url.pathname === path}
+					rounded="full"
+				>
 					{$t(`navigation.${key}`)}
-				</ListItem>
+				</Button>
 			{/each}
-		</List>
+		</div>
 		<div class="justify-end gap-3 lg:flex">
 			<DarkmodeV2 />
 			<Button density="comfortable">{$t('homepage.top_cta')}</Button>

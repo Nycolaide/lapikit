@@ -95,17 +95,17 @@
 		{/if}
 
 		{#if prepend}
-			<span class="kit-chip-prepend">
+			<div class="kit-chip-prepend">
 				{@render prepend?.()}
-			</span>
+			</div>
 		{/if}
-		<span class="kit-chip-content">
+		<div class="kit-chip-content">
 			{@render children?.()}
-		</span>
+		</div>
 		{#if append}
-			<span class="kit-chip-append">
+			<div class="kit-chip-append">
 				{@render append?.()}
-			</span>
+			</div>
 		{/if}
 
 		{#if closable}

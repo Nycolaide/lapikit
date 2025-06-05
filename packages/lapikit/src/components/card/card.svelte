@@ -2,6 +2,9 @@
 	import { getAssets } from '$lib/internal/index.js';
 	import type { CardProps } from './types.js';
 
+	// external
+	import { ripple } from '$lib/internal/ripple.js';
+
 	let {
 		children,
 		ref = $bindable(),
@@ -11,18 +14,23 @@
 		light,
 		active,
 		density = 'default',
-		variant,
+		variant = 'filled',
 		disabled,
 		rounded,
 		color,
 		background,
+		noRipple,
 		...rest
 	}: CardProps = $props();
 
 	const assets = getAssets();
+	let isClickable: boolean = $state(false);
 
 	$effect(() => {
+		const refProps = { ...rest };
 		if (href) is = 'a';
+		if (refProps?.onclick || href || is === 'a') isClickable = true;
+		else isClickable = false;
 	});
 </script>
 
@@ -37,11 +45,15 @@
 		dark && 'dark',
 		variant && assets.className('card', 'variant', variant),
 		density && assets.className('card', 'density', density),
+		isClickable && 'kit-card--clickable',
 		active && 'kit-card--active',
 		disabled && 'kit-card--disabled',
 		rest.class
 	]}
 	disabled={href ? undefined : disabled}
+	use:ripple={{
+		disabled: noRipple || disabled || !isClickable
+	}}
 	style:--base={assets.color(background)}
 	style:--on={assets.color(color)}
 	style:--shape={assets.shape(rounded)}
