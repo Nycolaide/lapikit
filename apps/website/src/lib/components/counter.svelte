@@ -34,9 +34,10 @@
 <style>
 	.counter {
 		display: flex;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		border-top: 1px solid var(--kit-on-container);
+		border-bottom: 1px solid var(--kit-on-container);
 		margin: 1rem 0;
+		color: var(--kit-on-container);
 	}
 
 	.counter button {
@@ -52,7 +53,7 @@
 	}
 
 	.counter button:hover {
-		background-color: var(--color-bg-1);
+		background-color: var(--kit-container);
 	}
 
 	svg {
@@ -63,7 +64,7 @@
 	path {
 		vector-effect: non-scaling-stroke;
 		stroke-width: 2px;
-		stroke: #444;
+		stroke: var(--kit-on-container);
 	}
 
 	.counter-viewport {

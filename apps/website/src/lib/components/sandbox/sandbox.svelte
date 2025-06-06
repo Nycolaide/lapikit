@@ -11,6 +11,11 @@
 	//state
 	let expanded: string = $state('300px');
 	let tab: string = $state('preview');
+	let localColorScheme: 'light' | 'dark' | undefined = $state(undefined);
+
+	$effect(() => {
+		console.log(localColorScheme);
+	});
 
 	$effect(() => {
 		if (!component) tab = 'code-only';
@@ -45,10 +50,17 @@
 		{/if}
 	{:else}
 		<!-- tab content -->
-		<SandboxAction {presentation} bind:expanded bind:tab {handleExpand} {handleTab} />
+		<SandboxAction
+			{presentation}
+			bind:localColorScheme
+			bind:expanded
+			bind:tab
+			{handleExpand}
+			{handleTab}
+		/>
 		<div>
 			{#if component && (tab === 'preview' || tab === 'preview-only')}
-				<div>
+				<div class:dark={localColorScheme === 'dark'} class:light={localColorScheme === 'light'}>
 					<SandboxComponent>
 						{@render component?.()}
 					</SandboxComponent>

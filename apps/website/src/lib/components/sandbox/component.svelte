@@ -21,5 +21,6 @@
 		);
 		background-size: 16px 16px;
 		background-repeat: repeat;
+		background-color: var(--kit-surface);
 	}
 </style>
