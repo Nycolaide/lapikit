@@ -1,6 +1,6 @@
 .kit-alert {
-	--alert-color: var(--on, var(--kit-on-neutral));
-	--alert-background: var(--base, var(--kit-neutral));
+	--alert-color: var(--on, var(--kit-on-container));
+	--alert-background: var(--base, var(--kit-container));
 	--alert-radius: var(--shape, var(--kit-radius-md));
 
 	display: grid;

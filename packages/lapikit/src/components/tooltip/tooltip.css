@@ -6,8 +6,8 @@
 }
 
 .kit-tooltip-content {
-	--tooltip-color: var(--on, var(--kit-on-neutral));
-	--tooltip-background: var(--base, var(--kit-neutral));
+	--tooltip-color: var(--on, var(--kit-on-surface));
+	--tooltip-background: var(--base, var(--kit-surface));
 	--tooltip-radius: var(--shape, var(--kit-radius-md));
 
 	background-color: var(--tooltip-background);

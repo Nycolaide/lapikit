@@ -5,18 +5,22 @@
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 
+	let { data } = $props();
+
+	$effect(() => {
+		console.log('data', data);
+	});
+
 	// demo code
-	import { Sandbox, Counter } from '$lib/components/index.js';
+	import { Sandbox, Counter, ThemeToggle, Footer } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
-	import Footer from '$lib/components/footer.svelte';
-	import DarkmodeV2 from '$lib/components/darkmode-v2.svelte';
 </script>
 
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
 		density={{ _default: 'default', md: 'comfortable' }}
-		style="background: transparent;"
+		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
 		<div class="hidden-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
@@ -31,8 +35,8 @@
 				</Button>
 			{/each}
 		</div>
-		<div class="justify-end gap-3 lg:flex">
-			<DarkmodeV2 />
+		<div class="flex justify-end gap-3">
+			<ThemeToggle app />
 			<Button density="comfortable">{$t('homepage.top_cta')}</Button>
 		</div>
 	</Appbar>
@@ -41,10 +45,10 @@
 		class="desktop:max-h-[900px] flex h-[82vh] flex-col items-center justify-between justify-center overflow-hidden"
 	>
 		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
-			<Chip href="/" variant="outline">
+			<Chip href="/docs/changelog" variant="outline">
 				<Icon icon="mgc_box_2_line" />
 				<Separator orientation="vertical" />
-				{$t('homepage.new_stable_version', { version: '0.0.0' })}
+				{$t('homepage.version_lapikit_package', { version: data?.npm?.version || '0.0.0' })}
 			</Chip>
 			<h1
 				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"

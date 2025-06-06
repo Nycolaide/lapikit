@@ -1,6 +1,6 @@
 .kit-popover-content {
-	--popover-color: var(--on, var(--kit-on-neutral));
-	--popover-background: var(--base, var(--kit-neutral));
+	--popover-color: var(--on, var(--kit-on-container));
+	--popover-background: var(--base, var(--kit-container));
 	--popover-radius: var(--shape, var(--kit-radius-md));
 
 	inset: 0px auto auto 0px;

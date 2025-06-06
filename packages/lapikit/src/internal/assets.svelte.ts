@@ -40,6 +40,8 @@ export function getAssets() {
 					x11ColorNames.includes(color.toLowerCase())
 				)
 					return color;
+				if (color.includes('transparent') || color.includes('inherit') || color.includes('initial'))
+					return color;
 				return `var(--kit-${color})`;
 			}
 		},

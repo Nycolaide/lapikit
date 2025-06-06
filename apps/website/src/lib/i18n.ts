@@ -4,46 +4,50 @@ import translations from './locales/translations';
 export const locale = writable('en');
 export const locales = Object.keys(translations);
 
-interface TranslationVariables {
-	[key: string]: string | number;
-}
+type TranslationValue = string | { [key: string]: TranslationValue };
 
 interface Translations {
-	[locale: string]: {
-		[key: string]: string;
-	};
+	[locale: string]: TranslationValue;
 }
 
-function translate(locale: string, key: string, vars: TranslationVariables): string {
-	// Let's throw some errors if we're trying to use keys/locales that don't exist.
-	// We could improve this by using Typescript and/or fallback values.
+function getNestedTranslation(obj: TranslationValue, keys: string[]): TranslationValue | undefined {
+	return keys.reduce<TranslationValue | undefined>((acc, key) => {
+		if (acc && typeof acc === 'object' && key in acc) {
+			return (acc as { [key: string]: TranslationValue })[key];
+		}
+		return undefined;
+	}, obj);
+}
+
+function translate(locale: string, key: string, vars: Record<string, string> = {}): string {
 	if (!key) throw new Error('no key provided to $t()');
 	if (!locale) throw new Error(`no translation for key "${key}"`);
 
-	// Grab the translation from the translations object.
-	const translate: Translations = translations;
+	const referencial: Translations = translations;
+	const translate = referencial[locale];
+	if (!translate) return `${locale}.${key}`;
 
-	if (!translate[locale] || !translate[locale][key]) return `${locale}.${key}`;
-	let text = translate[locale][key];
+	const keys = key.split('.');
+	let text = getNestedTranslation(translate, keys);
+	if (!text || typeof text !== 'string') return `${locale}.${key}`;
 
-	if (!text) throw new Error(`no translation found for ${locale}.${key}`);
-
-	// Replace any passed in variables in the translation string.
 	Object.keys(vars).map((k) => {
 		const regex = new RegExp(`{{${k}}}`, 'g');
-		text = text.replace(regex, String(vars[k]));
+		if (typeof text === 'string') {
+			text = text.replace(regex, String(vars[k]));
+		}
 	});
 
 	return text;
 }
 
 interface TranslationFunction {
-	(key: string, vars?: TranslationVariables): string;
+	(key: string, vars?: Record<string, string>): string;
 }
 
 export const t = derived<typeof locale, TranslationFunction>(
 	locale,
 	($locale) =>
-		(key: string, vars = {}) =>
+		(key: string, vars: Record<string, string> = {}) =>
 			translate($locale, key, vars)
 );

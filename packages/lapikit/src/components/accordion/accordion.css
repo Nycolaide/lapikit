@@ -1,6 +1,6 @@
 .kit-accordion {
-	--accordion-color: var(--on, var(--kit-on-neutral));
-	--accordion-background: var(--base, var(--kit-neutral));
+	--accordion-color: var(--on, var(--kit-on-container));
+	--accordion-background: var(--base, var(--kit-container));
 	--accordion-radius: var(--shape, var(--kit-radius-md));
 
 	display: flex;
@@ -47,8 +47,8 @@
 	transition: 0.3s all cubic-bezier(0.4, 0, 0.2, 1);
 	transition-property: margin-top, border-radius, border, max-width;
 	border-radius: var(--shape, var(--accordion-radius, var(--kit-radius-md)));
-	color: var(--on, var(--accordion-color, var(--kit-on-neutral)));
-	background-color: var(--base, var(--accordion-background, var(--kit-neutral)));
+	color: var(--on, var(--accordion-color, var(--kit-on-container)));
+	background-color: var(--base, var(--accordion-background, var(--kit-container)));
 	transition:
 		color 0.5s,
 		background-color 0.5s;

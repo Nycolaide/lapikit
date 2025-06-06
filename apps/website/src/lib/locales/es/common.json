@@ -1,0 +1,5 @@
+{
+	"title": "¡Hola Mundo!",
+	"welcome": "Hola, <strong>{{name}}</strong>, ¿cómo estás?",
+	"time": "La hora actual es: {{time}}"
+}

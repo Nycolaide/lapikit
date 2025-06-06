@@ -12,6 +12,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.11]
+
+### Changed
+
+- Update structure CSS for component **Chip**
+- Add new properties CSS for component **Btn**
+- Add new structure for HTML render on **Chip**
+- Integrate good color system for all component
+- Add color base on html CSS
+- API background, color support `transparent`, `initial`, `inerith`
+- Add append and prepend snippet on **ListItem**
+
+### Fix
+
+- Repare CSS for outline props on **Btn**
+- Fix alignement for **Chip**, **Btn** component content
+
 ## [0.1.10] - 2025-06-04
 
 ### Changed

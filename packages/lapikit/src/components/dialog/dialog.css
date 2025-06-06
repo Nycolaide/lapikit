@@ -23,8 +23,8 @@
 }
 
 .kit-dialog .kit-dialog-container {
-	--dialog-color: var(--on, var(--kit-on-neutral));
-	--dialog-background: var(--base, var(--kit-neutral));
+	--dialog-color: var(--on, var(--kit-on-surface));
+	--dialog-background: var(--base, var(--kit-surface));
 	--dialog-radius: var(--shape, var(--kit-radius-md));
 
 	border-radius: var(--dialog-radius);

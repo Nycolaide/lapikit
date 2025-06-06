@@ -1,0 +1,5 @@
+{
+	"title": "Bonjour tous le monde !",
+	"welcome": "Bonjour, <strong>{{name}}</strong>, comment tu vas?",
+	"time": "Il est actuellement: {{time}}"
+}

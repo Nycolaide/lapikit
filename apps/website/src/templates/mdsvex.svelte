@@ -8,5 +8,4 @@
 	let props = $props();
 </script>
 
-<span>mdsvex template</span>
 {@render props.children?.()}

@@ -63,7 +63,7 @@
 		</div>
 	{/if}
 
-	<div class="kit-list-item-content">
+	<div class="kit-list-item-content--content">
 		{@render children?.()}
 	</div>
 

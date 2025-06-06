@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { Button, Icon } from 'lapikit/components';
 	import { setColorScheme, colorScheme, colorSchemeSystem } from 'lapikit/stores';
+
+	let { app }: { app?: boolean } = $props();
 </script>
 
 <Button
@@ -11,6 +13,7 @@
 				? 'light'
 				: 'dark'
 		)}
+	density={app ? 'comfortable' : 'default'}
 >
 	{#if ($colorScheme === 'system' && $colorSchemeSystem === 'dark') || $colorScheme === 'dark'}
 		<Icon icon="mgc_sun_line" />

@@ -1,12 +1,20 @@
+// en
+import commonEn from './en/common.json';
+import homepageEn from './en/homepage.json';
+// es
+import commonEs from './es/common.json';
+// fr
+import commonFr from './fr/common.json';
+
 export default {
 	en: {
-		'homepage.title': 'Hello, World!',
-		'homepage.welcome': 'Hi <strong>{{name}}</strong>, how are you?',
-		'homepage.time': 'The current time is: {{time}}'
+		common: commonEn,
+		homepage: homepageEn
 	},
 	es: {
-		'homepage.title': '¡Hola Mundo!',
-		'homepage.welcome': 'Hola, <strong>{{name}}</strong>, ¿cómo estás?',
-		'homepage.time': 'La hora actual es: {{time}}'
+		common: commonEs
+	},
+	fr: {
+		common: commonFr
 	}
 };
