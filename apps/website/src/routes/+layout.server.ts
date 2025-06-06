@@ -1,10 +1,14 @@
 export async function load({ fetch }) {
-	const res = await fetch(`/api/github/repo?name=Nycolaide/lapikit`);
-	const data = await res.json();
+	const githubRes = await fetch('/api/github/repository?name=Nycolaide/lapikit');
+	const npmRes = await fetch('/api/npm?name=lapikit');
 
-	if (res.ok) {
-		return { repo: data };
-	} else {
-		return { error: data.error };
-	}
+	const [github, npm] = await Promise.all([
+		githubRes.ok ? githubRes.json() : null,
+		npmRes.ok ? npmRes.json() : null
+	]);
+
+	return {
+		github,
+		npm
+	};
 }

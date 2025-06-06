@@ -1,0 +1,21 @@
+{
+	"search": {
+		"title": "search",
+		"placeholder": "search for something...",
+		"no_results": "No results found with that {{query}}",
+		"periods": {
+			"today": "today",
+			"this_week": "previous 7 days",
+			"this_month": "previous 30 days",
+			"older": "ancestral research"
+		}
+	},
+	"sandbox": {
+		"actions": {
+			"preview": "preview",
+			"code": "code",
+			"expand": "expand",
+			"collapse": "collapse"
+		}
+	}
+}

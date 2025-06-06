@@ -37,7 +37,7 @@ export const navigationMain: { key: string; path: string; external?: boolean; ic
 
 export const sectionDocs = [
 	{
-		key: 'global',
+		key: 'base',
 		icon: 'mgc_album_2_line'
 	},
 	{

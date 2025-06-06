@@ -1,7 +1,6 @@
 import type { Component } from '$lib/internal/types.js';
 import type { Snippet } from 'svelte';
 
-type ListOrientation = 'vertical' | 'horizontal';
 type ListSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 type ListDensity = 'compact' | 'comfortable' | 'default';
 
@@ -11,10 +10,9 @@ export interface ListProps extends Component {
 	dark?: boolean;
 	light?: boolean;
 	size?: ListSize | { [key: string]: ListSize };
-	variant?: 'outline' | 'text' | 'dash' | 'link';
+	variant?: 'outline' | 'text' | 'filled';
 	density?: ListDensity | { [key: string]: ListDensity };
 	nav?: boolean;
-	orientation?: ListOrientation | { [key: string]: ListOrientation };
 }
 
 export interface ListItemProps extends Component {
@@ -29,4 +27,5 @@ export interface ListItemProps extends Component {
 	background?: string;
 	active?: boolean;
 	disabled?: boolean;
+	noRipple?: boolean;
 }

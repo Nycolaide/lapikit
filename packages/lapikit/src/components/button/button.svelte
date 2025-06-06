@@ -84,18 +84,18 @@
 	{/if}
 
 	{#if prepend}
-		<span class="kit-button-prepend">
+		<div class="kit-button-prepend">
 			{@render prepend?.()}
-		</span>
+		</div>
 	{/if}
 
-	<span class="kit-button-content">
+	<div class="kit-button-content">
 		{@render children?.()}
-	</span>
+	</div>
 
 	{#if append}
-		<span class="kit-button-append">
+		<div class="kit-button-append">
 			{@render append?.()}
-		</span>
+		</div>
 	{/if}
 </svelte:element>

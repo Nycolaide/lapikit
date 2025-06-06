@@ -1,6 +1,6 @@
 .kit-toolbar {
-	--toolbar-color: var(--on, var(--kit-on-neutral));
-	--toolbar-background: var(--base, var(--kit-neutral));
+	--toolbar-color: var(--on, var(--kit-on-surface));
+	--toolbar-background: var(--base, var(--kit-surface));
 	--toolbar-radius: var(--shape, var(--kit-radius-md));
 
 	display: flex;
@@ -69,7 +69,7 @@
 .kit-toolbar[breakpoint]kit-toolbar--variant-text,
 .kit-toolbar[breakpoint]kit-toolbar--variant-outline,
 .kit-toolbar[breakpoint]kit-toolbar--variant-dash {
-	--toolbar-color: var(--base, var(--kit-neutral));
+	--toolbar-color: var(--base, var(--kit-surface));
 	background-color: transparent;
 }
 

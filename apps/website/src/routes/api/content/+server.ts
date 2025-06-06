@@ -28,9 +28,9 @@ async function getPages() {
 		}
 	}
 
-	pages = pages.sort(
-		(first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
-	);
+	pages = pages
+		.filter((page) => page?.published)
+		.sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime());
 	return pages;
 }
 

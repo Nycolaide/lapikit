@@ -7,7 +7,7 @@ export interface CardProps extends Component {
 	dark?: boolean;
 	light?: boolean;
 	href?: string;
-	variant?: 'outline' | 'text';
+	variant?: 'outline' | 'text' | 'filled';
 	density?: Density | { [key: string]: Density };
 	active?: boolean;
 	disabled?: boolean;

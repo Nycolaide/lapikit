@@ -1,8 +1,84 @@
+/* root */
 .kit-list {
-	--list-color: var(--on, var(--kit-on-neutral));
-	--list-background: var(--base, var(--kit-neutral));
+	--list-color: var(--on, var(--kit-on-container));
+	--list-background: var(--base, var(--kit-container));
 	--list-radius: var(--shape, var(--kit-radius-md));
+}
+
+.kit-list {
+	position: relative;
+	flex-direction: column;
+	width: 100%;
 	display: flex;
+	border: none;
+	outline: none;
+}
+
+.kit-list-item {
+	--list-item-radius: var(--shape, var(--list-radius, var(--kit-radius-md)));
+}
+
+.kit-list-item {
+	position: relative;
+	border: none;
+	outline: none;
+	padding-top: var(--list-spacing-x);
+	padding-bottom: var(--list-spacing-x);
+	padding-right: var(--list-spacing-y);
+	padding-left: var(--list-spacing-y);
+	color: var(--list-item-color);
+	border-radius: var(--list-item-radius);
+	font-weight: 500;
+}
+
+.kit-list-item:not(div) {
+	cursor: pointer;
+}
+
+.kit-list-item,
+.kit-list-item .kit-list-item-content--content,
+.kit-list-item .kit-list-item-content--append,
+.kit-list-item .kit-list-item-content--prepend {
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+	gap: calc(var(--kit-spacing) * var(--list-multiplier-gap));
+	font-size: calc(var(--kit-spacing) * var(--list-multiplier-font-size));
+}
+
+.kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.kit-list-item.kit-list-item--prepend:not(.kit-list-item--append) {
+	display: grid;
+	grid-template-columns: 1fr auto;
+}
+
+.kit-list-item.kit-list-item--prepend.kit-list-item--append {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+}
+
+.kit-list-item::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-color: currentColor;
+	opacity: 0;
+	transition: opacity 150ms ease;
+	pointer-events: none;
+	border-radius: inherit;
+}
+.kit-list-item:not(div):hover::after {
+	opacity: 0.08;
+}
+.kit-list-item:not(div):active::after {
+	opacity: 0.12;
+}
+.kit-list-item:not(div):focus-visible::after {
+	opacity: 0.12;
 }
 
 .kit-list.kit-list--nav {
@@ -11,118 +87,113 @@
 	padding-inline: 8px;
 }
 
-/* orientation */
-.kit-list[breakpoint]kit-list--orientation-vertical {
-	flex-direction: column;
-	width: 100%;
-}
-.kit-list[breakpoint]kit-list--orientation-horizontal {
-	flex-direction: row;
-	width: fit-content;
-}
-.kit-list[breakpoint]kit-list--orientation-horizontal .kit-list-item {
-	justify-content: center;
-}
-
 /* size */
 .kit-list[breakpoint]kit-list--size-xs {
-	--list-height: 1.75rem;
-	--list-multiplier-y: 2;
-	--list-gap: 0.25rem;
-	font-size: 0.75rem;
+	--list-multiplier-x: 16;
+	--list-multiplier-y: 4;
+	--list-multiplier-gap: 2;
+	--list-multiplier-font-size: 6;
+}
+.kit-list[breakpoint]kit-list--size-xs .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 6;
 }
 
 .kit-list[breakpoint]kit-list--size-sm {
-	--list-height: 2rem;
-	--list-multiplier-y: 3;
-	--list-gap: 0.5rem;
-	font-size: 0.875rem;
+	--list-multiplier-x: 20;
+	--list-multiplier-y: 5;
+	--list-multiplier-gap: 4;
+	--list-multiplier-font-size: 7;
+}
+.kit-list[breakpoint]kit-list--size-sm .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 7;
 }
 
 .kit-list[breakpoint]kit-list--size-md {
-	--list-height: 2.25rem;
-	--list-multiplier-y: 4;
-	--list-gap: 0.5rem;
-	font-size: 0.875rem;
+	--list-multiplier-x: 24;
+	--list-multiplier-y: 6;
+	--list-multiplier-gap: 4;
+	--list-multiplier-font-size: 8;
+}
+.kit-list[breakpoint]kit-list--size-md .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 8;
 }
 
 .kit-list[breakpoint]kit-list--size-lg {
-	--list-height: 2.5rem;
-	--list-multiplier-y: 5;
-	--list-gap: 0.5rem;
-	font-size: 1rem;
+	--list-multiplier-x: 28;
+	--list-multiplier-y: 7;
+	--list-multiplier-gap: 4;
+	--list-multiplier-font-size: 9;
+}
+.kit-list[breakpoint]kit-list--size-lg .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 9;
 }
 
 .kit-list[breakpoint]kit-list--size-xl {
-	--list-height: 2.75rem;
-	--list-multiplier-y: 6;
-	--list-gap: 0.675rem;
-	font-size: 1.125rem;
+	--list-multiplier-x: 32;
+	--list-multiplier-y: 8;
+	--list-multiplier-gap: 5;
+	--list-multiplier-font-size: 10;
+}
+.kit-list[breakpoint]kit-list--size-xl .kit-icon[class*='kit-icon--size-md'] {
+	--icon-multiplier-parent-size: 10;
 }
 
 /* density */
 .kit-list[breakpoint]kit-list--density-default .kit-list-item {
-	height: calc(var(--list-height));
-	min-width: calc(var(--list-height));
+	height: calc(var(--kit-spacing) * var(--list-multiplier-x));
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y));
 }
 
 .kit-list[breakpoint]kit-list--density-compact .kit-list-item {
-	height: calc(var(--list-height) - 0.25rem);
-	min-width: calc(var(--list-height) - 0.25rem);
+	height: calc(var(--kit-spacing) * var(--list-multiplier-x) - 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
 .kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {
-	height: calc(var(--list-height) + 0.25rem);
-	min-width: calc(var(--list-height) + 0.25rem);
+	height: calc(var(--kit-spacing) * var(--list-multiplier-x) + 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) + 0.25rem);
 }
 
 /* variant */
+.kit-list[breakpoint]kit-list--variant-filled .kit-list-item {
+	--list-item-color: var(--on, var(--list-color, var(--kit-on-container)));
+	--list-item-background: var(--base, var(--list-background, var(--kit-container)));
+	background-color: var(--list-item-background);
+}
+
 .kit-list[breakpoint]kit-list--variant-outline .kit-list-item {
-	--list-item-color: var(--base, var(--list-background, var(--kit-neutral)));
+	--list-item-color: var(--base, var(--list-color, var(--kit-on-container)));
 	background-color: transparent;
+}
+.kit-list[breakpoint]kit-list--variant-outline .kit-list-item::before {
+	content: '';
+	position: absolute;
+	inset: 0;
 	border: 1px solid currentColor;
+	pointer-events: none;
+	border-radius: inherit;
 }
 
 .kit-list[breakpoint]kit-list--variant-text .kit-list-item {
-	--list-item-color: var(--base, var(--list-background, var(--kit-neutral)));
-	background-color: transparent;
-	border-color: transparent;
-}
-
-.kit-list[breakpoint]kit-list--variant-dash .kit-list-item {
-	--list-item-color: var(--base, var(--list-background, var(--kit-neutral)));
-	background-color: transparent;
-	border: 1px dashed currentColor;
-}
-
-.kit-list[breakpoint]kit-list--variant-link .kit-list-item {
-	--list-item-color: var(--base, var(--list-background, var(--kit-neutral)));
+	--list-item-color: var(--base, var(--list-color, var(--kit-on-container)));
 	background-color: transparent;
 	border-color: transparent;
 }
 
 /* events */
-.kit-list:not([class*='list--variant-']) .kit-list-item.kit-list-item--active {
+.kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--active:not(div),
+.kit-list[class*='list--variant-filled'] .kit-list-item:active:not(div) {
 	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
 	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
 }
-.kit-list[class*='list--variant-'] .kit-list-item.kit-list-item--active {
+.kit-list[class*='list--variant-']:not([class*='variant-filled'])
+	.kit-list-item.kit-list-item--active:not(div),
+.kit-list[class*='list--variant-']:not([class*='variant-filled']) .kit-list-item:active:not(div) {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
 	border-color: color-mix(in oklab, currentColor 15%, transparent);
-}
-
-.kit-list:not([class*='list--variant-']) .kit-list-item:not(div):hover {
-	background-color: color-mix(in oklab, var(--list-item-background) 85%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--list-item-background) 85%, var(--kit-scrim));
-}
-.kit-list[class*='list--variant-'] .kit-list-item:not(div):hover {
-	background-color: color-mix(in oklab, currentColor 25%, transparent);
 }
 
 /* disabled */
@@ -133,63 +204,17 @@
 	user-select: none;
 	cursor: default;
 }
-.kit-list:not([class*='list--variant-']) .kit-list-item.kit-list-item--disabled {
+.kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--disabled,
+.kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--disabled {
 	color: color-mix(in oklab, var(--list-item-color) 40%, transparent) !important;
 	background-color: color-mix(in oklab, var(--list-item-background) 70%, transparent) !important;
 	border-color: color-mix(in oklab, var(--list-item-background) 70%, transparent) !important;
 }
-.kit-list:not([class*='list--variant-']) .kit-list-item.kit-list-item--disabled i:before {
-	color: color-mix(in oklab, var(--list-item-color) 40%, transparent) !important;
-}
-.kit-list[class*='list--variant-'] .kit-list-item.kit-list-item--disabled,
-.kit-list[class*='list--variant-'] .kit-list-item.kit-list-item--disabled i:before {
+
+.kit-list[class*='list--variant-']:not([class*='variant-filled'])
+	.kit-list-item.kit-list-item--disabled,
+.kit-list[class*='list--variant-']:not([class*='variant-filled'])
+	.kit-list-item.kit-list-item--disabled
+	i:before {
 	color: color-mix(in oklab, var(--list-item-background) 40%, transparent) !important;
-}
-
-/* list item */
-.kit-list .kit-list-item {
-	--list-item-color: var(--on, var(--list-color, var(--kit-on-neutral)));
-	--list-item-background: var(--base, var(--list-background, var(--kit-neutral)));
-	--list-item-radius: var(--shape, var(--list-radius, var(--kit-radius-md)));
-
-	display: inline-flex;
-	padding-top: var(--list-spacing-x);
-	padding-bottom: var(--list-spacing-x);
-	padding-right: var(--list-spacing-y);
-	padding-left: var(--list-spacing-y);
-	align-items: center;
-	white-space: nowrap;
-	gap: var(--list-gap);
-
-	border-width: 1px;
-	border-style: solid;
-	border-radius: var(--list-item-radius);
-
-	/* theme */
-	color: var(--list-item-color);
-	background-color: var(--list-item-background);
-	border-color: var(--list-item-background);
-}
-
-.kit-list .kit-list-item:not(div) {
-	cursor: pointer;
-}
-
-.kit-list .kit-list-item > .kit-list-item-content {
-	display: flex;
-}
-
-.kit-list .kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
-	display: grid;
-	grid-template-columns: auto 1fr;
-}
-
-.kit-list .kit-list-item.kit-list-item--prepend:not(.kit-list-item--append) {
-	display: grid;
-	grid-template-columns: 1fr auto;
-}
-
-.kit-list .kit-list-item.kit-list-item--prepend.kit-list-item--append {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
 }

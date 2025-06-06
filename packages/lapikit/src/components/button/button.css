@@ -165,32 +165,32 @@
 }
 
 /* state */
-.kit-button.kit-button--info:not([class*='button--variant-']) {
+.kit-button.kit-button--info[class*='button--variant-filled'] {
 	--on: var(--kit-on-info);
 	--base: var(--kit-info);
 }
-.kit-button.kit-button--info[class*='button--variant-'] {
+.kit-button.kit-button--info[class*='button--variant-']:not([class*='variant-filled']) {
 	--base: var(--kit-info);
 }
-.kit-button.kit-button--success:not([class*='button--variant-']) {
+.kit-button.kit-button--success[class*='button--variant-filled'] {
 	--on: var(--kit-on-success);
 	--base: var(--kit-success);
 }
-.kit-button.kit-button--success[class*='button--variant-'] {
+.kit-button.kit-button--success[class*='button--variant-']:not([class*='variant-filled']) {
 	--base: var(--kit-success);
 }
-.kit-button.kit-button--warning:not([class*='button--variant-']) {
+.kit-button.kit-button--warning[class*='button--variant-filled'] {
 	--on: var(--kit-on-warning);
 	--base: var(--kit-warning);
 }
-.kit-button.kit-button--warning[class*='button--variant-'] {
+.kit-button.kit-button--warning[class*='button--variant-']:not([class*='variant-filled']) {
 	--base: var(--kit-warning);
 }
-.kit-button.kit-button--error:not([class*='button--variant-']) {
+.kit-button.kit-button--error[class*='button--variant-filled'] {
 	--on: var(--kit-on-error);
 	--base: var(--kit-error);
 }
-.kit-button.kit-button--error[class*='button--variant-'] {
+.kit-button.kit-button--error[class*='button--variant-']:not([class*='variant-filled']) {
 	--base: var(--kit-error);
 }
 
@@ -198,12 +198,10 @@
 .kit-button[class*='button--variant-filled']:active,
 .kit-button.kit-button--active[class*='button--variant-filled'] {
 	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
 }
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']):active,
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']) {
 	background-color: color-mix(in oklab, currentColor 15%, transparent);
-	border-color: color-mix(in oklab, currentColor 15%, transparent);
 }
 
 /* icon */
@@ -223,7 +221,6 @@
 .kit-button[class*='button--variant-filled'].kit-button--disabled {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;
 	background-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
-	border-color: color-mix(in oklab, var(--button-background) 70%, transparent) !important;
 }
 .kit-button[class*='button--variant-filled'].kit-button--disabled i:before {
 	color: color-mix(in oklab, var(--button-color) 40%, transparent) !important;

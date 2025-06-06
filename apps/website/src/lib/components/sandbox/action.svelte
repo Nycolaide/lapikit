@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	import { Button, Separator } from 'lapikit/components';
+	import { Button, Icon, Separator } from 'lapikit/components';
 	import type { SandboxActionsProps } from './types';
+	import ThemeToggleComponent from './theme-toggle-component.svelte';
 
 	let {
 		presentation,
 		tab = $bindable(),
 		expanded = $bindable(),
+		localColorScheme = $bindable(),
 		handleTab,
 		handleExpand
 	}: SandboxActionsProps = $props();
@@ -16,29 +18,40 @@
 	<Separator />
 {/if}
 
-<div>
-	{#if !presentation && !tab?.includes('only')}
-		<Button onclick={() => handleTab('preview')} active={tab === 'preview'}>
-			{$t('sandbox.preview')}
-		</Button>
+<div class="flex justify-between gap-2">
+	<div>
+		{#if !presentation && !tab?.includes('only')}
+			<Button onclick={() => handleTab('preview')} active={tab === 'preview'}>
+				<Icon icon="mgc_eye_2_line" />
+				{$t('docs.sandbox.actions.preview')}
+			</Button>
 
-		<Button onclick={() => handleTab('code')} active={tab === 'code'}>
-			{$t('sandbox.code')}
-		</Button>
-	{/if}
+			<Button onclick={() => handleTab('code')} active={tab === 'code'}>
+				<Icon icon="mgc_code_line" />
+				{$t('docs.sandbox.actions.code')}
+			</Button>
+		{/if}
+	</div>
 
-	{#if presentation || tab === 'code' || tab === 'code-only'}
-		<Button
-			onclick={() => handleExpand(expanded !== 'fit-content' ? 'fit-content' : '300px')}
-			active={expanded === 'fit-content'}
-		>
-			{#if expanded !== 'fit-content'}
-				{$t('sandbox.collapse_editor')}
-			{:else}
-				{$t('sandbox.expand_editor')}
-			{/if}
-		</Button>
-	{/if}
+	<div>
+		{#if presentation || tab === 'code' || tab === 'code-only'}
+			<Button
+				onclick={() => handleExpand(expanded !== 'fit-content' ? 'fit-content' : '300px')}
+				active={expanded === 'fit-content'}
+			>
+				{#if expanded !== 'fit-content'}
+					<Icon icon="mgc_down_line" />
+					{$t('docs.sandbox.actions.expand')}
+				{:else}
+					<Icon icon="mgc_up_line" />
+					{$t('docs.sandbox.actions.collapse')}
+				{/if}
+			</Button>
+		{/if}
+		{#if !presentation && tab !== 'code' && tab !== 'code-only'}
+			<ThemeToggleComponent bind:scheme={localColorScheme} />
+		{/if}
+	</div>
 </div>
 
 <Separator />

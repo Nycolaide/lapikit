@@ -26,7 +26,6 @@
 
 <style>
 	.kit-aspect-ratio {
-		background-color: aqua;
 		display: flex;
 		flex: 1 0 auto;
 		max-height: 100%;

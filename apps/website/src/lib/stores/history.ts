@@ -22,8 +22,8 @@ export type RecentPage = {
 
 export type RecencyGroups = {
 	today: RecentPage[];
-	thisWeek: RecentPage[];
-	thisMonth: RecentPage[];
+	this_week: RecentPage[];
+	this_month: RecentPage[];
 	older: RecentPage[];
 };
 
@@ -82,16 +82,16 @@ export function groupByRecency(pages: RecentPage[]): RecencyGroups {
 			const age = now - page.timestamp;
 
 			if (age < oneDay) acc.today.push(page);
-			else if (age < sevenDays) acc.thisWeek.push(page);
-			else if (age < thirtyDays) acc.thisMonth.push(page);
+			else if (age < sevenDays) acc.this_week.push(page);
+			else if (age < thirtyDays) acc.this_month.push(page);
 			else acc.older.push(page);
 
 			return acc;
 		},
 		{
 			today: [],
-			thisWeek: [],
-			thisMonth: [],
+			this_week: [],
+			this_month: [],
 			older: []
 		}
 	);

@@ -6,6 +6,7 @@
 	// external
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 	import Close from '../../assets/icons/close-fill.svelte';
+	import { ripple } from '$lib/internal/ripple.js';
 
 	let {
 		children,
@@ -20,7 +21,7 @@
 		dark,
 		light,
 		active,
-		variant,
+		variant = 'filled',
 		error,
 		info,
 		success,
@@ -35,10 +36,16 @@
 		loading,
 		rounded,
 		closable,
+		noRipple,
 		...rest
 	}: ChipProps = $props();
 
 	const assets = getAssets();
+
+	$effect(() => {
+		const refProps = { ...rest };
+		if (refProps?.onclick) is = 'button';
+	});
 </script>
 
 {#if !closable || (open && closable)}
@@ -68,6 +75,9 @@
 		aria-label={type !== 'button' ? label : undefined}
 		disabled={href ? undefined : disabled}
 		type={href ? undefined : type}
+		use:ripple={{
+			disabled: noRipple || disabled || is === 'div' || is === 'span'
+		}}
 		style:--base={assets.color(background)}
 		style:--on={assets.color(color)}
 		style:--shape={assets.shape(rounded)}
@@ -85,17 +95,17 @@
 		{/if}
 
 		{#if prepend}
-			<span class="kit-chip-prepend">
+			<div class="kit-chip-prepend">
 				{@render prepend?.()}
-			</span>
+			</div>
 		{/if}
-		<span class="kit-chip-content">
+		<div class="kit-chip-content">
 			{@render children?.()}
-		</span>
+		</div>
 		{#if append}
-			<span class="kit-chip-append">
+			<div class="kit-chip-append">
 				{@render append?.()}
-			</span>
+			</div>
 		{/if}
 
 		{#if closable}

@@ -65,7 +65,7 @@
 	<Icon icon="mgc_search_line" />
 
 	<span class="pr-[2rem]">
-		{$t('search.search-docs')}
+		{$t('docs.search.title')}
 	</span>
 
 	<Chip size="sm">
@@ -77,7 +77,7 @@
 <Dialog bind:open position="top" classContent="mt-[2rem] md:mt-[5rem]">
 	<input
 		type="text"
-		placeholder={$t('search.search-for-something')}
+		placeholder={$t('docs.search.placeholder')}
 		bind:value={input}
 		class="w-full rounded border p-2"
 	/>
@@ -85,7 +85,7 @@
 	<div class="size-min max-h-[290px] w-full overflow-auto">
 		{#if input !== ''}
 			{#if $filteredPages.length === 0 && input}
-				<p>{$t('search.no-result', { key: input })}</p>
+				<p>{$t('docs.search.no_results', { query: input })}</p>
 			{/if}
 			<List>
 				{#each $filteredPages as page (page.title)}
@@ -97,17 +97,33 @@
 					</ListItem>
 				{/each}
 			</List>
-		{:else if historyResult && (historyResult?.today?.length > 0 || historyResult?.thisWeek?.length > 0 || historyResult?.thisMonth?.length > 0 || historyResult?.older?.length > 0)}
+		{:else if historyResult && (historyResult?.today?.length > 0 || historyResult?.this_week?.length > 0 || historyResult?.this_month?.length > 0 || historyResult?.older?.length > 0)}
 			{#each Object.entries(historyResult) as [key, pages] (key)}
 				{#if pages.length > 0}
-					<p>{$t(`search.period.${key}`)}</p>
+					<p>{$t(`docs.search.periods.${key}`)}</p>
 					<List>
 						{#each pages as page (page.title)}
 							<ListItem onclick={() => handleClick(page)}>
-								<div>
-									<p>{page.title}</p>
-									<p>{page.description}</p>
+								{#snippet append()}
+									<Icon icon="mgc_history_line" size="lg" />
+								{/snippet}
+
+								<div class="grid text-left">
+									<p
+										class="max-w-[500px] overflow-hidden font-bold text-ellipsis whitespace-nowrap"
+									>
+										{page.title}
+									</p>
+									<p
+										class="max-w-[500px] overflow-hidden text-sm text-ellipsis whitespace-nowrap opacity-75"
+									>
+										{page.description}
+									</p>
 								</div>
+
+								{#snippet prepend()}
+									<Icon icon="mgc_right_line" size="lg" />
+								{/snippet}
 							</ListItem>
 						{/each}
 					</List>

@@ -4,6 +4,8 @@ html {
 	line-height: 1.5;
 	box-sizing: border-box;
 	font-family: var(--kit-font-family-sans);
+	background-color: var(--kit-base);
+	color: var(--kit-on-base);
 }
 
 pre,
