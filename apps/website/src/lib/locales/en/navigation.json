@@ -3,5 +3,6 @@
 	"docs": "docs",
 	"github": "github",
 	"open": "open menu",
-	"close": "close menu"
+	"close": "close menu",
+	"back_to_sections": "return"
 }

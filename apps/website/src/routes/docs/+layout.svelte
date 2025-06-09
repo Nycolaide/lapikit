@@ -5,9 +5,11 @@
 	import { Appbar, Button, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
-	import { Footer, ThemeToggle, SearchBar } from '$lib/components/index.js';
+	import { ThemeToggle, SearchBar } from '$lib/components/index.js';
 	import { onMount } from 'svelte';
 	import { pagesNavigation, setPages } from '$lib/stores/app.js';
+	import { capitalize } from 'site-kit/actions';
+
 	let { children, data } = $props();
 
 	type PagesFilter = {
@@ -53,6 +55,7 @@
 
 	$effect(() => {
 		handleNavigation();
+		if (sizeWidthScreen >= 640) selectedSection = null;
 	});
 
 	$effect(() => {
@@ -97,7 +100,7 @@
 		{#each $pagesNavigation as section, index (section.key)}
 			<List class="hidden-mobile" nav density="compact" variant="text">
 				{#if section.submenu}
-					<ListItem>
+					<ListItem class="font-semibold">
 						{section.key}
 					</ListItem>
 				{/if}
@@ -111,12 +114,12 @@
 						{#if page.icon}
 							<Icon icon={page.icon} />
 						{/if}
-						{page.title}
+						{capitalize(page.title)}
 					</ListItem>
 				{/each}
 			</List>
 
-			<List class="display-mobile">
+			<List class="display-mobile" nav>
 				{#if selectedSection === null}
 					<!-- {#each pagesGrouped as section, index (section.key)} -->
 					{#if section.submenu}
@@ -124,7 +127,7 @@
 							{#if section.icon}
 								<Icon icon={section.icon} />
 							{/if}
-							{section.key}
+							{capitalize(section.key)}
 						</ListItem>
 					{:else}
 						{#each section.pages as page (page.slug)}
@@ -132,14 +135,17 @@
 								{#if page.icon}
 									<Icon icon={page.icon} />
 								{/if}
-								{page.title}
+								{capitalize(page.title)}
 							</ListItem>
 						{/each}
 					{/if}
 					<!-- {/each} -->
-				{:else}
+				{:else if section.key === $pagesNavigation[selectedSection].key}
 					<ListItem onclick={() => (selectedSection = null)}>
-						{$t('navigation.back_to_sections')}
+						{#snippet append()}
+							<Icon icon="mgc_left_line" size="lg" />
+						{/snippet}
+						{capitalize($t('navigation.back_to_sections'))}
 					</ListItem>
 
 					{#each pagesGrouped[selectedSection].pages as page (page.slug)}
@@ -147,7 +153,7 @@
 							{#if page.icon}
 								<Icon icon={page.icon} />
 							{/if}
-							{page.title}
+							{capitalize(page.title)}
 						</ListItem>
 					{/each}
 				{/if}
@@ -163,10 +169,8 @@
 		class="hidden-laptop fixed right-[0.75rem] bottom-[0.75rem] z-1100"
 	>
 		<Icon icon={open ? 'mgc_close_line' : 'mgc_menu_line'} />
-		{open ? $t('navigation.close') : $t('navigation.open')}
+		{capitalize(open ? $t('navigation.close') : $t('navigation.open'))}
 	</Button>
 
 	{@render children?.()}
-
-	<Footer />
 </Drawer>

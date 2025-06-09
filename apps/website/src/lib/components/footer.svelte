@@ -3,6 +3,7 @@
 	import { Button, Icon, Separator } from 'lapikit/components';
 	import type { Snippet } from 'svelte';
 	import ConsentModal from './consent-modal.svelte';
+	import { capitalize } from 'site-kit/actions';
 
 	let { children, ...rest }: { children?: Snippet } = $props();
 
@@ -13,11 +14,11 @@
 <footer {...rest} class="max-md:mb-[5rem] min-md:mb-[1rem]">
 	{@render children?.()}
 
-	<div class="mx-4 grid items-center justify-center text-center sm:flex sm:justify-between">
+	<div class="mx-4 grid items-center justify-center text-center text-sm sm:flex sm:justify-between">
 		<p>©{year} Lapikit.</p>
 		<div class="order-first flex items-center gap-2 sm:order-none">
 			<span class="text-sm">
-				{$t('common.hero.made_with')}
+				{capitalize($t('common.hero.made_with'))}
 				<Icon icon="mgc_heart_fill" color="red" />
 				{$t('common.hero.by')}
 				<a href="https://nycolaide.dev" target="_blank">Nycolaide</a>
@@ -25,7 +26,7 @@
 
 			<Separator orientation="vertical" />
 			<Button variant="text" size="sm" onclick={() => (open = true)}>
-				{$t('app.cookie_settings')}
+				{capitalize($t('common.gdpr.cookie_settings'))}
 			</Button>
 		</div>
 	</div>

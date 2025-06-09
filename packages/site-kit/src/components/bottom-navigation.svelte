@@ -24,8 +24,10 @@
 		justify-content: center;
 		gap: 10px;
 		font-size: 0.8rem;
-		max-width: 40rem;
+		min-width: 20rem;
 		margin: 0 auto;
 		padding-top: 0.5rem;
+		grid-template-columns: repeat(3, 1fr);
+		width: calc(100% - 20%);
 	}
 </style>

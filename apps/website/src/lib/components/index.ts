@@ -4,5 +4,4 @@ export { default as Counter } from './counter.svelte';
 export { default as Footer } from './footer.svelte';
 export { default as Sandbox } from './sandbox/sandbox.svelte';
 export { default as SearchBar } from './search-bar.svelte';
-export { default as TableOfContents } from './table-of-contents.svelte';
 export { default as ThemeToggle } from './theme-toggle.svelte';
