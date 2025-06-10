@@ -1,34 +1,33 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	type Row = string[];
-
 	let props = $props();
 	let ref: HTMLTableElement | null = $state(null);
 
 	let headers: string[] = $state([]);
-	let rows: Row[] = $state([]);
-	let customIndex = $state({
-		_default: -1
-	});
-	let customRows: { _default: (string | null)[] } = $state({
-		_default: []
-	});
+	let rows: string[][] = $state([]);
+
+	let defaultIndex = $state(-1);
+	let descIndex = $state(-1);
 
 	onMount(() => {
 		if (!ref) return;
-		// table
+
 		const thead = ref.querySelector('thead');
 		const tbody = ref.querySelector('tbody');
 
 		if (thead) {
 			const ths = Array.from(thead.querySelectorAll('th'));
-
 			headers = ths
 				.map((th, index) => {
 					const text = th.innerHTML?.trim() || '';
+
 					if (text.toLowerCase() === 'default') {
-						customIndex._default = index;
+						defaultIndex = index;
+						return '';
+					}
+					if (['desc', 'description'].includes(text.toLowerCase())) {
+						descIndex = index;
 					}
 					return text;
 				})
@@ -39,46 +38,61 @@
 			const trs = Array.from(tbody.querySelectorAll('tr'));
 			rows = trs.map((tr) => {
 				const tds = Array.from(tr.querySelectorAll('td'));
+				const cells = tds.map((td) => {
+					let html = td.innerHTML?.trim() || '';
+					return highlightTokens(html);
+				});
 
-				const row = tds.map((td) => td.innerHTML?.trim() || '');
-
-				if (customIndex._default >= 0 && customIndex._default < row.length) {
-					customRows['_default'].push(row[customIndex._default]);
-					row.splice(customIndex._default, 1);
-				} else {
-					customRows['_default'].push(null);
+				if (
+					defaultIndex >= 0 &&
+					defaultIndex < cells.length &&
+					descIndex >= 0 &&
+					descIndex < cells.length
+				) {
+					const def = cells[defaultIndex];
+					const desc = cells[descIndex];
+					cells[descIndex] = `${desc} <code>${def}</code>`;
 				}
 
-				return row;
+				if (defaultIndex >= 0 && defaultIndex < cells.length) {
+					cells.splice(defaultIndex, 1);
+				}
+
+				return cells;
 			});
 		}
 	});
+
+	const TOKENS = {
+		$bindable: 'bindable',
+		$reactive: 'reactive'
+	};
+
+	function highlightTokens(value: string): string {
+		for (const [key, cls] of Object.entries(TOKENS)) {
+			const re = new RegExp(`\\${key}`, 'g');
+			value = value.replace(re, `<span class="token ${cls}">${key}</span>`);
+		}
+		return value;
+	}
 </script>
 
 <span>mdsvex table</span>
+
 {#if headers.length > 0}
 	<table>
 		<thead>
 			<tr>
 				{#each headers as head (head)}
-					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-					{@html head}
+					<th>{@html head}</th>
 				{/each}
 			</tr>
 		</thead>
-
 		<tbody>
-			{#each rows as row, i (row)}
+			{#each rows as row}
 				<tr>
-					{#each row as cell, y (cell)}
-						<td>
-							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-							{@html cell}
-
-							{#if customIndex._default === y}
-								<div>{customRows['_default'][i]}</div>
-							{/if}
-						</td>
+					{#each row as cell}
+						<td>{@html cell}</td>
 					{/each}
 				</tr>
 			{/each}
@@ -89,3 +103,30 @@
 		{@render props.children?.()}
 	</table>
 {/if}
+
+<style>
+	:global(code) {
+		background: #f4f4f4;
+		padding: 0.1rem 0.3rem;
+		border-radius: 4px;
+		font-size: 0.875em;
+	}
+
+	:global(.token) {
+		padding: 0.1rem 0.3rem;
+		border-radius: 4px;
+		font-size: 0.8em;
+		font-weight: bold;
+		white-space: nowrap;
+	}
+
+	:global(.token.bindable) {
+		background: #e0f7fa;
+		color: #00796b;
+	}
+
+	:global(.token.reactive) {
+		background: #fce4ec;
+		color: #ad1457;
+	}
+</style>

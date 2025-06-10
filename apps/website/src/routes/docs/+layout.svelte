@@ -82,17 +82,26 @@
 
 <svelte:window bind:innerWidth={sizeWidthScreen} />
 
-<Appbar density={{ _default: 'default', md: 'comfortable' }} class="fixed top-0 z-100 w-full">
+<Appbar density={{ _default: 'default', md: 'comfortable' }} class="sticky top-0 z-100 w-full">
 	<a href="/">
 		<p class="text-2xl font-bold">Lapikit</p>
 	</a>
 
 	<Spacer />
-	<SearchBar />
-	<ThemeToggle />
-	<Button icon>
-		<Icon icon="mgc_github_line" />
-	</Button>
+
+	<div>
+		<SearchBar />
+		<ThemeToggle />
+		<Button
+			icon
+			background="github"
+			color="on-github"
+			href="https://github.com/Nycolaide/lapikit"
+			target="_blank"
+		>
+			<Icon icon="mgc_github_line" />
+		</Button>
+	</div>
 </Appbar>
 
 <Drawer bind:open>

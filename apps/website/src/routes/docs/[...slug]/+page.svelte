@@ -9,6 +9,11 @@
 
 	// states
 	let activeId: string = $state('');
+	let specificPage = $state(['changelog']);
+
+	$effect(() => {
+		console.log('data', data);
+	});
 
 	onMount(() => {
 		const observer = new IntersectionObserver(
@@ -56,13 +61,25 @@
 				<Separator class="my-1" />
 
 				{#each data.meta.headings as heading (heading)}
-					<ListItem
-						href={'#' + heading.id}
-						class="level-{heading.level}"
-						active={heading.id === activeId}
-					>
-						{capitalize(heading.text)}
-					</ListItem>
+					{#if !specificPage.includes(data.meta.title) && heading.level >= 2 && heading.level <= 4}
+						<ListItem
+							href={'#' + heading.id}
+							class="level-{heading.level}"
+							active={heading.id === activeId}
+							style={`margin-left: ${(heading.level - 2) * 1.5}rem;`}
+						>
+							{capitalize(heading.text)}
+						</ListItem>
+					{:else if heading.level === 2}
+						<ListItem
+							href={'#' + heading.id}
+							class="level-{heading.level}"
+							active={heading.id === activeId}
+							style={`margin-left: ${(heading.level - 2) * 1.5}rem;`}
+						>
+							{capitalize(heading.text)}
+						</ListItem>
+					{/if}
 				{/each}
 			</List>
 		</Card>
@@ -102,6 +119,12 @@
 		:global(ul > li) {
 			line-height: calc(var(--kit-spacing) * 14);
 			margin-top: calc(var(--kit-spacing) * 5);
+		}
+
+		:global(a) {
+			text-underline-offset: 4px;
+			text-decoration-line: underline;
+			font-weight: 500;
 		}
 	}
 </style>

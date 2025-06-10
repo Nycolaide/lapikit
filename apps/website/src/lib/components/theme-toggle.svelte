@@ -14,6 +14,7 @@
 				: 'dark'
 		)}
 	density={app ? 'comfortable' : 'default'}
+	variant={app ? 'filled' : 'text'}
 >
 	{#if ($colorScheme === 'system' && $colorSchemeSystem === 'dark') || $colorScheme === 'dark'}
 		<Icon icon="mgc_sun_line" />

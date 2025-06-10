@@ -7,5 +7,4 @@
 	let { src, alt }: Props = $props();
 </script>
 
-<span>mdsvex img</span>
-<img {src} {alt} loading="lazy" />
+<img {src} {alt} loading="lazy" class="mt-6 rounded-2xl" />

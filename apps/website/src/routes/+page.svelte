@@ -38,6 +38,7 @@
 		</div>
 		<div class="flex justify-end gap-3">
 			<ThemeToggle app />
+
 			<Button density="comfortable">{capitalize($t('homepage.top_cta'))}</Button>
 		</div>
 	</Appbar>
