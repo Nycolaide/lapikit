@@ -25,7 +25,7 @@
 				.map((th, index) => {
 					const text = th.innerHTML?.trim() || '';
 
-					if (text.toLowerCase() === 'extend_type') {
+					if (text.toLowerCase() === 'type_extend') {
 						typeExtendIndex = index;
 						return '';
 					}
@@ -70,7 +70,7 @@
 						const extendType = cells[typeExtendIndex];
 						if (extendType !== '') {
 							cells[typeIndex] =
-								`${type} <i class="table-info mgc_information_line" title="${extendType}"/>`;
+								`${type} <i class="mgc_information_line" title="${extendType}" style="cursor: pointer"/>`;
 						} else {
 							cells[typeIndex] = `${type}`;
 						}
@@ -116,8 +116,8 @@
 	}
 </script>
 
-<div class="block-1-test">
-	<div class="block-2-test">
+<div class="kit-table--markdown">
+	<div class="kit-table--markdown-wrapper">
 		{#if headers.length > 0}
 			<table>
 				<thead>
@@ -148,47 +148,54 @@
 </div>
 
 <style>
-	.block-1-test {
+	.kit-table--markdown {
+		border: var(--border);
+		border-radius: 14px;
 		overflow: hidden;
 		position: relative;
+		margin-top: 28px;
+		margin-bottom: 38px;
+		display: inline-grid;
 	}
 
-	.block-2-test {
-		display: grid;
+	.kit-table--markdown-wrapper {
 		width: 100%;
-		overflow: auto;
+		overflow: hidden;
+		display: inline-block;
+		overflow-x: auto;
 	}
 
-	:global(table) {
-		width: 100%;
-		border-collapse: collapse;
+	:global(.kit-table--markdown table) {
 		margin: 1rem 0;
+		border-spacing: 0;
+		overflow-x: auto;
 	}
 
-	:global(thead),
-	:global(tbody tr:not(:last-child)) {
-		border-bottom: 1px solid var(--kit-scrim);
-	}
-
-	:global(thead th) {
+	:global(.kit-table--markdown table thead tr th) {
 		text-align: start;
 	}
 
-	:global(tbody) {
+	:global(.kit-table--markdown table thead tr),
+	:global(.kit-table--markdown tbody tr:not(:last-child)) {
+		border-bottom: 1px solid var(--kit-scrim);
+	}
+
+	:global(.kit-table--markdown table tbody) {
 		width: 100%;
 	}
 
-	:global(tbody td) {
+	:global(.kit-table--markdown table tbody tr td) {
+		min-width: 10rem;
 		vertical-align: baseline;
 		padding-block: calc(var(--kit-spacing) * 6);
 	}
 
-	:global(tbody p) {
+	:global(.kit-table--markdown table tbody tr td p) {
 		margin-top: 0 !important;
 		line-height: normal !important;
 	}
 
-	:global(.token) {
+	:global(.kit-table--markdown .token) {
 		padding: 0.1rem 0.3rem;
 		border-radius: 4px;
 		font-size: 0.8em;
@@ -196,17 +203,13 @@
 		white-space: nowrap;
 	}
 
-	:global(.token.bindable) {
+	:global(.kit-table--markdown .token.bindable) {
 		background: #e0f7fa;
 		color: #00796b;
 	}
 
-	:global(.token.reactive) {
+	:global(.kit-table--markdown .token.reactive) {
 		background: #fce4ec;
 		color: #ad1457;
-	}
-
-	:global(.table-info) {
-		cursor: pointer;
 	}
 </style>
