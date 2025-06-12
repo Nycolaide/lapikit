@@ -149,8 +149,6 @@
 
 <style>
 	.kit-table--markdown {
-		border: var(--border);
-		border-radius: 14px;
 		overflow: hidden;
 		position: relative;
 		margin-top: 28px;
