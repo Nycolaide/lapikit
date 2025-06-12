@@ -20,7 +20,7 @@
 		--drawer-top: calc(0px + 4.5rem + 0px);
 		display: grid;
 		grid-template-columns: 1fr;
-		position: relative;
+		/* position: relative; */
 		top: var(--drawer-top);
 	}
 

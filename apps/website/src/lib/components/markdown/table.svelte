@@ -1,91 +1,213 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	type Row = string[];
-
 	let props = $props();
 	let ref: HTMLTableElement | null = $state(null);
 
 	let headers: string[] = $state([]);
-	let rows: Row[] = $state([]);
-	let customIndex = $state({
-		_default: -1
-	});
-	let customRows: { _default: (string | null)[] } = $state({
-		_default: []
-	});
+	let rows: string[][] = $state([]);
+
+	let defaultIndex = $state(-1);
+	let descIndex = $state(-1);
+
+	let typeIndex = $state(-1);
+	let typeExtendIndex = $state(-1);
 
 	onMount(() => {
 		if (!ref) return;
-		// table
+
 		const thead = ref.querySelector('thead');
 		const tbody = ref.querySelector('tbody');
 
 		if (thead) {
 			const ths = Array.from(thead.querySelectorAll('th'));
-
 			headers = ths
 				.map((th, index) => {
 					const text = th.innerHTML?.trim() || '';
+
+					if (text.toLowerCase() === 'type_extend') {
+						typeExtendIndex = index;
+						return '';
+					}
 					if (text.toLowerCase() === 'default') {
-						customIndex._default = index;
+						defaultIndex = index;
+						return '';
+					}
+					if (['desc', 'description'].includes(text.toLowerCase())) {
+						descIndex = index;
+					}
+					if (['type', 'types'].includes(text.toLowerCase())) {
+						typeIndex = index;
 					}
 					return text;
 				})
-				.filter((text) => text.toLowerCase() !== 'default');
+				.filter((text) => text !== '');
 		}
 
 		if (tbody) {
 			const trs = Array.from(tbody.querySelectorAll('tr'));
 			rows = trs.map((tr) => {
 				const tds = Array.from(tr.querySelectorAll('td'));
+				const cells = tds.map((td) => {
+					let html = td.innerHTML?.trim() || '';
+					return highlightTokens(html);
+				});
 
-				const row = tds.map((td) => td.innerHTML?.trim() || '');
-
-				if (customIndex._default >= 0 && customIndex._default < row.length) {
-					customRows['_default'].push(row[customIndex._default]);
-					row.splice(customIndex._default, 1);
-				} else {
-					customRows['_default'].push(null);
+				if (
+					defaultIndex >= 0 &&
+					defaultIndex < cells.length &&
+					descIndex >= 0 &&
+					descIndex < cells.length
+				) {
+					const def = cells[defaultIndex];
+					const desc = cells[descIndex];
+					cells[descIndex] = `<p>${desc}</p> <div class="text-sm mt-2">Default: ${def}</div>`;
 				}
 
-				return row;
+				if (typeIndex >= 0 && typeIndex < cells.length) {
+					const type = cells[typeIndex];
+					if (typeExtendIndex >= 0 && typeExtendIndex < cells.length) {
+						const extendType = cells[typeExtendIndex];
+						if (extendType !== '') {
+							cells[typeIndex] =
+								`${type} <i class="mgc_information_line" title="${extendType}" style="cursor: pointer"/>`;
+						} else {
+							cells[typeIndex] = `${type}`;
+						}
+					} else {
+						cells[typeIndex] = `${type}`;
+					}
+				}
+
+				if (defaultIndex >= 0 && defaultIndex < cells.length) {
+					cells.splice(defaultIndex, 1);
+				}
+
+				if (typeIndex >= 0 && typeIndex < cells.length) {
+					cells.splice(typeIndex, 1);
+				}
+
+				return cells;
 			});
 		}
 	});
+
+	const TOKENS = {
+		$bindable: 'bindable',
+		$reactive: 'reactive'
+	};
+
+	function parseMarkdownLinks(str: string): string {
+		return str.replace(/<a\s+[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gi, (_match, href, text) => {
+			if (href.startsWith('/')) return `<a href="${href}" sveltekit:prefetch>${text}</a>`;
+			return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text} URL</a>`;
+		});
+	}
+
+	function highlightTokens(value: string): string {
+		for (const [key, cls] of Object.entries(TOKENS)) {
+			const re = new RegExp(`\\${key}`, 'g');
+			value = value.replace(re, `<span class="token ${cls}">${key}</span>`);
+		}
+
+		value = parseMarkdownLinks(value);
+
+		return value;
+	}
 </script>
 
-<span>mdsvex table</span>
-{#if headers.length > 0}
-	<table>
-		<thead>
-			<tr>
-				{#each headers as head (head)}
-					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-					{@html head}
-				{/each}
-			</tr>
-		</thead>
-
-		<tbody>
-			{#each rows as row, i (row)}
-				<tr>
-					{#each row as cell, y (cell)}
-						<td>
+<div class="kit-table--markdown">
+	<div class="kit-table--markdown-wrapper">
+		{#if headers.length > 0}
+			<table>
+				<thead>
+					<tr>
+						{#each headers as head (head)}
 							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-							{@html cell}
-
-							{#if customIndex._default === y}
-								<div>{customRows['_default'][i]}</div>
-							{/if}
-						</td>
+							<th>{@html head}</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each rows as row (row)}
+						<tr>
+							{#each row as cell (cell)}
+								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+								<td>{@html cell}</td>
+							{/each}
+						</tr>
 					{/each}
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-{:else}
-	<table bind:this={ref} style="display: none">
-		{@render props.children?.()}
-	</table>
-{/if}
+				</tbody>
+			</table>
+		{:else}
+			<table bind:this={ref} style="display: none">
+				{@render props.children?.()}
+			</table>
+		{/if}
+	</div>
+</div>
+
+<style>
+	.kit-table--markdown {
+		overflow: hidden;
+		position: relative;
+		margin-top: 28px;
+		margin-bottom: 38px;
+		display: inline-grid;
+	}
+
+	.kit-table--markdown-wrapper {
+		width: 100%;
+		overflow: hidden;
+		display: inline-block;
+		overflow-x: auto;
+	}
+
+	:global(.kit-table--markdown table) {
+		margin: 1rem 0;
+		border-spacing: 0;
+		overflow-x: auto;
+	}
+
+	:global(.kit-table--markdown table thead tr th) {
+		text-align: start;
+	}
+
+	:global(.kit-table--markdown table thead tr),
+	:global(.kit-table--markdown tbody tr:not(:last-child)) {
+		border-bottom: 1px solid var(--kit-scrim);
+	}
+
+	:global(.kit-table--markdown table tbody) {
+		width: 100%;
+	}
+
+	:global(.kit-table--markdown table tbody tr td) {
+		min-width: 10rem;
+		vertical-align: baseline;
+		padding-block: calc(var(--kit-spacing) * 6);
+	}
+
+	:global(.kit-table--markdown table tbody tr td p) {
+		margin-top: 0 !important;
+		line-height: normal !important;
+	}
+
+	:global(.kit-table--markdown .token) {
+		padding: 0.1rem 0.3rem;
+		border-radius: 4px;
+		font-size: 0.8em;
+		font-weight: bold;
+		white-space: nowrap;
+	}
+
+	:global(.kit-table--markdown .token.bindable) {
+		background: #e0f7fa;
+		color: #00796b;
+	}
+
+	:global(.kit-table--markdown .token.reactive) {
+		background: #fce4ec;
+		color: #ad1457;
+	}
+</style>

@@ -17,5 +17,8 @@
 			"expand": "expand",
 			"collapse": "collapse"
 		}
+	},
+	"summary": {
+		"title": "on this page"
 	}
 }

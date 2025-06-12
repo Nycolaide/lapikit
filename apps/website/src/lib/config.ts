@@ -42,7 +42,7 @@ export const sectionDocs = [
 	},
 	{
 		key: 'components',
-		icon: 'mgc_github_line',
+		icon: 'mgc_plugin_2_line',
 		submenu: true
 	},
 	{

@@ -3,6 +3,7 @@
 	import { Button, Icon, Separator } from 'lapikit/components';
 	import type { SandboxActionsProps } from './types';
 	import ThemeToggleComponent from './theme-toggle-component.svelte';
+	import { capitalize } from 'site-kit/actions';
 
 	let {
 		presentation,
@@ -23,12 +24,12 @@
 		{#if !presentation && !tab?.includes('only')}
 			<Button onclick={() => handleTab('preview')} active={tab === 'preview'}>
 				<Icon icon="mgc_eye_2_line" />
-				{$t('docs.sandbox.actions.preview')}
+				{capitalize($t('docs.sandbox.actions.preview'))}
 			</Button>
 
 			<Button onclick={() => handleTab('code')} active={tab === 'code'}>
 				<Icon icon="mgc_code_line" />
-				{$t('docs.sandbox.actions.code')}
+				{capitalize($t('docs.sandbox.actions.code'))}
 			</Button>
 		{/if}
 	</div>
@@ -41,10 +42,10 @@
 			>
 				{#if expanded !== 'fit-content'}
 					<Icon icon="mgc_down_line" />
-					{$t('docs.sandbox.actions.expand')}
+					{capitalize($t('docs.sandbox.actions.expand'))}
 				{:else}
 					<Icon icon="mgc_up_line" />
-					{$t('docs.sandbox.actions.collapse')}
+					{capitalize($t('docs.sandbox.actions.collapse'))}
 				{/if}
 			</Button>
 		{/if}

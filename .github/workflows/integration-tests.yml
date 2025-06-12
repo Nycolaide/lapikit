@@ -217,6 +217,7 @@ jobs:
           echo "PUBLIC_GOOGLE_TAG_MANAGER_ID=GTM-XXXXXX" >> .env
           echo "PUBLIC_BING_WEBMASTER_TOOLS_ENABLED=true" >> .env
           echo "PUBLIC_BING_WEBMASTER_TOOLS_ID=XXXXXXXXXX" >> .env
+          echo "PUBLIC_CALL_API_ENABLED=true" >> .env
 
       - name: build
         run: cd apps/website && bun run build

@@ -5,5 +5,14 @@
 	"hero": {
 		"made_with": "made with",
 		"by": "by"
+	},
+	"gdpr": {
+		"cookie_settings": "cookie settings",
+		"title": "Lapikit respects your privacy",
+		"description": "Lapikit and our partners use cookies or similar technologies to enable us to improve the site, your experience and to ensure the proper functioning of the site, to collect statistics in order to optimize the services offered, and to adapt Lapikit's content.",
+		"button": {
+			"accept": "accept all",
+			"decline": "decline all"
+		}
 	}
 }

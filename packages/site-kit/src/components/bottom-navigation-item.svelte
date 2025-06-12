@@ -18,6 +18,7 @@
 		font-size: 0.8rem;
 		color: var(--kit-on-surface-variant);
 		cursor: pointer;
+		text-align: center;
 	}
 
 	.bottom-navigation-item :global(.kit-icon) {

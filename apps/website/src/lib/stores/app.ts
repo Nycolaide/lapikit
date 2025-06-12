@@ -11,6 +11,7 @@ type PageNavigation = {
 };
 
 type Page = {
+	icon?: string;
 	title: string;
 	description: string;
 	date: string;

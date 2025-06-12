@@ -4,6 +4,7 @@
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
 	import { navigationMain } from '$lib/config';
 	import { page } from '$app/state';
+	import { capitalize } from 'site-kit/actions';
 
 	let { data } = $props();
 
@@ -31,13 +32,14 @@
 					active={page.url.pathname === path}
 					rounded="full"
 				>
-					{$t(`navigation.${key}`)}
+					{capitalize($t(`navigation.${key}`))}
 				</Button>
 			{/each}
 		</div>
 		<div class="flex justify-end gap-3">
 			<ThemeToggle app />
-			<Button density="comfortable">{$t('homepage.top_cta')}</Button>
+
+			<Button density="comfortable">{capitalize($t('homepage.top_cta'))}</Button>
 		</div>
 	</Appbar>
 
@@ -48,21 +50,23 @@
 			<Chip href="/docs/changelog" variant="outline">
 				<Icon icon="mgc_box_2_line" />
 				<Separator orientation="vertical" />
-				{$t('homepage.version_lapikit_package', { version: data?.npm?.version || '0.0.0' })}
+				{capitalize(
+					$t('homepage.version_lapikit_package', { version: data?.npm?.version || '0.0.0' })
+				)}
 			</Chip>
 			<h1
 				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"
 			>
-				{$t('homepage.main_title')}
+				{capitalize($t('homepage.main_title'))}
 			</h1>
 			<p
 				class="mx-auto mb-[2em] max-w-sm text-sm leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
 			>
-				{$t('homepage.main_introduction')}
+				{capitalize($t('homepage.main_introduction'))}
 			</p>
 			<div>
 				<Button size="lg" href="/docs/button">
-					{$t('homepage.main_cta')}
+					{capitalize($t('homepage.main_cta'))}
 				</Button>
 			</div>
 		</div>
@@ -74,8 +78,8 @@
 >
 	<div class="grid gap-4">
 		<div class="text-center">
-			<h2>{$t('homepage.dev_with_lapikit.title')}</h2>
-			<p>{$t('homepage.dev_with_lapikit.paragraph1')}</p>
+			<h2>{capitalize($t('homepage.dev_with_lapikit.title'))}</h2>
+			<p>{capitalize($t('homepage.dev_with_lapikit.paragraph1'))}</p>
 		</div>
 
 		<Sandbox name="counter" code={CounterCode}>
@@ -142,7 +146,7 @@
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
-			{$t(`navigation.${key}`)}
+			{capitalize($t(`navigation.${key}`))}
 		</BottomNavigationItem>
 	{/each}
 </BottomNavigation>
