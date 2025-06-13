@@ -2,7 +2,7 @@
 	import { BROWSER } from 'esm-env';
 	import { t } from '$lib/i18n';
 	import { page as url } from '$app/state';
-	import { Appbar, Button, Icon, List, ListItem, Spacer } from 'lapikit/components';
+	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
 	import { ThemeToggle, SearchBar } from '$lib/components/index.js';
@@ -110,7 +110,7 @@
 			<List class="hidden-mobile" nav density="compact" variant="text">
 				{#if section.submenu}
 					<ListItem class="font-semibold">
-						{section.key}
+						{capitalize(section.key)}
 					</ListItem>
 				{/if}
 
@@ -124,6 +124,19 @@
 							<Icon icon={page.icon} />
 						{/if}
 						{capitalize(page.title)}
+
+						{#if page?.state}
+							<Chip
+								rounded="sm"
+								size="xs"
+								success={page.state === 'new'}
+								warning={page.state === 'updated'}
+								error={page.state === 'deprecated'}
+								info={page.state === 'preview'}
+							>
+								{capitalize($t(`navigation.state.${page.state}`))}
+							</Chip>
+						{/if}
 					</ListItem>
 				{/each}
 			</List>
@@ -145,6 +158,19 @@
 									<Icon icon={page.icon} />
 								{/if}
 								{capitalize(page.title)}
+
+								{#if page?.state}
+									<Chip
+										rounded="sm"
+										size="xs"
+										success={page.state === 'new'}
+										warning={page.state === 'updated'}
+										error={page.state === 'deprecated'}
+										info={page.state === 'preview'}
+									>
+										{capitalize($t(`navigation.state.${page.state}`))}
+									</Chip>
+								{/if}
 							</ListItem>
 						{/each}
 					{/if}

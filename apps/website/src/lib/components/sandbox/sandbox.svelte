@@ -30,7 +30,7 @@
 	};
 </script>
 
-<div id={name} class="lapikit-sandbox relative overflow-hidden rounded-xl">
+<div id={name} class="lapikit-sandbox relative mt-6 mb-6 overflow-hidden rounded-xl">
 	{#if presentation && component}
 		<!-- presentation content -->
 		{#if component}

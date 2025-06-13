@@ -49,9 +49,9 @@
 	border-radius: var(--shape, var(--accordion-radius, var(--kit-radius-md)));
 	color: var(--on, var(--accordion-color, var(--kit-on-container)));
 	background-color: var(--base, var(--accordion-background, var(--kit-container)));
-	transition:
+	/* transition:
 		color 0.5s,
-		background-color 0.5s;
+		background-color 0.5s; */
 }
 
 .kit-accordion .kit-accordion-item > button,

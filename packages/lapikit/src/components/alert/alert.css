@@ -15,9 +15,9 @@
 	color: var(--alert-color);
 	background-color: var(--alert-background);
 	border-radius: var(--alert-radius);
-	transition:
+	/* transition:
 		color 0.5s,
-		background-color 0.5s;
+		background-color 0.5s; */
 }
 
 .kit-alert .kit-alert--underlay {

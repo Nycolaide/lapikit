@@ -15,10 +15,10 @@
 	color: var(--appbar-color);
 	background-color: var(--appbar-background);
 	border-color: var(--appbar-background);
-	transition:
+	/* transition:
 		color 0.5s,
 		border-color 0.5s,
-		background-color 0.5s;
+		background-color 0.5s; */
 }
 
 /* wrapper */

@@ -11,9 +11,9 @@
 	flex-direction: column;
 	text-align: start;
 	overflow: hidden;
-	transition:
+	/* transition:
 		color 0.5s,
-		background-color 0.5s;
+		background-color 0.5s; */
 	padding-top: var(--card-spacing-x);
 	padding-bottom: var(--card-spacing-x);
 	padding-right: var(--card-spacing-y);

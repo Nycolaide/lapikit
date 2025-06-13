@@ -9,7 +9,7 @@
 	opacity: var(--separator-opacity);
 	transition: inherit;
 	border-color: var(--separator-color);
-	transition: border-color 0.5s;
+	/* transition: border-color 0.5s; */
 	border-style: solid;
 }
 
