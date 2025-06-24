@@ -4,7 +4,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	transition: color 0.5s;
+	/* transition: color 0.5s; */
 	text-indent: 0;
 	font-size: calc(
 		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing)

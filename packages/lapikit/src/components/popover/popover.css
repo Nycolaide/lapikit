@@ -11,9 +11,9 @@
 	width: auto;
 	opacity: 1;
 	transition-property: opacity, transform;
-	transition:
+	/* transition:
 		color 0.5s,
-		background-color 0.5s;
+		background-color 0.5s; */
 
 	/* theme */
 	background-color: var(--popover-background);

@@ -3,6 +3,7 @@ title: chip
 description: description.
 date: "2025-5-07"
 section: "components"
+state: "updated"
 categories:
   - sveltekit
   - svelte
