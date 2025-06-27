@@ -43,7 +43,7 @@ export const colors = (config: Lapikit) => {
 			}
 			cssVariables += `}\n`;
 			cssVariables += `.${inversed} {\n`;
-			cssVariables += `color-scheme: ${used};\n`;
+			cssVariables += `color-scheme: ${inversed};\n`;
 			for (const [colorName, colorValue] of Object.entries(schemes[inversed])) {
 				cssVariables += `--kit-${colorName}: ${colorValue};\n`;
 			}
@@ -62,7 +62,7 @@ export const colors = (config: Lapikit) => {
 		cssVariables += `}\n`;
 
 		cssVariables += `.${inversed} {\n`;
-		cssVariables += `color-scheme: ${used};\n`;
+		cssVariables += `color-scheme: ${inversed};\n`;
 		for (const [colorName, colorValue] of Object.entries(schemes[inversed])) {
 			cssVariables += `--kit-${colorName}: ${colorValue};\n`;
 		}

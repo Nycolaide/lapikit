@@ -52,6 +52,7 @@
 	]}
 	disabled={href ? undefined : disabled}
 	use:ripple={{
+		component: 'card',
 		disabled: noRipple || disabled || !isClickable
 	}}
 	style:--base={assets.color(background)}

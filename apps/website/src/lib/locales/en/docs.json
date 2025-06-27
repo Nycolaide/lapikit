@@ -19,6 +19,7 @@
 		}
 	},
 	"summary": {
-		"title": "on this page"
+		"title": "on this page",
+		"version": "version"
 	}
 }

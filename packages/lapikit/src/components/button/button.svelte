@@ -65,6 +65,7 @@
 	disabled={href ? undefined : disabled}
 	type={href ? undefined : type}
 	use:ripple={{
+		component: 'button',
 		disabled: noRipple || disabled
 	}}
 	style:--base={assets.color(background)}

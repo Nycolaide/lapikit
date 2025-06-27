@@ -76,6 +76,7 @@
 		disabled={href ? undefined : disabled}
 		type={href ? undefined : type}
 		use:ripple={{
+			component: 'chip',
 			disabled: noRipple || disabled || is === 'div' || is === 'span'
 		}}
 		style:--base={assets.color(background)}

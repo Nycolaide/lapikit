@@ -8,14 +8,13 @@
 
 	let { data } = $props();
 
-	$effect(() => {
-		console.log('data', data);
-	});
-
 	// demo code
 	import { Sandbox, Counter, ThemeToggle, Footer } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
+	import Head from '$lib/components/head.svelte';
 </script>
+
+<Head title="Lapikit" description="" />
 
 <div id="head-lapikit">
 	<Appbar

@@ -5,20 +5,22 @@
 </script>
 
 <script lang="ts">
+	import Head from '$lib/components/head.svelte';
 	import { capitalize } from 'site-kit/actions';
-	let { children, title, description, ...rest } = $props();
-
-	$effect(() => {
-		console.log('mdsvex props', title, rest);
-	});
+	let props = $props();
 </script>
 
-{#if title}
-	<h1 class="title">{capitalize(title)}</h1>
-	<p class="description">{capitalize(description)}</p>
+<Head
+	title={props?.head?.title && capitalize(props.head.title)}
+	description={props?.head?.description && capitalize(props.head.description)}
+/>
+
+{#if props?.title}
+	<h1 class="title">{capitalize(props?.title)}</h1>
+	<p class="description">{capitalize(props?.description)}</p>
 {/if}
 
-{@render children?.()}
+{@render props?.children?.()}
 
 <style>
 	h1.title {

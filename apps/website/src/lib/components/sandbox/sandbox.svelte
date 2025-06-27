@@ -9,7 +9,7 @@
 	let { name, presentation, component, code }: SandboxProps = $props();
 
 	//state
-	let expanded: string = $state('300px');
+	let expanded: string = $state('');
 	let tab: string = $state('preview');
 	let localColorScheme: 'light' | 'dark' | undefined = $state(undefined);
 

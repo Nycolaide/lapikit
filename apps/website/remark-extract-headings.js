@@ -6,10 +6,18 @@ export default function extractHeadings() {
 
 		visit(tree, 'heading', (node) => {
 			const depth = node.depth;
-			const text = node.children
-				.filter((child) => child.type === 'text')
-				.map((child) => child.value)
-				.join('');
+
+			const extractText = (node) => {
+				if (node.type === 'text') {
+					return node.value;
+				}
+				if (node.children) {
+					return node.children.map(extractText).join('');
+				}
+				return '';
+			};
+
+			const text = node.children.map(extractText).join('');
 
 			const id = text
 				.toLowerCase()
