@@ -4,5 +4,11 @@
 	"github": "github",
 	"open": "open menu",
 	"close": "close menu",
-	"back_to_sections": "return"
+	"back_to_sections": "return",
+	"state": {
+		"updated": "updated",
+		"deprecated": "deprecated",
+		"experimental": "experimental",
+		"new": "new"
+	}
 }

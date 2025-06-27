@@ -41,7 +41,7 @@
 		bottom: 0;
 		background-color: var(--kit-surface);
 		color: var(--kit-on-surface);
-		padding-bottom: 3.5rem;
+		padding-bottom: 5.5rem;
 	}
 
 	#drawer .drawer-navigation .backdrop {

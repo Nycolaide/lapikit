@@ -4,7 +4,7 @@
 	let { children }: SandboxComponentProps = $props();
 </script>
 
-<div class="relative flex min-h-[300px] items-center justify-center overflow-auto">
+<div class="relative flex min-h-[150px] items-center justify-center gap-2 overflow-auto p-2">
 	{@render children?.()}
 </div>
 

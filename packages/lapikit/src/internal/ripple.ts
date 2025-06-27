@@ -1,4 +1,5 @@
 interface RippleOptions {
+	component?: string; // The component name to use for the ripple shape
 	center?: boolean;
 	color?: string; // CSS color
 	duration?: number; // In ms
@@ -39,6 +40,10 @@ export function ripple(el: HTMLElement, options: RippleOptions = {}) {
 
 		if (options.duration && options.duration < 0) {
 			options.duration = undefined;
+		}
+
+		if (options.component) {
+			rippleContainer.style.setProperty('--ripple-radius', `var(--${options.component}-radius)`);
 		}
 
 		if (options.color) {

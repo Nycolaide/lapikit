@@ -47,6 +47,7 @@
 		rest.class
 	]}
 	use:ripple={{
+		component: 'list-item',
 		disabled: noRipple || disabled || is === 'div'
 	}}
 	role={is === 'button' ? 'listitem' : undefined}

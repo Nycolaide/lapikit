@@ -29,6 +29,7 @@
 	color: var(--list-item-color);
 	border-radius: var(--list-item-radius);
 	font-weight: 500;
+	text-decoration: none;
 }
 
 .kit-list-item:not(div) {

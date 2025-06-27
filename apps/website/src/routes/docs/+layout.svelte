@@ -202,6 +202,8 @@
 		density="comfortable"
 		rounded="lg"
 		class="hidden-laptop fixed right-[0.75rem] bottom-[0.75rem] z-1100"
+		background="on-container"
+		color="container"
 	>
 		<Icon icon={open ? 'mgc_close_line' : 'mgc_menu_line'} />
 		{capitalize(open ? $t('navigation.close') : $t('navigation.open'))}
