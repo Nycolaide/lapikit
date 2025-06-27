@@ -24,6 +24,7 @@ export async function load({ params }) {
 
 		const post = pages[matchingPath] as MarkdownModule;
 
+		console.log('HEADINGS', post.metadata.headings);
 		return {
 			content: post.default,
 			meta: post.metadata,

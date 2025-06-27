@@ -9,6 +9,7 @@
 		"updated": "updated",
 		"deprecated": "deprecated",
 		"experimental": "experimental",
+		"preview": "preview",
 		"new": "new"
 	}
 }

@@ -12,10 +12,6 @@
 	let { children } = $props();
 </script>
 
-<svelte:head>
-	<title>lapikit</title>
-</svelte:head>
-
 <App>
 	{@render children()}
 </App>

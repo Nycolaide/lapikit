@@ -77,7 +77,11 @@
 							active={heading.id === activeId}
 							style={`margin-left: ${(heading.level - 2) * 1.5}rem;`}
 						>
-							{capitalize(heading.text)}
+							{capitalize(
+								data.meta.title === 'changelog'
+									? capitalize($t('docs.summary.version')) + ' ' + heading.text.split(' - ')[0]
+									: heading.text
+							)}
 						</ListItem>
 					{/if}
 				{/each}
