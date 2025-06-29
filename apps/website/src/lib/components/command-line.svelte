@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { packageManagers } from '$lib/config';
 	import { getHighlighterSingleton } from '$lib/shiki';
+	import { Button, Icon } from 'lapikit/components';
 	import { copyToClipboard } from 'site-kit/actions';
 	import { onMount } from 'svelte';
 
@@ -58,23 +59,41 @@
 	};
 </script>
 
-<div id={name}>
+<div id={name} class="lapikit-command-line relative mt-6 mb-6 overflow-hidden rounded-xl">
 	{#each packageManagers as packageManager (packageManager)}
-		<button onclick={() => ((pkgManager = packageManager.name), updateCommand())}>
+		<Button
+			onclick={() => ((pkgManager = packageManager.name), updateCommand())}
+			active={pkgManager === packageManager.name}
+			size="sm"
+		>
 			{packageManager.name}
-		</button>
+		</Button>
 	{/each}
 
 	<div>
+		<Button
+			class="absolute right-[1rem] z-2 mt-[0.5rem]"
+			icon
+			size="sm"
+			onclick={() => (copy = true)}
+			active={copy}
+			variant="text"
+			background="base"
+			light
+		>
+			<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
+		</Button>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div bind:this={ref}>{@html commandHTML}</div>
-
-		<button onclick={() => (copy = true)}>
-			{#if copy}
-				copied
-			{:else}
-				copy code
-			{/if}
-		</button>
 	</div>
 </div>
+
+<style>
+	.lapikit-command-line {
+		border: 1px solid var(--kit-scrim);
+	}
+
+	.lapikit-command-line :global(pre) {
+		padding: 12px;
+	}
+</style>
