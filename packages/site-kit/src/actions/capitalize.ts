@@ -1,4 +1,5 @@
-export function capitalize(sentence: string) {
+export function capitalize(sentence?: string) {
+	if (sentence === undefined) return '';
 	if (sentence.length === 0) return sentence;
 	const separators = /([.!?…]\s*)/;
 	const parts = sentence.split(separators);

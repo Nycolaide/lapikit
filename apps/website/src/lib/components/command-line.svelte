@@ -7,7 +7,7 @@
 
 	type Props = {
 		name: string;
-		command: string | { pkg: string; command: string }[];
+		command: string | { pkg: string; command: string | string[] }[];
 	};
 
 	let { name, command }: Props = $props();
@@ -42,7 +42,11 @@
 		} else {
 			command.filter((element) => {
 				if (element.pkg === pkgManager) {
-					commandString = element.command;
+					if (Array.isArray(element.command)) {
+						commandString = element.command.join('\n');
+					} else {
+						commandString = element.command;
+					}
 				}
 			});
 		}

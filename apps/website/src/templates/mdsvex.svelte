@@ -15,11 +15,11 @@
 	description={props?.head?.description && capitalize(props.head.description)}
 />
 
-{#if props?.title}
-	<h1 class="title">{capitalize(props?.title)}</h1>
-{/if}
 {#if props?.subtitle}
-	<p class="subtitle">{capitalize(props?.subtitle)}</p>
+	<h1 class="title">{capitalize(props?.subtitle)}</h1>
+{/if}
+{#if props?.title}
+	<p class="subtitle">{capitalize(props?.title)}</p>
 {/if}
 {#if props?.description}
 	<p class="description">{capitalize(props?.description)}</p>
