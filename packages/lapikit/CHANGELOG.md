@@ -1,11 +1,17 @@
 ---
-title: changelog
-description: description.
-section: 'package'
+head:
+  title: changelog
+  description: 'Find all the changes in the lapikit release notes'
+icon: mgc_version_line
+title: Changelog
+description: Find all the changes in the lapikit release notes
+section: base
+order: -1
+keywords:
+  - version
+  - npm
 published: true
 ---
-
-# Changelog
 
 All notable changes to this project will be documented in this file.
 

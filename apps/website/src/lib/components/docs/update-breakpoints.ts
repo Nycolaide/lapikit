@@ -3,7 +3,7 @@ export default {
 	breakpoints: {
 		mobileBreakpoint: 'sm',
 		tabletBreakpoint: 'md',
-		laptopBreakpoint: '4xl',
+		laptopBreakpoint: 'lg',
 		thresholds: {
 			xs: '32rem', //before 28rem
 			'4xl': '120rem' //new breakpoint

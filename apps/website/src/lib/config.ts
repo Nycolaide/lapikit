@@ -55,5 +55,6 @@ export interface MetaDataPages {
 	title: string;
 	description: string;
 	section?: string;
+	order?: number;
 	[key: string]: unknown;
 }

@@ -75,6 +75,7 @@
 
 				sectionMap.get(key)?.pages.push(page);
 			}
+
 			pagesGrouped = sectionDocs.map((s) => sectionMap.get(s.key)!);
 		}
 	});

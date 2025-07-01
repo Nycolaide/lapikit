@@ -21,7 +21,7 @@ published: true
     import { Sandbox, CommandLine } from '$lib/components/index.js';
     // codes
     import UpdateConfigBreakpoints from "$lib/components/docs/update-breakpoints.ts?raw";
-
+    import UpdateConfigBreakpointsDevice from "$lib/components/docs/update-breakpoints-device.ts?raw";
 
     // components
     import ButtonDensity from "$lib/components/docs/button/button-density.svelte";
@@ -40,16 +40,16 @@ published: true
 
 Define component display according to the display size of your application. Each Lapikit component offers APIs that are compatible with these breakpoints.
 
-| key     | size   |
-| ------- | ------ |
-| default | 0      |
-| xs      | 28rem  |
-| sm      | 40rem  |
-| md      | 48rem  |
-| lg      | 64rem  |
-| xl      | 80rem  |
-| 2xl     | 96rem  |
-| 3xl     | 112rem |
+| key     | size   | device     |
+| ------- | ------ | ---------- |
+| default | 0      |            |
+| xs      | 28rem  |            |
+| sm      | 40rem  | max mobile |
+| md      | 48rem  | tablet     |
+| lg      | 64rem  | min laptop |
+| xl      | 80rem  |            |
+| 2xl     | 96rem  |            |
+| 3xl     | 112rem |            |
 
 ## Using breakpoints in classes
 
@@ -83,3 +83,21 @@ To do this, edit your `lapikit.config.js` file and modify or add the breakpoint 
 
 > [!NOTE]
 > It's advisable to restart your environment after this kind of modification to ensure that all Lapikit styles are updated.
+
+## Adapting breakpoints to the device
+
+Lapikit also offers device breakpoints, so you can define a display for just one type of device, or several in succession. This allows you to display, for example, a BottomNavigation for mobiles, followed by an AppBar for tablets and computers.
+
+Here is the list of available classes:
+
+- (hidden|display)-mobile
+- (hidden|display)-tablet
+- (hidden|display)-laptop
+
+### Customize breakpoint devices keys
+
+In the Lapikit configuration file (`lapikit.config.js`), edit or add the following keys in breakpoints
+
+<Sandbox name="update-config-breakpoints-device" code={UpdateConfigBreakpointsDevice}/>
+
+You need to base them on the keys you have in thresholds
