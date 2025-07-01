@@ -14,6 +14,7 @@ keywords:
   - keyword-1
   - keyword-2
 published: true
+state: 'updated'
 ---
 
 <script>
