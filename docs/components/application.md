@@ -17,8 +17,6 @@ published: true
     // components
     import ApplicationBase from "$lib/components/docs/application/application-base.svelte?raw";
     import ApplicationForbidden from "$lib/components/docs/application/application-forbidden.svelte?raw";
-    import ButtonBase from "$lib/components/docs/button/button-base.svelte";
-    import ButtonBaseCode from "$lib/components/docs/button/button-base.svelte?raw";
 
     // command line
     const commandInstall = [
@@ -55,6 +53,6 @@ This would break internal blinds, causing unexpected behavior and even bugs (ove
 
 ## API References
 
-| name     | desc                                  | default   | action | type    | type_extend |
-| -------- | ------------------------------------- | --------- | ------ | ------- | ----------- |
-| children | Child content to be displayed in App. | undefined |        | Snippet |             |
+| property | type    | description                           | default   | type_extend |
+| -------- | ------- | ------------------------------------- | --------- | ----------- |
+| children | Snippet | Child content to be displayed in App. | undefined |             |
