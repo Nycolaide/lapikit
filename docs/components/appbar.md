@@ -1,7 +1,7 @@
 ---
 head:
   title: appbar
-  description: 'Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI.'
+  description: "Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI."
 title: Appbar
 subtitle: Appbar component
 section: components
@@ -12,7 +12,7 @@ published: true
     import { Sandbox } from '$lib/components/index.js';
     // components
     import AppbarBase from "$lib/components/docs/appbar/appbar-base.svelte";
-    import AppbarBaseCode from "$lib/components/docs/appbar/appbar-base.svelte?raw";;
+    import AppbarBaseCode from "$lib/components/docs/appbar/appbar-base.svelte?raw";
     import AppbarDensity from "$lib/components/docs/appbar/appbar-density.svelte";
     import AppbarDensityCode from "$lib/components/docs/appbar/appbar-density.svelte?raw";
 </script>
