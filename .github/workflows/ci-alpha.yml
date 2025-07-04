@@ -1,4 +1,4 @@
-name: CI
+name: CI Alpha
 
 on:
   workflow_call:
@@ -19,5 +19,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/${{ secrets.DEPLOY_PATH_PROD }}
-            git pull origin main
+            cd ~/${{ secrets.DEPLOY_PATH_ALPHA }}
+            git pull origin develop
+            docker compose build
+            docker compose up -d

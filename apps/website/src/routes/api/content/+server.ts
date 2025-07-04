@@ -1,3 +1,4 @@
+import { PUBLIC_DEV_MODE } from '$env/static/public';
 import { json } from '@sveltejs/kit';
 
 export const prerender = true;
@@ -24,12 +25,15 @@ async function getPages() {
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Post, 'slug'>;
 			const post = { ...metadata, slug } satisfies Post;
-			if (post.published) pages.push(post);
+
+			if (PUBLIC_DEV_MODE === 'true' || post.published) {
+				pages.push(post);
+			}
 		}
 	}
 
 	pages = pages
-		.filter((page) => page?.published)
+		.filter((page) => PUBLIC_DEV_MODE === 'true' || page?.published)
 		.sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime());
 	return pages;
 }
