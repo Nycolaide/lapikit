@@ -14,7 +14,7 @@ const destDir = path.join(rootDir, 'apps', 'website', 'src', 'content');
 
 async function copyDocs() {
 	try {
-		const filesToCopy = ['CHANGELOG.md', 'ROADMAP.md'];
+		const filesToCopy = ['CHANGELOG.md'];
 
 		if (!fs.existsSync(sourceDir)) {
 			console.error(`The source folder does not exist: ${sourceDir}`);
