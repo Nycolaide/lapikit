@@ -2,8 +2,8 @@
 head:
   title: appbar
   description: "Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI."
-title: Appbar
-subtitle: Appbar component
+title: appbar
+subtitle: appbar component
 section: components
 published: true
 ---

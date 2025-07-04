@@ -1,7 +1,7 @@
 ---
 head:
   title: avatar
-  description: 'Add stylish avatars to your UI with Lapikit. Initials, images, variants and sizes: an ultra-flexible Svelte component'
+  description: "Add stylish avatars to your UI with Lapikit. Initials, images, variants and sizes: an ultra-flexible Svelte component"
 title: avatar
 subtitle: avatar component
 section: components
@@ -21,7 +21,7 @@ published: true
     import AvatarVariantCode from "$lib/components/docs/avatar/avatar-variant.svelte?raw";
 </script>
 
-he Avatar component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the Avatar component adapts easily to different styles and contexts.`
+The Avatar component is used to display images, icons or initials representing a person or object. It is often used in user interfaces to identify users, profiles or entities. Thanks to its many customization options, the Avatar component adapts easily to different styles and contexts.`
 
 <Sandbox name="avatar-sandbox" code={AvatarBaseCode} presentation>
 	{#snippet component()}
@@ -84,7 +84,7 @@ The variant property lets you customize the Avatar's style. The available option
 | rounded       | string      | Controls item rounding (`none`, `sm`, `md`, `lg`, etc.).     | `md`      |                                                |
 | variant       | enum        | Sets the visual style of the avatar.                         | undefined | `outline` \| `text` \| `dash`                  |
 | src           | string      | Specifies the URL of the image to be displayed in the Avatar | undefined |                                                |
-| size          | enum        | Specifies the URL of the image to be displayed in the Avatar | `md`      | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `full` |
+| size          | enum        | Set Avatar size: xs, sm, md, lg, xl or full.                 | `md`      | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `full` |
 
 ## Variables CSS
 
