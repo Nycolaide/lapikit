@@ -30,15 +30,19 @@
 
 	const toolsLapikit = $state([
 		{
-			title: $t('homepage.lapikit_the_best.card.changelog')
+			title: $t('homepage.lapikit_the_best.card.changelog'),
+			href: '/docs/changelog'
 		},
 		{
-			title: $t('homepage.lapikit_the_best.card.roadmap')
+			title: $t('homepage.lapikit_the_best.card.roadmap'),
+			href: 'https://github.com/Nycolaide/lapikit/blob/main/packages/lapikit/ROADMAP.md',
+			external: true
 		},
 		{
 			title: $t('homepage.lapikit_the_best.card.install', {
 				version: data?.npm?.version || '0.0.0'
-			})
+			}),
+			href: '/docs/getting-started'
 		}
 	]);
 </script>
@@ -157,17 +161,26 @@
 <section
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-		<div class="text-center md:text-start">
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-[45%_1fr]">
+		<div class="text-center lg:text-start">
 			<h2 class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.lapikit_the_best.title'))}
 			</h2>
 			<p>{capitalize($t('homepage.lapikit_the_best.paragraph'))}</p>
 		</div>
 		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
-			{#each toolsLapikit as { title } (title)}
-				<Card class="min-w-[40%] flex-1 text-start" variant="outline">
-					<h2>{title}</h2>
+			{#each toolsLapikit as { title, href, external } (title)}
+				<Card
+					class="min-w-[40%] flex-1 text-start"
+					variant="outline"
+					{href}
+					target={external && '_blank'}
+				>
+					<div class="p-5">
+						<p class="mb-4 flex-1 text-xl font-semibold">
+							{title}
+						</p>
+					</div>
 				</Card>
 			{/each}
 		</div>

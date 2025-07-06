@@ -45,8 +45,8 @@
 			<div class="mt-4 flex items-center justify-end gap-2">
 				<Button
 					onclick={() => model.action('accept')}
-					background="primary"
-					color="on-primary"
+					background="on-container"
+					color="container"
 					rounded="full"
 					density="comfortable"
 				>
