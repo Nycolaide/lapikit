@@ -12,6 +12,35 @@
 	import { Sandbox, Counter, ThemeToggle, Footer } from '$lib/components/index.js';
 	import CounterCode from '$lib/components/counter.svelte?raw';
 	import Head from '$lib/components/head.svelte';
+
+	const advantageLapikit = $state([
+		{
+			title: $t('homepage.dev_with_lapikit.card1.title'),
+			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph')
+		},
+		{
+			title: $t('homepage.dev_with_lapikit.card2.title'),
+			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph')
+		},
+		{
+			title: $t('homepage.dev_with_lapikit.card3.title'),
+			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph')
+		}
+	]);
+
+	const toolsLapikit = $state([
+		{
+			title: $t('homepage.lapikit_the_best.card.changelog')
+		},
+		{
+			title: $t('homepage.lapikit_the_best.card.roadmap')
+		},
+		{
+			title: $t('homepage.lapikit_the_best.card.install', {
+				version: data?.npm?.version || '0.0.0'
+			})
+		}
+	]);
 </script>
 
 <Head title="Lapikit" description="" />
@@ -38,7 +67,14 @@
 		<div class="flex justify-end gap-3">
 			<ThemeToggle app />
 
-			<Button density="comfortable">{capitalize($t('homepage.top_cta'))}</Button>
+			<Button
+				href="/docs/getting-started"
+				density="comfortable"
+				color="on-container"
+				background="container"
+			>
+				{capitalize($t('homepage.top_cta'))}
+			</Button>
 		</div>
 	</Appbar>
 
@@ -54,7 +90,7 @@
 				)}
 			</Chip>
 			<h1
-				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-3xl lg:text-7xl"
+				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl"
 			>
 				{capitalize($t('homepage.main_title'))}
 			</h1>
@@ -64,7 +100,7 @@
 				{capitalize($t('homepage.main_introduction'))}
 			</p>
 			<div>
-				<Button size="lg" href="/docs/button">
+				<Button size="lg" href="/docs/introduction">
 					{capitalize($t('homepage.main_cta'))}
 				</Button>
 			</div>
@@ -76,9 +112,38 @@
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<div class="grid gap-4">
+		<div class="text-start">
+			<h2 class="text-2xl font-semibold md:text-3xl">
+				{capitalize($t('homepage.dev_with_lapikit.title'))}
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+			{#each advantageLapikit as { title, paragraph } (title)}
+				<Card class="text-start">
+					<h2 class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
+						{title}
+					</h2>
+					<p
+						class="text-muted-foreground px-[14px] pb-4 text-[11px] font-medium opacity-75 lg:text-sm"
+					>
+						{paragraph}
+					</p>
+				</Card>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+>
+	<div class="grid gap-4">
 		<div class="text-center">
-			<h2>{capitalize($t('homepage.dev_with_lapikit.title'))}</h2>
-			<p>{capitalize($t('homepage.dev_with_lapikit.paragraph1'))}</p>
+			<h2 class="text-2xl font-semibold md:text-3xl">
+				{capitalize($t('homepage.component_lapikit.title'))}
+			</h2>
+			<p>{capitalize($t('homepage.component_lapikit.paragraph'))}</p>
 		</div>
 
 		<Sandbox name="counter" code={CounterCode}>
@@ -94,20 +159,17 @@
 >
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="text-center md:text-start">
-			<h2>{$t('homepage.lapikit_the_best.title')}</h2>
-			<p>{$t('homepage.lapikit_the_best.paragraph1')}</p>
-			<p>{$t('homepage.lapikit_the_best.paragraph2')}</p>
+			<h2 class="text-2xl font-semibold md:text-3xl">
+				{capitalize($t('homepage.lapikit_the_best.title'))}
+			</h2>
+			<p>{capitalize($t('homepage.lapikit_the_best.paragraph'))}</p>
 		</div>
 		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
-			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
-				<h2>{$t('homepage.lapikit_the_best.changelog.title')}</h2>
-			</Card>
-			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
-				<h2>{$t('homepage.lapikit_the_best.roadmap.title')}</h2>
-			</Card>
-			<Card class="min-w-[40%] flex-1 text-start" variant="outline">
-				<h2>{$t('homepage.lapikit_the_best.install.title')}</h2>
-			</Card>
+			{#each toolsLapikit as { title } (title)}
+				<Card class="min-w-[40%] flex-1 text-start" variant="outline">
+					<h2>{title}</h2>
+				</Card>
+			{/each}
 		</div>
 	</div>
 </section>
@@ -115,23 +177,19 @@
 <section
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
-	<div class="grid gap-4">
-		<div class="text-center">
-			<h2>{$t('homepage.customize_component.title')}</h2>
-			<p>{$t('homepage.customize_component.paragraph1')}</p>
+	<Card class="p-4 text-center">
+		<div class="mb-6">
+			<h2 class="text-2xl font-semibold md:text-3xl">
+				{capitalize($t('homepage.lapikit_discover.title'))}
+			</h2>
+			<p>{capitalize($t('homepage.lapikit_discover.paragraph'))}</p>
 		</div>
-		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
-			<Card class="min-w-[40%] flex-1 text-start">
-				{$t('homepage.customize_component.themes')}
-			</Card>
-			<Card class="min-w-[40%] flex-1 text-start">
-				{$t('homepage.customize_component.components')}
-			</Card>
-			<Card class="min-w-[40%] flex-1 text-start">
-				{$t('homepage.customize_component.tools')}
-			</Card>
+		<div>
+			<Button color="container" background="on-container" href="/docs/introduction">
+				{capitalize($t('homepage.lapikit_discover.cta'))}
+			</Button>
 		</div>
-	</div>
+	</Card>
 </section>
 
 <Footer />

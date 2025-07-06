@@ -223,14 +223,14 @@ jobs:
         run: cd apps/website && bun run build
 
   deploy-to-vps-alpha:
-    name: deploy lapikit.dev [ALPHA]
+    name: deploy [ALPHA] lapikit.dev
     needs: website
     if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/ci-alpha.yml
     secrets: inherit
 
   deploy-to-vps-prod:
-    name: deploy to lapikit.dev
+    name: deploy [PROD] lapikit.dev
     needs: website
     if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/ci.yml

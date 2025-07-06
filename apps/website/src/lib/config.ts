@@ -24,7 +24,7 @@ export const navigationMain: { key: string; path: string; external?: boolean; ic
 	},
 	{
 		key: 'docs',
-		path: '/docs/button',
+		path: '/docs/introduction',
 		icon: 'mgc_album_2_line'
 	},
 	{

@@ -61,7 +61,7 @@
 				<Separator class="my-1" />
 
 				{#each data.meta.headings as heading (heading)}
-					{#if !specificPage.includes(data.meta.title) && heading.level >= 2 && heading.level <= 4}
+					{#if !specificPage.includes(data.meta.title.toLocaleLowerCase()) && heading.level >= 2 && heading.level <= 4}
 						<ListItem
 							href={'#' + heading.id}
 							class="level-{heading.level}"
@@ -78,7 +78,7 @@
 							style={`margin-left: ${(heading.level - 2) * 1.5}rem;`}
 						>
 							{capitalize(
-								data.meta.title === 'changelog'
+								data.meta.title.toLocaleLowerCase() === 'changelog'
 									? capitalize($t('docs.summary.version')) + ' ' + heading.text.split(' - ')[0]
 									: heading.text
 							)}
