@@ -11,10 +11,6 @@
 	let activeId: string = $state('');
 	let specificPage = $state(['changelog']);
 
-	$effect(() => {
-		console.log('data', data);
-	});
-
 	onMount(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -111,7 +107,9 @@
 
 		:global(img) {
 			margin-top: calc(var(--kit-spacing) * 12);
-			margin-bottom: calc(var(--kit-spacing) * -12);
+			margin-bottom: calc(var(--kit-spacing) * -6);
+			margin-right: auto;
+			margin-left: auto;
 		}
 
 		:global(ul) {

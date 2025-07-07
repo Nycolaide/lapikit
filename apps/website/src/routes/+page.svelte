@@ -8,23 +8,30 @@
 
 	let { data } = $props();
 
-	// demo code
-	import { Sandbox, Counter, ThemeToggle, Footer } from '$lib/components/index.js';
-	import CounterCode from '$lib/components/counter.svelte?raw';
+	// components
 	import Head from '$lib/components/head.svelte';
+	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
+
+	// sample
+	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
+	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 
 	const advantageLapikit = $state([
 		{
 			title: $t('homepage.dev_with_lapikit.card1.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph')
+			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph'),
+			image: '/images/open-source.webp',
+			customClass: 'col-span-2 lg:col-span-1'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card2.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph')
+			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph'),
+			image: '/images/styles.webp'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card3.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph')
+			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph'),
+			image: '/images/components.webp'
 		}
 	]);
 
@@ -104,7 +111,7 @@
 				{capitalize($t('homepage.main_introduction'))}
 			</p>
 			<div>
-				<Button size="lg" href="/docs/introduction">
+				<Button size="lg" href="/docs/components">
 					{capitalize($t('homepage.main_cta'))}
 				</Button>
 			</div>
@@ -113,7 +120,7 @@
 </div>
 
 <section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<div class="grid gap-4">
 		<div class="text-start">
@@ -122,12 +129,20 @@
 			</h2>
 		</div>
 
-		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-			{#each advantageLapikit as { title, paragraph } (title)}
-				<Card class="text-start">
+		<div class="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-x-[15px]">
+			{#each advantageLapikit as { title, paragraph, image, customClass } (title)}
+				<Card class={customClass ? `text-start ${customClass}` : 'text-start'}>
 					<h2 class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
 						{title}
 					</h2>
+					<div class="pt-8 pb-10 lg:pt-9 lg:pb-16">
+						<img
+							src={image}
+							alt={title}
+							class="relative mx-auto aspect-354/259 w-10/12 overflow-hidden bg-transparent lg:left-12 lg:ml-auto lg:w-full"
+						/>
+					</div>
+
 					<p
 						class="text-muted-foreground px-[14px] pb-4 text-[11px] font-medium opacity-75 lg:text-sm"
 					>
@@ -140,7 +155,7 @@
 </section>
 
 <section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<div class="grid gap-4">
 		<div class="text-center">
@@ -150,16 +165,16 @@
 			<p>{capitalize($t('homepage.component_lapikit.paragraph'))}</p>
 		</div>
 
-		<Sandbox name="counter" code={CounterCode}>
+		<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
 			{#snippet component()}
-				<Counter />
+				<CounterLapikit />
 			{/snippet}
 		</Sandbox>
 	</div>
 </section>
 
 <section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<div class="grid grid-cols-1 gap-4 lg:grid-cols-[45%_1fr]">
 		<div class="text-center lg:text-start">
@@ -188,7 +203,7 @@
 </section>
 
 <section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[500px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
+	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
 	<Card class="p-4 text-center">
 		<div class="mb-6">
@@ -198,7 +213,7 @@
 			<p>{capitalize($t('homepage.lapikit_discover.paragraph'))}</p>
 		</div>
 		<div>
-			<Button color="container" background="on-container" href="/docs/introduction">
+			<Button color="container" background="on-container" href="/docs/components">
 				{capitalize($t('homepage.lapikit_discover.cta'))}
 			</Button>
 		</div>

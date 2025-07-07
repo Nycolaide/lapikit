@@ -17,10 +17,6 @@
 	});
 
 	$effect(() => {
-		console.log(localColorScheme);
-	});
-
-	$effect(() => {
 		if (!component) tab = 'code-only';
 		if (!code) tab = 'preview-only';
 	});
