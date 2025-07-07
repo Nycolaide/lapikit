@@ -94,7 +94,7 @@ Components support at least the id, class and style attributes, and it is possib
 
 If you use a CSS framework such as TailwindCSS or UnoCSS, you can pass classes directly to your Lapikit components.
 
-> [!NOTE]
+> [!INFO]
 > If you're using TailwindCSS v4, we strongly recommend importing Lapikit styles into `@layer components`.
 
 ## Typescript support in Lapikit

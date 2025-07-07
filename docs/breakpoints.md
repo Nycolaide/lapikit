@@ -81,7 +81,7 @@ To do this, edit your `lapikit.config.js` file and modify or add the breakpoint 
 
 <Sandbox name="update-config-breakpoints" code={UpdateConfigBreakpoints}/>
 
-> [!NOTE]
+> [!INFO]
 > It's advisable to restart your environment after this kind of modification to ensure that all Lapikit styles are updated.
 
 ## Adapting breakpoints to the device

@@ -87,7 +87,7 @@ for each color key in Lapikit's configuration, you have 2 choices:
 
 Colors must be defined in either `x11`, `hexadecimal`, `rgb`, `css variables` or `oklch` format.
 
-> [!NOTE]
+> [!INFO]
 > Other formats will be supported as Lapikit develops.
 
 ### Breakpoints
