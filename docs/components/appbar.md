@@ -49,7 +49,7 @@ The density property lets you control the Appbar's appearance by adjusting its h
 
 ## API Reference
 
-| property      | type        | description                                                | default   | type_extend                             |
+| props         | type        | description                                                | default   | type_extend                             |
 | ------------- | ----------- | ---------------------------------------------------------- | --------- | --------------------------------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                               | undefined |                                         |
 | is            | enum        | Defines the HTML tag.                                      | div       | header \| nav \| div                    |

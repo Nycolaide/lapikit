@@ -1,7 +1,7 @@
 ---
 head:
   title: list
-  description: 'List component for displaying interactive elements with color, size, navigation and event management in Svelte'
+  description: "List component for displaying interactive elements with color, size, navigation and event management in Svelte"
 title: list
 subtitle: list component
 section: components
@@ -125,7 +125,7 @@ Enables you to compose each _ListItem_ with additional elements such as icons, b
 
 **List**
 
-| property      | type                   | description                                    | default   | type_extend                                    |
+| props         | type                   | description                                    | default   | type_extend                                    |
 | ------------- | ---------------------- | ---------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable | HTMLElement            | Direct access to DOM element                   | undefined |                                                |
 | is            | enum                   | Makes the component `<nav>` or `<div >`.       | `div`     | `nav` \| `div`                                 |
@@ -141,7 +141,7 @@ Enables you to compose each _ListItem_ with additional elements such as icons, b
 
 **ListItem**
 
-| property      | type        | description                                              | default   | type_extend              |
+| props         | type        | description                                              | default   | type_extend              |
 | ------------- | ----------- | -------------------------------------------------------- | --------- | ------------------------ |
 | ref $bindable | HTMLElement | Direct access to DOM element                             | undefined |                          |
 | is            | enum        | Makes the component `<a>` or `<button>` or `div`.        | `div`     | `button` \| `a` \| `div` |

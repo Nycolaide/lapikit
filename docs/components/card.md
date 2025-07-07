@@ -1,7 +1,7 @@
 ---
 head:
   title: card
-  description: 'Structure your interfaces with the Card component. Variants, sizes and integrated event management, optimized for Svelte'
+  description: "Structure your interfaces with the Card component. Variants, sizes and integrated event management, optimized for Svelte"
 title: card
 subtitle: card component
 section: components
@@ -85,7 +85,7 @@ The disabled property allows you to disable a Card, preventing any interaction. 
 
 ## API Reference
 
-| property      | type        | description                                              | default   | type_extend                             |
+| props         | type        | description                                              | default   | type_extend                             |
 | ------------- | ----------- | -------------------------------------------------------- | --------- | --------------------------------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                             | undefined |                                         |
 | is            | enum        | Makes the component `<a>` or `<button>` or `div`.        | `div`     | `button` \| `a` \| `div`                |

@@ -1,7 +1,7 @@
 ---
 head:
   title: popover
-  description: 'Add interactive popovers to your Svelte apps. Dropdown and Tooltip merge with rich content and fine-grained event management'
+  description: "Add interactive popovers to your Svelte apps. Dropdown and Tooltip merge with rich content and fine-grained event management"
 title: popover
 subtitle: popover component
 section: components
@@ -54,7 +54,7 @@ This scenario shows the different positions available (**top**, **bottom**, **le
 
 ## API Reference
 
-| property       | type    | description                                                                               | default   | type_extend                             |
+| props          | type    | description                                                                               | default   | type_extend                             |
 | -------------- | ------- | ----------------------------------------------------------------------------------------- | --------- | --------------------------------------- |
 | open $bindable | boolean | Controls Popover opening.                                                                 | false     |                                         |
 | dark           | boolean | Enable dark theme for component.                                                          | false     |                                         |

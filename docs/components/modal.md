@@ -1,7 +1,7 @@
 ---
 head:
   title: modal
-  description: 'Advanced Modal component for Svelte: overlays, event-driven control, custom positions and adaptable styles'
+  description: "Advanced Modal component for Svelte: overlays, event-driven control, custom positions and adaptable styles"
 title: modal
 subtitle: modal component
 section: components
@@ -123,7 +123,7 @@ Several modals can be displayed at the same time, stacked. This example shows ho
 
 ## API Reference
 
-| property       | type                   | description                                                       | default   | type_extend                                    |
+| props          | type                   | description                                                       | default   | type_extend                                    |
 | -------------- | ---------------------- | ----------------------------------------------------------------- | --------- | ---------------------------------------------- | --- |
 | ref $bindable  | HTMLElement            | Direct access to DOM element                                      | undefined |                                                |
 | open $bindable | boolean                | Controls component opening/closing                                | false     |                                                |

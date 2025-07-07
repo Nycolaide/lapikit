@@ -1,7 +1,7 @@
 ---
 head:
   title: alert
-  description: 'Affichez des messages contextuels avec le composant Alert. Gérez facilement les états info, warning, success et error dans vos apps Svelte'
+  description: "Affichez des messages contextuels avec le composant Alert. Gérez facilement les états info, warning, success et error dans vos apps Svelte"
 title: alert
 subtitle: alert component
 section: components
@@ -119,7 +119,7 @@ A close button is automatically displayed, unless overridden by the close slot.
 
 ## API Reference
 
-| property       | type        | description                                                               | default   | type_extend                                                                     |
+| props          | type        | description                                                               | default   | type_extend                                                                     |
 | -------------- | ----------- | ------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------- |
 | ref $bindable  | HTMLElement | Direct access to DOM element                                              | undefined |                                                                                 |
 | is             | string      | Defines the HTML tag.                                                     | div       |                                                                                 |

@@ -102,7 +102,7 @@ Useful for adding a little air to dense or visually busy interfaces.
 
 **Root**
 
-| property      | type        | description                                                                  | default   | type_extend |
+| props         | type        | description                                                                  | default   | type_extend |
 | ------------- | ----------- | ---------------------------------------------------------------------------- | --------- | ----------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                                                 | undefined |             |
 | is            | string      | Defines the HTML tag used for the main wrapper (e.g. `section`, `ul`, etc.). | div       |             |

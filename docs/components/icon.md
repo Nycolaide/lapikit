@@ -97,7 +97,7 @@ Example of an icon rendered inactive, visually dimmed and non-interactive. Ideal
 
 ## API Reference
 
-| property      | type                   | description                                             | default   | type_extend                                    |
+| props         | type                   | description                                             | default   | type_extend                                    |
 | ------------- | ---------------------- | ------------------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable | HTMLElement            | Direct access to DOM element                            | undefined |                                                |
 | is            | enum                   | HTML tag used to render icon (i, div, etc.)             | `i`       | `i` \| `div`                                   |

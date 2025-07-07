@@ -53,6 +53,6 @@ This would break internal blinds, causing unexpected behavior and even bugs (ove
 
 ## API References
 
-| property | type    | description                           | default   | type_extend |
+| props    | type    | description                           | default   | type_extend |
 | -------- | ------- | ------------------------------------- | --------- | ----------- |
 | children | Snippet | Child content to be displayed in App. | undefined |             |

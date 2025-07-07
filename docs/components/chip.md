@@ -1,7 +1,7 @@
 ---
 head:
   title: chip
-  description: 'Display interactive metadata or tags with Chip. Visual states (info, warning...), sizes and event management included'
+  description: "Display interactive metadata or tags with Chip. Visual states (info, warning...), sizes and event management included"
 title: chip
 subtitle: chip component
 section: components
@@ -170,7 +170,7 @@ Changes the overall style of the chip with filled or outline variants.
 
 ## API Reference
 
-| property      | type                   | description                                              | default   | type_extend                                    |
+| props         | type                   | description                                              | default   | type_extend                                    |
 | ------------- | ---------------------- | -------------------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable | HTMLElement            | Direct access to DOM element                             | undefined |                                                |
 | is            | enum                   | Makes the component `<a>`, `<button>`, `span` or `div`.  | `div`     | `button` \| `a` \| `div` \| `span`             |

@@ -1,7 +1,7 @@
 ---
 head:
   title: separator
-  description: 'Create elegant dividers with Lapikit. Customize density, size and style to structure your Svelte components.'
+  description: "Create elegant dividers with Lapikit. Customize density, size and style to structure your Svelte components."
 title: separator
 subtitle: separator component
 section: components
@@ -103,7 +103,7 @@ Controls the thickness of the separator via prop thickness. Perfect for accentua
 
 ## API Reference
 
-| property      | type        | description                                                | default   | type_extend                |
+| props         | type        | description                                                | default   | type_extend                |
 | ------------- | ----------- | ---------------------------------------------------------- | --------- | -------------------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                               | undefined |                            |
 | is            | enum        | Makes the component `<hr>` or `<div>`.                     | `hr`      | `hr` \| `div`              |

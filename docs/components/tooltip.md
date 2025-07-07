@@ -1,7 +1,7 @@
 ---
 head:
   title: tooltip
-  description: 'Display elegant tooltips with Tooltip. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components'
+  description: "Display elegant tooltips with Tooltip. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components"
 title: tooltip
 subtitle: tooltip component
 section: components
@@ -91,7 +91,7 @@ The only variant currently available is arrow, which adds a directional arrow to
 
 ## API Reference
 
-| property        | type    | description                                              | default   | type_extend                             |
+| props           | type    | description                                              | default   | type_extend                             |
 | --------------- | ------- | -------------------------------------------------------- | --------- | --------------------------------------- |
 | open $bindable  | boolean | Controls tooltip opening                                 | false     |                                         |
 | is              | enum    | Makes the component `<a>` or `<button>` or `div`.        | `div`     | `button` \| `a` \| `div`                |

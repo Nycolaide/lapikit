@@ -1,7 +1,7 @@
 ---
 head:
   title: dialog
-  description: 'Native and customizable dialog boxes with Lapikit. Size, position, style and event logic designed for Svelte'
+  description: "Native and customizable dialog boxes with Lapikit. Size, position, style and event logic designed for Svelte"
 title: dialog
 subtitle: dialog component
 section: components
@@ -87,7 +87,7 @@ Makes the Dialog persistent: it no longer closes automatically on clicking outsi
 
 ## API Reference
 
-| property       | type                   | description                                              | default   | type_extend                                    |
+| props          | type                   | description                                              | default   | type_extend                                    |
 | -------------- | ---------------------- | -------------------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable  | HTMLElement            | Direct access to DOM element                             | undefined |                                                |
 | is             | enum                   | Makes the component `<a>` or `<button>` or `div`.        | `div`     | `button` \| `a` \| `div`                       |

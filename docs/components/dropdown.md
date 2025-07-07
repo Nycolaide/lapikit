@@ -1,7 +1,7 @@
 ---
 head:
   title: dropdown
-  description: 'Flexible drop-down menu with variants, positions and full event management. Designed for ergonomics and fluidity in Svelte'
+  description: "Flexible drop-down menu with variants, positions and full event management. Designed for ergonomics and fluidity in Svelte"
 title: dropdown
 subtitle: dropdown component
 section: components
@@ -89,7 +89,7 @@ The dropdown opens automatically when the trigger is hovered over, without the n
 
 ## API Reference
 
-| property      | type        | description                                                   | default                                                                                                                                         | type_extend                       |
+| props         | type        | description                                                   | default                                                                                                                                         | type_extend                       |
 | ------------- | ----------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | -------------------------- | ------------ | -------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                                  | undefined                                                                                                                                       |                                   |
 | dark          | boolean     | Enable dark theme for component.                              | false                                                                                                                                           |                                   |

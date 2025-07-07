@@ -73,7 +73,7 @@ The variant property lets you customize the Avatar's style. The available option
 
 ## API Reference
 
-| property      | type        | description                                                  | default   | type_extend                                    |
+| props         | type        | description                                                  | default   | type_extend                                    |
 | ------------- | ----------- | ------------------------------------------------------------ | --------- | ---------------------------------------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                                 | undefined |                                                |
 | dark          | boolean     | Enable dark theme for component.                             | false     |                                                |

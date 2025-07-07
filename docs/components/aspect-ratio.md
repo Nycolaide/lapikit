@@ -1,7 +1,7 @@
 ---
 head:
   title: aspect ratio
-  description: 'Display your images and content with a perfect ratio thanks to AspectRatio. Simplicity and responsiveness for your Svelte components'
+  description: "Display your images and content with a perfect ratio thanks to AspectRatio. Simplicity and responsiveness for your Svelte components"
 title: aspect ratio
 subtitle: aspect ratio component
 section: components
@@ -63,7 +63,7 @@ The inline property displays the component in the text flow, as an inline elemen
 
 ## API Reference
 
-| property      | type        | description                                                                         | default   | type_extend |
+| props         | type        | description                                                                         | default   | type_extend |
 | ------------- | ----------- | ----------------------------------------------------------------------------------- | --------- | ----------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                                                        | undefined |             |
 | aspectRatio   | string      | Defines the element's aspect ratio (e.g. “16:9”, “4:3”).                            | undefined |             |

@@ -1,7 +1,7 @@
 ---
 head:
   title: toolbar
-  description: 'Flexible, responsive toolbars. Manage density, size and variants for toolbars consistent with your Svelte apps.'
+  description: "Flexible, responsive toolbars. Manage density, size and variants for toolbars consistent with your Svelte apps."
 title: toolbar
 subtitle: toolbar component
 section: components
@@ -73,7 +73,7 @@ Demonstrates the use of visual variants: **outline**, **text** or **dash** to ad
 
 ## API Reference
 
-| property      | type        | description                                                             | default      | type_extend                             |
+| props         | type        | description                                                             | default      | type_extend                             |
 | ------------- | ----------- | ----------------------------------------------------------------------- | ------------ | --------------------------------------- |
 | ref $bindable | HTMLElement | Direct access to DOM element                                            | undefined    |                                         |
 | is            | enum        | Defines the HTML tag.                                                   | div          | header \| nav \| div                    |

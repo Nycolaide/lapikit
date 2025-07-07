@@ -1,7 +1,7 @@
 ---
 head:
   title: button
-  description: 'Customizable button for Svelte with variants, sizes and icon management. Indispensable for building solid interfaces'
+  description: "Customizable button for Svelte with variants, sizes and icon management. Indispensable for building solid interfaces"
 title: button
 subtitle: button component
 section: components
@@ -196,7 +196,7 @@ This can be useful in sober interfaces or when you want to avoid animation for p
 
 ## API Reference
 
-| property      | type                   | description                                              | default   | type_extend                                    |
+| props         | type                   | description                                              | default   | type_extend                                    |
 | ------------- | ---------------------- | -------------------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable | HTMLElement            | Direct access to DOM element                             | undefined |                                                |
 | is            | enum                   | Makes the component `<a>` or `<button>`.                 | `button`  | `button` \| `a`                                |
