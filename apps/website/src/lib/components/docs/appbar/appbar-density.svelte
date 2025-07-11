@@ -2,14 +2,16 @@
 	import { Appbar } from 'lapikit/components';
 </script>
 
-<Appbar classContent="grid grid-cols-3" density="comfortable">
-	<p>Lapikit</p>
-</Appbar>
+<div class="grid w-full grid-cols-1 gap-4">
+	<Appbar density="comfortable">
+		<p>Lapikit</p>
+	</Appbar>
 
-<Appbar classContent="grid grid-cols-3" density="default">
-	<p>Lapikit</p>
-</Appbar>
+	<Appbar density="default">
+		<p>Lapikit</p>
+	</Appbar>
 
-<Appbar classContent="grid grid-cols-3" density="compact">
-	<p>Lapikit</p>
-</Appbar>
+	<Appbar density="compact">
+		<p>Lapikit</p>
+	</Appbar>
+</div>
