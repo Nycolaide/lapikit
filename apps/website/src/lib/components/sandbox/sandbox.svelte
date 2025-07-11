@@ -83,4 +83,9 @@
 	.lapikit-sandbox {
 		border: 1px solid var(--kit-scrim);
 	}
+
+	.lapikit-sandbox :global(p) {
+		margin-top: initial !important;
+		line-height: initial !important;
+	}
 </style>

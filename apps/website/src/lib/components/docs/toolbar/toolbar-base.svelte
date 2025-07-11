@@ -2,6 +2,8 @@
 	import { Toolbar } from 'lapikit/components';
 </script>
 
-<Toolbar>
-	<p>Toolbar</p>
-</Toolbar>
+<div class="grid w-full grid-cols-1 gap-4">
+	<Toolbar>
+		<p>Toolbar</p>
+	</Toolbar>
+</div>

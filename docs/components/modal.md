@@ -125,7 +125,7 @@ Several modals can be displayed at the same time, stacked. This example shows ho
 ## API Reference
 
 | props          | type                   | description                                                       | default   | type_extend                                    |
-| -------------- | ---------------------- | ----------------------------------------------------------------- | --------- | ---------------------------------------------- | --- |
+| -------------- | ---------------------- | ----------------------------------------------------------------- | --------- | ---------------------------------------------- |
 | ref $bindable  | HTMLElement            | Direct access to DOM element                                      | undefined |                                                |
 | open $bindable | boolean                | Controls component opening/closing                                | false     |                                                |
 | dark           | boolean                | Enable dark theme for component.                                  | false     |                                                |
@@ -133,7 +133,7 @@ Several modals can be displayed at the same time, stacked. This example shows ho
 | color          | string                 | Applies a custom color to text or icons.                          | undefined |                                                |
 | background     | string                 | Apply a custom background color.                                  | undefined |                                                |
 | density        | enum                   | Controls vertical density                                         | `default` | `compact` \| `comfortable` \| `default`        |
-| rounded        | string                 | Controls item rounding (`none`, `sm`, `md`, `lg`, etc.).          | `md`      |                                                |     |
+| rounded        | string                 | Controls item rounding (`none`, `sm`, `md`, `lg`, etc.).          | `md`      |                                                |
 | size           | enum \| `{enum: enum}` | Determines the size of the Modal                                  | `md`      | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `full` |
 | persistent     | boolean                | Prevent closing by clicking outside or with Escape.               | false     |                                                |
 | position       | enum                   | Vertical position of content on screen                            | `center`  | `bottom` \| `center` \| `top`                  |

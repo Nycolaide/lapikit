@@ -14,13 +14,13 @@
 	<div>
 		<ul>
 			<li>
-				<div onclick={() => alert('Element 1')}>Element 1</div>
+				<div onclick={() => alert('Element 1')}>Item 1</div>
 			</li>
 			<li>
-				<div onclick={() => alert('Element 2')}>Element 2</div>
+				<div onclick={() => alert('Element 2')}>Item 2</div>
 			</li>
 			<li>
-				<div onclick={() => alert('Element3')}>Element 3</div>
+				<div onclick={() => alert('Element3')}>Item 3</div>
 			</li>
 		</ul>
 	</div>

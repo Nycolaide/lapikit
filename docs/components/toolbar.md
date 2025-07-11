@@ -56,9 +56,9 @@ Shows how to adjust density (`compact`, `comfortable`, `default`) to manage vert
 
 The toolbar can be displayed horizontally (default) or vertically. This example illustrates the use of the orientation="vertical" option to stack elements from top to bottom.
 
-<Sandbox name="toolbar-orientation-sandbox" code={ToolbardDensityCode}>
+<Sandbox name="toolbar-orientation-sandbox" code={ToolbardOrientationCode}>
 	{#snippet component()}
-		<ToolbardDensity/>
+		<ToolbardOrientation/>
 	{/snippet}
 </Sandbox>
 
