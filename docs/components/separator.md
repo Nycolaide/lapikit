@@ -4,6 +4,7 @@ head:
   description: "Create elegant dividers with Lapikit. Customize density, size and style to structure your Svelte components."
 title: separator
 subtitle: separator component
+cover: "docs/components/separator.webp"
 section: components
 keywords:
   - divider

@@ -4,6 +4,7 @@ head:
   description: "Customizable button for Svelte with variants, sizes and icon management. Indispensable for building solid interfaces"
 title: button
 subtitle: button component
+cover: "docs/components/button.webp"
 section: components
 keywords:
   - btn

@@ -4,6 +4,7 @@ head:
   description: "Manage your icons with style: SVG, font or image. Size, color, state: Lapikit's Icon component adapts to your needs Svelte"
 title: icon
 subtitle: icon component
+cover: "docs/components/icon.webp"
 section: components
 published: true
 ---

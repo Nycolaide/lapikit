@@ -4,6 +4,7 @@ head:
   description: "Display interactive metadata or tags with Chip. Visual states (info, warning...), sizes and event management included"
 title: chip
 subtitle: chip component
+cover: "docs/components/chip.webp"
 section: components
 published: true
 ---

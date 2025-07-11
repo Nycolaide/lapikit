@@ -4,6 +4,7 @@ head:
   description: "Structure your interfaces with the Card component. Variants, sizes and integrated event management, optimized for Svelte"
 title: card
 subtitle: card component
+cover: "docs/components/card.webp"
 section: components
 published: true
 ---

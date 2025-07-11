@@ -4,6 +4,7 @@ head:
   description: "Flexible, responsive toolbars. Manage density, size and variants for toolbars consistent with your Svelte apps."
 title: toolbar
 subtitle: toolbar component
+cover: "docs/components/toolbar.webp"
 section: components
 published: true
 ---

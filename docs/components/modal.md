@@ -4,6 +4,7 @@ head:
   description: "Advanced Modal component for Svelte: overlays, event-driven control, custom positions and adaptable styles"
 title: modal
 subtitle: modal component
+cover: "docs/components/modal.webp"
 section: components
 published: true
 ---

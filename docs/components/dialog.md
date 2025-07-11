@@ -4,6 +4,7 @@ head:
   description: "Native and customizable dialog boxes with Lapikit. Size, position, style and event logic designed for Svelte"
 title: dialog
 subtitle: dialog component
+cover: "docs/components/dialog.webp"
 section: components
 published: true
 ---

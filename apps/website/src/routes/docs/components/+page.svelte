@@ -9,6 +9,7 @@
 		slug: string;
 		subtitle?: string;
 		section: string;
+		cover?: string;
 	}
 
 	let { data } = $props();
@@ -40,9 +41,12 @@
 		{#if componentPages.length === 0}
 			<p>{capitalize($t('docs.landing-page.components.no-pages'))}</p>
 		{/if}
-		{#each componentPages as { title, slug, subtitle } (slug)}
+		{#each componentPages as { title, slug, subtitle, cover } (slug)}
 			<Card href={`/${slug}`} class="mb-4">
-				<img src="/images/preview-component.webp" alt={`${title} cover`} />
+				<img
+					src={cover ? `/images/${cover}` : '/images/preview-component.webp'}
+					alt={`${title} cover`}
+				/>
 				<p class="text-lg font-bold md:text-xl">{capitalize(title)}</p>
 				<p class="opacity-75">{capitalize(subtitle || '')}</p>
 			</Card>

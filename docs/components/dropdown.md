@@ -4,6 +4,7 @@ head:
   description: "Flexible drop-down menu with variants, positions and full event management. Designed for ergonomics and fluidity in Svelte"
 title: dropdown
 subtitle: dropdown component
+cover: "docs/components/dropdown.webp"
 section: components
 keywords:
   - menu

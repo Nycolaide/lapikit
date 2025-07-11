@@ -4,6 +4,7 @@ head:
   description: "Add stylish avatars to your UI with Lapikit. Initials, images, variants and sizes: an ultra-flexible Svelte component"
 title: avatar
 subtitle: avatar component
+cover: "docs/components/avatar.webp"
 section: components
 published: true
 ---

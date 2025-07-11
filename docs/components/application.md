@@ -3,6 +3,8 @@ head:
   title: Application
   description: "The App component is Lapikit's central provider. Manage themes, global styles and overlays for all your Svelte components"
 title: Application
+subtitle: application component
+cover: "docs/components/application.webp"
 section: components
 order: 0
 keywords:

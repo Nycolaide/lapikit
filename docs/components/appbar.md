@@ -4,6 +4,7 @@ head:
   description: "Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI."
 title: appbar
 subtitle: appbar component
+cover: "docs/components/appbar.webp"
 section: components
 published: true
 ---

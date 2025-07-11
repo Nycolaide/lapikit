@@ -4,6 +4,7 @@ head:
   description: "Affichez des messages contextuels avec le composant Alert. Gérez facilement les états info, warning, success et error dans vos apps Svelte"
 title: alert
 subtitle: alert component
+cover: "docs/components/alert.webp"
 section: components
 published: true
 ---

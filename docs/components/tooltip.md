@@ -4,6 +4,7 @@ head:
   description: "Display elegant tooltips with Tooltip. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components"
 title: tooltip
 subtitle: tooltip component
+cover: "docs/components/tooltip.webp"
 section: components
 published: true
 ---

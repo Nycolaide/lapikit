@@ -6,5 +6,8 @@
 	"types": "type",
 	"type": "type",
 	"description": "description",
-	"type_extend": "extend type"
+	"type_extend": "extend type",
+	"key": "key",
+	"size": "size",
+	"device": "device"
 }

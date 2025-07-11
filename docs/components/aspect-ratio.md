@@ -4,6 +4,7 @@ head:
   description: "Display your images and content with a perfect ratio thanks to AspectRatio. Simplicity and responsiveness for your Svelte components"
 title: aspect ratio
 subtitle: aspect ratio component
+cover: "docs/components/aspect-ratio.webp"
 section: components
 keywords:
   - aspect ratio

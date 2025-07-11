@@ -4,6 +4,7 @@ head:
   description: "List component for displaying interactive elements with color, size, navigation and event management in Svelte"
 title: list
 subtitle: list component
+cover: "docs/components/list.webp"
 section: components
 published: true
 ---

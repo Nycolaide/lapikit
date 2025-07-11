@@ -4,6 +4,7 @@ head:
   description: "Add interactive popovers to your Svelte apps. Dropdown and Tooltip merge with rich content and fine-grained event management"
 title: popover
 subtitle: popover component
+cover: "docs/components/popover.webp"
 section: components
 published: true
 ---
