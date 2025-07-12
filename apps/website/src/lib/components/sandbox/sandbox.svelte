@@ -88,4 +88,8 @@
 		margin-top: initial !important;
 		line-height: initial !important;
 	}
+
+	.lapikit-sandbox :global(img) {
+		margin: initial !important;
+	}
 </style>

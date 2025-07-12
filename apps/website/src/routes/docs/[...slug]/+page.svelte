@@ -36,7 +36,7 @@
 	});
 </script>
 
-<div class="grid pt-16 pr-4 pb-6 pl-4 md:pl-0 xl:grid-cols-[1fr_220px]">
+<div class="grid pt-12 pr-4 pb-6 pl-4 md:pl-0 xl:grid-cols-[1fr_220px]">
 	<div>
 		<div class="markdown mx-auto w-full min-w-0 md:max-w-[760px]">
 			<data.content />
@@ -87,46 +87,91 @@
 </div>
 
 <style>
-	.markdown {
-		:global(h2) {
-			margin-top: calc(var(--kit-spacing) * 24);
-			font-size: 27px;
-			font-weight: var(--font-weight-semibold);
-		}
+	@media screen and (max-width: 48rem) {
+		.markdown {
+			:global(h2) {
+				margin-top: calc(var(--kit-spacing) * 16);
+				font-size: 27px;
+				font-weight: var(--font-weight-semibold);
+			}
 
-		:global(h3) {
-			margin-top: calc(var(--kit-spacing) * 24);
-			font-size: var(--text-xl);
-			font-weight: var(--font-weight-semibold);
-		}
+			:global(h3) {
+				margin-top: calc(var(--kit-spacing) * 16);
+				font-size: var(--text-xl);
+				font-weight: var(--font-weight-semibold);
+			}
 
-		:global(p) {
-			margin-top: calc(var(--kit-spacing) * 12);
-			line-height: calc(var(--kit-spacing) * 14);
-		}
+			:global(p) {
+				margin-top: calc(var(--kit-spacing) * 7);
+				line-height: calc(var(--kit-spacing) * 12);
+			}
 
-		:global(img) {
-			margin-top: calc(var(--kit-spacing) * 12);
-			margin-bottom: calc(var(--kit-spacing) * -6);
-			margin-right: auto;
-			margin-left: auto;
-		}
+			:global(img) {
+				margin-top: calc(var(--kit-spacing) * 12);
+				margin-bottom: calc(var(--kit-spacing) * -6);
+				margin-right: auto;
+				margin-left: auto;
+			}
 
-		:global(ul) {
-			list-style-type: disc;
-			margin-left: calc(var(--kit-spacing) * 12);
-			margin-block: calc(var(--kit-spacing) * 8);
-		}
+			:global(ul) {
+				list-style-type: disc;
+				margin-left: calc(var(--kit-spacing) * 12);
+				margin-block: calc(var(--kit-spacing) * 8);
+			}
 
-		:global(ul > li) {
-			line-height: calc(var(--kit-spacing) * 14);
-			margin-top: calc(var(--kit-spacing) * 5);
-		}
+			:global(ul > li) {
+				line-height: calc(var(--kit-spacing) * 14);
+				margin-top: calc(var(--kit-spacing) * 3);
+			}
 
-		:global(a) {
-			text-underline-offset: 4px;
-			text-decoration-line: underline;
-			font-weight: 500;
+			:global(a) {
+				text-underline-offset: 4px;
+				text-decoration-line: underline;
+				font-weight: 500;
+			}
+		}
+	}
+
+	@media screen and (min-width: 48rem) {
+		.markdown {
+			:global(h2) {
+				margin-top: calc(var(--kit-spacing) * 24);
+				font-size: 27px;
+				font-weight: var(--font-weight-semibold);
+			}
+
+			:global(h3) {
+				margin-top: calc(var(--kit-spacing) * 24);
+				font-size: var(--text-xl);
+				font-weight: var(--font-weight-semibold);
+			}
+
+			:global(p) {
+				margin-top: calc(var(--kit-spacing) * 12);
+				line-height: calc(var(--kit-spacing) * 14);
+			}
+
+			:global(img) {
+				margin-top: calc(var(--kit-spacing) * 12);
+				margin-bottom: calc(var(--kit-spacing) * -12);
+			}
+
+			:global(ul) {
+				list-style-type: disc;
+				margin-left: calc(var(--kit-spacing) * 12);
+				margin-block: calc(var(--kit-spacing) * 8);
+			}
+
+			:global(ul > li) {
+				line-height: calc(var(--kit-spacing) * 14);
+				margin-top: calc(var(--kit-spacing) * 5);
+			}
+
+			:global(a) {
+				text-underline-offset: 4px;
+				text-decoration-line: underline;
+				font-weight: 500;
+			}
 		}
 	}
 </style>
