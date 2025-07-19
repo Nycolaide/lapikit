@@ -4,6 +4,7 @@ head:
   description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast"
 icon: mgc_compass_line
 title: getting Started
+subtitle: Getting Started with Lapikit library for Svelte Projects
 description: start simply with Lapikit, the component library designed for Svelte 5.
 section: base
 order: 1
@@ -22,6 +23,7 @@ published: true
     import ConfigureViteConfigJS from "$lib/components/docs/configure-vite.config.js?raw";
     import AddDefaultConfigLapikit from "$lib/components/docs/add-default-config-lapikit.ts?raw";
     import AddStyle from "$lib/components/docs/import-style.txt?raw";
+    import AddLayerTailwindCSSStyle from "$lib/components/docs/tailwindcss-layer-style.txt?raw";
 
 
     // components
@@ -92,19 +94,35 @@ Components support at least the id, class and style attributes, and it is possib
 
 ### Lapikit styles with TailwindCSS or UnoCSS
 
-If you use a CSS framework such as TailwindCSS or UnoCSS, you can pass classes directly to your Lapikit components.
+Lapikit plays nice with utility-first CSS frameworks.
+
+Using TailwindCSS or UnoCSS? You can pass your classes directly to any Lapikit component. No hacks. No overrides. Just class composition the way it should be.
+
+`padding-4 text-sm hover:bg-muted/70` Go for it. It's all yours.
 
 > [!INFO]
-> If you're using TailwindCSS v4, we strongly recommend importing Lapikit styles into `@layer components`.
+> If you're using TailwindCSS v4, we strongly recommend importing Lapikit’s base styles inside `@layer components`. This ensures proper layering and avoids specificity wars.
 
-## Typescript support in Lapikit
+<Sandbox name="tailwindcss-layer-config-lapikit" code={AddLayerTailwindCSSStyle}/>
 
-Lapikit is built with Svelte 5 and, above all, TypeScript. If you use **TypeScript, you'll have auto-completion** to help you write your code.
+Minimal friction. Maximum control.
+
+## TypeScript support in Lapikit
+
+Lapikit is written entirely in TypeScript, no opt-in, no half-measures. Just types, everywhere.
+If you're using a TypeScript setup, you'll get:
+
+- Autocomplete that actually knows what you're doing
+- Props, slots, and events fully typed out
+- Safer refactors, fewer silent breaks
+- Better DX out of the box with editors like VS Code
+
+No need to guess if a prop exists. No need to dig through the docs. Just hover, and go.
 
 ## Next steps
 
 Now that Lapikit is installed and configured on your application, you can:
 
 - Initialize your application with Lapikit, via the Lapikit Provider [Application](/docs/components/application).
-- Import your Design System into Lapikit, so that the components use your [style](/docs/styles).
+- Import your Design System into Lapikit, so that the components use your [customize lapikit](/docs/customize).
 - Configure [Breakpoints](/docs/breakpoints) for your application.

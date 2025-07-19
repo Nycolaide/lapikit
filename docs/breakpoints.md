@@ -4,6 +4,7 @@ head:
   description: "Configure your responsive breakpoints with Lapikit. Use in CSS components and styles for a fluid UI"
 icon: mgc_layout_10_line
 title: breakpoints
+subtitle: "Responsive breakpoints in Lapikit: how to use and customize"
 section: base
 order: 2
 keywords:
@@ -39,6 +40,8 @@ published: true
 </script>
 
 Define component display according to the display size of your application. Each Lapikit component offers APIs that are compatible with these breakpoints.
+
+The following table lists the default breakpoint keys, their pixel values, and the device types they correspond to:
 
 | key     | size   | device     |
 | ------- | ------ | ---------- |
@@ -96,8 +99,14 @@ Here is the list of available classes:
 
 ### Customize breakpoint devices keys
 
-In the Lapikit configuration file (`lapikit.config.js`), edit or add the following keys in breakpoints
+Lapikit is built to adapt, not dictate. That includes how it handles responsive design. If the default breakpoint-to-device mapping doesn’t quite match your design system, you can fully customize it via the `lapikit.config.js` file.
+
+You define which screen sizes should correspond to devices like mobile, tablet, or laptop. This mapping is internal to Lapikit and lets you create truly adaptive UIs without having to rewrite class logic or component behavior.
+
+Here’s how to do it:
 
 <Sandbox name="update-config-breakpoints-device" code={UpdateConfigBreakpointsDevice}/>
 
-You need to base them on the keys you have in thresholds
+These keys (`md`, `lg`, `4xl`, etc.) refer to your thresholds, which you define elsewhere in the same config file. Make sure the keys you assign here exist and are correctly defined in the thresholds object.
+
+This gives you full control over what "mobile" or "tablet" means in your app, making it easier to match your responsive logic with your design tokens or product specs.

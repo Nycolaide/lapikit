@@ -4,6 +4,7 @@ head:
   description: 'Find all the changes in the lapikit release notes'
 icon: mgc_version_line
 title: Changelog
+subtitle: 'Lapikit changelog: latest added, fixes and improvements'
 description: Find all the changes in the lapikit release notes
 section: base
 order: -1

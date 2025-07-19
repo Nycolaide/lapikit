@@ -29,7 +29,7 @@ Every component has been thought through in this way:
 - Default settings that ensure immediate operation
 - Clear [documentation](/docs/getting-started) with examples
 
-## Why create the lapikit library
+## Why create the Lapikit library
 
 A simple, no-frills library
 
@@ -39,7 +39,7 @@ Each component comes with a default style and the option of modifying it complet
 
 You contribute your styles using standard class accessories starting with kit or data-\* attributes (pre-alpha actually).
 
-### The roots of lapikit
+### The roots of Lapikit
 
 Lapikit is a fusion of the words rabbit (in French) , Lapis lazuli, a precious blue stone, and the word kit, which refers to the development kit.
 

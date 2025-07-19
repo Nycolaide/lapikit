@@ -124,17 +124,17 @@
 >
 	<div class="grid gap-4">
 		<div class="text-start">
-			<h2 class="text-2xl font-semibold md:text-3xl">
+			<p class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.dev_with_lapikit.title'))}
-			</h2>
+			</p>
 		</div>
 
 		<div class="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-x-[15px]">
 			{#each advantageLapikit as { title, paragraph, image, customClass } (title)}
 				<Card class={customClass ? `text-start ${customClass}` : 'text-start'}>
-					<h2 class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
+					<p class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
 						{title}
-					</h2>
+					</p>
 					<div class="pt-8 pb-10 lg:pt-9 lg:pb-16">
 						<img
 							src={image}
@@ -159,9 +159,9 @@
 >
 	<div class="grid gap-4">
 		<div class="text-center">
-			<h2 class="text-2xl font-semibold md:text-3xl">
+			<p class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.component_lapikit.title'))}
-			</h2>
+			</p>
 			<p>{capitalize($t('homepage.component_lapikit.paragraph'))}</p>
 		</div>
 
@@ -207,9 +207,9 @@
 >
 	<Card class="p-4 text-center">
 		<div class="mb-6">
-			<h2 class="text-2xl font-semibold md:text-3xl">
+			<p class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.lapikit_discover.title'))}
-			</h2>
+			</p>
 			<p>{capitalize($t('homepage.lapikit_discover.paragraph'))}</p>
 		</div>
 		<div>

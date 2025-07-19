@@ -1,9 +1,10 @@
 ---
 head:
-  title: styles
+  title: customize
   description: "customize Lapikit styles: themes, spacing, typography, radius and other design tokens for your Svelte apps"
-icon: mgc_palette_line
-title: Styles
+icon: mgc_settings_6_line
+title: Customize
+subtitle: "Lapikit styling guide: structure, themes, and breakpoints"
 description: Integrate your style and design system into Lapikit components
 section: base
 order: 3
