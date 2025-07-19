@@ -34,8 +34,8 @@
 <svelte:head>
 	<title
 		>{page.url.pathname === '/'
-			? capitalize(title)
-			: `${capitalize(title)} • ${capitalize('lapikit')}`}</title
+			? `${capitalize(title)} • ${capitalize('Svelte Components Library')}`
+			: `${capitalize(title)} • ${capitalize('Lapikit Svelte Components')}`}</title
 	>
 	{#if description}
 		<meta name="description" content={description} />
