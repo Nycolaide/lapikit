@@ -48,7 +48,7 @@
 	</div>
 	<aside class="max-xl:hidden">
 		<Card class="sticky top-[4.5rem]">
-			<List size="xs" density="compact">
+			<List size="xs" density="compact" variant="text">
 				<ListItem>
 					{#snippet append()}
 						<Icon icon="mgc_tornado_2_line" />
