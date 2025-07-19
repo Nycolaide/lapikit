@@ -56,3 +56,5 @@ Lapikit wouldn't exist without:
 - [Rich Harris](https://github.com/rich-harris) and the [Svelte](https://svelte.dev/) community.
 - [Evan You](https://github.com/yyx990803) for the existence of [Vite.js](https://vite.dev/).
 - [Simone De Sousa Fernandes](https://www.linkedin.com/in/simone-de-sousa-fernandes/), for her support and participation in the development and visibility of Lapikit.
+
+Once you've skimmed the introduction, dive into setting up Lapikit via the [Getting Started](/docs/getting-started) page.

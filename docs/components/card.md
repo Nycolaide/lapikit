@@ -4,6 +4,7 @@ head:
   description: "Structure your interfaces with the Card component. Variants, sizes and integrated event management, optimized for Svelte"
 title: card
 subtitle: card component
+introduction: container with background, border and structured content
 cover: "docs/components/card.webp"
 section: components
 published: true
@@ -108,3 +109,5 @@ The disabled property allows you to disable a Card, preventing any interaction. 
 | `–-card-color`      | `–-kit-on-surface` | Text color       |
 | `–-card-background` | `–-kit-surface`    | Background color |
 | `–-card-radius`     | `--kit-radius-md`  | Card edge radius |
+
+For better structure, combine your [Cards](/docs/components/card) with [Avatars](/docs/components/avatar) and clear [Buttons](/docs/components/button).

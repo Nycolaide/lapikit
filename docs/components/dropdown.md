@@ -4,6 +4,7 @@ head:
   description: "Flexible drop-down menu with variants, positions and full event management. Designed for ergonomics and fluidity in Svelte"
 title: dropdown
 subtitle: dropdown component
+introduction: Drop-down menu linked to a button or element
 cover: "docs/components/dropdown.webp"
 section: components
 keywords:
@@ -114,3 +115,5 @@ The `ModelDropdownProps` interface groups the properties automatically passed to
 | `–-dropdown-color`      | `–-kit-on-surface` | Text color           |
 | `–-dropdown-background` | `–-kit-surface`    | Background color     |
 | `–-dropdown-radius`     | `--kit-radius-md`  | Dropdown edge radius |
+
+Combine Dropdown with an [Appbar](/docs/components/appbar) or [Popover](/docs/components/popover) for improved navigation ergonomics.

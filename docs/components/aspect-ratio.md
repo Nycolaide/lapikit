@@ -4,6 +4,7 @@ head:
   description: "Display your images and content with a perfect ratio thanks to AspectRatio. Simplicity and responsiveness for your Svelte components"
 title: aspect ratio
 subtitle: aspect ratio component
+introduction: maintains a consistent width/height ratio
 cover: "docs/components/aspect-ratio.webp"
 section: components
 keywords:
@@ -69,3 +70,5 @@ The inline property displays the component in the text flow, as an inline elemen
 | ref $bindable | HTMLElement | Direct access to DOM element                                                        | undefined |             |
 | aspectRatio   | string      | Defines the element's aspect ratio (e.g. “16:9”, “4:3”).                            | undefined |             |
 | inline        | boolean     | Indicates whether the element should be displayed in inline mode (in the text flow) | false     |             |
+
+Use Aspect Ratio on [Icon](/docs/components/icon) to visually structure your media components in a [Card](/docs/components/card).

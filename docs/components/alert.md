@@ -4,6 +4,7 @@ head:
   description: "Affichez des messages contextuels avec le composant Alert. Gérez facilement les états info, warning, success et error dans vos apps Svelte"
 title: alert
 subtitle: alert component
+introduction: information, success or error messages
 cover: "docs/components/alert.webp"
 section: components
 published: true
@@ -149,3 +150,5 @@ A close button is automatically displayed, unless overridden by the close slot.
 | `–-alert-color`      | `–-kit-on-container` | Text color        |
 | `–-alert-background` | `–-kit-container`    | Background color  |
 | `–-alert-radius`     | `–-kit-radius-md`    | Alert edge radius |
+
+To enhance your Alerts, think of [Icon](/docs/components/icon) for legibility, or [Button](/docs/components/button) for integrated actions.

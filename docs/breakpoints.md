@@ -110,3 +110,5 @@ Here’s how to do it:
 These keys (`md`, `lg`, `4xl`, etc.) refer to your thresholds, which you define elsewhere in the same config file. Make sure the keys you assign here exist and are correctly defined in the thresholds object.
 
 This gives you full control over what "mobile" or "tablet" means in your app, making it easier to match your responsive logic with your design tokens or product specs.
+
+To find out more, discover how Lapikit [styles](/docs/customize) adapt to your [customized breakpoints](/docs/breakpoints).

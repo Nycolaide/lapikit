@@ -4,6 +4,7 @@ head:
   description: "The App component is Lapikit's central provider. Manage themes, global styles and overlays for all your Svelte components"
 title: Application
 subtitle: application component
+introduction: root structure to organize the app
 cover: "docs/components/application.webp"
 section: components
 order: 0
@@ -58,3 +59,5 @@ This would break internal blinds, causing unexpected behavior and even bugs (ove
 | props    | type    | description                           | default   | type_extend |
 | -------- | ------- | ------------------------------------- | --------- | ----------- |
 | children | Snippet | Child content to be displayed in App. | undefined |             |
+
+Then you can explore basic components like [Button](/docs/components/button), [Card](/docs/components/card) or [Dialog](/docs/components/dialog) to enrich your app.

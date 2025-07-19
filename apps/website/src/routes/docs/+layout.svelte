@@ -9,6 +9,7 @@
 	import { onMount } from 'svelte';
 	import { pagesNavigation, setPages } from '$lib/stores/app.js';
 	import { capitalize } from 'site-kit/actions';
+	import ReturnTopPage from '$lib/components/return-top-page.svelte';
 
 	let { children, data } = $props();
 
@@ -209,6 +210,8 @@
 		<Icon icon={open ? 'mgc_close_line' : 'mgc_menu_line'} />
 		{capitalize(open ? $t('navigation.close') : $t('navigation.open'))}
 	</Button>
+
+	<ReturnTopPage />
 
 	{@render children?.()}
 </Drawer>

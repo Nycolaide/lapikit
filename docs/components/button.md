@@ -4,6 +4,7 @@ head:
   description: "Customizable button for Svelte with variants, sizes and icon management. Indispensable for building solid interfaces"
 title: button
 subtitle: button component
+introduction: customizable interactive button
 cover: "docs/components/button.webp"
 section: components
 keywords:
@@ -231,3 +232,5 @@ This can be useful in sober interfaces or when you want to avoid animation for p
 | `–-button-color`      | `–-kit-on-container` | Text color         |
 | `–-button-background` | `–-kit-container`    | Background color   |
 | `–-button-radius`     | `--kit-radius-md`    | Button edge radius |
+
+Buttons become more effective with [Tooltips](/docs/components/tooltip), a [Toolbar](/docs/components/toolbar) or [Popover](/docs/components/popover) interactions.

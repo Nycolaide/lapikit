@@ -4,6 +4,7 @@ head:
   description: "Add stylish avatars to your UI with Lapikit. Initials, images, variants and sizes: an ultra-flexible Svelte component"
 title: avatar
 subtitle: avatar component
+introduction: displays a profile image or initials
 cover: "docs/components/avatar.webp"
 section: components
 published: true
@@ -94,3 +95,5 @@ The variant property lets you customize the Avatar's style. The available option
 | `–-avatar-color`      | `–-kit-on-container` | Text color         |
 | `–-avatar-background` | `–-kit-container`    | Background color   |
 | `–-avatar-radius`     | `--kit-radius-full`  | Avatar edge radius |
+
+Associate Avatars with user [Cards](/docs/components/card) or [Chips](/docs/components/chip) to display roles or status.

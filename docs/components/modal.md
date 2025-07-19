@@ -4,6 +4,7 @@ head:
   description: "Advanced Modal component for Svelte: overlays, event-driven control, custom positions and adaptable styles"
 title: modal
 subtitle: modal component
+introduction: overlay window for content display
 cover: "docs/components/modal.webp"
 section: components
 published: true
@@ -149,3 +150,5 @@ Several modals can be displayed at the same time, stacked. This example shows ho
 | `–-modal-radius`      | `--kit-radius-md`  | Modal edge radius   |
 | `–-modal-translate-x` | `-50%`             | Horizontal position |
 | `–-modal-translate-y` | `-50%`             | Vertical position   |
+
+Complement the use of Modals with [Dialog](/docs/components/dialog) for confirmations or [Popover](/docs/components/popover) for light details.

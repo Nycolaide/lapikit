@@ -4,6 +4,7 @@ head:
   description: "Display interactive metadata or tags with Chip. Visual states (info, warning...), sizes and event management included"
 title: chip
 subtitle: chip component
+introduction: small visual or interactive elements (tags, statuses, actions)
 cover: "docs/components/chip.webp"
 section: components
 published: true
@@ -207,3 +208,5 @@ Changes the overall style of the chip with filled or outline variants.
 | `–-chip-color`      | `–-kit-on-container` | Text color       |
 | `–-chip-background` | `–-kit-container`    | Background color |
 | `–-chip-radius`     | `--kit-radius-full`  | Chip edge radius |
+
+Chips are often used in a [Toolbar](/docs/components/toolbar) or as a complement in a [Card](/docs/components/card) to structure information and [List](/docs/components/list).

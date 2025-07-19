@@ -4,6 +4,7 @@ head:
   description: "List component for displaying interactive elements with color, size, navigation and event management in Svelte"
 title: list
 subtitle: list component
+introduction: vertical list of elements with variants
 cover: "docs/components/list.webp"
 section: components
 published: true
@@ -165,3 +166,5 @@ Enables you to compose each _ListItem_ with additional elements such as icons, b
 | `–-list-color`      | `–-kit-on-container` | Text color       |
 | `–-list-background` | `–-kit-container`    | Background color |
 | `–-list-radius`     | `--kit-radius-md`    | List edge radius |
+
+A well-structured List can easily be enriched with [Separators](/docs/components/separator) or elements in a [Card](/docs/components/card).

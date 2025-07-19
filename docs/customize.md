@@ -135,8 +135,6 @@ All rounding available for Lapikit components and globally via `--kit-radius-*` 
 
 Lapikit predefines default fonts for standard use via _sans_, _mono_ and _serif_ variables. They are available globally via CSS variables `--kit-font-family-*`.
 
-## The next steps
+**The next steps**
 
-- Customize Lapikit [breakpoints](/docs/breakpoints) for your application
-- Learn how to use the themes utilities
-- Start integrating [App](/docs/components/application) Lapikit for your application
+See also the [Breakpoints](/docs/breakpoints) and [Application](/docs/components/application) pages to take full advantage of the visual possibilities.

@@ -4,6 +4,7 @@ head:
   description: "Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI."
 title: appbar
 subtitle: appbar component
+introduction: fixed top bar with actions or navigation
 cover: "docs/components/appbar.webp"
 section: components
 published: true
@@ -70,3 +71,5 @@ The density property lets you control the Appbar's appearance by adjusting its h
 | `–-appbar-background`      | `–-kit-surface`     | Background color                          |
 | `–-appbar-radius`          | `0`                 | Appbar edge radius                        |
 | `–-appbar-padding-wrapper` | `–-kit-spacing * 4` | Spacing between Appbar parent and content |
+
+An effective Appbar goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.

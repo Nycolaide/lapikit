@@ -4,6 +4,7 @@
 	import { Card, Icon, List, ListItem, Separator } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
 	import { Footer } from '$lib/components/index.js';
+	import { Breadcrumbs } from 'site-kit';
 
 	let { data } = $props();
 
@@ -39,6 +40,7 @@
 <div class="grid pt-12 pr-4 pb-6 pl-4 md:pl-0 xl:grid-cols-[1fr_220px]">
 	<div>
 		<div class="markdown mx-auto w-full min-w-0 md:max-w-[760px]">
+			<Breadcrumbs />
 			<data.content />
 		</div>
 

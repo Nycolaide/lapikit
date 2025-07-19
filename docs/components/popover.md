@@ -4,6 +4,7 @@ head:
   description: "Add interactive popovers to your Svelte apps. Dropdown and Tooltip merge with rich content and fine-grained event management"
 title: popover
 subtitle: popover component
+introduction: floating tooltip anchored to an element
 cover: "docs/components/popover.webp"
 section: components
 published: true
@@ -80,3 +81,5 @@ You can use it to create fully customized activators that finely control Popover
 | `–-popover-color`      | `–-kit-on-surface` | Text color          |
 | `–-popover-background` | `–-kit-surface`    | Background color    |
 | `–-popover-radius`     | `--kit-radius-md`  | Popover edge radius |
+
+Popovers are the ideal complement to [Dialogs](/docs/components/dialog) or [Buttons](/docs/components/button) in modern interfaces.

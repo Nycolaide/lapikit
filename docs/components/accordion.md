@@ -4,6 +4,7 @@ head:
   description: "Discover Lapikit's Accordion component for Svelte. Sizing, accessibility, optimized SEO and integrated event management"
 title: accordion
 subtitle: accordion component
+introduction: displays foldable content in sections
 cover: "docs/components/accordion.webp"
 section: components
 published: true
@@ -151,3 +152,5 @@ Useful for adding a little air to dense or visually busy interfaces.
 | `–-on`    | `–-accordion-color`      | Text color item            |
 | `–-base`  | `–-accordion-background` | Background color item      |
 | `–-shape` | `–-accordion-radius`     | Accordion edge radius item |
+
+To complete your Accordion interface, consider the [Icon](/docs/components/icon) and [Chip](/docs/components/chip) components for dynamic content.

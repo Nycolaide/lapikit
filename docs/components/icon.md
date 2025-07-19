@@ -4,6 +4,7 @@ head:
   description: "Manage your icons with style: SVG, font or image. Size, color, state: Lapikit's Icon component adapts to your needs Svelte"
 title: icon
 subtitle: icon component
+introduction: displays a configurable SVG icon
 cover: "docs/components/icon.webp"
 section: components
 published: true
@@ -118,3 +119,5 @@ Example of an icon rendered inactive, visually dimmed and non-interactive. Ideal
 | variable       | default            | description |
 | -------------- | ------------------ | ----------- |
 | `–-icon-color` | `–-kit-on-surface` | Icon color  |
+
+Add Icons to your [Buttons](/docs/components/button), [Cards](/docs/components/card) or [Chips](/docs/components/chip) to visually guide your users.

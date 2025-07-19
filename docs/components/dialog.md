@@ -4,6 +4,7 @@ head:
   description: "Native and customizable dialog boxes with Lapikit. Size, position, style and event logic designed for Svelte"
 title: dialog
 subtitle: dialog component
+introduction: centered modal window, for interactions or important messages
 cover: "docs/components/dialog.webp"
 section: components
 published: true
@@ -112,3 +113,5 @@ Makes the Dialog persistent: it no longer closes automatically on clicking outsi
 | `–-dialog-color`      | `–-kit-on-container` | Text color         |
 | `–-dialog-background` | `–-kit-container`    | Background color   |
 | `–-dialog-radius`     | `--kit-radius-md`    | Dialog edge radius |
+
+Remember to follow up with [Modal](/docs/components/modal) or [Popover](/docs/components/popover) to create complete user paths.

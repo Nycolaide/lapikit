@@ -119,10 +119,8 @@ If you're using a TypeScript setup, you'll get:
 
 No need to guess if a prop exists. No need to dig through the docs. Just hover, and go.
 
-## Next steps
+**Next steps**
 
-Now that Lapikit is installed and configured on your application, you can:
+Once installed, explore [settings management](/docs/customize) and [breakpoint configuration](/docs/breakpoints) in your projects.
 
-- Initialize your application with Lapikit, via the Lapikit Provider [Application](/docs/components/application).
-- Import your Design System into Lapikit, so that the components use your [customize lapikit](/docs/customize).
-- Configure [Breakpoints](/docs/breakpoints) for your application.
+You can consult all the components available on the [Components](/docs/components) page to go further in building your interface.

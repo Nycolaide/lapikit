@@ -4,6 +4,7 @@ head:
   description: "Display elegant tooltips with Tooltip. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components"
 title: tooltip
 subtitle: tooltip component
+introduction: light tooltip on element hover
 cover: "docs/components/tooltip.webp"
 section: components
 published: true
@@ -117,3 +118,5 @@ The only variant currently available is arrow, which adds a directional arrow to
 | `–-tooltip-color`      | `–-kit-on-surface` | Text color          |
 | `–-tooltip-background` | `–-kit-surface`    | Background color    |
 | `–-tooltip-radius`     | `--kit-radius-md`  | Tooltip edge radius |
+
+Tooltips complement your [Buttons](/docs/components/button) or [Icons](/docs/components/icon) by providing discreet but useful context for users.

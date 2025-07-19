@@ -4,6 +4,7 @@ head:
   description: "Flexible, responsive toolbars. Manage density, size and variants for toolbars consistent with your Svelte apps."
 title: toolbar
 subtitle: toolbar component
+introduction: horizontal or vertical toolbars
 cover: "docs/components/toolbar.webp"
 section: components
 published: true
@@ -96,3 +97,5 @@ Demonstrates the use of visual variants: **outline**, **text** or **dash** to ad
 | `–-toolbar-color`      | `–-kit-on-container` | Text color          |
 | `–-toolbar-background` | `–-kit-container`    | Background color    |
 | `–-toolbar-radius`     | `0`                  | Toolbar edge radius |
+
+Toolbar is the right place to group [Buttons](/docs/components/button), [Chips](/docs/components/chip) and [Icons](/docs/components/icon) in a coherent space.

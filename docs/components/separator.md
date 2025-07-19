@@ -4,6 +4,7 @@ head:
   description: "Create elegant dividers with Lapikit. Customize density, size and style to structure your Svelte components."
 title: separator
 subtitle: separator component
+introduction: line or space to separate visual sections
 cover: "docs/components/separator.webp"
 section: components
 keywords:
@@ -121,3 +122,5 @@ Controls the thickness of the separator via prop thickness. Perfect for accentua
 | --------------------- | ------------- | -------------------- |
 | `–-separator-color`   | `–-kit-scrim` | Color of separator   |
 | `–-separator-opacity` | `0.12`        | Opacity of separator |
+
+To organize your data, combine Separators with [List](/docs/components/list) for greater legibility.
