@@ -124,9 +124,9 @@
 >
 	<div class="grid gap-4">
 		<div class="text-start">
-			<p class="text-2xl font-semibold md:text-3xl">
+			<h2 class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.dev_with_lapikit.title'))}
-			</p>
+			</h2>
 		</div>
 
 		<div class="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-x-[15px]">
