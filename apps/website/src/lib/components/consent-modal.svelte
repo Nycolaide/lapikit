@@ -30,9 +30,9 @@
 	bingID={PUBLIC_BING_WEBMASTER_TOOLS_ID}
 >
 	{#snippet dialog(model: Model)}
-		<Modal bind:open={model.open} size="sm" persistent>
+		<Modal bind:open={model.open} size="sm" persistent aria-labelledby="dialog-consent-mode-title">
 			<div class="flex items-center justify-between">
-				<p class="text-lg">{capitalize($t('common.gdpr.title'))}</p>
+				<p class="text-lg" id="dialog-consent-mode-title">{capitalize($t('common.gdpr.title'))}</p>
 				<Button onclick={() => model.action('refuse')} size="sm" variant="text">
 					{capitalize($t('common.gdpr.button.decline'))}
 				</Button>

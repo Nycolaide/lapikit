@@ -23,7 +23,6 @@
 	this={is}
 	bind:this={ref}
 	{...rest}
-	role="heading"
 	class={[
 		'kit-appbar',
 		light && 'light',

@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Remove default role on **Appbar** component
 - Update CI install Lapikit with good futur url for lapikit website
 
 ## [0.1.14] - 2025-06-27

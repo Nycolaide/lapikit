@@ -58,11 +58,20 @@
 	});
 </script>
 
-<Button class="display-mobile" onclick={() => (open = true)} icon>
+<Button
+	class="display-mobile"
+	onclick={() => (open = true)}
+	icon
+	aria-label={capitalize($t('navigation.search'))}
+>
 	<Icon icon="mgc_search_line" />
 </Button>
 
-<Button class="hidden-mobile" onclick={() => (open = true)}>
+<Button
+	class="hidden-mobile"
+	onclick={() => (open = true)}
+	aria-label={capitalize($t('navigation.search'))}
+>
 	<Icon icon="mgc_search_line" />
 
 	<span class="pr-[2rem]">

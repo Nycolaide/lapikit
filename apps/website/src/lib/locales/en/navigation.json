@@ -11,5 +11,7 @@
 		"experimental": "experimental",
 		"preview": "preview",
 		"new": "new"
-	}
+	},
+	"theme_toggle": "change theme",
+	"search": "search"
 }
