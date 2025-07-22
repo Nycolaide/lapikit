@@ -1,7 +1,7 @@
 ---
 head:
   title: card
-  description: "Structure your interfaces with the Card component. Variants, sizes and integrated event management, optimized for Svelte"
+  description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
 title: card
 subtitle: card component
 introduction: container with background, border and structured content

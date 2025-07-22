@@ -1,7 +1,7 @@
 ---
 head:
   title: dropdown
-  description: "Flexible drop-down menu with variants, positions and full event management. Designed for ergonomics and fluidity in Svelte"
+  description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
 title: dropdown
 subtitle: dropdown component
 introduction: Drop-down menu linked to a button or element

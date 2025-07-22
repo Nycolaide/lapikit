@@ -1,7 +1,7 @@
 ---
 head:
   title: breakpoints
-  description: "Configure your responsive breakpoints with Lapikit. Use in CSS components and styles for a fluid UI"
+  description: "Manage the reactivity of your Lapikit components with customizable breakpoints. Easily adapt to all devices."
 icon: mgc_layout_10_line
 title: breakpoints
 subtitle: "Responsive breakpoints in Lapikit: how to use and customize"

@@ -1,7 +1,7 @@
 ---
 head:
   title: separator
-  description: "Create elegant dividers with Lapikit. Customize density, size and style to structure your Svelte components."
+  description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
 title: separator
 subtitle: separator component
 introduction: line or space to separate visual sections

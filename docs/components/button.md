@@ -1,7 +1,7 @@
 ---
 head:
   title: button
-  description: "Customizable button for Svelte with variants, sizes and icon management. Indispensable for building solid interfaces"
+  description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 title: button
 subtitle: button component
 introduction: customizable interactive button

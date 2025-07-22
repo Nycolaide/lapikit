@@ -1,7 +1,7 @@
 ---
 head:
   title: tooltip
-  description: "Display elegant tooltips with Tooltip. Fine-tuned customization, accessibility and SEO-friendliness for your Svelte components"
+  description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
 title: tooltip
 subtitle: tooltip component
 introduction: light tooltip on element hover

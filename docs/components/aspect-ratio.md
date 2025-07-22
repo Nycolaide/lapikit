@@ -1,7 +1,7 @@
 ---
 head:
   title: aspect ratio
-  description: "Display your images and content with a perfect ratio thanks to AspectRatio. Simplicity and responsiveness for your Svelte components"
+  description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
 title: aspect ratio
 subtitle: aspect ratio component
 introduction: maintains a consistent width/height ratio

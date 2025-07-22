@@ -1,7 +1,7 @@
 ---
 head:
   title: popover
-  description: "Add interactive popovers to your Svelte apps. Dropdown and Tooltip merge with rich content and fine-grained event management"
+  description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
 title: popover
 subtitle: popover component
 introduction: floating tooltip anchored to an element

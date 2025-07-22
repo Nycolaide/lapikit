@@ -1,7 +1,7 @@
 ---
 head:
   title: accordion
-  description: "Discover Lapikit's Accordion component for Svelte. Sizing, accessibility, optimized SEO and integrated event management"
+  description: "Display scalable content in a fluid interface. The Lapikit accordion component is lightweight, accessible and customizable."
 title: accordion
 subtitle: accordion component
 introduction: displays foldable content in sections

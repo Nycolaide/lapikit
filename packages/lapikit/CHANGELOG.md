@@ -1,7 +1,7 @@
 ---
 head:
   title: changelog
-  description: 'Find all the changes in the lapikit release notes'
+  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
 icon: mgc_version_line
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'

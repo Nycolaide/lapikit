@@ -1,7 +1,7 @@
 ---
 head:
   title: Application
-  description: "The App component is Lapikit's central provider. Manage themes, global styles and overlays for all your Svelte components"
+  description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
 title: Application
 subtitle: application component
 introduction: root structure to organize the app

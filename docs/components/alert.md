@@ -1,7 +1,7 @@
 ---
 head:
   title: alert
-  description: "Affichez des messages contextuels avec le composant Alert. Gérez facilement les états info, warning, success et error dans vos apps Svelte"
+  description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
 title: alert
 subtitle: alert component
 introduction: information, success or error messages

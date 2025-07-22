@@ -1,7 +1,7 @@
 ---
 head:
   title: toolbar
-  description: "Flexible, responsive toolbars. Manage density, size and variants for toolbars consistent with your Svelte apps."
+  description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
 title: toolbar
 subtitle: toolbar component
 introduction: horizontal or vertical toolbars

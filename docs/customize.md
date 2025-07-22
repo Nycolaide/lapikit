@@ -1,7 +1,7 @@
 ---
 head:
   title: customize
-  description: "customize Lapikit styles: themes, spacing, typography, radius and other design tokens for your Svelte apps"
+  description: "Customize your Svelte Lapikit components via the lapikit.config.js file: themes, styles, breakpoints. Fluid styling guaranteed."
 icon: mgc_settings_6_line
 title: Customize
 subtitle: "Lapikit styling guide: structure, themes, and breakpoints"

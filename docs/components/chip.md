@@ -1,7 +1,7 @@
 ---
 head:
   title: chip
-  description: "Display interactive metadata or tags with Chip. Visual states (info, warning...), sizes and event management included"
+  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 title: chip
 subtitle: chip component
 introduction: small visual or interactive elements (tags, statuses, actions)

@@ -1,7 +1,7 @@
 ---
 head:
   title: modal
-  description: "Advanced Modal component for Svelte: overlays, event-driven control, custom positions and adaptable styles"
+  description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
 title: modal
 subtitle: modal component
 introduction: overlay window for content display

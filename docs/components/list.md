@@ -1,7 +1,7 @@
 ---
 head:
   title: list
-  description: "List component for displaying interactive elements with color, size, navigation and event management in Svelte"
+  description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
 title: list
 subtitle: list component
 introduction: vertical list of elements with variants

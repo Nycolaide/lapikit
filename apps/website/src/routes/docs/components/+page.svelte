@@ -27,10 +27,7 @@
 	});
 </script>
 
-<Head
-	title="all components"
-	description="discover all the Svelte components available with Lapikit"
-/>
+<Head title="all components" description="Find out more about Lapikit's Svelte composents." />
 
 <div
 	class="mx-auto grid w-full min-w-0 pt-16 pr-4 pb-6 pl-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]"

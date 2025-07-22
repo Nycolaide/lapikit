@@ -1,7 +1,7 @@
 ---
 head:
   title: icon
-  description: "Manage your icons with style: SVG, font or image. Size, color, state: Lapikit's Icon component adapts to your needs Svelte"
+  description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
 title: icon
 subtitle: icon component
 introduction: displays a configurable SVG icon

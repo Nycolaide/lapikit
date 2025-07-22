@@ -1,7 +1,7 @@
 ---
 head:
   title: appbar
-  description: "Create a responsive application bar with Appbar. Density, sizes, position: everything is designed for Svelte and your modern UI."
+  description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
 title: appbar
 subtitle: appbar component
 introduction: fixed top bar with actions or navigation

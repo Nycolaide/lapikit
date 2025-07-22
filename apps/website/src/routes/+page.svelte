@@ -54,7 +54,10 @@
 	]);
 </script>
 
-<Head title="Lapikit" description="" />
+<Head
+	title="Lapikit"
+	description="Discover Lapikit, a component library optimized for Svelte. Quick to integrate, simple to style, and designed for front-end developers."
+/>
 
 <div id="head-lapikit">
 	<Appbar

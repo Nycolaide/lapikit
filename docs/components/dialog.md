@@ -1,7 +1,7 @@
 ---
 head:
   title: dialog
-  description: "Native and customizable dialog boxes with Lapikit. Size, position, style and event logic designed for Svelte"
+  description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
 title: dialog
 subtitle: dialog component
 introduction: centered modal window, for interactions or important messages

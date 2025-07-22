@@ -1,7 +1,7 @@
 ---
 head:
   title: introduction
-  description: "discover Lapikit: a modern, lightweight component library for Svelte. Designed for high productivity and customization"
+  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
 icon: mgc_sticker_line
 title: introduction
 subtitle: introducing Lapikit Svelte UI Components
