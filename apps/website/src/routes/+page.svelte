@@ -20,18 +20,18 @@
 		{
 			title: $t('homepage.dev_with_lapikit.card1.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph'),
-			image: '/images/open-source.webp',
+			image: '/images/open-source.webp?v=1',
 			customClass: 'col-span-2 lg:col-span-1'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card2.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph'),
-			image: '/images/styles.webp'
+			image: '/images/styles.webp?v=1'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card3.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph'),
-			image: '/images/components.webp'
+			image: '/images/components.webp?v=1'
 		}
 	]);
 
@@ -142,6 +142,7 @@
 						<img
 							src={image}
 							alt={title}
+							loading="lazy"
 							class="relative mx-auto aspect-354/259 w-10/12 overflow-hidden bg-transparent lg:left-12 lg:ml-auto lg:w-full"
 						/>
 					</div>

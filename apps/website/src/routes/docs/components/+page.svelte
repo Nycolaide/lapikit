@@ -49,7 +49,7 @@
 				class="mb-4 grid grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-1"
 			>
 				<img
-					src={cover ? `/images/${cover}` : '/images/preview-component.webp'}
+					src={cover ? `/images/${cover}?v=1` : '/images/preview-component.webp?v=1'}
 					alt={`${title} cover`}
 					class="max-sm:max-h-38"
 				/>

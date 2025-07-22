@@ -52,7 +52,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
 - Lorem ipsum dolor sit adipisicing elit.
 - Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
-![](/images/material-cover.png)
+![](/images/material-cover.png?v=1)
 
 ## Example
 
