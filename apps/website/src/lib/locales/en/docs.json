@@ -15,7 +15,8 @@
 			"preview": "preview",
 			"code": "code",
 			"expand": "expand",
-			"collapse": "collapse"
+			"collapse": "collapse",
+			"theme-toggle": "change theme on sandbox"
 		}
 	},
 	"summary": {

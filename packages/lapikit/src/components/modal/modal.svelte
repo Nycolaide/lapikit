@@ -80,6 +80,7 @@
 {#if open}
 	<div
 		bind:this={ref}
+		{...rest}
 		class={['kit-modal', contain && 'kit-modal--contain', rest.class]}
 		role="dialog"
 	>
