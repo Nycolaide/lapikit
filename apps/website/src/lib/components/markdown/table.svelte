@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { capitalize } from 'site-kit/actions';
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n';
 
 	let props = $props();
 	let ref: HTMLTableElement | null = $state(null);
@@ -7,39 +9,50 @@
 	let headers: string[] = $state([]);
 	let rows: string[][] = $state([]);
 
+	// specific indices for columns
 	let defaultIndex = $state(-1);
 	let descIndex = $state(-1);
-
 	let typeIndex = $state(-1);
 	let typeExtendIndex = $state(-1);
 
 	onMount(() => {
 		if (!ref) return;
 
+		let customTable = false;
 		const thead = ref.querySelector('thead');
 		const tbody = ref.querySelector('tbody');
-
 		if (thead) {
 			const ths = Array.from(thead.querySelectorAll('th'));
+
+			if (ths.length > 0 && ths[0].innerHTML.trim() === 'props') customTable = true;
+
 			headers = ths
 				.map((th, index) => {
 					const text = th.innerHTML?.trim() || '';
 
-					if (text.toLowerCase() === 'type_extend') {
-						typeExtendIndex = index;
-						return '';
+					if (customTable) {
+						if (text.toLowerCase() === 'props') {
+							return capitalize($t('datatable.props'));
+						}
+						if (text.toLowerCase() === 'type_extend') {
+							typeExtendIndex = index;
+							return '';
+						}
+						if (text.toLowerCase() === 'default') {
+							defaultIndex = index;
+							return '';
+						}
+						if (['desc', 'description'].includes(text.toLowerCase())) {
+							descIndex = index;
+							return capitalize($t('datatable.description'));
+						}
+						if (['type', 'types'].includes(text.toLowerCase())) {
+							typeIndex = index;
+							return capitalize($t('datatable.types'));
+						}
 					}
-					if (text.toLowerCase() === 'default') {
-						defaultIndex = index;
-						return '';
-					}
-					if (['desc', 'description'].includes(text.toLowerCase())) {
-						descIndex = index;
-					}
-					if (['type', 'types'].includes(text.toLowerCase())) {
-						typeIndex = index;
-					}
-					return text;
+
+					return capitalize($t(`datatable.${text}`));
 				})
 				.filter((text) => text !== '');
 		}
@@ -53,38 +66,40 @@
 					return highlightTokens(html);
 				});
 
-				if (
-					defaultIndex >= 0 &&
-					defaultIndex < cells.length &&
-					descIndex >= 0 &&
-					descIndex < cells.length
-				) {
-					const def = cells[defaultIndex];
-					const desc = cells[descIndex];
-					cells[descIndex] = `<p>${desc}</p> <div class="text-sm mt-2">Default: ${def}</div>`;
-				}
+				if (customTable) {
+					if (
+						defaultIndex >= 0 &&
+						defaultIndex < cells.length &&
+						descIndex >= 0 &&
+						descIndex < cells.length
+					) {
+						const def = cells[defaultIndex];
+						const desc = cells[descIndex];
+						cells[descIndex] = `<p>${desc}</p> <div class="text-sm mt-2">Default: ${def}</div>`;
+					}
 
-				if (typeIndex >= 0 && typeIndex < cells.length) {
-					const type = cells[typeIndex];
-					if (typeExtendIndex >= 0 && typeExtendIndex < cells.length) {
-						const extendType = cells[typeExtendIndex];
-						if (extendType !== '') {
-							cells[typeIndex] =
-								`${type} <i class="mgc_information_line" title="${extendType}" style="cursor: pointer"/>`;
+					if (typeIndex >= 0 && typeIndex < cells.length) {
+						const type = cells[typeIndex];
+						if (typeExtendIndex >= 0 && typeExtendIndex < cells.length) {
+							const extendType = cells[typeExtendIndex];
+							if (extendType !== '') {
+								cells[typeIndex] =
+									`${type} <i class="mgc_information_line" title="${extendType}" style="cursor: pointer"/>`;
+							} else {
+								cells[typeIndex] = `${type}`;
+							}
 						} else {
 							cells[typeIndex] = `${type}`;
 						}
-					} else {
-						cells[typeIndex] = `${type}`;
+
+						if (typeExtendIndex >= 0) {
+							cells.splice(typeExtendIndex, 1);
+						}
 					}
-				}
 
-				if (defaultIndex >= 0 && defaultIndex < cells.length) {
-					cells.splice(defaultIndex, 1);
-				}
-
-				if (typeIndex >= 0 && typeIndex < cells.length) {
-					cells.splice(typeIndex, 1);
+					if (defaultIndex >= 0 && defaultIndex < cells.length) {
+						cells.splice(defaultIndex, 1);
+					}
 				}
 
 				return cells;
@@ -154,6 +169,7 @@
 		margin-top: 28px;
 		margin-bottom: 38px;
 		display: inline-grid;
+		min-width: 100%;
 	}
 
 	.kit-table--markdown-wrapper {
@@ -167,6 +183,7 @@
 		margin: 1rem 0;
 		border-spacing: 0;
 		overflow-x: auto;
+		min-width: 100%;
 	}
 
 	:global(.kit-table--markdown table thead tr th) {

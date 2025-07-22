@@ -15,8 +15,13 @@
 	description={props?.head?.description && capitalize(props.head.description)}
 />
 
+{#if props?.subtitle}
+	<h1 class="title">{capitalize(props?.subtitle)}</h1>
+{/if}
 {#if props?.title}
-	<h1 class="title">{capitalize(props?.title)}</h1>
+	<p class="subtitle">{capitalize(props?.title)}</p>
+{/if}
+{#if props?.description}
 	<p class="description">{capitalize(props?.description)}</p>
 {/if}
 
@@ -24,6 +29,13 @@
 
 <style>
 	h1.title {
+		color: color-mix(in oklab, var(--kit-on-base) 40%, transparent);
+		font-weight: var(--font-weight-semibold);
+		font-size: var(--text-xl);
+		line-height: var(--tw-leading, var(--text-5xl--line-height));
+	}
+
+	p.subtitle {
 		font-weight: var(--font-weight-semibold);
 		font-size: var(--text-5xl);
 		line-height: var(--tw-leading, var(--text-5xl--line-height));
@@ -35,6 +47,6 @@
 		line-height: calc(var(--kit-spacing) * 14) !important;
 		font-weight: var(--font-weight-semibold);
 		text-wrap: balance;
-		color: color-mix(in oklab, var(--kit-on-base) 40%, transparent);
+		color: color-mix(in oklab, var(--kit-on-base) 70%, transparent);
 	}
 </style>

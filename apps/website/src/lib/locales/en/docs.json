@@ -15,11 +15,18 @@
 			"preview": "preview",
 			"code": "code",
 			"expand": "expand",
-			"collapse": "collapse"
+			"collapse": "collapse",
+			"theme-toggle": "change theme on sandbox"
 		}
 	},
 	"summary": {
 		"title": "on this page",
 		"version": "version"
+	},
+	"landing-page": {
+		"components": {
+			"title": "discover our components Lapikit",
+			"no-pages": "no components found"
+		}
 	}
 }

@@ -36,11 +36,8 @@
 
 	<div>
 		{#if presentation || tab === 'code' || tab === 'code-only'}
-			<Button
-				onclick={() => handleExpand(expanded !== 'fit-content' ? 'fit-content' : '300px')}
-				active={expanded === 'fit-content'}
-			>
-				{#if expanded !== 'fit-content'}
+			<Button onclick={() => handleExpand(expanded ? false : true)} active={expanded}>
+				{#if !expanded}
 					<Icon icon="mgc_down_line" />
 					{capitalize($t('docs.sandbox.actions.expand'))}
 				{:else}

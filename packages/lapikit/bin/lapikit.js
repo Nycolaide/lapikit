@@ -35,7 +35,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 		terminal('error', `failed to create configuration file:\n\n ${error}`);
 		terminal(
 			'warn',
-			`you can create lapikit.config.js manually, please visite https://localhost:3000/docs for more information`
+			`you can create lapikit.config.js manually, please visite https://lapikit.dev/docs/getting-started for more information`
 		);
 	}
 
@@ -44,9 +44,10 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 
 	terminal(
 		'info',
-		`${ansi.bold.blue('Thank to use lapikit, discover all posibility with lapikit on https://localhost:3000/docs')}\n\n`
+		`${ansi.bold.blue('Thank to use lapikit, discover all posibility with lapikit on https://lapikit.dev')}\n\n`
 	);
 
+	console.log('Website: https://lapikit.dev');
 	console.log('Github: https://github.com/nycolaide/lapikit');
 	console.log('Support the developement: https://buymeacoffee.com/nycolaide');
 } else {

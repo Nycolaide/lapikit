@@ -3,7 +3,7 @@ import { PUBLIC_BASE_URL } from '$env/static/public';
 
 export const url: string = dev ? 'http://localhost:5173' : PUBLIC_BASE_URL;
 
-export const staticPages: Array<string> = [''];
+export const staticPages: Array<string> = ['docs/components'];
 
 export const packageManagers: { name: string; icon: string }[] = [
 	{
@@ -24,7 +24,7 @@ export const navigationMain: { key: string; path: string; external?: boolean; ic
 	},
 	{
 		key: 'docs',
-		path: '/docs/button',
+		path: '/docs/introduction',
 		icon: 'mgc_album_2_line'
 	},
 	{
@@ -55,5 +55,6 @@ export interface MetaDataPages {
 	title: string;
 	description: string;
 	section?: string;
+	order?: number;
 	[key: string]: unknown;
 }

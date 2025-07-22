@@ -19,7 +19,5 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/${{ secrets.DEPLOY_PATH_ALPHA }}
-            git pull origin develop
-            docker compose build
-            docker compose up -d
+            cd ~/${{ secrets.DEPLOY_PATH_PROD }}
+            git pull origin main

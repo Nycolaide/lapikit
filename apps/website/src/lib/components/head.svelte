@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { PUBLIC_BASE_URL, PUBLIC_DEV_MODE } from '$env/static/public';
+	import { capitalize } from 'site-kit/actions';
 
 	interface HeadProps {
 		title?: string;
@@ -24,14 +25,18 @@
 		};
 	}
 
-	let { title = 'test', description, openGraph, twitterGraph }: HeadProps = $props();
+	let { title = 'lapikit', description, openGraph, twitterGraph }: HeadProps = $props();
 
 	// states
 	let url = `${PUBLIC_BASE_URL}${page.url.pathname === '/' ? '' : page.url.pathname}`;
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title
+		>{page.url.pathname === '/'
+			? `${capitalize(title)} • ${capitalize('Svelte Components Library')}`
+			: `${capitalize(title)} • ${capitalize('Lapikit Svelte Components')}`}</title
+	>
 	{#if description}
 		<meta name="description" content={description} />
 	{/if}

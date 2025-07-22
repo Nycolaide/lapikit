@@ -1,0 +1,13 @@
+{
+	"props": "property",
+	"property": "property",
+	"variable": "variable",
+	"default": "default",
+	"types": "type",
+	"type": "type",
+	"description": "description",
+	"type_extend": "extend type",
+	"key": "key",
+	"size": "size",
+	"device": "device"
+}

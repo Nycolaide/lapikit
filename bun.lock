@@ -58,7 +58,7 @@
     },
     "packages/lapikit": {
       "name": "lapikit",
-      "version": "0.1.11",
+      "version": "0.1.14",
       "bin": {
         "lapikit": "bin/lapikit.js",
       },

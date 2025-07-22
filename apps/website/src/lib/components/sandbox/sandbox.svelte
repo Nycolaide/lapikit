@@ -9,12 +9,11 @@
 	let { name, presentation, component, code }: SandboxProps = $props();
 
 	//state
-	let expanded: string = $state('');
+	let expanded: boolean = $state(false);
 	let tab: string = $state('preview');
 	let localColorScheme: 'light' | 'dark' | undefined = $state(undefined);
-
-	$effect(() => {
-		console.log(localColorScheme);
+	$effect.pre(() => {
+		if (presentation) expanded = true;
 	});
 
 	$effect(() => {
@@ -22,7 +21,7 @@
 		if (!code) tab = 'preview-only';
 	});
 
-	const handleExpand = (value: string) => {
+	const handleExpand = (value: boolean) => {
 		expanded = value;
 	};
 	const handleTab = (value: string) => {
@@ -44,7 +43,7 @@
 		{#if code}
 			<SandboxAction {presentation} bind:expanded bind:tab {handleExpand} {handleTab} />
 
-			<div style:height={expanded}>
+			<div style:height="fit-content" style:max-height={expanded ? 'fit-content' : '300px'}>
 				<SandboxCode bind:expanded {code} />
 			</div>
 		{/if}
@@ -68,7 +67,11 @@
 			{/if}
 
 			{#if code && (tab === 'code' || tab === 'code-only')}
-				<div style:height={expanded} class="relative">
+				<div
+					style:height="fit-content"
+					style:max-height={expanded ? 'fit-content' : '300px'}
+					class="relative"
+				>
 					<SandboxCode bind:expanded {code} />
 				</div>
 			{/if}
@@ -79,5 +82,14 @@
 <style>
 	.lapikit-sandbox {
 		border: 1px solid var(--kit-scrim);
+	}
+
+	.lapikit-sandbox :global(p) {
+		margin-top: initial !important;
+		line-height: initial !important;
+	}
+
+	.lapikit-sandbox :global(img) {
+		margin: initial !important;
 	}
 </style>

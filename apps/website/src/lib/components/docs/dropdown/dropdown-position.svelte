@@ -63,9 +63,9 @@
 	{/snippet}
 	<div>
 		<ul>
-			<li>Element 1</li>
-			<li>Element 2</li>
-			<li>Element 3</li>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
 		</ul>
 	</div>
 </Dropdown>
@@ -84,9 +84,9 @@
 	{/snippet}
 	<div>
 		<ul>
-			<li>Element 1</li>
-			<li>Element 2</li>
-			<li>Element 3</li>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
 		</ul>
 	</div>
 </Dropdown>

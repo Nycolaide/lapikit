@@ -1,0 +1,4 @@
+// in js
+import 'lapikit/css';
+// in css
+@import 'lapikit/css';

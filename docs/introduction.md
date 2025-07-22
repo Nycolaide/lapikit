@@ -1,78 +1,60 @@
 ---
-icon: "mgc_sticker_line"
+head:
+  title: introduction
+  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+icon: mgc_sticker_line
 title: introduction
-description: description.
-date: "2025-5-07"
-section: "base"
-categories:
-  - sveltekit
-  - svelte
+subtitle: introducing Lapikit Svelte UI Components
+description: simple, optimized components for Svelte
+section: base
+order: 0
+keywords:
+  - why lapikit
+  - acknowledgements
+  - discover
+  - lapikit
 published: true
 ---
 
-<script>
-  import { Sandbox } from '$lib/components/index.js';
-  import { ButtonBase, ButtonSize } from "$lib/components/docs/index.js";
-  import ButtonBaseCode from "$lib/components/docs/button/button-base.svelte?raw";
-  import ButtonSizeCode from "$lib/components/docs/button/button-size.svelte?raw";
-</script>
+Lapikit is a Svelte component library focused on the development experience, ease of integration and complete customization of each component. Use it to create accessible, high-performance user interfaces without sacrificing customization and performance.
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, ratione. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam delectus non alias, dolores explicabo dignissimos molestias libero quam asperiores cupiditate.
+## Made by FrontEnd for FrontEnd
 
-![](/images/material-cover.png)
+Lapikit is designed to let you optimize your code and concentrate on the complex features of your project.
+Every component has been thought through in this way:
 
-## Title H2 component
+- Designed in Svelte and Typescript
+- Stable, simple and varied APIs
+- [Breakpoint](/docs/breakpoints) support depending on screen size
+- Default settings that ensure immediate operation
+- Clear [documentation](/docs/getting-started) with examples
 
-Lorem ipsum dolor sit amet ~~consectetur~~ adipisicing elit. Porro, ratione. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam delectus _non alias_, dolores explicabo dignissimos molestias libero quam asperiores cupiditate.
-Lorem ipsum dolor sit amet consectetur adipisicing elit. **Porro, ratione**. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam `delectus` non alias, `dolores explicabo dignissimos` molestias libero quam [asperiores cupiditate](https://google.com).
+## Why create the Lapikit library
 
-### Title H3 component
+A simple, no-frills library
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Lapikit's aim is to offer a complete component library that works independently, with no significant dependency on other libraries or packages. (apart from Svelte, of course). The principle is to retain control over the evolution of the library without depending on the rules of other packages. We control the styles, components and plugins, which ensures greater security and long-term support.
 
-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
-- Lorem ipsum dolor sit [asperiores cupiditate](https://google.com).
-- Lorem ipsum dolor sit adipisicing elit.
-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Each component comes with a default style and the option of modifying it completely. A theme manager and utility functions complete Lapikit to ensure rapid integration of your system design into all components.
 
-## API
+You contribute your styles using standard class accessories starting with kit or data-\* attributes (pre-alpha actually).
 
-Delectus _non alias_, dolores explicabo dignissimos molestias libero quam asperiores cupiditate, dignissimos molestias libero quam asperiores cupiditate.
+### The roots of Lapikit
 
-| name          | desc                                                                                       | default                                 | action | type    | type_extend           |
-| ------------- | ------------------------------------------------------------------------------------------ | --------------------------------------- | ------ | ------- | --------------------- |
-| app           | string                                                                                     | demo element [link](https://google.com) | hello  | enum    |                       |
-| app           | boolean                                                                                    | demo                                    | hello  | enum    |                       |
-| app $bindable | boolean uttonBase, ButtonMediaQueries, ButtonSize, ButtonState, ButtonVariant, ButtonColor | demo [link](/docs/avatar)               | hello  | Snippet | 'filled' \| 'outline' |
-| app           | boolean                                                                                    | demo                                    | hello  | enum    |                       |
-| app           | boolean                                                                                    | demo                                    | hello  | enum    |                       |
-| app           | boolean                                                                                    | demo                                    | hello  | enum    |                       |
+Lapikit is a fusion of the words rabbit (in French) , Lapis lazuli, a precious blue stone, and the word kit, which refers to the development kit.
 
-Lorem ipsum dolor sit amet ~~consectetur~~ adipisicing elit. Porro, ratione. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam delectus _non alias_, dolores explicabo dignissimos molestias libero quam asperiores cupiditate.
-Lorem ipsum dolor sit amet consectetur adipisicing elit. **Porro, ratione**. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam `delectus` non alias, `dolores explicabo dignissimos` molestias libero quam [asperiores cupiditate](https://google.com).
+### Community
 
-### Evenements
+Lapikit is developed and maintained by Nycolaide and is inspired by Material Design v3. Documentation is provided by Nycolaide and Simone De Sousa Fernandes. Contributions, issues and feedbacks are welcome and important for the evolution of the project.
 
-Lorem ipsum dolor sit amet ~~consectetur~~ adipisicing elit. Porro, ratione. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam delectus _non alias_, dolores explicabo dignissimos molestias libero quam asperiores cupiditate.
+Got a problem? Open an [issue on GitHub](https://github.com/Nycolaide/lapikit/issues). Got a feature? [Propose it and we'll work it out together](https://github.com/Nycolaide/lapikit/discussions).
 
-<Sandbox name="button-base-sandbox" code={ButtonBaseCode}>
-	{#snippet component()}
-		<ButtonBase/>
-	{/snippet}
-</Sandbox>
+## Acknowledgements
 
-Lorem ipsum dolor sit amet ~~consectetur~~ adipisicing elit. Porro, ratione. Repellendus exercitationem rem eaque ipsam maiores perferendis quisquam aperiam delectus _non alias_, dolores explicabo dignissimos molestias libero quam asperiores cupiditate.
+Lapikit wouldn't exist without:
 
-<Sandbox name="button-size-sandbox" code={ButtonSizeCode}>
-	{#snippet component()}
-		<ButtonSize/>
-	{/snippet}
-</Sandbox>
+- [Rich Harris](https://github.com/rich-harris) and the [Svelte](https://svelte.dev/) community.
+- [Evan You](https://github.com/yyx990803) for the existence of [Vite.js](https://vite.dev/).
+- [Simone De Sousa Fernandes](https://www.linkedin.com/in/simone-de-sousa-fernandes/), for her support and participation in the development and visibility of Lapikit.
 
-### Other display
-
-<Sandbox name="button-size-sandbox" code={ButtonSizeCode} presentation>
-	{#snippet component()}
-		<ButtonSize/>
-	{/snippet}
-</Sandbox>
+Once you've skimmed the introduction, dive into setting up Lapikit via the [Getting Started](/docs/getting-started) page.

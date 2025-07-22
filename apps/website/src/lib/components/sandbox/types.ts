@@ -9,7 +9,7 @@ export type SandboxProps = {
 
 export type SandboxCodeProps = {
 	code?: string;
-	expanded?: string;
+	expanded?: boolean;
 };
 
 export type SandboxComponentProps = {
@@ -17,10 +17,10 @@ export type SandboxComponentProps = {
 };
 
 export type SandboxActionsProps = {
-	expanded?: string;
+	expanded?: boolean;
 	presentation?: boolean;
 	localColorScheme?: 'light' | 'dark';
 	tab?: string;
 	handleTab: (key: string) => void;
-	handleExpand: (key: string) => void;
+	handleExpand: (key: boolean) => void;
 };

@@ -47,20 +47,28 @@
 	active={copy}
 	variant="text"
 	background="base"
+	light
 >
 	<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
 </Button>
 
-<div class="lapikit-sandbox--code overflow-auto" style:height={expanded}>
+<div
+	class="lapikit-sandbox--code overflow-auto"
+	style:max-height={expanded ? 'fit-content' : '300px'}
+>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<div class="sm:text-md text-sm" bind:this={ref}>{@html codeHTML}</div>
 </div>
 
 <style>
+	.lapikit-sandbox--code {
+		height: fit-content;
+	}
 	.lapikit-sandbox--code > div {
 		position: relative;
 		background-color: var(--vp-code-block-bg);
 		overflow: auto;
+		display: grid;
 	}
 
 	.lapikit-sandbox--code > div > :global(pre) {
