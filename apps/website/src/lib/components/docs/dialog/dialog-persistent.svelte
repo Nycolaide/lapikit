@@ -11,8 +11,7 @@
 		<Button onclick={() => (open = false)}>Close</Button>
 	</div>
 	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
+		Dialog with persistent behavior. This dialog will not close when clicking outside of it or
+		pressing the escape key.
 	</div>
 </Dialog>

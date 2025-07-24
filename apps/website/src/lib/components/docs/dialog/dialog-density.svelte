@@ -11,25 +11,13 @@
 <Button onclick={() => (openComfortable = true)}>Comfortable</Button>
 
 <Dialog bind:open={openDefault}>
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with default density</div>
 </Dialog>
 
 <Dialog bind:open={openCompact} density="compact">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with compact density</div>
 </Dialog>
 
 <Dialog bind:open={openComfortable} density="comfortable">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with comfortable density</div>
 </Dialog>

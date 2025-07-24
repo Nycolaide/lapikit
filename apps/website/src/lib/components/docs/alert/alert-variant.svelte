@@ -4,14 +4,14 @@
 
 <div class="grid grid-cols-1 gap-4">
 	<Alert variant="text">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An alert with no background</p>
 	</Alert>
 
 	<Alert variant="outline">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An alert with an outline</p>
 	</Alert>
 
 	<Alert variant="dash">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An alert with a dashed border</p>
 	</Alert>
 </div>

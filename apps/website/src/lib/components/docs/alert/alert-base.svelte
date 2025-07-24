@@ -4,8 +4,8 @@
 
 <Alert>
 	<p>
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est quaerat vel, blanditiis laboriosam
-		tempora ad quia perferendis fugiat autem, modi voluptate accusantium minima itaque aperiam
-		dolore enim numquam laborum veniam.
+		Inform your users of the status of an action or page in your application. It supports states
+		such as info, warning, error, or success to highlight the type of information you want to
+		convey.
 	</p>
 </Alert>
