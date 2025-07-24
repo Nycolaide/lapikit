@@ -8,14 +8,13 @@
 <Button onclick={() => (open = true)}>Open Modal</Button>
 
 <Modal bind:open persistent>
-	Modal content
 	<Button onclick={() => (open = false)}>Close</Button>
 
 	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum neque, nulla, eveniet officiis
-		possimus maxime amet dolor iste odio inventore soluta, accusantium consectetur dolorem
-		reprehenderit hic labore repudiandae et nisi.
+		Modal with persistent behavior. This modal will not close when clicking outside of it or
+		pressing the escape key.
 	</p>
+
 	<Button onclick={() => (child = true)}>Open Modal Child</Button>
 
 	<Modal bind:open={child} contain closeWithEsc size="xs">

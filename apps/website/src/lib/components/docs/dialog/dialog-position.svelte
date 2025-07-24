@@ -13,33 +13,23 @@
 <Button onclick={() => (openResponsive = true)}>Dialog responsive</Button>
 
 <Dialog bind:open={openTop} position="top">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog positioned at the top of the viewport</div>
 </Dialog>
 
 <Dialog bind:open={openCenter} position="center">
 	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
+		Dialog positioned at the center of the viewport. This is the default position if none is
+		specified.
 	</div>
 </Dialog>
 
 <Dialog bind:open={openBottom} position="bottom">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog positioned at the bottom of the viewport</div>
 </Dialog>
 
 <Dialog bind:open={openResponsive} position={{ _default: 'bottom', md: 'center' }}>
 	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
+		Dialog positioned at the bottom of the viewport on small screens and at the center on medium and
+		larger screens
 	</div>
 </Dialog>

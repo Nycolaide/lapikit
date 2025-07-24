@@ -20,9 +20,9 @@
 		<div style="max-width: 200px;">
 			<p>Tooltip custom content</p>
 			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit distinctio, dignissimos
-				sapiente error temporibus dolorum ipsam nobis harum nulla facere tempore perferendis ullam
-				ut quibusdam quisquam corrupti aut exercitationem quasi!
+				Lapikit is the Svelte component library designed for developers who want to get straight to
+				the point with elegant, high-performance components that are easy to integrate, without
+				sacrificing customization or getting lost in unnecessary overlay.
 			</p>
 		</div>
 	{/snippet}

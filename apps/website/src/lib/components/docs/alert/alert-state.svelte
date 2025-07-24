@@ -4,34 +4,34 @@
 
 <div class="grid grid-cols-1 gap-4">
 	<Alert success>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>A success-style alert</p>
 	</Alert>
 
 	<Alert success variant="outline">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>A success-style alert</p>
 	</Alert>
 
 	<Alert warning>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>A warning-style alert</p>
 	</Alert>
 
 	<Alert warning variant="outline">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>A warning-style alert</p>
 	</Alert>
 
 	<Alert error>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An error-style alert</p>
 	</Alert>
 
 	<Alert error variant="outline">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An error-style alert</p>
 	</Alert>
 
 	<Alert info>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An info-style alert</p>
 	</Alert>
 
 	<Alert info variant="outline">
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+		<p>An info-style alert</p>
 	</Alert>
 </div>

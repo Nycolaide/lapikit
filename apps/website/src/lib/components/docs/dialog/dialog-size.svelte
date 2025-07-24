@@ -17,47 +17,26 @@
 <Button onclick={() => (openResponsive = true)}>Open dialog responsive</Button>
 
 <Dialog bind:open={openXs} size="xs">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with extra small size</div>
 </Dialog>
 <Dialog bind:open={openSm} size="sm">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with small size</div>
 </Dialog>
 <Dialog bind:open={openMd} size="md">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with medium size</div>
 </Dialog>
 <Dialog bind:open={openLg} size="lg">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with large size</div>
 </Dialog>
 <Dialog bind:open={openXl} size="xl">
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
-	</div>
+	<div>Dialog with extra large size</div>
 </Dialog>
 <Dialog bind:open={openResponsive} size={{ _default: 'xs', md: 'sm', lg: 'lg' }}>
 	<div>
 		<Button onclick={() => (openResponsive = false)}>Close</Button>
 	</div>
 	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit animi necessitatibus quae
-		recusandae porro doloribus placeat quibusdam nisi natus, voluptate ut ex, consequuntur dolores.
-		Temporibus architecto iusto soluta maxime voluptates!
+		Dialog with responsive size. It will be extra small on small screens, small on medium screens,
+		and large on large screens
 	</div>
 </Dialog>
