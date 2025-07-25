@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import Head from '$lib/components/head.svelte';
 	import { t } from '$lib/i18n';
 	import { Card } from 'lapikit/components';
@@ -32,7 +33,7 @@
 <div
 	class="mx-auto grid w-full min-w-0 pt-16 pr-4 pb-6 pl-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]"
 >
-	<Breadcrumbs />
+	<Breadcrumbs {page} ld={data?.breadcrumbJsonLd} />
 	<div class="mb-16 text-center">
 		<h1 class="text-xl font-bold md:text-2xl lg:text-3xl">
 			{capitalize($t('docs.landing-page.components.title'))}

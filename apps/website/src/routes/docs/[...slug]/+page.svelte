@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	import { t } from '$lib/i18n';
 	import { Card, Icon, List, ListItem, Separator } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
@@ -40,7 +41,7 @@
 <div class="grid pt-12 pr-4 pb-6 pl-4 md:pl-0 xl:grid-cols-[1fr_220px]">
 	<div>
 		<div class="markdown mx-auto w-full min-w-0 md:max-w-[760px]">
-			<Breadcrumbs />
+			<Breadcrumbs {page} ld={data?.breadcrumbJsonLd} />
 			<data.content />
 		</div>
 
