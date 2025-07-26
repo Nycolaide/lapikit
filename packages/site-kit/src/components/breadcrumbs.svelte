@@ -40,7 +40,9 @@
 					itemscope
 					itemtype="https://schema.org/ListItem"
 				>
-					<a href="/" itemprop="item" class="breadcrumb-link"> Home </a>
+					<a href="/" itemprop="item" class="breadcrumb-link">
+						<span itemprop="name">Home</span>
+					</a>
 					<meta itemprop="position" content="1" />
 					<span class="breadcrumb-separator" aria-hidden="true">/</span>
 				</li>
