@@ -13,7 +13,7 @@ interface MarkdownModule {
 	metadata: Frontmatter;
 }
 
-export async function load({ params }) {
+export async function load({ data, params }) {
 	try {
 		const slug = params.slug;
 		const matchingPath = Object.keys(pages).find((path) => path.includes(`${slug}.md`));
@@ -25,6 +25,7 @@ export async function load({ params }) {
 		const post = pages[matchingPath] as MarkdownModule;
 
 		return {
+			...data,
 			content: post.default,
 			meta: post.metadata,
 			headings: post.metadata.headings

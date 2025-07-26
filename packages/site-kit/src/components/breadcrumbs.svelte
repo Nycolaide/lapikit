@@ -1,13 +1,27 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { capitalize } from '$lib/actions/capitalize.js';
-	import { onMount } from 'svelte';
+
+	let { page, ld } = $props();
 
 	let segments: string[] = $state([]);
-	onMount(() => {
+	$effect(() => {
+		if (!page?.url?.pathname) return;
 		segments = page.url.pathname.split('/').filter(Boolean);
 	});
 
+	$effect(() => {
+		if (!ld) return;
+		const script = document.createElement('script');
+		script.type = 'application/ld+json';
+		script.textContent = ld;
+		document.head.appendChild(script);
+
+		return () => {
+			if (document.head.contains(script)) {
+				document.head.removeChild(script);
+			}
+		};
+	});
 	const getPath = (index: number) => '/' + segments.slice(0, index + 1).join('/');
 </script>
 
