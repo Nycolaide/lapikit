@@ -9,7 +9,7 @@ export const load = async ({ url }) => {
 			'@type': 'ListItem',
 			position: 1,
 			name: 'Home',
-			item: { PUBLIC_BASE_URL }
+			item: `${PUBLIC_BASE_URL}/`
 		},
 		...segments.map((s, i) => ({
 			'@type': 'ListItem',

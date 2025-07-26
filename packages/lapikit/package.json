@@ -1,10 +1,11 @@
 {
 	"name": "lapikit",
-	"version": "0.1.15",
+	"version": "0.2.0",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
 	},
+	"homepage": "https://lapikit.dev",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Nycolaide/lapikit.git",
