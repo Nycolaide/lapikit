@@ -4,10 +4,16 @@ import { processCSS } from '$lib/style/css.js';
 import { parseConfig } from '$lib/plugin/modules/config.js';
 import { terminal } from '$lib/internal/terminal.js';
 
+// preview
+import { new_config } from '$lib/core/index.js';
+
 export async function lapikit() {
 	return {
 		name: 'lapikit/vite.js',
 		async configResolved() {
+			//preview
+			await new_config();
+
 			const config = await importer();
 			const result = await parseConfig(config);
 			await processCSS(result);
