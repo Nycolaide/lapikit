@@ -1,0 +1,166 @@
+/* root */
+.kit-textfield {
+	--textfield-color: var(--on, var(--kit-on-container));
+	--textfield-background: var(--base, var(--kit-container));
+	--textfield-radius: var(--shape, var(--kit-radius-md));
+}
+
+.kit-textfield {
+	flex: 1 1 auto;
+	font-size: 1rem;
+	display: grid;
+	grid-template-areas:
+		'prepend control append'
+		'a messages b';
+	grid-template-columns: max-content minmax(0, 1fr) max-content;
+	grid-template-rows: 1fr auto;
+}
+
+.kit-textfield .kit-textfield-prepend {
+	display: flex;
+	grid-area: prepend;
+	margin-inline-end: 16px;
+	align-items: center;
+	padding-top: 0;
+}
+
+.kit-textfield .kit-textfield-append {
+	display: flex;
+	grid-area: append;
+	margin-inline-start: 16px;
+	align-items: center;
+	padding-top: 0;
+}
+
+/* control */
+.kit-textfield-control {
+	display: flex;
+	grid-area: control;
+	background-color: var(--textfield-background);
+	border-radius: var(--textfield-radius);
+	color: var(--textfield-color);
+}
+
+.kit-textfield-control .kit-textfield-prepend-inner {
+	grid-area: prepend-inner;
+	display: flex;
+	align-items: center;
+	padding-top: 0;
+}
+.kit-textfield-control .kit-textfield-clearable {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding-top: 0;
+	/* opacity: 0; */
+	overflow: hidden;
+	margin-inline: 4px;
+	grid-area: clear;
+}
+.kit-textfield-control .kit-textfield-append-inner {
+	grid-area: append-inner;
+	display: flex;
+	align-items: center;
+	padding-top: 0;
+}
+
+/* field prefix suffix */
+.kit-field .kit-field--field .kit-field--field-prefix,
+.kit-field .kit-field--field .kit-field--field-suffix {
+	align-items: center;
+	cursor: default;
+	display: flex;
+	transition: inherit;
+	white-space: nowrap;
+}
+
+/* field */
+.kit-textfield-control .kit-field {
+	display: grid;
+	grid-template-areas: 'prepend-inner field clear append-inner';
+	grid-template-columns: min-content minmax(0, 1fr) min-content min-content;
+	font-size: 16px;
+	max-width: 100%;
+	border-radius: 4px;
+	contain: layout;
+	flex: 1 0;
+	grid-area: control;
+	position: relative;
+}
+
+.kit-textfield-control .kit-field .kit-field--field {
+	flex: 1 0;
+	grid-area: field;
+	position: relative;
+	align-items: flex-start;
+	display: flex;
+}
+
+.kit-field .kit-field--field input {
+	font: inherit;
+	border-radius: 0;
+	color: inherit;
+	/* opacity: 0; */
+	flex: 1;
+	min-width: 0;
+	align-items: center;
+	color: inherit;
+	column-gap: 2px;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	width: 100%;
+	row-gap: 8px;
+}
+
+.kit-field .kit-field--field input:focus,
+.kit-field .kit-field--field input:focus-visible,
+.kit-field .kit-field--field input:active {
+	outline: none;
+	box-shadow: none;
+}
+
+/* message */
+.kit-textfield-message {
+	padding-inline: 16px;
+	align-items: flex-end;
+	display: flex;
+	font-size: 0.75rem;
+	grid-area: messages;
+	min-height: 22px;
+	padding-top: 6px;
+	overflow: hidden;
+	justify-content: space-between;
+}
+
+.kit-message {
+	flex: 1 1 auto;
+	font-size: 12px;
+	min-height: 14px;
+	min-width: 1px;
+	position: relative;
+	display: grid;
+	grid-template-areas: 'message-prepend message message-append ';
+	grid-template-columns: max-content minmax(0, 1fr) max-content;
+}
+
+.kit-message .kit-message--message {
+	line-height: 12px;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+	grid-area: message;
+}
+
+.kit-message .kit-message--prepend,
+.kit-message .kit-message--append {
+	line-height: 12px;
+}
+
+.kit-message .kit-message--prepend {
+	grid-area: message-prepend;
+}
+.kit-message .kit-message--append {
+	grid-area: message-append;
+}
