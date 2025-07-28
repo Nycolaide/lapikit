@@ -53,6 +53,8 @@
 	prefix="$"
 	suffix="@gmail.com"
 	clearable
+	error
+	errorMessage="Error message"
 >
 	{#snippet prepend()}
 		<Icon icon="mgc_direction_arrow_line" />
@@ -103,7 +105,15 @@
 
 	<div>
 		<label for="age">Age :</label>
-		<Textfield bind:value={age} type="number" placeholder="Your age" max={99} min={5} counter />
+		<Textfield
+			bind:value={age}
+			type="number"
+			placeholder="Your age"
+			max={99}
+			min={5}
+			counter
+			hideSpinButtons
+		/>
 	</div>
 
 	<button

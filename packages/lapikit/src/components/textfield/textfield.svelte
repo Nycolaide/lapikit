@@ -8,7 +8,6 @@
 		prependInner,
 		appendInner,
 		value = $bindable(),
-		error = $bindable(),
 		type = 'text',
 		placeholder,
 		counter,
@@ -20,20 +19,43 @@
 		messagePrefix,
 		messageSuffix,
 		clearable,
+		persistentClear,
+		disabled,
+		error,
+		errorMessage,
+		persistentMessage,
+		hideSpinButtons, // only type="number"
+		readonly,
 		...rest
 	}: TextfieldProps = $props();
 
 	let counterValue: number = $state(0);
+	let displayMessage: boolean = $state(false);
+	let displayClear: boolean = $state(false);
 
 	const inputClear = () => {
 		value = undefined;
 	};
 
+	const handleFocus = () => {
+		if (!error && !persistentMessage) displayMessage = true;
+	};
+
+	const handleBlur = () => {
+		if (!error && !persistentMessage) displayMessage = false;
+	};
+
+	$effect(() => {
+		if (persistentClear) displayClear = true;
+		if (persistentMessage) displayMessage = true;
+		else if (error) displayMessage = true;
+		else if (!error) displayMessage = false;
+	});
+
 	$effect(() => {
 		const valueStr = value?.toString() || '';
 
 		if (valueStr && typeof max === 'number' && max > 0 && valueStr.length > max) {
-			// Convertir en string, tronquer, puis reconvertir au type original si c'était un number
 			const truncated = valueStr.slice(0, max);
 			if (typeof value === 'number') {
 				const numValue = Number(truncated);
@@ -45,9 +67,27 @@
 
 		counterValue = valueStr.length;
 	});
+
+	$effect(() => {
+		if (!persistentClear) {
+			if (value) displayClear = true;
+			else displayClear = false;
+		}
+	});
 </script>
 
-<div class="kit-textfield" {...rest}>
+{errorMessage}
+<div
+	{...rest}
+	class={[
+		'kit-textfield',
+		disabled && 'kit-textfield--disabled',
+		readonly && 'kit-textfield--readonly',
+		error && 'kit-textfield--error',
+		type === 'number' && hideSpinButtons && 'kit-textfield--hide-spin-buttons',
+		rest.class
+	]}
+>
 	{#if prepend}
 		<div class="kit-textfield-prepend">
 			{@render prepend?.()}
@@ -71,8 +111,12 @@
 					size="1"
 					{placeholder}
 					bind:value
+					onfocus={handleFocus}
+					onblur={handleBlur}
 					{...max && { maxlength: max }}
 					{...min && { minlength: min }}
+					{...disabled && { disabled: true }}
+					{...readonly && { readonly: true }}
 				/>
 				{#if suffix}
 					<span class="kit-field--field-suffix">
@@ -81,7 +125,9 @@
 				{/if}
 			</div>
 			{#if clearable}
-				<div class="kit-textfield-clearable">
+				<div
+					class={['kit-textfield-clearable', displayClear && 'kit-textfield-clearable--visible']}
+				>
 					<Icon icon="mgc_close_circle_fill" onclick={() => inputClear()} />
 				</div>
 			{/if}
@@ -91,6 +137,8 @@
 					{@render appendInner?.()}
 				</div>
 			{/if}
+
+			<div class="kit-textfield-outline"></div>
 		</div>
 	</div>
 	{#if append}
@@ -98,13 +146,16 @@
 			{@render append?.()}
 		</div>
 	{/if}
-	<div class="kit-textfield-message">
-		<div class="kit-message">
+
+	<div class={['kit-textfield-message', displayMessage && 'kit-textfield-message--visible']}>
+		<div class={['kit-message', error && 'kit-message--message-error']}>
 			{#if messagePrefix}
 				<div class="kit-message--prepend">{messagePrefix}</div>
 			{/if}
-			{#if message}
-				<div class="kit-message--message">{message}</div>
+			{#if message || error}
+				<div class="kit-message--message">
+					{error ? errorMessage || message : message}
+				</div>
 			{/if}
 			{#if counter || messageSuffix}
 				<div class="kit-message--append">
