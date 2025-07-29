@@ -1,15 +1,24 @@
 <script lang="ts">
-	import Icon from '../icon/icon.svelte';
+	import { getAssets } from '$lib/internal/index.js';
 	import type { TextfieldProps } from './types.js';
 
+	//external
+	import { Icon } from '../index.js';
+
 	let {
+		ref = $bindable(),
 		prepend,
 		append,
 		prependInner,
 		appendInner,
 		value = $bindable(),
 		type = 'text',
+		density = 'default',
+		size = 'md',
+		variant = 'filled',
 		placeholder,
+		light,
+		dark,
 		counter,
 		min,
 		max,
@@ -26,8 +35,13 @@
 		persistentMessage,
 		hideSpinButtons, // only type="number"
 		readonly,
+		color,
+		background,
+		rounded,
 		...rest
 	}: TextfieldProps = $props();
+
+	const assets = getAssets();
 
 	let counterValue: number = $state(0);
 	let displayMessage: boolean = $state(false);
@@ -76,17 +90,25 @@
 	});
 </script>
 
-{errorMessage}
 <div
+	bind:this={ref}
 	{...rest}
 	class={[
 		'kit-textfield',
+		light && 'light',
+		dark && 'dark',
+		size && assets.className('textfield', 'size', size),
+		variant && assets.className('textfield', 'variant', variant),
+		density && assets.className('textfield', 'density', density),
 		disabled && 'kit-textfield--disabled',
 		readonly && 'kit-textfield--readonly',
 		error && 'kit-textfield--error',
 		type === 'number' && hideSpinButtons && 'kit-textfield--hide-spin-buttons',
 		rest.class
 	]}
+	style:--base={assets.color(background)}
+	style:--on={assets.color(color)}
+	style:--shape={assets.shape(rounded)}
 >
 	{#if prepend}
 		<div class="kit-textfield-prepend">

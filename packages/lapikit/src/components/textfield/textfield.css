@@ -16,6 +16,45 @@
 	grid-template-rows: 1fr auto;
 }
 
+/* variant */
+.kit-textfield[breakpoint]kit-textfield--variant-filled .kit-field {
+	--textfield-border-color: var(--textfield-background);
+	background-color: var(--textfield-background);
+	border-radius: var(--textfield-radius);
+	color: var(--textfield-color);
+}
+
+.kit-textfield[breakpoint]kit-textfield--variant-outline .kit-field {
+	--textfield-border-color: var(--textfield-color);
+	background-color: var(--textfield-background);
+	border-radius: var(--textfield-radius);
+	color: var(--textfield-color);
+}
+
+.kit-textfield[breakpoint]kit-textfield--variant-filled .kit-textfield-outline,
+.kit-textfield[breakpoint]kit-textfield--variant-outline .kit-textfield-outline {
+	border-bottom: 1px solid var(--textfield-border-color);
+	border-top: 1px solid var(--textfield-border-color);
+	border-right: 1px solid var(--textfield-border-color);
+	border-left: 1px solid var(--textfield-border-color);
+	border-radius: var(--textfield-radius);
+}
+
+.kit-textfield[breakpoint]kit-textfield--variant-text .kit-field {
+	--textfield-border-color: var(--textfield-color);
+	background-color: var(--textfield-background);
+	border-radius: var(--textfield-radius);
+	color: var(--textfield-color);
+}
+
+.kit-textfield[breakpoint]kit-textfield--variant-text .kit-textfield-outline {
+	border-bottom: 1px solid var(--textfield-border-color);
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	border-radius: 0;
+}
+
 .kit-textfield--hide-spin-buttons input[type='number'] {
 	-moz-appearance: textfield;
 	appearance: textfield;
@@ -49,7 +88,6 @@
 	position: absolute;
 	right: 0;
 	width: 100%;
-	border: 1px solid var(--textfield-background);
 }
 
 .kit-textfield .kit-textfield-prepend {
@@ -72,9 +110,6 @@
 .kit-textfield-control {
 	display: flex;
 	grid-area: control;
-	background-color: var(--textfield-background);
-	border-radius: var(--textfield-radius);
-	color: var(--textfield-color);
 }
 
 .kit-textfield-control .kit-textfield-prepend-inner {
@@ -120,13 +155,15 @@
 	display: grid;
 	grid-template-areas: 'prepend-inner field clear append-inner';
 	grid-template-columns: min-content minmax(0, 1fr) min-content min-content;
-	font-size: 16px;
+	font-size: calc(var(--kit-spacing) * var(--textfield-multiplier-font-size));
 	max-width: 100%;
-	border-radius: 4px;
 	contain: layout;
 	flex: 1 0;
 	grid-area: control;
 	position: relative;
+	padding: calc(var(--kit-spacing) * var(--textfield-multiplier-x))
+		calc(var(--kit-spacing) * var(--textfield-multiplier-y));
+	gap: calc(var(--kit-spacing) * var(--textfield-multiplier-gap));
 }
 
 .kit-textfield-control .kit-field .kit-field--field {
@@ -141,7 +178,6 @@
 	font: inherit;
 	border-radius: 0;
 	color: inherit;
-	/* opacity: 0; */
 	flex: 1;
 	min-width: 0;
 	align-items: center;
@@ -186,6 +222,7 @@
 	min-width: 1px;
 	position: relative;
 	display: grid;
+	gap: calc(var(--kit-spacing) * var(--textfield-multiplier-gap));
 	grid-template-areas: 'message-prepend message message-append ';
 	grid-template-columns: max-content minmax(0, 1fr) max-content;
 }
@@ -213,4 +250,40 @@
 }
 .kit-message .kit-message--append {
 	grid-area: message-append;
+}
+
+/* size */
+.kit-textfield[breakpoint]kit-textfield--size-xs {
+	--textfield-multiplier-x: 2;
+	--textfield-multiplier-y: 2;
+	--textfield-multiplier-gap: 1;
+	--textfield-multiplier-font-size: 6;
+}
+
+.kit-textfield[breakpoint]kit-textfield--size-sm {
+	--textfield-multiplier-x: 3;
+	--textfield-multiplier-y: 4;
+	--textfield-multiplier-gap: 2;
+	--textfield-multiplier-font-size: 7;
+}
+
+.kit-textfield[breakpoint]kit-textfield--size-md {
+	--textfield-multiplier-x: 4;
+	--textfield-multiplier-y: 6;
+	--textfield-multiplier-gap: 2;
+	--textfield-multiplier-font-size: 8;
+}
+
+.kit-textfield[breakpoint]kit-textfield--size-lg {
+	--textfield-multiplier-x: 5;
+	--textfield-multiplier-y: 6;
+	--textfield-multiplier-gap: 2;
+	--textfield-multiplier-font-size: 9;
+}
+
+.kit-textfield[breakpoint]kit-textfield--size-xl {
+	--textfield-multiplier-x: 6;
+	--textfield-multiplier-y: 8;
+	--textfield-multiplier-gap: 3;
+	--textfield-multiplier-font-size: 10;
 }
