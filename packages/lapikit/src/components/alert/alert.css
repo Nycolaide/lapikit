@@ -1,23 +1,24 @@
+/* root */
 .kit-alert {
 	--alert-color: var(--on, var(--kit-on-container));
 	--alert-background: var(--base, var(--kit-container));
 	--alert-radius: var(--shape, var(--kit-radius-md));
+}
 
+.kit-alert {
 	display: grid;
 	flex: 1 1;
 	grid-template-areas:
 		'prepend content append close'
 		'. content . .';
-	/* grid-template-columns: max-content auto max-content max-content; */ /* bug */
+	grid-template-columns: max-content minmax(0, 1fr) max-content max-content;
 	position: relative;
 	padding: 1rem;
 	overflow: hidden;
 	color: var(--alert-color);
 	background-color: var(--alert-background);
 	border-radius: var(--alert-radius);
-	/* transition:
-		color 0.5s,
-		background-color 0.5s; */
+	line-height: 0;
 }
 
 .kit-alert .kit-alert--underlay {
@@ -53,7 +54,7 @@
 	padding-top: 0.75rem;
 }
 
-.kit-alert .kit-alert-prepend {
+.kit-alert .kit-alert--prepend {
 	align-self: flex-start;
 	display: flex;
 	align-items: center;
@@ -61,8 +62,8 @@
 	margin-inline-end: 1rem;
 }
 
-.kit-alert .kit-alert-content {
-	align-self: center;
+.kit-alert .kit-alert--content {
+	align-self: flex-start;
 	grid-area: content;
 	overflow: hidden;
 }
@@ -72,6 +73,14 @@
 	margin-inline-start: 1rem;
 	flex: 0 1 auto;
 	grid-area: close;
+}
+
+.kit-alert .kit-alert--append {
+	align-self: flex-start;
+	display: flex;
+	align-items: center;
+	grid-area: append;
+	margin-inline-start: 1rem;
 }
 
 /* state */

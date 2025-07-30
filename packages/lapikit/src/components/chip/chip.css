@@ -36,6 +36,7 @@
 	white-space: nowrap;
 	gap: calc(var(--kit-spacing) * var(--chip-multiplier-gap));
 	font-size: calc(var(--kit-spacing) * var(--chip-multiplier-font-size));
+	line-height: 0;
 }
 
 .kit-chip:not(div):not(span)::after {
