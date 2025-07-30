@@ -42,8 +42,8 @@
 
 .kit-textfield[breakpoint]kit-textfield--variant-text .kit-field {
 	--textfield-border-color: var(--textfield-color);
-	background-color: var(--textfield-background);
-	border-radius: var(--textfield-radius);
+	background-color: transparent;
+	border-radius: 0;
 	color: var(--textfield-color);
 }
 
@@ -154,7 +154,7 @@
 .kit-textfield-control .kit-field {
 	display: grid;
 	grid-template-areas: 'prepend-inner field clear append-inner';
-	grid-template-columns: min-content minmax(0, 1fr) min-content min-content;
+	grid-template-columns: max-content minmax(0, 1fr) max-content max-content;
 	font-size: calc(var(--kit-spacing) * var(--textfield-multiplier-font-size));
 	max-width: 100%;
 	contain: layout;
@@ -199,13 +199,13 @@
 
 /* message */
 .kit-textfield-message {
-	padding-inline: 16px;
+	padding-inline: var(--textfield-spacing-y);
 	align-items: flex-end;
 	display: flex;
 	font-size: 0.75rem;
 	grid-area: messages;
 	min-height: 22px;
-	padding-top: 6px;
+	padding-top: var(--textfield-spacing-x);
 	overflow: hidden;
 	justify-content: space-between;
 	opacity: 0;
@@ -286,4 +286,20 @@
 	--textfield-multiplier-y: 8;
 	--textfield-multiplier-gap: 3;
 	--textfield-multiplier-font-size: 10;
+}
+
+/*density */
+.kit-textfield[breakpoint]kit-textfield--density-default {
+	--textfield-spacing-x: 0;
+	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y));
+}
+
+.kit-textfield[breakpoint]kit-textfield--density-compact {
+	--textfield-spacing-x: calc(0 - 0.5rem);
+	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y) - 0.5rem);
+}
+
+.kit-textfield[breakpoint]kit-textfield--density-comfortable {
+	--textfield-spacing-x: calc(0 + 0.5rem);
+	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y) + 0.5rem);
 }

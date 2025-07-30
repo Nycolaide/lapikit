@@ -182,7 +182,7 @@
 			{#if counter || messageSuffix}
 				<div class="kit-message--append">
 					{#if counter}
-						{counterValue}/{max}
+						{counterValue}{max ? `/${max}` : ''}
 					{:else if messageSuffix}
 						{messageSuffix}
 					{/if}
