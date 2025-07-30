@@ -15,6 +15,7 @@
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
+	import { developmentMode } from '$lib/stores/app.js';
 
 	const advantageLapikit = $state([
 		{
@@ -121,6 +122,16 @@
 		</div>
 	</section>
 </div>
+
+{#if $developmentMode}
+	<div id="hero-media-lapikit">
+		<div class="effect-animation--focus"></div>
+		<div class="container-drag-drop-hero">
+			<img src="/images/videoframe_6051.png" alt="temp" />
+			<!-- <img src="/images/material-cover.png" alt="temp" /> -->
+		</div>
+	</div>
+{/if}
 
 <section
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
@@ -249,5 +260,51 @@
 		background-repeat: repeat;
 		width: 100%;
 		min-height: 90vh;
+	}
+
+	#hero-media-lapikit {
+		--radius-effect: var(--kit-radius-3xl);
+		display: flex;
+		width: 90%;
+		max-width: 1272px;
+		margin: 0 auto;
+		position: relative;
+		height: 100%;
+	}
+
+	/* preview */
+	.effect-animation--focus {
+		width: 100%;
+		filter: blur(0.3rem);
+		background: linear-gradient(var(--gradient-angle), blue, purple, red, orange);
+		animation: rotation 5s linear infinite;
+		position: absolute;
+		z-index: 0;
+		height: 100%;
+		border-radius: var(--radius-effect);
+	}
+
+	.container-drag-drop-hero {
+		position: relative;
+		z-index: 1;
+	}
+
+	.container-drag-drop-hero img {
+		border-radius: var(--radius-effect);
+	}
+
+	@property --gradient-angle {
+		syntax: '<angle>';
+		initial-value: 0deg;
+		inherits: false;
+	}
+
+	@keyframes rotation {
+		0% {
+			--gradient-angle: 0deg;
+		}
+		100% {
+			--gradient-angle: 360deg;
+		}
 	}
 </style>
