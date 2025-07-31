@@ -17,6 +17,7 @@
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import HomePreview from '$lib/components/home-preview.svelte';
 	import { scrollAnimation } from '$lib/styles/animations/scroll.js';
+	import Search from '$lib/components/search.svelte';
 
 	interface AdvantageItem {
 		title: string;
@@ -95,6 +96,7 @@
 			{/each}
 		</div>
 		<div class="flex justify-end gap-3">
+			<Search app />
 			<ThemeToggle app />
 
 			<Button
