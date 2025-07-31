@@ -20,3 +20,4 @@ export { default as Card } from './card/card.svelte';
 export { default as Toolbar } from './toolbar/toolbar.svelte';
 export { default as Appbar } from './appbar/appbar.svelte';
 export { default as Spacer } from './spacer/spacer.svelte';
+export { default as Textfield } from './textfield/textfield.svelte';

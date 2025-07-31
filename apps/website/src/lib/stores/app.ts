@@ -1,6 +1,12 @@
+//environment
+import { PUBLIC_DEV_MODE } from '$env/static/public';
+
+// config
 import { sectionDocs, type MetaDataPages } from '$lib/config';
 import { useDebounced } from '$lib/use-debounce';
 import { writable, derived, type Writable } from 'svelte/store';
+
+export const developmentMode = writable(PUBLIC_DEV_MODE == 'true' ? true : false);
 
 // types
 type PageNavigation = {
