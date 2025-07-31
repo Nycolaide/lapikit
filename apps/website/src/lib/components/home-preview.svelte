@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { scrollAnimation } from '$lib/styles/animations';
+
 	// Drag and drop functionality
 	let isDragging = $state<boolean>(false);
 	let dragPosition = $state<number>(50); // position %
@@ -59,7 +61,7 @@
 	}
 </script>
 
-<div id="hero-media-lapikit">
+<div id="hero-media-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 	<div class="effect-animation--focus"></div>
 	<div
 		class="container-drag-drop-hero"

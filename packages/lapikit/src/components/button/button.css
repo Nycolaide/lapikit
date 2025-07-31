@@ -147,8 +147,8 @@
 }
 
 .kit-button[breakpoint]kit-button--variant-outline {
-	--button-color: var(--base, var(--kit-on-container));
-	background-color: transparent;
+	--button-color: var(--on, var(--kit-on-container));
+	background-color: var(--button-background);
 }
 .kit-button[breakpoint]kit-button--variant-outline::before {
 	content: '';

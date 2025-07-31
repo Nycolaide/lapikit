@@ -116,8 +116,8 @@
 }
 
 .kit-chip[breakpoint]kit-chip--variant-outline {
-	--chip-color: var(--base, var(--kit-oncontainer));
-	background-color: transparent;
+	--chip-color: var(--on, var(--kit-on-container));
+	background-color: var(--chip-background);
 }
 .kit-chip[breakpoint]kit-chip--variant-outline::before {
 	content: '';
