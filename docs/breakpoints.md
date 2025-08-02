@@ -68,7 +68,7 @@ Lapikit uses the same mobile-first writing logic as TailwindCSS for managing cla
 Using breakpoints in the APIs of Lapikit components
 Each component offers certain so-called responsive APIs. They accept several parameters based on the keys available in your Lapikit **threshold configuration**.
 
-Here's an example with the [Button](/docs/componnents/button) component and the **density** API.
+Here's an example with the [Button](/docs/components/button) component and the **density** API.
 
 <Sandbox name="button-density-sandbox" code={ButtonDensityCode}>
 	{#snippet component()}
