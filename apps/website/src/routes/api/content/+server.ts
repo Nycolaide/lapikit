@@ -32,8 +32,8 @@ async function getPages() {
 	pages = pages
 		.filter(
 			(page) =>
-				(PUBLIC_DEV_MODE === 'true' && page?.published) ||
-				(PUBLIC_DEV_MODE !== 'true' && (!page?.published || page?.published))
+				(PUBLIC_DEV_MODE === 'true' && (!page?.published || page?.published)) ||
+				(PUBLIC_DEV_MODE !== 'true' && page?.published) // production mode
 		)
 		.sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime());
 	return pages;
