@@ -9,7 +9,10 @@ interface SearchItem {
 	keywords?: string | string[];
 }
 
-function scoreItem(item: SearchItem, terms: string[]): number {
+function scoreItem(
+	item: SearchItem,
+	terms: string[]
+): { score: number; type: 'match' | 'recommandation' } {
 	const title = item.title?.toLowerCase() || '';
 	const description = item.description?.toLowerCase() || '';
 	const rawKeywords = item.keywords;
@@ -20,12 +23,24 @@ function scoreItem(item: SearchItem, terms: string[]): number {
 			: [];
 
 	let score = 0;
+	let hasMatchInTitle = false;
+
 	for (const term of terms) {
-		if (title.includes(term)) score += 100;
-		if (description.includes(term)) score += 50;
-		if (keywords.some((kw) => kw.includes(term))) score += 25;
+		if (title.includes(term)) {
+			score += 100;
+			hasMatchInTitle = true;
+		}
+		if (description.includes(term)) {
+			score += 50;
+		}
+		if (keywords.some((kw) => kw.includes(term))) {
+			score += 25;
+		}
 	}
-	return score;
+
+	const type = hasMatchInTitle ? 'match' : 'recommandation';
+
+	return { score, type };
 }
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -40,10 +55,19 @@ export const GET: RequestHandler = async ({ url }) => {
 				...item,
 				keywords: item.keywords === null ? undefined : item.keywords
 			};
-			const score = scoreItem(normalizedItem, terms);
-			return score > 0 ? { item, score } : undefined;
+			const result = scoreItem(normalizedItem, terms);
+			return result.score > 0
+				? { item: { ...item, type: result.type }, score: result.score }
+				: undefined;
 		})
-		.filter((entry): entry is { item: (typeof search)[0]; score: number } => entry !== undefined)
+		.filter(
+			(
+				entry
+			): entry is {
+				item: (typeof search)[0] & { type: 'match' | 'recommandation' };
+				score: number;
+			} => entry !== undefined
+		)
 		.sort((a, b) => b.score - a.score)
 		.map((entry) => entry.item);
 	return Response.json(results);
