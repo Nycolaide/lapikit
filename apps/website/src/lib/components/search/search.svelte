@@ -18,7 +18,7 @@
 	}: { open?: boolean; app?: boolean; icon?: boolean; onlyLaptop?: boolean } = $props();
 
 	// states
-	let searchQuery: string = $state('');
+	let searchQuery: string | undefined = $state(undefined);
 	let touchList: { icon: string; name: string }[] = $state([
 		{ icon: 'mgc_arrow_up_line', name: 'arrow_up' },
 		{ icon: 'mgc_arrow_down_line', name: 'arrow_down' },
@@ -44,7 +44,7 @@
 		<div class="mx-auto w-[95%]">
 			<Input bind:value={searchQuery} {open} />
 
-			{#if searchQuery.trim() === ''}
+			{#if searchQuery === '' || !searchQuery}
 				<History />
 			{:else}
 				<List {searchQuery} />

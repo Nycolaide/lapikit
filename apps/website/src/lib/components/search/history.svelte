@@ -16,16 +16,6 @@
 	let selectedIndex: number = $state(0);
 
 	onMount(() => {
-		const storage = loadRecentSearches();
-
-		if (storage.length > 0) {
-			recentSearches = storage;
-			typeDisplay = 'history';
-		} else {
-			callRecommendation();
-			typeDisplay = 'recommended';
-		}
-
 		const handleGlobalKeydown = (event: KeyboardEvent) => {
 			handleKeydown(event);
 		};
@@ -38,13 +28,24 @@
 	});
 
 	$effect(() => {
+		const storage = loadRecentSearches();
+		if (storage.length > 0) {
+			recentSearches = [...storage];
+			typeDisplay = 'history';
+		} else {
+			callRecommendation();
+			typeDisplay = 'recommended';
+		}
+	});
+
+	$effect(() => {
 		if (recentSearches.length > 0) {
 			selectedIndex = 0;
 		}
 	});
 
 	$effect(() => {
-		if ($resultsRecommandation) {
+		if ($resultsRecommandation && typeDisplay === 'recommended') {
 			recentSearches = $resultsRecommandation.map((result) => ({
 				title: String(result.title ?? ''),
 				slug: String(result.slug ?? ''),
@@ -66,7 +67,7 @@
 	}
 
 	function handleKeydown(event: KeyboardEvent) {
-		if (!open || recentSearches.length === 0) return;
+		if (recentSearches.length === 0) return;
 
 		switch (event.key) {
 			case 'ArrowDown':
@@ -89,6 +90,8 @@
 
 	function clearRecentSearches() {
 		recentSearches = [];
+		callRecommendation();
+		typeDisplay = 'recommended';
 		if (typeof window !== 'undefined') localStorage.removeItem('@lapikit/recent-searches');
 	}
 </script>
@@ -130,11 +133,11 @@
 					class="flex aspect-square w-full items-center justify-center rounded-lg"
 					style:background="#dfdfdf"
 				>
-					{#if search.cover}
+					{#if search.cover && search.cover !== 'null'}
 						<img class="" src={`/images/${search.cover}`} alt="test" />
-					{:else if search.icon}
+					{:else if search.icon && search.icon !== 'null'}
 						<Icon icon={search.icon} class="text-[4rem]" />
-					{:else if !search.cover && !search.icon}
+					{:else}
 						<span class="text-3xl">{capitalize(search.title.substring(0, 1))}</span>
 					{/if}
 				</div>

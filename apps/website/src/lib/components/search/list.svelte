@@ -8,7 +8,7 @@
 	import { addToRecentSearches } from './helper.js';
 	import { onDestroy, onMount } from 'svelte';
 
-	let { searchQuery = $bindable('') }: { searchQuery?: string } = $props();
+	let { searchQuery = $bindable(undefined) }: { searchQuery?: string | undefined } = $props();
 
 	const { results, callResults, availableSections } = useSearch();
 

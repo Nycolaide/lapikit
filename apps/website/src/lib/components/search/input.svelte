@@ -2,8 +2,10 @@
 	import { t } from '$lib/i18n';
 	import { Icon, Textfield } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
+	import { onDestroy } from 'svelte';
 
-	let { value = $bindable(''), open }: { value?: string; open?: boolean } = $props();
+	let { value = $bindable(undefined), open }: { value?: string | undefined; open?: boolean } =
+		$props();
 
 	let textfieldElement = $state<HTMLElement>();
 
@@ -13,9 +15,12 @@
 				const input = textfieldElement?.querySelector('input') as HTMLInputElement;
 				input?.focus();
 			}, 100);
-		} else {
-			value = '';
 		}
+	});
+
+	onDestroy(() => {
+		//reset value
+		value = undefined;
 	});
 </script>
 
