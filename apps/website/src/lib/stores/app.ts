@@ -4,9 +4,17 @@ import { PUBLIC_DEV_MODE } from '$env/static/public';
 // config
 import { sectionDocs, type MetaDataPages } from '$lib/config';
 import { useDebounced } from '$lib/use-debounce';
-import { writable, derived, type Writable } from 'svelte/store';
+import { writable, derived, type Writable, readable } from 'svelte/store';
 
+// internal
 export const developmentMode = writable(PUBLIC_DEV_MODE == 'true' ? true : false);
+
+// user device
+export const deviceUsed = readable('other', (set) => {
+	if (typeof navigator !== 'undefined') {
+		set(navigator.platform.toUpperCase().includes('MAC') ? 'apple' : 'other');
+	}
+});
 
 // types
 type PageNavigation = {

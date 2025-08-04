@@ -25,6 +25,7 @@ keywords:
   - settings
   - customize
 published: true
+recommended: true
 ---
 
 <script>

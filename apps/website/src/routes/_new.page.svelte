@@ -10,14 +10,16 @@
 
 	// components
 	import Head from '$lib/components/head.svelte';
-	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
+	import { Sandbox, ThemeToggle, Footer, SearchBar } from '$lib/components/index.js';
 
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import HomePreview from '$lib/components/home-preview.svelte';
 	import { scrollAnimation } from '$lib/styles/animations/scroll.js';
-	import Search from '$lib/components/search.svelte';
+
+	// states
+	let openSearchModal: boolean = $state(false);
 
 	interface AdvantageItem {
 		title: string;
@@ -96,7 +98,8 @@
 			{/each}
 		</div>
 		<div class="flex justify-end gap-3">
-			<Search app />
+			<SearchBar bind:open={openSearchModal} onlyLaptop />
+
 			<ThemeToggle app />
 
 			<Button
@@ -255,14 +258,24 @@
 	{#each navigationMain as { key, path, external, icon } (key)}
 		<BottomNavigationItem
 			is="a"
-			active={page.url.pathname === path}
+			active={page.url.pathname === path && !openSearchModal}
 			href={path}
+			onclick={() => (openSearchModal = false)}
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
 			{capitalize($t(`navigation.${key}`))}
 		</BottomNavigationItem>
 	{/each}
+
+	<BottomNavigationItem
+		is="button"
+		onclick={() => (openSearchModal = true)}
+		active={openSearchModal}
+	>
+		<Icon icon="mgc_search_2_line" size="xl" />
+		{capitalize($t('navigation.search_bar.button'))}
+	</BottomNavigationItem>
 </BottomNavigation>
 
 <style>

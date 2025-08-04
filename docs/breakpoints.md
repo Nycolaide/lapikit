@@ -16,6 +16,7 @@ keywords:
   - tailwindCSS
   - unoCSS
 published: true
+recommended: true
 ---
 
 <script>

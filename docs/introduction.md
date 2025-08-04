@@ -14,6 +14,7 @@ keywords:
   - discover
   - lapikit
 published: true
+recommended: true
 ---
 
 Lapikit is a Svelte component library focused on the development experience, ease of integration and complete customization of each component. Use it to create accessible, high-performance user interfaces without sacrificing customization and performance.

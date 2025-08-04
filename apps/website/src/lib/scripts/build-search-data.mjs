@@ -215,7 +215,8 @@ function generateManifest() {
 					order: frontMatter.order || null,
 					subtitle: frontMatter.subtitle || null,
 					introduction: frontMatter.introduction || null,
-					cover: frontMatter.cover || null
+					cover: frontMatter.cover || null,
+					recommended: frontMatter.recommended || false
 				};
 
 				manifest.push(pageInfo);
@@ -264,10 +265,16 @@ function generateManifest() {
 		return 0;
 	});
 
+	const manifestDir = path.dirname(manifestPath);
+	if (!fs.existsSync(manifestDir)) {
+		fs.mkdirSync(manifestDir, { recursive: true });
+	}
+
 	// Write the manifest to the file
 	try {
-		fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
-		console.log(`\n✨ Manifest generated successfully: ${manifestPath}`);
+		const manifestData = JSON.stringify(manifest, null, 2);
+		fs.writeFileSync(manifestPath, manifestData, 'utf-8');
+		console.log(`\n✨ manifest generated successfully: ${manifestPath}`);
 		console.log(`${manifest.length} pages in the manifest`);
 
 		const sections = manifest.reduce((acc, page) => {

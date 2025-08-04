@@ -13,5 +13,24 @@
 		"new": "new"
 	},
 	"theme_toggle": "change theme",
-	"search": "search"
+	"search": "search",
+	"search_bar": {
+		"button": "search",
+		"placeholder": "search components, themes, and more...",
+		"has_results": "We found {{query}} results matching your search",
+		"all": "all",
+		"history": {
+			"title": "recent searches",
+			"clear": "clear recent searches"
+		},
+		"keyboard": {
+			"arrow_up": "arrow up",
+			"arrow_down": "arrow down",
+			"enter": "enter",
+			"escape": "escape"
+		},
+		"recommendation": {
+			"title": "Discover all the possibilities with Lapikit"
+		}
+	}
 }
