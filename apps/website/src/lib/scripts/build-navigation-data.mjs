@@ -212,6 +212,7 @@ function generateNavigationManifest() {
 				const slug = '/' + file.relativePath.replace(/\.md$/, '');
 				const pageInfo = {
 					title: frontMatter.title,
+					introduction: frontMatter.introduction || null,
 					style: frontMatter.style || null,
 					state: frontMatter.state || null,
 					metadata: {

@@ -42,3 +42,10 @@ export interface MarkdownHeadWithMetadata extends MarkdownHead {
 		filename?: string;
 	};
 }
+
+export interface SectionPages {
+	key: string;
+	icon?: string;
+	submenu?: boolean;
+	pages: MarkdownWithMetadata[];
+}

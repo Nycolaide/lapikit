@@ -16,7 +16,7 @@
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import HomePreview from '$lib/components/home-preview.svelte';
-	import { scrollAnimation } from '$lib/styles/animations/scroll.js';
+	import { scrollAnimation } from '../animations/scroll.js';
 	import SearchBar from '$lib/components/search-bar.svelte';
 
 	// states

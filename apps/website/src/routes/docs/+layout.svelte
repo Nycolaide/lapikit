@@ -8,6 +8,7 @@
 
 	// modules
 	import { SearchBar, Search, ThemeToggle, ReturnTopPage } from '$lib/components/index.js';
+	import { PageTransition } from '../../animations/index.js';
 
 	let { children, data } = $props();
 
@@ -185,5 +186,7 @@
 
 	<ReturnTopPage />
 
-	{@render children?.()}
+	<PageTransition url={data.url}>
+		{@render children?.()}
+	</PageTransition>
 </Drawer>
