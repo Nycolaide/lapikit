@@ -1,13 +1,16 @@
 ---
-head:
-  title: chip
-  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 title: chip
 subtitle: chip component
 introduction: small visual or interactive elements (tags, statuses, actions)
-cover: "docs/components/chip.webp"
-section: components
-published: true
+head:
+  title: chip
+  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
+style:
+  cover: "docs/components/chip.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

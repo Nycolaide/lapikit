@@ -1,13 +1,16 @@
 ---
-head:
-  title: avatar
-  description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
 title: avatar
 subtitle: avatar component
 introduction: displays a profile image or initials
-cover: "docs/components/avatar.webp"
-section: components
-published: true
+head:
+  title: avatar
+  description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
+style:
+  cover: "docs/components/avatar.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

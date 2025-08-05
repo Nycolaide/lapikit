@@ -5,11 +5,12 @@
 	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
 	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
-	import { ThemeToggle, SearchBar } from '$lib/components/index.js';
+	import { Search, ThemeToggle } from '$lib/components/index.js';
 	import { onMount } from 'svelte';
 	import { pagesNavigation, setPages } from '$lib/stores/app.js';
 	import { capitalize } from 'site-kit/actions';
 	import ReturnTopPage from '$lib/components/return-top-page.svelte';
+	import SearchBar from '$lib/components/search-bar.svelte';
 
 	let { children, data } = $props();
 
@@ -21,7 +22,7 @@
 	}[];
 
 	let open = $state(false);
-
+	let openSearch = $state(false);
 	let sizeWidthScreen = $state(0);
 	let selectedSection = $state<number | null>(null);
 	let pagesGrouped: PagesFilter = $state([]);
@@ -92,7 +93,7 @@
 	<Spacer />
 
 	<div>
-		<SearchBar />
+		<SearchBar bind:open={openSearch} />
 		<ThemeToggle />
 		<Button
 			icon
@@ -105,6 +106,8 @@
 		</Button>
 	</div>
 </Appbar>
+
+<Search bind:open={openSearch} />
 
 <Drawer bind:open>
 	{#snippet navigation()}

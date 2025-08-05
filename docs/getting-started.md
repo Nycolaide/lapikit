@@ -1,21 +1,24 @@
 ---
-head:
-  title: getting started
-  description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast."
-icon: mgc_compass_line
 title: getting Started
 subtitle: Getting Started with Lapikit library for Svelte Projects
 description: start simply with Lapikit, the component library designed for Svelte 5.
-section: base
-order: 1
+head:
+  title: getting started
+  description: "Get started with Lapikit: installation, CI/CD or manual configuration. Everything you need to get your Svelte projects up and running fast."
+style:
+  icon: mgc_compass_line
+  color: #ffff
+state:
+  section: base
+  published: true
+  recommended: true
+  order: 1
 keywords:
   - install
   - tailwind
   - uno css
   - cli
   - typescript
-published: true
-recommended: true
 ---
 
 <script>

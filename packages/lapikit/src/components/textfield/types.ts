@@ -1,7 +1,7 @@
-import type { Base } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types.js';
 import type { Snippet } from 'svelte';
 
-export interface TextfieldProps extends Base {
+export interface TextfieldProps extends Component {
 	ref?: HTMLElement | null;
 	dark?: boolean;
 	light?: boolean;

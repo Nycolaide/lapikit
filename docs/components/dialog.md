@@ -1,13 +1,16 @@
 ---
-head:
-  title: dialog
-  description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
 title: dialog
 subtitle: dialog component
 introduction: centered modal window, for interactions or important messages
-cover: "docs/components/dialog.webp"
-section: components
-published: true
+head:
+  title: dialog
+  description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
+style:
+  cover: "docs/components/dialog.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

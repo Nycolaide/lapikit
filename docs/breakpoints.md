@@ -1,12 +1,17 @@
 ---
+title: breakpoints
+subtitle: "Responsive breakpoints in Lapikit: how to use and customize"
 head:
   title: breakpoints
   description: "Manage the reactivity of your Lapikit components with customizable breakpoints. Easily adapt to all devices."
-icon: mgc_layout_10_line
-title: breakpoints
-subtitle: "Responsive breakpoints in Lapikit: how to use and customize"
-section: base
-order: 2
+style:
+  icon: mgc_layout_10_line
+  color: #ffff
+state:
+  section: base
+  published: true
+  recommended: true
+  order: 2
 keywords:
   - tresholds
   - breakpoints
@@ -15,8 +20,6 @@ keywords:
   - customize treshold
   - tailwindCSS
   - unoCSS
-published: true
-recommended: true
 ---
 
 <script>

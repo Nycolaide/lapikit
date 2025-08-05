@@ -99,10 +99,12 @@
 <Toolbar density="compact">
 	{#if typeDisplay === 'recommended'}
 		<Icon icon="mgc_bling_line" />
-		<p class="ml-2">{capitalize($t('navigation.search_bar.recommendation.title'))}</p>
+		<p class="sm:text-md ml-2 text-sm">
+			{capitalize($t('navigation.search_bar.recommendation.title'))}
+		</p>
 	{:else}
 		<Icon icon="mgc_history_line" />
-		<p class="ml-2">{capitalize($t('navigation.search_bar.history.title'))}</p>
+		<p class="sm:text-md ml-2 text-sm">{capitalize($t('navigation.search_bar.history.title'))}</p>
 		<Spacer />
 		{#if recentSearches.length > 0}
 			<Button
@@ -136,13 +138,17 @@
 					{#if search.cover && search.cover !== 'null'}
 						<img class="" src={`/images/${search.cover}`} alt="test" />
 					{:else if search.icon && search.icon !== 'null'}
-						<Icon icon={search.icon} class="text-[4rem]" />
+						<Icon icon={search.icon} class="text-[2.5rem] sm:text-[3rem] md:text-[4rem]" />
 					{:else}
 						<span class="text-3xl">{capitalize(search.title.substring(0, 1))}</span>
 					{/if}
 				</div>
 			</Card>
-			<p class="text-sm opacity-50">{capitalize(search.title)}</p>
+			<p
+				class="text-overflow-ellipsis overflow-hidden text-[0.75rem] text-nowrap whitespace-nowrap opacity-50"
+			>
+				{capitalize(search.title)}
+			</p>
 		</div>
 	{/each}
 </div>

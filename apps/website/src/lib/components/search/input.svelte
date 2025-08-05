@@ -7,6 +7,7 @@
 	let { value = $bindable(undefined), open }: { value?: string | undefined; open?: boolean } =
 		$props();
 
+	//states
 	let textfieldElement = $state<HTMLElement>();
 
 	$effect(() => {

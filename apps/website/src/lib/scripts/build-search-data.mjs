@@ -203,26 +203,36 @@ function generateManifest() {
 				const slug = '/' + file.relativePath.replace(/\.md$/, '');
 
 				const pageInfo = {
-					icon: frontMatter.icon || null,
+					head: {
+						title: frontMatter.head?.title || null,
+						description: frontMatter.head?.description || null
+					},
 					title: frontMatter.title || file.fileName,
 					description: frontMatter.head?.description || frontMatter.description || '',
-					date: frontMatter.date || new Date().toISOString().split('T')[0],
-					section: frontMatter.section || null,
-					slug: slug,
-					categories: frontMatter.categories || null,
-					published: frontMatter.published !== false,
-					keywords: frontMatter.keywords || null,
-					order: frontMatter.order || null,
 					subtitle: frontMatter.subtitle || null,
 					introduction: frontMatter.introduction || null,
-					cover: frontMatter.cover || null,
-					recommended: frontMatter.recommended || false
+					metadata: {
+						slug: slug,
+						date: frontMatter.date || new Date().toISOString().split('T')[0]
+					},
+					style: {
+						icon: frontMatter.style?.icon || null,
+						color: frontMatter.style?.color || null,
+						cover: frontMatter.style?.cover || null
+					},
+					state: {
+						section: frontMatter.state?.section || null,
+						published: frontMatter.state?.published !== false,
+						recommended: frontMatter.state?.recommended || false,
+						order: frontMatter.state?.order || null
+					},
+					keywords: frontMatter.keywords || null
 				};
 
 				manifest.push(pageInfo);
 			}
 		} catch (error) {
-			console.error(`❌ Error processing ${file.relativePath}:`, error.message);
+			console.error(`Error processing ${file.relativePath}:`, error.message);
 		}
 	}
 

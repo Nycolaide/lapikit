@@ -1,13 +1,16 @@
 ---
-head:
-  title: card
-  description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
 title: card
 subtitle: card component
 introduction: container with background, border and structured content
-cover: "docs/components/card.webp"
-section: components
-published: true
+head:
+  title: card
+  description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
+style:
+  cover: "docs/components/card.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

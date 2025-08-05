@@ -1,13 +1,16 @@
 ---
-head:
-  title: popover
-  description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
 title: popover
 subtitle: popover component
 introduction: floating tooltip anchored to an element
-cover: "docs/components/popover.webp"
-section: components
-published: true
+head:
+  title: popover
+  description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
+style:
+  cover: "docs/components/popover.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

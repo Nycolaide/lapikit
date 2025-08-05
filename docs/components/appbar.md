@@ -1,13 +1,16 @@
 ---
-head:
-  title: appbar
-  description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
 title: appbar
 subtitle: appbar component
 introduction: fixed top bar with actions or navigation
-cover: "docs/components/appbar.webp"
-section: components
-published: true
+head:
+  title: appbar
+  description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
+style:
+  cover: "docs/components/appbar.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 ---
 
 <script>

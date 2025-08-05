@@ -32,13 +32,13 @@
 		color: color-mix(in oklab, var(--kit-on-base) 40%, transparent);
 		font-weight: var(--font-weight-semibold);
 		font-size: var(--text-xl);
-		line-height: var(--tw-leading, var(--text-5xl--line-height));
+		line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
 	}
 
 	p.subtitle {
 		font-weight: var(--font-weight-semibold);
 		font-size: var(--text-5xl);
-		line-height: var(--tw-leading, var(--text-5xl--line-height));
+		line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
 	}
 
 	p.description {

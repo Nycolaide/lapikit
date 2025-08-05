@@ -10,16 +10,17 @@
 
 	// components
 	import Head from '$lib/components/head.svelte';
-	import { Sandbox, ThemeToggle, Footer, SearchBar } from '$lib/components/index.js';
+	import { Sandbox, ThemeToggle, Footer, Search } from '$lib/components/index.js';
 
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import HomePreview from '$lib/components/home-preview.svelte';
 	import { scrollAnimation } from '$lib/styles/animations/scroll.js';
+	import SearchBar from '$lib/components/search-bar.svelte';
 
 	// states
-	let openSearchModal: boolean = $state(false);
+	let openSearch: boolean = $state(false);
 
 	interface AdvantageItem {
 		title: string;
@@ -98,8 +99,6 @@
 			{/each}
 		</div>
 		<div class="flex justify-end gap-3">
-			<SearchBar bind:open={openSearchModal} onlyLaptop />
-
 			<ThemeToggle app />
 
 			<Button
@@ -117,8 +116,8 @@
 		class="desktop:max-h-[900px] flex h-[70vh] flex-col items-center justify-between justify-center overflow-hidden"
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
 	>
-		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
-			<Chip href="/docs/changelog" variant="outline">
+		<div class="mx-7 flex flex-col items-center text-center lg:mx-auto lg:w-7/12">
+			<Chip href="/docs/changelog" variant="outline" class="w-fit">
 				<Icon icon="mgc_box_2_line" />
 				<Separator orientation="vertical" />
 				{capitalize(
@@ -135,7 +134,8 @@
 			>
 				{capitalize($t('homepage.main_introduction'))}
 			</p>
-			<div>
+			<div class="flex w-full flex-col items-center justify-center gap-4">
+				<SearchBar bind:open={openSearch} app />
 				<Button size="lg" href="/docs/components">
 					{capitalize($t('homepage.main_cta'))}
 				</Button>
@@ -143,6 +143,8 @@
 		</div>
 	</section>
 </div>
+
+<Search bind:open={openSearch} />
 
 <HomePreview />
 
@@ -258,9 +260,9 @@
 	{#each navigationMain as { key, path, external, icon } (key)}
 		<BottomNavigationItem
 			is="a"
-			active={page.url.pathname === path && !openSearchModal}
+			active={page.url.pathname === path && !openSearch}
 			href={path}
-			onclick={() => (openSearchModal = false)}
+			onclick={() => (openSearch = false)}
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
@@ -268,11 +270,7 @@
 		</BottomNavigationItem>
 	{/each}
 
-	<BottomNavigationItem
-		is="button"
-		onclick={() => (openSearchModal = true)}
-		active={openSearchModal}
-	>
+	<BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
 		<Icon icon="mgc_search_2_line" size="xl" />
 		{capitalize($t('navigation.search_bar.button'))}
 	</BottomNavigationItem>

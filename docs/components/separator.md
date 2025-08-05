@@ -1,15 +1,18 @@
 ---
-head:
-  title: separator
-  description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
 title: separator
 subtitle: separator component
 introduction: line or space to separate visual sections
-cover: "docs/components/separator.webp"
-section: components
+head:
+  title: separator
+  description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
+style:
+  cover: "docs/components/separator.webp"
+  color: #ffff
+state:
+  section: components
+  published: true
 keywords:
   - divider
-published: true
 ---
 
 <script>

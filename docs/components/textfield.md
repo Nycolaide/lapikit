@@ -1,11 +1,14 @@
 ---
+title: textfield
 head:
   title: textfield
   description: desc
-title: textfield
-section: components
-state: new
-published: false
+style:
+  color: #ffff
+state:
+  status: new
+  section: components
+  published: false
 ---
 
 <script>
