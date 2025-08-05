@@ -7,7 +7,6 @@ head:
   description: "Show contextual information on click or hover. Ideal for enhancing your buttons, links or interactive elements."
 style:
   cover: "docs/components/popover.webp"
-  color: #ffff
 state:
   section: components
   published: true

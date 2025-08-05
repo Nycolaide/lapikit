@@ -48,10 +48,11 @@
 		if ($resultsRecommandation && typeDisplay === 'recommended') {
 			recentSearches = $resultsRecommandation.map((result) => ({
 				title: String(result.title ?? ''),
-				slug: String(result.slug ?? ''),
+				slug: String(result.metadata.slug ?? ''),
 				timestamp: Date.now(),
-				cover: result.cover ? String(result.cover) : undefined,
-				icon: result.icon ? String(result.icon) : undefined
+				cover: result.style?.cover ? String(result.style.cover) : undefined,
+				icon: result.style?.icon ? String(result.style.icon) : undefined,
+				color: result.style?.color ? String(result.style.color) : undefined
 			}));
 		}
 	});
@@ -123,7 +124,7 @@
 </Toolbar>
 
 <div class="grid h-[41.9vh] grid-cols-4 gap-4 overflow-auto sm:grid-cols-5">
-	{#each recentSearches as search, index (search.slug)}
+	{#each recentSearches as search, index (index)}
 		<div class="text-center">
 			<Card
 				class="flex aspect-square w-full items-center justify-center"
@@ -133,11 +134,11 @@
 			>
 				<div
 					class="flex aspect-square w-full items-center justify-center rounded-lg"
-					style:background="#dfdfdf"
+					style:background={search.color ? search.color : '#dfdfdf'}
 				>
-					{#if search.cover && search.cover !== 'null'}
+					{#if search.cover && search.cover !== 'null' && search.cover !== '' && search.cover !== 'undefined'}
 						<img class="" src={`/images/${search.cover}`} alt="test" />
-					{:else if search.icon && search.icon !== 'null'}
+					{:else if search.icon && search.icon !== 'null' && search.icon !== '' && search.icon !== 'undefined'}
 						<Icon icon={search.icon} class="text-[2.5rem] sm:text-[3rem] md:text-[4rem]" />
 					{:else}
 						<span class="text-3xl">{capitalize(search.title.substring(0, 1))}</span>

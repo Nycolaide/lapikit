@@ -3,6 +3,7 @@ export type RecentSearch = {
 	slug: string;
 	cover?: string | null;
 	icon?: string | null;
+	color?: string | null;
 	timestamp: number;
 };
 
@@ -20,13 +21,15 @@ export function addToRecentSearches(item: {
 	slug: string;
 	cover?: string;
 	icon?: string;
+	color?: string | null;
 }) {
 	const newSearch: RecentSearch = {
 		title: item.title,
 		slug: item.slug,
 		cover: item?.cover,
 		icon: item?.icon,
-		timestamp: Date.now()
+		timestamp: Date.now(),
+		color: item?.color ?? null
 	};
 
 	let list: RecentSearch[] = [];

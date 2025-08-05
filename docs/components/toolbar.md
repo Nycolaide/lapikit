@@ -7,7 +7,6 @@ head:
   description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
 style:
   cover: "docs/components/toolbar.webp"
-  color: #ffff
 state:
   section: components
   published: true

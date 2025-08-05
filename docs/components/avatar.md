@@ -7,7 +7,6 @@ head:
   description: "Display profile images, icons or initials in a variety of formats. Perfect for lists, headers or cards."
 style:
   cover: "docs/components/avatar.webp"
-  color: #ffff
 state:
   section: components
   published: true

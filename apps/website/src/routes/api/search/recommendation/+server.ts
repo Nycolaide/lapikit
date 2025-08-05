@@ -1,37 +1,21 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import searchData from '../search.json' with { type: 'json' };
-
-interface SearchItem {
-	icon: string | null;
-	title: string;
-	description: string;
-	date: string;
-	section: string;
-	slug: string;
-	categories: string[] | null;
-	published: boolean;
-	keywords: string[] | null;
-	order: string | null;
-	subtitle: string | null;
-	introduction: string | null;
-	cover: string | null;
-	recommended?: boolean;
-}
+import data from '../search.json' with { type: 'json' };
+import type { MarkdownHead } from '$lib';
 
 export const GET: RequestHandler = async () => {
-	const recommendedItems = (searchData as SearchItem[]).filter(
-		(item) => item.recommended === true && item.published === true
+	const recommendedItems = (data as MarkdownHead[]).filter(
+		(item) => item.state?.recommended === true && item.state?.published === true
 	);
 
 	const sortedItems = recommendedItems.sort((a, b) => {
-		if (a.section === 'base' && b.section !== 'base') {
+		if (a.state?.section === 'base' && b.state?.section !== 'base') {
 			return -1;
 		}
-		if (a.section !== 'base' && b.section === 'base') {
+		if (a.state?.section !== 'base' && b.state?.section === 'base') {
 			return 1;
 		}
-		const orderA = a.order ? parseInt(a.order, 10) : Number.MAX_SAFE_INTEGER;
-		const orderB = b.order ? parseInt(b.order, 10) : Number.MAX_SAFE_INTEGER;
+		const orderA = a.state?.order ? parseInt(a.state.order, 10) : Number.MAX_SAFE_INTEGER;
+		const orderB = b.state?.order ? parseInt(b.state.order, 10) : Number.MAX_SAFE_INTEGER;
 
 		return orderA - orderB;
 	});

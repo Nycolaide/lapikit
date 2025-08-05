@@ -7,7 +7,6 @@ head:
   description: "Visually separate your UI blocks with customizable lines in size, color, orientation and opacity."
 style:
   cover: "docs/components/separator.webp"
-  color: #ffff
 state:
   section: components
   published: true

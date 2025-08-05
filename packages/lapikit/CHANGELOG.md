@@ -1,17 +1,19 @@
 ---
-head:
-  title: changelog
-  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
-icon: mgc_version_line
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
 description: Find all the changes in the lapikit release notes
-section: base
-order: -1
+head:
+  title: changelog
+  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
+style:
+  icon: mgc_version_line
+state:
+  section: base
+  published: true
+  order: -1
 keywords:
   - version
   - npm
-published: true
 ---
 
 All notable changes to this project will be documented in this file.

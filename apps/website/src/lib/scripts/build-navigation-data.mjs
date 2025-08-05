@@ -8,7 +8,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const contentDir = path.join(__dirname, '..', '..', 'content');
-const manifestPath = path.join(__dirname, '..', '..', 'routes', 'api', 'search', 'manifest.json');
+const manifestPath = path.join(
+	__dirname,
+	'..',
+	'..',
+	'routes',
+	'api',
+	'content',
+	'navigation',
+	'manifest.json'
+);
 
 /**
  * Parser YAML for extracting front matter metadata
@@ -179,10 +188,10 @@ function findMarkdownFiles(dir, baseDir = dir) {
 }
 
 /**
- * Generate the manifest from the markdown files
+ * Generate the navigation manifest from the markdown files
  */
-function generateManifest() {
-	console.log('Searching for markdown files...');
+function generateNavigationManifest() {
+	console.log('Searching for markdown files for navigation...');
 
 	if (!fs.existsSync(contentDir)) {
 		console.error(`The directory ${contentDir} does not exist`);
@@ -201,14 +210,17 @@ function generateManifest() {
 
 			if (frontMatter) {
 				const slug = '/' + file.relativePath.replace(/\.md$/, '');
-
 				const pageInfo = {
-					...frontMatter,
+					title: frontMatter.title,
+					style: frontMatter.style || null,
+					state: frontMatter.state || null,
 					metadata: {
 						slug: slug,
+						fileName: file.fileName,
 						date: frontMatter.date || new Date().toISOString().split('T')[0]
 					}
 				};
+
 				manifest.push(pageInfo);
 			}
 		} catch (error) {
@@ -260,27 +272,14 @@ function generateManifest() {
 		fs.mkdirSync(manifestDir, { recursive: true });
 	}
 
-	// Write the manifest to the file
 	try {
 		const manifestData = JSON.stringify(manifest, null, 2);
 		fs.writeFileSync(manifestPath, manifestData, 'utf-8');
-		console.log(`\n✨ manifest generated successfully: ${manifestPath}`);
-		console.log(`${manifest.length} pages in the manifest`);
-
-		const sections = manifest.reduce((acc, page) => {
-			const section = page.state?.section || 'no-section';
-			acc[section] = (acc[section] || 0) + 1;
-			return acc;
-		}, {});
-
-		console.log('\nList:');
-		Object.entries(sections).forEach(([section, count]) => {
-			console.log(`  - ${section}: ${count} pages`);
-		});
+		console.log(`\n Navigation manifest generated successfully: ${manifestPath}`);
 	} catch (error) {
-		console.error(`Error writing manifest:`, error.message);
+		console.error(`Error writing navigation manifest:`, error.message);
 		process.exit(1);
 	}
 }
 
-generateManifest();
+generateNavigationManifest();

@@ -1,7 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import search from './search.json' with { type: 'json' };
-
-// export const prerender = true;
+import search from './manifest.json' with { type: 'json' };
 
 interface SearchItem {
 	title?: string;

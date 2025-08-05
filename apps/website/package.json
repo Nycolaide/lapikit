@@ -5,10 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"dev:content": "npm run build:content && npm run build:search && vite dev",
-		"build": "npm run build:content && npm run build:search && vite build",
+		"dev:content": "npm run build:content && npm run build:search && npm run build:navigation && vite dev",
+		"build": "npm run build:content && npm run build:search && npm run build:navigation && vite build",
 		"build:content": "node src/lib/scripts/build-docs.mjs",
 		"build:search": "node src/lib/scripts/build-search-data.mjs",
+		"build:navigation": "node src/lib/scripts/build-navigation-data.mjs",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

@@ -53,8 +53,17 @@ export const sectionDocs = [
 
 export interface MetaDataPages {
 	title: string;
-	description: string;
-	section?: string;
-	order?: number;
-	[key: string]: unknown;
+	fileName?: string;
+	icon?: string;
+	slug?: string;
+	state?: string;
+	style?: {
+		icon?: string | null;
+		cover?: string | null;
+		color?: string | null;
+	} | null;
+	metadata?: {
+		slug: string;
+		date: string;
+	};
 }

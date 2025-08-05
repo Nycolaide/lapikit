@@ -7,7 +7,6 @@ head:
   description: "Create modal dialogs with a fluid UX. Integrated focus, size, density and behavior management."
 style:
   cover: "docs/components/dialog.webp"
-  color: #ffff
 state:
   section: components
   published: true

@@ -7,7 +7,6 @@ head:
   description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
 style:
   cover: "docs/components/dropdown.webp"
-  color: #ffff
 state:
   section: components
   published: true

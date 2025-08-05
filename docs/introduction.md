@@ -7,7 +7,6 @@ head:
   description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
 style:
   icon: mgc_sticker_line
-  color: #ffff
 state:
   section: base
   published: true

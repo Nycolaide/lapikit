@@ -7,7 +7,6 @@ head:
   description: "Add an elegant, responsive application bar to your interfaces. Perfect for headers or navigation zones."
 style:
   cover: "docs/components/appbar.webp"
-  color: #ffff
 state:
   section: components
   published: true

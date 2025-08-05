@@ -7,7 +7,6 @@ head:
   description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
 style:
   cover: "docs/components/list.webp"
-  color: #ffff
 state:
   section: components
   published: true

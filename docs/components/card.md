@@ -7,7 +7,6 @@ head:
   description: "Organize and display content in visually coherent blocks. The Lapikit card component is easy to style."
 style:
   cover: "docs/components/card.webp"
-  color: #ffff
 state:
   section: components
   published: true

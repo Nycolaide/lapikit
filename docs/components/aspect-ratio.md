@@ -7,7 +7,6 @@ head:
   description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
 style:
   cover: "docs/components/aspect-ratio.webp"
-  color: #ffff
 state:
   section: components
   published: true

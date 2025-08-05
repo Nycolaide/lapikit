@@ -7,7 +7,6 @@ head:
   description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
 style:
   cover: "docs/components/icon.webp"
-  color: #ffff
 state:
   section: components
   published: true

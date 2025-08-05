@@ -7,7 +7,6 @@ head:
   description: "Customize your Svelte Lapikit components via the lapikit.config.js file: themes, styles, breakpoints. Fluid styling guaranteed."
 style:
   icon: mgc_settings_6_line
-  color: #ffff
 state:
   section: base
   published: true

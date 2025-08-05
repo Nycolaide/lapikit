@@ -4,36 +4,29 @@
 	import { page as url } from '$app/state';
 	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
-	import { sectionDocs, type MetaDataPages } from '$lib/config.js';
-	import { Search, ThemeToggle } from '$lib/components/index.js';
-	import { onMount } from 'svelte';
-	import { pagesNavigation, setPages } from '$lib/stores/app.js';
 	import { capitalize } from 'site-kit/actions';
-	import ReturnTopPage from '$lib/components/return-top-page.svelte';
-	import SearchBar from '$lib/components/search-bar.svelte';
+
+	// modules
+	import { SearchBar, Search, ThemeToggle, ReturnTopPage } from '$lib/components/index.js';
 
 	let { children, data } = $props();
 
-	type PagesFilter = {
-		key: string;
-		icon?: string;
-		submenu?: boolean;
-		pages: MetaDataPages[];
-	}[];
-
+	// states
 	let open = $state(false);
 	let openSearch = $state(false);
 	let sizeWidthScreen = $state(0);
 	let selectedSection = $state<number | null>(null);
-	let pagesGrouped: PagesFilter = $state([]);
-
-	onMount(() => {
-		setPages(data?.pages);
-	});
+	let navigationRoutes = $state(data.routes || []);
 
 	$effect(() => {
 		if (open === false) {
 			selectedSection = null;
+		}
+	});
+
+	$effect(() => {
+		if (data.routes) {
+			navigationRoutes = data.routes;
 		}
 	});
 
@@ -58,28 +51,6 @@
 	$effect(() => {
 		handleNavigation();
 		if (sizeWidthScreen >= 640) selectedSection = null;
-	});
-
-	$effect(() => {
-		if (data?.pages) {
-			const knownKeys = new Set(sectionDocs.map((s) => s.key));
-			const sectionMap = new Map<string, { key: string; icon?: string; pages: MetaDataPages[] }>();
-			for (const section of sectionDocs) {
-				sectionMap.set(section.key, {
-					...section,
-					pages: []
-				});
-			}
-
-			for (const page of data.pages) {
-				const section = page.section;
-				const key = section && knownKeys.has(section) ? section : 'undefined';
-
-				sectionMap.get(key)?.pages.push(page);
-			}
-
-			pagesGrouped = sectionDocs.map((s) => sectionMap.get(s.key)!);
-		}
 	});
 </script>
 
@@ -111,7 +82,7 @@
 
 <Drawer bind:open>
 	{#snippet navigation()}
-		{#each $pagesNavigation as section, index (section.key)}
+		{#each navigationRoutes as section, index (section.key)}
 			<List class="hidden-mobile" nav density="compact" variant="text">
 				{#if section.submenu}
 					<ListItem class="font-semibold">
@@ -119,27 +90,27 @@
 					</ListItem>
 				{/if}
 
-				{#each section.pages as page (page.slug)}
+				{#each section.pages as page (page.metadata?.slug)}
 					<ListItem
-						href={`/${page.slug}`}
+						href={`/docs${page.metadata?.slug}`}
 						onclick={() => (open = false)}
-						active={url.url.pathname === '/' + page.slug}
+						active={url.url.pathname === `/docs${page.metadata?.slug}`}
 					>
-						{#if page.icon}
-							<Icon icon={page.icon} />
+						{#if page.style?.icon}
+							<Icon icon={page.style.icon} />
 						{/if}
 						{capitalize(page.title)}
 
-						{#if page?.state}
+						{#if page.state?.status}
 							<Chip
 								rounded="sm"
 								size="xs"
-								success={page.state === 'new'}
-								warning={page.state === 'updated'}
-								error={page.state === 'deprecated'}
-								info={page.state === 'preview'}
+								success={page.state.status === 'new'}
+								warning={page.state.status === 'updated'}
+								error={page.state.status === 'deprecated'}
+								info={page.state.status === 'preview'}
 							>
-								{capitalize($t(`navigation.state.${page.state}`))}
+								{capitalize($t(`navigation.state.${page.state.status}`))}
 							</Chip>
 						{/if}
 					</ListItem>
@@ -148,7 +119,6 @@
 
 			<List class="display-mobile" nav>
 				{#if selectedSection === null}
-					<!-- {#each pagesGrouped as section, index (section.key)} -->
 					{#if section.submenu}
 						<ListItem onclick={() => (selectedSection = index)}>
 							{#if section.icon}
@@ -157,30 +127,29 @@
 							{capitalize(section.key)}
 						</ListItem>
 					{:else}
-						{#each section.pages as page (page.slug)}
-							<ListItem href={`/${page.slug}`} onclick={() => (open = false)}>
-								{#if page.icon}
-									<Icon icon={page.icon} />
+						{#each section.pages as page (page.metadata?.slug)}
+							<ListItem href={`/docs${page.metadata?.slug}`} onclick={() => (open = false)}>
+								{#if page.style?.icon}
+									<Icon icon={page.style.icon} />
 								{/if}
 								{capitalize(page.title)}
 
-								{#if page?.state}
+								{#if page.state?.status}
 									<Chip
 										rounded="sm"
 										size="xs"
-										success={page.state === 'new'}
-										warning={page.state === 'updated'}
-										error={page.state === 'deprecated'}
-										info={page.state === 'preview'}
+										success={page.state.status === 'new'}
+										warning={page.state.status === 'updated'}
+										error={page.state.status === 'deprecated'}
+										info={page.state.status === 'preview'}
 									>
-										{capitalize($t(`navigation.state.${page.state}`))}
+										{capitalize($t(`navigation.state.${page.state.status}`))}
 									</Chip>
 								{/if}
 							</ListItem>
 						{/each}
 					{/if}
-					<!-- {/each} -->
-				{:else if section.key === $pagesNavigation[selectedSection].key}
+				{:else if section.key === navigationRoutes[selectedSection].key}
 					<ListItem onclick={() => (selectedSection = null)}>
 						{#snippet append()}
 							<Icon icon="mgc_left_line" size="lg" />
@@ -188,10 +157,10 @@
 						{capitalize($t('navigation.back_to_sections'))}
 					</ListItem>
 
-					{#each pagesGrouped[selectedSection].pages as page (page.slug)}
-						<ListItem href={`/${page.slug}`} onclick={() => (open = false)}>
-							{#if page.icon}
-								<Icon icon={page.icon} />
+					{#each navigationRoutes[selectedSection].pages as page (page.metadata?.slug)}
+						<ListItem href={`/docs${page.metadata?.slug}`} onclick={() => (open = false)}>
+							{#if page.style?.icon}
+								<Icon icon={page.style.icon} />
 							{/if}
 							{capitalize(page.title)}
 						</ListItem>

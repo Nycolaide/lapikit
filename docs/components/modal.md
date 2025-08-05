@@ -7,7 +7,6 @@ head:
   description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
 style:
   cover: "docs/components/modal.webp"
-  color: #ffff
 state:
   section: components
   published: true

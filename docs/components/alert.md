@@ -7,7 +7,6 @@ head:
   description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
 style:
   cover: "docs/components/alert.webp"
-  color: #ffff
 state:
   section: components
   published: true

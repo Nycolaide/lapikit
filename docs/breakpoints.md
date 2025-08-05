@@ -6,7 +6,6 @@ head:
   description: "Manage the reactivity of your Lapikit components with customizable breakpoints. Easily adapt to all devices."
 style:
   icon: mgc_layout_10_line
-  color: #ffff
 state:
   section: base
   published: true

@@ -7,7 +7,6 @@ head:
   description: "Display scalable content in a fluid interface. The Lapikit accordion component is lightweight, accessible and customizable."
 style:
   cover: "docs/components/accordion.webp"
-  color: #ffff
 state:
   section: components
   published: true

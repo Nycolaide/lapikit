@@ -7,7 +7,6 @@ head:
   description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
 style:
   cover: "docs/components/tooltip.webp"
-  color: #ffff
 state:
   section: components
   published: true

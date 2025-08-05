@@ -7,7 +7,6 @@ head:
   description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
 style:
   cover: "docs/components/application.webp"
-  color: #ffff
 state:
   section: components
   published: true

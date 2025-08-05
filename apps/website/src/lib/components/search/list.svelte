@@ -19,7 +19,7 @@
 
 	const filteredResults = $derived(() => {
 		if (!selectedSection) return $results;
-		return $results.filter((result) => result.section === selectedSection);
+		return $results.filter((result) => result.state?.section === selectedSection);
 	});
 
 	onMount(() => {
@@ -49,12 +49,19 @@
 		}
 	});
 
-	function handleResultClick(item: { title: string; slug: string; cover?: string; icon?: string }) {
+	function handleResultClick(item: {
+		title: string;
+		slug: string;
+		cover?: string;
+		icon?: string;
+		color?: string;
+	}) {
 		addToRecentSearches({
 			title: item.title,
 			slug: item.slug,
 			cover: item?.cover,
-			icon: item?.icon
+			icon: item?.icon,
+			color: item?.color
 		});
 		goto(`/docs${item.slug}`);
 	}
@@ -75,11 +82,13 @@
 				event.preventDefault();
 				if (filteredResults()[selectedIndex]) {
 					const selectedItem = filteredResults()[selectedIndex];
+
 					handleResultClick({
 						title: selectedItem.title as string,
-						slug: selectedItem.slug as string,
-						cover: selectedItem?.cover as string,
-						icon: selectedItem?.icon as string
+						slug: selectedItem.metadata?.slug as string,
+						cover: selectedItem.style?.cover as string,
+						icon: selectedItem.style?.icon as string,
+						color: selectedItem.style?.color as string
 					});
 				}
 				break;
@@ -132,9 +141,10 @@
 					onclick={() =>
 						handleResultClick({
 							title: String(item.title),
-							slug: String(item.slug),
-							cover: String(item.cover),
-							icon: String(item.icon)
+							slug: String(item.metadata.slug),
+							cover: String(item.style?.cover),
+							icon: String(item.style?.icon),
+							color: String(item.style?.color)
 						})}
 				>
 					{capitalize(String(item?.title))}

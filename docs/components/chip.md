@@ -7,7 +7,6 @@ head:
   description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 style:
   cover: "docs/components/chip.webp"
-  color: #ffff
 state:
   section: components
   published: true

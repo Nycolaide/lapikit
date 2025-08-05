@@ -7,7 +7,6 @@ head:
   description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 style:
   cover: "docs/components/button.webp"
-  color: #ffff
 state:
   section: components
   published: true
