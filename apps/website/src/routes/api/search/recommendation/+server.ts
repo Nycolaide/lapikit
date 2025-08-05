@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import data from '../search.json' with { type: 'json' };
+import data from '../manifest.json' with { type: 'json' };
 import type { MarkdownHead } from '$lib';
 
 export const GET: RequestHandler = async () => {
