@@ -10,6 +10,8 @@ style:
 state:
   section: components
   published: true
+github:
+  url: /components/toolbar.md
 ---
 
 <script>

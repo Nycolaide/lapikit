@@ -15,6 +15,11 @@ export interface MarkdownPage {
 		order?: string | null;
 		recommended?: boolean;
 	};
+	github?: {
+		url?: string | null;
+		issues?: string | null;
+		pullRequests?: string | null;
+	};
 	keywords?: string[] | null;
 }
 

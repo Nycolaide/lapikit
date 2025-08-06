@@ -8,6 +8,7 @@
 	},
 	"open": "open",
 	"close": "close",
+	"or": "or",
 	"gdpr": {
 		"cookie_settings": "cookie settings",
 		"title": "Lapikit respects your privacy",

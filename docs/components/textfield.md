@@ -9,6 +9,8 @@ state:
   status: new
   section: components
   published: false
+github:
+  url: /components/textfield.md
 ---
 
 <script>

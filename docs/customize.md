@@ -12,6 +12,8 @@ state:
   published: true
   recommended: true
   order: 3
+github:
+  url: /customize.md
 keywords:
   - css
   - themes

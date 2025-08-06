@@ -12,6 +12,8 @@ state:
   published: true
   recommended: true
   order: 1
+github:
+  url: /getting-started.md
 keywords:
   - install
   - tailwind

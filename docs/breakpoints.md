@@ -11,6 +11,8 @@ state:
   published: true
   recommended: true
   order: 2
+github:
+  url: /breakpoints.md
 keywords:
   - tresholds
   - breakpoints

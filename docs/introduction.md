@@ -12,6 +12,8 @@ state:
   published: true
   recommended: true
   order: 0
+github:
+  url: /introduction.md
 keywords:
   - why lapikit
   - acknowledgements

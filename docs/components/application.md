@@ -11,6 +11,8 @@ state:
   section: components
   published: true
   order: 0
+github:
+  url: /components/application.md
 keywords:
   - provider
   - app

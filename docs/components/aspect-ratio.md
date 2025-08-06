@@ -10,6 +10,8 @@ style:
 state:
   section: components
   published: true
+github:
+  url: /components/aspect-ratio.md
 keywords:
   - aspect ratio
 ---
