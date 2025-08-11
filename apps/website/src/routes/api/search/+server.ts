@@ -51,7 +51,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		.map((item) => {
 			const normalizedItem = {
 				...item,
-				keywords: item.keywords === null ? undefined : item.keywords
+				keywords: item.state.keywords === null ? undefined : item.state.keywords
 			};
 			const result = scoreItem(normalizedItem, terms);
 			return result.score > 0

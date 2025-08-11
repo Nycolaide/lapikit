@@ -78,6 +78,7 @@
 	description="Discover Lapikit, a component library optimized for Svelte. Quick to integrate, simple to style, and designed for front-end developers."
 />
 
+""
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
