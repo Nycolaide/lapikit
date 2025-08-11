@@ -1,13 +1,17 @@
 ---
-head:
-  title: alert
-  description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
 title: alert
 subtitle: alert component
 introduction: information, success or error messages
-cover: "docs/components/alert.webp"
-section: components
-published: true
+head:
+  title: alert
+  description: "Display alert or status messages. Manage variants, densities and info types for effective user feedback."
+style:
+  cover: "docs/components/alert.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/alert.md
 ---
 
 <script>

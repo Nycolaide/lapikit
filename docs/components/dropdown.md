@@ -1,15 +1,19 @@
 ---
-head:
-  title: dropdown
-  description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
 title: dropdown
 subtitle: dropdown component
 introduction: Drop-down menu linked to a button or element
-cover: "docs/components/dropdown.webp"
-section: components
+head:
+  title: dropdown
+  description: "Flexible drop-down menu for actions or selections. Manages focus, clicks and intelligent positioning."
+style:
+  cover: "docs/components/dropdown.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/dropdown.md
 keywords:
   - menu
-published: true
 ---
 
 <script>

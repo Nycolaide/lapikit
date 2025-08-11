@@ -1,13 +1,17 @@
 ---
-head:
-  title: tooltip
-  description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
 title: tooltip
 subtitle: tooltip component
 introduction: light tooltip on element hover
-cover: "docs/components/tooltip.webp"
-section: components
-published: true
+head:
+  title: tooltip
+  description: "Provide additional info without cluttering the UI. Display on hover with intelligent positioning."
+style:
+  cover: "docs/components/tooltip.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/tooltip.md
 ---
 
 <script>

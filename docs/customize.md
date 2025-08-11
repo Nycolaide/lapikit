@@ -1,13 +1,19 @@
 ---
-head:
-  title: customize
-  description: "Customize your Svelte Lapikit components via the lapikit.config.js file: themes, styles, breakpoints. Fluid styling guaranteed."
-icon: mgc_settings_6_line
 title: Customize
 subtitle: "Lapikit styling guide: structure, themes, and breakpoints"
 description: Integrate your style and design system into Lapikit components
-section: base
-order: 3
+head:
+  title: customize
+  description: "Customize your Svelte Lapikit components via the lapikit.config.js file: themes, styles, breakpoints. Fluid styling guaranteed."
+style:
+  icon: mgc_settings_6_line
+state:
+  section: base
+  published: true
+  recommended: true
+  order: 3
+github:
+  url: /customize.md
 keywords:
   - css
   - themes
@@ -24,7 +30,6 @@ keywords:
   - configuration
   - settings
   - customize
-published: true
 ---
 
 <script>

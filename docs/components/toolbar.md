@@ -1,13 +1,17 @@
 ---
-head:
-  title: toolbar
-  description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
 title: toolbar
 subtitle: toolbar component
 introduction: horizontal or vertical toolbars
-cover: "docs/components/toolbar.webp"
-section: components
-published: true
+head:
+  title: toolbar
+  description: "Group actions in a compact, coherent space. Ideal for headers, lists or content filters."
+style:
+  cover: "docs/components/toolbar.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/toolbar.md
 ---
 
 <script>

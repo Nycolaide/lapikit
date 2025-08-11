@@ -1,15 +1,19 @@
 ---
-head:
-  title: button
-  description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
 title: button
 subtitle: button component
 introduction: customizable interactive button
-cover: "docs/components/button.webp"
-section: components
+head:
+  title: button
+  description: "Stylish, customizable Svelte buttons with Lapikit. Variants, icons, colors, states: everything's ready."
+style:
+  cover: "docs/components/button.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/button.md
 keywords:
   - btn
-published: true
 ---
 
 <script>

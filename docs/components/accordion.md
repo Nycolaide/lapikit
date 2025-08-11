@@ -1,13 +1,17 @@
 ---
-head:
-  title: accordion
-  description: "Display scalable content in a fluid interface. The Lapikit accordion component is lightweight, accessible and customizable."
 title: accordion
 subtitle: accordion component
 introduction: displays foldable content in sections
-cover: "docs/components/accordion.webp"
-section: components
-published: true
+head:
+  title: accordion
+  description: "Display scalable content in a fluid interface. The Lapikit accordion component is lightweight, accessible and customizable."
+style:
+  cover: "docs/components/accordion.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/accordion.md
 ---
 
 <script>

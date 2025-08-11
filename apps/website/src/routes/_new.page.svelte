@@ -10,13 +10,17 @@
 
 	// components
 	import Head from '$lib/components/head.svelte';
-	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
+	import { Sandbox, ThemeToggle, Footer, Search } from '$lib/components/index.js';
 
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import HomePreview from '$lib/components/home-preview.svelte';
-	import { scrollAnimation } from '$lib/styles/animations/scroll.js';
+	import { scrollAnimation } from '../animations/scroll.js';
+	import SearchBar from '$lib/components/search-bar.svelte';
+
+	// states
+	let openSearch: boolean = $state(false);
 
 	interface AdvantageItem {
 		title: string;
@@ -74,6 +78,7 @@
 	description="Discover Lapikit, a component library optimized for Svelte. Quick to integrate, simple to style, and designed for front-end developers."
 />
 
+""
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
@@ -112,8 +117,8 @@
 		class="desktop:max-h-[900px] flex h-[70vh] flex-col items-center justify-between justify-center overflow-hidden"
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
 	>
-		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
-			<Chip href="/docs/changelog" variant="outline">
+		<div class="mx-7 flex flex-col items-center text-center lg:mx-auto lg:w-7/12">
+			<Chip href="/docs/changelog" variant="outline" class="w-fit">
 				<Icon icon="mgc_box_2_line" />
 				<Separator orientation="vertical" />
 				{capitalize(
@@ -130,7 +135,8 @@
 			>
 				{capitalize($t('homepage.main_introduction'))}
 			</p>
-			<div>
+			<div class="flex w-full flex-col items-center justify-center gap-4">
+				<SearchBar bind:open={openSearch} app />
 				<Button size="lg" href="/docs/components">
 					{capitalize($t('homepage.main_cta'))}
 				</Button>
@@ -138,6 +144,8 @@
 		</div>
 	</section>
 </div>
+
+<Search bind:open={openSearch} />
 
 <HomePreview />
 
@@ -253,14 +261,20 @@
 	{#each navigationMain as { key, path, external, icon } (key)}
 		<BottomNavigationItem
 			is="a"
-			active={page.url.pathname === path}
+			active={page.url.pathname === path && !openSearch}
 			href={path}
+			onclick={() => (openSearch = false)}
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
 			{capitalize($t(`navigation.${key}`))}
 		</BottomNavigationItem>
 	{/each}
+
+	<BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
+		<Icon icon="mgc_search_2_line" size="xl" />
+		{capitalize($t('navigation.search_bar.button'))}
+	</BottomNavigationItem>
 </BottomNavigation>
 
 <style>

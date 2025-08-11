@@ -5,7 +5,7 @@
 	import '@fontsource/roboto';
 	import '@fontsource/press-start-2p';
 	// css
-	import '$lib/styles/app.css';
+	import '../styles/app.css';
 
 	import { App } from 'lapikit/components';
 

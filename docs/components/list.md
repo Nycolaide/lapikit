@@ -1,13 +1,17 @@
 ---
-head:
-  title: list
-  description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
 title: list
 subtitle: list component
 introduction: vertical list of elements with variants
-cover: "docs/components/list.webp"
-section: components
-published: true
+head:
+  title: list
+  description: "Structure your data with a stylized list. Ideal for menus, hierarchical content or clickable elements."
+style:
+  cover: "docs/components/list.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/list.md
 ---
 
 <script>

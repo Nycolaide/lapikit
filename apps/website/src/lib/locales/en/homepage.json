@@ -4,6 +4,7 @@
 	"main_title": "Simple, optimized components for Svelte",
 	"main_introduction": "A library of accessible, high-performance, versatile components that let you develop fast, fully customizable interfaces.",
 	"main_cta": "Discover all components",
+	"search_placeholder": "A button? A modal? Something that flashes? Go ahead, look for it.",
 	"dev_with_lapikit": {
 		"title": "A single library and plenty of possibilities:",
 		"card1": {

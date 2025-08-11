@@ -1,13 +1,17 @@
 ---
-head:
-  title: modal
-  description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
 title: modal
 subtitle: modal component
 introduction: overlay window for content display
-cover: "docs/components/modal.webp"
-section: components
-published: true
+head:
+  title: modal
+  description: "Display stacked content in a responsive modal window. Manages position, keyboard interaction and stacking."
+style:
+  cover: "docs/components/modal.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/modal.md
 ---
 
 <script>

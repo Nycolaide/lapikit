@@ -1,17 +1,19 @@
 ---
-head:
-  title: changelog
-  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
-icon: mgc_version_line
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
 description: Find all the changes in the lapikit release notes
-section: base
-order: -1
+head:
+  title: changelog
+  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
+style:
+  icon: mgc_version_line
+state:
+  section: base
+  published: true
+  order: -1
 keywords:
   - version
   - npm
-published: true
 ---
 
 All notable changes to this project will be documented in this file.
@@ -23,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fix
 
+- Fix **Modal** component if open , create bad display on container on modal
 - Fix **Alert** display content not working because line-height 0 for alls grids elements
 
 ## [0.2.1] - 2025-07-31
