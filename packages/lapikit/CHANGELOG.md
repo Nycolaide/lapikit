@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fix
 
 - Fix **Modal** component if open , create bad display on container on modal
+- Fix **Alert** display content not working because line-height 0 for alls grids elements
 
 ## [0.2.1] - 2025-07-31
 

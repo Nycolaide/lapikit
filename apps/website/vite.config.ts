@@ -1,11 +1,15 @@
 import tailwindcss from '@tailwindcss/vite';
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { lapikit } from 'lapikit/vite';
+
 import { defineConfig } from 'vite';
 
+// plugins
+import { lapikit } from 'lapikit/vite';
+import { enhancedImages } from '@sveltejs/enhanced-img';
+
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit(), lapikit()],
+	plugins: [tailwindcss(), enhancedImages(), sveltekit(), lapikit()],
 	test: {
 		workspace: [
 			{

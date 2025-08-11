@@ -66,6 +66,7 @@
 	align-self: flex-start;
 	grid-area: content;
 	overflow: hidden;
+	line-height: normal;
 }
 
 .kit-alert .kit-alert--close {
