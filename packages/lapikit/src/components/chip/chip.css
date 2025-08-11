@@ -36,6 +36,7 @@
 	white-space: nowrap;
 	gap: calc(var(--kit-spacing) * var(--chip-multiplier-gap));
 	font-size: calc(var(--kit-spacing) * var(--chip-multiplier-font-size));
+	line-height: 0;
 }
 
 .kit-chip:not(div):not(span)::after {
@@ -115,8 +116,8 @@
 }
 
 .kit-chip[breakpoint]kit-chip--variant-outline {
-	--chip-color: var(--base, var(--kit-oncontainer));
-	background-color: transparent;
+	--chip-color: var(--on, var(--kit-on-container));
+	background-color: var(--chip-background);
 }
 .kit-chip[breakpoint]kit-chip--variant-outline::before {
 	content: '';

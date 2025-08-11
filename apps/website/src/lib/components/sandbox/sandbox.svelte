@@ -92,4 +92,8 @@
 	.lapikit-sandbox :global(img) {
 		margin: initial !important;
 	}
+
+	.lapikit-sandbox :global(a) {
+		text-decoration: none !important;
+	}
 </style>

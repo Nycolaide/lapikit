@@ -1,23 +1,45 @@
 ---
-head:
-  title: changelog
-  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
-icon: mgc_version_line
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
 description: Find all the changes in the lapikit release notes
-section: base
-order: -1
+head:
+  title: changelog
+  description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
+style:
+  icon: mgc_version_line
+state:
+  section: base
+  published: true
+  order: -1
 keywords:
   - version
   - npm
-published: true
 ---
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.2]
+
+### Fix
+
+- Fix **Modal** component if open , create bad display on container on modal
+- Fix **Alert** display content not working because line-height 0 for alls grids elements
+
+## [0.2.1] - 2025-07-31
+
+### Added
+
+- Create **Texfield** component
+
+### Fix
+
+- Fix **Alert** component bad position content and style not working with bad className.
+- Fix **Chip** component bad content alignement with prepend and append snippet.
+- Fix **Chip** component on outline style background transparent...
+- Fix **Button** component on outline style background transparent...
 
 ## [0.2.0] - 2025-07-26
 

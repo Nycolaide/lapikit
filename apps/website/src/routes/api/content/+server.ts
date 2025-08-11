@@ -25,15 +25,16 @@ async function getPages() {
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Post, 'slug'>;
 			const post = { ...metadata, slug } satisfies Post;
-
-			if (PUBLIC_DEV_MODE === 'true' || post.published) {
-				pages.push(post);
-			}
+			pages.push(post);
 		}
 	}
 
 	pages = pages
-		.filter((page) => PUBLIC_DEV_MODE === 'true' || page?.published)
+		.filter(
+			(page) =>
+				(PUBLIC_DEV_MODE === 'true' && (!page?.published || page?.published)) ||
+				(PUBLIC_DEV_MODE !== 'true' && page?.published) // production mode
+		)
 		.sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime());
 	return pages;
 }

@@ -1,15 +1,19 @@
 ---
-head:
-  title: aspect ratio
-  description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
 title: aspect ratio
 subtitle: aspect ratio component
 introduction: maintains a consistent width/height ratio
-cover: "docs/components/aspect-ratio.webp"
-section: components
+head:
+  title: aspect ratio
+  description: "Manage the ratios of your images, videos or blocks easily with this ready-to-use Svelte Lapikit component."
+style:
+  cover: "docs/components/aspect-ratio.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/aspect-ratio.md
 keywords:
   - aspect ratio
-published: true
 ---
 
 <script>
