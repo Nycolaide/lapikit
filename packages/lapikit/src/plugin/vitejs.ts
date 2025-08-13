@@ -7,12 +7,21 @@ import { terminal } from '$lib/internal/terminal.js';
 // preview
 import { new_config } from '$lib/core/index.js';
 
-export async function lapikit() {
+const defaultPath = 'src/plugin/lapikit.ts';
+
+interface LapikitOptions {
+	autoImport?: boolean;
+	customPath?: string;
+}
+
+export async function lapikit(options: LapikitOptions = {}) {
+	const { autoImport = false, customPath = defaultPath } = options;
+
 	return {
 		name: 'lapikit/vite.js',
 		async configResolved() {
 			//preview
-			await new_config();
+			await new_config({ configPath: customPath });
 
 			const config = await importer();
 			const result = await parseConfig(config);
