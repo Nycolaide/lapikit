@@ -106,11 +106,11 @@ export async function setupSvelteKitIntegration(pluginPath, isTypescript) {
 		path.dirname(targetFile),
 		path.resolve(process.cwd(), pluginPath)
 	);
-	const lapikitFileName = isTypescript ? 'lapikit.ts' : 'lapikit.js';
+	const lapikitFileName = isTypescript ? 'lapikit' : 'lapikit.js';
 	const configImportPath = `${relativePath}/${lapikitFileName}`.replace(/\\/g, '/');
 
 	// Imports
-	const createLapikitImport = `import { createLapikit } from 'lapikit';`;
+	const createLapikitImport = `\n\timport { createLapikit } from 'lapikit';`;
 	const configImport = `import config from '${configImportPath}';`;
 
 	const scriptLang = isTypescript ? ' lang="ts"' : '';
