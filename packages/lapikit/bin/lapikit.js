@@ -1,9 +1,16 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
-import { ansi, terminal, envTypescript } from './helper.js';
+import {
+	ansi,
+	terminal,
+	envTypescript,
+	getLapikitPathFromArgs,
+	validatePluginPath
+} from './helper.js';
 import { preset } from './modules/preset.js';
 import { adapterCSSConfig, adapterViteConfig } from './modules/adapter.js';
+import { createPluginStructure } from './modules/plugin.js';
 
 const [, , command] = process.argv;
 const typescriptEnabled = envTypescript();
@@ -11,8 +18,9 @@ const typescriptEnabled = envTypescript();
 if (process.argv.includes('--help') || process.argv.includes('-h')) {
 	terminal(
 		'info',
-		`usage: ${ansi.color.yellow('npx lapikit init {cssPath}')}\n\n ${ansi.variant.bold('options:')}\n
-        - {cssPath}: (${ansi.color.cyan('src/app.css')}) customize path on your origin css file.\n\n`
+		`usage: ${ansi.color.yellow('npx lapikit init {cssPath} [--plugin-path {pluginPath}]')}\n\n ${ansi.variant.bold('options:')}\n
+        - {cssPath}: (${ansi.color.cyan('src/app.css')}) customize path on your origin css file.
+        - --plugin-path, -p: (${ansi.color.cyan('src/plugin')}) customize path for the plugin directory.\n\n`
 	);
 	process.exit(0);
 } else if (command === 'init') {
@@ -27,6 +35,15 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 
 	terminal('none', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
 
+	// Récupérer et valider le chemin du plugin
+	const pluginPath = getLapikitPathFromArgs();
+	const pathValidation = validatePluginPath(pluginPath);
+
+	if (!pathValidation.valid) {
+		terminal('error', `Chemin incorrect: ${pathValidation.error}`);
+		process.exit(1);
+	}
+
 	const configPath = path.resolve(process.cwd(), 'lapikit.config.js');
 	try {
 		await fs.writeFile(configPath, preset.trim() + '\n', 'utf8');
@@ -37,6 +54,13 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 			'warn',
 			`you can create lapikit.config.js manually, please visite https://lapikit.dev/docs/getting-started for more information`
 		);
+	}
+
+	// Create plugin structure
+	try {
+		await createPluginStructure(pluginPath, typescriptEnabled);
+	} catch (error) {
+		terminal('error', `Create plugin structure not working : ${error.message}`);
 	}
 
 	await adapterViteConfig(typescriptEnabled);
