@@ -10,7 +10,7 @@ import {
 } from './helper.js';
 import { preset } from './modules/preset.js';
 import { adapterCSSConfig, adapterViteConfig } from './modules/adapter.js';
-import { createPluginStructure } from './modules/plugin.js';
+import { createPluginStructure, setupSvelteKitIntegration } from './modules/plugin.js';
 
 const [, , command] = process.argv;
 const typescriptEnabled = envTypescript();
@@ -35,12 +35,12 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 
 	terminal('none', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
 
-	// Récupérer et valider le chemin du plugin
+	// Get Path
 	const pluginPath = getLapikitPathFromArgs();
 	const pathValidation = validatePluginPath(pluginPath);
 
 	if (!pathValidation.valid) {
-		terminal('error', `Chemin incorrect: ${pathValidation.error}`);
+		terminal('error', `Invalid path: ${pathValidation.error}`);
 		process.exit(1);
 	}
 
@@ -61,6 +61,13 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 		await createPluginStructure(pluginPath, typescriptEnabled);
 	} catch (error) {
 		terminal('error', `Create plugin structure not working : ${error.message}`);
+	}
+
+	// Setup SvelteKit integration
+	try {
+		await setupSvelteKitIntegration(pluginPath, typescriptEnabled);
+	} catch (error) {
+		terminal('error', `SvelteKit integration setup failed: ${error.message}`);
 	}
 
 	await adapterViteConfig(typescriptEnabled);
