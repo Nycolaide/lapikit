@@ -36,7 +36,7 @@
 		"**/*.css"
 	],
 	"bin": {
-		"lapikit": "bin/lapikit.js"
+		"lapikit": "bin/index.js"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -90,5 +90,8 @@
 	},
 	"keywords": [
 		"svelte"
-	]
+	],
+	"dependencies": {
+		"prompts": "^2.4.2"
+	}
 }
