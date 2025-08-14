@@ -111,7 +111,7 @@ export async function setupSvelteKitIntegration(pluginPath, isTypescript) {
 
 	// Imports
 	const createLapikitImport = `\n\timport { createLapikit } from 'lapikit';`;
-	const configImport = `import config from '${configImportPath}';`;
+	const configImport = `\timport config from '${configImportPath}';`;
 
 	const scriptLang = isTypescript ? ' lang="ts"' : '';
 	const effectCode = `\n\t$effect.pre(() => {\n\t\tcreateLapikit(config);\n\t});`;
@@ -146,4 +146,78 @@ export async function setupSvelteKitIntegration(pluginPath, isTypescript) {
 	// Write the modified file
 	await fs.writeFile(targetFile, fileContent, 'utf8');
 	terminal('success', `Config added ${targetFileName}.`);
+}
+
+const [, , command] = process.argv;
+const typescriptEnabled = envTypescript();
+const args = process.argv.slice(2);
+const previewMode = args.includes('--preview');
+
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+	terminal(
+		'info',
+		`usage: ${ansi.color.yellow('npx lapikit init {cssPath} [--plugin-path {pluginPath}] [--preview]')}\n\n ${ansi.variant.bold('options:')}\n
+        - {cssPath}: (${ansi.color.cyan('src/app.css')}) customize path on your origin css file.
+        - --plugin-path, -p: (${ansi.color.cyan('src/plugin')}) customize path for the plugin directory.
+        - --preview: active preview mode (plugin + SvelteKit integration)\n\n`
+	);
+	process.exit(0);
+} else if (command === 'init') {
+	console.log('  _                 _ _    _ _   ');
+	console.log(' | |               (_) |  (_) |  ');
+	console.log(' | |     __ _ _ __  _| | ___| |_ ');
+	console.log(" | |    / _` | '_ \\| | |/ / | __|");
+	console.log(' | |___| (_| | |_) | |   <| | |_ ');
+	console.log(' |______\\__,_| .__/|_|_|\\_\\_|\\__|');
+	console.log('             | |                 ');
+	console.log('             |_|                 \n');
+
+	terminal('none', `${ansi.bold.blue('LAPIKIT')} - Component Library for Svelte\n\n`);
+
+	if (previewMode) {
+		// Mode preview
+		const pluginPath = getLapikitPathFromArgs();
+		const pathValidation = validatePluginPath(pluginPath);
+		if (!pathValidation.valid) {
+			terminal('error', `Invalid path: ${pathValidation.error}`);
+			process.exit(1);
+		}
+		try {
+			await createPluginStructure(pluginPath, typescriptEnabled);
+		} catch (error) {
+			terminal('error', `Create plugin structure not working : ${error.message}`);
+		}
+		try {
+			await setupSvelteKitIntegration(pluginPath, typescriptEnabled);
+		} catch (error) {
+			terminal('error', `SvelteKit integration setup failed: ${error.message}`);
+		}
+	} else {
+		// Mode classic
+		const configPath = path.resolve(process.cwd(), 'lapikit.config.js');
+		try {
+			await fs.writeFile(configPath, preset.trim() + '\n', 'utf8');
+			terminal('success', `has create lapikit.config.js on your project.`);
+		} catch (error) {
+			terminal('error', `failed to create configuration file:\n\n ${error}`);
+			terminal(
+				'warn',
+				`you can create lapikit.config.js manually, please visite https://lapikit.dev/docs/getting-started for more information`
+			);
+		}
+		await adapterCSSConfig();
+	}
+
+	await adapterViteConfig(typescriptEnabled);
+
+	terminal(
+		'info',
+		`${ansi.bold.blue('Thank to use lapikit, discover all posibility with lapikit on https://lapikit.dev')}\n\n`
+	);
+
+	console.log('Website: https://lapikit.dev');
+	console.log('Github: https://github.com/nycolaide/lapikit');
+	console.log('Support the developement: https://buymeacoffee.com/nycolaide');
+} else {
+	terminal('error', `Command not recognized. Try 'npx lapikit -h'`);
 }
