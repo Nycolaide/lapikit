@@ -4,6 +4,20 @@ import prompts from 'prompts';
 async function main() {
 	console.log('🚀 Welcome in Lapikit !');
 
+	const { confirm } = await prompts({
+		type: 'toggle',
+		name: 'confirm',
+		message: 'Are you ready to install Lapikit on your project?',
+		initial: true,
+		active: 'Yes',
+		inactive: 'No'
+	});
+
+	if (!confirm) {
+		console.log('❌ Installation canceled. See you soon.');
+		process.exit(0);
+	}
+
 	const response = await prompts([
 		{
 			type: 'text',
@@ -27,8 +41,8 @@ async function main() {
 			name: 'typescript',
 			message: 'Use TypeScript ?',
 			initial: true,
-			active: 'Oui',
-			inactive: 'Non'
+			active: 'Yes',
+			inactive: 'No'
 		}
 	]);
 
