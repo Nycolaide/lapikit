@@ -94,7 +94,7 @@ async function main() {
 		]);
 
 		if (settings.formatCSS !== 'global') {
-			const { pathCss } = await prompts({
+			const css = await prompts({
 				type: 'text',
 				name: 'pathCSS',
 				message: 'Where would you like to import the lapikit CSS files?',
@@ -103,7 +103,7 @@ async function main() {
 					value.startsWith('src/') ? true : 'Please provide a valid path starting with src/'
 			});
 
-			settings = { ...settings, pathCss };
+			settings = { ...settings, ...css };
 		}
 
 		console.log('response config', settings);
