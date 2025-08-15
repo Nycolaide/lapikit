@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
+import { preset } from './modules/preset.js';
 import { ansi, terminal, envTypescript } from './helper.js';
 import { adapterCSSConfig, adapterViteConfig } from './modules/adapter.js';
 
