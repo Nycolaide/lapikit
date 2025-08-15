@@ -58,59 +58,56 @@ async function main() {
 		await legacyConfiguration(settings);
 	} else if (type === 'experimental') {
 		// Preview install
+		let settings = await prompts([
+			{
+				type: 'text',
+				name: 'pathConfig',
+				message: 'Where would you like to install the lapikit configuration files?',
+				initial: 'src/plugins',
+				validate: (value) =>
+					value.startsWith('src/') ? true : 'Please provide a valid path starting with src/'
+			},
+			{
+				type: 'toggle',
+				name: 'typescript',
+				message: 'Use TypeScript?',
+				initial: true,
+				active: 'Yes',
+				inactive: 'No'
+			},
+			{
+				type: 'select',
+				name: 'formatCSS',
+				message: 'What is your CSS format used on your app?',
+				choices: [
+					{ title: 'Common ( CSS / SASS / SCSS / LESS / other libs )', value: 'global' },
+					{
+						title: 'TailwindCSS (v4)',
+						value: 'tailwind-v4'
+					},
+					{
+						title: 'UnoCSS',
+						value: 'unocss'
+					}
+				]
+			}
+		]);
+
+		if (settings.formatCSS !== 'global') {
+			const { pathCss } = await prompts({
+				type: 'text',
+				name: 'pathCSS',
+				message: 'Where would you like to import the lapikit CSS files?',
+				initial: 'src/app.css',
+				validate: (value) =>
+					value.startsWith('src/') ? true : 'Please provide a valid path starting with src/'
+			});
+
+			settings = { ...settings, pathCss };
+		}
+
+		console.log('response config', settings);
 	}
-
-	// const settings = await prompts([
-	// 	{
-	// 		type: 'text',
-	// 		name: 'pathConfig',
-	// 		message: 'Where would you like to install the lapikit configuration files?',
-	// 		initial: 'src/plugins',
-	// 		validate: (value) =>
-	// 			value.startsWith('src/') ? true : 'Please provide a valid path starting with src/'
-	// 	},
-	// 	{
-	// 		type: 'toggle',
-	// 		name: 'typescript',
-	// 		message: 'Use TypeScript?',
-	// 		initial: true,
-	// 		active: 'Yes',
-	// 		inactive: 'No'
-	// 	}
-	// ]);
-
-	// const response = await prompts([
-	// 	{
-	// 		type: 'text',
-	// 		name: 'projectName',
-	// 		message: 'Project name ?',
-	// 		initial: 'lapikit-app'
-	// 	},
-	// 	{
-	// 		type: 'select',
-	// 		name: 'theme',
-	// 		message: 'Choice theme :',
-	// 		choices: [
-	// 			{ title: 'Light', value: 'light' },
-	// 			{ title: 'Dark', value: 'dark' },
-	// 			{ title: 'Auto', value: 'auto' }
-	// 		],
-	// 		initial: 0
-	// 	},
-	// 	{
-	// 		type: 'toggle',
-	// 		name: 'typescript',
-	// 		message: 'Use TypeScript ?',
-	// 		initial: true,
-	// 		active: 'Yes',
-	// 		inactive: 'No'
-	// 	}
-	// ]);
-
-	// console.log('\n Resume :');
-	// console.log(JSON.stringify(response, null, 2));
-
-	// console.log(`Config : ${configFile}`);
 }
 
 main();
