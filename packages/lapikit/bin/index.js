@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import prompts from 'prompts';
+import { ansi, terminal } from './helper.js';
 
 async function main() {
 	console.log('  _                 _ _    _ _   ');
@@ -27,38 +28,38 @@ async function main() {
 		process.exit(0);
 	}
 
-	const response = await prompts([
-		{
-			type: 'text',
-			name: 'projectName',
-			message: 'Project name ?',
-			initial: 'lapikit-app'
-		},
-		{
-			type: 'select',
-			name: 'theme',
-			message: 'Choice theme :',
-			choices: [
-				{ title: 'Light', value: 'light' },
-				{ title: 'Dark', value: 'dark' },
-				{ title: 'Auto', value: 'auto' }
-			],
-			initial: 0
-		},
-		{
-			type: 'toggle',
-			name: 'typescript',
-			message: 'Use TypeScript ?',
-			initial: true,
-			active: 'Yes',
-			inactive: 'No'
-		}
-	]);
+	// const response = await prompts([
+	// 	{
+	// 		type: 'text',
+	// 		name: 'projectName',
+	// 		message: 'Project name ?',
+	// 		initial: 'lapikit-app'
+	// 	},
+	// 	{
+	// 		type: 'select',
+	// 		name: 'theme',
+	// 		message: 'Choice theme :',
+	// 		choices: [
+	// 			{ title: 'Light', value: 'light' },
+	// 			{ title: 'Dark', value: 'dark' },
+	// 			{ title: 'Auto', value: 'auto' }
+	// 		],
+	// 		initial: 0
+	// 	},
+	// 	{
+	// 		type: 'toggle',
+	// 		name: 'typescript',
+	// 		message: 'Use TypeScript ?',
+	// 		initial: true,
+	// 		active: 'Yes',
+	// 		inactive: 'No'
+	// 	}
+	// ]);
 
-	console.log('\n Resume :');
-	console.log(JSON.stringify(response, null, 2));
+	// console.log('\n Resume :');
+	// console.log(JSON.stringify(response, null, 2));
 
-	console.log(`Config : ${configFile}`);
+	// console.log(`Config : ${configFile}`);
 }
 
 main();
