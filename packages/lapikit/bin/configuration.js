@@ -5,7 +5,7 @@ import presets from './presets.js';
 
 export async function initConfiguration(options) {
 	console.log('initConfiguration called with:', options);
-	const { typescript, pathConfig } = options;
+	const { typescript, pathConfig, formatCSS } = options;
 	const ext = typescript ? 'ts' : 'js';
 	const targetDir = path.resolve(process.cwd(), pathConfig);
 	const targetFile = path.join(targetDir, `lapikit.${ext}`);
@@ -18,7 +18,9 @@ export async function initConfiguration(options) {
 		console.log(`File ${targetFile} already exists.`);
 	} catch {
 		console.log(`Creating file: ${targetFile}`);
-		let content = presets();
+		const content = presets({
+			classic: formatCSS === 'global'
+		});
 
 		await fs.writeFile(targetFile, content);
 		console.log(`File created : ${targetFile}`);

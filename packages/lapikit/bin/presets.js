@@ -1,4 +1,4 @@
-function presets() {
+function presets({ classic }) {
 	let content = '';
 
 	content += `/**\n`;
@@ -6,8 +6,10 @@ function presets() {
 	content += `\tLibrary documentation: https://lapikit.dev\n`;
 	content += ` */\n\n`;
 
-	content += `// Styles\n`;
-	content += `import 'lapikit/css';\n\n`;
+	if (classic) {
+		content += `// Classic\n`;
+		content += `import 'lapikit/css';\n\n`;
+	}
 
 	content += `// Composables\n`;
 	content += `import { helloWorld } from 'lapikit';\n\n`;

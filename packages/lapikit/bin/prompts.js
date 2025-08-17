@@ -70,7 +70,7 @@ export async function initPrompts() {
 				name: 'formatCSS',
 				message: 'What is your CSS format used on your app?',
 				choices: [
-					{ title: 'Common ( CSS / SASS / SCSS / LESS / other libs )', value: 'global' },
+					{ title: 'Basic (classic import)', value: 'global' },
 					{
 						title: 'TailwindCSS (v4)',
 						value: 'tailwind-v4'
