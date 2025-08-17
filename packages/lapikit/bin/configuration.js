@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
-import presets from './presets';
+import presets from './presets.js';
 
 export async function initConfiguration(options) {
 	console.log('initConfiguration called with:', options);
