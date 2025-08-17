@@ -2,8 +2,8 @@ function presets({ classic }) {
 	let content = '';
 
 	content += `/**\n`;
-	content += `\tLapikit\n`;
-	content += `\tLibrary documentation: https://lapikit.dev\n`;
+	content += `\t* Lapikit\n`;
+	content += `\t* Library documentation: https://lapikit.dev\n`;
 	content += ` */\n\n`;
 
 	if (classic) {
