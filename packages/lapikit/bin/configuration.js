@@ -11,9 +11,11 @@ export async function initConfiguration(options) {
 	await fs.mkdir(targetDir, { recursive: true });
 
 	try {
+		console.log(`Trying to access ${targetFile}`);
 		await fs.access(targetFile);
 		console.log(`File ${targetFile} already exists.`);
 	} catch {
+		console.log(`Creating file: ${targetFile}`);
 		await fs.writeFile(targetFile, '// lapikit entry file');
 		console.log(`File created : ${targetFile}`);
 	}
