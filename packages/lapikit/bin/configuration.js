@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 export async function initConfiguration(options) {
+	console.log('initConfiguration called with:', options);
 	const { typescript, pathConfig } = options;
 	const ext = typescript ? 'ts' : 'js';
 	const targetDir = path.resolve(process.cwd(), pathConfig);
