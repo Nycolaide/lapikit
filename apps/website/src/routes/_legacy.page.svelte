@@ -86,6 +86,7 @@
 				density="comfortable"
 				color="on-container"
 				background="container"
+				id="btn-getstarted-lapikit"
 			>
 				{capitalize($t('homepage.top_cta'))}
 			</Button>

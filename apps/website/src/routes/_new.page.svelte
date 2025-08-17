@@ -98,6 +98,7 @@
 			<ThemeToggle app />
 
 			<Button
+				id="btn-getstarted-lapikit"
 				href="/docs/getting-started"
 				density="comfortable"
 				color="on-container"
