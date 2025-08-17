@@ -19,12 +19,12 @@ async function run() {
 	const promptsConfig = await initPrompts();
 
 	if (promptsConfig.env === 'current') {
-		legacyConfiguration(promptsConfig);
+		await legacyConfiguration(promptsConfig);
 	}
 
 	if (promptsConfig.env === 'experimental') {
 		terminal('warn', `Experimental mode is not yet implemented.`);
-		initConfiguration(promptsConfig);
+		await initConfiguration(promptsConfig);
 	}
 }
 
