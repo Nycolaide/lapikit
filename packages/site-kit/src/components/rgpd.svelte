@@ -9,7 +9,7 @@
 	let { dialog, gta, gtaID, gtm, gtmID, bing, bingID, open = $bindable() } = $props();
 
 	onMount(() => {
-		const cookie = getCookie('consent');
+		const cookie = getCookie('_lapikit_consent');
 		if (!cookie) {
 			open = true;
 		} else {
@@ -19,7 +19,7 @@
 	});
 
 	function handleSetConsentMode(state: 'accept' | 'refuse') {
-		setCookie('consent', state);
+		setCookie('_lapikit_consent', state);
 		updateConsent(state);
 		if (state === 'accept' && gtm) loadGTM(gtmID);
 		open = false;
