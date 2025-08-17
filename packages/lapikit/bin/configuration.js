@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
+import presets from './presets';
 
 export async function initConfiguration(options) {
 	console.log('initConfiguration called with:', options);
@@ -17,7 +18,9 @@ export async function initConfiguration(options) {
 		console.log(`File ${targetFile} already exists.`);
 	} catch {
 		console.log(`Creating file: ${targetFile}`);
-		await fs.writeFile(targetFile, '// lapikit entry file');
+		let content = presets();
+
+		await fs.writeFile(targetFile, content);
 		console.log(`File created : ${targetFile}`);
 	}
 }
