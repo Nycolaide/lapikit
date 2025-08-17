@@ -1,9 +1,9 @@
 function presets() {
 	let content = '';
 
-	content += `/**`;
-	content += `\tLapikit`;
-	content += `\tLibrary documentation: https://lapikit.dev`;
+	content += `/**\n`;
+	content += `\tLapikit\n`;
+	content += `\tLibrary documentation: https://lapikit.dev\n`;
 	content += ` */\n\n`;
 
 	content += `// Styles\n`;
