@@ -65,31 +65,45 @@ async function addImportToReferenceFile(targetFile, referenceFile) {
 		const importStatement = `import "${relativePath.startsWith('.') ? relativePath : './' + relativePath}";\n`;
 
 		if (content.includes(`import "${relativePath}"`)) {
-			console.log(`Import already present in ${referenceFile}`);
+			console.log(`Import déjà présent dans ${referenceFile}`);
 			return;
 		}
 
 		const lines = content.split('\n');
-		let insertIndex = 0;
+		let insertIndex = -1;
 
-		// Find the position after existing imports
 		for (let i = 0; i < lines.length; i++) {
-			if (
-				lines[i].trim().startsWith('import ') ||
-				lines[i].trim().startsWith('//') ||
-				lines[i].trim() === ''
-			) {
+			const line = lines[i].trim();
+			if (line.startsWith('<script>') || line.startsWith('<script lang="ts">')) {
 				insertIndex = i + 1;
+				break;
+			}
+		}
+
+		if (insertIndex === -1) {
+			throw new Error(`No found balise <script> ou <script lang="ts"> ${referenceFile}`);
+		}
+
+		let finalInsertIndex = insertIndex;
+		for (let i = insertIndex; i < lines.length; i++) {
+			const line = lines[i].trim();
+
+			if (line === '</script>') {
+				break;
+			}
+
+			if (line === '' || line.startsWith('import ') || line.startsWith('//')) {
+				finalInsertIndex = i + 1;
 			} else {
 				break;
 			}
 		}
 
-		lines.splice(insertIndex, 0, importStatement);
+		lines.splice(finalInsertIndex, 0, `\t${importStatement.trim()}`);
 		const newContent = lines.join('\n');
 
 		await fs.writeFile(referenceFile, newContent);
-		console.log(`Import added in ${referenceFile}`);
+		console.log(`Import has added on ${referenceFile}`);
 	} catch (error) {
 		console.error(`Error adding import: ${error.message}`);
 		throw error;
