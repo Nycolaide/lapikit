@@ -65,7 +65,7 @@ async function addImportToReferenceFile(targetFile, referenceFile) {
 		const importStatement = `import "${relativePath.startsWith('.') ? relativePath : './' + relativePath}";\n`;
 
 		if (content.includes(`import "${relativePath}"`)) {
-			console.log(`Import déjà présent dans ${referenceFile}`);
+			console.log(`import has already exist ${referenceFile}`);
 			return;
 		}
 
