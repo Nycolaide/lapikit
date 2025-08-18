@@ -16,7 +16,7 @@ function presets({ adapterCSS }) {
 
 	content += `// https://lapikit.dev/docs/getting-started\n`;
 	content += `export default createLapikit({\n`;
-	content += `\tadapterCSS: ${adapterCSS},\n`;
+	content += `\tadapterCSS: "${adapterCSS}",\n`;
 	content += `\n});`;
 
 	return content;
