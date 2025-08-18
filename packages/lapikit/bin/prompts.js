@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 import prompts from 'prompts';
+import { terminal } from './helper.js';
 
 export async function initPrompts() {
 	const { confirm } = await prompts({
 		type: 'toggle',
 		name: 'confirm',
-		message: 'Start install Lapikit on your app?',
+		message: 'Launch install Lapikit on your project?',
 		initial: true,
 		active: 'Yes',
 		inactive: 'No'
 	});
 
 	if (!confirm) {
-		console.log('❌ Installation canceled. See you soon.');
+		terminal('warn', `installation canceled.`);
 		process.exit(0);
 	}
 	// temps with legacy and new process install
@@ -70,7 +71,7 @@ export async function initPrompts() {
 				name: 'formatCSS',
 				message: 'What is your CSS format used on your app?',
 				choices: [
-					{ title: 'Basic (classic import)', value: 'global' },
+					{ title: 'Basic (classic import)', value: 'css' },
 					{
 						title: 'TailwindCSS (v4)',
 						value: 'tailwind-v4'
@@ -82,7 +83,7 @@ export async function initPrompts() {
 				]
 			},
 			{
-				type: (prev) => (prev !== 'global' ? 'text' : null),
+				type: (prev) => (prev !== 'css' ? 'text' : null),
 				name: 'pathCSS',
 				message: 'Where would you like to import the lapikit CSS files?',
 				initial: 'src/app.css',
@@ -90,8 +91,6 @@ export async function initPrompts() {
 					value.startsWith('src/') ? true : 'Please provide a valid path starting with src/'
 			}
 		]);
-
-		console.log('response config', settings);
 
 		return {
 			...settings,

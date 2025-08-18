@@ -1,4 +1,4 @@
-function presets({ classic }) {
+function presets({ adapterCSS }) {
 	let content = '';
 
 	content += `/**\n`;
@@ -6,8 +6,8 @@ function presets({ classic }) {
 	content += `\t* Library documentation: https://lapikit.dev\n`;
 	content += ` */\n\n`;
 
-	if (classic) {
-		content += `// Classic\n`;
+	if (adapterCSS === 'css') {
+		content += `// Styles\n`;
 		content += `import 'lapikit/css';\n\n`;
 	}
 
@@ -15,7 +15,9 @@ function presets({ classic }) {
 	content += `import { helloWorld } from 'lapikit';\n\n`;
 
 	content += `// https://lapikit.dev/docs/getting-started\n`;
-	content += `export default helloWorld();`;
+	content += `export default helloWorld({\n`;
+	content += `\tadapterCSS: ${adapterCSS},\n`;
+	content += `\n});`;
 
 	return content;
 }

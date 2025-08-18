@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
 import path from 'path';
+import { terminal } from './helper.js';
 import presets from './presets.js';
 
 async function findReferenceFile(projectPath) {
@@ -9,7 +10,8 @@ async function findReferenceFile(projectPath) {
 	try {
 		await fs.access(routesPath);
 	} catch {
-		throw new Error('Lapikit cannot find the routes/ directory.');
+		terminal('error', `Lapikit cannot find the routes/ directory.`);
+		// throw new Error('Lapikit cannot find the routes/ directory.');
 	}
 
 	const layoutFile = path.join(routesPath, '+layout.svelte');
@@ -65,7 +67,7 @@ async function addImportToReferenceFile(targetFile, referenceFile) {
 		const importStatement = `import "${relativePath.startsWith('.') ? relativePath : './' + relativePath}";\n`;
 
 		if (content.includes(`import "${relativePath}"`)) {
-			console.log(`import has already exist ${referenceFile}`);
+			terminal('info', `Import statement already exists in ${referenceFile}`);
 			return;
 		}
 
@@ -103,9 +105,9 @@ async function addImportToReferenceFile(targetFile, referenceFile) {
 		const newContent = lines.join('\n');
 
 		await fs.writeFile(referenceFile, newContent);
-		console.log(`Import has added on ${referenceFile}`);
+		terminal('info', `Import has been added to ${referenceFile}`);
 	} catch (error) {
-		console.error(`Error adding import: ${error.message}`);
+		terminal('error', `Error adding import: ${error.message}`);
 		throw error;
 	}
 }
@@ -138,7 +140,7 @@ async function addLapikitToViteConfig(viteConfigFile) {
 
 		// Check if lapikit import already exists
 		if (content.includes(lapikitImport) || content.includes(`from 'lapikit/vite'`)) {
-			console.log(`Lapikit import already exists in ${viteConfigFile}`);
+			terminal('info', `Lapikit import already exists in ${viteConfigFile}`);
 			return;
 		}
 
@@ -231,20 +233,19 @@ async function addLapikitToViteConfig(viteConfigFile) {
 		}
 
 		if (!pluginAdded) {
-			console.warn('Could not find sveltekit() in plugins array to add lapikit() after it');
+			terminal('warn', `Could not find sveltekit() in plugins array to add lapikit() after it`);
 		}
 
 		const newContent = lines.join('\n');
 		await fs.writeFile(viteConfigFile, newContent);
-		console.log(`Lapikit import and plugin added to ${viteConfigFile}`);
+		terminal('info', `Lapikit import and plugin added to ${viteConfigFile}`);
 	} catch (error) {
-		console.error(`Error adding lapikit to vite config: ${error.message}`);
+		terminal('error', `Error adding lapikit to vite config: ${error.message}`);
 		throw error;
 	}
 }
 
 export async function initConfiguration(options) {
-	console.log('initConfiguration called with:', options);
 	const { typescript, pathConfig, formatCSS } = options;
 	const ext = typescript ? 'ts' : 'js';
 	const targetDir = path.resolve(process.cwd(), pathConfig);
@@ -253,30 +254,32 @@ export async function initConfiguration(options) {
 	await fs.mkdir(targetDir, { recursive: true });
 
 	let fileCreated = false;
+
+	// Create Lapikit config
 	try {
-		console.log(`Trying to access ${targetFile}`);
 		await fs.access(targetFile);
-		console.log(`File ${targetFile} already exists.`);
+		terminal('info', `File ${targetFile} already exists.`);
 	} catch {
-		console.log(`Creating file: ${targetFile}`);
+		terminal('info', `Creating file: ${targetFile}`);
 		const content = presets({
-			classic: formatCSS === 'global'
+			adapterCSS: formatCSS
 		});
 		await fs.writeFile(targetFile, content);
-		console.log(`File created : ${targetFile}`);
+		terminal('info', `File created: ${targetFile}`);
 		fileCreated = true;
 	}
 
+	// Add Import Lapikit plugin
 	try {
 		const referenceFile = await findReferenceFile(process.cwd());
 		await addImportToReferenceFile(targetFile, referenceFile);
 	} catch (error) {
-		console.error(`Error: ${error.message}`);
-		// If the file was just created and we can't add the import, delete it
+		terminal('error', `Error adding import: ${error.message}`);
+
 		if (fileCreated) {
 			try {
 				await fs.unlink(targetFile);
-				console.log(`File ${targetFile} deleted due to error.`);
+				terminal('info', `File ${targetFile} deleted due to error.`);
 			} catch {
 				// Ignore deletion error
 			}
@@ -289,7 +292,7 @@ export async function initConfiguration(options) {
 		const viteConfigFile = await findViteConfigFile(process.cwd(), typescript);
 		await addLapikitToViteConfig(viteConfigFile);
 	} catch (error) {
-		console.warn(`Warning: Could not update vite.config file: ${error.message}`);
-		// This is not a critical error, so we don't throw it
+		terminal('warn', `Warning: Could not update vite.config file: ${error.message}`);
+		terminal('error', `Error adding lapikit to vite config: ${error.message}`);
 	}
 }

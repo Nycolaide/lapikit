@@ -30,12 +30,12 @@ async function run() {
 
 run()
 	.then(() => {
-		console.log('Website: https://lapikit.dev');
-		console.log('Github: https://github.com/nycolaide/lapikit');
-		console.log('Support the developement: https://buymeacoffee.com/nycolaide');
+		terminal('info', `Website: https://lapikit.dev`);
+		terminal('info', `Github: https://github.com/nycolaide/lapikit`);
+		terminal('info', `Support the developement: https://buymeacoffee.com/nycolaide`);
 		process.exit(0);
 	})
 	.catch((error) => {
-		console.error(`\n${red('✖')} ${error}\n`);
+		terminal('error', `Error: ${error}`);
 		process.exit(1);
 	});
