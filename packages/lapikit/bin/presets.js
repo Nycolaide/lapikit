@@ -12,10 +12,10 @@ function presets({ adapterCSS }) {
 	}
 
 	content += `// Composables\n`;
-	content += `import { helloWorld } from 'lapikit';\n\n`;
+	content += `import createLapikit from 'lapikit';\n\n`;
 
 	content += `// https://lapikit.dev/docs/getting-started\n`;
-	content += `export default helloWorld({\n`;
+	content += `export default createLapikit({\n`;
 	content += `\tadapterCSS: ${adapterCSS},\n`;
 	content += `\n});`;
 

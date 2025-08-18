@@ -30,9 +30,9 @@ async function run() {
 
 run()
 	.then(() => {
-		terminal('info', `Website: https://lapikit.dev`);
-		terminal('info', `Github: https://github.com/nycolaide/lapikit`);
-		terminal('info', `Support the developement: https://buymeacoffee.com/nycolaide`);
+		terminal('none', `\n\n\n\nWebsite: https://lapikit.dev`);
+		terminal('none', `Github: https://github.com/nycolaide/lapikit`);
+		terminal('none', `Support the developement: https://buymeacoffee.com/nycolaide`);
 		process.exit(0);
 	})
 	.catch((error) => {
