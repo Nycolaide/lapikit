@@ -32,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix **Modal** component if open , create bad display on container on modal
 - Fix **Alert** display content not working because line-height 0 for alls grids elements
+- Fix **Dialog** position responsive not working ([[#36](https://github.com/Nycolaide/lapikit/issues/36)])
+- Fix **Modal** position responsive not working ([[#36](https://github.com/Nycolaide/lapikit/issues/36)])
 
 ## [0.2.1] - 2025-07-31
 
