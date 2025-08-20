@@ -204,6 +204,7 @@ Changes the overall style of the chip with filled or outline variants.
 | load          | Snippet                | Content displayed during downloading                     | undefined |                                                |
 | append        | Snippet                | Content displayed after the main content                 | undefined |                                                |
 | prepend       | Snippet                | Content displayed before main content                    | undefined |                                                |
+| readonly      | boolean                | No action or event effet on chip component               | false     |                                                |
 
 ## Variables CSS
 
