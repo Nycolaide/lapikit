@@ -1,13 +1,17 @@
 ---
-head:
-  title: chip
-  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
 title: chip
 subtitle: chip component
 introduction: small visual or interactive elements (tags, statuses, actions)
-cover: "docs/components/chip.webp"
-section: components
-published: true
+head:
+  title: chip
+  description: "Small, practical UI elements for filters, tags or status. Supports colors, states, events and variants."
+style:
+  cover: "docs/components/chip.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/chip.md
 ---
 
 <script>
@@ -200,6 +204,7 @@ Changes the overall style of the chip with filled or outline variants.
 | load          | Snippet                | Content displayed during downloading                     | undefined |                                                |
 | append        | Snippet                | Content displayed after the main content                 | undefined |                                                |
 | prepend       | Snippet                | Content displayed before main content                    | undefined |                                                |
+| readonly      | boolean                | No action or event effet on chip component               | false     |                                                |
 
 ## Variables CSS
 

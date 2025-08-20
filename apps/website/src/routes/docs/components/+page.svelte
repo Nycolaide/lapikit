@@ -1,29 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import type { MarkdownHead, MarkdownWithMetadata, SectionPages } from '$lib';
 	import Head from '$lib/components/head.svelte';
 	import { t } from '$lib/i18n';
 	import { Card } from 'lapikit/components';
 	import { Breadcrumbs } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
 
-	interface Page {
-		title: string;
-		slug: string;
-		subtitle?: string;
-		section: string;
-		cover?: string;
-		introduction?: string;
-	}
-
 	let { data } = $props();
 
-	let componentPages = $state<Page[]>([]);
+	let componentPages = $state<MarkdownWithMetadata[]>([]);
 
-	$effect.pre(() => {
-		if (data && data.pages) {
-			componentPages = data.pages
-				.filter((page: Page) => page.section === 'components')
-				.sort((a: Page, b: Page) => a.title.localeCompare(b.title));
+	$effect(() => {
+		if (data && data.routes) {
+			const list = data.routes.filter((section: SectionPages) => section.key === 'components');
+			componentPages = list[0].pages.sort((a: MarkdownHead, b: MarkdownHead) =>
+				a.title.localeCompare(b.title)
+			);
 		}
 	});
 </script>
@@ -44,19 +37,21 @@
 		{#if componentPages.length === 0}
 			<p>{capitalize($t('docs.landing-page.components.no-pages'))}</p>
 		{/if}
-		{#each componentPages as { title, slug, cover, introduction } (slug)}
+		{#each componentPages as page, index (index)}
 			<Card
-				href={`/${slug}`}
+				href={`/docs${page.metadata.slug}`}
 				class="mb-4 grid grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-1"
 			>
 				<img
-					src={cover ? `/images/${cover}?v=1` : '/images/preview-component.webp?v=1'}
-					alt={`${title} cover`}
+					src={page.style?.cover
+						? `/images/${page.style.cover}?v=1`
+						: '/images/preview-component.webp?v=1'}
+					alt={`${page.title} cover`}
 					class="max-sm:max-h-38"
 				/>
 				<div>
-					<p class="text-lg font-bold md:text-xl">{capitalize(title)}</p>
-					<p class="opacity-75">{capitalize(introduction || '')}</p>
+					<p class="text-lg font-bold md:text-xl">{capitalize(page.title)}</p>
+					<p class="opacity-75">{capitalize(page?.introduction || '')}</p>
 				</div>
 			</Card>
 		{/each}

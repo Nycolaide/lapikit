@@ -20,18 +20,18 @@
 		{
 			title: $t('homepage.dev_with_lapikit.card1.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph'),
-			image: '/images/open-source.webp?v=1',
+			image: '/images/open-source.webp?enhanced',
 			customClass: 'col-span-2 lg:col-span-1'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card2.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph'),
-			image: '/images/styles.webp?v=1'
+			image: '/images/styles.webp?enhanced'
 		},
 		{
 			title: $t('homepage.dev_with_lapikit.card3.title'),
 			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph'),
-			image: '/images/components.webp?v=1'
+			image: '/images/components.webp?enhanced'
 		}
 	]);
 
@@ -140,12 +140,14 @@
 						{title}
 					</p>
 					<div class="pt-8 pb-10 lg:pt-9 lg:pb-16">
-						<img
-							src={image}
-							alt={title}
-							loading="lazy"
-							class="relative mx-auto aspect-354/259 w-10/12 overflow-hidden bg-transparent lg:left-12 lg:ml-auto lg:w-full"
-						/>
+						{#if image}
+							<img
+								src={image}
+								alt={title}
+								loading="lazy"
+								class="relative mx-auto aspect-354/259 w-10/12 overflow-hidden bg-transparent lg:left-12 lg:ml-auto lg:w-full"
+							/>
+						{/if}
 					</div>
 
 					<p

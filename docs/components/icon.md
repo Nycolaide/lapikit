@@ -1,13 +1,17 @@
 ---
-head:
-  title: icon
-  description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
 title: icon
 subtitle: icon component
 introduction: displays a configurable SVG icon
-cover: "docs/components/icon.webp"
-section: components
-published: true
+head:
+  title: icon
+  description: "Insert icons easily with Lapikit. Manage sizes, colors, states and seamless integration into your components."
+style:
+  cover: "docs/components/icon.webp"
+state:
+  section: components
+  published: true
+github:
+  url: /components/icon.md
 ---
 
 <script>

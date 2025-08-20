@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { getCssPathFromArgs, terminal } from '../helper.js';
+import { terminal } from '../helper.js';
 
 const importLapikitVite = `import { lapikit } from 'lapikit/vite';`;
 const importLapikitCss = `@import 'lapikit/css';`;
@@ -33,8 +33,8 @@ export async function adapterViteConfig(typescript) {
 	}
 }
 
-export async function adapterCSSConfig() {
-	const cssPath = getCssPathFromArgs();
+export async function adapterCSSConfig(options) {
+	const cssPath = options?.pathCSS || 'src/app.css';
 	const resolvedPath = path.resolve(process.cwd(), cssPath);
 	try {
 		await fs.access(resolvedPath);

@@ -1,19 +1,24 @@
 ---
-head:
-  title: introduction
-  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
-icon: mgc_sticker_line
 title: introduction
 subtitle: introducing Lapikit Svelte UI Components
 description: simple, optimized components for Svelte
-section: base
-order: 0
+head:
+  title: introduction
+  description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."
+style:
+  icon: mgc_sticker_line
+state:
+  section: base
+  published: true
+  recommended: true
+  order: 0
+github:
+  url: /introduction.md
 keywords:
   - why lapikit
   - acknowledgements
   - discover
   - lapikit
-published: true
 ---
 
 Lapikit is a Svelte component library focused on the development experience, ease of integration and complete customization of each component. Use it to create accessible, high-performance user interfaces without sacrificing customization and performance.

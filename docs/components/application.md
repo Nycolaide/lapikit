@@ -1,18 +1,22 @@
 ---
-head:
-  title: Application
-  description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
 title: Application
 subtitle: application component
 introduction: root structure to organize the app
-cover: "docs/components/application.webp"
-section: components
-order: 0
+head:
+  title: Application
+  description: "The root component of your Svelte projects with Lapikit. The ideal basis for structuring your app with logic and clarity."
+style:
+  cover: "docs/components/application.webp"
+state:
+  section: components
+  published: true
+  order: 0
+github:
+  url: /components/application.md
 keywords:
   - provider
   - app
   - structure
-published: true
 ---
 
 <script>

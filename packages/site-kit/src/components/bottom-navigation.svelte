@@ -27,7 +27,7 @@
 		min-width: 20rem;
 		margin: 0 auto;
 		padding-top: 0.5rem;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		width: calc(100% - 20%);
 	}
 </style>

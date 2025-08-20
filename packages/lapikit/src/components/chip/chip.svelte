@@ -37,6 +37,7 @@
 		rounded,
 		closable,
 		noRipple,
+		readonly = false,
 		...rest
 	}: ChipProps = $props();
 
@@ -44,7 +45,7 @@
 
 	$effect(() => {
 		const refProps = { ...rest };
-		if (refProps?.onclick) is = 'button';
+		if (refProps?.onclick && !readonly) is = 'button';
 	});
 </script>
 
@@ -68,6 +69,7 @@
 			disabled && 'kit-chip--disabled',
 			active && 'kit-chip--active',
 			loading && 'kit-chip--loading',
+			readonly && 'kit-chip--readonly',
 			rest.class
 		]}
 		tabindex={href && disabled ? -1 : 0}
@@ -77,7 +79,7 @@
 		type={href ? undefined : type}
 		use:ripple={{
 			component: 'chip',
-			disabled: noRipple || disabled || is === 'div' || is === 'span'
+			disabled: noRipple || readonly || disabled || is === 'div' || is === 'span'
 		}}
 		style:--base={assets.color(background)}
 		style:--on={assets.color(color)}
@@ -109,7 +111,7 @@
 			</div>
 		{/if}
 
-		{#if closable}
+		{#if closable && !readonly}
 			<button
 				class="kit-chip--close"
 				type="button"
