@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New CI for install **Lapikit** with package _prompts_
 - Add experimental for new core **Lapikit**
+- Add **Chip** component style with new props _readonly_ ([#34](https://github.com/Nycolaide/lapikit/issues/34))
 
 ### Fix
 

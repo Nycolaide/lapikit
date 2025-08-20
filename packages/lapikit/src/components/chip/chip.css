@@ -20,7 +20,7 @@
 	text-decoration: none;
 }
 
-.kit-chip:not(div):not(span) {
+.kit-chip:not(div):not(span):not(.kit-chip--readonly) {
 	cursor: pointer;
 }
 
@@ -49,13 +49,13 @@
 	pointer-events: none;
 	border-radius: inherit;
 }
-.kit-chip:not(div):not(span):hover::after {
+.kit-chip:not(div):not(span):not(.kit-chip--readonly):hover::after {
 	opacity: 0.08;
 }
-.kit-chip:not(div):not(span):active::after {
+.kit-chip:not(div):not(span):not(.kit-chip--readonly):active::after {
 	opacity: 0.12;
 }
-.kit-chip:not(div):not(span):focus-visible::after {
+.kit-chip:not(div):not(span):not(.kit-chip--readonly):focus-visible::after {
 	opacity: 0.12;
 }
 
