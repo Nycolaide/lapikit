@@ -2,8 +2,8 @@ function presets({ adapterCSS }) {
 	let content = '';
 
 	content += `/**\n`;
-	content += `\t* Lapikit\n`;
-	content += `\t* Library documentation: https://lapikit.dev\n`;
+	content += ` * Lapikit\n`;
+	content += ` * Library documentation: https://lapikit.dev\n`;
 	content += ` */\n\n`;
 
 	if (adapterCSS === 'css') {

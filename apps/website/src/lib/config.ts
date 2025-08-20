@@ -17,6 +17,10 @@ export const packageManagers: { name: string; icon: string }[] = [
 	{
 		name: 'yarn',
 		icon: 'mdi:yarn'
+	},
+	{
+		name: 'bun',
+		icon: 'mdi:bun'
 	}
 ];
 

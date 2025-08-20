@@ -37,12 +37,14 @@ keywords:
 
     // command line
     const commandInstall = [
-        {pkg: "npm", command: ["npm i -D lapikit", "npx lapikit init"]},
-        {pkg: "yarn", command: ["yarn add -D lapikit", "npx lapikit init"]},
+        {pkg: "npm", command: ["npm i -D lapikit", "npx lapikit"]},
+        {pkg: "yarn", command: ["yarn add -D lapikit", "npx lapikit"]},
+        {pkg: "bun", command: ["bun add -D lapikit", "npx lapikit"]},
     ];
     const commandInstallWithoutCLI = [
         {pkg: "npm", command: "npm i -D lapikit"},
         {pkg: "yarn", command: "yarn add -D lapikit"},
+        {pkg: "bun", command: ["bun add -D lapikit", "npx lapikit"]},
     ];
 </script>
 
