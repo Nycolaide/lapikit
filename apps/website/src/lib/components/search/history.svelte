@@ -128,13 +128,13 @@
 		<div class="text-center">
 			<Card
 				class="flex aspect-square w-full items-center justify-center"
-				background="#dfdfdf"
+				background="surface"
 				href={`/docs${search.slug}`}
 				active={selectedIndex === index}
 			>
 				<div
 					class="flex aspect-square w-full items-center justify-center rounded-lg"
-					style:background={search.color ? search.color : '#dfdfdf'}
+					style:background={search.color ? search.color : 'background'}
 				>
 					{#if search.cover && search.cover !== 'null' && search.cover !== '' && search.cover !== 'undefined'}
 						<img class="" src={`/images/${search.cover}`} alt="test" />
