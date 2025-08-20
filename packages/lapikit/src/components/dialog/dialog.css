@@ -60,7 +60,9 @@
 }
 
 .kit-dialog[breakpoint]kit-dialog--position-center {
-	margin: auto;
+	/* margin: auto; */
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-xs {
