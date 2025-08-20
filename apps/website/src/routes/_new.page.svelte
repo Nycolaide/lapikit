@@ -162,7 +162,7 @@
 
 		<div class="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-x-[15px]">
 			{#each advantageLapikit as { title, paragraph, image, customClass } (title)}
-				<Card class={customClass ? `text-start ${customClass}` : 'text-start'}>
+				<Card class={customClass ? `text-start ${customClass}` : 'text-start'} rounded="lg">
 					<p class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
 						{title}
 					</p>
