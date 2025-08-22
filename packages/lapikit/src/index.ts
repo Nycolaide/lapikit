@@ -1,3 +1,7 @@
+import { deepMerge } from './internal/deepMerge.js';
+import { breakpoints } from './stores/breakpoints.js';
+import { get } from 'svelte/store';
+
 interface Lapikit {
 	adapterCSS: string;
 	breakpoints: {
@@ -11,10 +15,10 @@ function createLapikit(lapikit: Lapikit) {
 	console.log('Creating a new Lapikit instance...');
 	console.log('Options loaded:', lapikit);
 
-	// deepMerge
-	const breakpointMerged = lapikit?.breakpoints?.thresholds;
-
-	if (breakpointMerged) {
+	if (lapikit?.breakpoints?.thresholds) {
+		const currentBreakpoints = get(breakpoints);
+		const breakpointMerged = deepMerge(currentBreakpoints, lapikit.breakpoints.thresholds);
+		breakpoints.set(breakpointMerged);
 		console.log('Breakpoints found:', breakpointMerged);
 	}
 }
