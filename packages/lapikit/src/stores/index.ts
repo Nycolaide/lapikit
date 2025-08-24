@@ -53,3 +53,4 @@ export const popModal = (id: string) => {
 
 export * from './breakpoints.js';
 export * from './viewports.js';
+export * from '../internal/mediaQueries.js';
