@@ -4,10 +4,20 @@
 		colorSchemeSystem,
 		modalOpen,
 		setOpenModal,
-		updateThemeStore
+		updateThemeStore,
+		viewportWidth
 	} from '$lib/stores/index.js';
 	import type { Snippet } from 'svelte';
 	let { children }: { children: Snippet } = $props();
+
+	// states
+	let innerWidth = $state(0);
+
+	$effect(() => {
+		if (BROWSER) {
+			viewportWidth.set(innerWidth);
+		}
+	});
 
 	$effect.pre(() => {
 		if (!BROWSER) return;
@@ -30,6 +40,8 @@
 		if (local !== null) updateThemeStore(local as 'dark' | 'light' | 'system');
 	});
 </script>
+
+<svelte:window bind:innerWidth />
 
 {@render children?.()}
 
