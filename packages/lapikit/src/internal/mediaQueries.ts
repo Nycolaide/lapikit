@@ -27,7 +27,7 @@ function toPx(value: string | number): number {
  */
 export function mediaQueries(...args: Array<['min' | 'max', string]> | ['min' | 'max', string]) {
 	const bp: Record<string, string | number> = get(breakpoints);
-	const width = get(viewportWidth) || window.innerWidth;
+	const width = get(viewportWidth) || 0;
 
 	let queries: Array<['min' | 'max', string]> = [];
 	if (Array.isArray(args[0]) && typeof args[0][0] === 'string') {
