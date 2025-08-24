@@ -40,11 +40,14 @@ export function mediaQueries(...args: Array<['min' | 'max', string]> | ['min' | 
 	for (const [type, key] of queries) {
 		const value = bp[key];
 		const px = toPx(value);
+
+		console.log('Media Queries:', type, key, value, px, width);
 		if (type === 'min') {
 			result = result && width >= px;
 		} else if (type === 'max') {
 			result = result && width <= px;
 		}
 	}
+
 	return result;
 }
