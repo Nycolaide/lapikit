@@ -2,30 +2,19 @@
 import { writable, type Writable } from 'svelte/store';
 
 type Breakpoints = {
-	[key: string]: number | string;
+	[key: string]: number;
 };
 
 // presets
 const ref: Breakpoints = {
 	base: 0, // 0px
-	xs: '28rem', //448px
-	sm: '40rem', //640px
-	md: '48rem', //768px
-	lg: '64rem', //1024px
-	xl: '80rem', //1280px
-	'2xl': '96rem', //1536px
-	'3xl': '112rem' //1792px
+	xs: 448, //28rem
+	sm: 640, //40rem
+	md: 768, //48rem
+	lg: 1024, //64rem
+	xl: 1280, //80rem
+	'2xl': 1536, //96rem
+	'3xl': 1792 //112rem
 };
 
 export const breakpoints: Writable<Breakpoints> = writable(ref);
-
-// export function setBreakpoints(newBreakpoints: Breakpoints) {
-// 	breakpoints.set(newBreakpoints);
-// }
-
-// export function updateBreakpoint(key: string, value: number) {
-// 	breakpoints.update((bp) => ({
-// 		...bp,
-// 		[key]: value
-// 	}));
-// }
