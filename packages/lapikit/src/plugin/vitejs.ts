@@ -3,22 +3,34 @@ import { importer } from '$lib/plugin/modules/importer.js';
 import { processCSS } from '$lib/style/css.js';
 import { parseConfig } from '$lib/plugin/modules/config.js';
 import { terminal } from '$lib/internal/terminal.js';
+import path from 'path';
+import fs from 'fs';
 
-export async function lapikit() {
+type Lapikit = {
+	minify?: boolean;
+	config?: string;
+};
+
+const app = process.cwd();
+
+export async function lapikit({ minify = false, config = 'src/plugins/lapikit.js' }: Lapikit = {}) {
+	const pathConfig = path.resolve(app, config);
+
+	console.log('pathConfig:', pathConfig);
 	return {
 		name: 'lapikit/vite.js',
 		async configResolved() {
-			const config = await importer();
-			const result = await parseConfig(config);
+			const importedConfig = await importer();
+			const result = await parseConfig(importedConfig);
 			await processCSS(result);
 			terminal('info', 'lapikit is up!');
 		},
 		async configureServer(server: ViteDevServer) {
-			server.watcher.add('./lapikit.config.js');
+			server.watcher.add(config);
 			server.watcher.on('change', async (filePath: string) => {
-				if (String(filePath).includes('lapikit.config.js')) {
-					const config = await importer();
-					const result = await parseConfig(config);
+				if (String(filePath).includes(config)) {
+					const importedConfig = await importer();
+					const result = await parseConfig(importedConfig);
 					await processCSS(result);
 					terminal('info', 'lapikit config reloaded');
 				}
