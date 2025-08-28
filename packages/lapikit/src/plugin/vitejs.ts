@@ -5,36 +5,43 @@ import { parseConfig } from '$lib/plugin/modules/config.js';
 import { terminal } from '$lib/internal/terminal.js';
 import path from 'path';
 import fs from 'fs';
+import { css } from './css.js';
 
 type Lapikit = {
-	minify?: boolean;
 	config?: string;
 };
 
 const app = process.cwd();
 
-export async function lapikit({ minify = false, config }: Lapikit = {}) {
-	if (config) {
-		const pathConfig = path.resolve(app, config);
+async function getLapikitConfig(filePath: string) {
+	const pathConfig = path.resolve(app, filePath);
 
-		if (!fs.existsSync(pathConfig)) process.exit(1);
+	if (!fs.existsSync(pathConfig)) process.exit(1);
 
-		const code = fs.readFileSync(pathConfig, 'utf-8');
-		const match = code.match(/createLapikit\s*\(\s*({[\s\S]*?})\s*\)/);
+	const code = fs.readFileSync(pathConfig, 'utf-8');
+	const match = code.match(/createLapikit\s*\(\s*({[\s\S]*?})\s*\)/);
 
-		let lapikitOptions = {};
+	let options = {};
 
-		if (match && match[1]) {
-			try {
-				lapikitOptions = new Function('return ' + match[1])();
-			} catch (e) {
-				console.error('Error parsing lapikit config:', e);
-			}
-		} else {
-			console.error('Lapikit not found');
+	if (match && match[1]) {
+		try {
+			options = new Function('return ' + match[1])();
+		} catch (e) {
+			console.error('Error parsing lapikit config:', e);
 		}
+	} else {
+		console.error('Lapikit not found');
+	}
 
-		console.log('lapikitOptions', lapikitOptions);
+	return options;
+}
+
+export async function lapikit({ config }: Lapikit = {}) {
+	if (config) {
+		const value = getLapikitConfig(config);
+		console.log(value);
+
+		css(value);
 	}
 
 	return {
@@ -46,11 +53,11 @@ export async function lapikit({ minify = false, config }: Lapikit = {}) {
 			terminal('info', 'lapikit is up!');
 		},
 		async configureServer(server: ViteDevServer) {
-			server.watcher.add(config);
+			server.watcher.add('./lapikit.config.js');
 			server.watcher.on('change', async (filePath: string) => {
-				if (String(filePath).includes(config)) {
-					const importedConfig = await importer();
-					const result = await parseConfig(importedConfig);
+				if (String(filePath).includes('lapikit.config.js')) {
+					const config = await importer();
+					const result = await parseConfig(config);
 					await processCSS(result);
 					terminal('info', 'lapikit config reloaded');
 				}
