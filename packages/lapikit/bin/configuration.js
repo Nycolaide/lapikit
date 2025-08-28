@@ -292,7 +292,7 @@ export async function initConfiguration(options) {
 	// Add lapikit to vite.config file
 	try {
 		const viteConfigFile = await findViteConfigFile(process.cwd(), typescript);
-		await addLapikitToViteConfig(viteConfigFile);
+		await addLapikitToViteConfig(viteConfigFile, pathConfig, typescript);
 	} catch (error) {
 		terminal('warn', `Warning: Could not update vite.config file: ${error.message}`);
 		terminal('error', `Error adding lapikit to vite config: ${error.message}`);
