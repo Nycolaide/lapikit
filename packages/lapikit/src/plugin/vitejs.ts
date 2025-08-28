@@ -13,10 +13,16 @@ type Lapikit = {
 
 const app = process.cwd();
 
-export async function lapikit({ minify = false, config = 'src/plugins/lapikit.js' }: Lapikit = {}) {
-	const pathConfig = path.resolve(app, config);
+export async function lapikit({ minify = false, config }: Lapikit = {}) {
+	if (config) {
+		try {
+			const pathConfig = path.resolve(app, config);
+			console.log('pathConfig:', pathConfig);
+		} catch (e) {
+			console.log('Error resolving config path:', e);
+		}
+	}
 
-	console.log('pathConfig:', pathConfig);
 	return {
 		name: 'lapikit/vite.js',
 		async configResolved() {
