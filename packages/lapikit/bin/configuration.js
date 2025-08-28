@@ -137,7 +137,7 @@ async function addLapikitToViteConfig(viteConfigFile, pathConfig, typescript) {
 	try {
 		const content = await fs.readFile(viteConfigFile, 'utf-8');
 		const lapikitImport = `import { lapikit } from 'lapikit/vite';`;
-		const configPath = `${pathConfig || 'src/plugins'}/lapikit.${typescript ? 'ts' : 'js'}`;
+		const configPath = `${pathConfig}/lapikit.${typescript ? 'ts' : 'js'}`;
 		const lapikitPlugin = `lapikit({ config: '${configPath}' })`;
 
 		// Check if lapikit import already exists
