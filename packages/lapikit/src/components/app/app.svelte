@@ -4,20 +4,11 @@
 		colorSchemeSystem,
 		modalOpen,
 		setOpenModal,
-		updateThemeStore,
-		viewportWidth
+		useColorScheme,
+		useTheme
 	} from '$lib/stores/index.js';
 	import type { Snippet } from 'svelte';
 	let { children }: { children: Snippet } = $props();
-
-	// states
-	let innerWidth = $state(0);
-
-	$effect(() => {
-		if (BROWSER) {
-			viewportWidth.set(innerWidth);
-		}
-	});
 
 	$effect.pre(() => {
 		if (!BROWSER) return;
@@ -36,12 +27,14 @@
 			});
 
 		// local
-		const local = localStorage.getItem('@lapikit/theme');
-		if (local !== null) updateThemeStore(local as 'dark' | 'light' | 'system');
+		const localColorScheme = localStorage.getItem('@lapikit/color-scheme');
+		const localTheme = localStorage.getItem('@lapikit/theme');
+
+		// apply local settings
+		if (localColorScheme !== null) useColorScheme(localColorScheme as 'dark' | 'light' | 'system');
+		if (localTheme !== null) useTheme(localTheme as string);
 	});
 </script>
-
-<svelte:window bind:innerWidth />
 
 {@render children?.()}
 
