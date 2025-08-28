@@ -15,12 +15,26 @@ const app = process.cwd();
 
 export async function lapikit({ minify = false, config }: Lapikit = {}) {
 	if (config) {
-		try {
-			const pathConfig = path.resolve(app, config);
-			console.log('pathConfig:', pathConfig);
-		} catch (e) {
-			console.log('Error resolving config path:', e);
+		const pathConfig = path.resolve(app, config);
+
+		if (!fs.existsSync(pathConfig)) process.exit(1);
+
+		const code = fs.readFileSync(pathConfig, 'utf-8');
+		const match = code.match(/createLapikit\s*\(\s*({[\s\S]*?})\s*\)/);
+
+		let lapikitOptions = {};
+
+		if (match && match[1]) {
+			try {
+				lapikitOptions = new Function('return ' + match[1])();
+			} catch (e) {
+				console.error('Error parsing lapikit config:', e);
+			}
+		} else {
+			console.error('Lapikit not found');
 		}
+
+		console.log('lapikitOptions', lapikitOptions);
 	}
 
 	return {
