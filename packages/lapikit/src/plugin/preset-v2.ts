@@ -22,27 +22,59 @@ export const preset = {
 			light: {
 				dark: false,
 				colors: {
-					primary: '#ff3e00',
-					secondary: '#ff3e00',
-					accent: '#ff3e00',
-					neutral: '#ff3e00',
-					'base-100': '#ff3e00',
-					'base-200': '#ff3e00',
-					'base-300': '#ff3e00'
+					blue: '#007AFF',
+					green: '#34C759',
+					red: '#FF3B30',
+					yellow: '#FFCC00',
+					orange: '#FF9500',
+					purple: '#AF52DE',
+					pink: '#FF2D55',
+					indigo: '#5856D6',
+					cyan: '#5AC8FA',
+					gray: '#8E8E93',
+					'gray-2': '#AEAEB2',
+					'gray-3': '#C7C7CC',
+					'gray-4': '#D1D1D6',
+					'gray-5': '#E5E5EA',
+					'gray-6': '#F2F2F7',
+					'system-background': '#FFFFFF',
+					'secondary-background': '#F2F2F7',
+					'tertiary-background': '#EFEFF4',
+					label: '#000000',
+					'secondary-label': 'rgba(60,60,67,0.6)'
 				}
 			},
 			dark: {
 				dark: true,
 				colors: {
-					primary: '#15ff00ff',
-					secondary: '#15ff00ff',
-					accent: '#15ff00ff',
-					neutral: '#15ff00ff',
-					'base-100': '#15ff00ff',
-					'base-200': '#15ff00ff  ',
-					'base-300': '#15ff00ff'
+					blue: '#0A84FF',
+					green: '#30D158',
+					red: '#FF453A',
+					yellow: '#FFD60A',
+					orange: '#FF9F0A',
+					purple: '#BF5AF2',
+					pink: '#FF375F',
+					indigo: '#5E5CE6',
+					cyan: '#64D2FF',
+					gray: '#8E8E93',
+					'gray-2': '#636366',
+					'gray-3': '#48484A',
+					'gray-4': '#3A3A3C',
+					'gray-5': '#2C2C2E',
+					'gray-6': '#1C1C1E',
+					background: '#000000',
+					'secondary-background': '#1C1C1E',
+					'tertiary-background': '#2C2C2E',
+					label: '#FFFFFF',
+					'secondary-label': 'rgba(235,235,245,0.6)'
 				}
 			}
+		},
+		variables: {
+			info: 'var(--system-blue)',
+			success: 'var(--system-green)',
+			error: 'var(--system-red)',
+			warning: 'var(--system-yellow)'
 		}
 	}
 };
