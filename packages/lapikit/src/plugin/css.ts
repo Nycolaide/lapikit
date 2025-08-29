@@ -1,8 +1,12 @@
 import { deepMerge } from '$lib/internal/deepMerge.js';
 import { preset } from './preset-v2.js';
-
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import fsPromises from 'fs/promises';
 import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function css(configuration: any) {
