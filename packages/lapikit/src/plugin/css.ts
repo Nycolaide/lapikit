@@ -10,12 +10,14 @@ const __dirname = dirname(__filename);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function css(configuration: any) {
-	console.log('VALUE configuration', configuration);
+	// console.log('VALUE configuration', configuration);
 	// states
 	const defaultTheme = configuration?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const themesMerged = deepMerge(configuration?.theme?.themes || {}, preset.theme.themes);
 
 	let response = '';
+
+	console.log('VALUE themesMerged', themesMerged);
 
 	for (const [name, values] of Object.entries(themesMerged)) {
 		let css = defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
@@ -28,7 +30,7 @@ export function css(configuration: any) {
 			css += `  --system-${varName}: ${varValue};\n`;
 		}
 
-		console.log('VALUE', values, deepMerge(values?.variables, ref.variables));
+		// console.log('VALUE', values, deepMerge(values?.variables, ref.variables));
 		// variables
 		for (const [name, varValue] of Object.entries(
 			deepMerge(values?.variables, ref.variables) || {}
@@ -38,31 +40,31 @@ export function css(configuration: any) {
 
 		css += '}\n';
 
-		console.log(`Themes colors (${name}):`, css);
+		// console.log(`Themes colors (${name}):`, css);
 		response += css;
 	}
 
-	console.log('All themes CSS:', response);
+	// console.log('All themes CSS:', response);
 
 	// typography
 	// states
-	const defaultTypography =
-		configuration?.typography?.defaultTypography || preset.typography.defaultTypography;
-	const fontsMerged = deepMerge(configuration?.typography?.fonts || {}, preset.typography.fonts);
+	// const defaultTypography =
+	// 	configuration?.typography?.defaultTypography || preset.typography.defaultTypography;
+	// const fontsMerged = deepMerge(configuration?.typography?.fonts || {}, preset.typography.fonts);
 
-	for (const [name, values] of Object.entries(fontsMerged)) {
-		let css = '';
+	// for (const [name, values] of Object.entries(fontsMerged)) {
+	// 	let css = '';
 
-		css += defaultTypography === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
-		// fonts
-		for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
-			css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
-		}
+	// 	css += defaultTypography === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
+	// 	// fonts
+	// 	for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
+	// 		css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
+	// 	}
 
-		css += '}\n';
+	// 	css += '}\n';
 
-		response += css;
-	}
+	// 	response += css;
+	// }
 
 	fsPromises.writeFile(path.resolve(__dirname, '../colors.css'), response);
 }
