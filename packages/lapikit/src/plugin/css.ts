@@ -83,14 +83,6 @@ export async function css(configuration: any) {
 			css += `  --prism-${name}: ${parser(values)};\n`;
 		}
 
-		for (const [styleName, styleValue] of Object.entries(values || {})) {
-			console.log('VALUE', styleName, styleValue, typeof styleValue);
-
-			for (const [subStyleName, subStyleValue] of Object.entries(styleValue)) {
-				css += `  --prism-${styleName}-${subStyleName}: ${parser(subStyleValue)};\n`;
-			}
-		}
-
 		response += css;
 	}
 
