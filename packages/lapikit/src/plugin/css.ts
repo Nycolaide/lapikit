@@ -13,22 +13,25 @@ export function css(configuration: any) {
 	// states
 	const defaultTheme = configuration?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const themesMerged = deepMerge(configuration?.theme?.themes || {}, preset.theme.themes);
-	const variablesMerged = deepMerge(configuration?.theme?.variables || {}, preset.theme.variables);
 
 	let response = '';
+
 	for (const [name, values] of Object.entries(themesMerged)) {
-		let css = '';
+		let css = defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
 
-		css += defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
-
+		// ref
+		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
 		// colors
 		css += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
-		for (const [varName, varValue] of Object.entries(values?.colors || {})) {
+		for (const [varName, varValue] of Object.entries(deepMerge(values?.colors, ref.colors) || {})) {
 			css += `  --system-${varName}: ${varValue};\n`;
 		}
 
+		console.log('VALUE', values, deepMerge(values?.variables, ref.variables));
 		// variables
-		for (const [name, varValue] of Object.entries(variablesMerged)) {
+		for (const [name, varValue] of Object.entries(
+			deepMerge(values?.variables, ref.variables) || {}
+		)) {
 			css += `  --kit-${name}: ${varValue};\n`;
 		}
 
