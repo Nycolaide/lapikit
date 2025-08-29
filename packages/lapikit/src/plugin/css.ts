@@ -47,25 +47,26 @@ export async function css(configuration: any) {
 
 	// console.log('All themes CSS:', response);
 
-	// typography
+	//typography
 	// states
-	// const defaultTypography =
-	// 	configuration?.typography?.defaultTypography || preset.typography.defaultTypography;
-	// const fontsMerged = deepMerge(configuration?.typography?.fonts || {}, preset.typography.fonts);
+	const defaultTypography =
+		configuration?.typography?.defaultTypography || preset.typography.defaultTypography;
 
-	// for (const [name, values] of Object.entries(fontsMerged)) {
-	// 	let css = '';
+	for (const [name, values] of Object.entries(
+		deepMerge(preset.typography.fonts, configuration?.typography?.fonts || {})
+	)) {
+		let css = '';
 
-	// 	css += defaultTypography === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
-	// 	// fonts
-	// 	for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
-	// 		css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
-	// 	}
+		css += defaultTypography === name ? `:root {\n` : `.${name} {\n`;
+		// fonts
+		for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
+			css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
+		}
 
-	// 	css += '}\n';
+		css += '}\n';
 
-	// 	response += css;
-	// }
+		response += css;
+	}
 
 	fsPromises.writeFile(path.resolve(__dirname, '../colors.css'), response);
 }
