@@ -59,7 +59,7 @@ export async function css(configuration: any) {
 
 		css += defaultTypography === name ? `:root {\n` : `.${name} {\n`;
 		// fonts
-		for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
+		for (const [fontName, fontValue] of Object.entries(values || {})) {
 			css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
 		}
 
