@@ -19,25 +19,52 @@ export function css(configuration: any) {
 	for (const [name, values] of Object.entries(themesMerged)) {
 		let css = '';
 
-		css += defaultTheme === name ? ':root {\n' : `.${name} {\n`;
+		css += defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
+
+		// colors
 		css += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
 		for (const [varName, varValue] of Object.entries(values?.colors || {})) {
 			css += `  --system-${varName}: ${varValue};\n`;
 		}
+
+		// variables
+		for (const [name, varValue] of Object.entries(variablesMerged)) {
+			css += `  --kit-${name}: ${varValue};\n`;
+		}
+
 		css += '}\n';
 
 		console.log(`Themes colors (${name}):`, css);
 		response += css;
 	}
 
-	//variables
-	response += ':root {\n';
-	for (const [name, varValue] of Object.entries(variablesMerged)) {
-		response += `  --kit-${name}: ${varValue};\n`;
-	}
-	response += '}\n';
-
 	console.log('All themes CSS:', response);
+
+	// typography
+	// states
+	const defaultTypography =
+		configuration?.typography?.defaultTypography || preset.typography.defaultTypography;
+	const fontsMerged = deepMerge(configuration?.typography?.fonts || {}, preset.typography.fonts);
+
+	for (const [name, values] of Object.entries(fontsMerged)) {
+		let css = '';
+
+		css += defaultTypography === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
+		// fonts
+		for (const [fontName, fontValue] of Object.entries(values?.font || {})) {
+			css += `  --kit-font-${fontName}: ${parser(fontValue)};\n`;
+		}
+
+		css += '}\n';
+
+		response += css;
+	}
 
 	fsPromises.writeFile(path.resolve(__dirname, '../colors.css'), response);
 }
+
+const parser = (value: string | number | Array<string | number>) => {
+	if (typeof value === 'number') return `${value}px`;
+	if (Array.isArray(value)) return value.join(', ');
+	return value;
+};

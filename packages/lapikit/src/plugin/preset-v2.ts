@@ -1,3 +1,10 @@
+const variables = {
+	info: 'var(--system-blue)',
+	success: 'var(--system-green)',
+	error: 'var(--system-red)',
+	warning: 'var(--system-yellow)'
+};
+
 export const preset = {
 	breakpoints: {
 		devices: {
@@ -37,12 +44,13 @@ export const preset = {
 					'gray-4': '#D1D1D6',
 					'gray-5': '#E5E5EA',
 					'gray-6': '#F2F2F7',
-					'system-background': '#FFFFFF',
+					background: '#FFFFFF',
 					'secondary-background': '#F2F2F7',
 					'tertiary-background': '#EFEFF4',
 					label: '#000000',
 					'secondary-label': 'rgba(60,60,67,0.6)'
-				}
+				},
+				variables: variables
 			},
 			dark: {
 				dark: true,
@@ -67,14 +75,41 @@ export const preset = {
 					'tertiary-background': '#2C2C2E',
 					label: '#FFFFFF',
 					'secondary-label': 'rgba(235,235,245,0.6)'
-				}
+				},
+				variables: variables
 			}
-		},
-		variables: {
-			info: 'var(--system-blue)',
-			success: 'var(--system-green)',
-			error: 'var(--system-red)',
-			warning: 'var(--system-yellow)'
+		}
+	},
+	typography: {
+		defaultTypography: 'default',
+		fonts: {
+			default: {
+				sans: [
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'Segoe UI',
+					'Roboto',
+					'Helvetica Neue',
+					'Arial',
+					'sans-serif',
+					'Apple Color Emoji',
+					'Segoe UI Emoji',
+					'Segoe UI Symbol'
+				],
+				mono: [
+					'SFMono-Regular',
+					'ui-monospace',
+					'SF Mono',
+					'Menlo',
+					'Monaco',
+					'Consolas',
+					'Liberation Mono',
+					'Courier New',
+					'monospace'
+				],
+				serif: ['Merriweather', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
+			}
 		}
 	}
 };
