@@ -74,14 +74,20 @@ export async function css(configuration: any) {
 		deepMerge(preset.styles, configuration?.styles || {})
 	)) {
 		let css = '';
+
+		if (values && typeof values === 'object') {
+			for (const [styleName, styleValue] of Object.entries(values || {})) {
+				css += `  --prism-${name}-${styleName}: ${parser(styleValue)};\n`;
+			}
+		} else {
+			css += `  --prism-${name}: ${parser(values)};\n`;
+		}
+
 		for (const [styleName, styleValue] of Object.entries(values || {})) {
 			console.log('VALUE', styleName, styleValue, typeof styleValue);
-			if (typeof styleValue === 'object') {
-				for (const [subStyleName, subStyleValue] of Object.entries(styleValue)) {
-					css += `  --prism-${styleName}-${subStyleName}: ${parser(subStyleValue)};\n`;
-				}
-			} else {
-				css += `  --prism-${styleName}: ${parser(styleValue)};\n`;
+
+			for (const [subStyleName, subStyleValue] of Object.entries(styleValue)) {
+				css += `  --prism-${styleName}-${subStyleName}: ${parser(subStyleValue)};\n`;
 			}
 		}
 
