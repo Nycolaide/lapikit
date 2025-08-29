@@ -1,6 +1,9 @@
 import { deepMerge } from '$lib/internal/deepMerge.js';
 import { preset } from './preset-v2.js';
 
+import fsPromises from 'fs/promises';
+import path from 'path';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function css(configuration: any) {
 	// states
@@ -31,4 +34,6 @@ export function css(configuration: any) {
 	response += '}\n';
 
 	console.log('All themes CSS:', response);
+
+	fsPromises.writeFile(path.resolve(__dirname, '../colors.css'), response);
 }

@@ -59,7 +59,8 @@
 		"./actions": {
 			"default": "./dist/actions/index.js"
 		},
-		"./css": "./dist/styles.css"
+		"./css": "./dist/styles.css",
+		"./styles": "./dist/colors.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"

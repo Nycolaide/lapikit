@@ -248,7 +248,7 @@ async function addLapikitToViteConfig(viteConfigFile, pathConfig, typescript) {
 }
 
 export async function initConfiguration(options) {
-	const { typescript, pathConfig, formatCSS } = options;
+	const { typescript, pathConfig, formatCSS, pathCSS } = options;
 	const ext = typescript ? 'ts' : 'js';
 	const targetDir = path.resolve(process.cwd(), pathConfig);
 	const targetFile = path.join(targetDir, `lapikit.${ext}`);
@@ -289,6 +289,10 @@ export async function initConfiguration(options) {
 		throw error;
 	}
 
+	// Add Import Lapikit css
+	if (formatCSS !== 'css') {
+		console.log('need custom import (Preview)', pathCSS);
+	}
 	// Add lapikit to vite.config file
 	try {
 		const viteConfigFile = await findViteConfigFile(process.cwd(), typescript);
