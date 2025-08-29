@@ -68,6 +68,28 @@ export async function css(configuration: any) {
 		response += css;
 	}
 
+	//styles
+	for (const [name, values] of Object.entries(
+		deepMerge(preset.styles, configuration?.styles || {})
+	)) {
+		let css = '';
+
+		css += `:root {\n`;
+		for (const [styleName, styleValue] of Object.entries(values || {})) {
+			if (typeof styleValue === 'object') {
+				for (const [subStyleName, subStyleValue] of Object.entries(styleValue)) {
+					css += `  --kit-${styleName}-${subStyleName}: ${parser(subStyleValue)};\n`;
+				}
+			} else {
+				css += `  --kit-${styleName}: ${parser(styleValue)};\n`;
+			}
+		}
+
+		css += '}\n';
+
+		response += css;
+	}
+
 	fsPromises.writeFile(path.resolve(__dirname, '../colors.css'), response);
 }
 
