@@ -9,8 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function css(configuration: any) {
+export async function css(configuration: any) {
 	console.log('VALUE configuration', configuration);
+	console.log('configuration?.theme?.themes', configuration?.theme?.themes);
 	// states
 	const defaultTheme = configuration?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const themesMerged = deepMerge(configuration?.theme?.themes || {}, preset.theme.themes);

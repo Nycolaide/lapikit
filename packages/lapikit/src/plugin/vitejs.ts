@@ -39,9 +39,9 @@ async function getLapikitConfig(filePath: string) {
 export async function lapikit({ config }: Lapikit = {}) {
 	if (config) {
 		const value = getLapikitConfig(config);
-		console.log(value);
+		// console.log(value);
 
-		css(value);
+		await css(value);
 	}
 
 	return {
