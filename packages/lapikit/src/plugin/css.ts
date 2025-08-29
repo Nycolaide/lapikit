@@ -14,7 +14,7 @@ export async function css(configuration: any) {
 	console.log('configuration?.theme?.themes', configuration?.theme?.themes);
 	// states
 	const defaultTheme = configuration?.theme?.defaultTheme || preset.theme.defaultTheme;
-	const themesMerged = deepMerge(configuration?.theme?.themes || {}, preset.theme.themes);
+	const themesMerged = deepMerge(preset.theme.themes, configuration?.theme?.themes || {});
 
 	let response = '';
 
@@ -27,14 +27,14 @@ export async function css(configuration: any) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
 		// colors
 		css += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
-		for (const [varName, varValue] of Object.entries(deepMerge(values?.colors, ref.colors) || {})) {
+		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
 			css += `  --system-${varName}: ${varValue};\n`;
 		}
 
 		// console.log('VALUE', values, deepMerge(values?.variables, ref.variables));
 		// variables
 		for (const [name, varValue] of Object.entries(
-			deepMerge(values?.variables, ref.variables) || {}
+			deepMerge(ref.variables, values?.variables) || {}
 		)) {
 			css += `  --kit-${name}: ${varValue};\n`;
 		}
