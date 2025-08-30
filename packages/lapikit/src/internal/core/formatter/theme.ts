@@ -1,0 +1,35 @@
+import { preset } from '$lib/internal/config/presets.js';
+import { deepMerge } from '$lib/internal/deepMerge.js';
+import type { FragThemes } from '$lib/internal/types/index.js';
+
+export function themesFormatter({
+	themes,
+	defaultTheme = 'light'
+}: {
+	themes: FragThemes;
+	defaultTheme: string;
+}) {
+	let css: string = '';
+
+	for (const [name, values] of Object.entries(themes)) {
+		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
+		let cssTheme = defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
+
+		// colors
+		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
+		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
+			cssTheme += `  --system-${varName}: ${varValue};\n`;
+		}
+
+		// variables
+		for (const [name, varValue] of Object.entries(
+			deepMerge(ref.variables, values?.variables) || {}
+		)) {
+			cssTheme += `  --kit-${name}: ${varValue};\n`;
+		}
+
+		css += cssTheme + '}\n';
+	}
+
+	return css;
+}

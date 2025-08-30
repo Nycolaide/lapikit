@@ -50,6 +50,10 @@
 			"svelte": "./dist/components/index.js",
 			"default": "./dist/components/index.js"
 		},
+		"./labs": {
+			"svelte": "./dist/labs/index.js",
+			"default": "./dist/labs/index.js"
+		},
 		"./vite": {
 			"default": "./dist/plugin/vitejs.js"
 		},
@@ -60,7 +64,7 @@
 			"default": "./dist/actions/index.js"
 		},
 		"./css": "./dist/styles.css",
-		"./styles": "./dist/colors.css"
+		"./styles": "./dist/labs.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
