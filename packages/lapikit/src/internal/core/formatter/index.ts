@@ -1,6 +1,7 @@
 import { preset } from '$lib/internal/config/presets.js';
 import { deepMerge } from '$lib/internal/deepMerge.js';
 import type { DevConfiguration } from '$lib/internal/types/index.js';
+import { componentFormatter } from './component.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
@@ -19,6 +20,11 @@ export async function css(config: DevConfiguration) {
 	const typography = typographyFormatter({
 		typography: deepMerge(preset.typography.fonts, config?.typography?.fonts || {}),
 		defaultTypography
+	});
+
+	// components
+	componentFormatter({
+		breakpoints: deepMerge(preset.breakpoints.thresholds, config?.breakpoints?.thresholds || {})
 	});
 
 	return {

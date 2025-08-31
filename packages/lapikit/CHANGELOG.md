@@ -25,9 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Store **Viewpoprt** screen size directly connected by **Application** component
 - Store **breakpoint** for use _mediaQueries_ on your application
-- Add new helper function _mediaQueries_ for use **breakpoint** lapikit directly on your svelte
+- Store **devices** for use breakpoint on viewport
+
+### Changed
+
+- Update function for change _theme_ and _colorScheme_
 
 ## [0.2.2] - 2025-08-20
 
