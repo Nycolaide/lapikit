@@ -4,7 +4,7 @@ import { PUBLIC_BASE_URL } from '$env/static/public';
 export const url: string = dev ? 'http://localhost:5173' : PUBLIC_BASE_URL;
 
 export const staticPages: Array<string> = ['docs/components'];
-export const discordUrl: string = 'https://discord.gg/4Z2c7a3b6f'; // need url
+export const discordUrl: string = 'https://discord.gg/gn9ZGtDtK4';
 export const githubIssuesUrl: string = 'https://github.com/Nycolaide/lapikit/issues';
 export const githubEditPageUrl: string = 'https://github.com/Nycolaide/lapikit/tree/main/docs';
 export const githubDiscussionsUrl: string = 'https://github.com/Nycolaide/lapikit/discussions';

@@ -8,6 +8,9 @@
 
 	let { data } = $props();
 
+	// states
+	let openSearch: boolean = $state(false);
+
 	// components
 	import Head from '$lib/components/head.svelte';
 	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
@@ -233,14 +236,20 @@
 	{#each navigationMain as { key, path, external, icon } (key)}
 		<BottomNavigationItem
 			is="a"
-			active={page.url.pathname === path}
+			active={page.url.pathname === path && !openSearch}
 			href={path}
+			onclick={() => (openSearch = false)}
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
 			{capitalize($t(`navigation.${key}`))}
 		</BottomNavigationItem>
 	{/each}
+
+	<BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
+		<Icon icon="mgc_search_2_line" size="xl" />
+		{capitalize($t('navigation.search_bar.button'))}
+	</BottomNavigationItem>
 </BottomNavigation>
 
 <style>

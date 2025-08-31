@@ -1,0 +1,76 @@
+export const parserValues = (value: string | number | Array<string | number>) => {
+	if (typeof value === 'number') return `${value}px`;
+	if (Array.isArray(value)) return value.join(', ');
+	return value;
+};
+
+export const parserCSSBreakpoints = (css: string) => {
+	const regex = /([^{]+)\{([^}]+)\}/g;
+	let match;
+
+	const matchesToRemove = [];
+	const extractedByType: {
+		[key: string]: string[];
+	} = {
+		all: [],
+		base: [],
+		min: [],
+		max: [],
+		minmax: []
+	};
+
+	while ((match = regex.exec(css)) !== null) {
+		const fullMatch = match[0];
+		const selectors = match[1].trim();
+		const body = match[2].trim();
+
+		const selectorsArray = selectors.split(',').map((sel) => sel.trim());
+
+		let matchedType: keyof typeof extractedByType | null = null;
+
+		if (selectorsArray.some((sel) => sel.includes('[breakpoint|min]'))) {
+			matchedType = 'min';
+		} else if (selectorsArray.some((sel) => sel.includes('[breakpoint|max]'))) {
+			matchedType = 'max';
+		} else if (selectorsArray.some((sel) => sel.includes('[breakpoint|all]'))) {
+			matchedType = 'minmax';
+		} else if (selectorsArray.some((sel) => sel.includes('[breakpoint]'))) {
+			matchedType = 'base';
+		}
+
+		if (matchedType) {
+			const rule = `${selectors} {\n${body}\n}`;
+			extractedByType.allExtracted.push(rule);
+			extractedByType[matchedType!].push(rule);
+			matchesToRemove.push(fullMatch);
+		}
+	}
+
+	let cleaned = css;
+	for (const rule of matchesToRemove) {
+		cleaned = cleaned.replace(rule, '').replace(/\n{2,}/g, '\n\n');
+	}
+
+	return {
+		all: extractedByType.allExtracted
+			.join('\n\n')
+			.replaceAll('[breakpoint|min]', '[breakpoint]')
+			.replaceAll('[breakpoint|max]', '[breakpoint]')
+			.replaceAll('[breakpoint|all]', '[breakpoint]')
+			.trim(),
+		base: extractedByType.defaultExtracted.join('\n\n').trim(),
+		min: extractedByType.minExtracted
+			.join('\n\n')
+			.replaceAll('[breakpoint|min]', '[breakpoint]')
+			.trim(),
+		max: extractedByType.maxExtracted
+			.join('\n\n')
+			.replaceAll('[breakpoint|max]', '[breakpoint]')
+			.trim(),
+		minmax: extractedByType.allModifierExtracted
+			.join('\n\n')
+			.replaceAll('[breakpoint|all]', '[breakpoint]')
+			.trim(),
+		cleaned: cleaned.trim()
+	};
+};

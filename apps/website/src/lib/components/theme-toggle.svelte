@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { Button, Icon } from 'lapikit/components';
-	import { setColorScheme, colorScheme, colorSchemeSystem } from 'lapikit/stores';
+	import { useColorScheme, colorScheme, colorSchemeSystem } from 'lapikit/stores';
 	import { capitalize } from 'site-kit/actions';
 
 	let { app }: { app?: boolean } = $props();
@@ -10,7 +10,7 @@
 <Button
 	icon
 	onclick={() =>
-		setColorScheme(
+		useColorScheme(
 			($colorScheme === 'system' && $colorSchemeSystem === 'dark') || $colorScheme === 'dark'
 				? 'light'
 				: 'dark'

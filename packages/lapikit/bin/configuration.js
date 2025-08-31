@@ -133,10 +133,12 @@ async function findViteConfigFile(projectPath, typescript) {
 	}
 }
 
-async function addLapikitToViteConfig(viteConfigFile) {
+async function addLapikitToViteConfig(viteConfigFile, pathConfig, typescript) {
 	try {
 		const content = await fs.readFile(viteConfigFile, 'utf-8');
 		const lapikitImport = `import { lapikit } from 'lapikit/vite';`;
+		const configPath = `${pathConfig}/lapikit.${typescript ? 'ts' : 'js'}`;
+		const lapikitPlugin = `lapikit({ config: '${configPath}' })`;
 
 		// Check if lapikit import already exists
 		if (content.includes(lapikitImport) || content.includes(`from 'lapikit/vite'`)) {
@@ -183,10 +185,10 @@ async function addLapikitToViteConfig(viteConfigFile) {
 					const pluginMatch = line.match(/plugins:\s*\[(.*)\]/);
 					if (pluginMatch) {
 						const pluginsContent = pluginMatch[1];
-						if (!pluginsContent.includes('lapikit()')) {
+						if (!pluginsContent.includes('lapikit')) {
 							const newPluginsContent = pluginsContent.replace(
 								/sveltekit\(\)/,
-								'sveltekit(), lapikit()'
+								`sveltekit(), ${lapikitPlugin}`
 							);
 							lines[i] = line.replace(pluginsContent, newPluginsContent);
 							pluginAdded = true;
@@ -200,24 +202,24 @@ async function addLapikitToViteConfig(viteConfigFile) {
 					const pluginLine = lines[j].trim();
 
 					if (pluginLine.includes('sveltekit()') && !pluginAdded) {
-						// Check if lapikit() is not already present
+						// Check if lapikit is not already present
 						let hasLapikit = false;
 						for (let k = i; k < lines.length && !lines[k].includes(']'); k++) {
-							if (lines[k].includes('lapikit()')) {
+							if (lines[k].includes('lapikit')) {
 								hasLapikit = true;
 								break;
 							}
 						}
 
 						if (!hasLapikit) {
-							// Add lapikit() after sveltekit()
+							// Add lapikit after sveltekit()
 							if (pluginLine.includes(',')) {
-								lines[j] = lines[j].replace('sveltekit()', 'sveltekit(), lapikit()');
+								lines[j] = lines[j].replace('sveltekit()', `sveltekit(), ${lapikitPlugin}`);
 							} else {
 								lines[j] = lines[j].replace('sveltekit()', 'sveltekit(),');
-								// Insert lapikit() on the next line with proper indentation
+								// Insert lapikit on the next line with proper indentation
 								const indentation = lines[j].match(/^\s*/)[0];
-								lines.splice(j + 1, 0, `${indentation}lapikit()`);
+								lines.splice(j + 1, 0, `${indentation}${lapikitPlugin}`);
 							}
 							pluginAdded = true;
 						}
@@ -246,7 +248,7 @@ async function addLapikitToViteConfig(viteConfigFile) {
 }
 
 export async function initConfiguration(options) {
-	const { typescript, pathConfig, formatCSS } = options;
+	const { typescript, pathConfig, formatCSS, pathCSS } = options;
 	const ext = typescript ? 'ts' : 'js';
 	const targetDir = path.resolve(process.cwd(), pathConfig);
 	const targetFile = path.join(targetDir, `lapikit.${ext}`);
@@ -287,10 +289,14 @@ export async function initConfiguration(options) {
 		throw error;
 	}
 
+	// Add Import Lapikit css
+	if (formatCSS !== 'css') {
+		console.log('need custom import (Preview)', pathCSS);
+	}
 	// Add lapikit to vite.config file
 	try {
 		const viteConfigFile = await findViteConfigFile(process.cwd(), typescript);
-		await addLapikitToViteConfig(viteConfigFile);
+		await addLapikitToViteConfig(viteConfigFile, pathConfig, typescript);
 	} catch (error) {
 		terminal('warn', `Warning: Could not update vite.config file: ${error.message}`);
 		terminal('error', `Error adding lapikit to vite config: ${error.message}`);
