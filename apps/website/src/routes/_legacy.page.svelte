@@ -14,6 +14,7 @@
 	// components
 	import Head from '$lib/components/head.svelte';
 	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
+	import Search from '$lib/components/search/search.svelte';
 
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
@@ -95,6 +96,8 @@
 			</Button>
 		</div>
 	</Appbar>
+
+	<Search bind:open={openSearch} />
 
 	<section
 		class="desktop:max-h-[900px] flex h-[82vh] flex-col items-center justify-between justify-center overflow-hidden"
