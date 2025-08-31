@@ -7,3 +7,19 @@
 .my-compo-style-global h1 {
 	color: greenyellow;
 }
+
+@media (max-width: 480px) {
+	:root {
+		--active-bp: sm;
+	}
+}
+@media (max-width: 768px) {
+	:root {
+		--active-bp: md;
+	}
+}
+@media (max-width: 1024px) {
+	:root {
+		--active-bp: lg;
+	}
+}

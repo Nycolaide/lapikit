@@ -6,6 +6,7 @@ import { terminal } from '$lib/internal/terminal.js';
 import path from 'path';
 import fs from 'fs';
 import { css } from './css.js';
+import { componentFormatter } from '$lib/internal/core/formatter/component.js';
 
 type Lapikit = {
 	config?: string;
@@ -47,6 +48,8 @@ export async function lapikit({ config }: Lapikit = {}) {
 	return {
 		name: 'lapikit/vite.js',
 		async configResolved() {
+			await componentFormatter();
+
 			const importedConfig = await importer();
 			const result = await parseConfig(importedConfig);
 			await processCSS(result);
