@@ -29,11 +29,6 @@ export async function css(
 		breakpoints: deepMerge(preset.breakpoints.thresholds, config?.breakpoints?.thresholds || {})
 	});
 
-	console.log('formatter', themes, typography, {
-		themes: themes,
-		typography: typography
-	});
-
 	return {
 		themes: themes,
 		typography: typography
