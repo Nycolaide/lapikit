@@ -1,7 +1,7 @@
 import { parserValues } from '$lib/internal/helpers/parser.js';
 import type { FragStyles } from '$lib/internal/types/configuration.js';
 
-export function stylesFormatter({ styles }: { styles: FragStyles }) {
+export async function stylesFormatter({ styles }: { styles: FragStyles }) {
 	let css: string = `:root {\n`;
 	for (const [name, values] of Object.entries(styles)) {
 		if (values && typeof values === 'object') {

@@ -7,7 +7,7 @@ import { parserCSSBreakpoints } from '$lib/internal/helpers/parser.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export function componentFormatter({
+export async function componentFormatter({
 	breakpoints
 }: {
 	breakpoints: { [key: string]: number | string };

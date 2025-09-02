@@ -14,18 +14,18 @@ export async function css(
 		config?.typography?.defaultTypography || preset.typography.defaultTypography;
 
 	// formatter
-	const themes = themesFormatter({
+	const themes = await themesFormatter({
 		themes: deepMerge(preset.theme.themes, config?.theme?.themes || {}),
 		defaultTheme
 	});
 
-	const typography = typographyFormatter({
+	const typography = await typographyFormatter({
 		typography: deepMerge(preset.typography.fonts, config?.typography?.fonts || {}),
 		defaultTypography
 	});
 
 	// components
-	componentFormatter({
+	await componentFormatter({
 		breakpoints: deepMerge(preset.breakpoints.thresholds, config?.breakpoints?.thresholds || {})
 	});
 
