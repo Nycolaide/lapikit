@@ -1,7 +1,7 @@
 import { parserValues } from '$lib/internal/helpers/parser.js';
 import type { FragTypography } from '$lib/internal/types/configuration.js';
 
-export function typographyFormatter({
+export async function typographyFormatter({
 	typography,
 	defaultTypography = 'default'
 }: {
