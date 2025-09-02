@@ -1,3 +1,8 @@
+import path from 'path';
+import fs from 'fs';
+
+import { terminal } from '$lib/internal/terminal.js';
+
 export const parserValues = (value: string | number | Array<string | number>) => {
 	if (typeof value === 'number') return `${value}px`;
 	if (Array.isArray(value)) return value.join(', ');
@@ -73,4 +78,30 @@ export const parserCSSBreakpoints = (css: string) => {
 			.trim(),
 		cleaned: cleaned.trim()
 	};
+};
+
+export const parserConfigLapikit = async (app: string, filePath: string) => {
+	const pathConfig = path.resolve(app, filePath);
+
+	if (!fs.existsSync(pathConfig)) process.exit(1);
+
+	const code = fs.readFileSync(pathConfig, 'utf-8');
+	const match = code.match(/createLapikit\s*\(\s*({[\s\S]*?})\s*\)/);
+
+	let options = {};
+
+	if (match && match[1]) {
+		try {
+			options = new Function('return ' + match[1])();
+		} catch (e) {
+			terminal('error', `Error parsing lapikit config: ${e}`);
+		}
+	} else {
+		terminal(
+			'error',
+			'lapikit configuration not found please refer to the documentation https://lapikit.dev/docs/getting-started'
+		);
+	}
+
+	return options;
 };
