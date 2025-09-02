@@ -45,7 +45,7 @@ export const parserCSSBreakpoints = (css: string) => {
 
 		if (matchedType) {
 			const rule = `${selectors} {\n${body}\n}`;
-			extractedByType.allExtracted.push(rule);
+			extractedByType.all.push(rule);
 			extractedByType[matchedType!].push(rule);
 			matchesToRemove.push(fullMatch);
 		}
@@ -57,34 +57,23 @@ export const parserCSSBreakpoints = (css: string) => {
 	}
 
 	return {
-		all: extractedByType.allExtracted
-			? extractedByType.allExtracted
+		all: extractedByType.all
+			? extractedByType.all
 					.join('\n\n')
 					.replaceAll('[breakpoint|min]', '[breakpoint]')
 					.replaceAll('[breakpoint|max]', '[breakpoint]')
 					.replaceAll('[breakpoint|all]', '[breakpoint]')
 					.trim()
 			: '',
-		base: extractedByType.defaultExtracted
-			? extractedByType.defaultExtracted.join('\n\n').trim()
+		base: extractedByType.base ? extractedByType.base.join('\n\n').trim() : '',
+		min: extractedByType.min
+			? extractedByType.min.join('\n\n').replaceAll('[breakpoint|min]', '[breakpoint]').trim()
 			: '',
-		min: extractedByType.minExtracted
-			? extractedByType.minExtracted
-					.join('\n\n')
-					.replaceAll('[breakpoint|min]', '[breakpoint]')
-					.trim()
+		max: extractedByType.max
+			? extractedByType.max.join('\n\n').replaceAll('[breakpoint|max]', '[breakpoint]').trim()
 			: '',
-		max: extractedByType.maxExtracted
-			? extractedByType.maxExtracted
-					.join('\n\n')
-					.replaceAll('[breakpoint|max]', '[breakpoint]')
-					.trim()
-			: '',
-		minmax: extractedByType.allModifierExtracted
-			? extractedByType.allModifierExtracted
-					.join('\n\n')
-					.replaceAll('[breakpoint|all]', '[breakpoint]')
-					.trim()
+		minmax: extractedByType.minmax
+			? extractedByType.minmax.join('\n\n').replaceAll('[breakpoint|all]', '[breakpoint]').trim()
 			: '',
 		cleaned: cleaned.trim()
 	};
