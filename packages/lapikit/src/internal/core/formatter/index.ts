@@ -5,7 +5,9 @@ import { componentFormatter } from './component.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
-export async function css(config: DevConfiguration) {
+export async function css(
+	config: DevConfiguration
+): Promise<{ themes: string; typography: string }> {
 	// states
 	const defaultTheme = config?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const defaultTypography =
@@ -28,6 +30,7 @@ export async function css(config: DevConfiguration) {
 	});
 
 	return {
-		styles: [themes, typography]
+		themes: themes,
+		typography: typography
 	};
 }

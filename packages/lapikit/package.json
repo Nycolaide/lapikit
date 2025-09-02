@@ -64,7 +64,10 @@
 			"default": "./dist/actions/index.js"
 		},
 		"./css": "./dist/styles.css",
-		"./styles": "./dist/labs.css"
+		"./styles": "./dist/labs.css",
+		"./viteLab": {
+			"default": "./dist/internal/plugins/vite.js"
+		}
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
