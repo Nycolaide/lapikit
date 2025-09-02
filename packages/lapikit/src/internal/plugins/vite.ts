@@ -15,7 +15,7 @@ type Lapikit = {
 
 const app = process.cwd();
 
-export async function lapikitEvol({ config }: Lapikit = {}) {
+export async function lapikit({ config }: Lapikit = {}) {
 	return {
 		name: 'lapikit/vite',
 		async configResolved() {
@@ -25,9 +25,8 @@ export async function lapikitEvol({ config }: Lapikit = {}) {
 				// generate styles
 				const styles = await css(configuration);
 
-				fsPromises.writeFile(path.resolve(__dirname, '../labs.css'), styles?.themes);
-
-				console.log('styles', styles);
+				fsPromises.writeFile(path.resolve(__dirname, '../../labs.css'), styles?.themes || '');
+				console.log('styles', styles, __dirname);
 			}
 			terminal('info', 'lapikit is up!');
 		}
