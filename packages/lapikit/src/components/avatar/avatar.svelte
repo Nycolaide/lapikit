@@ -44,3 +44,7 @@
 		{@render children?.()}
 	{/if}
 </svelte:element>
+
+<style>
+	@import './avatar.css';
+</style>

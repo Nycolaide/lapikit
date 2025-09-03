@@ -61,3 +61,7 @@
 >
 	{@render children?.()}
 </svelte:element>
+
+<style>
+	@import './card.css';
+</style>

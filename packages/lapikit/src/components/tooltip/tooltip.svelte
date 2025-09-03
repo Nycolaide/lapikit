@@ -111,3 +111,7 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	@import './tooltip.css';
+</style>
