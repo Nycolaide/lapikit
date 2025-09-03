@@ -27,7 +27,7 @@ export async function lapikit({ config }: Lapikit = {}) {
 
 				fsPromises.writeFile(
 					path.resolve(__dirname, '../../labs.css'),
-					styles?.themes + '\n\n' + styles?.typography || ''
+					styles?.themes + '\n\n' + styles?.typography + '\n\n' + styles?.styles || ''
 				);
 				console.log('styles', styles, __dirname);
 			}
