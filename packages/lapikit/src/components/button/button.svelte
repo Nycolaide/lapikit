@@ -100,3 +100,7 @@
 		</div>
 	{/if}
 </svelte:element>
+
+<style>
+	@import './button.css';
+</style>

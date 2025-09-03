@@ -65,3 +65,7 @@
 		{@render children?.()}
 	</div>
 </dialog>
+
+<style>
+	@import './dialog.css';
+</style>

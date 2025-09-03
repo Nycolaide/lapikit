@@ -5,3 +5,7 @@
 </script>
 
 <svelte:element this={is} {...rest} class={['kit-spacer', rest.class]}> </svelte:element>
+
+<style>
+	@import './spacer.css';
+</style>

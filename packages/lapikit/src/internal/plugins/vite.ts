@@ -25,7 +25,10 @@ export async function lapikit({ config }: Lapikit = {}) {
 				// generate styles
 				const styles = await css(configuration);
 
-				fsPromises.writeFile(path.resolve(__dirname, '../../labs.css'), styles?.themes || '');
+				fsPromises.writeFile(
+					path.resolve(__dirname, '../../labs.css'),
+					styles?.themes + '\n\n' + styles?.typography || ''
+				);
 				console.log('styles', styles, __dirname);
 			}
 			terminal('info', 'lapikit is up!');

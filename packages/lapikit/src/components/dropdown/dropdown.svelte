@@ -114,3 +114,7 @@
 		{@render children?.()}
 	</div>
 {/if}
+
+<style>
+	@import './dropdown.css';
+</style>

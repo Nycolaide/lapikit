@@ -47,3 +47,7 @@
 		{@render children?.()}
 	{/if}
 </svelte:element>
+
+<style>
+	@import './icon.css';
+</style>

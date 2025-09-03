@@ -25,6 +25,8 @@
 </div>
 
 <style>
+	@import './aspect-ratio.css';
+
 	.kit-aspect-ratio {
 		display: flex;
 		flex: 1 0 auto;

@@ -35,3 +35,7 @@
 >
 	{@render children?.()}
 </svelte:element>
+
+<style>
+	@import './accordion.css';
+</style>

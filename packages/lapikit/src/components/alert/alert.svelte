@@ -87,3 +87,7 @@
 		{/if}
 	</svelte:element>
 {/if}
+
+<style>
+	@import './alert.css';
+</style>

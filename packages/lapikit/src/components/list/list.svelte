@@ -42,3 +42,7 @@
 >
 	{@render children?.()}
 </svelte:element>
+
+<style>
+	@import './list.css';
+</style>

@@ -129,3 +129,7 @@
 		{/if}
 	</svelte:element>
 {/if}
+
+<style>
+	@import './chip.css';
+</style>

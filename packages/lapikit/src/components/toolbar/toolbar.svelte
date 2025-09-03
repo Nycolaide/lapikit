@@ -45,3 +45,7 @@
 		{@render children?.()}
 	</div>
 </svelte:element>
+
+<style>
+	@import './toolbar.css';
+</style>

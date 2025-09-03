@@ -71,3 +71,7 @@
 		{@render children?.()}
 	</div>
 {/if}
+
+<style>
+	@import './popover.css';
+</style>

@@ -35,3 +35,7 @@
 	style:--border-top-width={orientation === 'horizontal' ? assets.unit(thickness) : undefined}
 	style:--border-right-width={orientation === 'vertical' ? assets.unit(thickness) : undefined}
 />
+
+<style>
+	@import './separator.css';
+</style>

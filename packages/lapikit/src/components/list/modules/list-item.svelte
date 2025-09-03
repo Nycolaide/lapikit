@@ -74,3 +74,7 @@
 		</div>
 	{/if}
 </svelte:element>
+
+<style>
+	@import '../list.css';
+</style>
