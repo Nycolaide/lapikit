@@ -18,7 +18,7 @@ const app = process.cwd();
 export async function lapikit({ config }: Lapikit = {}) {
 	return {
 		name: 'lapikit/vite',
-		async configResolved() {
+		async config() {
 			if (config) {
 				const configuration = await parserConfigLapikit(app, config);
 
