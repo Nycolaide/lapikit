@@ -6,7 +6,7 @@
 }
 
 .kit-chip {
-	min-width: calc(var(--kit-spacing) * var(--chip-multiplier-x));
+	min-width: calc(var(--prism-spacing) * var(--chip-multiplier-x));
 	position: relative;
 	border: none;
 	outline: none;
@@ -34,8 +34,8 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: calc(var(--kit-spacing) * var(--chip-multiplier-gap));
-	font-size: calc(var(--kit-spacing) * var(--chip-multiplier-font-size));
+	gap: calc(var(--prism-spacing) * var(--chip-multiplier-gap));
+	font-size: calc(var(--prism-spacing) * var(--chip-multiplier-font-size));
 	line-height: 0;
 }
 
@@ -130,21 +130,21 @@
 
 /* density */
 .kit-chip[breakpoint]kit-chip--density-default {
-	height: calc(var(--kit-spacing) * var(--chip-multiplier-x));
+	height: calc(var(--prism-spacing) * var(--chip-multiplier-x));
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y));
+	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y));
 }
 
 .kit-chip[breakpoint]kit-chip--density-compact {
-	height: calc(var(--kit-spacing) * var(--chip-multiplier-x) - 0.25rem);
+	height: calc(var(--prism-spacing) * var(--chip-multiplier-x) - 0.25rem);
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y) - 0.25rem);
+	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y) - 0.25rem);
 }
 
 .kit-chip[breakpoint]kit-chip--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--chip-multiplier-x) + 0.25rem);
+	height: calc(var(--prism-spacing) * var(--chip-multiplier-x) + 0.25rem);
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--kit-spacing) * var(--chip-multiplier-y) + 0.25rem);
+	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y) + 0.25rem);
 }
 
 /* state */

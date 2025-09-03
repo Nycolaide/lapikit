@@ -24,46 +24,46 @@
 
 /* density */
 .kit-toolbar[breakpoint]kit-toolbar--density-default {
-	border-radius: calc(var(--kit-spacing) * 2.25);
+	border-radius: calc(var(--prism-spacing) * 2.25);
 }
 .kit-toolbar[breakpoint]kit-toolbar--density-default:not([class*='toolbar--orientation-vertical']) {
 	height: 3rem;
-	padding-inline: calc(var(--kit-spacing) * 1.5);
+	padding-inline: calc(var(--prism-spacing) * 1.5);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-default[class*='toolbar--orientation-vertical'] {
 	width: 3rem;
-	padding: calc(var(--kit-spacing) * 1.5) 0;
+	padding: calc(var(--prism-spacing) * 1.5) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact {
-	border-radius: calc(var(--kit-spacing) * 1.75);
+	border-radius: calc(var(--prism-spacing) * 1.75);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact:not([class*='toolbar--orientation-vertical']) {
 	height: 2.625rem;
-	padding-inline: calc(var(--kit-spacing) * 0.75);
+	padding-inline: calc(var(--prism-spacing) * 0.75);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact[class*='toolbar--orientation-vertical'] {
 	width: 2.625rem;
-	padding: calc(var(--kit-spacing) * 0.75) 0;
+	padding: calc(var(--prism-spacing) * 0.75) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable {
-	border-radius: calc(var(--kit-spacing) * 3.5);
+	border-radius: calc(var(--prism-spacing) * 3.5);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable:not(
 		[class*='toolbar--orientation-vertical']
 	) {
 	height: 3.5rem;
-	padding-inline: calc(var(--kit-spacing) * 2.25);
+	padding-inline: calc(var(--prism-spacing) * 2.25);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable[class*='toolbar--orientation-vertical'] {
 	width: 3.5rem;
-	padding: calc(var(--kit-spacing) * 2.25) 0;
+	padding: calc(var(--prism-spacing) * 2.25) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--variant-text,

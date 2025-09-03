@@ -155,15 +155,15 @@
 	display: grid;
 	grid-template-areas: 'prepend-inner field clear append-inner';
 	grid-template-columns: max-content minmax(0, 1fr) max-content max-content;
-	font-size: calc(var(--kit-spacing) * var(--textfield-multiplier-font-size));
+	font-size: calc(var(--prism-spacing) * var(--textfield-multiplier-font-size));
 	max-width: 100%;
 	contain: layout;
 	flex: 1 0;
 	grid-area: control;
 	position: relative;
-	padding: calc(var(--kit-spacing) * var(--textfield-multiplier-x))
-		calc(var(--kit-spacing) * var(--textfield-multiplier-y));
-	gap: calc(var(--kit-spacing) * var(--textfield-multiplier-gap));
+	padding: calc(var(--prism-spacing) * var(--textfield-multiplier-x))
+		calc(var(--prism-spacing) * var(--textfield-multiplier-y));
+	gap: calc(var(--prism-spacing) * var(--textfield-multiplier-gap));
 }
 
 .kit-textfield-control .kit-field .kit-field--field {
@@ -222,7 +222,7 @@
 	min-width: 1px;
 	position: relative;
 	display: grid;
-	gap: calc(var(--kit-spacing) * var(--textfield-multiplier-gap));
+	gap: calc(var(--prism-spacing) * var(--textfield-multiplier-gap));
 	grid-template-areas: 'message-prepend message message-append ';
 	grid-template-columns: max-content minmax(0, 1fr) max-content;
 }
@@ -291,15 +291,15 @@
 /*density */
 .kit-textfield[breakpoint]kit-textfield--density-default {
 	--textfield-spacing-x: 0;
-	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y));
+	--textfield-spacing-y: calc(var(--prism-spacing) * var(--textfield-multiplier-y));
 }
 
 .kit-textfield[breakpoint]kit-textfield--density-compact {
 	--textfield-spacing-x: calc(0 - 0.5rem);
-	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y) - 0.5rem);
+	--textfield-spacing-y: calc(var(--prism-spacing) * var(--textfield-multiplier-y) - 0.5rem);
 }
 
 .kit-textfield[breakpoint]kit-textfield--density-comfortable {
 	--textfield-spacing-x: calc(0 + 0.5rem);
-	--textfield-spacing-y: calc(var(--kit-spacing) * var(--textfield-multiplier-y) + 0.5rem);
+	--textfield-spacing-y: calc(var(--prism-spacing) * var(--textfield-multiplier-y) + 0.5rem);
 }

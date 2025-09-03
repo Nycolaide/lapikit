@@ -43,8 +43,8 @@
 	display: inline-flex;
 	align-items: center;
 	white-space: nowrap;
-	gap: calc(var(--kit-spacing) * var(--list-multiplier-gap));
-	font-size: calc(var(--kit-spacing) * var(--list-multiplier-font-size));
+	gap: calc(var(--prism-spacing) * var(--list-multiplier-gap));
+	font-size: calc(var(--prism-spacing) * var(--list-multiplier-font-size));
 }
 
 .kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
@@ -141,21 +141,21 @@
 
 /* density */
 .kit-list[breakpoint]kit-list--density-default .kit-list-item {
-	height: calc(var(--kit-spacing) * var(--list-multiplier-x));
+	height: calc(var(--prism-spacing) * var(--list-multiplier-x));
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y));
+	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y));
 }
 
 .kit-list[breakpoint]kit-list--density-compact .kit-list-item {
-	height: calc(var(--kit-spacing) * var(--list-multiplier-x) - 0.25rem);
+	height: calc(var(--prism-spacing) * var(--list-multiplier-x) - 0.25rem);
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) - 0.25rem);
+	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
 .kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {
-	height: calc(var(--kit-spacing) * var(--list-multiplier-x) + 0.25rem);
+	height: calc(var(--prism-spacing) * var(--list-multiplier-x) + 0.25rem);
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--kit-spacing) * var(--list-multiplier-y) + 0.25rem);
+	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y) + 0.25rem);
 }
 
 /* variant */
