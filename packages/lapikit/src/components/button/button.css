@@ -29,8 +29,8 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: calc(var(--kit-spacing) * var(--button-multiplier-gap));
-	font-size: calc(var(--kit-spacing) * var(--button-multiplier-font-size));
+	gap: calc(var(--prism-spacing) * var(--button-multiplier-gap));
+	font-size: calc(var(--prism-spacing) * var(--button-multiplier-font-size));
 }
 
 .kit-button::after {
@@ -106,37 +106,37 @@
 
 /* density */
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-default {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x));
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y));
+	--button-spacing-y: calc(var(--prism-spacing) * var(--button-multiplier-y));
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-default {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x));
+	width: calc(var(--prism-spacing) * var(--button-multiplier-x));
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }
 
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-compact {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x) - 0.25rem);
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) - 0.25rem);
+	--button-spacing-y: calc(var(--prism-spacing) * var(--button-multiplier-y) - 0.25rem);
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-compact {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x) - 0.25rem);
+	width: calc(var(--prism-spacing) * var(--button-multiplier-x) - 0.25rem);
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }
 
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x) + 0.25rem);
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) + 0.25rem);
+	--button-spacing-y: calc(var(--prism-spacing) * var(--button-multiplier-y) + 0.25rem);
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	height: calc(var(--prism-spacing) * var(--button-multiplier-x) + 0.25rem);
+	width: calc(var(--prism-spacing) * var(--button-multiplier-x) + 0.25rem);
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }

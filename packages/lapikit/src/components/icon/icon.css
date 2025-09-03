@@ -7,7 +7,7 @@
 	/* transition: color 0.5s; */
 	text-indent: 0;
 	font-size: calc(
-		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing)
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
 	);
 }
 
@@ -21,9 +21,11 @@
 
 .kit-icon svg,
 .kit-icon img {
-	width: calc(var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing));
+	width: calc(
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
+	);
 	height: calc(
-		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--kit-spacing)
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
 	);
 }
 

@@ -50,16 +50,16 @@
 
 /* density */
 .kit-card[breakpoint]kit-card--density-default {
-	--card-spacing-x: calc(var(--kit-spacing) * 2);
-	--card-spacing-y: calc(var(--kit-spacing) * 2);
+	--card-spacing-x: calc(var(--prism-spacing) * 2);
+	--card-spacing-y: calc(var(--prism-spacing) * 2);
 }
 .kit-card[breakpoint]kit-card--density-compact {
 	--card-spacing-x: 0;
 	--card-spacing-y: 0;
 }
 .kit-card[breakpoint]kit-card--density-comfortable {
-	--card-spacing-x: calc(var(--kit-spacing) * 4);
-	--card-spacing-y: calc(var(--kit-spacing) * 4);
+	--card-spacing-x: calc(var(--prism-spacing) * 4);
+	--card-spacing-y: calc(var(--prism-spacing) * 4);
 }
 
 /* variant */
