@@ -6,10 +6,10 @@ export async function stylesFormatter({ styles }: { styles: FragStyles }) {
 	for (const [name, values] of Object.entries(styles)) {
 		if (values && typeof values === 'object') {
 			for (const [styleName, styleValue] of Object.entries(values || {})) {
-				css += `  --prism-${name}-${styleName}: ${parserValues(styleValue)};\n`;
+				css += `  --l-theme-${name}-${styleName}: ${parserValues(styleValue)};\n`;
 			}
 		} else {
-			css += `  --prism-${name}: ${parserValues(values)};\n`;
+			css += `  --l-theme-${name}: ${parserValues(values)};\n`;
 		}
 	}
 

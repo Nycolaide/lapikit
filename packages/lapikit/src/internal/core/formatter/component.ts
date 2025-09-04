@@ -22,7 +22,6 @@ export async function componentFormatter({
 
 				const fileContent = fs.readFileSync(absolutePath, 'utf8');
 
-				// Vérifier si le fichier contient des balises <style>
 				const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi;
 				const styleMatch = styleRegex.exec(fileContent);
 
@@ -65,7 +64,6 @@ export async function componentFormatter({
 
 					console.log(formattedCSS);
 
-					// Remplacer le contenu des balises <style> dans le fichier
 					const updatedFileContent = fileContent.replace(
 						styleRegex,
 						`<style>${formattedCSS}</style>`
