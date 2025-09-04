@@ -2,13 +2,14 @@ import { preset } from '$lib/internal/config/presets.js';
 import { deepMerge } from '$lib/internal/deepMerge.js';
 import type { DevConfiguration } from '$lib/internal/types/index.js';
 import { componentFormatter } from './component.js';
-import { stylesFormatter } from './styles.js';
+import { devicesFormatter } from './device.js';
+import { stylesFormatter } from './style.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
 export async function css(
 	config: DevConfiguration
-): Promise<{ themes: string; typography: string; styles: string }> {
+): Promise<{ themes: string; typography: string; styles: string; devices: string }> {
 	// states
 	const defaultTheme = config?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const defaultTypography =
@@ -27,6 +28,10 @@ export async function css(
 
 	const styles = await stylesFormatter({ styles: deepMerge(preset.styles, config?.styles || {}) });
 
+	const devices = await devicesFormatter({
+		devices: deepMerge(preset.breakpoints.devices, config?.breakpoints?.devices || {})
+	});
+
 	// components
 	await componentFormatter({
 		breakpoints: deepMerge(preset.breakpoints.thresholds, config?.breakpoints?.thresholds || {})
@@ -35,6 +40,7 @@ export async function css(
 	return {
 		themes: themes,
 		typography: typography,
-		styles: styles
+		styles: styles,
+		devices: devices
 	};
 }
