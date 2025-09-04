@@ -14,12 +14,12 @@ export async function themesFormatter({
 
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
-		let cssTheme = defaultTheme === name ? `:root,\n.${name} {\n` : `.${name} {\n`;
+		let cssTheme = defaultTheme === name ? `:root,\n.l-theme-${name} {\n` : `.l-theme-${name} {\n`;
 
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
 		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
-			cssTheme += `  --system-${varName}: ${varValue};\n`;
+			cssTheme += `  --l-theme-${varName}: ${varValue};\n`;
 		}
 
 		// variables
@@ -28,10 +28,10 @@ export async function themesFormatter({
 		)) {
 			if (varValue && typeof varValue === 'object') {
 				for (const [variableName, variableValue] of Object.entries(varValue || {})) {
-					cssTheme += `  --kit-${name}-${variableName}: ${parserValues(variableValue)};\n`;
+					cssTheme += `  --l-theme-${name}-${variableName}: ${parserValues(variableValue)};\n`;
 				}
 			} else {
-				cssTheme += `  --kit-${name}: ${parserValues(varValue)};\n`;
+				cssTheme += `  --l-theme-${name}: ${parserValues(varValue)};\n`;
 			}
 		}
 
