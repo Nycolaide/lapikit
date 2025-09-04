@@ -6,6 +6,7 @@ export async function stylesFormatter({ styles }: { styles: FragStyles }) {
 	for (const [name, values] of Object.entries(styles)) {
 		if (values && typeof values === 'object') {
 			for (const [styleName, styleValue] of Object.entries(values || {})) {
+				console.log('stylesFormatter', styleName, styleValue);
 				css += `  --l-theme-${name}-${styleName}: ${parserValues(styleValue)};\n`;
 			}
 		} else {
