@@ -28,10 +28,10 @@ export async function themesFormatter({
 		)) {
 			if (varValue && typeof varValue === 'object') {
 				for (const [variableName, variableValue] of Object.entries(varValue || {})) {
-					css += `  --kit-${name}-${variableName}: ${parserValues(variableValue)};\n`;
+					cssTheme += `  --kit-${name}-${variableName}: ${parserValues(variableValue)};\n`;
 				}
 			} else {
-				css += `  --kit-${name}: ${parserValues(varValue)};\n`;
+				cssTheme += `  --kit-${name}: ${parserValues(varValue)};\n`;
 			}
 		}
 
