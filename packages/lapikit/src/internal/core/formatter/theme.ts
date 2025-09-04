@@ -19,7 +19,7 @@ export async function themesFormatter({
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
 		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
-			cssTheme += `  --l-theme-${varName}: ${varValue};\n`;
+			cssTheme += `  --system-${varName}: ${varValue};\n`;
 		}
 
 		// variables
