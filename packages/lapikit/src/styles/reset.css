@@ -2,15 +2,14 @@ html {
 	-webkit-text-size-adjust: 100%;
 	tab-size: 4;
 	line-height: 1.5;
-	/* box-sizing: border-box; */
-	font-family: var(--kit-font-family-sans);
-	background-color: var(--kit-base);
-	color: var(--kit-on-base);
+	font-family: var(--kit-font-sans);
+	background-color: var(--system-background);
+	color: var(--system-label);
 }
 
 pre,
 code {
-	font-family: var(--kit-font-family-mono);
+	font-family: var(--kit-font-mono);
 }
 
 body {
@@ -80,7 +79,7 @@ ol,
 ul,
 menu {
 	list-style: initial;
-	margin-left: calc(var(--kit-spacing) * 5);
+	margin-left: calc(var(--system-spacing) * 5);
 }
 
 ol ul,

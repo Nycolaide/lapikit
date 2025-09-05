@@ -117,6 +117,23 @@ export const preset = {
 			'2xl': '1rem', // 16px
 			'3xl': '1.5rem', // 24px
 			full: '9999px' // 9999px
+		},
+		dialog: {
+			xs: '18.75rem', // 300px
+			sm: '25rem', // 400px
+			md: '37.5rem', // 600px
+			lg: '53.125rem', // 850px
+			xl: '75rem' // 1200px
+		},
+		modal: {
+			xs: '18.75rem', // 300px
+			sm: '25rem', // 400px
+			md: '37.5rem', // 600px
+			lg: '53.125rem', // 850px
+			xl: '75rem' // 1200px
+		},
+		animation: {
+			'ripple-duration': '0.4s'
 		}
 	}
 };

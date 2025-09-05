@@ -43,15 +43,21 @@ export function ripple(el: HTMLElement, options: RippleOptions = {}) {
 		}
 
 		if (options.component) {
-			rippleContainer.style.setProperty('--ripple-radius', `var(--${options.component}-radius)`);
+			rippleContainer.style.setProperty(
+				'--system-ripple-radius',
+				`var(--${options.component}-radius)`
+			);
 		}
 
 		if (options.color) {
-			rippleContainer.style.setProperty('--ripple-color', options.color);
+			rippleContainer.style.setProperty('--system-ripple-color', options.color);
 		}
 
 		if (options.duration) {
-			rippleContainer.style.setProperty('--ripple-duration', `${options.duration}ms`);
+			rippleContainer.style.setProperty(
+				'--system-animation-ripple-duration',
+				`${options.duration}ms`
+			);
 		}
 	}
 
