@@ -81,9 +81,9 @@
 			component: 'chip',
 			disabled: noRipple || readonly || disabled || is === 'div' || is === 'span'
 		}}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--chip-background={assets.color(background)}
+		style:--chip-color={assets.color(color)}
+		style:--chip-shape={assets.shape(rounded)}
 	>
 		{#if loading}
 			<div class="kit-chip-loading">
@@ -129,7 +129,3 @@
 		{/if}
 	</svelte:element>
 {/if}
-
-<style>
-	@import './chip.css';
-</style>

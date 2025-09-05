@@ -15,7 +15,7 @@
 }
 
 .kit-dialog::backdrop {
-	background-color: color-mix(in oklab, var(--kit-shadow) 30%, transparent);
+	background-color: color-mix(in oklab, var(--l-theme-scrim) 30%, transparent);
 	animation: fade 0.2s ease-out;
 }
 .kit-dialog[open]::backdrop {
@@ -23,23 +23,17 @@
 }
 
 .kit-dialog .kit-dialog-container {
-	--dialog-color: var(--on, var(--kit-on-surface));
-	--dialog-background: var(--base, var(--kit-surface));
-	--dialog-radius: var(--shape, var(--kit-radius-md));
-
-	border-radius: var(--dialog-radius);
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-	transition-duration: 0.2s;
+	border-radius: var(--dialog-radius, var(--system-shape-md));
 	padding-top: var(--dialog-spacing-x);
 	padding-bottom: var(--dialog-spacing-x);
 	padding-right: var(--dialog-spacing-y);
 	padding-left: var(--dialog-spacing-y);
-
-	/* theme */
-	color: var(--dialog-color);
-	background-color: var(--dialog-background);
-	border-color: var(--dialog-background);
+	color: var(--dialog-color, var(--system-label));
+	background-color: var(--dialog-background, var(--system-background));
+	border-color: var(--dialog-background, var(--system-background));
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	transition-duration: 0.2s;
 }
 
 .kit-dialog .close-dialog {
@@ -60,32 +54,31 @@
 }
 
 .kit-dialog[breakpoint]kit-dialog--position-center {
-	/* margin: auto; */
 	margin-top: auto;
 	margin-bottom: auto;
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-xs {
-	max-width: var(--kit-dialog-size-xs);
+	max-width: var(--system-dialog-xs);
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-sm {
-	max-width: var(--kit-dialog-size-sm);
+	max-width: var(--system-dialog-sm);
 	height: fit-content;
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-md {
-	max-width: var(--kit-dialog-size-md);
+	max-width: var(--system-dialog-md);
 	height: fit-content;
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-lg {
-	max-width: var(--kit-dialog-size-lg);
+	max-width: var(--system-dialog-lg);
 	height: fit-content;
 }
 
 .kit-dialog[breakpoint]kit-dialog--size-xl {
-	max-width: var(--kit-dialog-size-xl);
+	max-width: var(--system-dialog-xl);
 	height: fit-content;
 }
 

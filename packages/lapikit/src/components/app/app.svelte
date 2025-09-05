@@ -46,7 +46,3 @@
 		onclick={() => $modalOpen !== 'persistent' && setOpenModal(false)}
 	></div>
 {/if}
-
-<style>
-	@import './app.css';
-</style>

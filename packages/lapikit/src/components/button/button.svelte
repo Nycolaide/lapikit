@@ -68,9 +68,9 @@
 		component: 'button',
 		disabled: noRipple || disabled
 	}}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--button-background={assets.color(background)}
+	style:--button-color={assets.color(color)}
+	style:--button-shape={assets.shape(rounded)}
 >
 	{#if loading}
 		<div class="kit-button-loading">
@@ -100,7 +100,3 @@
 		</div>
 	{/if}
 </svelte:element>
-
-<style>
-	@import './button.css';
-</style>

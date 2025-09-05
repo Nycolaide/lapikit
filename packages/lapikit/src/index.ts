@@ -1,4 +1,4 @@
-import { deepMerge } from './internal/deepMerge.js';
+import { deepMerge } from './internal/helpers/deep-merge.js';
 import { breakpoints } from './stores/breakpoints.js';
 import { get } from 'svelte/store';
 import { valueToPx } from './utils/convert.js';

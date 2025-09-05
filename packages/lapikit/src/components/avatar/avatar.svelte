@@ -34,9 +34,9 @@
 		density && assets.className('avatar', 'density', density),
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--avatar-background={assets.color(background)}
+	style:--avatar-color={assets.color(color)}
+	style:--avatar-shape={assets.shape(rounded)}
 >
 	{#if src}
 		<img {src} {alt} />
@@ -44,7 +44,3 @@
 		{@render children?.()}
 	{/if}
 </svelte:element>
-
-<style>
-	@import './avatar.css';
-</style>

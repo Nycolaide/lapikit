@@ -20,7 +20,7 @@
 	padding-left: var(--card-spacing-y);
 	border-radius: var(--card-radius);
 	font-weight: 500;
-	color: var(--card-color);
+	color: var(--card-color, var(--system-label));
 	text-decoration: none;
 }
 
@@ -50,21 +50,21 @@
 
 /* density */
 .kit-card[breakpoint]kit-card--density-default {
-	--card-spacing-x: calc(var(--prism-spacing) * 2);
-	--card-spacing-y: calc(var(--prism-spacing) * 2);
+	--card-spacing-x: calc(var(--system-spacing) * 2);
+	--card-spacing-y: calc(var(--system-spacing) * 2);
 }
 .kit-card[breakpoint]kit-card--density-compact {
 	--card-spacing-x: 0;
 	--card-spacing-y: 0;
 }
 .kit-card[breakpoint]kit-card--density-comfortable {
-	--card-spacing-x: calc(var(--prism-spacing) * 4);
-	--card-spacing-y: calc(var(--prism-spacing) * 4);
+	--card-spacing-x: calc(var(--system-spacing) * 4);
+	--card-spacing-y: calc(var(--system-spacing) * 4);
 }
 
 /* variant */
 .kit-card[breakpoint]kit-card--variant-filled {
-	background-color: var(--card-background);
+	background-color: var(--card-background, var(--system-secondary-background));
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {
@@ -89,7 +89,7 @@
 /* events */
 .kit-card[class*='card--variant-filled'].kit-card--clickable:active,
 .kit-card.kit-card--active[class*='card--variant-filled'].kit-card--clickable {
-	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--card-background) 90%, var(--l-theme-scrim));
 }
 .kit-card.kit-card--active[class*='card--variant-']:not(
 		[class*='variant-filled']

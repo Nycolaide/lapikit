@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { initConfiguration } from './configuration.js';
 import { ansi, terminal } from './helper.js';
-import { legacyConfiguration } from './legacy.js';
 import { initPrompts } from './prompts.js';
 
 async function run() {
@@ -18,14 +17,7 @@ async function run() {
 
 	const promptsConfig = await initPrompts();
 
-	if (promptsConfig.env === 'current') {
-		await legacyConfiguration(promptsConfig);
-	}
-
-	if (promptsConfig.env === 'experimental') {
-		terminal('warn', `Experimental mode is not yet implemented.`);
-		await initConfiguration(promptsConfig);
-	}
+	await initConfiguration(promptsConfig);
 }
 
 run()

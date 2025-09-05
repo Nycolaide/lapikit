@@ -3,7 +3,7 @@ import { dirname } from 'path';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
-import { minify } from '$lib/internal/minify.js';
+import { minify } from '$lib/internal/core/minify.js';
 
 import type { Lapikit } from '$lib/internal/types.js';
 import { colors, component, devices, variables } from '$lib/style/parser/index.js';

@@ -12,6 +12,7 @@
 		background,
 		spacer,
 		hideIcon,
+		rounded,
 		...rest
 	}: AccordionProps = $props();
 
@@ -30,12 +31,9 @@
 		dark && 'dark',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
+	style:--accordion-radius={assets.shape(rounded)}
+	style:--accordion-background={assets.color(background)}
+	style:--accordion-color={assets.color(color)}
 >
 	{@render children?.()}
 </svelte:element>
-
-<style>
-	@import './accordion.css';
-</style>

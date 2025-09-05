@@ -2,5 +2,6 @@ export const variables = {
 	info: 'var(--system-blue)',
 	success: 'var(--system-green)',
 	error: 'var(--system-red)',
-	warning: 'var(--system-yellow)'
+	warning: 'var(--system-yellow)',
+	scrim: 'black'
 };

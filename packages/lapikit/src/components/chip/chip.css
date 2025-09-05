@@ -1,12 +1,5 @@
-/* root */
 .kit-chip {
-	--chip-color: var(--on, var(--kit-on-container));
-	--chip-background: var(--base, var(--kit-container));
-	--chip-radius: var(--shape, var(--kit-radius-full));
-}
-
-.kit-chip {
-	min-width: calc(var(--prism-spacing) * var(--chip-multiplier-x));
+	min-width: calc(var(--system-spacing) * var(--chip-multiplier-x));
 	position: relative;
 	border: none;
 	outline: none;
@@ -15,7 +8,7 @@
 	padding-right: var(--chip-spacing-y);
 	padding-left: var(--chip-spacing-y);
 	border-radius: var(--chip-radius);
-	color: var(--chip-color);
+	color: var(--chip-color, var(--system-label));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -34,8 +27,8 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: calc(var(--prism-spacing) * var(--chip-multiplier-gap));
-	font-size: calc(var(--prism-spacing) * var(--chip-multiplier-font-size));
+	gap: calc(var(--system-spacing) * var(--chip-multiplier-gap));
+	font-size: calc(var(--system-spacing) * var(--chip-multiplier-font-size));
 	line-height: 0;
 }
 
@@ -112,7 +105,7 @@
 
 /* variant */
 .kit-chip[breakpoint]kit-chip--variant-filled {
-	background-color: var(--chip-background);
+	background-color: var(--chip-background, var(--system-secondary-background));
 }
 
 .kit-chip[breakpoint]kit-chip--variant-outline {
@@ -130,21 +123,21 @@
 
 /* density */
 .kit-chip[breakpoint]kit-chip--density-default {
-	height: calc(var(--prism-spacing) * var(--chip-multiplier-x));
+	height: calc(var(--system-spacing) * var(--chip-multiplier-x));
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y));
+	--chip-spacing-y: calc(var(--system-spacing) * var(--chip-multiplier-y));
 }
 
 .kit-chip[breakpoint]kit-chip--density-compact {
-	height: calc(var(--prism-spacing) * var(--chip-multiplier-x) - 0.25rem);
+	height: calc(var(--system-spacing) * var(--chip-multiplier-x) - 0.25rem);
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y) - 0.25rem);
+	--chip-spacing-y: calc(var(--system-spacing) * var(--chip-multiplier-y) - 0.25rem);
 }
 
 .kit-chip[breakpoint]kit-chip--density-comfortable {
-	height: calc(var(--prism-spacing) * var(--chip-multiplier-x) + 0.25rem);
+	height: calc(var(--system-spacing) * var(--chip-multiplier-x) + 0.25rem);
 	--chip-spacing-x: 0;
-	--chip-spacing-y: calc(var(--prism-spacing) * var(--chip-multiplier-y) + 0.25rem);
+	--chip-spacing-y: calc(var(--system-spacing) * var(--chip-multiplier-y) + 0.25rem);
 }
 
 /* state */

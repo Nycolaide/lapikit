@@ -37,15 +37,11 @@
 		location && assets.className('toolbar', 'location', location),
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--toolbar-background={assets.color(background)}
+	style:--toolbar-color={assets.color(color)}
+	style:--toolbar-radius={assets.shape(rounded)}
 >
 	<div class={['kit-toolbar--wrapper', classContent]}>
 		{@render children?.()}
 	</div>
 </svelte:element>
-
-<style>
-	@import './toolbar.css';
-</style>

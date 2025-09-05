@@ -12,7 +12,7 @@ export async function typographyFormatter({
 	for (const [name, values] of Object.entries(typography)) {
 		let cssTypo = defaultTypography === name ? `:root {\n` : `.${name} {\n`;
 		for (const [fontName, fontValue] of Object.entries(values || {})) {
-			cssTypo += `  --kit-font-${fontName}: ${parserValues(fontValue)};\n`;
+			cssTypo += `  --l-font-${fontName}: ${parserValues(fontValue)};\n`;
 		}
 		css += cssTypo + '}\n';
 	}

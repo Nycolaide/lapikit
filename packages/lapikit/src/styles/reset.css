@@ -2,14 +2,14 @@ html {
 	-webkit-text-size-adjust: 100%;
 	tab-size: 4;
 	line-height: 1.5;
-	font-family: var(--kit-font-sans);
+	font-family: var(--l-font-sans);
 	background-color: var(--system-background);
 	color: var(--system-label);
 }
 
 pre,
 code {
-	font-family: var(--kit-font-mono);
+	font-family: var(--l-font-mono);
 }
 
 body {

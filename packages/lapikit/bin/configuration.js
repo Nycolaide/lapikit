@@ -11,7 +11,6 @@ async function findReferenceFile(projectPath) {
 		await fs.access(routesPath);
 	} catch {
 		terminal('error', `Lapikit cannot find the routes/ directory.`);
-		// throw new Error('Lapikit cannot find the routes/ directory.');
 	}
 
 	const layoutFile = path.join(routesPath, '+layout.svelte');

@@ -1,8 +1,4 @@
 .kit-dropdown-content {
-	--dropdown-color: var(--on, var(--kit-on-surface));
-	--dropdown-background: var(--base, var(--kit-surface));
-	--dropdown-radius: var(--shape, var(--kit-radius-md));
-
 	inset: 0px auto auto 0px;
 	margin: 0px;
 	position: fixed;
@@ -11,12 +7,7 @@
 	width: auto;
 	opacity: 1;
 	transition-property: opacity, transform;
-	/* transition:
-		color 0.5s,
-		background-color 0.5s; */
-
-	/* theme */
-	background-color: var(--dropdown-background);
-	color: var(--dropdown-color);
-	border-radius: var(--dropdown-radius);
+	background-color: var(--dropdown-background, var(--system-secondary-background));
+	color: var(--dropdown-color, var(--system-label));
+	border-radius: var(--dropdown-radius, var(--system-shape-md));
 }

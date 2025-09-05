@@ -30,15 +30,11 @@
 		density && assets.className('appbar', 'density', density),
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--appbar-background={assets.color(background)}
+	style:--appbar-color={assets.color(color)}
+	style:--appbar-radius={assets.shape(rounded)}
 >
 	<div class={['kit-appbar--wrapper', classContent]}>
 		{@render children?.()}
 	</div>
 </svelte:element>
-
-<style>
-	@import './appbar.css';
-</style>

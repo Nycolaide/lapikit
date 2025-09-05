@@ -1,8 +1,4 @@
 .kit-avatar {
-	--avatar-color: var(--on, var(--kit-on-container));
-	--avatar-background: var(--base, var(--kit-container));
-	--avatar-radius: var(--shape, var(--kit-radius-full));
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,15 +7,12 @@
 	padding-bottom: var(--avatar-spacing-x);
 	padding-right: var(--avatar-spacing-y);
 	padding-left: var(--avatar-spacing-y);
-
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--avatar-radius);
-
-	/* theme */
-	color: var(--avatar-color);
-	background-color: var(--avatar-background);
-	border-color: var(--avatar-background);
+	color: var(--avatar-color, var(--system-label));
+	background-color: var(--avatar-background, var(--system-gray-4));
+	border-color: var(--avatar-background, var(--system-gray-4));
 }
 
 .kit-avatar.kit-avatar--image {

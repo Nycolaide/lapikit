@@ -55,13 +55,9 @@
 		component: 'card',
 		disabled: noRipple || disabled || !isClickable
 	}}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--card-background={assets.color(background)}
+	style:--card-color={assets.color(color)}
+	style:--card-shape={assets.shape(rounded)}
 >
 	{@render children?.()}
 </svelte:element>
-
-<style>
-	@import './card.css';
-</style>

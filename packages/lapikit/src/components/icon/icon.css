@@ -1,31 +1,28 @@
 .kit-icon {
-	--icon-color: var(--base, var(--base-parent, var(--kit-on-neutral)));
-
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	/* transition: color 0.5s; */
 	text-indent: 0;
 	font-size: calc(
-		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--system-spacing)
 	);
 }
 
 .kit-icon:before {
-	color: var(--icon-color);
+	color: var(--icon-color, currentColor);
 }
 
 .kit-icon svg {
-	color: var(--icon-color);
+	color: var(--icon-color, currentColor);
 }
 
 .kit-icon svg,
 .kit-icon img {
 	width: calc(
-		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--system-spacing)
 	);
 	height: calc(
-		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--prism-spacing)
+		var(--icon-multiplier-parent-size, var(--icon-multiplier-size)) * var(--system-spacing)
 	);
 }
 

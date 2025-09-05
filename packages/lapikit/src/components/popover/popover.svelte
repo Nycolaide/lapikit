@@ -63,15 +63,11 @@
 		role="menu"
 		class={['kit-popover-content', light && 'light', dark && 'dark', rest.class]}
 		style={`transform: translate(${axis.x}px, ${axis.y}px);`}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--popover-background={assets.color(background)}
+		style:--popover-color={assets.color(color)}
+		style:--popover-shape={assets.shape(rounded)}
 		use:clickOutside={{ exclude: [ref, refActivator], onClose: () => (open = false) }}
 	>
 		{@render children?.()}
 	</div>
 {/if}
-
-<style>
-	@import './popover.css';
-</style>

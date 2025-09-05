@@ -8,6 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import fsPromises from 'fs/promises';
 import path from 'path';
+import { processImportStyles } from '../core/css.js';
 
 type Lapikit = {
 	config?: string;
@@ -23,10 +24,15 @@ export async function lapikit({ config }: Lapikit = {}) {
 				const configuration = await parserConfigLapikit(app, config);
 
 				// generate styles
+
+				const basicStyles = await processImportStyles();
+
+				fsPromises.writeFile(path.resolve(__dirname, '../../styles.css'), basicStyles || '');
+
 				const styles = await css(configuration);
 
 				fsPromises.writeFile(
-					path.resolve(__dirname, '../../labs.css'),
+					path.resolve(__dirname, '../../themes.css'),
 					styles?.themes +
 						'\n\n' +
 						styles?.typography +
@@ -35,7 +41,6 @@ export async function lapikit({ config }: Lapikit = {}) {
 						'\n\n' +
 						styles?.devices || ''
 				);
-				console.log('styles', styles, __dirname);
 			}
 			terminal('info', 'lapikit is up!');
 		}

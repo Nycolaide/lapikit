@@ -1,13 +1,7 @@
-/* root */
 .kit-modal {
-	--modal-color: var(--on, var(--kit-on-surface));
-	--modal-background: var(--base, var(--kit-surface));
-	--modal-radius: var(--shape, var(--kit-radius-md));
 	--modal-translate-x: -50%;
 	--modal-translate-y: -50%;
-}
 
-.kit-modal {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -23,11 +17,9 @@
 	padding-bottom: var(--modal-spacing-x);
 	padding-right: var(--modal-spacing-y);
 	padding-left: var(--modal-spacing-y);
-
-	/* theme */
-	color: var(--modal-color);
-	background-color: var(--modal-background);
-	border-color: var(--modal-background);
+	color: var(--modal-color, var(--system-label));
+	background-color: var(--modal-background, var(--system-background));
+	border-color: var(--modal-background, var(--system-background));
 }
 
 .kit-modal.kit-modal--contain {
@@ -45,54 +37,54 @@
 
 /* size */
 .kit-modal [breakpoint]kit-modal-container--size-xs {
-	max-width: var(--kit-modal-size-xs);
+	max-width: var(--system-dialog-xs);
 	max-height: calc(100% - 3rem);
 	height: fit-content;
 	margin: 0 auto;
 	left: 50%;
 	bottom: initial;
 	translate: var(--modal-translate-x) var(--modal-translate-y);
-	border-radius: var(--modal-radius);
+	border-radius: var(--modal-radius, var(--system-shape-md));
 }
 .kit-modal [breakpoint]kit-modal-container--size-sm {
-	max-width: var(--kit-modal-size-sm);
+	max-width: var(--system-dialog-sm);
 	max-height: calc(100% - 3rem);
 	height: fit-content;
 	margin: 0 auto;
 	left: 50%;
 	bottom: initial;
 	translate: var(--modal-translate-x) var(--modal-translate-y);
-	border-radius: var(--modal-radius);
+	border-radius: var(--modal-radius, var(--system-shape-md));
 }
 .kit-modal [breakpoint]kit-modal-container--size-md {
-	max-width: var(--kit-modal-size-md);
+	max-width: var(--system-dialog-md);
 	max-height: calc(100% - 3rem);
 	height: fit-content;
 	margin: 0 auto;
 	left: 50%;
 	bottom: initial;
 	translate: var(--modal-translate-x) var(--modal-translate-y);
-	border-radius: var(--modal-radius);
+	border-radius: var(--modal-radius, var(--system-shape-md));
 }
 .kit-modal [breakpoint]kit-modal-container--size-lg {
-	max-width: var(--kit-modal-size-lg);
+	max-width: var(--system-dialog-lg);
 	max-height: calc(100% - 3rem);
 	height: fit-content;
 	margin: 0 auto;
 	left: 50%;
 	bottom: initial;
 	translate: var(--modal-translate-x) var(--modal-translate-y);
-	border-radius: var(--modal-radius);
+	border-radius: var(--modal-radius, var(--system-shape-md));
 }
 .kit-modal [breakpoint]kit-modal-container--size-xl {
-	max-width: var(--kit-modal-size-xl);
+	max-width: var(--system-dialog-xl);
 	max-height: calc(100% - 3rem);
 	height: fit-content;
 	margin: 0 auto;
 	left: 50%;
 	bottom: initial;
 	translate: var(--modal-translate-x) var(--modal-translate-y);
-	border-radius: var(--modal-radius);
+	border-radius: var(--modal-radius, var(--system-shape-md));
 }
 .kit-modal [breakpoint]kit-modal-container--size-full {
 	max-width: 100%;
@@ -103,7 +95,8 @@
 	left: 0;
 	top: initial;
 	height: 100%;
-	border-radius: var(--modal-radius) var(--modal-radius) 0 0;
+	border-radius: var(--modal-radius, var(--system-shape-md))
+		var(--modal-radius, var(--system-shape-md)) 0 0;
 }
 
 /* density */
