@@ -6,24 +6,16 @@
 }
 
 .kit-tooltip-content {
-	--tooltip-color: var(--on, var(--kit-on-surface));
-	--tooltip-background: var(--base, var(--kit-surface));
-	--tooltip-radius: var(--shape, var(--kit-radius-md));
-
-	background-color: var(--tooltip-background);
-	color: var(--tooltip-color);
-	border-radius: var(--tooltip-radius);
-	border: 1px solid var(--tooltip-background);
+	background-color: var(--tooltip-background, var(--system-secondary-background));
+	color: var(--tooltip-color, var(--system-label));
+	border-radius: var(--tooltip-radius, var(--system-shape-md));
+	border: 1px solid var(--tooltip-background, var(--system-secondary-background));
 	font-size: 0.875rem;
 	display: inline-block;
 	width: auto;
 	pointer-events: none;
 	overflow-wrap: break-word;
-	/* transition:
-		color 0.5s,
-		border-color 0.5s,
-		background-color 0.5s; */
-	box-shadow: 0px 16px 29px -10px color-mix(in oklab, var(--kit-scrim) 60%, transparent);
+	box-shadow: 0px 16px 29px -10px color-mix(in oklab, var(--l-theme-scrim) 60%, transparent);
 }
 
 /* density */

@@ -51,9 +51,9 @@
 			rest.class
 		]}
 		role="alert"
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--alert-background={assets.color(background)}
+		style:--alert-color={assets.color(color)}
+		style:--alert-radius={assets.shape(rounded)}
 	>
 		{#if prepend}
 			<div class="kit-alert--prepend">
@@ -87,7 +87,3 @@
 		{/if}
 	</svelte:element>
 {/if}
-
-<style>
-	@import './alert.css';
-</style>

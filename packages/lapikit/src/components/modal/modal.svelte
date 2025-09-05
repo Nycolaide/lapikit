@@ -103,15 +103,11 @@
 				density && assets.className('modal-container', 'density', density),
 				position && assets.className('modal-container', 'position', position)
 			]}
-			style:--base={assets.color(background)}
-			style:--on={assets.color(color)}
-			style:--shape={assets.shape(rounded)}
+			style:--modal-background={assets.color(background)}
+			style:--modal-color={assets.color(color)}
+			style:--modal-shape={assets.shape(rounded)}
 		>
 			{@render children?.()}
 		</div>
 	</div>
 {/if}
-
-<style>
-	@import './modal.css';
-</style>

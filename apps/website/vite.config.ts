@@ -9,7 +9,12 @@ import { lapikit } from 'lapikit/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 
 export default defineConfig({
-	plugins: [tailwindcss(), enhancedImages(), sveltekit(), lapikit()],
+	plugins: [
+		tailwindcss(),
+		enhancedImages(),
+		sveltekit(),
+		lapikit({ config: 'src/plugins/lapikit.ts' })
+	],
 	test: {
 		workspace: [
 			{

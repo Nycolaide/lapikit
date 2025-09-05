@@ -1,10 +1,3 @@
-/* root */
-.kit-list {
-	--list-color: var(--on, var(--kit-on-container));
-	--list-background: var(--base, var(--kit-container));
-	--list-radius: var(--shape, var(--kit-radius-md));
-}
-
 .kit-list {
 	position: relative;
 	flex-direction: column;
@@ -15,10 +8,6 @@
 }
 
 .kit-list-item {
-	--list-item-radius: var(--shape, var(--list-radius, var(--kit-radius-md)));
-}
-
-.kit-list-item {
 	position: relative;
 	border: none;
 	outline: none;
@@ -26,8 +15,8 @@
 	padding-bottom: var(--list-spacing-x);
 	padding-right: var(--list-spacing-y);
 	padding-left: var(--list-spacing-y);
-	color: var(--list-item-color);
-	border-radius: var(--list-item-radius);
+	color: var(--list-item-color, var(--system-label));
+	border-radius: var(--list-item-radius, var(--system-shape-sm));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -43,8 +32,8 @@
 	display: inline-flex;
 	align-items: center;
 	white-space: nowrap;
-	gap: calc(var(--prism-spacing) * var(--list-multiplier-gap));
-	font-size: calc(var(--prism-spacing) * var(--list-multiplier-font-size));
+	gap: calc(var(--system-spacing) * var(--list-multiplier-gap));
+	font-size: calc(var(--system-spacing) * var(--list-multiplier-font-size));
 }
 
 .kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
@@ -141,27 +130,27 @@
 
 /* density */
 .kit-list[breakpoint]kit-list--density-default .kit-list-item {
-	height: calc(var(--prism-spacing) * var(--list-multiplier-x));
+	height: calc(var(--system-spacing) * var(--list-multiplier-x));
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y));
+	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y));
 }
 
 .kit-list[breakpoint]kit-list--density-compact .kit-list-item {
-	height: calc(var(--prism-spacing) * var(--list-multiplier-x) - 0.25rem);
+	height: calc(var(--system-spacing) * var(--list-multiplier-x) - 0.25rem);
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y) - 0.25rem);
+	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
 .kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {
-	height: calc(var(--prism-spacing) * var(--list-multiplier-x) + 0.25rem);
+	height: calc(var(--system-spacing) * var(--list-multiplier-x) + 0.25rem);
 	--list-spacing-x: 0;
-	--list-spacing-y: calc(var(--prism-spacing) * var(--list-multiplier-y) + 0.25rem);
+	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y) + 0.25rem);
 }
 
 /* variant */
 .kit-list[breakpoint]kit-list--variant-filled .kit-list-item {
-	--list-item-color: var(--on, var(--list-color, var(--kit-on-container)));
-	--list-item-background: var(--base, var(--list-background, var(--kit-container)));
+	--list-item-color: var(--on, var(--list-color, var(--system-label)));
+	--list-item-background: var(--base, var(--list-background, var(--system-secondary-background)));
 	background-color: var(--list-item-background);
 }
 
@@ -187,8 +176,8 @@
 /* events */
 .kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--active:not(div),
 .kit-list[class*='list--variant-filled'] .kit-list-item:active:not(div) {
-	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--l-theme-scrim));
+	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--l-theme-scrim));
 }
 .kit-list[class*='list--variant-']:not([class*='variant-filled'])
 	.kit-list-item.kit-list-item--active:not(div),

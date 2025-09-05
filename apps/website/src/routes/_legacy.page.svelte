@@ -67,7 +67,6 @@
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
 		density={{ _default: 'default', md: 'comfortable' }}
-		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
 		<div class="hidden-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
@@ -85,13 +84,7 @@
 		<div class="flex justify-end gap-3">
 			<ThemeToggle app />
 
-			<Button
-				href="/docs/getting-started"
-				density="comfortable"
-				color="on-container"
-				background="container"
-				id="btn-getstarted-lapikit"
-			>
+			<Button href="/docs/getting-started" density="comfortable" id="btn-getstarted-lapikit">
 				{capitalize($t('homepage.top_cta'))}
 			</Button>
 		</div>
@@ -226,7 +219,7 @@
 			<p>{capitalize($t('homepage.lapikit_discover.paragraph'))}</p>
 		</div>
 		<div>
-			<Button color="container" background="on-container" href="/docs/components">
+			<Button color="container" href="/docs/components">
 				{capitalize($t('homepage.lapikit_discover.cta'))}
 			</Button>
 		</div>

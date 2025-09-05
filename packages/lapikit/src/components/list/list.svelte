@@ -36,13 +36,9 @@
 		rest.class
 	]}
 	role="listbox"
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--list-background={assets.color(background)}
+	style:--list-color={assets.color(color)}
+	style:--list-shape={assets.shape(rounded)}
 >
 	{@render children?.()}
 </svelte:element>
-
-<style>
-	@import './list.css';
-</style>

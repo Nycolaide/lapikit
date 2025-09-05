@@ -9,7 +9,7 @@ function presets({ adapterCSS }) {
 	if (adapterCSS === 'css') {
 		content += `// Styles\n`;
 		content += `import 'lapikit/styles';\n`;
-		content += `import 'lapikit/css';\n\n`;
+		content += `import 'lapikit/themes';\n\n`;
 	}
 
 	content += `// Composables\n`;

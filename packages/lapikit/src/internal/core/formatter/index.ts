@@ -1,5 +1,5 @@
 import { preset } from '$lib/internal/config/presets.js';
-import { deepMerge } from '$lib/internal/deepMerge.js';
+import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import type { DevConfiguration } from '$lib/internal/types/index.js';
 import { componentFormatter } from './component.js';
 import { devicesFormatter } from './device.js';

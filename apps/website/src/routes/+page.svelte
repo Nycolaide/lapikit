@@ -2,15 +2,15 @@
 	let { data } = $props();
 
 	// sample
-	import { developmentMode } from '$lib/stores/app.js';
+	// import { developmentMode } from '$lib/stores/app.js';
 
 	// temps
-	import NewPage from './_new.page.svelte';
+	// import NewPage from './_new.page.svelte';
 	import LegacyPage from './_legacy.page.svelte';
 </script>
 
-{#if $developmentMode}
+<!-- {#if $developmentMode}
 	<NewPage {data} />
-{:else}
-	<LegacyPage {data} />
-{/if}
+{:else} -->
+<LegacyPage {data} />
+<!-- {/if} -->

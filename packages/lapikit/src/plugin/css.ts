@@ -1,4 +1,4 @@
-import { deepMerge } from '$lib/internal/deepMerge.js';
+import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import { preset } from './preset-v2.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';

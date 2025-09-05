@@ -1,4 +1,6 @@
 <script lang="ts">
+	import '../plugins/lapikit.ts';
+
 	// icons
 	import 'mingcute_icon/font/Mingcute.css';
 	// fonts

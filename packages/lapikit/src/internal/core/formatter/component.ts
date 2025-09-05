@@ -17,59 +17,59 @@ export async function componentFormatter({
 		fs.readdirSync(directory).forEach((File) => {
 			const absolutePath = path.join(directory, File);
 			if (fs.statSync(absolutePath).isDirectory()) return loadSvelteFiles(absolutePath);
-			else if (absolutePath.endsWith('.svelte') && !absolutePath.includes('/_')) {
-				console.log(absolutePath);
+			else if (absolutePath.endsWith('.css') && !absolutePath.includes('/_')) {
+				const fileCSS = fs.readFileSync(absolutePath, 'utf8');
+				const content = parserCSSBreakpoints(fileCSS);
 
-				const fileContent = fs.readFileSync(absolutePath, 'utf8');
+				console.log('content', content);
 
-				const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi;
-				const styleMatch = styleRegex.exec(fileContent);
+				// all: [], allExtracted _default
+				// base: [],defaultExtracted static
+				// min: [],minExtracted min
+				// max: [],maxExtracted max
+				// minmax: [] allModifierExtracted all
 
-				if (styleMatch) {
-					const originalStyleContent = styleMatch[1];
-					const content = parserCSSBreakpoints(originalStyleContent);
+				let css = `${content.cleaned}\n`;
 
-					let css = '';
+				for (const property in breakpoints) {
+					if (property !== 'base') {
+						const name = `.${/^\d/.test(property) ? `\\3${property}` : property}\\:`;
 
-					for (const property in breakpoints) {
-						if (property !== 'base') {
-							const name = `.${/^\d/.test(property) ? `\\3${property}` : property}\\:`;
+						const value =
+							typeof breakpoints[property] === 'number'
+								? `${breakpoints[property]}px`
+								: breakpoints[property];
 
-							const value =
-								typeof breakpoints[property] === 'number'
-									? `${breakpoints[property]}px`
-									: breakpoints[property];
-
-							if (content.base !== '' || content.minmax !== '' || content.min !== '') {
-								css += `@media screen and (min-width: ${value}) {\n`;
-								if (content.base !== '') css += content.base.replaceAll('[breakpoint]', name);
-								if (content.minmax !== '') css += content.minmax.replaceAll('[breakpoint]', name);
-								if (content.min !== '') css += content.min.replaceAll('[breakpoint]', name);
-								css += `}\n`;
-							}
-
-							if (content.max !== '' || content.all !== '') {
-								css += `@media screen and (max-width: ${value}) {\n`;
-								if (content.max !== '') css += content.max.replaceAll('[breakpoint]', name);
-								if (content.all !== '') css += content.all.replaceAll('[breakpoint]', name);
-								css += `}\n`;
-							}
-						} else {
-							css += content.all.replaceAll('[breakpoint]', '.');
+						if (content.base !== '' || content.minmax !== '' || content.min !== '') {
+							css += `\n@media screen and (min-width: ${value}) {\n`;
+							if (content.base !== '') css += content.base.replaceAll('[breakpoint]', name);
+							if (content.minmax !== '') css += content.minmax.replaceAll('[breakpoint]', name);
+							if (content.min !== '') css += content.min.replaceAll('[breakpoint]', name);
+							css += `\n}\n`;
 						}
+
+						if (content.max !== '' || content.minmax !== '') {
+							css += `\n@media screen and (max-width: ${value}) {\n`;
+							if (content.max !== '')
+								css += content.max.replaceAll('[breakpoint]', `max\\:${name}`);
+							if (content.minmax !== '')
+								css += content.all.replaceAll('[breakpoint]', `max\\:${name}`);
+							css += `\n}\n`;
+						}
+					} else {
+						css += `${content.base.replaceAll('[breakpoint]', '.')}\n`;
 					}
+				}
 
-					let formattedCSS = css;
-					formattedCSS = formattedCSS.trim().replace(/\n{3,}/g, '\n\n');
+				const baseName = path.basename(absolutePath, '.css');
+				const svelteFilePath = path.join(path.dirname(absolutePath), `${baseName}.svelte`);
 
-					console.log(formattedCSS);
+				if (fs.existsSync(svelteFilePath)) {
+					let svelteContent = fs.readFileSync(svelteFilePath, 'utf8');
+					svelteContent = svelteContent.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+					svelteContent += `<style>\n${css}</style>`;
 
-					const updatedFileContent = fileContent.replace(
-						styleRegex,
-						`<style>${formattedCSS}</style>`
-					);
-
-					fs.writeFileSync(absolutePath, updatedFileContent, 'utf8');
+					fs.writeFileSync(svelteFilePath, svelteContent, 'utf8');
 				}
 			}
 		});

@@ -106,9 +106,9 @@
 		type === 'number' && hideSpinButtons && 'kit-textfield--hide-spin-buttons',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--textfield-background={assets.color(background)}
+	style:--textfield-color={assets.color(color)}
+	style:--textfield-radius={assets.shape(rounded)}
 >
 	{#if prepend}
 		<div class="kit-textfield-prepend">
@@ -191,7 +191,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	@import './textfield.css';
-</style>

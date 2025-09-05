@@ -39,7 +39,7 @@
 		size && assets.className('icon', 'size', size),
 		rest.class
 	]}
-	style:--base={assets.color(color)}
+	style:--icon-color={assets.color(color)}
 >
 	{#if icon && icon.includes('/')}
 		<img src={icon} {alt} />
@@ -47,7 +47,3 @@
 		{@render children?.()}
 	{/if}
 </svelte:element>
-
-<style>
-	@import './icon.css';
-</style>

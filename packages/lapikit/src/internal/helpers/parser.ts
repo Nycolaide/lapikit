@@ -10,6 +10,7 @@ export const parserValues = (value: string | number | Array<string | number>) =>
 };
 
 export const parserCSSBreakpoints = (css: string) => {
+	css = css.replace(/\/\*[\s\S]*?\*\//g, ''); // clean comments
 	const regex = /([^{]+)\{([^}]+)\}/g;
 	let match;
 

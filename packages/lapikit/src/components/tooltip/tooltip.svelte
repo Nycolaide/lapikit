@@ -99,9 +99,9 @@
 				density && assets.className('tooltip-content', 'density', density),
 				rest.class
 			]}
-			style:--base={assets.color(background)}
-			style:--on={assets.color(color)}
-			style:--shape={assets.shape(rounded)}
+			style:--tooltip-background={assets.color(background)}
+			style:--tooltip-color={assets.color(color)}
+			style:--tooltip-radius={assets.shape(rounded)}
 		>
 			{#if tooltip}
 				{@render tooltip?.()}
@@ -111,7 +111,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	@import './tooltip.css';
-</style>

@@ -58,14 +58,10 @@
 			rest.class
 		]}
 		onclick={(event: MouseEvent) => event.stopPropagation()}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--dialog-background={assets.color(background)}
+		style:--dialog-color={assets.color(color)}
+		style:--dialog-shape={assets.shape(rounded)}
 	>
 		{@render children?.()}
 	</div>
 </dialog>
-
-<style>
-	@import './dialog.css';
-</style>

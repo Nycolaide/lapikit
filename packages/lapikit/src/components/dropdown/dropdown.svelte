@@ -106,15 +106,11 @@
 			e.stopPropagation();
 			handleClose();
 		}}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--dropdown-background={assets.color(background)}
+		style:--dropdown-color={assets.color(color)}
+		style:--dropdown-shape={assets.shape(rounded)}
 		use:clickOutside={{ exclude: [ref, refActivator], onClose: () => (open = false) }}
 	>
 		{@render children?.()}
 	</div>
 {/if}
-
-<style>
-	@import './dropdown.css';
-</style>

@@ -50,12 +50,8 @@
 			"svelte": "./dist/components/index.js",
 			"default": "./dist/components/index.js"
 		},
-		"./labs": {
-			"svelte": "./dist/labs/index.js",
-			"default": "./dist/labs/index.js"
-		},
 		"./vite": {
-			"default": "./dist/plugin/vitejs.js"
+			"default": "./dist/internal/plugins/vite.js"
 		},
 		"./stores": {
 			"default": "./dist/stores/index.js"
@@ -63,11 +59,8 @@
 		"./actions": {
 			"default": "./dist/actions/index.js"
 		},
-		"./css": "./dist/styles.css",
-		"./styles": "./dist/labs.css",
-		"./viteLab": {
-			"default": "./dist/internal/plugins/vite.js"
-		}
+		"./styles": "./dist/styles.css",
+		"./themes": "./dist/themes.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"

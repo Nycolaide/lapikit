@@ -1,5 +1,6 @@
 import { preset } from '$lib/internal/config/presets.js';
-import { deepMerge } from '$lib/internal/deepMerge.js';
+import { formatColor } from '$lib/internal/helpers/colors.js';
+import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import { parserValues } from '$lib/internal/helpers/parser.js';
 import type { FragThemes } from '$lib/internal/types/index.js';
 
@@ -19,7 +20,7 @@ export async function themesFormatter({
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
 		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
-			cssTheme += `  --system-${varName}: ${varValue};\n`;
+			cssTheme += `  --system-${varName}: ${formatColor(varValue)};\n`;
 		}
 
 		// variables
@@ -28,10 +29,10 @@ export async function themesFormatter({
 		)) {
 			if (varValue && typeof varValue === 'object') {
 				for (const [variableName, variableValue] of Object.entries(varValue || {})) {
-					cssTheme += `  --l-theme-${name}-${variableName}: ${parserValues(variableValue)};\n`;
+					cssTheme += `  --l-theme-${name}-${variableName}: ${formatColor(parserValues(variableValue))};\n`;
 				}
 			} else {
-				cssTheme += `  --l-theme-${name}: ${parserValues(varValue)};\n`;
+				cssTheme += `  --l-theme-${name}: ${formatColor(parserValues(varValue))};\n`;
 			}
 		}
 
