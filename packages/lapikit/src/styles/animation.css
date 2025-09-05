@@ -6,9 +6,11 @@
 	pointer-events: none;
 	-webkit-transition: 0.6s;
 	transition: 0.6s;
-	-webkit-animation: lapikit-ripple var(--ripple-duration, 0.4s) cubic-bezier(0.4, 0, 0.2, 1);
-	animation: lapikit-ripple var(--ripple-duration, 0.4s) cubic-bezier(0.4, 0, 0.2, 1);
-	border-radius: var(--ripple-radius);
+	-webkit-animation: animation-l-ripple var(--system-animation-ripple-duration, 0.4s)
+		cubic-bezier(0.4, 0, 0.2, 1);
+	animation: animation-l-ripple var(--system-animation-ripple-duration, 0.4s)
+		cubic-bezier(0.4, 0, 0.2, 1);
+	border-radius: var(--system-ripple-radius);
 }
 
 .kit-ripple--center {
@@ -27,5 +29,5 @@
 	background: none;
 	pointer-events: none;
 	z-index: 999;
-	border-radius: var(--ripple-radius);
+	border-radius: var(--system-ripple-radius);
 }
