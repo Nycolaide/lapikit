@@ -31,7 +31,7 @@
 <Dialog bind:open={openXl} size="xl">
 	<div>Dialog with extra large size</div>
 </Dialog>
-<Dialog bind:open={openResponsive} size={{ _default: 'xs', md: 'sm', lg: 'lg' }}>
+<Dialog bind:open={openResponsive} size={{ base: 'xs', md: 'sm', lg: 'lg' }}>
 	<div>
 		<Button onclick={() => (openResponsive = false)}>Close</Button>
 	</div>

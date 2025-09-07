@@ -27,7 +27,7 @@
 	<div>Dialog positioned at the bottom of the viewport</div>
 </Dialog>
 
-<Dialog bind:open={openResponsive} position={{ _default: 'bottom', md: 'center' }}>
+<Dialog bind:open={openResponsive} position={{ base: 'bottom', md: 'center' }}>
 	<div>
 		Dialog positioned at the bottom of the viewport on small screens and at the center on medium and
 		larger screens

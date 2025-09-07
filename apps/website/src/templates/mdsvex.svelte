@@ -84,9 +84,9 @@
 	}
 
 	p.description {
-		margin-top: calc(var(--kit-spacing) * 6) !important;
+		margin-top: calc(var(--system-spacing) * 6) !important;
 		font-size: 21px;
-		line-height: calc(var(--kit-spacing) * 14) !important;
+		line-height: calc(var(--system-spacing) * 14) !important;
 		font-weight: var(--font-weight-semibold);
 		text-wrap: balance;
 		color: color-mix(in oklab, var(--kit-on-base) 70%, transparent);

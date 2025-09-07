@@ -57,7 +57,7 @@
 
 <svelte:window bind:innerWidth={sizeWidthScreen} />
 
-<Appbar density={{ _default: 'default', md: 'comfortable' }} class="sticky top-0 z-100 w-full">
+<Appbar density={{ base: 'default', md: 'comfortable' }} class="sticky top-0 z-100 w-full">
 	<a href="/">
 		<p class="text-2xl font-bold">Lapikit</p>
 	</a>
@@ -84,7 +84,7 @@
 <Drawer bind:open>
 	{#snippet navigation()}
 		{#each navigationRoutes as section, index (section.key)}
-			<List class="kit-device--h-mobile" nav density="compact" variant="text">
+			<List class="kit-device--oh-mobile" nav density="compact" variant="text">
 				{#if section.submenu}
 					<ListItem class="font-semibold">
 						{capitalize(section.key)}
@@ -118,7 +118,7 @@
 				{/each}
 			</List>
 
-			<List class="kit-device--d-mobile" nav>
+			<List class="kit-device--od-mobile" nav>
 				{#if selectedSection === null}
 					{#if section.submenu}
 						<ListItem onclick={() => (selectedSection = index)}>
@@ -176,7 +176,7 @@
 		size="xl"
 		density="comfortable"
 		rounded="lg"
-		class="kit-device--h-desktop fixed right-[0.75rem] bottom-[0.75rem] z-1100"
+		class="kit-device--h-desktop fixed! right-[0.75rem] bottom-[0.75rem] z-1100"
 		background="on-container"
 		color="container"
 	>

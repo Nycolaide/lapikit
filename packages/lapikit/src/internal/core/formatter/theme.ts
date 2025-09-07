@@ -15,7 +15,8 @@ export async function themesFormatter({
 
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
-		let cssTheme = defaultTheme === name ? `:root,\n.kit-${name} {\n` : `.kit-${name} {\n`;
+		let cssTheme =
+			defaultTheme === name ? `:root,\n.kit-theme--${name} {\n` : `.kit-theme--${name} {\n`;
 
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;

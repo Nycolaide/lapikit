@@ -7,70 +7,6 @@
 	outline: none;
 }
 
-.kit-list-item {
-	position: relative;
-	border: none;
-	outline: none;
-	padding-top: var(--list-spacing-x);
-	padding-bottom: var(--list-spacing-x);
-	padding-right: var(--list-spacing-y);
-	padding-left: var(--list-spacing-y);
-	color: var(--list-item-color, var(--system-label));
-	border-radius: var(--list-item-shape, var(--system-shape-sm));
-	font-weight: 500;
-	text-decoration: none;
-}
-
-.kit-list-item:not(div) {
-	cursor: pointer;
-}
-
-.kit-list-item,
-.kit-list-item .kit-list-item-content--content,
-.kit-list-item .kit-list-item-content--append,
-.kit-list-item .kit-list-item-content--prepend {
-	display: inline-flex;
-	align-items: center;
-	white-space: nowrap;
-	gap: calc(var(--system-spacing) * var(--list-multiplier-gap));
-	font-size: calc(var(--system-spacing) * var(--list-multiplier-font-size));
-}
-
-.kit-list-item.kit-list-item--append:not(.kit-list-item--prepend) {
-	display: grid;
-	grid-template-columns: auto 1fr;
-}
-
-.kit-list-item.kit-list-item--prepend:not(.kit-list-item--append) {
-	display: grid;
-	grid-template-columns: 1fr auto;
-}
-
-.kit-list-item.kit-list-item--prepend.kit-list-item--append {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-}
-
-.kit-list-item::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-color: currentColor;
-	opacity: 0;
-	transition: opacity 150ms ease;
-	pointer-events: none;
-	border-radius: inherit;
-}
-.kit-list-item:not(div):hover::after {
-	opacity: 0.08;
-}
-.kit-list-item:not(div):active::after {
-	opacity: 0.12;
-}
-.kit-list-item:not(div):focus-visible::after {
-	opacity: 0.12;
-}
-
 .kit-list.kit-list--nav {
 	padding-top: 8px;
 	padding-bottom: 8px;
@@ -129,20 +65,20 @@
 }
 
 /* density */
-.kit-list[breakpoint]kit-list--density-default .kit-list-item {
-	height: calc(var(--system-spacing) * var(--list-multiplier-x));
+.kit-list[breakpoint]kit-list--density-default {
+	--list-height: calc(var(--system-spacing) * var(--list-multiplier-x));
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y));
 }
 
-.kit-list[breakpoint]kit-list--density-compact .kit-list-item {
-	height: calc(var(--system-spacing) * var(--list-multiplier-x) - 0.25rem);
+.kit-list[breakpoint]kit-list--density-compact {
+	--list-height: calc(var(--system-spacing) * var(--list-multiplier-x) - 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y) - 0.25rem);
 }
 
-.kit-list[breakpoint]kit-list--density-comfortable .kit-list-item {
-	height: calc(var(--system-spacing) * var(--list-multiplier-x) + 0.25rem);
+.kit-list[breakpoint]kit-list--density-comfortable {
+	--list-height: calc(var(--system-spacing) * var(--list-multiplier-x) + 0.25rem);
 	--list-spacing-x: 0;
 	--list-spacing-y: calc(var(--system-spacing) * var(--list-multiplier-y) + 0.25rem);
 }
@@ -158,7 +94,7 @@
 	--list-item-color: var(--base, var(--list-color, var(--kit-on-container)));
 	background-color: transparent;
 }
-.kit-list[breakpoint]kit-list--variant-outline .kit-list-item::before {
+.kit-list[breakpoint]kit-list--variant-outline :global(.kit-list-item::before) {
 	content: '';
 	position: absolute;
 	inset: 0;

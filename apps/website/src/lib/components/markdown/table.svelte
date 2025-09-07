@@ -202,7 +202,7 @@
 	:global(.kit-table--markdown table tbody tr td) {
 		min-width: 10rem;
 		vertical-align: baseline;
-		padding-block: calc(var(--kit-spacing) * 6);
+		padding-block: calc(var(--system-spacing) * 6);
 	}
 
 	:global(.kit-table--markdown table tbody tr td p) {

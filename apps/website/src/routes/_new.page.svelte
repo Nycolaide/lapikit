@@ -82,7 +82,7 @@
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
-		density={{ _default: 'default', md: 'comfortable' }}
+		density={{ base: 'default', md: 'comfortable' }}
 		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
