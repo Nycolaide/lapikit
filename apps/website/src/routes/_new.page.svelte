@@ -86,7 +86,7 @@
 		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
-		<div class="hidden-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
+		<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
 			{#each navigationMain as { key, path, external } (key)}
 				<Button
 					href={path}

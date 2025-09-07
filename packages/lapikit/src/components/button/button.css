@@ -7,7 +7,7 @@
 	padding-bottom: var(--button-spacing-x);
 	padding-right: var(--button-spacing-y);
 	padding-left: var(--button-spacing-y);
-	border-radius: var(--button-shape);
+	border-radius: var(--button-shape, var(--system-shape-md));
 	color: var(--button-color, var(--system-label));
 	font-weight: 500;
 	text-decoration: none;

@@ -1,4 +1,8 @@
 <script lang="ts">
+	// css
+	import '../styles/app.css';
+
+	// //plugins
 	import '../plugins/lapikit.ts';
 
 	// icons
@@ -6,8 +10,6 @@
 	// fonts
 	import '@fontsource/roboto';
 	import '@fontsource/press-start-2p';
-	// css
-	import '../styles/app.css';
 
 	import { App } from 'lapikit/components';
 

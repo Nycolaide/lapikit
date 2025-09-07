@@ -16,60 +16,38 @@ export async function devicesFormatter({
 	sortedDevices.forEach(([deviceName, breakpoint], index) => {
 		const value = parserValues(breakpoint);
 
-		css += `.${deviceName} {\n`;
-		css += `  display: none;\n`;
-		css += `}\n\n`;
-
-		if (index === 0) {
+		if (index === 0 || index === sortedDevices.length - 1) {
+			// the largest device or smallest device
 			css += `@media (min-width: ${value}) {\n`;
-			css += `  .${deviceName} {\n`;
-			css += `    display: block;\n`;
-			css += `  }\n`;
+			css += ` .kit-device--d-${deviceName} {\n`;
+			css += `   display: none !important;\n`;
+			css += ` }\n`;
 			css += `}\n\n`;
-		} else if (index === sortedDevices.length - 1) {
+
 			css += `@media (max-width: ${value}) {\n`;
-			css += `  .${deviceName} {\n`;
-			css += `    display: block;\n`;
-			css += `  }\n`;
+			css += ` .kit-device--h-${deviceName} {\n`;
+			css += `   display: none !important;\n`;
+			css += ` }\n`;
 			css += `}\n\n`;
 		} else {
-			const nextDevice = sortedDevices[index + 1];
+			// intermediate devices
+			const nextDevice = sortedDevices[index - 1];
 			const nextValue = parserValues(nextDevice[1]);
 
-			css += `@media (min-width: ${nextValue}) and (max-width: ${value}) {\n`;
-			css += `  .${deviceName} {\n`;
-			css += `    display: block;\n`;
-			css += `  }\n`;
+			css += `@media (max-width: ${nextValue}) and (min-width: ${value}) {\n`;
+			css += ` .kit-device--d-${deviceName} {\n`;
+			css += `   display: none !important;\n`;
+			css += ` }\n`;
 			css += `}\n\n`;
-		}
-
-		css += `.hide-${deviceName} {\n`;
-		css += `  display: block;\n`;
-		css += `}\n\n`;
-
-		if (index === 0) {
-			css += `@media (min-width: ${value}) {\n`;
-			css += `  .hide-${deviceName} {\n`;
-			css += `    display: none;\n`;
-			css += `  }\n`;
-			css += `}\n\n`;
-		} else if (index === sortedDevices.length - 1) {
-			css += `@media (max-width: ${value}) {\n`;
-			css += `  .hide-${deviceName} {\n`;
-			css += `    display: none;\n`;
-			css += `  }\n`;
-			css += `}\n\n`;
-		} else {
-			const nextDevice = sortedDevices[index + 1];
-			const nextValue = parserValues(nextDevice[1]);
 
 			css += `@media (min-width: ${nextValue}) and (max-width: ${value}) {\n`;
-			css += `  .hide-${deviceName} {\n`;
-			css += `    display: none;\n`;
-			css += `  }\n`;
+			css += ` .kit-device--h-${deviceName} {\n`;
+			css += `   display: none !important;\n`;
+			css += ` }\n`;
 			css += `}\n\n`;
 		}
 	});
 
+	console.log('DEVICE', css);
 	return css.trim();
 }
