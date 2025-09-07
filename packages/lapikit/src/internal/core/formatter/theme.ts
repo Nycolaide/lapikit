@@ -15,7 +15,7 @@ export async function themesFormatter({
 
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
-		let cssTheme = defaultTheme === name ? `:root,\n.l-theme-${name} {\n` : `.l-theme-${name} {\n`;
+		let cssTheme = defaultTheme === name ? `:root,\n.kit-${name} {\n` : `.kit-${name} {\n`;
 
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
@@ -29,10 +29,10 @@ export async function themesFormatter({
 		)) {
 			if (varValue && typeof varValue === 'object') {
 				for (const [variableName, variableValue] of Object.entries(varValue || {})) {
-					cssTheme += `  --l-theme-${name}-${variableName}: ${formatColor(parserValues(variableValue))};\n`;
+					cssTheme += `  --kit-${name}-${variableName}: ${formatColor(parserValues(variableValue))};\n`;
 				}
 			} else {
-				cssTheme += `  --l-theme-${name}: ${formatColor(parserValues(varValue))};\n`;
+				cssTheme += `  --kit-${name}: ${formatColor(parserValues(varValue))};\n`;
 			}
 		}
 

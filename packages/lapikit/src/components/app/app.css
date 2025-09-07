@@ -4,7 +4,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: color-mix(in oklab, var(--l-theme-scrim) 70%, transparent);
+	background-color: color-mix(in oklab, var(--kit-scrim) 70%, transparent);
 	z-index: 9000;
 	cursor: default;
 }

@@ -9,5 +9,5 @@
 	transition-property: opacity, transform;
 	background-color: var(--dropdown-background, var(--system-secondary-background));
 	color: var(--dropdown-color, var(--system-label));
-	border-radius: var(--dropdown-radius, var(--system-shape-md));
+	border-radius: var(--dropdown-shape, var(--system-shape-md));
 }

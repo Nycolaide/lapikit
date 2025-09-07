@@ -10,7 +10,7 @@
 	overflow: hidden;
 	color: var(--alert-color, var(--system-label));
 	background-color: var(--alert-background, var(--system-tertiary-background));
-	border-radius: var(--alert-radius, var(--system-shape-md));
+	border-radius: var(--alert-shape, var(--system-shape-md));
 	line-height: 0;
 }
 

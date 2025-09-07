@@ -9,5 +9,5 @@
 	transition-property: opacity, transform;
 	background-color: var(--popover-background, var(--system-secondary-background));
 	color: var(--popover-color, var(--system-label));
-	border-radius: var(--popover-radius, var(--system-shape-md));
+	border-radius: var(--popover-shape, var(--system-shape-md));
 }

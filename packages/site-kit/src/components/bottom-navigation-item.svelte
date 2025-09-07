@@ -16,7 +16,7 @@
 		justify-content: center;
 		gap: 2px;
 		font-size: 0.8rem;
-		color: var(--kit-on-surface-variant);
+		color: var(--system-label);
 		cursor: pointer;
 		text-align: center;
 	}
@@ -29,11 +29,11 @@
 	}
 
 	.bottom-navigation-item.bottom-navigation--active {
-		color: var(--kit-secondary);
+		color: var(--kit-secondary-label);
 	}
 
 	.bottom-navigation-item.bottom-navigation--active :global(.kit-icon) {
-		color: var(--kit-on-secondary-container);
-		background-color: var(--kit-secondary-container);
+		color: var(--kit-secondary-label);
+		background-color: var(--system-secondary-background);
 	}
 </style>

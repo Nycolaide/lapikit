@@ -5,7 +5,7 @@ export function getAssets() {
 		shape(params?: string) {
 			if (params) {
 				if (params === 'none' || params == '0') return '0';
-				return `var(--kit-radius-${params})`;
+				return `var(--system-shape-${params})`;
 			}
 		},
 		className(
@@ -18,13 +18,13 @@ export function getAssets() {
 			else if (typeof value === 'object') {
 				if (Array.isArray(value)) {
 					return value
-						.map((media) => `${media === '_default' ? '' : `${media}:`}kit--${type}`)
+						.map((media) => `${media === 'base' ? '' : `${media}:`}kit--${type}`)
 						.join(' ');
 				} else {
 					return Object.entries(value)
 						.map(
 							([media, value]) =>
-								`${media === '_default' ? '' : `${media}:`}kit-${key}--${type}-${value}`
+								`${media === 'base' ? '' : `${media}:`}kit-${key}--${type}-${value}`
 						)
 						.join(' ');
 				}

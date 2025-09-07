@@ -31,7 +31,7 @@
 		dark && 'dark',
 		rest.class
 	]}
-	style:--accordion-radius={assets.shape(rounded)}
+	style:--accordion-shape={assets.shape(rounded)}
 	style:--accordion-background={assets.color(background)}
 	style:--accordion-color={assets.color(color)}
 >

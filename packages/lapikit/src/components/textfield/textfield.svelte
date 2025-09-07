@@ -108,7 +108,7 @@
 	]}
 	style:--textfield-background={assets.color(background)}
 	style:--textfield-color={assets.color(color)}
-	style:--textfield-radius={assets.shape(rounded)}
+	style:--textfield-shape={assets.shape(rounded)}
 >
 	{#if prepend}
 		<div class="kit-textfield-prepend">

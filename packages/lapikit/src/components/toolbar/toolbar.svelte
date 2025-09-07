@@ -39,7 +39,7 @@
 	]}
 	style:--toolbar-background={assets.color(background)}
 	style:--toolbar-color={assets.color(color)}
-	style:--toolbar-radius={assets.shape(rounded)}
+	style:--toolbar-shape={assets.shape(rounded)}
 >
 	<div class={['kit-toolbar--wrapper', classContent]}>
 		{@render children?.()}
