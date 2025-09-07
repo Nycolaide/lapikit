@@ -1,4 +1,4 @@
-import { x11ColorNames } from './x11-colors.js';
+import { x11ColorNames } from '../x11-colors.js';
 
 export function getAssets() {
 	return {

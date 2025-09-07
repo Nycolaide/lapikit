@@ -1,4 +1,4 @@
-import type { PositionElement } from './types.js';
+import type { PositionElement } from '../../../components/popover/types.js';
 import { innerWidth, innerHeight } from 'svelte/reactivity/window';
 
 type Location = 'top' | 'bottom' | 'left' | 'right';
