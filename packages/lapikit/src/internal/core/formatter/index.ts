@@ -7,7 +7,7 @@ import { stylesFormatter } from './style.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
-export async function css(config: DevConfiguration): Promise<{
+export async function liliRabbit(config: DevConfiguration): Promise<{
 	themes: string;
 	typography: string;
 	styles: string;

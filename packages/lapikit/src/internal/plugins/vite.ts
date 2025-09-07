@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { terminal } from '$lib/internal/core/bin/terminal.js';
-import { css } from '$lib/internal/core/formatter/index.js';
+import { liliRabbit } from '$lib/internal/core/formatter/index.js';
 import { parserConfigLapikit } from '../helpers/parser.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -29,7 +29,7 @@ export async function lapikit({ config }: Lapikit = {}) {
 
 				fsPromises.writeFile(path.resolve(__dirname, '../../styles.css'), basicStyles || '');
 
-				const styles = await css(configuration);
+				const styles = await liliRabbit(configuration);
 
 				fsPromises.writeFile(
 					path.resolve(__dirname, '../../themes.css'),
