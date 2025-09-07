@@ -16,9 +16,9 @@
 	padding-bottom: var(--modal-spacing-x);
 	padding-right: var(--modal-spacing-y);
 	padding-left: var(--modal-spacing-y);
-	color: var(--modal-color, var(--system-label));
-	background-color: var(--modal-background, var(--system-background));
-	border-color: var(--modal-background, var(--system-background));
+	color: var(--modal-color, var(--kit-label));
+	background-color: var(--modal-background, var(--kit-surface));
+	border-color: var(--modal-background, var(--kit-surface));
 }
 
 .kit-modal.kit-modal--contain {

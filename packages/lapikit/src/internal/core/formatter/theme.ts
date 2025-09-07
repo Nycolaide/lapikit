@@ -1,4 +1,5 @@
 import { preset } from '$lib/internal/config/presets.js';
+import { systemColors } from '$lib/internal/config/system.js';
 import { formatColor } from '$lib/internal/helpers/colors.js';
 import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import { parserValues } from '$lib/internal/helpers/parser.js';
@@ -15,13 +16,25 @@ export async function themesFormatter({
 
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
+
+		// system
 		let cssTheme =
+			defaultTheme === name ? `:root,\n.kit-theme--${name} {\n` : `.kit-theme--${name} {\n`;
+
+		for (const [varName, varValue] of Object.entries(
+			systemColors[values?.dark ? 'dark' : 'light']
+		)) {
+			cssTheme += `  --system-${varName}: ${formatColor(varValue)};\n`;
+		}
+		css += cssTheme + '}\n';
+
+		cssTheme =
 			defaultTheme === name ? `:root,\n.kit-theme--${name} {\n` : `.kit-theme--${name} {\n`;
 
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
 		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
-			cssTheme += `  --system-${varName}: ${formatColor(varValue)};\n`;
+			cssTheme += `  --kit-${varName}: ${formatColor(varValue)};\n`;
 		}
 
 		// variables
@@ -36,7 +49,6 @@ export async function themesFormatter({
 				cssTheme += `  --kit-${name}: ${formatColor(parserValues(varValue))};\n`;
 			}
 		}
-
 		css += cssTheme + '}\n';
 	}
 

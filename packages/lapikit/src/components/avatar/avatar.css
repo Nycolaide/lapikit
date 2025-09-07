@@ -10,7 +10,7 @@
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--avatar-shape);
-	color: var(--avatar-color, var(--system-label));
+	color: var(--avatar-color, var(--kit-label));
 	background-color: var(--avatar-background, var(--system-gray-4));
 	border-color: var(--avatar-background, var(--system-gray-4));
 }

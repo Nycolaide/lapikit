@@ -28,9 +28,9 @@
 	padding-bottom: var(--dialog-spacing-x);
 	padding-right: var(--dialog-spacing-y);
 	padding-left: var(--dialog-spacing-y);
-	color: var(--dialog-color, var(--system-label));
-	background-color: var(--dialog-background, var(--system-background));
-	border-color: var(--dialog-background, var(--system-background));
+	color: var(--dialog-color, var(--kit-label));
+	background-color: var(--dialog-background, var(--kit-surface));
+	border-color: var(--dialog-background, var(--kit-surface));
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 	transition-duration: 0.2s;

@@ -7,9 +7,12 @@ import { stylesFormatter } from './style.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
-export async function css(
-	config: DevConfiguration
-): Promise<{ themes: string; typography: string; styles: string; devices: string }> {
+export async function css(config: DevConfiguration): Promise<{
+	themes: string;
+	typography: string;
+	styles: string;
+	devices: string;
+}> {
 	// states
 	const defaultTheme = config?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const defaultTypography =

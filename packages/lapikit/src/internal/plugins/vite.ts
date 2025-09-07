@@ -33,13 +33,13 @@ export async function lapikit({ config }: Lapikit = {}) {
 
 				fsPromises.writeFile(
 					path.resolve(__dirname, '../../themes.css'),
-					styles?.themes +
+					styles?.devices +
 						'\n\n' +
 						styles?.typography +
 						'\n\n' +
 						styles?.styles +
 						'\n\n' +
-						styles?.devices || ''
+						styles?.themes || ''
 				);
 			}
 			terminal('info', 'lapikit is up!');
