@@ -1,5 +1,6 @@
 export const systemColors = {
 	light: {
+		blue: '#0A84FF',
 		green: '#34C759',
 		red: '#FF3B30',
 		yellow: '#FFCC00',
