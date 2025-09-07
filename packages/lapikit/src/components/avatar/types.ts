@@ -1,4 +1,4 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types/index.js';
 
 type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 type AvatarDensity = 'compact' | 'comfortable' | 'default';

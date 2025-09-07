@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { disabledScroll } from '$lib/internal/index.js';
-	import { getAssets } from '$lib/internal/index.js';
+	import { disabledScroll } from '$lib/internal/helpers/scroll.js';
+	import { getAssets } from '$lib/internal/core/assets.svelte.js';
 	import type { DialogProps } from './types.js';
 
 	let {

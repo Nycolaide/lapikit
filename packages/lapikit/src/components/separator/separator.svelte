@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/assets.svelte.js';
 	import type { SeparatorProps } from './types.js';
 
 	let {

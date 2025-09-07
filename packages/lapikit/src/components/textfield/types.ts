@@ -1,4 +1,4 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types/index.js';
 import type { Snippet } from 'svelte';
 
 export interface TextfieldProps extends Component {

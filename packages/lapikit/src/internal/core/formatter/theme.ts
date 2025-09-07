@@ -30,7 +30,7 @@ export async function themesFormatter({
 		)) {
 			if (varValue && typeof varValue === 'object') {
 				for (const [variableName, variableValue] of Object.entries(varValue || {})) {
-					cssTheme += `  --kit-${name}-${variableName}: ${formatColor(parserValues(variableValue))};\n`;
+					cssTheme += `  --kit-${name}-${variableName}: ${formatColor(parserValues(variableValue as string))};\n`;
 				}
 			} else {
 				cssTheme += `  --kit-${name}: ${formatColor(parserValues(varValue))};\n`;

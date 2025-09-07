@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/assets.svelte.js';
 	import { Icon } from '../index.js';
 	import type { ChipProps } from './types.js';
 
 	// external
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 	import Close from '../../assets/icons/close-fill.svelte';
-	import { ripple } from '$lib/internal/ripple.js';
+	import { ripple } from '$lib/internal/core/animations/ripple.js';
 
 	let {
 		children,

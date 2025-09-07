@@ -65,8 +65,9 @@
 
 <div id="head-lapikit">
 	<Appbar
-		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
+		classContent="flex items-center justify-between lg:grid! lg:grid-cols-3!"
 		density={{ base: 'default', md: 'comfortable' }}
+		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
 		<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">

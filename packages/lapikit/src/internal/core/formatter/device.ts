@@ -73,21 +73,8 @@ export async function devicesFormatter({
 			css += `   display: none !important;\n`;
 			css += ` }\n`;
 			css += `}\n\n`;
-
-			// css += `@media (max-width: ${nextValue}) and (min-width: ${value}) {\n`;
-			// css += ` .kit-device--d-${deviceName} {\n`;
-			// css += `   display: none !important;\n`;
-			// css += ` }\n`;
-			// css += `}\n\n`;
-
-			// css += `@media (min-width: ${nextValue}) and (max-width: ${value}) {\n`;
-			// css += ` .kit-device--h-${deviceName} {\n`;
-			// css += `   display: none !important;\n`;
-			// css += ` }\n`;
-			// css += `}\n\n`;
 		}
 	});
 
-	console.log('DEVICE', css);
 	return css.trim();
 }

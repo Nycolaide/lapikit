@@ -1,3 +1,28 @@
+export interface LapikitConfiguration {
+	breakpoints?: {
+		devices?: {
+			[key: string]: string;
+		};
+		thresholds?: {
+			[key: string]: number | string;
+		};
+	};
+	theme?: {
+		defaultTheme?: string;
+		themes?: {
+			[key: string]: {
+				dark?: boolean;
+				colors?: {
+					[key: string]: string;
+				};
+				variables?: {
+					[key: string]: string;
+				};
+			};
+		};
+	};
+}
+
 export interface DevConfiguration {
 	breakpoints?: {
 		devices?: {

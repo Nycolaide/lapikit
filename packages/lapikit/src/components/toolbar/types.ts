@@ -1,4 +1,4 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types/index.js';
 
 type Variant = 'outline' | 'text' | 'dash';
 type Density = 'compact' | 'comfortable' | 'default';
