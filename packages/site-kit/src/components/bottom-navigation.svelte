@@ -2,7 +2,7 @@
 	let { children, ...rest } = $props();
 </script>
 
-<div {...rest} id="bottom-navigation" class="display-mobile">
+<div {...rest} id="bottom-navigation" class="kit-device--d-mobile">
 	<div>
 		{@render children?.()}
 	</div>

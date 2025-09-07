@@ -21,14 +21,6 @@ export async function componentFormatter({
 				const fileCSS = fs.readFileSync(absolutePath, 'utf8');
 				const content = parserCSSBreakpoints(fileCSS);
 
-				console.log('content', content);
-
-				// all: [], allExtracted _default
-				// base: [],defaultExtracted static
-				// min: [],minExtracted min
-				// max: [],maxExtracted max
-				// minmax: [] allModifierExtracted all
-
 				let css = `${content.cleaned}\n`;
 
 				for (const property in breakpoints) {

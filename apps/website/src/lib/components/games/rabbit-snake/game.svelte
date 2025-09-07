@@ -194,7 +194,12 @@
 	</div>
 </div>
 
-<div class={['controls-game', 'hidden-tablet absolute bottom-4 z-2 flex w-full justify-between']}>
+<div
+	class={[
+		'controls-game',
+		'kit-device--h-tablet absolute bottom-4 z-2 flex w-full justify-between'
+	]}
+>
 	<div class="grid gap-2">
 		<button class="ml-10" onclick={() => changeDirection('right')} aria-label="right">
 			<i class="mgc_arrow_right_fill"></i>

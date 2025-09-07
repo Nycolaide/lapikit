@@ -2,6 +2,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 	tab-size: 4;
 	line-height: 1.5;
+	box-sizing: border-box;
 	font-family: var(--l-font-sans);
 	background-color: var(--system-background);
 	color: var(--system-label);
@@ -46,7 +47,8 @@ button,
 	outline: none;
 }
 
-*,
+/* bug with tailwind */
+/* *,
 ::after,
 ::before,
 ::backdrop {
@@ -54,7 +56,7 @@ button,
 	margin: 0;
 	padding: 0;
 	border: 0 solid;
-}
+} */
 
 *,
 ::before,

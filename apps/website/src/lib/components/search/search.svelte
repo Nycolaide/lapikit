@@ -46,7 +46,7 @@
 		{/if}
 	</div>
 	<Toolbar
-		class="hidden-mobile shadow-lg"
+		class="kit-device--h-mobile shadow-lg"
 		classContent="gap-3 text-sm "
 		background="surface-container"
 		density="compact"
