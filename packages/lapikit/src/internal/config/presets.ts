@@ -5,7 +5,7 @@ export const preset = {
 		devices: {
 			desktop: 1024, //64rem (lg)
 			tablet: 768, //48rem (md)
-			mobile: 375 //28rem (sm)
+			mobile: 640 //40rem (sm)
 		},
 		thresholds: {
 			base: 0, // 0px

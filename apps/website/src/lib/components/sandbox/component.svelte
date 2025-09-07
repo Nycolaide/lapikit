@@ -10,7 +10,7 @@
 
 <style>
 	div {
-		--pattern-fg: color-mix(in oklab, var(--kit-on-surface) 12%, transparent);
+		--pattern-fg: color-mix(in oklab, var(--system-label) 12%, transparent);
 		--opacity-pattern: 50%;
 		background-image: repeating-linear-gradient(
 			315deg,
@@ -21,6 +21,6 @@
 		);
 		background-size: 16px 16px;
 		background-repeat: repeat;
-		background-color: var(--kit-surface);
+		background-color: var(--system-background);
 	}
 </style>

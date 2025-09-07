@@ -120,7 +120,7 @@
 		border: 1px solid var(--kit-scrim);
 	}
 	.preview-component {
-		--pattern-fg: color-mix(in oklab, var(--kit-on-surface) 5%, transparent);
+		--pattern-fg: color-mix(in oklab, var(--system-label) 5%, transparent);
 		--opacity-pattern: 50%;
 		background-image: repeating-linear-gradient(
 			315deg,

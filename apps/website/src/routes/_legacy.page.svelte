@@ -66,7 +66,7 @@
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
-		density={{ _default: 'default', md: 'comfortable' }}
+		density={{ base: 'default', md: 'comfortable' }}
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
 		<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
@@ -211,7 +211,7 @@
 <section
 	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
 >
-	<Card class="p-4 text-center">
+	<Card class="p-4 text-center!">
 		<div class="mb-6">
 			<p class="text-2xl font-semibold md:text-3xl">
 				{capitalize($t('homepage.lapikit_discover.title'))}

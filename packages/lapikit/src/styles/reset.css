@@ -3,14 +3,14 @@ html {
 	tab-size: 4;
 	line-height: 1.5;
 	box-sizing: border-box;
-	font-family: var(--l-font-sans);
+	font-family: var(--kit-font-sans);
 	background-color: var(--system-background);
 	color: var(--system-label);
 }
 
 pre,
 code {
-	font-family: var(--l-font-mono);
+	font-family: var(--kit-font-mono);
 }
 
 body {

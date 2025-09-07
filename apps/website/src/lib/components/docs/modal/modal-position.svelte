@@ -15,4 +15,4 @@
 <Modal bind:open={openCenter} position="center">Modal content</Modal>
 <Modal bind:open={openTop} position="top">Modal content</Modal>
 <Modal bind:open={openBottom} position="bottom">Modal content</Modal>
-<Modal bind:open={openResponsive} position={{ _default: 'bottom', md: 'top' }}>Modal content</Modal>
+<Modal bind:open={openResponsive} position={{ base: 'bottom', md: 'top' }}>Modal content</Modal>

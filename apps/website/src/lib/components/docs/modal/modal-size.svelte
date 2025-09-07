@@ -24,6 +24,4 @@
 <Modal bind:open={openLg} size="lg">Modal content</Modal>
 <Modal bind:open={openXl} size="xl">Modal content</Modal>
 <Modal bind:open={openFull} size="full">Modal content</Modal>
-<Modal bind:open={openResponsive} size={{ _default: 'full', sm: 'xs', md: 'md' }}>
-	Modal content
-</Modal>
+<Modal bind:open={openResponsive} size={{ base: 'full', sm: 'xs', md: 'md' }}>Modal content</Modal>

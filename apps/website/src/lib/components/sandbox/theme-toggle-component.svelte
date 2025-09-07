@@ -1,16 +1,9 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	import { colorScheme, colorSchemeSystem } from 'lapikit/stores';
 	import { Button, Icon } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
 
 	let { scheme = $bindable() } = $props();
-
-	$effect(() => {
-		if (scheme === undefined && $colorScheme === 'system') {
-			scheme = $colorSchemeSystem;
-		}
-	});
 </script>
 
 <Button
