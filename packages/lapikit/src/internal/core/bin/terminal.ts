@@ -1,4 +1,4 @@
-import { ansi } from '$lib/internal/ansi.js';
+import { ansi } from '$lib/internal/core/bin/ansi.js';
 
 export const terminal = (type: 'info' | 'error' | 'warn' | 'success' = 'info', msg: string) => {
 	const name = ansi.color.cyan('lapikit');

@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { terminal } from '$lib/internal/terminal.js';
+import { terminal } from '$lib/internal/core/bin/terminal.js';
 import { css } from '$lib/internal/core/formatter/index.js';
 import { parserConfigLapikit } from '../helpers/parser.js';
 

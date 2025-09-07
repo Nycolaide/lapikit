@@ -1,6 +1,5 @@
 <script lang="ts">
-	// import { disabledScroll } from '$lib/internal/index.js';
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/assets.svelte.js';
 	import { modalOpen, modalStack, popModal, pushModal, setOpenModal } from '$lib/stores/index.js';
 	import { onDestroy } from 'svelte';
 	import type { ModalProps } from './types.js';

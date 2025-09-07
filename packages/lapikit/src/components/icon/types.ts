@@ -1,4 +1,4 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types/index.js';
 
 export interface IconProps extends Component {
 	ref?: HTMLElement | null;

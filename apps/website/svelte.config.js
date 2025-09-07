@@ -6,8 +6,7 @@ import { mdsvexOptions } from './mdsvex.config.js';
 const config = {
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 	onwarn: (warning, handler) => {
-		const { code, frame } = warning;
-		// console.log(code); // <= uncomment to check other warnings
+		const { code } = warning;
 		if (code === 'css_unused_selector') return;
 		if (code === 'a11y_invalid_attribute') return;
 		handler(warning);

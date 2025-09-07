@@ -1,4 +1,4 @@
-import type { Base } from '$lib/internal/types.js';
+import type { Base } from '$lib/internal/types/index.js';
 
 export interface SeparatorProps extends Base {
 	is?: 'div' | 'hr';

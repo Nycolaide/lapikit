@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import { terminal } from '$lib/internal/terminal.js';
+import { terminal } from '$lib/internal/core/bin/terminal.js';
 
 export const parserValues = (value: string | number | Array<string | number>) => {
 	if (typeof value === 'number') return `${value}px`;

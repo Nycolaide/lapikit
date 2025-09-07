@@ -1,4 +1,4 @@
-import { disabledScroll } from '$lib/internal/scroll.js';
+import { disabledScroll } from '$lib/internal/helpers/scroll.js';
 import { writable, type Writable } from 'svelte/store';
 
 type ModalState = boolean | 'persistent';
