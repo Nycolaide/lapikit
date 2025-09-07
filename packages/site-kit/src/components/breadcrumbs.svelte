@@ -88,7 +88,7 @@
 		margin: 0;
 		padding: 0;
 		font-size: 0.875rem;
-		color: var(--kit-on-surface-variant, #666);
+		color: var(--system-secondary-label, #666);
 	}
 
 	.breadcrumb-item {
@@ -98,17 +98,17 @@
 	}
 
 	.breadcrumb-link {
-		color: var(--kit-on-surface);
+		color: var(--system-secondary-label);
 		text-decoration: none !important;
 		transition: color 0.2s ease;
 	}
 
 	.breadcrumb-link:hover {
-		color: var(--kit-secondary);
+		color: var(--system-secondary-label);
 	}
 
 	.breadcrumb-link:focus {
-		outline: 2px solid var(--kit-primary);
+		outline: 2px solid var(--system-label);
 		outline-offset: 2px;
 		border-radius: 2px;
 	}

@@ -39,8 +39,8 @@
 		overflow-y: auto;
 		width: 100%;
 		bottom: 0;
-		background-color: var(--kit-surface);
-		color: var(--kit-on-surface);
+		background-color: var(--system-background);
+		color: var(--system-label);
 		padding-bottom: 5.5rem;
 	}
 
@@ -50,7 +50,7 @@
 		height: 100%;
 		position: fixed;
 		color: transparent;
-		background-color: color-mix(in oklab, var(--kit-shadow) 45%, transparent);
+		background-color: color-mix(in oklab, var(--kit-scrim) 45%, transparent);
 		z-index: 900;
 		user-select: none;
 	}

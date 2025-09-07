@@ -13,14 +13,14 @@
 .kit-textfield[breakpoint]kit-textfield--variant-filled .kit-field {
 	--textfield-border-color: var(--textfield-background, var(--system-secondary-background));
 	background-color: var(--textfield-background, var(--system-secondary-background));
-	border-radius: var(--textfield-radius, var(--system-shape-md));
+	border-radius: var(--textfield-shape, var(--system-shape-md));
 	color: var(--textfield-color, var(--system-label));
 }
 
 .kit-textfield[breakpoint]kit-textfield--variant-outline .kit-field {
 	--textfield-border-color: var(--textfield-color);
 	background-color: var(--textfield-background);
-	border-radius: var(--textfield-radius);
+	border-radius: var(--textfield-shape);
 	color: var(--textfield-color);
 }
 
@@ -30,7 +30,7 @@
 	border-top: 1px solid var(--textfield-border-color);
 	border-right: 1px solid var(--textfield-border-color);
 	border-left: 1px solid var(--textfield-border-color);
-	border-radius: var(--textfield-radius);
+	border-radius: var(--textfield-shape);
 }
 
 .kit-textfield[breakpoint]kit-textfield--variant-text .kit-field {

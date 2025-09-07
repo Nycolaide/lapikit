@@ -15,7 +15,7 @@
 }
 
 .kit-dialog::backdrop {
-	background-color: color-mix(in oklab, var(--l-theme-scrim) 30%, transparent);
+	background-color: color-mix(in oklab, var(--kit-scrim) 30%, transparent);
 	animation: fade 0.2s ease-out;
 }
 .kit-dialog[open]::backdrop {
@@ -23,7 +23,7 @@
 }
 
 .kit-dialog .kit-dialog-container {
-	border-radius: var(--dialog-radius, var(--system-shape-md));
+	border-radius: var(--dialog-shape, var(--system-shape-md));
 	padding-top: var(--dialog-spacing-x);
 	padding-bottom: var(--dialog-spacing-x);
 	padding-right: var(--dialog-spacing-y);

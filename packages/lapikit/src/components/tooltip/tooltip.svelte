@@ -101,7 +101,7 @@
 			]}
 			style:--tooltip-background={assets.color(background)}
 			style:--tooltip-color={assets.color(color)}
-			style:--tooltip-radius={assets.shape(rounded)}
+			style:--tooltip-shape={assets.shape(rounded)}
 		>
 			{#if tooltip}
 				{@render tooltip?.()}

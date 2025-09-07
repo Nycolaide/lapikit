@@ -49,9 +49,9 @@
 		open && 'kit-accordion-item--active',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--accordion--item-shape={assets.shape(rounded)}
+	style:--accordion--item-background={assets.color(background)}
+	style:--accordion--item-color={assets.color(color)}
 >
 	<button
 		class={[

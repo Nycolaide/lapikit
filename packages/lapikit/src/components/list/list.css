@@ -16,7 +16,7 @@
 	padding-right: var(--list-spacing-y);
 	padding-left: var(--list-spacing-y);
 	color: var(--list-item-color, var(--system-label));
-	border-radius: var(--list-item-radius, var(--system-shape-sm));
+	border-radius: var(--list-item-shape, var(--system-shape-sm));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -176,8 +176,8 @@
 /* events */
 .kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--active:not(div),
 .kit-list[class*='list--variant-filled'] .kit-list-item:active:not(div) {
-	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--l-theme-scrim));
-	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--l-theme-scrim));
+	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
+	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
 }
 .kit-list[class*='list--variant-']:not([class*='variant-filled'])
 	.kit-list-item.kit-list-item--active:not(div),

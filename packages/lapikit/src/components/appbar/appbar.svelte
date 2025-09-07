@@ -32,7 +32,7 @@
 	]}
 	style:--appbar-background={assets.color(background)}
 	style:--appbar-color={assets.color(color)}
-	style:--appbar-radius={assets.shape(rounded)}
+	style:--appbar-shape={assets.shape(rounded)}
 >
 	<div class={['kit-appbar--wrapper', classContent]}>
 		{@render children?.()}

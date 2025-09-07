@@ -53,7 +53,7 @@
 		role="alert"
 		style:--alert-background={assets.color(background)}
 		style:--alert-color={assets.color(color)}
-		style:--alert-radius={assets.shape(rounded)}
+		style:--alert-shape={assets.shape(rounded)}
 	>
 		{#if prepend}
 			<div class="kit-alert--prepend">

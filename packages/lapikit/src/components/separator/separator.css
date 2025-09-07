@@ -5,7 +5,7 @@
 	max-height: 0px;
 	opacity: var(--separator-opacity, 0.12);
 	transition: inherit;
-	border-color: var(--separator-color, var(--l-theme-scrim));
+	border-color: var(--separator-color, var(--kit-scrim));
 	border-style: solid;
 }
 
