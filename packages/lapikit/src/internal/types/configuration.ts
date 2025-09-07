@@ -9,18 +9,13 @@ export interface LapikitConfiguration {
 	};
 	theme?: {
 		defaultTheme?: string;
-		themes?: {
-			[key: string]: {
-				dark?: boolean;
-				colors?: {
-					[key: string]: string;
-				};
-				variables?: {
-					[key: string]: string;
-				};
-			};
-		};
+		themes?: FragThemes;
 	};
+	typography?: {
+		defaultTypography?: string;
+		fonts?: FragTypography;
+	};
+	styles?: FragStyles;
 }
 
 export interface DevConfiguration {
@@ -34,6 +29,7 @@ export interface DevConfiguration {
 	};
 	theme?: {
 		defaultTheme?: string;
+		colorScheme?: boolean;
 		themes?: FragThemes;
 	};
 	typography?: {

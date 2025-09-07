@@ -10,7 +10,7 @@
 	padding-left: var(--card-spacing-y);
 	border-radius: var(--card-shape, var(--system-shape-md));
 	font-weight: 500;
-	color: var(--card-color, var(--system-label));
+	color: var(--card-color, var(--kit-label));
 	text-decoration: none;
 }
 
@@ -54,7 +54,7 @@
 
 /* variant */
 .kit-card[breakpoint]kit-card--variant-filled {
-	background-color: var(--card-background, var(--system-secondary-background));
+	background-color: var(--card-background, var(--kit-surface));
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {

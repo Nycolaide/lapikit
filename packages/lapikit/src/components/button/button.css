@@ -8,7 +8,7 @@
 	padding-right: var(--button-spacing-y);
 	padding-left: var(--button-spacing-y);
 	border-radius: var(--button-shape, var(--system-shape-md));
-	color: var(--button-color, var(--system-label));
+	color: var(--button-color, var(--kit-label));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -136,12 +136,12 @@
 
 /* variant */
 .kit-button[breakpoint]kit-button--variant-filled {
-	background-color: var(--button-background, var(--system-secondary-background));
+	background-color: var(--button-background, var(--kit-surface));
 }
 
 .kit-button[breakpoint]kit-button--variant-outline {
 	--button-color: var(--on, var(--kit-on-container));
-	background-color: var(--button-background, var(--system-secondary-background));
+	background-color: var(--button-background, var(--kit-surface));
 }
 .kit-button[breakpoint]kit-button--variant-outline::before {
 	content: '';

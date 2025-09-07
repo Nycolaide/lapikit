@@ -5,9 +5,9 @@
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--toolbar-shape, var(--system-shape-md));
-	color: var(--toolbar-color, var(--system-label));
-	background-color: var(--toolbar-background, var(--system-tertiary-background));
-	border-color: var(--toolbar-background, var(--system-tertiary-background));
+	color: var(--toolbar-color, var(--kit-label));
+	background-color: var(--toolbar-background, var(--kit-container));
+	border-color: var(--toolbar-background, var(--kit-container));
 }
 
 /* density */

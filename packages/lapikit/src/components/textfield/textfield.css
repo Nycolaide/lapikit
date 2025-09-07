@@ -11,10 +11,10 @@
 
 /* variant */
 .kit-textfield[breakpoint]kit-textfield--variant-filled .kit-field {
-	--textfield-border-color: var(--textfield-background, var(--system-secondary-background));
-	background-color: var(--textfield-background, var(--system-secondary-background));
+	--textfield-border-color: var(--textfield-background, var(--kit-surface));
+	background-color: var(--textfield-background, var(--kit-surface));
 	border-radius: var(--textfield-shape, var(--system-shape-md));
-	color: var(--textfield-color, var(--system-label));
+	color: var(--textfield-color, var(--kit-label));
 }
 
 .kit-textfield[breakpoint]kit-textfield--variant-outline .kit-field {

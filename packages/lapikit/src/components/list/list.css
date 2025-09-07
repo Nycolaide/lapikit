@@ -85,8 +85,8 @@
 
 /* variant */
 .kit-list[breakpoint]kit-list--variant-filled .kit-list-item {
-	--list-item-color: var(--on, var(--list-color, var(--system-label)));
-	--list-item-background: var(--base, var(--list-background, var(--system-secondary-background)));
+	--list-item-color: var(--on, var(--list-color, var(--kit-label)));
+	--list-item-background: var(--base, var(--list-background, var(--kit-surface)));
 	background-color: var(--list-item-background);
 }
 

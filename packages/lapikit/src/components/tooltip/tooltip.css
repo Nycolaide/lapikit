@@ -6,10 +6,10 @@
 }
 
 .kit-tooltip-content {
-	background-color: var(--tooltip-background, var(--system-secondary-background));
-	color: var(--tooltip-color, var(--system-label));
+	background-color: var(--tooltip-background, var(--kit-surface));
+	color: var(--tooltip-color, var(--kit-label));
 	border-radius: var(--tooltip-shape, var(--system-shape-md));
-	border: 1px solid var(--tooltip-background, var(--system-secondary-background));
+	border: 1px solid var(--tooltip-background, var(--kit-surface));
 	font-size: 0.875rem;
 	display: inline-block;
 	width: auto;
