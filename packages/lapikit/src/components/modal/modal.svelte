@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/core/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import { modalOpen, modalStack, popModal, pushModal, setOpenModal } from '$lib/stores/index.js';
 	import { onDestroy } from 'svelte';
 	import type { ModalProps } from './types.js';

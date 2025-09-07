@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/core/assets.svelte.js';
-	import { getPositionsTooltip } from './tooltip.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
+	import { getPositionsTooltip } from '$lib/internal/core/actions/tooltip.svelte.js';
 	import type { PositionElement, TooltipProps } from './types.js';
 
 	let {

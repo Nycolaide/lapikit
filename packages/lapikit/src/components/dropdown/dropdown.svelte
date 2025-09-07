@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/core/assets.svelte.js';
-	import { clickOutside } from '$lib/internal/core/actions/clickOutside.js';
-	import { getPositions } from './dropdown.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
+	import { clickOutside } from '$lib/internal/helpers/outside.js';
+	import { getPositions } from '$lib/internal/core/actions/dropdown.svelte.js';
 	import type { DropdownProps, ModelDropdownProps } from './types.js';
 
 	let {

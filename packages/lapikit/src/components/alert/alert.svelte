@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/core/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AlertProps } from './types.js';
 
 	// components
