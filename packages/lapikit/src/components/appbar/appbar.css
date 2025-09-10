@@ -6,9 +6,9 @@
 	border-style: solid;
 	border-width: 1px;
 	border-radius: var(--appbar-shape);
-	color: var(--appbar-color, var(--kit-label));
-	background-color: var(--appbar-background, var(--kit-container));
-	border-color: var(--appbar-background, var(--kit-container));
+	color: var(--appbar-color, var(--kit-label-primary));
+	background-color: var(--appbar-background, var(--kit-background-grouped-tertiary));
+	border-color: var(--appbar-background, var(--kit-background-grouped-tertiary));
 }
 
 /* wrapper */

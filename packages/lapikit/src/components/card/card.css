@@ -10,7 +10,7 @@
 	padding-left: var(--card-spacing-y);
 	border-radius: var(--card-shape, var(--system-shape-md));
 	font-weight: 500;
-	color: var(--card-color, var(--kit-label));
+	color: var(--card-color, var(--kit-label-primary));
 	text-decoration: none;
 }
 
@@ -54,11 +54,11 @@
 
 /* variant */
 .kit-card[breakpoint]kit-card--variant-filled {
-	background-color: var(--card-background, var(--kit-surface));
+	background-color: var(--card-background, var(--kit-background-grouped-primary));
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {
-	--card-color: var(--base, var(--kit-on-surface));
+	--card-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 }
 .kit-card[breakpoint]kit-card--variant-outline::before {
@@ -71,7 +71,7 @@
 }
 
 .kit-card[breakpoint]kit-card--variant-text {
-	--card-color: var(--base, var(--kit-on-surface));
+	--card-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 	border: none;
 }
@@ -79,7 +79,7 @@
 /* events */
 .kit-card[class*='card--variant-filled'].kit-card--clickable:active,
 .kit-card.kit-card--active[class*='card--variant-filled'].kit-card--clickable {
-	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-state-shadow));
 }
 .kit-card.kit-card--active[class*='card--variant-']:not(
 		[class*='variant-filled']

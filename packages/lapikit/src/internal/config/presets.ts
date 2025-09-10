@@ -1,5 +1,5 @@
 import { variables } from './variables.js';
-import { colors } from './colors.js';
+import standardColors from '../core/standard-colors.js';
 
 export const preset = {
 	breakpoints: {
@@ -25,12 +25,84 @@ export const preset = {
 		themes: {
 			light: {
 				dark: false,
-				colors: colors,
+				colors: {
+					label: {
+						primary: '#000000',
+						secondary: standardColors.gray.light,
+						tertiary: standardColors.gray2.light,
+						quaternary: standardColors.gray3.light
+					},
+					svelte: 'purple',
+					accent: {
+						primary: standardColors.blue.light,
+						success: standardColors.green.light,
+						warning: standardColors.orange.light,
+						destructive: standardColors.red.light,
+						info: standardColors.cyan.light
+					},
+					separator: {
+						default: standardColors.gray3.light,
+						opaque: standardColors.gray4.light
+					},
+					state: {
+						placeholder: standardColors.gray3.light,
+						disabled: standardColors.gray2.light,
+						link: standardColors.blue.light,
+						highlight: standardColors.gray5.light,
+						shadow: '#00000033'
+					},
+					background: {
+						primary: '#FFFFFF',
+						secondary: standardColors.gray6.light,
+						tertiary: standardColors.gray5.light,
+						grouped: {
+							primary: standardColors.gray6.light,
+							secondary: '#FFFFFF',
+							tertiary: standardColors.gray6.light
+						}
+					}
+				},
 				variables: variables
 			},
 			dark: {
 				dark: true,
-				colors: colors,
+				colors: {
+					pink: 'pink',
+					label: {
+						primary: '#FFFFFF',
+						secondary: standardColors.gray2.dark,
+						tertiary: standardColors.gray3.dark,
+						quaternary: standardColors.gray4.dark
+					},
+					accent: {
+						primary: standardColors.blue.dark,
+						success: standardColors.green.dark,
+						warning: standardColors.orange.dark,
+						destructive: standardColors.red.dark,
+						info: standardColors.cyan.dark
+					},
+					separator: {
+						default: standardColors.gray3.dark,
+						opaque: standardColors.gray4.dark
+					},
+					state: {
+						placeholder: standardColors.gray3.dark,
+						disabled: standardColors.gray4.dark,
+						link: standardColors.blue.dark,
+						highlight: standardColors.gray5.dark,
+						shadow: '#00000066'
+					},
+					background: {
+						primary: '#000000',
+						secondary: standardColors.gray6.dark,
+						tertiary: standardColors.gray5.dark,
+						grouped: {
+							primary: standardColors.gray6.dark,
+							secondary: standardColors.gray5.dark,
+							tertiary: standardColors.gray4.dark
+						}
+					}
+				},
 				variables: variables
 			}
 		}

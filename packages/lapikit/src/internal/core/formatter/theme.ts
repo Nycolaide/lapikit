@@ -1,5 +1,4 @@
 import { preset } from '$lib/internal/config/presets.js';
-import { systemColors } from '$lib/internal/config/system.js';
 import { formatColor } from '$lib/internal/helpers/colors.js';
 import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import { parserValues } from '$lib/internal/helpers/parser.js';
@@ -17,23 +16,27 @@ export async function themesFormatter({
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
 
-		// system
 		let cssTheme =
 			defaultTheme === name ? `:root,\n.kit-theme--${name} {\n` : `.kit-theme--${name} {\n`;
 
-		for (const [varName, varValue] of Object.entries(
-			systemColors[values?.dark ? 'dark' : 'light']
-		)) {
-			cssTheme += `  --system-${varName}: ${formatColor(varValue)};\n`;
+		function flattenColors(obj: Record<string, unknown>, prefix = ''): Record<string, string> {
+			const result: Record<string, string> = {};
+			for (const [key, value] of Object.entries(obj)) {
+				const newPrefix = prefix ? `${prefix}-${key}` : key;
+				if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+					Object.assign(result, flattenColors(value as Record<string, unknown>, newPrefix));
+				} else {
+					result[newPrefix] = value as string;
+				}
+			}
+			return result;
 		}
-		css += cssTheme + '}\n';
-
-		cssTheme =
-			defaultTheme === name ? `:root,\n.kit-theme--${name} {\n` : `.kit-theme--${name} {\n`;
 
 		// colors
 		cssTheme += `  color-scheme: ${values?.dark ? 'dark' : 'light'};\n`;
-		for (const [varName, varValue] of Object.entries(deepMerge(ref.colors, values?.colors) || {})) {
+		const mergedColors = deepMerge(ref.colors, values?.colors) || {};
+		const flatColors = flattenColors(mergedColors);
+		for (const [varName, varValue] of Object.entries(flatColors)) {
 			cssTheme += `  --kit-${varName}: ${formatColor(varValue)};\n`;
 		}
 

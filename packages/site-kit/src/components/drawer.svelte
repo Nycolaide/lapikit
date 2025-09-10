@@ -50,7 +50,7 @@
 		height: 100%;
 		position: fixed;
 		color: transparent;
-		background-color: color-mix(in oklab, var(--kit-scrim) 45%, transparent);
+		background-color: color-mix(in oklab, var(--kit-state-shadow) 45%, transparent);
 		z-index: 900;
 		user-select: none;
 	}

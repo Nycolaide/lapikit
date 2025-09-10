@@ -94,7 +94,7 @@
 
 <style>
 	.lapikit-command-line {
-		border: 1px solid var(--kit-scrim);
+		border: 1px solid var(--kit-state-shadow);
 	}
 
 	.lapikit-command-line :global(pre) {

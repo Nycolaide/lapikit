@@ -192,7 +192,7 @@
 
 	:global(.kit-table--markdown table thead tr),
 	:global(.kit-table--markdown tbody tr:not(:last-child)) {
-		border-bottom: 1px solid var(--kit-scrim);
+		border-bottom: 1px solid var(--kit-state-shadow);
 	}
 
 	:global(.kit-table--markdown table tbody) {

@@ -6,7 +6,7 @@
 	padding-bottom: var(--list-spacing-x);
 	padding-right: var(--list-spacing-y);
 	padding-left: var(--list-spacing-y);
-	color: var(--list-item-color, var(--kit-label));
+	color: var(--list-item-color, var(--kit-label-primary));
 	border-radius: var(--list-item-shape, var(--system-shape-sm));
 	font-weight: 500;
 	text-decoration: none;

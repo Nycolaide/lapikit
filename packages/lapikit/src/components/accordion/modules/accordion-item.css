@@ -5,8 +5,8 @@
 	transition: 0.3s all cubic-bezier(0.4, 0, 0.2, 1);
 	transition-property: margin-top, border-radius, border, max-width;
 	border-radius: var(--accordion-shape, var(--system-shape-md));
-	color: var(--accordion-color, var(--kit-label));
-	background-color: var(--accordion-background, var(--kit-surface));
+	color: var(--accordion-color, var(--kit-label-primary));
+	background-color: var(--accordion-background, var(--kit-background-grouped-primary));
 }
 
 .kit-accordion-item > button,

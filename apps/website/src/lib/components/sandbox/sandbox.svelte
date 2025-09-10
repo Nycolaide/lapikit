@@ -86,7 +86,7 @@
 
 <style>
 	.lapikit-sandbox {
-		border: 1px solid var(--kit-scrim);
+		border: 1px solid var(--kit-state-shadow);
 	}
 
 	.lapikit-sandbox :global(p) {
