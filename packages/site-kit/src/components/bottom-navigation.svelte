@@ -10,7 +10,7 @@
 
 <style>
 	#bottom-navigation {
-		background-color: var(--system-tertiary-background);
+		background-color: var(--kit-background-tertiary);
 		height: 5rem;
 		position: fixed;
 		width: 100%;
