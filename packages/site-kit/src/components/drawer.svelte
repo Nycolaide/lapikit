@@ -39,8 +39,8 @@
 		overflow-y: auto;
 		width: 100%;
 		bottom: 0;
-		background-color: var(--system-background);
-		color: var(--system-label);
+		background-color: var(--kit-background-primary);
+		color: var(--kit-label-primary);
 		padding-bottom: 5.5rem;
 	}
 
