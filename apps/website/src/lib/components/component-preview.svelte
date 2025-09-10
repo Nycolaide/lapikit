@@ -117,10 +117,10 @@
 
 <style>
 	.component-preview--wrapper {
-		border: 1px solid var(--kit-scrim);
+		border: 1px solid var(--kit-state-shadow);
 	}
 	.preview-component {
-		--pattern-fg: color-mix(in oklab, var(--kit-label) 5%, transparent);
+		--pattern-fg: color-mix(in oklab, var(--kit-label-primary) 5%, transparent);
 		--opacity-pattern: 50%;
 		background-image: repeating-linear-gradient(
 			315deg,

@@ -85,13 +85,16 @@
 
 /* variant */
 .kit-list[breakpoint]kit-list--variant-filled .kit-list-item {
-	--list-item-color: var(--on, var(--list-color, var(--kit-label)));
-	--list-item-background: var(--base, var(--list-background, var(--kit-surface)));
+	--list-item-color: var(--on, var(--list-color, var(--kit-label-primary)));
+	--list-item-background: var(
+		--base,
+		var(--list-background, var(--kit-background-grouped-primary))
+	);
 	background-color: var(--list-item-background);
 }
 
 .kit-list[breakpoint]kit-list--variant-outline .kit-list-item {
-	--list-item-color: var(--base, var(--list-color, var(--kit-on-container)));
+	--list-item-color: var(--base, var(--list-color, var(--kit-label-primary)));
 	background-color: transparent;
 }
 .kit-list[breakpoint]kit-list--variant-outline :global(.kit-list-item::before) {
@@ -104,7 +107,7 @@
 }
 
 .kit-list[breakpoint]kit-list--variant-text .kit-list-item {
-	--list-item-color: var(--base, var(--list-color, var(--kit-on-container)));
+	--list-item-color: var(--base, var(--list-color, var(--kit-label-primary)));
 	background-color: transparent;
 	border-color: transparent;
 }
@@ -112,8 +115,8 @@
 /* events */
 .kit-list[class*='list--variant-filled'] .kit-list-item.kit-list-item--active:not(div),
 .kit-list[class*='list--variant-filled'] .kit-list-item:active:not(div) {
-	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
-	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-state-shadow));
+	border-color: color-mix(in oklab, var(--list-item-background) 90%, var(--kit-state-shadow));
 }
 .kit-list[class*='list--variant-']:not([class*='variant-filled'])
 	.kit-list-item.kit-list-item--active:not(div),

@@ -7,7 +7,7 @@
 	width: auto;
 	opacity: 1;
 	transition-property: opacity, transform;
-	background-color: var(--dropdown-background, var(--kit-surface));
-	color: var(--dropdown-color, var(--kit-label));
+	background-color: var(--dropdown-background, var(--kit-background-grouped-primary));
+	color: var(--dropdown-color, var(--kit-label-primary));
 	border-radius: var(--dropdown-shape, var(--system-shape-md));
 }

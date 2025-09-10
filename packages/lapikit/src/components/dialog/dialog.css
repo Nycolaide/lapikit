@@ -15,7 +15,7 @@
 }
 
 .kit-dialog::backdrop {
-	background-color: color-mix(in oklab, var(--kit-scrim) 30%, transparent);
+	background-color: color-mix(in oklab, var(--kit-state-shadow) 30%, transparent);
 	animation: fade 0.2s ease-out;
 }
 .kit-dialog[open]::backdrop {
@@ -28,9 +28,9 @@
 	padding-bottom: var(--dialog-spacing-x);
 	padding-right: var(--dialog-spacing-y);
 	padding-left: var(--dialog-spacing-y);
-	color: var(--dialog-color, var(--kit-label));
-	background-color: var(--dialog-background, var(--kit-surface));
-	border-color: var(--dialog-background, var(--kit-surface));
+	color: var(--dialog-color, var(--kit-label-primary));
+	background-color: var(--dialog-background, var(--kit-background-grouped-primary));
+	border-color: var(--dialog-background, var(--kit-background-grouped-primary));
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 	transition-duration: 0.2s;

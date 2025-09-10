@@ -240,7 +240,7 @@
 	.Button-play-game i,
 	.Button-close-game i,
 	.Button-replay-game i {
-		background-color: var(--kit-primary);
+		background-color: var(--kit-accent-primary);
 	}
 
 	.Button-close-game i {
@@ -267,8 +267,8 @@
 	.controls-game button {
 		background-color: transparent;
 		border-radius: var(--kit-radius-full);
-		border: 0.5rem solid var(--kit-primary);
-		color: var(--kit-primary);
+		border: 0.5rem solid var(--kit-accent-primary);
+		color: var(--kit-accent-primary);
 		height: 5rem;
 		width: 5rem;
 		display: flex;
@@ -277,7 +277,7 @@
 	}
 
 	.controls-game button:hover {
-		background-color: var(--kit-primary);
+		background-color: var(--kit-accent-primary);
 		color: var(--kit-on-primary);
 		transition: all 0.5s ease;
 	}

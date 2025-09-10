@@ -5,9 +5,9 @@
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--toolbar-shape, var(--system-shape-md));
-	color: var(--toolbar-color, var(--kit-label));
-	background-color: var(--toolbar-background, var(--kit-container));
-	border-color: var(--toolbar-background, var(--kit-container));
+	color: var(--toolbar-color, var(--kit-label-primary));
+	background-color: var(--toolbar-background, var(--kit-background-grouped-tertiary));
+	border-color: var(--toolbar-background, var(--kit-background-grouped-tertiary));
 }
 
 /* density */
@@ -57,7 +57,7 @@
 .kit-toolbar[breakpoint]kit-toolbar--variant-text,
 .kit-toolbar[breakpoint]kit-toolbar--variant-outline,
 .kit-toolbar[breakpoint]kit-toolbar--variant-dash {
-	--toolbar-color: var(--base, var(--kit-surface));
+	--toolbar-color: var(--base, var(--kit-background-grouped-primary));
 	background-color: transparent;
 }
 

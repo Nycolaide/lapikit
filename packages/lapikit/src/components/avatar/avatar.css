@@ -10,7 +10,7 @@
 	border-width: 1px;
 	border-style: solid;
 	border-radius: var(--avatar-shape);
-	color: var(--avatar-color, var(--kit-label));
+	color: var(--avatar-color, var(--kit-label-primary));
 	background-color: var(--avatar-background, var(--system-gray-4));
 	border-color: var(--avatar-background, var(--system-gray-4));
 }
@@ -84,19 +84,19 @@
 
 /* variant */
 .kit-avatar[breakpoint]kit-avatar--variant-outline {
-	--avatar-color: var(--base, var(--kit-container));
+	--avatar-color: var(--base, var(--kit-background-grouped-tertiary));
 	background-color: transparent;
 	border: 1px solid currentColor;
 }
 
 .kit-avatar[breakpoint]kit-avatar--variant-text {
-	--avatar-color: var(--base, var(--kit-container));
+	--avatar-color: var(--base, var(--kit-background-grouped-tertiary));
 	background-color: transparent;
 	border-color: transparent;
 }
 
 .kit-avatar[breakpoint]kit-avatar--variant-dash {
-	--avatar-color: var(--base, var(--kit-container));
+	--avatar-color: var(--base, var(--kit-background-grouped-tertiary));
 	background-color: transparent;
 	border: 1px dashed currentColor;
 }

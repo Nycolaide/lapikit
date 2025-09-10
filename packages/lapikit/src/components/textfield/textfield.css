@@ -11,10 +11,10 @@
 
 /* variant */
 .kit-textfield[breakpoint]kit-textfield--variant-filled .kit-field {
-	--textfield-border-color: var(--textfield-background, var(--kit-surface));
-	background-color: var(--textfield-background, var(--kit-surface));
+	--textfield-border-color: var(--textfield-background, var(--kit-background-grouped-primary));
+	background-color: var(--textfield-background, var(--kit-background-grouped-primary));
 	border-radius: var(--textfield-shape, var(--system-shape-md));
-	color: var(--textfield-color, var(--kit-label));
+	color: var(--textfield-color, var(--kit-label-primary));
 }
 
 .kit-textfield[breakpoint]kit-textfield--variant-outline .kit-field {
@@ -68,7 +68,7 @@
 }
 
 .kit-textfield--error .kit-textfield-outline {
-	border: 1px solid var(--kit-error);
+	border: 1px solid var(--kit-accent-destructive);
 }
 
 .kit-textfield-outline {
@@ -221,7 +221,7 @@
 }
 
 .kit-message.kit-message--message-error {
-	color: var(--kit-error);
+	color: var(--kit-accent-destructive);
 }
 
 .kit-message .kit-message--message {

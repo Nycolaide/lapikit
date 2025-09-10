@@ -49,16 +49,16 @@
 
 /* state */
 .kit-icon.kit-icon--info {
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-icon.kit-icon--success {
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-icon.kit-icon--warning {
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-icon.kit-icon--error {
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 
 /* disabled */

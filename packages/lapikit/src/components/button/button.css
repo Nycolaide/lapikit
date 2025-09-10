@@ -8,7 +8,7 @@
 	padding-right: var(--button-spacing-y);
 	padding-left: var(--button-spacing-y);
 	border-radius: var(--button-shape, var(--system-shape-md));
-	color: var(--button-color, var(--kit-label));
+	color: var(--button-color, var(--kit-label-primary));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -136,12 +136,12 @@
 
 /* variant */
 .kit-button[breakpoint]kit-button--variant-filled {
-	background-color: var(--button-background, var(--kit-surface));
+	background-color: var(--button-background, var(--kit-background-grouped-primary));
 }
 
 .kit-button[breakpoint]kit-button--variant-outline {
-	--button-color: var(--on, var(--kit-on-container));
-	background-color: var(--button-background, var(--kit-surface));
+	--button-color: var(--on, var(--kit-label-primary));
+	background-color: var(--button-background, var(--kit-background-grouped-primary));
 }
 .kit-button[breakpoint]kit-button--variant-outline::before {
 	content: '';
@@ -153,7 +153,7 @@
 }
 
 .kit-button[breakpoint]kit-button--variant-text {
-	--button-color: var(--base, var(--kit-on-container));
+	--button-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 	border: none;
 }
@@ -161,37 +161,37 @@
 /* state */
 .kit-button.kit-button--info[class*='button--variant-filled'] {
 	--on: var(--kit-on-info);
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-button.kit-button--info[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-button.kit-button--success[class*='button--variant-filled'] {
 	--on: var(--kit-on-success);
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-button.kit-button--success[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-button.kit-button--warning[class*='button--variant-filled'] {
 	--on: var(--kit-on-warning);
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-button.kit-button--warning[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-button.kit-button--error[class*='button--variant-filled'] {
 	--on: var(--kit-on-error);
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 .kit-button.kit-button--error[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 
 /* events */
 .kit-button[class*='button--variant-filled']:active,
 .kit-button.kit-button--active[class*='button--variant-filled'] {
-	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-state-shadow));
 }
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']):active,
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']) {

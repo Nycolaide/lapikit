@@ -252,7 +252,7 @@
 <style>
 	#head-lapikit {
 		--opacity-pattern: 35%;
-		--pattern: color-mix(in oklab, var(--kit-label) var(--opacity-pattern), transparent);
+		--pattern: color-mix(in oklab, var(--kit-label-primary) var(--opacity-pattern), transparent);
 		background-image: radial-gradient(var(--pattern) 1px, transparent 0);
 		background-size: 16px 16px;
 		background-repeat: repeat;
