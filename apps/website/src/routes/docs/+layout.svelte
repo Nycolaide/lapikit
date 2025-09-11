@@ -69,8 +69,8 @@
 		<ThemeToggle />
 		<Button
 			icon
-			background="github"
-			color="on-github"
+			background="service-github"
+			color="service-on-github"
 			href="https://github.com/Nycolaide/lapikit"
 			target="_blank"
 		>

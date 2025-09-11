@@ -43,7 +43,7 @@ export interface FragThemes {
 	[key: string]: {
 		dark?: boolean;
 		colors?: {
-			[key: string]: string;
+			[key: string]: { [key: string]: string } | string;
 		};
 		variables?: {
 			[key: string]: string | number;

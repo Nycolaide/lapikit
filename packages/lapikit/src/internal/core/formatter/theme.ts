@@ -13,6 +13,8 @@ export async function themesFormatter({
 }) {
 	let css: string = '';
 
+	console.log('Formatting themes...', 'defaultTheme:', defaultTheme, 'themes:', themes);
+
 	for (const [name, values] of Object.entries(themes)) {
 		const ref = values?.dark ? preset.theme.themes.dark : preset.theme.themes.light;
 
