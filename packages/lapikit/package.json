@@ -59,6 +59,9 @@
 		"./actions": {
 			"default": "./dist/actions/index.js"
 		},
+		"./core/colors": {
+			"default": "./dist/internal/core/standard-colors.js"
+		},
 		"./styles": "./dist/styles.css",
 		"./themes": "./dist/themes.css"
 	},
