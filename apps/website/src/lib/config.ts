@@ -54,6 +54,11 @@ export const sectionDocs = [
 		submenu: true
 	},
 	{
+		key: 'actions',
+		icon: 'mgc_braces_line',
+		submenu: true
+	},
+	{
 		key: 'undefined',
 		icon: 'mgc_github_line'
 	}
