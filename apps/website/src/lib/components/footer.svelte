@@ -25,6 +25,11 @@
 			</span>
 
 			<Separator orientation="vertical" />
+
+			<Button variant="text" size="sm" href="/terms">
+				{capitalize($t('common.terms_and_privacy'))}
+			</Button>
+
 			<Button variant="text" size="sm" onclick={() => (open = true)}>
 				{capitalize($t('common.gdpr.cookie_settings'))}
 			</Button>
