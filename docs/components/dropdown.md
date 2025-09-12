@@ -114,10 +114,10 @@ The `ModelDropdownProps` interface groups the properties automatically passed to
 
 ## Variables CSS
 
-| variable                | default            | description          |
-| ----------------------- | ------------------ | -------------------- |
-| `–-dropdown-color`      | `–-kit-on-surface` | Text color           |
-| `–-dropdown-background` | `–-kit-surface`    | Background color     |
-| `–-dropdown-radius`     | `--kit-radius-md`  | Dropdown edge radius |
+| variable                | default                            | description          |
+| ----------------------- | ---------------------------------- | -------------------- |
+| `–-dropdown-color`      | `--kit-label-primary`              | Text color           |
+| `–-dropdown-background` | `--kit-background-grouped-primary` | Background color     |
+| `–-dropdown-shape`      | `--system-shape-md`                | Dropdown edge radius |
 
 Combine Dropdown with an [Appbar](/docs/components/appbar) or [Popover](/docs/components/popover) for improved navigation ergonomics.

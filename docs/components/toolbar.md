@@ -96,10 +96,10 @@ Demonstrates the use of visual variants: **outline**, **text** or **dash** to ad
 
 ## Variables CSS
 
-| variable               | default              | description         |
-| ---------------------- | -------------------- | ------------------- |
-| `–-toolbar-color`      | `–-kit-on-container` | Text color          |
-| `–-toolbar-background` | `–-kit-container`    | Background color    |
-| `–-toolbar-radius`     | `0`                  | Toolbar edge radius |
+| variable               | default                             | description         |
+| ---------------------- | ----------------------------------- | ------------------- |
+| `–-toolbar-color`      | `--kit-label-primary`               | Text color          |
+| `–-toolbar-background` | `--kit-background-grouped-tertiary` | Background color    |
+| `–-toolbar-radius`     | `--system-shape-md`                 | Toolbar edge radius |
 
 Toolbar is the right place to group [Buttons](/docs/components/button), [Chips](/docs/components/chip) and [Icons](/docs/components/icon) in a coherent space.

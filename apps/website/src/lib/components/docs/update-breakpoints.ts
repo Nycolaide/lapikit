@@ -1,12 +1,18 @@
-/** @type {import('lapikit').Config} */
-export default {
+import createLapikit from 'lapikit';
+
+export default createLapikit({
 	breakpoints: {
-		mobileBreakpoint: 'sm',
-		tabletBreakpoint: 'md',
-		laptopBreakpoint: 'lg',
+		devices: {
+			desktop: 1536, // 96rem (2xl)
+			tablet: 1024, // 64rem (lg)
+			mobile: 768 // 48rem (md)
+		},
 		thresholds: {
-			xs: '32rem', //before 28rem
-			'4xl': '120rem' //new breakpoint
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			'2xl': 1536,
+			'6xl': 2560
 		}
 	}
-};
+});

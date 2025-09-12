@@ -208,10 +208,10 @@ Changes the overall style of the chip with filled or outline variants.
 
 ## Variables CSS
 
-| variable            | default              | description      |
-| ------------------- | -------------------- | ---------------- |
-| `–-chip-color`      | `–-kit-on-container` | Text color       |
-| `–-chip-background` | `–-kit-container`    | Background color |
-| `–-chip-radius`     | `--kit-radius-full`  | Chip edge radius |
+| variable            | default                            | description      |
+| ------------------- | ---------------------------------- | ---------------- |
+| `–-chip-color`      | `--kit-label-primary`              | Text color       |
+| `–-chip-background` | `--kit-background-grouped-primary` | Background color |
+| `--chip-shape`      | `--system-shape-full`              | Chip edge radius |
 
 Chips are often used in a [Toolbar](/docs/components/toolbar) or as a complement in a [Card](/docs/components/card) to structure information and [List](/docs/components/list).

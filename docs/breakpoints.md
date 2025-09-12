@@ -74,14 +74,14 @@ Here's an example with the [Button](/docs/components/button) component and the *
 
 ## Customize breakpoints
 
-Lapikit offers advanced breakpoint customization. You can add and modify keys so you can use them in your application.
+Lapikit offers advanced breakpoint customization. You can add and modify both devices and thresholds so that your app stays fully adaptive.
 
-To do this, edit your `lapikit.config.js` file and modify or add the breakpoint key, then the thresholds key.
+To do this, edit your `plugins/lapikit.(ts|js)` file and configure breakpoints inside the **createLapikit()** call. You can visit [customize](/docs/customize) pages for discover all options to lapikit customization.
 
 <Sandbox name="update-config-breakpoints" code={UpdateConfigBreakpoints}/>
 
 > [!INFO]
-> It's advisable to restart your environment after this kind of modification to ensure that all Lapikit styles are updated.
+> It’s advisable to restart your environment after this kind of modification to ensure that all Lapikit styles are updated.
 
 ## Adapting breakpoints to the device
 
@@ -89,22 +89,22 @@ Lapikit also offers device breakpoints, so you can define a display for just one
 
 Here is the list of available classes:
 
-- (hidden|display)-mobile
-- (hidden|display)-tablet
-- (hidden|display)-laptop
+- kit-device--(d|h)-mobile
+- kit-device--(d|h)-tablet
+- kit-device--(d|h)-desktop
+
+And your custom breakpoints devices use this format class : `kit-device--(d|h)-{device}`.
 
 ### Customize breakpoint devices keys
 
-Lapikit is built to adapt, not dictate. That includes how it handles responsive design. If the default breakpoint-to-device mapping doesn’t quite match your design system, you can fully customize it via the `lapikit.config.js` file.
+Lapikit is built to adapt, not dictate.
+If the default mapping between devices and thresholds doesn’t match your design system, you can fully customize it via the _devices_ config.
 
-You define which screen sizes should correspond to devices like mobile, tablet, or laptop. This mapping is internal to Lapikit and lets you create truly adaptive UIs without having to rewrite class logic or component behavior.
-
-Here’s how to do it:
+Here’s how you might redefine which breakpoints count as **mobile**, **tablet**, **desktop** or **custom**:
 
 <Sandbox name="update-config-breakpoints-device" code={UpdateConfigBreakpointsDevice}/>
 
-These keys (`md`, `lg`, `4xl`, etc.) refer to your thresholds, which you define elsewhere in the same config file. Make sure the keys you assign here exist and are correctly defined in the thresholds object.
-
-This gives you full control over what "mobile" or "tablet" means in your app, making it easier to match your responsive logic with your design tokens or product specs.
+This gives you full control over what **mobile** or **tablet** means in your app, keeping your responsive logic aligned with your design tokens or product specs.
+.
 
 To find out more, discover how Lapikit [styles](/docs/customize) adapt to your [customized breakpoints](/docs/breakpoints).

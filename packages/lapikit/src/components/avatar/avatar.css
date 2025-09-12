@@ -9,10 +9,10 @@
 	padding-left: var(--avatar-spacing-y);
 	border-width: 1px;
 	border-style: solid;
-	border-radius: var(--avatar-shape);
+	border-radius: var(--avatar-shape, var(--system-shape-full));
 	color: var(--avatar-color, var(--kit-label-primary));
-	background-color: var(--avatar-background, var(--system-gray-4));
-	border-color: var(--avatar-background, var(--system-gray-4));
+	background-color: var(--avatar-background, var(--kit-background-secondary));
+	border-color: var(--avatar-background, var(--kit-background-secondary));
 }
 
 .kit-avatar.kit-avatar--image {

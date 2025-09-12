@@ -7,7 +7,7 @@
 	padding-bottom: var(--chip-spacing-x);
 	padding-right: var(--chip-spacing-y);
 	padding-left: var(--chip-spacing-y);
-	border-radius: var(--chip-radius, var(--system-shape-full));
+	border-radius: var(--chip-shape, var(--system-shape-full));
 	color: var(--chip-color, var(--kit-label-primary));
 	font-weight: 500;
 	text-decoration: none;

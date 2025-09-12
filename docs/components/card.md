@@ -108,10 +108,10 @@ The disabled property allows you to disable a Card, preventing any interaction. 
 
 ## Variables CSS
 
-| variable            | default            | description      |
-| ------------------- | ------------------ | ---------------- |
-| `–-card-color`      | `–-kit-on-surface` | Text color       |
-| `–-card-background` | `–-kit-surface`    | Background color |
-| `–-card-radius`     | `--kit-radius-md`  | Card edge radius |
+| variable            | default                              | description      |
+| ------------------- | ------------------------------------ | ---------------- |
+| `–-card-color`      | `--kit-label-primary`                | Text color       |
+| `–-card-background` | `--kit-background-grouped-secondary` | Background color |
+| `--card-shape`      | `--system-shape-md`                  | Card edge radius |
 
 For better structure, combine your [Cards](/docs/components/card) with [Avatars](/docs/components/avatar) and clear [Buttons](/docs/components/button).

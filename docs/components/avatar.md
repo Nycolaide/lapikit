@@ -94,10 +94,10 @@ The variant property lets you customize the Avatar's style. The available option
 
 ## Variables CSS
 
-| variable              | default              | description        |
-| --------------------- | -------------------- | ------------------ |
-| `–-avatar-color`      | `–-kit-on-container` | Text color         |
-| `–-avatar-background` | `–-kit-container`    | Background color   |
-| `–-avatar-radius`     | `--kit-radius-full`  | Avatar edge radius |
+| variable              | default                      | description        |
+| --------------------- | ---------------------------- | ------------------ |
+| `–-avatar-color`      | `--kit-label-primary`        | Text color         |
+| `–-avatar-background` | `--kit-background-secondary` | Background color   |
+| `--avatar-shape`      | `--system-shape-full`        | Avatar edge radius |
 
 Associate Avatars with user [Cards](/docs/components/card) or [Chips](/docs/components/chip) to display roles or status.

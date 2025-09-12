@@ -122,9 +122,9 @@ Controls the thickness of the separator via prop thickness. Perfect for accentua
 
 ## Variables CSS
 
-| variable              | default       | description          |
-| --------------------- | ------------- | -------------------- |
-| `–-separator-color`   | `–-kit-scrim` | Color of separator   |
-| `–-separator-opacity` | `0.12`        | Opacity of separator |
+| variable              | default              | description          |
+| --------------------- | -------------------- | -------------------- |
+| `–-separator-color`   | `--kit-state-shadow` | Color of separator   |
+| `–-separator-opacity` | `0.12`               | Opacity of separator |
 
 To organize your data, combine Separators with [List](/docs/components/list) for greater legibility.

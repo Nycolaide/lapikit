@@ -165,10 +165,19 @@ Enables you to compose each _ListItem_ with additional elements such as icons, b
 
 ## Variables CSS
 
-| variable            | default              | description      |
-| ------------------- | -------------------- | ---------------- |
-| `–-list-color`      | `–-kit-on-container` | Text color       |
-| `–-list-background` | `–-kit-container`    | Background color |
-| `–-list-radius`     | `--kit-radius-md`    | List edge radius |
+**Root**
+
+| variable            | default                            | description      |
+| ------------------- | ---------------------------------- | ---------------- |
+| `–-list-color`      | `--kit-label-primary`              | Text color       |
+| `–-list-background` | `--kit-background-grouped-primary` | Background color |
+
+**Item**
+
+| variable                 | default               | description      |
+| ------------------------ | --------------------- | ---------------- |
+| `--list-item-color`      | `--kit-label-primary` | Text color       |
+| `–-list-item-background` | `currentColor`        | Background color |
+| `–-list-item-shape`      | `---system-shape-sm`  | List edge radius |
 
 A well-structured List can easily be enriched with [Separators](/docs/components/separator) or elements in a [Card](/docs/components/card).

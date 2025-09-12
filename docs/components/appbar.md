@@ -69,11 +69,11 @@ The density property lets you control the Appbar's appearance by adjusting its h
 
 ## Variables CSS
 
-| variable                   | default             | description                               |
-| -------------------------- | ------------------- | ----------------------------------------- |
-| `–-appbar-color`           | `–-kit-on-surface`  | Text color                                |
-| `–-appbar-background`      | `–-kit-surface`     | Background color                          |
-| `–-appbar-radius`          | `0`                 | Appbar edge radius                        |
-| `–-appbar-padding-wrapper` | `–-kit-spacing * 4` | Spacing between Appbar parent and content |
+| variable                   | default                             | description                               |
+| -------------------------- | ----------------------------------- | ----------------------------------------- |
+| `–-appbar-color`           | `--kit-label-primary`               | Text color                                |
+| `–-appbar-background`      | `--kit-background-grouped-tertiary` | Background color                          |
+| `–-appbar-shape`           | `0`                                 | Appbar edge radius                        |
+| `–-appbar-padding-wrapper` | `–-system-spacing * 4`              | Spacing between Appbar parent and content |
 
 An effective Appbar goes well with [Dropdown](/docs/components/dropdown) for menus and [Avatars](/docs/components/avatar) for identification.

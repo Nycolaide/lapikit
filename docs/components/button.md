@@ -231,10 +231,10 @@ This can be useful in sober interfaces or when you want to avoid animation for p
 
 ## Variables CSS
 
-| variable              | default              | description        |
-| --------------------- | -------------------- | ------------------ |
-| `–-button-color`      | `–-kit-on-container` | Text color         |
-| `–-button-background` | `–-kit-container`    | Background color   |
-| `–-button-radius`     | `--kit-radius-md`    | Button edge radius |
+| variable              | default                            | description        |
+| --------------------- | ---------------------------------- | ------------------ |
+| `–-button-color`      | `--kit-label-primary`              | Text color         |
+| `–-button-background` | `--kit-background-grouped-primary` | Background color   |
+| `–-button-shape`      | `--system-shape-md`                | Button edge radius |
 
 Buttons become more effective with [Tooltips](/docs/components/tooltip), a [Toolbar](/docs/components/toolbar) or [Popover](/docs/components/popover) interactions.

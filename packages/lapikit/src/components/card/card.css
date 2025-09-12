@@ -54,7 +54,7 @@
 
 /* variant */
 .kit-card[breakpoint]kit-card--variant-filled {
-	background-color: var(--card-background, var(--kit-background-grouped-primary));
+	background-color: var(--card-background, var(--kit-background-grouped-secondary));
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {

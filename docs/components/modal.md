@@ -147,12 +147,12 @@ Several modals can be displayed at the same time, stacked. This example shows ho
 
 ## Variables CSS
 
-| variable              | default            | description         |
-| --------------------- | ------------------ | ------------------- |
-| `–-modal-color`       | `–-kit-on-surface` | Text color          |
-| `–-modal-background`  | `–-kit-surface`    | Background color    |
-| `–-modal-radius`      | `--kit-radius-md`  | Modal edge radius   |
-| `–-modal-translate-x` | `-50%`             | Horizontal position |
-| `–-modal-translate-y` | `-50%`             | Vertical position   |
+| variable              | default                            | description         |
+| --------------------- | ---------------------------------- | ------------------- |
+| `–-modal-color`       | `--kit-label-primary`              | Text color          |
+| `–-modal-background`  | `--kit-background-grouped-primary` | Background color    |
+| `–-modal-radius`      | `--system-shape-md`                | Modal edge radius   |
+| `–-modal-translate-x` | `-50%`                             | Horizontal position |
+| `–-modal-translate-y` | `-50%`                             | Vertical position   |
 
 Complement the use of Modals with [Dialog](/docs/components/dialog) for confirmations or [Popover](/docs/components/popover) for light details.

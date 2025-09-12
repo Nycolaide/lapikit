@@ -117,10 +117,10 @@ The only variant currently available is arrow, which adds a directional arrow to
 
 ## Variables CSS
 
-| variable               | default            | description         |
-| ---------------------- | ------------------ | ------------------- |
-| `–-tooltip-color`      | `–-kit-on-surface` | Text color          |
-| `–-tooltip-background` | `–-kit-surface`    | Background color    |
-| `–-tooltip-radius`     | `--kit-radius-md`  | Tooltip edge radius |
+| variable               | default                            | description         |
+| ---------------------- | ---------------------------------- | ------------------- |
+| `–-tooltip-color`      | `--kit-label-primary`              | Text color          |
+| `–-tooltip-background` | `--kit-background-grouped-primary` | Background color    |
+| `–-tooltip-radius`     | `--system-shape-md`                | Tooltip edge radius |
 
 Tooltips complement your [Buttons](/docs/components/button) or [Icons](/docs/components/icon) by providing discreet but useful context for users.

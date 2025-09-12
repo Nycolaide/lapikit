@@ -143,18 +143,18 @@ Useful for adding a little air to dense or visually busy interfaces.
 
 **Root**
 
-| variable                 | default              | description                  |
-| ------------------------ | -------------------- | ---------------------------- |
-| `–-accordion-color`      | `–-kit-on-container` | Text color global            |
-| `–-accordion-background` | `–-kit-container`    | Background color global      |
-| `–-accordion-radius`     | `–-kit-radius-md`    | Accordion edge radius global |
+| variable                 | default                            | description                  |
+| ------------------------ | ---------------------------------- | ---------------------------- |
+| `–-accordion-color`      | `--kit-label-primary`              | Text color global            |
+| `–-accordion-background` | `--kit-background-grouped-primary` | Background color global      |
+| `--accordion-shape`      | `--system-shape-md`                | Accordion edge radius global |
 
 **Item**
 
-| variable  | default                  | description                |
-| --------- | ------------------------ | -------------------------- |
-| `–-on`    | `–-accordion-color`      | Text color item            |
-| `–-base`  | `–-accordion-background` | Background color item      |
-| `–-shape` | `–-accordion-radius`     | Accordion edge radius item |
+| variable                       | default                  | description                |
+| ------------------------------ | ------------------------ | -------------------------- |
+| `--accordion--item-shape`      | `–-accordion-color`      | Text color item            |
+| `--accordion--item-background` | `–-accordion-background` | Background color item      |
+| `--accordion--item-shape`      | `–-accordion-radius`     | Accordion edge radius item |
 
 To complete your Accordion interface, consider the [Icon](/docs/components/icon) and [Chip](/docs/components/chip) components for dynamic content.

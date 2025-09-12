@@ -149,10 +149,10 @@ A close button is automatically displayed, unless overridden by the close slot.
 
 ## Variables CSS
 
-| variable             | default              | description       |
-| -------------------- | -------------------- | ----------------- |
-| `–-alert-color`      | `–-kit-on-container` | Text color        |
-| `–-alert-background` | `–-kit-container`    | Background color  |
-| `–-alert-radius`     | `–-kit-radius-md`    | Alert edge radius |
+| variable             | default                             | description       |
+| -------------------- | ----------------------------------- | ----------------- |
+| `–-alert-color`      | `--kit-label-primary`               | Text color        |
+| `–-alert-background` | `--kit-background-grouped-tertiary` | Background color  |
+| `–-alert-shape`      | `--system-shape-md`                 | Alert edge radius |
 
 To enhance your Alerts, think of [Icon](/docs/components/icon) for legibility, or [Button](/docs/components/button) for integrated actions.
