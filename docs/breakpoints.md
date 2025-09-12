@@ -11,6 +11,7 @@ state:
   published: true
   recommended: true
   order: 2
+  status: "updated"
 github:
   url: /breakpoints.md
 keywords:
@@ -32,32 +33,22 @@ keywords:
     // components
     import ButtonDensity from "$lib/components/docs/button/button-density.svelte";
     import ButtonDensityCode from "$lib/components/docs/button/button-density.svelte?raw";
-
-    // command line
-    const commandInstall = [
-        {pkg: "npm", command: ["npm i -D lapikit", "npx lapikit init"]},
-        {pkg: "yarn", command: ["yarn add -D lapikit", "npx lapikit init"]},
-    ];
-    const commandInstallWithoutCLI = [
-        {pkg: "npm", command: "npm i -D lapikit"},
-        {pkg: "yarn", command: "yarn add -D lapikit"},
-    ];
 </script>
 
 Define component display according to the display size of your application. Each Lapikit component offers APIs that are compatible with these breakpoints.
 
 The following table lists the default breakpoint keys, their pixel values, and the device types they correspond to:
 
-| key     | size   | device     |
-| ------- | ------ | ---------- |
-| default | 0      |            |
-| xs      | 28rem  |            |
-| sm      | 40rem  | max mobile |
-| md      | 48rem  | tablet     |
-| lg      | 64rem  | min laptop |
-| xl      | 80rem  |            |
-| 2xl     | 96rem  |            |
-| 3xl     | 112rem |            |
+| key     | size   | device      |
+| ------- | ------ | ----------- |
+| default | 0      |             |
+| xs      | 28rem  |             |
+| sm      | 40rem  | max mobile  |
+| md      | 48rem  | tablet      |
+| lg      | 64rem  | min desktop |
+| xl      | 80rem  |             |
+| 2xl     | 96rem  |             |
+| 3xl     | 112rem |             |
 
 ## Using breakpoints in classes
 
