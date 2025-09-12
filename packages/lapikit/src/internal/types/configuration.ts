@@ -1,7 +1,7 @@
 export interface LapikitConfiguration {
 	breakpoints?: {
 		devices?: {
-			[key: string]: string;
+			[key: string]: number | string;
 		};
 		thresholds?: {
 			[key: string]: number | string;
