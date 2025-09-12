@@ -32,7 +32,6 @@ export const preset = {
 						tertiary: standardColors.gray2.light,
 						quaternary: standardColors.gray3.light
 					},
-					svelte: 'purple',
 					accent: {
 						primary: standardColors.blue.light,
 						success: standardColors.green.light,

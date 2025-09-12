@@ -9,5 +9,8 @@
 	"type_extend": "extend type",
 	"key": "key",
 	"size": "size",
-	"device": "device"
+	"device": "device",
+	"before-version-lapikit-023": "before (≤ 0.2.3)",
+	"after-version-lapikit-024": "after (≥ 0.2.4)",
+	"feature": "feature"
 }

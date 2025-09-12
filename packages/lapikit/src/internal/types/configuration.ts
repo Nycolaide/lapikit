@@ -9,6 +9,7 @@ export interface LapikitConfiguration {
 	};
 	theme?: {
 		defaultTheme?: string;
+		colorScheme?: boolean;
 		themes?: FragThemes;
 	};
 	typography?: {
