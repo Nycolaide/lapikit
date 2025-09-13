@@ -8,7 +8,7 @@ style:
   icon: mgc_union_line
 state:
   section: base
-  published: false
+  published: true
   recommended: false
   order: 4
   status: new
