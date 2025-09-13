@@ -109,7 +109,7 @@
 }
 
 .kit-chip[breakpoint]kit-chip--variant-outline {
-	--chip-color: var(--on, var(--kit-label-primary));
+	--chip-color: var(--chip-color, var(--kit-label-primary));
 	background-color: var(--chip-background);
 }
 .kit-chip[breakpoint]kit-chip--variant-outline::before {
@@ -142,35 +142,35 @@
 
 /* state */
 .kit-chip.kit-chip--info[class*='chip--variant-filled'] {
-	--on: var(--kit-on-info);
-	--base: var(--kit-accent-info);
+	--chip-color: var(--kit-on-info);
+	--chip-background: var(--kit-accent-info);
 }
 .kit-chip.kit-chip--info[class*='chip--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-accent-info);
+	--chip-background: var(--kit-accent-info);
 }
 
 .kit-chip.kit-chip--success[class*='chip--variant-filled'] {
-	--on: var(--kit-on-success);
-	--base: var(--kit-accent-successs);
+	--chip-color: var(--kit-on-success);
+	--chip-background: var(--kit-accent-success);
 }
 .kit-chip.kit-chip--success[class*='chip--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-accent-successs);
+	--chip-background: var(--kit-accent-success);
 }
 
 .kit-chip.kit-chip--warning[class*='chip--variant-filled'] {
-	--on: var(--kit-on-warning);
-	--base: var(--kit-accent-warning);
+	--chip-color: var(--kit-on-warning);
+	--chip-background: var(--kit-accent-warning);
 }
 .kit-chip.kit-chip--warning[class*='chip--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-accent-warning);
+	--chip-background: var(--kit-accent-warning);
 }
 
 .kit-chip.kit-chip--error[class*='chip--variant-filled'] {
-	--on: var(--kit-on-error);
-	--base: var(--kit-accent-destructive);
+	--chip-color: var(--kit-on-error);
+	--chip-background: var(--kit-accent-destructive);
 }
 .kit-chip.kit-chip--error[class*='chip--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-accent-destructive);
+	--chip-background: var(--kit-accent-destructive);
 }
 
 /* events */

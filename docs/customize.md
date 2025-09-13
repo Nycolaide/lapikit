@@ -12,6 +12,7 @@ state:
   published: true
   recommended: true
   order: 3
+  status: "updated"
 github:
   url: /customize.md
 keywords:
@@ -37,12 +38,6 @@ keywords:
     // components
     import ButtonBase from "$lib/components/docs/button/button-base.svelte";
     import ButtonBaseCode from "$lib/components/docs/button/button-base.svelte?raw";
-
-    // command line
-    const commandInstall = [
-        {pkg: "npm", command: "npm i -D lapikit"},
-        {pkg: "yarn", command: "yarn add -D lapikit"}
-    ];
 </script>
 
 By default, Lapikit is inspired by [Material Design v3](https://m3.material.io/) style rules, so as to offer a coherent foundation that can be adapted to the widest possible audience. With Lapikit, you can quickly customize components using the lapikit.config.js file located at the root of your application.
@@ -51,94 +46,201 @@ By default, Lapikit is inspired by [Material Design v3](https://m3.material.io/)
 
 Lapikit customization is divided into 4 main parts:
 
-- **Options**: These are settings mainly for Vite.js and CSS rendering
-- **Theme**: This is Lapikit's own design system, which you can adapt to inherit from your own design system
-- **Breakpoints**, which supports adaptive design and device-dependent display classes.
-- **Styles**, which encompass all display management for typography, spacing and rounding.
-
-### Options
-
-Options ensure that Lapikit style files are correctly formatted for your application.
-
-- **normalize** (`boolean`) : `true`
-
-Add style resets to format basic browser styles. These CSS resets are based on the necolas [normalize.css](https://necolas.github.io/normalize.css/) file.
-
-- **minify** (`boolean`) : `false`
-
-Minifies all component styles to reduce overall file size.
-
-### Themes
-
-- **colorScheme** (`light` | `dark` | `system`): `system`
-
-Lapikit offers direct theme management based on the user configuration of the operating system. This feature is based on prefers-color-scheme in reference to [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
-
-The options available:
-
-- _`light`_: force Lapikit theme to be displayed in light color
-- _`dark`_: force Lapikit theme to be displayed in dark color
-- _`system`_: ensures availability of dark and light themes for use according to user configuration.
-
-This functionality is complemented by colorSchemeSystem, colorScheme andsetColorScheme utilities.
-
-- **colors** (`[key: string]: string | {light: string, dark: string}`) : presets
-
-Lapikit uses default colors, based on Material Design v3. All colors are converted to oklch and provide your application with CSS variables for using theme colors. If your colorScheme configuration in Lapikit is based on `system`, each variable adapts dynamically according to the colorScheme.
-
-for each color key in Lapikit's configuration, you have 2 choices:
-
-- _`string`_: the color defined will be set for both theme shades.
-- _`{ light: string , dark: string }`_: the color will be specific to each color chart.
-
-Colors must be defined in either `x11`, `hexadecimal`, `rgb`, `css variables` or `oklch` format.
-
-> [!INFO]
-> Other formats will be supported as Lapikit develops.
+- **Breakpoints**: Device-specific breakpoints and thresholds for responsive design
+- **Theme**: Theme management including color schemes and theme definitions
+- **Typography**: Font family definitions and typography settings
+- **Styles**: Global styling variables and design tokens
 
 ### Breakpoints
 
-Lapikit is based on TailwindCSS breakpoints and not Material Design v3, as we feel that TailwindCSS breakpoints are better suited to the needs of developers in general. These parameters are fully customizable.
+Breakpoints configuration manages responsive design behavior across different devices.
 
-> [!WARNING]
-> We rely on the TailwindCSS reference for breakpoints, but do not depend on it. If you modify the breakpoints in TailwindCSS, you'll have to modify them in Lapikit too.
+- **devices** (`{[key: string]: number | string}`)
 
-In order to propose display classes, we have included breakpoint variables for 3 device types:
+Define device-specific breakpoints for responsive behavior:
 
-- **mobileBreakpoint** (`string`): `sm`
-  Breakpoint for mobiles
-- **tabletBreakpoint** (`string`): `md`
-  Breakpoint for tablets
-- **laptopBreakpoint** (`string`): `lg`
-  Breakpoint for computers
+```javascript
+breakpoints: {
+  devices: {
+    mobile: "sm",
+    tablet: "md",
+    laptop: "lg"
+  }
+}
+```
 
-Each variable is based on the key names defined in thresholds.
+- **thresholds** (`{[key: string]: number | string}`)
 
-- **thresholds** (`[key: string]: string`): `presets`
+Set the actual breakpoint values that correspond to your device keys:
 
-Lapikit supports 8 breakpoints by default, which you can add or modify. Components use these breakpoint keys for the various adaptive classes specific to each component.
+```javascript
+breakpoints: {
+  thresholds: {
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px"
+  }
+}
+```
 
-To find out more, visit the [breakpoints page](/docs/breakpoints).
+### Theme
+
+Theme configuration handles color schemes and theme definitions.
+
+- **defaultTheme** (`string`)
+
+Set the default theme to be used by your application.
+
+- **colorScheme** (`boolean`)
+
+Enable or disable automatic color scheme detection based on user preferences.
+
+- **themes** (`FragThemes`)
+
+Define your custom themes with colors and variables:
+
+```javascript
+theme: {
+  themes: {
+    light: {
+      dark: false,
+      colors: {
+        primary: "#6750a4",
+        secondary: "#625b71"
+      },
+      variables: {
+        "custom-spacing": "8px"
+      }
+    },
+    dark: {
+      dark: true,
+      colors: {
+        primary: "#d0bcff",
+        secondary: "#ccc2dc"
+      }
+    }
+  }
+}
+```
+
+Each theme can contain:
+
+- **dark** (`boolean`): Whether this is a dark theme
+- **colors** (`{[key: string]: {[key: string]: string} | string}`): Color definitions
+- **variables** (`{[key: string]: string | number}`): Custom CSS variables
+
+### Typography
+
+Typography configuration manages font families and text styling.
+
+- **defaultTypography** (`string`)
+
+Set the default typography family to be used.
+
+- **fonts** (`FragTypography`)
+
+Define custom font families:
+
+```javascript
+typography: {
+  fonts: {
+    sans: {
+      family: ["Inter", "system-ui", "sans-serif"]
+    },
+    mono: {
+      family: "JetBrains Mono"
+    }
+  }
+}
+```
 
 ### Styles
 
-- **spacing** (`string`): `0.125rem`
+Global styling configuration for design tokens and variables.
 
-Defines the default space for all margins, padding and sizes of Lapikit components via the `--kit-spacing` variable
+- **styles** (`FragStyles`)
 
-**Corner**
+Define global styling variables that can be used throughout your application:
 
-- **active** (`boolean`): `true`
+```javascript
+styles: {
+  spacing: "0.125rem",
+  radius: {
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "1rem"
+  },
+  shadow: "0 1px 3px rgba(0, 0, 0, 0.1)"
+}
+```
 
-Enable or disable `--kit-radius-*` variables
+Values can be strings, numbers, or nested objects for complex configurations.
 
-- **radius** (`[key: string]: string | number`): `presets`
+## Example Configuration
 
-All rounding available for Lapikit components and globally via `--kit-radius-*` variables
+Here's a complete example of a lapikit.config.js file:
 
-- **font** (`[key: string]: string | Array<string>`): `presets`
+```javascript
+export default {
+  breakpoints: {
+    devices: {
+      mobile: "sm",
+      tablet: "md",
+      laptop: "lg",
+    },
+    thresholds: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
+  },
+  theme: {
+    defaultTheme: "light",
+    colorScheme: true,
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          primary: "#6750a4",
+          secondary: "#625b71",
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          primary: "#d0bcff",
+          secondary: "#ccc2dc",
+        },
+      },
+    },
+  },
+  typography: {
+    defaultTypography: "sans",
+    fonts: {
+      sans: {
+        family: ["Inter", "system-ui", "sans-serif"],
+      },
+    },
+  },
+  styles: {
+    spacing: "0.125rem",
+    radius: {
+      sm: "0.25rem",
+      md: "0.5rem",
+    },
+  },
+};
+```
 
-Lapikit predefines default fonts for standard use via _sans_, _mono_ and _serif_ variables. They are available globally via CSS variables `--kit-font-family-*`.
+## Vite.js Plugin
+
+Lapikit provides a Vite plugin to automatically process your configuration and generate the necessary CSS files during the build process.
+
+| parameter        | type     | default       | description            |
+| ---------------- | -------- | ------------- | ---------------------- |
+| config $required | `string` | `src/plugins` | set configuration path |
 
 **The next steps**
 
