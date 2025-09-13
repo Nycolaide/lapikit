@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { Button, Icon } from 'lapikit/components';
-	import { useTheme, theme } from 'lapikit/stores';
+	import { useTheme } from 'lapikit/actions';
+	import { theme } from 'lapikit/stores';
 	import { capitalize } from 'site-kit/actions';
 
 	let { app }: { app?: boolean } = $props();

@@ -55,7 +55,6 @@
 		state: 'open' | 'close',
 		element: HTMLElement | PointerEvent | null
 	) => {
-		console.log();
 		if (openOnHover && state === 'open') {
 			if (timeoutId) {
 				clearTimeout(timeoutId);

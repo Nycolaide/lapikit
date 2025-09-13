@@ -109,7 +109,8 @@
 
 	const TOKENS = {
 		$bindable: 'bindable',
-		$reactive: 'reactive'
+		$reactive: 'reactive',
+		$required: 'required'
 	};
 
 	function parseMarkdownLinks(str: string): string {
@@ -226,5 +227,10 @@
 	:global(.kit-table--markdown .token.reactive) {
 		background: #fce4ec;
 		color: #ad1457;
+	}
+
+	:global(.kit-table--markdown .token.required) {
+		background: #fce4e4;
+		color: #ad1414;
 	}
 </style>
