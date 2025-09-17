@@ -12,10 +12,14 @@
 	import '@fontsource/press-start-2p';
 
 	import { App } from 'lapikit/components';
+	import { DevelopmentBar, NavBar } from '$lib/components';
 
 	let { children } = $props();
 </script>
 
 <App>
+	<DevelopmentBar />
+
+	<NavBar />
 	{@render children()}
 </App>

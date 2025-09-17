@@ -19,3 +19,9 @@
 [class*=' mgc_']::before {
 	color: inherit !important;
 }
+
+/* html,
+body,
+* {
+	cursor: none !important;
+} */

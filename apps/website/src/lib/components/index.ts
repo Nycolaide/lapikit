@@ -7,3 +7,6 @@ export { default as ThemeToggle } from './theme-toggle.svelte';
 export { default as Search } from './search/search.svelte';
 export { default as SearchBar } from './search-bar.svelte';
 export { default as ReturnTopPage } from './return-top-page.svelte';
+
+export { default as DevelopmentBar } from './development-bar.svelte';
+export { default as NavBar } from './navbar/navbar.svelte';
