@@ -4,10 +4,11 @@
 
 	// components
 	import Global from './global.svelte';
+	import { PUBLIC_DEV_MODE } from '$env/static/public';
 
 	let { variant = 'app' }: NavBarProps = $props();
 </script>
 
-{#if variant}
+{#if PUBLIC_DEV_MODE == 'true' || variant === 'app'}
 	<Global url={page.url.pathname} />
 {/if}
