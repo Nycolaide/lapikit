@@ -198,4 +198,4 @@ Shows the textfield in a complete form context with labels, validation, and prop
 | `--textfield-focus`      | `--kit-accent-primary`     | Focus state color |
 | `--textfield-error`      | `--kit-status-error`       | Error state color |
 
-Textfield works great with [Form](/docs/components/form) validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.
+Textfield works great with Form validation and can be enhanced with [Icons](/docs/components/icon) and [Buttons](/docs/components/button) using snippets.
