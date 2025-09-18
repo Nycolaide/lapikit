@@ -82,11 +82,11 @@
 <div id="head-lapikit">
 	<Appbar
 		classContent="flex items-center justify-between lg:grid lg:grid-cols-3"
-		density={{ _default: 'default', md: 'comfortable' }}
+		density={{ base: 'default', md: 'comfortable' }}
 		background="transparent"
 	>
 		<p class="text-2xl font-bold">Lapikit</p>
-		<div class="hidden-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
+		<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
 			{#each navigationMain as { key, path, external } (key)}
 				<Button
 					href={path}
@@ -281,7 +281,7 @@
 <style>
 	#head-lapikit {
 		--opacity-pattern: 35%;
-		--pattern: color-mix(in oklab, var(--kit-on-surface) var(--opacity-pattern), transparent);
+		--pattern: color-mix(in oklab, var(--kit-label-primary) var(--opacity-pattern), transparent);
 		background-image: radial-gradient(var(--pattern) 1px, transparent 0);
 		background-size: 16px 16px;
 		background-repeat: repeat;

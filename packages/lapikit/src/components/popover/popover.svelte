@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
-	import { clickOutside } from '$lib/internal/clickOutside.js';
-	import { getPositions } from './popover.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
+	import { clickOutside } from '$lib/internal/helpers/outside.js';
+	import { getPositions } from '$lib/internal/core/actions/popover.svelte.js';
 	import type { PopoverProps, ModelPopoverProps } from './types.js';
 
 	let {
@@ -63,9 +63,9 @@
 		role="menu"
 		class={['kit-popover-content', light && 'light', dark && 'dark', rest.class]}
 		style={`transform: translate(${axis.x}px, ${axis.y}px);`}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--popover-background={assets.color(background)}
+		style:--popover-color={assets.color(color)}
+		style:--popover-shape={assets.shape(rounded)}
 		use:clickOutside={{ exclude: [ref, refActivator], onClose: () => (open = false) }}
 	>
 		{@render children?.()}

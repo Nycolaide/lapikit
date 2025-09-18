@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import { Icon } from '../index.js';
 	import type { ChipProps } from './types.js';
 
 	// external
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
 	import Close from '../../assets/icons/close-fill.svelte';
-	import { ripple } from '$lib/internal/ripple.js';
+	import { ripple } from '$lib/internal/core/animations/ripple.js';
 
 	let {
 		children,
@@ -81,9 +81,9 @@
 			component: 'chip',
 			disabled: noRipple || readonly || disabled || is === 'div' || is === 'span'
 		}}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--chip-background={assets.color(background)}
+		style:--chip-color={assets.color(color)}
+		style:--chip-shape={assets.shape(rounded)}
 	>
 		{#if loading}
 			<div class="kit-chip-loading">

@@ -88,7 +88,7 @@
 		margin: 0;
 		padding: 0;
 		font-size: 0.875rem;
-		color: var(--kit-on-surface-variant, #666);
+		color: var(--kit-label-secondary);
 	}
 
 	.breadcrumb-item {
@@ -98,28 +98,28 @@
 	}
 
 	.breadcrumb-link {
-		color: var(--kit-on-surface);
+		color: var(--kit-label-secondary);
 		text-decoration: none !important;
 		transition: color 0.2s ease;
 	}
 
 	.breadcrumb-link:hover {
-		color: var(--kit-secondary);
+		color: var(--kit-label-secondary);
 	}
 
 	.breadcrumb-link:focus {
-		outline: 2px solid var(--kit-primary);
+		outline: 2px solid var(--kit-label-primary);
 		outline-offset: 2px;
 		border-radius: 2px;
 	}
 
 	.breadcrumb-current {
-		color: var(--kit-on-surface);
+		color: var(--kit-state-link);
 		font-weight: 500;
 	}
 
 	.breadcrumb-separator {
-		color: var(--kit-on-surface-variant);
+		color: var(--kit-separator-opaque);
 		user-select: none;
 		margin: 0 0.25rem;
 	}

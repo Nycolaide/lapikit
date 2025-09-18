@@ -1,39 +1,12 @@
-import { deepMerge } from './internal/deepMerge.js';
+import { deepMerge } from './internal/helpers/deep-merge.js';
 import { breakpoints } from './stores/breakpoints.js';
 import { get } from 'svelte/store';
-import { valueToPx } from './utils/convert.js';
 import { devices } from './stores/devices.js';
+import { valueToPx } from './internal/helpers/convert.js';
 
-interface Lapikit {
-	adapterCSS: string;
-	breakpoints: {
-		devices: {
-			[key: string]: string;
-		};
-		thresholds: {
-			[key: string]: number | string;
-		};
-	};
-	theme: {
-		defaultTheme: string;
-		themes: {
-			[key: string]: {
-				dark: boolean;
-				colors: {
-					[key: string]: string;
-				};
-				variables: {
-					[key: string]: string;
-				};
-			};
-		};
-	};
-}
+import type { LapikitConfiguration } from './internal/types/configuration.js';
 
-function createLapikit(lapikit: Lapikit) {
-	console.log('Creating a new Lapikit instance...');
-	console.log('Options loaded:', lapikit);
-
+function createLapikit(lapikit: LapikitConfiguration) {
 	if (lapikit?.breakpoints?.thresholds) {
 		const currentBreakpoints = get(breakpoints);
 		const breakpointMerged = deepMerge(currentBreakpoints, lapikit.breakpoints.thresholds);
@@ -42,7 +15,6 @@ function createLapikit(lapikit: Lapikit) {
 		);
 
 		breakpoints.set(formattedBreakpoints);
-		console.log('Breakpoints found:', formattedBreakpoints);
 	}
 
 	if (lapikit?.breakpoints?.devices) {
@@ -57,7 +29,6 @@ function createLapikit(lapikit: Lapikit) {
 		);
 
 		devices.set(formattedDevices);
-		console.log('Devices found:', formattedDevices);
 	}
 }
 

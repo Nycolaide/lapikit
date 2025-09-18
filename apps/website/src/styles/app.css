@@ -7,9 +7,9 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-@layer components {
+/* @layer components {
 	@import 'lapikit/css';
-}
+} */
 
 /** 
 	config mgc
@@ -19,3 +19,9 @@
 [class*=' mgc_']::before {
 	color: inherit !important;
 }
+
+/* html,
+body,
+* {
+	cursor: none !important;
+} */

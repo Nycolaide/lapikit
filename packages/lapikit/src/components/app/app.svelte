@@ -1,38 +1,34 @@
 <script lang="ts">
 	import { BROWSER } from 'esm-env';
-	import {
-		colorSchemeSystem,
-		modalOpen,
-		setOpenModal,
-		useColorScheme,
-		useTheme
-	} from '$lib/stores/index.js';
 	import type { Snippet } from 'svelte';
-	let { children }: { children: Snippet } = $props();
+	import { useTheme } from '$lib/actions/use-theme.js';
+	import { modalOpen, setOpenModal } from '$lib/stores/components.js';
+
+	let {
+		children,
+		themes,
+		storageKey = '@lapikit/theme'
+	}: { children: Snippet; themes?: string | string[]; storageKey?: string } = $props();
 
 	$effect.pre(() => {
 		if (!BROWSER) return;
-		// system
-		if (window.matchMedia) {
-			colorSchemeSystem.set(
-				window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-			);
+		const colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+			? 'dark'
+			: 'light';
+		const localTheme = localStorage.getItem(storageKey);
+
+		if (localTheme) {
+			useTheme(localTheme);
+		} else if (colorScheme) {
+			if (typeof themes === 'string') {
+				useTheme(themes);
+			} else if (typeof themes === 'object' && Array.isArray(themes)) {
+				if (colorScheme === 'dark') useTheme(themes[1] ?? themes[0]);
+				else useTheme(themes[0]);
+			} else {
+				useTheme(colorScheme);
+			}
 		}
-
-		// listener
-		window
-			.matchMedia('(prefers-color-scheme: dark)')
-			.addEventListener('change', (event: MediaQueryListEvent) => {
-				colorSchemeSystem.set(event.matches ? 'dark' : 'light');
-			});
-
-		// local
-		const localColorScheme = localStorage.getItem('@lapikit/color-scheme');
-		const localTheme = localStorage.getItem('@lapikit/theme');
-
-		// apply local settings
-		if (localColorScheme !== null) useColorScheme(localColorScheme as 'dark' | 'light' | 'system');
-		if (localTheme !== null) useTheme(localTheme as string);
 	});
 </script>
 

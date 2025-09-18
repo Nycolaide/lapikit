@@ -2,7 +2,7 @@
 	let { children, ...rest } = $props();
 </script>
 
-<div {...rest} id="bottom-navigation" class="display-mobile">
+<div {...rest} id="bottom-navigation" class="kit-device--d-mobile">
 	<div>
 		{@render children?.()}
 	</div>
@@ -10,7 +10,7 @@
 
 <style>
 	#bottom-navigation {
-		background-color: var(--kit-surface-container);
+		background-color: var(--kit-background-tertiary);
 		height: 5rem;
 		position: fixed;
 		width: 100%;

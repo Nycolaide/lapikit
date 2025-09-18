@@ -48,7 +48,7 @@
 		<Footer />
 	</div>
 	<aside class="max-xl:hidden">
-		<Card class="sticky top-[4.5rem]">
+		<Card class="sticky! top-[4.5rem]">
 			<List size="xs" density="compact" variant="text">
 				<ListItem>
 					{#snippet append()}
@@ -93,38 +93,38 @@
 	@media screen and (max-width: 48rem) {
 		.markdown {
 			:global(h2) {
-				margin-top: calc(var(--kit-spacing) * 16);
+				margin-top: calc(var(--system-spacing) * 16);
 				font-size: 27px;
 				font-weight: var(--font-weight-semibold);
 			}
 
 			:global(h3) {
-				margin-top: calc(var(--kit-spacing) * 16);
+				margin-top: calc(var(--system-spacing) * 16);
 				font-size: var(--text-xl);
 				font-weight: var(--font-weight-semibold);
 			}
 
 			:global(p) {
-				margin-top: calc(var(--kit-spacing) * 7);
-				line-height: calc(var(--kit-spacing) * 12);
+				margin-top: calc(var(--system-spacing) * 7);
+				line-height: calc(var(--system-spacing) * 12);
 			}
 
 			:global(img) {
-				margin-top: calc(var(--kit-spacing) * 12);
-				margin-bottom: calc(var(--kit-spacing) * -6);
+				margin-top: calc(var(--system-spacing) * 12);
+				margin-bottom: calc(var(--system-spacing) * -6);
 				margin-right: auto;
 				margin-left: auto;
 			}
 
 			:global(ul) {
 				list-style-type: disc;
-				margin-left: calc(var(--kit-spacing) * 12);
-				margin-block: calc(var(--kit-spacing) * 8);
+				margin-left: calc(var(--system-spacing) * 12);
+				margin-block: calc(var(--system-spacing) * 8);
 			}
 
 			:global(ul > li) {
-				line-height: calc(var(--kit-spacing) * 14);
-				margin-top: calc(var(--kit-spacing) * 3);
+				line-height: calc(var(--system-spacing) * 14);
+				margin-top: calc(var(--system-spacing) * 3);
 			}
 
 			:global(a) {
@@ -138,36 +138,36 @@
 	@media screen and (min-width: 48rem) {
 		.markdown {
 			:global(h2) {
-				margin-top: calc(var(--kit-spacing) * 24);
+				margin-top: calc(var(--system-spacing) * 24);
 				font-size: 27px;
 				font-weight: var(--font-weight-semibold);
 			}
 
 			:global(h3) {
-				margin-top: calc(var(--kit-spacing) * 24);
+				margin-top: calc(var(--system-spacing) * 24);
 				font-size: var(--text-xl);
 				font-weight: var(--font-weight-semibold);
 			}
 
 			:global(p) {
-				margin-top: calc(var(--kit-spacing) * 12);
-				line-height: calc(var(--kit-spacing) * 14);
+				margin-top: calc(var(--system-spacing) * 12);
+				line-height: calc(var(--system-spacing) * 14);
 			}
 
 			:global(img) {
-				margin-top: calc(var(--kit-spacing) * 12);
-				margin-bottom: calc(var(--kit-spacing) * -12);
+				margin-top: calc(var(--system-spacing) * 12);
+				margin-bottom: calc(var(--system-spacing) * -12);
 			}
 
 			:global(ul) {
 				list-style-type: disc;
-				margin-left: calc(var(--kit-spacing) * 12);
-				margin-block: calc(var(--kit-spacing) * 8);
+				margin-left: calc(var(--system-spacing) * 12);
+				margin-block: calc(var(--system-spacing) * 8);
 			}
 
 			:global(ul > li) {
-				line-height: calc(var(--kit-spacing) * 14);
-				margin-top: calc(var(--kit-spacing) * 5);
+				line-height: calc(var(--system-spacing) * 14);
+				margin-top: calc(var(--system-spacing) * 5);
 			}
 
 			:global(a) {

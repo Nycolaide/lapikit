@@ -19,7 +19,7 @@ export type SandboxComponentProps = {
 export type SandboxActionsProps = {
 	expanded?: boolean;
 	presentation?: boolean;
-	localColorScheme?: 'light' | 'dark';
+	localColorScheme?: string;
 	tab?: string;
 	handleTab: (key: string) => void;
 	handleExpand: (key: boolean) => void;

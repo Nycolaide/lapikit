@@ -76,7 +76,7 @@
 
 	<div>
 		<Button
-			class="absolute right-[1rem] z-2 mt-[0.5rem]"
+			class="absolute! right-[1rem] z-2 mt-[0.5rem]"
 			icon
 			size="sm"
 			onclick={() => (copy = true)}
@@ -94,7 +94,7 @@
 
 <style>
 	.lapikit-command-line {
-		border: 1px solid var(--kit-scrim);
+		border: 1px solid var(--kit-state-shadow);
 	}
 
 	.lapikit-command-line :global(pre) {

@@ -85,7 +85,7 @@
 	</div>
 {:else}
 	<Button
-		class="display-mobile"
+		class="kit-device--d-mobile"
 		icon
 		onclick={() => (open = true)}
 		aria-label={capitalize($t('navigation.search_bar.button'))}
@@ -95,7 +95,7 @@
 	</Button>
 
 	<Button
-		class="hidden-mobile"
+		class="kit-device--h-mobile"
 		onclick={() => (open = true)}
 		aria-label={capitalize($t('navigation.search_bar.button'))}
 	>

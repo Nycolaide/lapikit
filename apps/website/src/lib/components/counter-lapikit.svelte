@@ -11,7 +11,7 @@
 	}
 </script>
 
-<Toolbar class="w-fit">
+<Toolbar class="w-fit!">
 	<Button icon onclick={() => (count.target -= 1)} aria-label="Decrease the counter by one">
 		<Icon icon="mgc_minimize_fill" />
 	</Button>

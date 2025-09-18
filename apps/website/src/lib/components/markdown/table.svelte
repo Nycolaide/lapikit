@@ -109,7 +109,8 @@
 
 	const TOKENS = {
 		$bindable: 'bindable',
-		$reactive: 'reactive'
+		$reactive: 'reactive',
+		$required: 'required'
 	};
 
 	function parseMarkdownLinks(str: string): string {
@@ -192,7 +193,7 @@
 
 	:global(.kit-table--markdown table thead tr),
 	:global(.kit-table--markdown tbody tr:not(:last-child)) {
-		border-bottom: 1px solid var(--kit-scrim);
+		border-bottom: 1px solid var(--kit-state-shadow);
 	}
 
 	:global(.kit-table--markdown table tbody) {
@@ -202,7 +203,7 @@
 	:global(.kit-table--markdown table tbody tr td) {
 		min-width: 10rem;
 		vertical-align: baseline;
-		padding-block: calc(var(--kit-spacing) * 6);
+		padding-block: calc(var(--system-spacing) * 6);
 	}
 
 	:global(.kit-table--markdown table tbody tr td p) {
@@ -226,5 +227,10 @@
 	:global(.kit-table--markdown .token.reactive) {
 		background: #fce4ec;
 		color: #ad1457;
+	}
+
+	:global(.kit-table--markdown .token.required) {
+		background: #fce4e4;
+		color: #ad1414;
 	}
 </style>

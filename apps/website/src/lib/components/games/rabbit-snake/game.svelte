@@ -194,7 +194,12 @@
 	</div>
 </div>
 
-<div class={['controls-game', 'hidden-tablet absolute bottom-4 z-2 flex w-full justify-between']}>
+<div
+	class={[
+		'controls-game',
+		'kit-device--h-tablet absolute bottom-4 z-2 flex w-full justify-between'
+	]}
+>
 	<div class="grid gap-2">
 		<button class="ml-10" onclick={() => changeDirection('right')} aria-label="right">
 			<i class="mgc_arrow_right_fill"></i>
@@ -235,7 +240,7 @@
 	.Button-play-game i,
 	.Button-close-game i,
 	.Button-replay-game i {
-		background-color: var(--kit-primary);
+		background-color: var(--kit-accent-primary);
 	}
 
 	.Button-close-game i {
@@ -262,8 +267,8 @@
 	.controls-game button {
 		background-color: transparent;
 		border-radius: var(--kit-radius-full);
-		border: 0.5rem solid var(--kit-primary);
-		color: var(--kit-primary);
+		border: 0.5rem solid var(--kit-accent-primary);
+		color: var(--kit-accent-primary);
 		height: 5rem;
 		width: 5rem;
 		display: flex;
@@ -272,7 +277,7 @@
 	}
 
 	.controls-game button:hover {
-		background-color: var(--kit-primary);
+		background-color: var(--kit-accent-primary);
 		color: var(--kit-on-primary);
 		transition: all 0.5s ease;
 	}

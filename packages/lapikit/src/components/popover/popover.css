@@ -1,8 +1,4 @@
 .kit-popover-content {
-	--popover-color: var(--on, var(--kit-on-container));
-	--popover-background: var(--base, var(--kit-container));
-	--popover-radius: var(--shape, var(--kit-radius-md));
-
 	inset: 0px auto auto 0px;
 	margin: 0px;
 	position: fixed;
@@ -11,12 +7,7 @@
 	width: auto;
 	opacity: 1;
 	transition-property: opacity, transform;
-	/* transition:
-		color 0.5s,
-		background-color 0.5s; */
-
-	/* theme */
-	background-color: var(--popover-background);
-	color: var(--popover-color);
-	border-radius: var(--popover-radius);
+	background-color: var(--popover-background, var(--kit-background-grouped-primary));
+	color: var(--popover-color, var(--kit-label-primary));
+	border-radius: var(--popover-shape, var(--system-shape-md));
 }

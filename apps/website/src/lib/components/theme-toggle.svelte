@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { Button, Icon } from 'lapikit/components';
-	import { useColorScheme, colorScheme, colorSchemeSystem } from 'lapikit/stores';
+	import { useTheme } from 'lapikit/actions';
+	import { theme } from 'lapikit/stores';
 	import { capitalize } from 'site-kit/actions';
 
 	let { app }: { app?: boolean } = $props();
@@ -9,17 +10,12 @@
 
 <Button
 	icon
-	onclick={() =>
-		useColorScheme(
-			($colorScheme === 'system' && $colorSchemeSystem === 'dark') || $colorScheme === 'dark'
-				? 'light'
-				: 'dark'
-		)}
+	onclick={() => useTheme($theme === 'light' ? 'dark' : 'light')}
 	density={app ? 'comfortable' : 'default'}
 	variant={app ? 'filled' : 'text'}
 	aria-label={capitalize($t('navigation.theme_toggle'))}
 >
-	{#if ($colorScheme === 'system' && $colorSchemeSystem === 'dark') || $colorScheme === 'dark'}
+	{#if $theme !== 'light'}
 		<Icon icon="mgc_sun_line" />
 	{:else}
 		<Icon icon="mgc_moon_line" />

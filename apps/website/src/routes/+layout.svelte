@@ -1,17 +1,25 @@
 <script lang="ts">
+	// css
+	import '../styles/app.css';
+
+	// //plugins
+	import '../plugins/lapikit.ts';
+
 	// icons
 	import 'mingcute_icon/font/Mingcute.css';
 	// fonts
 	import '@fontsource/roboto';
 	import '@fontsource/press-start-2p';
-	// css
-	import '../styles/app.css';
 
 	import { App } from 'lapikit/components';
+	import { DevelopmentBar, NavBar } from '$lib/components';
 
 	let { children } = $props();
 </script>
 
 <App>
+	<DevelopmentBar />
+
+	<NavBar />
 	{@render children()}
 </App>

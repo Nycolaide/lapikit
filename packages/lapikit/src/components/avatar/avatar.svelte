@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AvatarProps } from './types.js';
 	let {
 		children,
@@ -34,9 +34,9 @@
 		density && assets.className('avatar', 'density', density),
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--avatar-background={assets.color(background)}
+	style:--avatar-color={assets.color(color)}
+	style:--avatar-shape={assets.shape(rounded)}
 >
 	{#if src}
 		<img {src} {alt} />

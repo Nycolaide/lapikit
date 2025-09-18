@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { TextfieldProps } from './types.js';
 
 	//external
@@ -106,9 +106,9 @@
 		type === 'number' && hideSpinButtons && 'kit-textfield--hide-spin-buttons',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--textfield-background={assets.color(background)}
+	style:--textfield-color={assets.color(color)}
+	style:--textfield-shape={assets.shape(rounded)}
 >
 	{#if prepend}
 		<div class="kit-textfield-prepend">

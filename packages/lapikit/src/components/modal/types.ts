@@ -1,4 +1,4 @@
-import type { Component } from '$lib/internal/types.js';
+import type { Component } from '$lib/internal/types/index.js';
 
 type ModalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
 type ModalPosition = 'bottom' | 'center' | 'top';

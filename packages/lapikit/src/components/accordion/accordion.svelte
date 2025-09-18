@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AccordionProps } from './types.js';
 
 	let {
@@ -12,6 +12,7 @@
 		background,
 		spacer,
 		hideIcon,
+		rounded,
 		...rest
 	}: AccordionProps = $props();
 
@@ -30,8 +31,9 @@
 		dark && 'dark',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
+	style:--accordion-shape={assets.shape(rounded)}
+	style:--accordion-background={assets.color(background)}
+	style:--accordion-color={assets.color(color)}
 >
 	{@render children?.()}
 </svelte:element>

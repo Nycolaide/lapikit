@@ -40,13 +40,12 @@
 </script>
 
 <Button
-	class="absolute right-[1rem] z-2 mt-[0.5rem]"
+	class="absolute! right-[1rem] z-2 mt-[0.5rem]"
 	icon
 	size="sm"
 	onclick={() => (copy = true)}
 	active={copy}
 	variant="text"
-	background="base"
 	light
 >
 	<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />

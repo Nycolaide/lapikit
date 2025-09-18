@@ -1,10 +1,3 @@
-/* root */
-.kit-button {
-	--button-color: var(--on, var(--kit-on-container));
-	--button-background: var(--base, var(--kit-container));
-	--button-radius: var(--shape, var(--kit-radius-md));
-}
-
 .kit-button {
 	position: relative;
 	cursor: pointer;
@@ -14,8 +7,8 @@
 	padding-bottom: var(--button-spacing-x);
 	padding-right: var(--button-spacing-y);
 	padding-left: var(--button-spacing-y);
-	border-radius: var(--button-radius);
-	color: var(--button-color);
+	border-radius: var(--button-shape, var(--system-shape-md));
+	color: var(--button-color, var(--kit-label-primary));
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -29,8 +22,8 @@
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	gap: calc(var(--kit-spacing) * var(--button-multiplier-gap));
-	font-size: calc(var(--kit-spacing) * var(--button-multiplier-font-size));
+	gap: calc(var(--system-spacing) * var(--button-multiplier-gap));
+	font-size: calc(var(--system-spacing) * var(--button-multiplier-font-size));
 }
 
 .kit-button::after {
@@ -106,49 +99,49 @@
 
 /* density */
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-default {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	height: calc(var(--system-spacing) * var(--button-multiplier-x));
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y));
+	--button-spacing-y: calc(var(--system-spacing) * var(--button-multiplier-y));
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-default {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x));
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x));
+	height: calc(var(--system-spacing) * var(--button-multiplier-x));
+	width: calc(var(--system-spacing) * var(--button-multiplier-x));
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }
 
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-compact {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	height: calc(var(--system-spacing) * var(--button-multiplier-x) - 0.25rem);
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) - 0.25rem);
+	--button-spacing-y: calc(var(--system-spacing) * var(--button-multiplier-y) - 0.25rem);
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-compact {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x) - 0.25rem);
+	height: calc(var(--system-spacing) * var(--button-multiplier-x) - 0.25rem);
+	width: calc(var(--system-spacing) * var(--button-multiplier-x) - 0.25rem);
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }
 
 .kit-button:not(.kit-button--icon)[breakpoint]kit-button--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	height: calc(var(--system-spacing) * var(--button-multiplier-x) + 0.25rem);
 	--button-spacing-x: 0;
-	--button-spacing-y: calc(var(--kit-spacing) * var(--button-multiplier-y) + 0.25rem);
+	--button-spacing-y: calc(var(--system-spacing) * var(--button-multiplier-y) + 0.25rem);
 }
 .kit-button.kit-button--icon[breakpoint]kit-button--density-comfortable {
-	height: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
-	width: calc(var(--kit-spacing) * var(--button-multiplier-x) + 0.25rem);
+	height: calc(var(--system-spacing) * var(--button-multiplier-x) + 0.25rem);
+	width: calc(var(--system-spacing) * var(--button-multiplier-x) + 0.25rem);
 	--button-spacing-x: 0;
 	--button-spacing-y: 0;
 }
 
 /* variant */
 .kit-button[breakpoint]kit-button--variant-filled {
-	background-color: var(--button-background);
+	background-color: var(--button-background, var(--kit-background-grouped-primary));
 }
 
 .kit-button[breakpoint]kit-button--variant-outline {
-	--button-color: var(--on, var(--kit-on-container));
-	background-color: var(--button-background);
+	--button-color: var(--on, var(--kit-label-primary));
+	background-color: var(--button-background, var(--kit-background-grouped-primary));
 }
 .kit-button[breakpoint]kit-button--variant-outline::before {
 	content: '';
@@ -160,7 +153,7 @@
 }
 
 .kit-button[breakpoint]kit-button--variant-text {
-	--button-color: var(--base, var(--kit-on-container));
+	--button-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 	border: none;
 }
@@ -168,37 +161,37 @@
 /* state */
 .kit-button.kit-button--info[class*='button--variant-filled'] {
 	--on: var(--kit-on-info);
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-button.kit-button--info[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-button.kit-button--success[class*='button--variant-filled'] {
 	--on: var(--kit-on-success);
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-button.kit-button--success[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-button.kit-button--warning[class*='button--variant-filled'] {
 	--on: var(--kit-on-warning);
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-button.kit-button--warning[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-button.kit-button--error[class*='button--variant-filled'] {
 	--on: var(--kit-on-error);
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 .kit-button.kit-button--error[class*='button--variant-']:not([class*='variant-filled']) {
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 
 /* events */
 .kit-button[class*='button--variant-filled']:active,
 .kit-button.kit-button--active[class*='button--variant-filled'] {
-	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--button-background) 90%, var(--kit-state-shadow));
 }
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']):active,
 .kit-button.kit-button--active[class*='button--variant-']:not([class*='variant-filled']) {

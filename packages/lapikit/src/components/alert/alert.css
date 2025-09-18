@@ -1,10 +1,3 @@
-/* root */
-.kit-alert {
-	--alert-color: var(--on, var(--kit-on-container));
-	--alert-background: var(--base, var(--kit-container));
-	--alert-radius: var(--shape, var(--kit-radius-md));
-}
-
 .kit-alert {
 	display: grid;
 	flex: 1 1;
@@ -15,9 +8,9 @@
 	position: relative;
 	padding: 1rem;
 	overflow: hidden;
-	color: var(--alert-color);
-	background-color: var(--alert-background);
-	border-radius: var(--alert-radius);
+	color: var(--alert-color, var(--kit-label-primary));
+	background-color: var(--alert-background, var(--kit-background-grouped-tertiary));
+	border-radius: var(--alert-shape, var(--system-shape-md));
 	line-height: 0;
 }
 
@@ -87,34 +80,34 @@
 /* state */
 .kit-alert.kit-alert--info:not([class*='alert--variant-']) {
 	--on: var(--kit-on-info);
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 .kit-alert.kit-alert--info[class*='alert--variant-'] {
-	--base: var(--kit-info);
+	--base: var(--kit-accent-info);
 }
 
 .kit-alert.kit-alert--success:not([class*='alert--variant-']) {
 	--on: var(--kit-on-success);
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 .kit-alert.kit-alert--success[class*='alert--variant-'] {
-	--base: var(--kit-success);
+	--base: var(--kit-accent-successs);
 }
 
 .kit-alert.kit-alert--warning:not([class*='alert--variant-']) {
 	--on: var(--kit-on-warning);
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 .kit-alert.kit-alert--warning[class*='alert--variant-'] {
-	--base: var(--kit-warning);
+	--base: var(--kit-accent-warning);
 }
 
 .kit-alert.kit-alert--error:not([class*='alert--variant-']) {
 	--on: var(--kit-on-error);
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 .kit-alert.kit-alert--error[class*='alert--variant-'] {
-	--base: var(--kit-error);
+	--base: var(--kit-accent-destructive);
 }
 
 /* variant */

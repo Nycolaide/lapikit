@@ -120,8 +120,8 @@ Example of an icon rendered inactive, visually dimmed and non-interactive. Ideal
 
 ## Variables CSS
 
-| variable       | default            | description |
-| -------------- | ------------------ | ----------- |
-| `–-icon-color` | `–-kit-on-surface` | Icon color  |
+| variable       | default        | description |
+| -------------- | -------------- | ----------- |
+| `–-icon-color` | `currentColor` | Icon color  |
 
 Add Icons to your [Buttons](/docs/components/button), [Cards](/docs/components/card) or [Chips](/docs/components/chip) to visually guide your users.

@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { ButtonProps } from './types.js';
 
 	// external
 	import { Icon } from '../index.js';
 	import LoadingFill from '$lib/assets/icons/loading-fill.svelte';
-	import { ripple } from '$lib/internal/ripple.js';
+	import { ripple } from '$lib/internal/core/animations/ripple.js';
 
 	let {
 		children,
@@ -68,9 +68,9 @@
 		component: 'button',
 		disabled: noRipple || disabled
 	}}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--button-background={assets.color(background)}
+	style:--button-color={assets.color(color)}
+	style:--button-shape={assets.shape(rounded)}
 >
 	{#if loading}
 		<div class="kit-button-loading">

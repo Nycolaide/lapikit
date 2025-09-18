@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AppbarProps } from './types.js';
 
 	let {
@@ -30,9 +30,9 @@
 		density && assets.className('appbar', 'density', density),
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--appbar-background={assets.color(background)}
+	style:--appbar-color={assets.color(color)}
+	style:--appbar-shape={assets.shape(rounded)}
 >
 	<div class={['kit-appbar--wrapper', classContent]}>
 		{@render children?.()}

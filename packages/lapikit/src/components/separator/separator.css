@@ -1,20 +1,16 @@
 .kit-separator {
-	--separator-opacity: var(--opacity, 0.12);
-	--separator-color: var(--base, var(--kit-scrim));
-
 	display: block;
 	flex: 1 1 100%;
 	height: 0px;
 	max-height: 0px;
-	opacity: var(--separator-opacity);
+	opacity: var(--separator-opacity, 0.12);
 	transition: inherit;
-	border-color: var(--separator-color);
-	/* transition: border-color 0.5s; */
+	border-color: var(--separator-color, var(--kit-state-shadow));
 	border-style: solid;
 }
 
 .kit-separator:not(.kit-separator--orientation-vertical) {
-	border-width: var(--border-top-width, thin) 0 0 0;
+	border-width: var(--separator-top-width, thin) 0 0 0;
 }
 
 .kit-separator--orientation-vertical {
@@ -27,7 +23,7 @@
 	max-width: 0px;
 	vertical-align: text-bottom;
 	width: 0px;
-	border-width: 0 var(--border-right-width, thin) 0 0;
+	border-width: 0 var(--separator-right-width, thin) 0 0;
 }
 
 .kit-separator--inset:not(.kit-separator--orientation-vertical) {

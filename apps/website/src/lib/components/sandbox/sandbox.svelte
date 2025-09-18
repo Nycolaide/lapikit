@@ -5,13 +5,15 @@
 	import SandboxAction from './action.svelte';
 	import SandboxCode from './code.svelte';
 	import SandboxComponent from './component.svelte';
+	import { theme } from 'lapikit/stores';
 
 	let { name, presentation, component, code }: SandboxProps = $props();
 
 	//state
 	let expanded: boolean = $state(false);
 	let tab: string = $state('preview');
-	let localColorScheme: 'light' | 'dark' | undefined = $state(undefined);
+	let localColorScheme: string = $state($theme);
+
 	$effect.pre(() => {
 		if (presentation) expanded = true;
 	});
@@ -59,7 +61,10 @@
 		/>
 		<div>
 			{#if component && (tab === 'preview' || tab === 'preview-only')}
-				<div class:dark={localColorScheme === 'dark'} class:light={localColorScheme === 'light'}>
+				<div
+					class:kit-theme--dark={localColorScheme === 'dark'}
+					class:kit-theme--light={localColorScheme === 'light'}
+				>
 					<SandboxComponent>
 						{@render component?.()}
 					</SandboxComponent>
@@ -81,7 +86,7 @@
 
 <style>
 	.lapikit-sandbox {
-		border: 1px solid var(--kit-scrim);
+		border: 1px solid var(--kit-state-shadow);
 	}
 
 	.lapikit-sandbox :global(p) {

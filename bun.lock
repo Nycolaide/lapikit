@@ -59,7 +59,7 @@
     },
     "packages/lapikit": {
       "name": "lapikit",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "bin": {
         "lapikit": "bin/index.js",
       },

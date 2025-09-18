@@ -80,10 +80,10 @@ You can use it to create fully customized activators that finely control Popover
 
 ## Variables CSS
 
-| variable               | default            | description         |
-| ---------------------- | ------------------ | ------------------- |
-| `–-popover-color`      | `–-kit-on-surface` | Text color          |
-| `–-popover-background` | `–-kit-surface`    | Background color    |
-| `–-popover-radius`     | `--kit-radius-md`  | Popover edge radius |
+| variable               | default                            | description         |
+| ---------------------- | ---------------------------------- | ------------------- |
+| `–-popover-color`      | `--kit-label-primary`              | Text color          |
+| `–-popover-background` | `--kit-background-grouped-primary` | Background color    |
+| `–-popover-radius`     | `--system-shape-md`                | Popover edge radius |
 
 Popovers are the ideal complement to [Dialogs](/docs/components/dialog) or [Buttons](/docs/components/button) in modern interfaces.

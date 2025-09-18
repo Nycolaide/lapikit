@@ -7,21 +7,21 @@ import { parserCSSBreakpoints } from '$lib/internal/helpers/parser.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export function componentFormatter({
+export async function componentFormatter({
 	breakpoints
 }: {
 	breakpoints: { [key: string]: number | string };
 }) {
-	// load css component files (includes on components folders)
-	function loadCSSFiles(directory: string) {
+	// load svelte component files (includes on components folders)
+	function loadSvelteFiles(directory: string) {
 		fs.readdirSync(directory).forEach((File) => {
 			const absolutePath = path.join(directory, File);
-			if (fs.statSync(absolutePath).isDirectory()) return loadCSSFiles(absolutePath);
+			if (fs.statSync(absolutePath).isDirectory()) return loadSvelteFiles(absolutePath);
 			else if (absolutePath.endsWith('.css') && !absolutePath.includes('/_')) {
-				console.log(absolutePath);
+				const fileCSS = fs.readFileSync(absolutePath, 'utf8');
+				const content = parserCSSBreakpoints(fileCSS);
 
-				let css = '';
-				const content = parserCSSBreakpoints(fs.readFileSync(absolutePath, 'utf8'));
+				let css = `${content.cleaned}\n`;
 
 				for (const property in breakpoints) {
 					if (property !== 'base') {
@@ -33,33 +33,39 @@ export function componentFormatter({
 								: breakpoints[property];
 
 						if (content.base !== '' || content.minmax !== '' || content.min !== '') {
-							css += `@media screen and (min-width: ${value}) {\n`;
+							css += `\n@media screen and (min-width: ${value}) {\n`;
 							if (content.base !== '') css += content.base.replaceAll('[breakpoint]', name);
 							if (content.minmax !== '') css += content.minmax.replaceAll('[breakpoint]', name);
 							if (content.min !== '') css += content.min.replaceAll('[breakpoint]', name);
-							css += `}\n`;
+							css += `\n}\n`;
 						}
 
-						if (content.max !== '' || content.all !== '') {
-							css += `@media screen and (max-width: ${value}) {\n`;
-							if (content.max !== '') css += content.max.replaceAll('[breakpoint]', name);
-							if (content.all !== '') css += content.all.replaceAll('[breakpoint]', name);
-							css += `}\n`;
+						if (content.max !== '' || content.minmax !== '') {
+							css += `\n@media screen and (max-width: ${value}) {\n`;
+							if (content.max !== '')
+								css += content.max.replaceAll('[breakpoint]', `max\\:${name}`);
+							if (content.minmax !== '')
+								css += content.all.replaceAll('[breakpoint]', `max\\:${name}`);
+							css += `\n}\n`;
 						}
 					} else {
-						css += content.all.replaceAll('[breakpoint]', '.');
+						css += `${content.base.replaceAll('[breakpoint]', '.')}\n`;
 					}
 				}
 
-				let formattedCSS = css;
-				formattedCSS = formattedCSS.trim().replace(/\n{3,}/g, '\n\n');
+				const baseName = path.basename(absolutePath, '.css');
+				const svelteFilePath = path.join(path.dirname(absolutePath), `${baseName}.svelte`);
 
-				console.log(formattedCSS);
+				if (fs.existsSync(svelteFilePath)) {
+					let svelteContent = fs.readFileSync(svelteFilePath, 'utf8');
+					svelteContent = svelteContent.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+					svelteContent += `<style>\n${css}</style>`;
 
-				fs.writeFileSync(absolutePath, formattedCSS, 'utf8');
+					fs.writeFileSync(svelteFilePath, svelteContent, 'utf8');
+				}
 			}
 		});
 	}
 
-	loadCSSFiles(path.resolve(__dirname, '../../../components'));
+	loadSvelteFiles(path.resolve(__dirname, '../../../components'));
 }

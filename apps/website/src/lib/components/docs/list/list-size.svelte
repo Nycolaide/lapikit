@@ -33,7 +33,7 @@
 		<ListItem>Item 2 xl</ListItem>
 	</List>
 
-	<List size={{ _default: 'xs', md: 'lg' }}>
+	<List size={{ base: 'xs', md: 'lg' }}>
 		<ListItem href="#item-1">Item 2 responsive</ListItem>
 		<ListItem onclick={() => alert('ping')}>Item 2 responsive</ListItem>
 		<ListItem>Item 3 responsive</ListItem>

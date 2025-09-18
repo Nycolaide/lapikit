@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { IconProps } from './types.js';
 	let {
 		children,
@@ -39,7 +39,7 @@
 		size && assets.className('icon', 'size', size),
 		rest.class
 	]}
-	style:--base={assets.color(color)}
+	style:--icon-color={assets.color(color)}
 >
 	{#if icon && icon.includes('/')}
 		<img src={icon} {alt} />

@@ -1,11 +1,12 @@
 import { variables } from './variables.js';
+import standardColors from '../core/standard-colors.js';
 
 export const preset = {
 	breakpoints: {
 		devices: {
 			desktop: 1024, //64rem (lg)
 			tablet: 768, //48rem (md)
-			mobile: 375 //28rem (sm)
+			mobile: 640 //40rem (sm)
 		},
 		thresholds: {
 			base: 0, // 0px
@@ -20,56 +21,86 @@ export const preset = {
 	},
 	theme: {
 		defaultTheme: 'light',
+		colorScheme: true,
 		themes: {
 			light: {
 				dark: false,
 				colors: {
-					blue: '#007AFF',
-					green: '#34C759',
-					red: '#FF3B30',
-					yellow: '#FFCC00',
-					orange: '#FF9500',
-					purple: '#AF52DE',
-					pink: '#FF2D55',
-					indigo: '#5856D6',
-					cyan: '#5AC8FA',
-					gray: '#8E8E93',
-					'gray-2': '#AEAEB2',
-					'gray-3': '#C7C7CC',
-					'gray-4': '#D1D1D6',
-					'gray-5': '#E5E5EA',
-					'gray-6': '#F2F2F7',
-					background: '#FFFFFF',
-					'secondary-background': '#F2F2F7',
-					'tertiary-background': '#EFEFF4',
-					label: '#000000',
-					'secondary-label': 'rgba(60,60,67,0.6)'
+					label: {
+						primary: '#000000',
+						secondary: standardColors.gray.light,
+						tertiary: standardColors.gray2.light,
+						quaternary: standardColors.gray3.light
+					},
+					accent: {
+						primary: standardColors.blue.light,
+						success: standardColors.green.light,
+						warning: standardColors.orange.light,
+						destructive: standardColors.red.light,
+						info: standardColors.cyan.light
+					},
+					separator: {
+						default: standardColors.gray3.light,
+						opaque: standardColors.gray4.light
+					},
+					state: {
+						placeholder: standardColors.gray3.light,
+						disabled: standardColors.gray2.light,
+						link: standardColors.blue.light,
+						highlight: standardColors.gray5.light,
+						shadow: '#00000033'
+					},
+					background: {
+						primary: '#FFFFFF',
+						secondary: standardColors.gray6.light,
+						tertiary: standardColors.gray5.light,
+						grouped: {
+							primary: standardColors.gray6.light,
+							secondary: '#FFFFFF',
+							tertiary: standardColors.gray6.light
+						}
+					}
 				},
 				variables: variables
 			},
 			dark: {
 				dark: true,
 				colors: {
-					blue: '#0A84FF',
-					green: '#30D158',
-					red: '#FF453A',
-					yellow: '#FFD60A',
-					orange: '#FF9F0A',
-					purple: '#BF5AF2',
-					pink: '#FF375F',
-					indigo: '#5E5CE6',
-					cyan: '#64D2FF',
-					gray: '#8E8E93',
-					'gray-2': '#636366',
-					'gray-3': '#48484A',
-					'gray-4': '#3A3A3C',
-					'gray-5': '#2C2C2E',
-					'gray-6': '#1C1C1E',
-					background: '#000000',
-					'secondary-background': '#1C1C1E',
-					'tertiary-background': '#2C2C2E',
-					label: '#FFFFFF',
-					'secondary-label': 'rgba(235,235,245,0.6)'
+					pink: 'pink',
+					label: {
+						primary: '#FFFFFF',
+						secondary: standardColors.gray2.dark,
+						tertiary: standardColors.gray3.dark,
+						quaternary: standardColors.gray4.dark
+					},
+					accent: {
+						primary: standardColors.blue.dark,
+						success: standardColors.green.dark,
+						warning: standardColors.orange.dark,
+						destructive: standardColors.red.dark,
+						info: standardColors.cyan.dark
+					},
+					separator: {
+						default: standardColors.gray3.dark,
+						opaque: standardColors.gray4.dark
+					},
+					state: {
+						placeholder: standardColors.gray3.dark,
+						disabled: standardColors.gray4.dark,
+						link: standardColors.blue.dark,
+						highlight: standardColors.gray5.dark,
+						shadow: '#00000066'
+					},
+					background: {
+						primary: '#000000',
+						secondary: standardColors.gray6.dark,
+						tertiary: standardColors.gray5.dark,
+						grouped: {
+							primary: standardColors.gray6.dark,
+							secondary: standardColors.gray5.dark,
+							tertiary: standardColors.gray4.dark
+						}
+					}
 				},
 				variables: variables
 			}
@@ -117,6 +148,23 @@ export const preset = {
 			'2xl': '1rem', // 16px
 			'3xl': '1.5rem', // 24px
 			full: '9999px' // 9999px
+		},
+		dialog: {
+			xs: '18.75rem', // 300px
+			sm: '25rem', // 400px
+			md: '37.5rem', // 600px
+			lg: '53.125rem', // 850px
+			xl: '75rem' // 1200px
+		},
+		modal: {
+			xs: '18.75rem', // 300px
+			sm: '25rem', // 400px
+			md: '37.5rem', // 600px
+			lg: '53.125rem', // 850px
+			xl: '75rem' // 1200px
+		},
+		animation: {
+			'ripple-duration': '0.4s'
 		}
 	}
 };

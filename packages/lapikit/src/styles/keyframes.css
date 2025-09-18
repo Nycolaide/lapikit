@@ -1,0 +1,30 @@
+@keyframes button-click {
+	0% {
+		transform: scale(0.98);
+	}
+	40% {
+		transform: scale(1.02);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes icon-rotate {
+	0% {
+		transform: rotate(10deg);
+	}
+	100% {
+		transform: rotate(380deg);
+	}
+}
+
+@keyframes animation-l-ripple {
+	from {
+		scale: 0;
+	}
+
+	to {
+		scale: 1;
+	}
+}

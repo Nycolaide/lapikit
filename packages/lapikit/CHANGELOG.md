@@ -21,6 +21,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4] - 2025-09-18
+
+Reduce 16% size to Lapikit package with new core (265kb to 222kb)
+
+### Added
+
+- New core **Lili** for Lapikit to use scoped CSS on all components
+- Reduce CSS sizes with new media queries controls
+- Add standardColors core
+- New CI with installation more explicite and configuration
+- New system theme for more customization on Lapikit
+
+### Changed
+
+- Update all variables roots CSS with new standard
+- Update theme controller with plugin lapikit.ts or js
+- Optimisation to Vite plugin
+
+### Fixed
+
+- Reduce bad latency for build project with lapikit
+- Reduce latency and time for dev environements
+
 ## [0.2.3] - 2025-08-31
 
 ### Added

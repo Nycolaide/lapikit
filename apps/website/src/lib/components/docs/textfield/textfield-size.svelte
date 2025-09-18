@@ -12,7 +12,7 @@
 	<Textfield bind:value={resultInput} size="xl" placeholder="Textfield xl" />
 	<Textfield
 		bind:value={resultInput}
-		size={{ _default: 'sm', md: 'lg' }}
+		size={{ base: 'sm', md: 'lg' }}
 		placeholder="Textfield responsive sizing"
 	/>
 </div>

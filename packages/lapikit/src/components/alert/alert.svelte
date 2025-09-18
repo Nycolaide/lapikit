@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AlertProps } from './types.js';
 
 	// components
@@ -51,9 +51,9 @@
 			rest.class
 		]}
 		role="alert"
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--alert-background={assets.color(background)}
+		style:--alert-color={assets.color(color)}
+		style:--alert-shape={assets.shape(rounded)}
 	>
 		{#if prepend}
 			<div class="kit-alert--prepend">

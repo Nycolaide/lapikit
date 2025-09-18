@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { CardProps } from './types.js';
 
 	// external
-	import { ripple } from '$lib/internal/ripple.js';
+	import { ripple } from '$lib/internal/core/animations/ripple.js';
 
 	let {
 		children,
@@ -55,9 +55,9 @@
 		component: 'card',
 		disabled: noRipple || disabled || !isClickable
 	}}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--card-background={assets.color(background)}
+	style:--card-color={assets.color(color)}
+	style:--card-shape={assets.shape(rounded)}
 >
 	{@render children?.()}
 </svelte:element>

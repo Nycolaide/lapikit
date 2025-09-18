@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { SeparatorProps } from './types.js';
 
 	let {
@@ -30,8 +30,8 @@
 	]}
 	aria-orientation={orientation}
 	role="separator"
-	style:--base={assets.color(color)}
-	style:--opacity={opacity}
-	style:--border-top-width={orientation === 'horizontal' ? assets.unit(thickness) : undefined}
-	style:--border-right-width={orientation === 'vertical' ? assets.unit(thickness) : undefined}
+	style:--separator-color={assets.color(color)}
+	style:--separator-opacity={opacity}
+	style:--separator-top-width={orientation === 'horizontal' ? assets.unit(thickness) : undefined}
+	style:--separator-right-width={orientation === 'vertical' ? assets.unit(thickness) : undefined}
 />

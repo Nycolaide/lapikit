@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
-	import { clickOutside } from '$lib/internal/clickOutside.js';
-	import { getPositions } from './dropdown.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
+	import { clickOutside } from '$lib/internal/helpers/outside.js';
+	import { getPositions } from '$lib/internal/core/actions/dropdown.svelte.js';
 	import type { DropdownProps, ModelDropdownProps } from './types.js';
 
 	let {
@@ -55,7 +55,6 @@
 		state: 'open' | 'close',
 		element: HTMLElement | PointerEvent | null
 	) => {
-		console.log();
 		if (openOnHover && state === 'open') {
 			if (timeoutId) {
 				clearTimeout(timeoutId);
@@ -106,9 +105,9 @@
 			e.stopPropagation();
 			handleClose();
 		}}
-		style:--base={assets.color(background)}
-		style:--on={assets.color(color)}
-		style:--shape={assets.shape(rounded)}
+		style:--dropdown-background={assets.color(background)}
+		style:--dropdown-color={assets.color(color)}
+		style:--dropdown-shape={assets.shape(rounded)}
 		use:clickOutside={{ exclude: [ref, refActivator], onClose: () => (open = false) }}
 	>
 		{@render children?.()}

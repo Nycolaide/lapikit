@@ -1,6 +1,5 @@
 <script lang="ts">
-	// import { disabledScroll } from '$lib/internal/index.js';
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import { modalOpen, modalStack, popModal, pushModal, setOpenModal } from '$lib/stores/index.js';
 	import { onDestroy } from 'svelte';
 	import type { ModalProps } from './types.js';
@@ -103,9 +102,9 @@
 				density && assets.className('modal-container', 'density', density),
 				position && assets.className('modal-container', 'position', position)
 			]}
-			style:--base={assets.color(background)}
-			style:--on={assets.color(color)}
-			style:--shape={assets.shape(rounded)}
+			style:--modal-background={assets.color(background)}
+			style:--modal-color={assets.color(color)}
+			style:--modal-shape={assets.shape(rounded)}
 		>
 			{@render children?.()}
 		</div>

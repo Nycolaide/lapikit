@@ -1,75 +1,63 @@
 .kit-toolbar {
-	--toolbar-color: var(--on, var(--kit-on-surface));
-	--toolbar-background: var(--base, var(--kit-surface));
-	--toolbar-radius: var(--shape, var(--kit-radius-md));
-
 	display: flex;
 	align-items: center;
-	/* min-width: max-content; */
 	border-style: solid;
-	/* transition:
-		color 0.5s,
-		border-color 0.5s,
-		background-color 0.5s; */
-
 	border-width: 1px;
 	border-style: solid;
-	border-radius: var(--toolbar-radius);
-
-	/* theme */
-	color: var(--toolbar-color);
-	background-color: var(--toolbar-background);
-	border-color: var(--toolbar-background);
+	border-radius: var(--toolbar-shape, var(--system-shape-md));
+	color: var(--toolbar-color, var(--kit-label-primary));
+	background-color: var(--toolbar-background, var(--kit-background-grouped-tertiary));
+	border-color: var(--toolbar-background, var(--kit-background-grouped-tertiary));
 }
 
 /* density */
 .kit-toolbar[breakpoint]kit-toolbar--density-default {
-	border-radius: calc(var(--kit-spacing) * 2.25);
+	border-radius: calc(var(--system-spacing) * 2.25);
 }
 .kit-toolbar[breakpoint]kit-toolbar--density-default:not([class*='toolbar--orientation-vertical']) {
 	height: 3rem;
-	padding-inline: calc(var(--kit-spacing) * 1.5);
+	padding-inline: calc(var(--system-spacing) * 1.5);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-default[class*='toolbar--orientation-vertical'] {
 	width: 3rem;
-	padding: calc(var(--kit-spacing) * 1.5) 0;
+	padding: calc(var(--system-spacing) * 1.5) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact {
-	border-radius: calc(var(--kit-spacing) * 1.75);
+	border-radius: calc(var(--system-spacing) * 1.75);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact:not([class*='toolbar--orientation-vertical']) {
 	height: 2.625rem;
-	padding-inline: calc(var(--kit-spacing) * 0.75);
+	padding-inline: calc(var(--system-spacing) * 0.75);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-compact[class*='toolbar--orientation-vertical'] {
 	width: 2.625rem;
-	padding: calc(var(--kit-spacing) * 0.75) 0;
+	padding: calc(var(--system-spacing) * 0.75) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable {
-	border-radius: calc(var(--kit-spacing) * 3.5);
+	border-radius: calc(var(--system-spacing) * 3.5);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable:not(
 		[class*='toolbar--orientation-vertical']
 	) {
 	height: 3.5rem;
-	padding-inline: calc(var(--kit-spacing) * 2.25);
+	padding-inline: calc(var(--system-spacing) * 2.25);
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--density-comfortable[class*='toolbar--orientation-vertical'] {
 	width: 3.5rem;
-	padding: calc(var(--kit-spacing) * 2.25) 0;
+	padding: calc(var(--system-spacing) * 2.25) 0;
 }
 
 .kit-toolbar[breakpoint]kit-toolbar--variant-text,
 .kit-toolbar[breakpoint]kit-toolbar--variant-outline,
 .kit-toolbar[breakpoint]kit-toolbar--variant-dash {
-	--toolbar-color: var(--base, var(--kit-surface));
+	--toolbar-color: var(--base, var(--kit-background-grouped-primary));
 	background-color: transparent;
 }
 

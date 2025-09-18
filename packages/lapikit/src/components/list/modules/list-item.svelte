@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/index.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { ListItemProps } from '../types.js';
 
 	// external
-	import { ripple } from '$lib/internal/ripple.js';
+	import { ripple } from '$lib/internal/core/animations/ripple.js';
 
 	let {
 		children,
@@ -54,9 +54,9 @@
 	tabindex={href && disabled ? -2 : 0}
 	aria-disabled={href ? disabled : undefined}
 	disabled={href ? undefined : disabled}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--list-item-background={assets.color(background)}
+	style:--list-item-color={assets.color(color)}
+	style:--list-item-shape={assets.shape(rounded)}
 >
 	{#if append}
 		<div class="kit-list-item-content--append">

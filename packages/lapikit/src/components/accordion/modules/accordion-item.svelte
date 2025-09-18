@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
 	import type { AccordionItemProps, ModelAccordionItemProps } from '../types.js';
 
 	// components
@@ -49,9 +49,9 @@
 		open && 'kit-accordion-item--active',
 		rest.class
 	]}
-	style:--base={assets.color(background)}
-	style:--on={assets.color(color)}
-	style:--shape={assets.shape(rounded)}
+	style:--accordion--item-shape={assets.shape(rounded)}
+	style:--accordion--item-background={assets.color(background)}
+	style:--accordion--item-color={assets.color(color)}
 >
 	<button
 		class={[

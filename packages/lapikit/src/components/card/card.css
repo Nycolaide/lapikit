@@ -1,26 +1,16 @@
-/* root */
-.kit-card {
-	--card-color: var(--on, var(--kit-on-surface));
-	--card-background: var(--base, var(--kit-surface));
-	--card-radius: var(--shape, var(--kit-radius-md));
-}
-
 .kit-card {
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	text-align: start;
 	overflow: hidden;
-	/* transition:
-		color 0.5s,
-		background-color 0.5s; */
 	padding-top: var(--card-spacing-x);
 	padding-bottom: var(--card-spacing-x);
 	padding-right: var(--card-spacing-y);
 	padding-left: var(--card-spacing-y);
-	border-radius: var(--card-radius);
+	border-radius: var(--card-shape, var(--system-shape-md));
 	font-weight: 500;
-	color: var(--card-color);
+	color: var(--card-color, var(--kit-label-primary));
 	text-decoration: none;
 }
 
@@ -50,25 +40,25 @@
 
 /* density */
 .kit-card[breakpoint]kit-card--density-default {
-	--card-spacing-x: calc(var(--kit-spacing) * 2);
-	--card-spacing-y: calc(var(--kit-spacing) * 2);
+	--card-spacing-x: calc(var(--system-spacing) * 2);
+	--card-spacing-y: calc(var(--system-spacing) * 2);
 }
 .kit-card[breakpoint]kit-card--density-compact {
 	--card-spacing-x: 0;
 	--card-spacing-y: 0;
 }
 .kit-card[breakpoint]kit-card--density-comfortable {
-	--card-spacing-x: calc(var(--kit-spacing) * 4);
-	--card-spacing-y: calc(var(--kit-spacing) * 4);
+	--card-spacing-x: calc(var(--system-spacing) * 4);
+	--card-spacing-y: calc(var(--system-spacing) * 4);
 }
 
 /* variant */
 .kit-card[breakpoint]kit-card--variant-filled {
-	background-color: var(--card-background);
+	background-color: var(--card-background, var(--kit-background-grouped-secondary));
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {
-	--card-color: var(--base, var(--kit-on-surface));
+	--card-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 }
 .kit-card[breakpoint]kit-card--variant-outline::before {
@@ -81,7 +71,7 @@
 }
 
 .kit-card[breakpoint]kit-card--variant-text {
-	--card-color: var(--base, var(--kit-on-surface));
+	--card-color: var(--base, var(--kit-label-primary));
 	background-color: transparent;
 	border: none;
 }
@@ -89,7 +79,7 @@
 /* events */
 .kit-card[class*='card--variant-filled'].kit-card--clickable:active,
 .kit-card.kit-card--active[class*='card--variant-filled'].kit-card--clickable {
-	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-scrim));
+	background-color: color-mix(in oklab, var(--card-background) 90%, var(--kit-state-shadow));
 }
 .kit-card.kit-card--active[class*='card--variant-']:not(
 		[class*='variant-filled']

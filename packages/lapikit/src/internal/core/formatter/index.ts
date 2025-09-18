@@ -1,33 +1,49 @@
 import { preset } from '$lib/internal/config/presets.js';
-import { deepMerge } from '$lib/internal/deepMerge.js';
+import { deepMerge } from '$lib/internal/helpers/deep-merge.js';
 import type { DevConfiguration } from '$lib/internal/types/index.js';
 import { componentFormatter } from './component.js';
+import { devicesFormatter } from './device.js';
+import { stylesFormatter } from './style.js';
 import { themesFormatter } from './theme.js';
 import { typographyFormatter } from './typography.js';
 
-export async function css(config: DevConfiguration) {
+export async function liliRabbit(config: DevConfiguration): Promise<{
+	themes: string;
+	typography: string;
+	styles: string;
+	devices: string;
+}> {
 	// states
 	const defaultTheme = config?.theme?.defaultTheme || preset.theme.defaultTheme;
 	const defaultTypography =
 		config?.typography?.defaultTypography || preset.typography.defaultTypography;
 
 	// formatter
-	const themes = themesFormatter({
+	const themes = await themesFormatter({
 		themes: deepMerge(preset.theme.themes, config?.theme?.themes || {}),
 		defaultTheme
 	});
 
-	const typography = typographyFormatter({
+	const typography = await typographyFormatter({
 		typography: deepMerge(preset.typography.fonts, config?.typography?.fonts || {}),
 		defaultTypography
 	});
 
+	const styles = await stylesFormatter({ styles: deepMerge(preset.styles, config?.styles || {}) });
+
+	const devices = await devicesFormatter({
+		devices: deepMerge(preset.breakpoints.devices, config?.breakpoints?.devices || {})
+	});
+
 	// components
-	componentFormatter({
+	await componentFormatter({
 		breakpoints: deepMerge(preset.breakpoints.thresholds, config?.breakpoints?.thresholds || {})
 	});
 
 	return {
-		styles: [themes, typography]
+		themes: themes,
+		typography: typography,
+		styles: styles,
+		devices: devices
 	};
 }

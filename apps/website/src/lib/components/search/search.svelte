@@ -25,7 +25,7 @@
 	]);
 </script>
 
-<Modal bind:open closeWithEsc position={{ _default: 'top', sm: 'center' }} rounded="xl">
+<Modal bind:open closeWithEsc position={{ base: 'top', sm: 'center' }} rounded="xl">
 	<Toolbar density="compact" class="mb-2">
 		<Spacer />
 		<Button size="sm" onclick={() => (open = false)} aria-label={capitalize($t('common.close'))}>
@@ -46,7 +46,7 @@
 		{/if}
 	</div>
 	<Toolbar
-		class="hidden-mobile shadow-lg"
+		class="kit-device--h-mobile shadow-lg"
 		classContent="gap-3 text-sm "
 		background="surface-container"
 		density="compact"

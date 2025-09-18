@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { getAssets } from '$lib/internal/assets.svelte.js';
-	import { getPositionsTooltip } from './tooltip.svelte.js';
+	import { getAssets } from '$lib/internal/core/actions/assets.svelte.js';
+	import { getPositionsTooltip } from '$lib/internal/core/actions/tooltip.svelte.js';
 	import type { PositionElement, TooltipProps } from './types.js';
 
 	let {
@@ -99,9 +99,9 @@
 				density && assets.className('tooltip-content', 'density', density),
 				rest.class
 			]}
-			style:--base={assets.color(background)}
-			style:--on={assets.color(color)}
-			style:--shape={assets.shape(rounded)}
+			style:--tooltip-background={assets.color(background)}
+			style:--tooltip-color={assets.color(color)}
+			style:--tooltip-shape={assets.shape(rounded)}
 		>
 			{#if tooltip}
 				{@render tooltip?.()}

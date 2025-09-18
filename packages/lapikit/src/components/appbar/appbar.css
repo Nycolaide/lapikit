@@ -1,24 +1,14 @@
-/* root default*/
 .kit-appbar {
-	--appbar-color: var(--on, var(--kit-on-surface));
-	--appbar-background: var(--base, var(--kit-surface));
-	--appbar-radius: var(--shape, 0);
-	--appbar-padding-wrapper: var(--kit-spacing) * 4;
-}
+	--appbar-padding-wrapper: var(--system-spacing) * 4;
 
-.kit-appbar {
 	display: flex;
 	align-items: center;
 	border-style: solid;
 	border-width: 1px;
-	border-radius: var(--appbar-radius);
-	color: var(--appbar-color);
-	background-color: var(--appbar-background);
-	border-color: var(--appbar-background);
-	/* transition:
-		color 0.5s,
-		border-color 0.5s,
-		background-color 0.5s; */
+	border-radius: var(--appbar-shape);
+	color: var(--appbar-color, var(--kit-label-primary));
+	background-color: var(--appbar-background, var(--kit-background-grouped-tertiary));
+	border-color: var(--appbar-background, var(--kit-background-grouped-tertiary));
 }
 
 /* wrapper */
@@ -34,15 +24,15 @@
 /* density */
 .kit-appbar[breakpoint]kit-appbar--density-default {
 	height: 4rem;
-	padding-inline: calc(var(--kit-spacing) * 1.5);
+	padding-inline: calc(var(--system-spacing) * 1.5);
 }
 
 .kit-appbar[breakpoint]kit-appbar--density-compact {
 	height: 3.5rem;
-	padding-inline: calc(var(--kit-spacing) * 0.75);
+	padding-inline: calc(var(--system-spacing) * 0.75);
 }
 
 .kit-appbar[breakpoint]kit-appbar--density-comfortable {
 	height: 4.5rem;
-	padding-inline: calc(var(--kit-spacing) * 2.25);
+	padding-inline: calc(var(--system-spacing) * 2.25);
 }

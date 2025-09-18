@@ -112,10 +112,10 @@ Makes the Dialog persistent: it no longer closes automatically on clicking outsi
 
 ## Variables CSS
 
-| variable              | default              | description        |
-| --------------------- | -------------------- | ------------------ |
-| `–-dialog-color`      | `–-kit-on-container` | Text color         |
-| `–-dialog-background` | `–-kit-container`    | Background color   |
-| `–-dialog-radius`     | `--kit-radius-md`    | Dialog edge radius |
+| variable              | default                            | description        |
+| --------------------- | ---------------------------------- | ------------------ |
+| `–-dialog-color`      | `--kit-label-primary`              | Text color         |
+| `–-dialog-background` | `--kit-background-grouped-primary` | Background color   |
+| `–-dialog-shape`      | `--system-shape-md`                | Dialog edge radius |
 
 Remember to follow up with [Modal](/docs/components/modal) or [Popover](/docs/components/popover) to create complete user paths.
