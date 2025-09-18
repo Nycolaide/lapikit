@@ -10,7 +10,7 @@
 
 <Head
 	title="Terms of Service"
-	description="Discover Lapikit, a component library optimized for Svelte. Quick to integrate, simple to style, and designed for front-end developers."
+	description="Read the legal notices and terms of service for using the Lapikit website and services."
 />
 
 <Appbar

@@ -1,10 +1,9 @@
 ---
 title: $devices
-subtitle: devices action
-introduction: ""
+subtitle: devices store in lapikit
 head:
   title: devices stored
-  description: ""
+  description: "Learn how to use the devices store in Lapikit for responsive design."
 state:
   section: stores
   published: true

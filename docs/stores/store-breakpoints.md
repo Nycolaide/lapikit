@@ -1,9 +1,9 @@
 ---
 title: $breakpoints
-subtitle: breakpoints action
+subtitle: breakpoints store in lapikit
 head:
   title: breakpoints stored
-  description: ""
+  description: "Learn how to use the breakpoints store in Lapikit for responsive design."
 state:
   section: stores
   published: true

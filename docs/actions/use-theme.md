@@ -1,10 +1,9 @@
 ---
 title: useTheme
-subtitle: useTheme action
-introduction: ""
+subtitle: Discover the useTheme action in Lapikit
 head:
   title: useTheme action
-  description: ""
+  description: "Learn how to use the useTheme action in Lapikit for dynamic theming."
 state:
   section: actions
   published: true

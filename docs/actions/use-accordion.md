@@ -1,10 +1,9 @@
 ---
 title: useAccordion
-subtitle: useAccordion action
-introduction: ""
+subtitle: One action to manage accordion state
 head:
   title: useAccordion action
-  description: ""
+  description: "Learn how to use the useAccordion action in Lapikit for managing accordion state."
 state:
   section: actions
   published: true

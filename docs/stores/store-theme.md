@@ -1,9 +1,9 @@
 ---
 title: $theme
-subtitle: theme action
+subtitle: theme in lapikit
 head:
   title: theme stored
-  description: ""
+  description: "Learn how to use the theme store in Lapikit for responsive design."
 state:
   section: stores
   published: true
