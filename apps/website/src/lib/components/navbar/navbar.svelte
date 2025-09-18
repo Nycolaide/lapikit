@@ -9,6 +9,6 @@
 	let { variant = 'app' }: NavBarProps = $props();
 </script>
 
-{#if PUBLIC_DEV_MODE == 'true' || variant === 'app'}
+{#if PUBLIC_DEV_MODE == 'true' && variant === 'app'}
 	<Global url={page.url.pathname} />
 {/if}
