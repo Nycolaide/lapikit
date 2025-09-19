@@ -2,9 +2,29 @@
 	import { Appbar, Toolbar } from 'lapikit/components';
 	import { fly } from 'svelte/transition';
 	import type { GlobalProps } from './types';
+	import { breakpoints, viewport } from 'lapikit/stores';
 
-	let { url = '' }: GlobalProps = $props();
-	let visible = $state(true);
+	let { data, url = '' }: GlobalProps = $props();
+
+	// states
+	let visible = $state(false);
+	let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+	$effect(() => {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+
+		if (data?.npm?.name && $viewport.innerWidth > $breakpoints.md) {
+			timeoutId = setTimeout(() => {
+				visible = true;
+				timeoutId = null;
+			}, 200);
+		} else {
+			visible = false;
+		}
+	});
 </script>
 
 <Appbar
@@ -23,9 +43,9 @@
 {#if visible}
 	<div
 		transition:fly={{ y: -20, duration: 500 }}
-		class="fixed z-80 md:top-[4rem] md:left-[6vw] md:w-[88vw]!"
+		class="fixed top-[4rem] left-[6vw] z-80 w-[88vw]! max-md:hidden"
 	>
-		<Toolbar class=" " classContent="mt-[13px]" background="green" rounded="xl" density="compact">
+		<Toolbar classContent="mt-[13px]" background="green" rounded="xl" density="compact">
 			toolbar content
 		</Toolbar>
 	</div>
