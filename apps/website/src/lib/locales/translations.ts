@@ -4,6 +4,7 @@ import homepageEn from './en/homepage.json';
 import navigationEn from './en/navigation.json';
 import docsEn from './en/docs.json';
 import datatableEn from './en/datatable.json';
+import errorEn from './en/error.json';
 // es
 import commonEs from './es/common.json';
 // fr
@@ -15,7 +16,8 @@ export default {
 		homepage: homepageEn,
 		navigation: navigationEn,
 		docs: docsEn,
-		datatable: datatableEn
+		datatable: datatableEn,
+		error: errorEn
 	},
 	es: {
 		common: commonEs
