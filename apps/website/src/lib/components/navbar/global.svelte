@@ -13,6 +13,7 @@
 	let visible = $state(false);
 	let timeoutId: ReturnType<typeof setTimeout> | null = null;
 	let lastPublish = $state('');
+	let scrollY = $state(0);
 
 	// refs
 	let refMenuDocs = $state(null);
@@ -24,13 +25,26 @@
 			timeoutId = null;
 		}
 
-		if (data?.npm && data?.github && $viewport.innerWidth > $breakpoints.md) {
+		if (data?.npm && data?.github && $viewport.innerWidth > $breakpoints.md && scrollY <= 50) {
 			timeoutId = setTimeout(() => {
 				visible = true;
 				timeoutId = null;
 			}, 200);
 		} else {
 			visible = false;
+		}
+	});
+
+	$effect(() => {
+		const handleScroll = () => {
+			scrollY = window.scrollY;
+		};
+
+		if (typeof window !== 'undefined') {
+			window.addEventListener('scroll', handleScroll);
+			return () => {
+				window.removeEventListener('scroll', handleScroll);
+			};
 		}
 	});
 
