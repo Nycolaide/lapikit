@@ -63,9 +63,14 @@
 
 	<Spacer />
 
-	<Dropdown>
-		{#snippet activator(model)}
-			<Button bind:ref={refMenuDocs} onclick={() => model.toggle(refMenuDocs)}>
+	<Dropdown openOnHover>
+		{#snippet activator(model, handleMouseEvent)}
+			<Button
+				bind:ref={refMenuDocs}
+				href="/docs"
+				onmouseover={() => handleMouseEvent('open', refMenuDocs)}
+				onmouseleave={() => handleMouseEvent('close', refMenuDocs)}
+			>
 				About us
 				<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
 			</Button>
