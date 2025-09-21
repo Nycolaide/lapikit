@@ -5,6 +5,7 @@ export const url: string = dev ? 'http://localhost:5173' : PUBLIC_BASE_URL;
 
 export const staticPages: Array<string> = ['docs/components', 'terms'];
 export const discordUrl: string = 'https://discord.gg/gn9ZGtDtK4';
+export const githubUrl: string = 'https://github.com/Nycolaide/lapikit';
 export const githubIssuesUrl: string = 'https://github.com/Nycolaide/lapikit/issues';
 export const githubEditPageUrl: string = 'https://github.com/Nycolaide/lapikit/tree/main/docs';
 export const githubDiscussionsUrl: string = 'https://github.com/Nycolaide/lapikit/discussions';

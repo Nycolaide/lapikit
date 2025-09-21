@@ -5,6 +5,7 @@ type RepoData = {
 	description: string | null;
 	stargazers_count: number;
 	subscribers_count: number;
+	open_issues_count: number;
 	forks_count: number;
 	html_url: string;
 	homepage: string | null;
@@ -36,11 +37,13 @@ async function getGithubDataRepo({ name }: { name: string }) {
 		if (!response.ok) throw new Error(`GitHub API error: ${response.statusText}`);
 
 		const json = await response.json();
+
 		const data = {
 			full_name: json.full_name,
 			description: json.description,
 			stargazers_count: json.stargazers_count,
 			subscribers_count: json.subscribers_count,
+			open_issues_count: json.open_issues_count,
 			forks_count: json.forks_count,
 			html_url: json.html_url,
 			homepage: json.homepage,

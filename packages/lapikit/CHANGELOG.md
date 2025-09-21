@@ -21,6 +21,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.5] - 2025-09-21
+
+### Added
+
+- New store **viewport** for use breakpoint on viewport width and height
+
+### Changed
+
+- Update component **App** with event listerner for update viewport store
+- Update component **Toolbar** to remove border-radius auto calculation
+
 ## [0.2.4] - 2025-09-18
 
 Reduce 16% size to Lapikit package with new core (265kb to 222kb)
