@@ -18,5 +18,14 @@
 			"accept": "accept all",
 			"decline": "decline all"
 		}
+	},
+	"github": {
+		"stars": "stars",
+		"forks": "forks",
+		"issues": "open issues",
+		"prs": "open pull requests",
+		"last_commit": "last commit",
+		"downloads": "downloads",
+		"last_published": "last published"
 	}
 }

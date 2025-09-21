@@ -1,0 +1,9 @@
+{
+	"metadescription": "The page you are looking for does not exist. Explore Lapikit's comprehensive documentation to find what you need.",
+	"return": "Return to homepage",
+	"404": {
+		"headline": "404 Page Not Found",
+		"title": "Oops! Page not found",
+		"message": "The page may have been deleted, its name changed, or it may be temporarily unavailable."
+	}
+}

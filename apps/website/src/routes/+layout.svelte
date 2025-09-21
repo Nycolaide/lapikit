@@ -14,12 +14,16 @@
 	import { App } from 'lapikit/components';
 	import { DevelopmentBar, NavBar } from '$lib/components';
 
-	let { children } = $props();
+	let { data, children } = $props();
+
+	$effect(() => {
+		console.log('API data', data);
+	});
 </script>
 
 <App>
 	<DevelopmentBar />
 
-	<NavBar />
+	<NavBar {data} />
 	{@render children()}
 </App>

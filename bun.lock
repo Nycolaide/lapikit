@@ -59,7 +59,7 @@
     },
     "packages/lapikit": {
       "name": "lapikit",
-      "version": "0.2.3",
+      "version": "0.2.4",
       "bin": {
         "lapikit": "bin/index.js",
       },
@@ -1175,7 +1175,7 @@
 
     "vite": ["vite@6.3.2", "", { "dependencies": { "esbuild": "^0.25.0", "fdir": "^6.4.3", "picomatch": "^4.0.2", "postcss": "^8.5.3", "rollup": "^4.34.9", "tinyglobby": "^0.2.12" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "peerDependencies": { "@types/node": "^18.0.0 || ^20.0.0 || >=22.0.0", "jiti": ">=1.21.0", "less": "*", "lightningcss": "^1.21.0", "sass": "*", "sass-embedded": "*", "stylus": "*", "sugarss": "*", "terser": "^5.16.0", "tsx": "^4.8.1", "yaml": "^2.4.2" }, "optionalPeers": ["@types/node", "jiti", "less", "lightningcss", "sass", "sass-embedded", "stylus", "sugarss", "terser", "tsx", "yaml"], "bin": { "vite": "bin/vite.js" } }, "sha512-ZSvGOXKGceizRQIZSz7TGJ0pS3QLlVY/9hwxVh17W3re67je1RKYzFHivZ/t0tubU78Vkyb9WnHPENSBCzbckg=="],
 
-    "vite-imagetools": ["vite-imagetools@7.1.0", "", { "dependencies": { "@rollup/pluginutils": "^5.0.5", "imagetools-core": "^7.1.0", "sharp": "^0.34.1" } }, "sha512-Mqh1uUY2DEMuBOogFz5Rd7cAs70VP6wsdQh2IShrJ+qGk5f7yQa4pN8w0YMLlGIKYW1JfM8oXrznUwVkhG+qxg=="],
+    "vite-imagetools": ["vite-imagetools@7.1.1", "", { "dependencies": { "@rollup/pluginutils": "^5.0.5", "imagetools-core": "^7.1.0", "sharp": "^0.34.1" } }, "sha512-6Dz0ZD2u1u59dw0ryid4beaDcCNNiTfLXUg6XLxx9n7Qm4BgAAm8TozYUnIH0aT4FDAADZqHsh9ZtISzAs4eKA=="],
 
     "vite-node": ["vite-node@3.1.1", "", { "dependencies": { "cac": "^6.7.14", "debug": "^4.4.0", "es-module-lexer": "^1.6.0", "pathe": "^2.0.3", "vite": "^5.0.0 || ^6.0.0" }, "bin": { "vite-node": "vite-node.mjs" } }, "sha512-V+IxPAE2FvXpTCHXyNem0M+gWm6J7eRyWPR6vYoG/Gl+IscNOjXzztUhimQgTxaAoUoj40Qqimaa0NLIOOAH4w=="],
 

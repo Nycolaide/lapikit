@@ -4,6 +4,8 @@
 	import { useTheme } from '$lib/actions/use-theme.js';
 	import { modalOpen, setOpenModal } from '$lib/stores/components.js';
 
+	import { viewport } from '$lib/stores/viewport.js';
+
 	let {
 		children,
 		themes,
@@ -29,6 +31,21 @@
 				useTheme(colorScheme);
 			}
 		}
+
+		// Met à jour le store viewport à l'init et sur resize
+		function updateViewport() {
+			viewport.set({
+				innerWidth: window.innerWidth,
+				outerWidth: window.outerWidth,
+				innerHeight: window.innerHeight,
+				outerHeight: window.outerHeight
+			});
+		}
+		updateViewport();
+		window.addEventListener('resize', updateViewport);
+		return () => {
+			window.removeEventListener('resize', updateViewport);
+		};
 	});
 </script>
 

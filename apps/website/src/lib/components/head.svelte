@@ -6,6 +6,7 @@
 	interface HeadProps {
 		title?: string;
 		description?: string;
+		index?: string;
 		openGraph?: {
 			title?: string;
 			description?: string;
@@ -25,7 +26,13 @@
 		};
 	}
 
-	let { title = 'lapikit', description, openGraph, twitterGraph }: HeadProps = $props();
+	let {
+		title = 'lapikit',
+		description,
+		openGraph,
+		twitterGraph,
+		index = 'index,follow'
+	}: HeadProps = $props();
 
 	// states
 	let url = `${PUBLIC_BASE_URL}${page.url.pathname === '/' ? '' : page.url.pathname}`;
@@ -45,7 +52,7 @@
 	<link rel="alternate" hreflang="x-default" href={url} />
 
 	{#if PUBLIC_DEV_MODE !== 'true'}
-		<meta name="robots" content="index,follow" />
+		<meta name="robots" content={index} />
 	{:else}
 		<meta name="robots" content="noindex,nofollow" />
 	{/if}
