@@ -2,7 +2,11 @@
 	"home": "home",
 	"docs": "docs",
 	"github": "github",
+	"components": "components",
+	"changelog": "changelog",
+	"merchandise": "merchandise",
 	"open": "open menu",
+	"open-search": "open search",
 	"close": "close menu",
 	"back_to_sections": "return",
 	"state": {

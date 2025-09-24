@@ -25,22 +25,28 @@ export const packageManagers: { name: string; icon: string }[] = [
 	}
 ];
 
-export const navigationMain: { key: string; path: string; external?: boolean; icon?: string }[] = [
-	{
-		key: 'home',
-		path: '/',
-		icon: 'mgc_home_1_line'
-	},
+interface NavigationMain {
+	key: string;
+	path: string;
+	external?: boolean;
+	icon?: string;
+}
+
+export const navigationMain: NavigationMain[] = [
 	{
 		key: 'docs',
 		path: '/docs/introduction',
 		icon: 'mgc_album_2_line'
 	},
 	{
-		key: 'github',
-		path: 'https://github.com/Nycolaide/lapikit',
-		external: true,
-		icon: 'mgc_github_line'
+		key: 'components',
+		path: '/docs/components',
+		icon: 'mgc_album_2_line'
+	},
+	{
+		key: 'changelog',
+		path: '/docs/changelog',
+		icon: 'mgc_album_2_line'
 	}
 ];
 

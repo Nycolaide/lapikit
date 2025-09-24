@@ -12,7 +12,9 @@
 	import '@fontsource/press-start-2p';
 
 	import { App } from 'lapikit/components';
-	import { DevelopmentBar, NavBar } from '$lib/components';
+	import { DevelopmentBar } from '$lib/components';
+	import Header from '$lib/components/header.svelte';
+	import { PUBLIC_DEV_MODE } from '$env/static/public';
 
 	let { data, children } = $props();
 
@@ -24,6 +26,9 @@
 <App>
 	<DevelopmentBar />
 
-	<NavBar {data} />
+	{#if PUBLIC_DEV_MODE == 'true'}
+		<Header {data} app />
+	{/if}
+
 	{@render children()}
 </App>
