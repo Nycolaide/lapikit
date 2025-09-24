@@ -5,11 +5,23 @@
 	import ConsentModal from './consent-modal.svelte';
 	import { capitalize } from 'site-kit/actions';
 
+	// assets
+	import LapikitLogo from '$lib/images/lapikit.webp?enhanced';
+	import { PUBLIC_DEV_MODE } from '$env/static/public';
+
 	let { children, ...rest }: { children?: Snippet } = $props();
 
 	let year = new Date().getFullYear();
 	let open: boolean = $state(false);
 </script>
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<div class="align-center flex h-px w-full flex-row items-center text-center">
+		<Separator />
+		<enhanced:img id="lapikit-logo-icon" src={LapikitLogo} alt="Lapikit logo icon" />
+		<Separator />
+	</div>
+{/if}
 
 <footer {...rest} class="max-md:mb-[5rem] min-md:mb-[1rem]">
 	{@render children?.()}
@@ -38,3 +50,9 @@
 </footer>
 
 <ConsentModal bind:open />
+
+<style>
+	#lapikit-logo-icon {
+		width: 2.5rem;
+	}
+</style>
