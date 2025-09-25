@@ -96,3 +96,69 @@ export interface MetaDataPages {
 		date: string;
 	};
 }
+
+export const enableFeatures = [
+	{
+		icon: 'mgc_sparkles_line',
+		title: {
+			en: 'Lightweight & fast'
+		},
+		description: {
+			en: 'Lapikit is designed to be lightweight and fast, ensuring optimal performance for your applications.'
+		}
+	},
+	{
+		icon: 'mgc_ease_in_out_control_point_line',
+		title: {
+			en: 'Transition & animations'
+		},
+		description: {
+			en: 'Easily add transitions and animations to your components with built-in support for popular animation libraries.'
+		}
+	},
+	{
+		icon: 'mgc_pic_ai_line',
+		title: {
+			en: 'Scoped styles'
+		},
+		description: {
+			en: 'All styles are scoped to their respective components, preventing style leakage and ensuring consistent design across your application.'
+		}
+	},
+	{
+		icon: 'mgc_package_2_line',
+		title: {
+			en: 'Components'
+		},
+		description: {
+			en: 'A comprehensive library of pre-built, accessible, and customizable UI components to accelerate your development process.'
+		}
+	},
+	{
+		icon: 'mgc_palette_2_line',
+		title: {
+			en: 'Themes & customization'
+		},
+		description: {
+			en: 'Includes light and dark themes, with easy customization options to match your brand colors.'
+		}
+	},
+	{
+		icon: 'mgc_flashlight_line',
+		title: {
+			en: 'Typescript support'
+		},
+		description: {
+			en: 'Written in TypeScript, Lapikit provides type definitions out of the box for a better developer experience.'
+		}
+	},
+	{
+		icon: 'mgc_flashlight_line',
+		title: {
+			en: 'SvelteKit friendly'
+		},
+		description: {
+			en: 'Lapikit is built with SvelteKit and fully supports its features like routing, server-side rendering, and static site generation.'
+		}
+	}
+];

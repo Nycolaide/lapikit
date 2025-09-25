@@ -30,7 +30,7 @@
 		</div>
 
 		<div
-			class="mt-6 grid grid-cols-1 items-center justify-between gap-4 lg:grid-cols-[auto_minmax(100px,_1fr)_auto]"
+			class="mt-6 grid grid-cols-1 items-center justify-between gap-4 px-4 lg:grid-cols-[auto_minmax(100px,_1fr)_auto]"
 		>
 			<div class="order-first flex justify-center gap-2 lg:order-last">
 				<Button variant="text" icon href={discordUrl} target="_blank">

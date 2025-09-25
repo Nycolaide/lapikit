@@ -47,7 +47,7 @@
 	}
 </script>
 
-{#if !app}
+{#if app}
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent="items-center justify-between grid grid-cols-[auto_minmax(100px,_1fr)_auto]"
@@ -76,7 +76,9 @@
 						rounded="full"
 						variant="text"
 					>
-						{capitalize($t(`navigation.${key}`))}
+						<span class="font-semibold">
+							{capitalize($t(`navigation.${key}`))}
+						</span>
 					</Button>
 				{/each}
 			{/if}

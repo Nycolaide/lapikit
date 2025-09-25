@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { navigationMain } from '$lib/config';
+	import { enableFeatures, navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 	import { capitalize } from 'site-kit/actions';
 
@@ -230,13 +230,48 @@
 
 {#if PUBLIC_DEV_MODE == 'true'}
 	<section id="discover-features">
-		<div>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
 			<div>
 				<div>
-					<h2>discover-features</h2>
-					<div class="mt-6">content</div>
+					<h2 class=" text-left text-3xl font-bold sm:text-4xl lg:text-5xl">
+						Discover the features available for your applications
+					</h2>
+					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
+						Lapikit is a component library that offers a wide range of features to help you build
+						beautiful and functional web applications. Here are some of the features you can take
+						advantage of:
+					</p>
 				</div>
-				<div class="mt-16">content</div>
+				<div class="mt-16">
+					<ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
+						{#each enableFeatures as { title, description, icon } (title)}
+							<li>
+								<div>
+									<div>
+										<Icon {icon} size="xl" color="accent-primary" />
+									</div>
+									<div>
+										<p class="font-semibold">{title[$locale as 'en']}</p>
+										<p>{description[$locale as 'en']}</p>
+									</div>
+								</div>
+							</li>
+						{/each}
+					</ul>
+				</div>
+				<div>
+					<div class="mt-16 flex justify-center">
+						<Button href="/docs" size="lg" color="white" background="accent-primary">
+							{capitalize(`It's not over yet!`)}
+
+							{#snippet append()}
+								<Icon size="xl" icon="mgc_arrow_right_line" />
+							{/snippet}
+						</Button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -273,5 +308,11 @@
 		background-repeat: repeat;
 		width: 100%;
 		min-height: 90vh;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
 	}
 </style>
