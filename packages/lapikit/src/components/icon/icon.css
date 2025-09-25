@@ -9,11 +9,11 @@
 }
 
 .kit-icon:before {
-	color: var(--icon-color, currentColor);
+	color: var(--icon-color, currentColor) !important;
 }
 
 .kit-icon svg {
-	color: var(--icon-color, currentColor);
+	color: var(--icon-color, currentColor) !important;
 }
 
 .kit-icon svg,

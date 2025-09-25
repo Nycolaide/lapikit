@@ -22,7 +22,7 @@
 		data?: any;
 	}
 
-	let { app, data }: Props = $props();
+	let { app, data, ...rest }: Props = $props();
 
 	// states
 	let search: boolean = $state(false);
@@ -51,6 +51,7 @@
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent="items-center justify-between grid grid-cols-[auto_minmax(100px,_1fr)_auto]"
+		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
 			<a href="/">
@@ -104,6 +105,7 @@
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent="items-center justify-between grid grid-cols-[auto_auto]"
+		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
 			<a href="/">

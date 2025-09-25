@@ -9,6 +9,8 @@ export const githubUrl: string = 'https://github.com/Nycolaide/lapikit';
 export const githubIssuesUrl: string = 'https://github.com/Nycolaide/lapikit/issues';
 export const githubEditPageUrl: string = 'https://github.com/Nycolaide/lapikit/tree/main/docs';
 export const githubDiscussionsUrl: string = 'https://github.com/Nycolaide/lapikit/discussions';
+export const licenceUrl: string = 'https://github.com/Nycolaide/lapikit/blob/main/LICENSE';
+export const npmUrl: string = 'https://www.npmjs.com/package/lapikit';
 
 export const packageManagers: { name: string; icon: string }[] = [
 	{
@@ -49,6 +51,8 @@ export const navigationMain: NavigationMain[] = [
 		icon: 'mgc_album_2_line'
 	}
 ];
+
+export const navigationFooter: NavigationMain[] = [...navigationMain];
 
 export const sectionDocs = [
 	{
