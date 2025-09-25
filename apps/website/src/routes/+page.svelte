@@ -19,6 +19,7 @@
 	// sample
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
+	import { PUBLIC_DEV_MODE } from '$env/static/public';
 
 	const advantageLapikit = $state([
 		{
@@ -226,6 +227,20 @@
 		</div>
 	</Card>
 </section>
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="discover-features">
+		<div>
+			<div>
+				<div>
+					<h2>discover-features</h2>
+					<div class="mt-6">content</div>
+				</div>
+				<div class="mt-16">content</div>
+			</div>
+		</div>
+	</section>
+{/if}
 
 <Footer />
 
