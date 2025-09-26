@@ -2,9 +2,9 @@
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { enableFeatures, navigationMain } from '$lib/config';
+	import { enableFeatures, navigationMain, previewComponents } from '$lib/config';
 	import { page } from '$app/state';
-	import { capitalize } from 'site-kit/actions';
+	import { capitalize, copyToClipboard } from 'site-kit/actions';
 
 	let { data } = $props();
 
@@ -227,6 +227,91 @@
 		</div>
 	</Card>
 </section>
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
+			<div>
+				<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
+					{#snippet prepend()}
+						<Chip background="accent-success" density="compact" color="white"
+							><span class="px-2">New 🎉</span></Chip
+						>
+					{/snippet}
+					Lapikit v0.2 is launch
+					{#snippet append()}
+						<Icon size="xl" icon="mgc_arrow_right_line" />
+					{/snippet}
+				</Chip>
+			</div>
+			<div class="grid gap-4">
+				<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
+					Simple, optimized components for <span style="color: var(--kit-service-svelte);">
+						Svelte
+					</span>
+				</h1>
+				<p
+					class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+				>
+					A library of accessible, high-performance, versatile components that let you develop fast,
+					fully customizable interfaces.
+				</p>
+			</div>
+			<div>
+				<div>
+					<Button
+						href="/docs/getting-started"
+						background="accent-primary"
+						color="white"
+						size={{ base: 'md', md: 'lg' }}
+					>
+						Get Started
+					</Button>
+					<Button
+						href="/docs/components"
+						variant="outline"
+						color="accent-primary"
+						size={{ base: 'md', md: 'lg' }}
+					>
+						Browse Components
+					</Button>
+				</div>
+				<Button
+					id="install-lapikit-command-line"
+					class="mt-2 px-2!"
+					variant="text"
+					density="compact"
+					size={{ base: 'sm', md: 'md' }}
+					onclick={() => copyToClipboard('npm install -D lapikit')}
+				>
+					{#snippet prepend()}
+						<span>~ </span>
+					{/snippet}
+					<span> npm install -D lapikit </span>
+					{#snippet append()}
+						<Icon class="copy-icon" icon="mgc_copy_2_line" />
+					{/snippet}
+				</Button>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="overview-components">
+		<div>
+			<div class="flex">
+				{#each { length: 15 } as _, i (i)}
+					<Card width="250px">
+						<img src="images/cover-250x250.png" alt="cover" width="250" height="250" />
+						<li>{i + 1}</li>
+					</Card>
+				{/each}
+			</div>
+		</div>
+	</section>
+{/if}
 
 {#if PUBLIC_DEV_MODE == 'true'}
 	<section id="discover-features">
@@ -314,5 +399,13 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+	}
+
+	:global(#install-lapikit-command-line .copy-icon) {
+		visibility: hidden;
+	}
+
+	:global(#install-lapikit-command-line:hover .copy-icon) {
+		visibility: visible;
 	}
 </style>

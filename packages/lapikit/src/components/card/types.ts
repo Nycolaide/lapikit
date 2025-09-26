@@ -14,4 +14,6 @@ export interface CardProps extends Component {
 	rounded?: string;
 	color?: string;
 	background?: string;
+	width?: string | number;
+	height?: string | number;
 }

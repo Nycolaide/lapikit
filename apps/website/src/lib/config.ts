@@ -162,3 +162,16 @@ export const enableFeatures = [
 		}
 	}
 ];
+
+export const previewComponents = [
+	{
+		image: '/',
+		title: {
+			en: 'demo'
+		},
+		description: {
+			en: 'demo desc'
+		},
+		url: '/'
+	}
+];
