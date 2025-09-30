@@ -2,7 +2,7 @@
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { enableFeatures, navigationMain, previewComponents } from '$lib/config';
+	import { enableFeatures, navigationMain } from '$lib/config';
 	import { page } from '$app/state';
 	import { capitalize, copyToClipboard } from 'site-kit/actions';
 
@@ -10,6 +10,7 @@
 
 	// states
 	let openSearch: boolean = $state(false);
+	let stepTimeline: number = $state(0);
 
 	// components
 	import Head from '$lib/components/head.svelte';
@@ -301,13 +302,52 @@
 {#if PUBLIC_DEV_MODE == 'true'}
 	<section id="overview-components">
 		<div>
+			<div>
+				<h2>Ultra-fast configuration, use of static components with dynamic parameters.</h2>
+			</div>
+			<div class="grid grid-cols-1 gap-4 lg:grid-cols-[55%_1fr]">
+				<div>
+					{#if stepTimeline === 0}
+						<img src="/images/material-cover.png" alt="Material Cover" />
+					{/if}
+					{#if stepTimeline === 1}
+						<img src="/images/open-source.webp" alt="Open Source" />
+					{/if}
+					{#if stepTimeline === 2}
+						<img src="/images/preview-component.webp" alt="Preview Component" />
+					{/if}
+				</div>
+				<div class="grid lg:grid-cols-[50px_1fr] lg:justify-start">
+					<div class="timeline flex">
+						<Separator orientation="vertical" color="red" />
+					</div>
+					<ul>
+						<li class="text-start">
+							<Button onclick={() => (stepTimeline = 0)} icon>
+								<Icon icon="mgc_check_line" />
+							</Button>
+							Step 1
+						</li>
+						<li class="text-start">
+							<Button onclick={() => (stepTimeline = 1)} icon>
+								<Icon icon="mgc_check_line" />
+							</Button>
+							Step 2
+						</li>
+						<li class="text-start">
+							<Button onclick={() => (stepTimeline = 2)} icon>
+								<Icon icon="mgc_check_line" />
+							</Button>
+							Step 3
+						</li>
+					</ul>
+				</div>
+			</div>
 			<div class="flex">
-				{#each { length: 15 } as _, i (i)}
-					<Card width="250px">
-						<img src="images/cover-250x250.png" alt="cover" width="250" height="250" />
-						<li>{i + 1}</li>
-					</Card>
-				{/each}
+				<Button density="comfortable" size="lg" href="/docs/components" rounded="full">
+					Start Building with Lapikit
+					<Icon size="xl" icon="mgc_arrow_right_line" />
+				</Button>
 			</div>
 		</div>
 	</section>
@@ -407,5 +447,11 @@
 
 	:global(#install-lapikit-command-line:hover .copy-icon) {
 		visibility: visible;
+	}
+
+	#overview-components {
+		text-align: center;
+		margin-bottom: 48px;
+		height: fit-content !important;
 	}
 </style>
