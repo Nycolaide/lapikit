@@ -2,7 +2,7 @@
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { enableFeatures, navigationMain } from '$lib/config';
+	import { enableFeatures, navigationMain, stepperToUseComponent } from '$lib/config';
 	import { page } from '$app/state';
 	import { capitalize, copyToClipboard } from 'site-kit/actions';
 
@@ -305,7 +305,9 @@
 			<div>
 				<h2>Ultra-fast configuration, use of static components with dynamic parameters.</h2>
 			</div>
-			<div class="grid grid-cols-1 gap-4 lg:grid-cols-[55%_1fr]">
+			<div
+				class="grid grid-cols-1 grid-rows-[1fr_100px_1fr] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
+			>
 				<div>
 					{#if stepTimeline === 0}
 						<img src="/images/material-cover.png" alt="Material Cover" />
@@ -317,37 +319,46 @@
 						<img src="/images/preview-component.webp" alt="Preview Component" />
 					{/if}
 				</div>
-				<div class="grid lg:grid-cols-[50px_1fr] lg:justify-start">
-					<div class="timeline flex">
-						<Separator orientation="vertical" color="red" />
-					</div>
-					<ul>
-						<li class="text-start">
-							<Button onclick={() => (stepTimeline = 0)} icon>
-								<Icon icon="mgc_check_line" />
-							</Button>
-							Step 1
-						</li>
-						<li class="text-start">
-							<Button onclick={() => (stepTimeline = 1)} icon>
-								<Icon icon="mgc_check_line" />
-							</Button>
-							Step 2
-						</li>
-						<li class="text-start">
-							<Button onclick={() => (stepTimeline = 2)} icon>
-								<Icon icon="mgc_check_line" />
-							</Button>
-							Step 3
-						</li>
-					</ul>
+				<div class="timeline align-center flex justify-center">
+					<Separator orientation={{ base: 'horizontal', lg: 'vertical' }} color="red" />
 				</div>
+				<ul class="align-items-center flex justify-center gap-14 lg:flex-col">
+					{#each stepperToUseComponent as step, index (step)}
+						<li class="align-center flex justify-center lg:flex-col">
+							<Button
+								class="absolute! lg:-ml-[85px]!"
+								variant="outline"
+								rounded="full"
+								active={stepTimeline === index}
+								onclick={() => (stepTimeline = index)}
+								icon
+							>
+								<Icon icon={step.icon} />
+							</Button>
+							<p>
+								<strong class="font-semibold">{step.title}</strong>
+								{step.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+								tempora dolorem in, quos necessitatibus quia pariatur incidunt ut doloribus, placeat,
+								esse maxime officiis commodi cumque sequi. Laboriosam quam fuga aperiam.
+							</p>
+						</li>
+					{/each}
+				</ul>
 			</div>
-			<div class="flex">
-				<Button density="comfortable" size="lg" href="/docs/components" rounded="full">
-					Start Building with Lapikit
-					<Icon size="xl" icon="mgc_arrow_right_line" />
-				</Button>
+			<div class="grid lg:grid-cols-[55%_100px_1fr]">
+				<div></div>
+				<div></div>
+				<div>
+					<Button density="comfortable" size="lg" href="/docs/components" rounded="full">
+						Start Building with Lapikit
+
+						{#snippet append()}
+							<Chip class="!px-2" background="accent-info" size="sm" density="compact">
+								56 components
+							</Chip>
+						{/snippet}
+					</Button>
+				</div>
 			</div>
 		</div>
 	</section>

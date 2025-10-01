@@ -23,9 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.6]
 
+### Added
+
+- Update props orientation for component **Separator**
+
 ### Fixed
 
 - Fix component Icon colors not working with custom color
+- Fix component Card bad color variables background and border
 
 ## [0.2.5] - 2025-09-21
 

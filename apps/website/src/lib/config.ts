@@ -175,3 +175,21 @@ export const previewComponents = [
 		url: '/'
 	}
 ];
+
+export const stepperToUseComponent = [
+	{
+		title: 'Install Lapikit',
+		description: 'Install Lapikit using your preferred package manager.',
+		icon: 'mgc_check_line'
+	},
+	{
+		title: 'Describe Lapikit',
+		description: 'Lapikit is a component library optimized for Svelte.',
+		icon: 'mgc_check_line'
+	},
+	{
+		title: 'Use Lapikit',
+		description: 'Install Lapikit using your preferred package manager.',
+		icon: 'mgc_check_line'
+	}
+];

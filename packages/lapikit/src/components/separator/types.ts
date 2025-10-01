@@ -1,5 +1,7 @@
 import type { Base } from '$lib/internal/types/index.js';
 
+type Orientation = 'horizontal' | 'vertical';
+
 export interface SeparatorProps extends Base {
 	is?: 'div' | 'hr';
 	light?: boolean;
@@ -8,5 +10,5 @@ export interface SeparatorProps extends Base {
 	thickness?: string;
 	opacity?: string | number;
 	color?: string;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: Orientation | { [key: string]: Orientation };
 }
