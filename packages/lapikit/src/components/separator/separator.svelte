@@ -28,7 +28,7 @@
 		orientation && assets.className('separator', 'orientation', orientation),
 		rest.class
 	]}
-	aria-orientation={orientation}
+	aria-orientation={typeof orientation === 'string' ? orientation : undefined}
 	role="separator"
 	style:--separator-color={assets.color(color)}
 	style:--separator-opacity={opacity}

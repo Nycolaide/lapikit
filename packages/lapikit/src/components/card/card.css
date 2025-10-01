@@ -58,7 +58,7 @@
 }
 
 .kit-card[breakpoint]kit-card--variant-outline {
-	--card-color: var(--base, var(--kit-label-primary));
+	--card-color: var(--card-background, var(--kit-label-primary));
 	background-color: transparent;
 }
 .kit-card[breakpoint]kit-card--variant-outline::before {
@@ -71,7 +71,7 @@
 }
 
 .kit-card[breakpoint]kit-card--variant-text {
-	--card-color: var(--base, var(--kit-label-primary));
+	--card-color: var(--card-background, var(--kit-label-primary));
 	background-color: transparent;
 	border: none;
 }

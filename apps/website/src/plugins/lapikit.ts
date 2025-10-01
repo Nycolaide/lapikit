@@ -19,7 +19,8 @@ export default createLapikit({
 				colors: {
 					service: {
 						github: 'oklch(23.166% .0107 242.2)',
-						'on-github': 'oklch(97.913% 0 89.88)'
+						'on-github': 'oklch(97.913% 0 89.88)',
+						svelte: '#ff3e00'
 					}
 				}
 			},
@@ -27,7 +28,8 @@ export default createLapikit({
 				colors: {
 					service: {
 						github: 'oklch(97.913% 0 89.88)',
-						'on-github': 'oklch(23.166% .0107 242.2)'
+						'on-github': 'oklch(23.166% .0107 242.2)',
+						svelte: '#ff3e00'
 					}
 				}
 			}

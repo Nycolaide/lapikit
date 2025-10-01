@@ -100,10 +100,12 @@ The disabled property allows you to disable a Card, preventing any interaction. 
 | light         | boolean     | Enable light theme for the component.                    | false     |                                         |
 | color         | string      | Applies a custom color to text or icons.                 | undefined |                                         |
 | background    | string      | Apply a custom background color.                         | undefined |                                         |
-| density       | enum        | Controls vertical density                                | `default` | `compact` \| `comfortable` \| `default` |
+| width         | string      | Add fixed width on the Card.                             | undefined |                                         |
+| height        | string      | Add fixed height on the Card.                            | undefined |                                         |
+| density       | enum        | Controls vertical density.                               | `default` | `compact` \| `comfortable` \| `default` |
 | rounded       | string      | Controls item rounding (`none`, `sm`, `md`, `lg`, etc.). | `md`      |                                         |
 | variant       | enum        | Sets the visual style of the Card.                       | `filled`  | `outline` \| `text` \| `filled`         |
-| active        | boolean     | Displays active status                                   | false     |                                         |
+| active        | boolean     | Displays active status.                                  | false     |                                         |
 | disabled      | boolean     | Deactivates the Card, preventing any interaction.        | false     |                                         |
 
 ## Variables CSS

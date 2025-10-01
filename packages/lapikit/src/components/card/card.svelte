@@ -20,6 +20,8 @@
 		color,
 		background,
 		noRipple,
+		width,
+		height,
 		...rest
 	}: CardProps = $props();
 
@@ -58,6 +60,8 @@
 	style:--card-background={assets.color(background)}
 	style:--card-color={assets.color(color)}
 	style:--card-shape={assets.shape(rounded)}
+	style:width
+	style:height
 >
 	{@render children?.()}
 </svelte:element>

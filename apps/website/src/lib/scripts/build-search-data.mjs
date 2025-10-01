@@ -9,7 +9,16 @@ const __dirname = path.dirname(__filename);
 
 const contentDir = path.join(__dirname, '..', '..', 'content');
 const manifestPath = path.join(__dirname, '..', '..', 'routes', 'api', 'search', 'manifest.json');
-
+const manifestPathCounter = path.join(
+	__dirname,
+	'..',
+	'..',
+	'routes',
+	'api',
+	'content',
+	'counter',
+	'manifest.json'
+);
 /**
  * Parser YAML for extracting front matter metadata
  * @param {string} yamlContent - The YAML content to parse
@@ -272,6 +281,16 @@ function generateManifest() {
 			acc[section] = (acc[section] || 0) + 1;
 			return acc;
 		}, {});
+
+		// Create and write the counter manifest
+		const counterManifestDir = path.dirname(manifestPathCounter);
+		if (!fs.existsSync(counterManifestDir)) {
+			fs.mkdirSync(counterManifestDir, { recursive: true });
+		}
+
+		const counterManifestData = JSON.stringify(sections, null, 2);
+		fs.writeFileSync(manifestPathCounter, counterManifestData, 'utf-8');
+		console.log(`✨ counter manifest generated successfully: ${manifestPathCounter}`);
 
 		console.log('\nList:');
 		Object.entries(sections).forEach(([section, count]) => {

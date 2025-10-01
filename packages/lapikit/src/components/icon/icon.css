@@ -9,11 +9,11 @@
 }
 
 .kit-icon:before {
-	color: var(--icon-color, currentColor);
+	color: var(--icon-color-state, var(--icon-color, currentColor)) !important;
 }
 
 .kit-icon svg {
-	color: var(--icon-color, currentColor);
+	color: var(--icon-color-state, var(--icon-color, currentColor)) !important;
 }
 
 .kit-icon svg,
@@ -49,16 +49,16 @@
 
 /* state */
 .kit-icon.kit-icon--info {
-	--base: var(--kit-accent-info);
+	--icon-color-state: var(--kit-accent-info);
 }
 .kit-icon.kit-icon--success {
-	--base: var(--kit-accent-successs);
+	--icon-color-state: var(--kit-accent-success);
 }
 .kit-icon.kit-icon--warning {
-	--base: var(--kit-accent-warning);
+	--icon-color-state: var(--kit-accent-warning);
 }
 .kit-icon.kit-icon--error {
-	--base: var(--kit-accent-destructive);
+	--icon-color-state: var(--kit-accent-destructive);
 }
 
 /* disabled */
