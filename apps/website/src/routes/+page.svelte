@@ -306,7 +306,7 @@
 				<h2>Ultra-fast configuration, use of static components with dynamic parameters.</h2>
 			</div>
 			<div
-				class="grid grid-cols-1 grid-rows-[1fr_100px_1fr] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
+				class="grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
 			>
 				<div>
 					{#if stepTimeline === 0}
@@ -319,14 +319,12 @@
 						<img src="/images/preview-component.webp" alt="Preview Component" />
 					{/if}
 				</div>
-				<div class="timeline align-center flex justify-center">
+				<div class="timeline flex items-center justify-center">
 					<Separator orientation={{ base: 'horizontal', lg: 'vertical' }} color="red" />
-				</div>
-				<ul class="align-items-center flex justify-center gap-14 lg:flex-col">
-					{#each stepperToUseComponent as step, index (step)}
-						<li class="align-center flex justify-center lg:flex-col">
+
+					<div class="absolute flex gap-7 lg:hidden">
+						{#each stepperToUseComponent as step, index (step)}
 							<Button
-								class="absolute! lg:-ml-[85px]!"
 								variant="outline"
 								rounded="full"
 								active={stepTimeline === index}
@@ -335,7 +333,26 @@
 							>
 								<Icon icon={step.icon} />
 							</Button>
-							<p>
+						{/each}
+					</div>
+				</div>
+				<ul class="align-items-center flex justify-center lg:flex-col lg:gap-14">
+					{#each stepperToUseComponent as step, index (step)}
+						<li class="align-center flex justify-center lg:flex-col">
+							<Button
+								class="absolute! -mt-[85px]! hidden! lg:mt-0! lg:-ml-[85px]! lg:inline-flex!"
+								variant="outline"
+								rounded="full"
+								active={stepTimeline === index}
+								onclick={() => (stepTimeline = index)}
+								icon
+							>
+								<Icon icon={step.icon} />
+							</Button>
+							<p
+								class="absolute hidden w-[50vw] lg:relative lg:block! lg:w-auto"
+								class:display-element={stepTimeline === index}
+							>
 								<strong class="font-semibold">{step.title}</strong>
 								{step.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
 								tempora dolorem in, quos necessitatibus quia pariatur incidunt ut doloribus, placeat,
@@ -345,7 +362,7 @@
 					{/each}
 				</ul>
 			</div>
-			<div class="grid lg:grid-cols-[55%_100px_1fr]">
+			<div class="mt-36 grid lg:mt-0 lg:grid-cols-[55%_100px_1fr]">
 				<div></div>
 				<div></div>
 				<div>
@@ -464,5 +481,13 @@
 		text-align: center;
 		margin-bottom: 48px;
 		height: fit-content !important;
+	}
+
+	.display-element {
+		display: initial;
+	}
+
+	.initial {
+		display: initial;
 	}
 </style>
