@@ -8,6 +8,10 @@
 
 	let { data } = $props();
 
+	$effect(() => {
+		console.log('GW12 data', data);
+	});
+
 	// states
 	let openSearch: boolean = $state(false);
 	let stepTimeline: number = $state(0);
@@ -301,23 +305,26 @@
 
 {#if PUBLIC_DEV_MODE == 'true'}
 	<section id="overview-components">
-		<div>
-			<div>
-				<h2>Ultra-fast configuration, use of static components with dynamic parameters.</h2>
-			</div>
+		<div class="grid gap-6">
+			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
+				One library for your entire Svelte project
+			</h2>
+
 			<div
 				class="grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
 			>
 				<div>
-					{#if stepTimeline === 0}
-						<img src="/images/material-cover.png" alt="Material Cover" />
-					{/if}
-					{#if stepTimeline === 1}
-						<img src="/images/open-source.webp" alt="Open Source" />
-					{/if}
-					{#if stepTimeline === 2}
-						<img src="/images/preview-component.webp" alt="Preview Component" />
-					{/if}
+					<div class="mx-auto my-0 max-w-[650px]">
+						{#if stepTimeline === 0}
+							<img src="/images/material-cover.png" alt="Material Cover" />
+						{/if}
+						{#if stepTimeline === 1}
+							<img src="/images/open-source.webp" alt="Open Source" />
+						{/if}
+						{#if stepTimeline === 2}
+							<img src="/images/preview-component.webp" alt="Preview Component" />
+						{/if}
+					</div>
 				</div>
 				<div class="timeline flex items-center justify-center">
 					<Separator orientation={{ base: 'horizontal', lg: 'vertical' }} color="red" />
@@ -329,6 +336,7 @@
 								rounded="full"
 								active={stepTimeline === index}
 								onclick={() => (stepTimeline = index)}
+								background={step.color}
 								icon
 							>
 								<Icon icon={step.icon} />
@@ -345,24 +353,23 @@
 								rounded="full"
 								active={stepTimeline === index}
 								onclick={() => (stepTimeline = index)}
+								background={step.color}
 								icon
 							>
 								<Icon icon={step.icon} />
 							</Button>
 							<p
-								class="absolute hidden w-[50vw] lg:relative lg:block! lg:w-auto"
+								class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto"
 								class:display-element={stepTimeline === index}
 							>
 								<strong class="font-semibold">{step.title}</strong>
-								{step.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-								tempora dolorem in, quos necessitatibus quia pariatur incidunt ut doloribus, placeat,
-								esse maxime officiis commodi cumque sequi. Laboriosam quam fuga aperiam.
+								{step.description}
 							</p>
 						</li>
 					{/each}
 				</ul>
 			</div>
-			<div class="mt-36 grid lg:mt-0 lg:grid-cols-[55%_100px_1fr]">
+			<div class="mt-23 grid lg:mt-0 lg:grid-cols-[55%_100px_1fr]">
 				<div></div>
 				<div></div>
 				<div>
@@ -371,7 +378,7 @@
 
 						{#snippet append()}
 							<Chip class="!px-2" background="accent-info" size="sm" density="compact">
-								56 components
+								{data.counter?.components || 0} components
 							</Chip>
 						{/snippet}
 					</Button>
@@ -388,7 +395,7 @@
 		>
 			<div>
 				<div>
-					<h2 class=" text-left text-3xl font-bold sm:text-4xl lg:text-5xl">
+					<h2 class="text-left text-3xl font-bold sm:text-4xl lg:text-5xl">
 						Discover the features available for your applications
 					</h2>
 					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">

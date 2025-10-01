@@ -1,6 +1,11 @@
 import { PUBLIC_CALL_API_ENABLED } from '$env/static/public';
 
 export async function load({ fetch }) {
+	const res = await fetch('/api/content/counter');
+	const counter = await res.json();
+
+	let responseExternalAPI = {};
+
 	if (PUBLIC_CALL_API_ENABLED === 'true') {
 		const githubRes = await fetch('/api/github/repository?name=Nycolaide/lapikit');
 		const npmRes = await fetch('/api/npm?name=lapikit');
@@ -10,9 +15,14 @@ export async function load({ fetch }) {
 			npmRes.ok ? npmRes.json() : null
 		]);
 
-		return {
+		responseExternalAPI = {
 			github,
 			npm
 		};
 	}
+
+	return {
+		counter,
+		...responseExternalAPI
+	};
 }

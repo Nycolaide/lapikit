@@ -179,17 +179,22 @@ export const previewComponents = [
 export const stepperToUseComponent = [
 	{
 		title: 'Install Lapikit',
-		description: 'Install Lapikit using your preferred package manager.',
-		icon: 'mgc_check_line'
+		description: 'In five minutes, install Lapikit and configure it in your SvelteKit project.',
+		icon: 'mgc_rocket_line',
+		color: 'accent-destructive'
 	},
 	{
-		title: 'Describe Lapikit',
-		description: 'Lapikit is a component library optimized for Svelte.',
-		icon: 'mgc_check_line'
+		title: 'Add components to your project',
+		description:
+			'Explore the wide range of components available in Lapikit and choose the ones that fit your needs.',
+		icon: 'mgc_package_line',
+		color: 'accent-warning'
 	},
 	{
-		title: 'Use Lapikit',
-		description: 'Install Lapikit using your preferred package manager.',
-		icon: 'mgc_check_line'
+		title: 'Adapte all components to your design',
+		description:
+			"Customize the appearance of the components to match your project's design and branding.",
+		icon: 'mgc_paint_brush_ai_line',
+		color: 'accent-success'
 	}
 ];
