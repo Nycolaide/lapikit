@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
+	import { Button, Appbar, Icon, Chip, Separator, Card, Toolbar } from 'lapikit/components';
 	import {
 		enableFeatures,
 		githubContributingUrl,
@@ -22,6 +22,8 @@
 	// states
 	let openSearch: boolean = $state(false);
 	let stepTimeline: number = $state(0);
+	let stepCode: number = $state(0);
+	let displayCode: string = $state('lapikit');
 
 	// components
 	import Head from '$lib/components/head.svelte';
@@ -32,6 +34,7 @@
 	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
 	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import { PUBLIC_DEV_MODE } from '$env/static/public';
+	import HomePreview from '$lib/components/home-preview.svelte';
 
 	const advantageLapikit = $state([
 		{
@@ -305,6 +308,111 @@
 						<Icon class="copy-icon" icon="mgc_copy_2_line" />
 					{/snippet}
 				</Button>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="lapikit-contains">
+		<div>
+			<div class="mx-auto grid max-w-[900px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+				<Card variant="outline">
+					<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+						<span class="text-xl font-bold">{formatNumber(data.counter?.components || 0)}</span>
+						<div class="grid grid-cols-[1fr_auto] gap-2 text-xl font-light">
+							<p>Components</p>
+							<Button icon>
+								<Icon icon="mgc_arrow_right_line" />
+							</Button>
+						</div>
+					</div>
+				</Card>
+				<Card variant="outline">
+					<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+						<span class="text-xl font-bold">{formatNumber(data.counter?.stores || 0)}</span>
+						<div class="grid grid-cols-[1fr_auto] gap-2 text-xl font-light">
+							<p>Stores</p>
+							<Button icon>
+								<Icon icon="mgc_arrow_right_line" />
+							</Button>
+						</div>
+					</div>
+				</Card>
+				<Card variant="outline">
+					<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+						<span class="text-xl font-bold">{formatNumber(data.counter?.actions || 0)}</span>
+						<div class="grid grid-cols-[1fr_auto] gap-2 text-xl font-light">
+							<p>Actions</p>
+							<Button icon>
+								<Icon icon="mgc_arrow_right_line" />
+							</Button>
+						</div>
+					</div>
+				</Card>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="lapikit-possibility">
+		<div>
+			<div>
+				<h2>Save time and simplify your code</h2>
+				<p>
+					With Lapikit, you can easily create and manage your components, making your development
+					process more efficient.
+				</p>
+				<div>
+					<div>
+						<Toolbar>
+							<Button>Button</Button>
+							<Button>Card</Button>
+							<Button>Modal</Button>
+						</Toolbar>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempore vero
+							dignissimos! Voluptate similique nobis voluptatem ut, sed repellat nesciunt reiciendis
+							molestias cum incidunt perferendis perspiciatis rerum? A, soluta repudiandae.
+						</p>
+					</div>
+					<div>
+						<Toolbar>
+							<Button onclick={() => (displayCode = 'lapikit')} active={displayCode === 'lapikit'}>
+								Lapikit + Svelte
+							</Button>
+							<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
+								Svelte only
+							</Button>
+						</Toolbar>
+						{#if stepCode === 0}
+							{#if displayCode === 'lapikit'}
+								<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
+									{#snippet component()}
+										<CounterLapikit />
+									{/snippet}
+								</Sandbox>
+							{:else if displayCode === 'svelte'}
+								<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
+									{#snippet component()}
+										<CounterLapikit />
+									{/snippet}
+								</Sandbox>
+							{/if}
+						{/if}
+					</div>
+				</div>
+			</div>
+			<div>
+				<h3>Unlimited themes with one configuration</h3>
+				<p>
+					Lapikit supports multiple themes out of the box, allowing you to easily switch between
+					theming options with minimal configuration. Light and dark mode are both supported.
+				</p>
+				<div>
+					<HomePreview />
+				</div>
 			</div>
 		</div>
 	</section>
