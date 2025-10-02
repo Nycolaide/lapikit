@@ -2,9 +2,9 @@
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { enableFeatures, navigationMain, stepperToUseComponent } from '$lib/config';
+	import { enableFeatures, githubUrl, navigationMain, stepperToUseComponent } from '$lib/config';
 	import { page } from '$app/state';
-	import { capitalize, copyToClipboard } from 'site-kit/actions';
+	import { capitalize, copyToClipboard, formatNumber } from 'site-kit/actions';
 
 	let { data } = $props();
 
@@ -437,6 +437,113 @@
 	</section>
 {/if}
 
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="creator-lapikit">
+		<div class="grid items-center justify-center gap-4">
+			<div class="flex items-center gap-4">
+				<div>
+					<Icon icon="mgc_quote_left_line" style="--icon-multiplier-size: 16" />
+				</div>
+				<p class="max-w-[780px] md:text-lg">
+					Lapikit is designed to simplify and streamline the work of front-end developers by
+					limiting code redundancy, leaving more time for the development of advanced and complex
+					features.
+				</p>
+				<div>
+					<Icon icon="mgc_quote_right_line" style="--icon-multiplier-size: 16" />
+				</div>
+			</div>
+
+			<div class="flex items-center justify-center gap-4">
+				<img
+					src="/images/cover-250x250.png"
+					alt="Creator Lapikit"
+					width="40"
+					class="rounded-full"
+				/>
+				<div>
+					<span>Nycolaide</span>
+					<p class="text-sm">Creator of Lapikit</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="open-source-project">
+		<div>
+			<div class="flex flex-col gap-4 md:flex-row">
+				<div class="flex flex-col gap-4 md:w-1/4">
+					<Card variant="outline">
+						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+							<Icon
+								icon="/icons/npm.svg"
+								size="xl"
+								style="--icon-multiplier-size: 16"
+								color="red"
+							/>
+							<div>
+								<span class="text-highlighted text-xl font-semibold">
+									{formatNumber(data?.npm?.downloads || 0)}
+								</span>
+								<p class="text-sm">Monthly downloads</p>
+							</div>
+						</div>
+					</Card>
+					<Card variant="outline">
+						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<div>
+								<span class="text-highlighted text-xl font-semibold">
+									{formatNumber(data?.github?.stargazers_count || 0)}
+								</span>
+								<p class="text-sm">GitHub Stars</p>
+							</div>
+						</div>
+					</Card>
+				</div>
+				<div class="md:w-1/2">
+					<Card variant="outline" class="flex h-full flex-col items-center justify-around">
+						<p class="text-xl font-semibold">Open source</p>
+						<p class="text-center">
+							Lapikit is 100% open source. You can find the source code on GitHub, contribute to the
+							project, and report issues. We welcome contributions from the community to help us
+							make Lapikit even better.
+						</p>
+						<Button href={githubUrl} target="_blank">
+							Start contributing
+							{#snippet append()}
+								<Icon icon="mgc_github_line" />
+							{/snippet}
+						</Button>
+					</Card>
+				</div>
+				<div class="flex flex-col gap-4 md:w-1/4">
+					<Card variant="outline">
+						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<div>
+								<span class="text-highlighted text-xl font-semibold">0K</span>
+								<p class="text-sm">Followers</p>
+							</div>
+						</div>
+					</Card>
+					<Card variant="outline">
+						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<div>
+								<span class="text-highlighted text-xl font-semibold">0K</span>
+								<p class="text-sm">Members</p>
+							</div>
+						</div>
+					</Card>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
 <Footer />
 
 <BottomNavigation>
@@ -491,10 +598,6 @@
 	}
 
 	.display-element {
-		display: initial;
-	}
-
-	.initial {
 		display: initial;
 	}
 </style>
