@@ -2,7 +2,14 @@
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
 	import { Button, Appbar, Icon, Chip, Separator, Card } from 'lapikit/components';
-	import { enableFeatures, githubUrl, navigationMain, stepperToUseComponent } from '$lib/config';
+	import {
+		enableFeatures,
+		githubContributingUrl,
+		githubSponsorsUrl,
+		githubUrl,
+		navigationMain,
+		stepperToUseComponent
+	} from '$lib/config';
 	import { page } from '$app/state';
 	import { capitalize, copyToClipboard, formatNumber } from 'site-kit/actions';
 
@@ -538,6 +545,114 @@
 							</div>
 						</div>
 					</Card>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="go-to-use-lapikit">
+		<div>
+			<div class="grid justify-center gap-4 text-center">
+				<h2>Go further</h2>
+				<p>Explore our different starters with different presets.</p>
+
+				<div class="mt-8 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
+					<Card href="/docs">
+						<div class="flex justify-between">
+							<div>
+								<span>Docs</span>
+								<p>Find out how to install and use Lapikit in your SvelteKit project.</p>
+							</div>
+							<div>
+								<Icon icon="mgc_arrow_right_line" />
+							</div>
+						</div>
+					</Card>
+					<Card href={githubContributingUrl} target="_blank">
+						<div class="flex justify-between">
+							<div>
+								<span>Contribute</span>
+								<p>
+									Want to contribute to Lapikit? We provide a Contributor Guide to help you get
+									started.
+								</p>
+							</div>
+							<div>
+								<Icon icon="mgc_arrow_right_line" />
+							</div>
+						</div>
+					</Card>
+					<Card href={githubSponsorsUrl} target="_blank">
+						<div class="flex justify-between">
+							<div>
+								<span>Sponsorship</span>
+								<p>Support the development of Lapikit by becoming a sponsor.</p>
+							</div>
+							<div>
+								<Icon icon="mgc_arrow_right_line" />
+							</div>
+						</div>
+					</Card>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="support-lapikit">
+		<div>
+			<div class="grid gap-8 text-center md:grid-cols-2 md:text-left">
+				<div>
+					<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
+						You like <span>Lapikit</span>
+					</h2>
+					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
+						Lapikit is Free and Open Source under MIT License. You can help us develop Lapikit by
+						supporting us and becoming a sponsor of the project. Every contribution counts!
+					</p>
+					<p class="sm:text-lg">Become a Lapikit contributor:</p>
+					<ul class="sm:text-lg">
+						<li>
+							<Icon icon="mgc_check_circle_line" color="accent-success" /> Visibility into the roadmap
+						</li>
+						<li>
+							<Icon icon="mgc_check_circle_line" color="accent-success" /> Influence over the direction
+							of the project
+						</li>
+						<li>
+							<Icon icon="mgc_check_circle_line" color="accent-success" /> Recognition on the website
+						</li>
+						<li>
+							<Icon icon="mgc_check_circle_line" color="accent-success" /> Priority support
+						</li>
+					</ul>
+					<p class="italic sm:text-lg">
+						All donations and sponsorships will be used exclusively for the development and
+						maintenance of Lapikit.
+					</p>
+					<div>
+						<Button>
+							{#snippet prepend()}
+								<Icon icon="mgc_github_line" />
+							{/snippet}
+							Github Sponsor
+							{#snippet append()}
+								<Icon icon="mgc_heart_line" />
+							{/snippet}
+						</Button>
+						<Button>
+							{#snippet prepend()}
+								<Icon icon="/icons/buymeacoffee.svg" />
+							{/snippet}
+							Buy me a coffee
+						</Button>
+					</div>
+				</div>
+				<div>
+					<img src="/images/material-cover.png" alt="Material Cover" />
 				</div>
 			</div>
 		</div>
