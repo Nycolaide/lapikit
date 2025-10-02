@@ -444,7 +444,7 @@
 				<div>
 					<Icon icon="mgc_quote_left_line" style="--icon-multiplier-size: 16" />
 				</div>
-				<p class="max-w-[780px] md:text-lg">
+				<p class="max-w-[780px] text-center md:text-lg">
 					Lapikit is designed to simplify and streamline the work of front-end developers by
 					limiting code redundancy, leaving more time for the development of advanced and complex
 					features.
