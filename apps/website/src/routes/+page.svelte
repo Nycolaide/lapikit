@@ -797,6 +797,16 @@
 	</section>
 {/if}
 
+{#if PUBLIC_DEV_MODE == 'true'}
+	<section id="lapikit-is-lapikit">
+		<div>
+			<div class="grid gap-4 text-center">
+				<p>It's not magic, it's Lapikit</p>
+			</div>
+		</div>
+	</section>
+{/if}
+
 <Footer />
 
 <BottomNavigation>
