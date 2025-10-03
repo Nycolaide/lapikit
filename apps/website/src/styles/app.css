@@ -25,3 +25,7 @@ body,
 * {
 	cursor: none !important;
 } */
+
+:root {
+	--ui-container: 90rem;
+}
