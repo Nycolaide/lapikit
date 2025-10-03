@@ -36,6 +36,13 @@
 	import { PUBLIC_DEV_MODE } from '$env/static/public';
 	import HomePreview from '$lib/components/home-preview.svelte';
 
+	import HomepageButtonLapikit from '$lib/components/docs/homepage-button.svelte?raw';
+	import HomepageButtonTailwind from '$lib/components/docs/homepage-button-tailwind.svelte?raw';
+	import HomepageCardLapikit from '$lib/components/docs/homepage-card.svelte?raw';
+	import HomepageCardTailwind from '$lib/components/docs/homepage-card-tailwind.svelte?raw';
+	import HomepageModalLapikit from '$lib/components/docs/homepage-modal.svelte?raw';
+	import HomepageModalTailwind from '$lib/components/docs/homepage-modal-tailwind.svelte?raw';
+
 	const advantageLapikit = $state([
 		{
 			title: $t('homepage.dev_with_lapikit.card1.title'),
@@ -364,43 +371,66 @@
 					With Lapikit, you can easily create and manage your components, making your development
 					process more efficient.
 				</p>
-				<div>
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-[45%_1fr] lg:grid-cols-[35%_1fr]">
 					<div>
-						<Toolbar>
-							<Button>Button</Button>
-							<Button>Card</Button>
-							<Button>Modal</Button>
-						</Toolbar>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem tempore vero
-							dignissimos! Voluptate similique nobis voluptatem ut, sed repellat nesciunt reiciendis
-							molestias cum incidunt perferendis perspiciatis rerum? A, soluta repudiandae.
+							Why reinvent the wheel for every component? With raw TailwindCSS, every button, every
+							card, every modal translates into repetitive lines of classes that are difficult to
+							maintain and often copied and pasted
 						</p>
+						<p>With Lapikit, you write less but build more:</p>
+						<ul>
+							<li>
+								<Icon icon="mgc_check_circle_line" color="accent-success" /> Clearer, because your code
+								breathes
+							</li>
+							<li>
+								<Icon icon="mgc_check_circle_line" color="accent-success" /> Faster, because you save
+								time
+							</li>
+							<li>
+								<Icon icon="mgc_check_circle_line" color="accent-success" /> More reliable, because styles
+								are consistent from one component to another
+							</li>
+						</ul>
+						<p class="italic">
+							Instead of struggling with redundancy, you focus on the experience you want to offer
+						</p>
+						<Toolbar>
+							<Button onclick={() => (stepCode = 0)} active={stepCode === 0}>Button</Button>
+							<Button onclick={() => (stepCode = 1)} active={stepCode === 1}>Card</Button>
+							<Button onclick={() => (stepCode = 2)} active={stepCode === 2}>Modal</Button>
+						</Toolbar>
 					</div>
 					<div>
-						<Toolbar>
-							<Button onclick={() => (displayCode = 'lapikit')} active={displayCode === 'lapikit'}>
-								Lapikit + Svelte
-							</Button>
-							<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
-								Svelte only
-							</Button>
-						</Toolbar>
-						{#if stepCode === 0}
-							{#if displayCode === 'lapikit'}
-								<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
-									{#snippet component()}
-										<CounterLapikit />
-									{/snippet}
-								</Sandbox>
-							{:else if displayCode === 'svelte'}
-								<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
-									{#snippet component()}
-										<CounterLapikit />
-									{/snippet}
-								</Sandbox>
-							{/if}
-						{/if}
+						<Sandbox
+							name="preview-lapikit"
+							code={displayCode === 'lapikit'
+								? stepCode === 2
+									? HomepageModalLapikit
+									: stepCode === 1
+										? HomepageCardLapikit
+										: HomepageButtonLapikit
+								: stepCode === 2
+									? HomepageModalTailwind
+									: stepCode === 1
+										? HomepageCardTailwind
+										: HomepageButtonTailwind}
+							noExpandedButton
+							noCopy
+						>
+							{#snippet actions()}
+								<Button
+									onclick={() => (displayCode = 'lapikit')}
+									active={displayCode === 'lapikit'}
+								>
+									Lapikit + Svelte
+								</Button>
+								<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
+									Svelte only
+								</Button>
+							{/snippet}
+						</Sandbox>
 					</div>
 				</div>
 			</div>

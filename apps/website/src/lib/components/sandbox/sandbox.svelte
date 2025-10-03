@@ -7,7 +7,8 @@
 	import SandboxComponent from './component.svelte';
 	import { theme } from 'lapikit/stores';
 
-	let { name, presentation, component, code }: SandboxProps = $props();
+	let { name, presentation, component, code, noExpandedButton, noCopy, actions }: SandboxProps =
+		$props();
 
 	//state
 	let expanded: boolean = $state(false);
@@ -43,10 +44,18 @@
 		{/if}
 
 		{#if code}
-			<SandboxAction {presentation} bind:expanded bind:tab {handleExpand} {handleTab} />
+			<SandboxAction
+				{presentation}
+				bind:expanded
+				bind:tab
+				{handleExpand}
+				{handleTab}
+				{noExpandedButton}
+				{actions}
+			/>
 
 			<div style:height="fit-content" style:max-height={expanded ? 'fit-content' : '300px'}>
-				<SandboxCode bind:expanded {code} />
+				<SandboxCode bind:expanded {code} {noCopy} />
 			</div>
 		{/if}
 	{:else}
@@ -58,6 +67,8 @@
 			bind:tab
 			{handleExpand}
 			{handleTab}
+			{noExpandedButton}
+			{actions}
 		/>
 		<div>
 			{#if component && (tab === 'preview' || tab === 'preview-only')}
@@ -77,7 +88,7 @@
 					style:max-height={expanded ? 'fit-content' : '300px'}
 					class="relative"
 				>
-					<SandboxCode bind:expanded {code} />
+					<SandboxCode bind:expanded {code} {noCopy} />
 				</div>
 			{/if}
 		</div>

@@ -11,7 +11,9 @@
 		expanded = $bindable(),
 		localColorScheme = $bindable(),
 		handleTab,
-		handleExpand
+		handleExpand,
+		noExpandedButton = false,
+		actions
 	}: SandboxActionsProps = $props();
 </script>
 
@@ -32,10 +34,12 @@
 				{capitalize($t('docs.sandbox.actions.code'))}
 			</Button>
 		{/if}
+
+		{@render actions?.()}
 	</div>
 
 	<div>
-		{#if presentation || tab === 'code' || tab === 'code-only'}
+		{#if (presentation || tab === 'code' || tab === 'code-only') && !noExpandedButton}
 			<Button onclick={() => handleExpand(expanded ? false : true)} active={expanded}>
 				{#if !expanded}
 					<Icon icon="mgc_down_line" />
