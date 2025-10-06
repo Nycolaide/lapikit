@@ -41,7 +41,8 @@
 	import HomepageModalLapikit from '$lib/components/docs/homepage-modal.svelte?raw';
 	import HomepageModalTailwind from '$lib/components/docs/homepage-modal-tailwind.svelte?raw';
 	import Legacy from './(pages)/legacy.svelte';
-	import { scrollAnimation } from '../animations';
+	import { BackgroundAnimationStars, scrollAnimation } from '../animations';
+	import LapikitYoloLogo from '$lib/images/lapikit-yolo.webp?enhanced';
 </script>
 
 <Head
@@ -53,9 +54,29 @@
 	<Legacy {data} />
 {:else}
 	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<BackgroundAnimationStars />
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="relative mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
+			<div
+				id="lapinosaur-yolo"
+				class="absolute right-0 mt-[130px] mr-20 h-fit w-[135px] max-lg:hidden"
+			>
+				<enhanced:img
+					class="absolute -scale-x-[1] rotate-15"
+					id="lapikit-logo"
+					src={LapikitYoloLogo}
+					alt="Lapikit logo"
+				/>
+				<Icon class="animate-star-yolo absolute  mt-[70px] mr-[55px] " icon="mgc_sparkles_fill" />
+			</div>
+
+			<div
+				class="absolute top-0 left-0 mt-[150px] ml-[20px] max-sm:hidden lg:mt-[262px] xl:ml-[104px]"
+			>
+				<Icon class="animate-cursor absolute -scale-x-[1] text-[2rem]!" icon="mgc_cursor_fill" />
+			</div>
+
 			<div>
 				<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
 					{#snippet prepend()}
@@ -125,7 +146,7 @@
 
 	<section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
-			class="px-4sm:gap-16 mx-auto flex w-full max-w-[90rem] flex-col gap-8 sm:px-6 lg:grid lg:px-8"
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 sm:gap-16 sm:px-6 lg:grid lg:px-8"
 		>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<Card variant="outline">
@@ -711,5 +732,47 @@
 	:global(#preview-lapikit > div:last-child > div:last-child > div) {
 		max-height: 400px !important;
 		min-height: 400px;
+	}
+
+	:global(.animate-star-yolo) {
+		color: yellow;
+		/* filter: drop-shadow(0 0 2px #000000); */
+		rotate: 15deg;
+		animation: star-yolo 1.5s infinite;
+	}
+
+	:global(.animate-cursor) {
+		animation: moveCursor 15s ease-in-out infinite;
+	}
+
+	@keyframes moveCursor {
+		0% {
+			transform: translate(0, 0);
+		}
+		20% {
+			transform: translate(0, 350px);
+		}
+		40% {
+			transform: translate(-90px, 260px);
+		}
+		60% {
+			transform: translate(-210px, 320px);
+		}
+		80% {
+			transform: translate(-30px, 190px);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+
+	@keyframes star-yolo {
+		0%,
+		100% {
+			transform: scale(0.9);
+		}
+		50% {
+			transform: scale(1.5);
+		}
 	}
 </style>

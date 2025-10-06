@@ -51,6 +51,7 @@
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent=" mx-auto flex w-full max-w-[90rem] items-center justify-between grid md:grid-cols-3"
+		background="background-primary"
 		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
