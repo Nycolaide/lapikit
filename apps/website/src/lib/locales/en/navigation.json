@@ -16,6 +16,9 @@
 		"preview": "preview",
 		"new": "new"
 	},
+	"terms_and_privacy": "terms & privacy",
+	"policies": "policies",
+	"product": "product",
 	"theme_toggle": "change theme",
 	"search": "search",
 	"search_bar": {

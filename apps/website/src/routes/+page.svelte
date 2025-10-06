@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { t, locale } from '$lib/i18n';
 	import { BottomNavigation, BottomNavigationItem } from 'site-kit';
-	import { Button, Appbar, Icon, Chip, Separator, Card, Toolbar } from 'lapikit/components';
+	import { Button, Icon, Chip, Separator, Card, Toolbar } from 'lapikit/components';
 	import {
+		buyMeACoffeeUrl,
 		enableFeatures,
 		githubContributingUrl,
 		githubSponsorsUrl,
@@ -27,12 +28,9 @@
 
 	// components
 	import Head from '$lib/components/head.svelte';
-	import { Sandbox, ThemeToggle, Footer } from '$lib/components/index.js';
-	import Search from '$lib/components/search/search.svelte';
+	import { Sandbox, Footer } from '$lib/components/index.js';
 
 	// sample
-	import CounterLapikit from '$lib/components/counter-lapikit.svelte';
-	import CounterLapikitCode from '$lib/components/counter-lapikit.svelte?raw';
 	import { PUBLIC_DEV_MODE } from '$env/static/public';
 	import HomePreview from '$lib/components/home-preview.svelte';
 
@@ -42,43 +40,8 @@
 	import HomepageCardTailwind from '$lib/components/docs/homepage-card-tailwind.svelte?raw';
 	import HomepageModalLapikit from '$lib/components/docs/homepage-modal.svelte?raw';
 	import HomepageModalTailwind from '$lib/components/docs/homepage-modal-tailwind.svelte?raw';
-
-	const advantageLapikit = $state([
-		{
-			title: $t('homepage.dev_with_lapikit.card1.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card1.paragraph'),
-			image: '/images/open-source.webp?enhanced',
-			customClass: 'col-span-2 lg:col-span-1'
-		},
-		{
-			title: $t('homepage.dev_with_lapikit.card2.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card2.paragraph'),
-			image: '/images/styles.webp?enhanced'
-		},
-		{
-			title: $t('homepage.dev_with_lapikit.card3.title'),
-			paragraph: $t('homepage.dev_with_lapikit.card3.paragraph'),
-			image: '/images/components.webp?enhanced'
-		}
-	]);
-
-	const toolsLapikit = $state([
-		{
-			title: $t('homepage.lapikit_the_best.card.changelog'),
-			href: '/docs/changelog'
-		},
-		{
-			title: $t('homepage.lapikit_the_best.card.roadmap'),
-			href: 'https://github.com/Nycolaide/lapikit/blob/main/packages/lapikit/ROADMAP.md',
-			external: true
-		},
-		{
-			title: $t('homepage.lapikit_the_best.card.install', {
-				version: data?.npm?.version || '0.0.0'
-			}),
-			href: '/docs/getting-started'
-		}
-	]);
+	import Legacy from './(pages)/legacy.svelte';
+	import { scrollAnimation } from '../animations';
 </script>
 
 <Head
@@ -86,171 +49,10 @@
 	description="Discover Lapikit, a component library optimized for Svelte. Quick to integrate, simple to style, and designed for front-end developers."
 />
 
-<div id="head-lapikit">
-	<Appbar
-		classContent="flex items-center justify-between lg:grid! lg:grid-cols-3!"
-		density={{ base: 'default', md: 'comfortable' }}
-		background="transparent"
-	>
-		<p class="text-2xl font-bold">Lapikit</p>
-		<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
-			{#each navigationMain as { key, path, external } (key)}
-				<Button
-					href={path}
-					target={external && '_blank'}
-					active={page.url.pathname === path}
-					rounded="full"
-				>
-					{capitalize($t(`navigation.${key}`))}
-				</Button>
-			{/each}
-		</div>
-		<div class="flex justify-end gap-3">
-			<ThemeToggle app />
-
-			<Button href="/docs/getting-started" density="comfortable" id="btn-getstarted-lapikit">
-				{capitalize($t('homepage.top_cta'))}
-			</Button>
-		</div>
-	</Appbar>
-
-	<Search bind:open={openSearch} />
-
-	<section
-		class="desktop:max-h-[900px] flex h-[82vh] flex-col items-center justify-between justify-center overflow-hidden"
-	>
-		<div class="mx-7 text-center lg:mx-auto lg:w-7/12">
-			<Chip href="/docs/changelog" variant="outline">
-				<Icon icon="mgc_box_2_line" />
-				<Separator orientation="vertical" />
-				{capitalize(
-					$t('homepage.version_lapikit_package', { version: data?.npm?.version || '0.0.0' })
-				)}
-			</Chip>
-			<h1
-				class="mx-auto mt-[0.2em] mb-[0.35em] pb-[0.1em] text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl"
-			>
-				{capitalize($t('homepage.main_title'))}
-			</h1>
-			<p
-				class="mx-auto mb-[2em] max-w-sm text-sm leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
-			>
-				{capitalize($t('homepage.main_introduction'))}
-			</p>
-			<div>
-				<Button size="lg" href="/docs/components">
-					{capitalize($t('homepage.main_cta'))}
-				</Button>
-			</div>
-		</div>
-	</section>
-</div>
-
-<section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
->
-	<div class="grid gap-4">
-		<div class="text-start">
-			<h2 class="text-2xl font-semibold md:text-3xl">
-				{capitalize($t('homepage.dev_with_lapikit.title'))}
-			</h2>
-		</div>
-
-		<div class="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-x-[15px]">
-			{#each advantageLapikit as { title, paragraph, image, customClass } (title)}
-				<Card class={customClass ? `text-start ${customClass}` : 'text-start'}>
-					<p class="px-[14px] pt-4 text-base leading-none font-semibold lg:pt-5 lg:text-[17px]">
-						{title}
-					</p>
-					<div class="pt-8 pb-10 lg:pt-9 lg:pb-16">
-						{#if image}
-							<img
-								src={image}
-								alt={title}
-								loading="lazy"
-								class="relative mx-auto aspect-354/259 w-10/12 overflow-hidden bg-transparent lg:left-12 lg:ml-auto lg:w-full"
-							/>
-						{/if}
-					</div>
-
-					<p
-						class="text-muted-foreground px-[14px] pb-4 text-[11px] font-medium opacity-75 lg:text-sm"
-					>
-						{paragraph}
-					</p>
-				</Card>
-			{/each}
-		</div>
-	</div>
-</section>
-
-<section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
->
-	<div class="grid gap-4">
-		<div class="text-center">
-			<p class="text-2xl font-semibold md:text-3xl">
-				{capitalize($t('homepage.component_lapikit.title'))}
-			</p>
-			<p>{capitalize($t('homepage.component_lapikit.paragraph'))}</p>
-		</div>
-
-		<Sandbox name="counter-lapikit" code={CounterLapikitCode}>
-			{#snippet component()}
-				<CounterLapikit />
-			{/snippet}
-		</Sandbox>
-	</div>
-</section>
-
-<section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
->
-	<div class="grid grid-cols-1 gap-4 lg:grid-cols-[45%_1fr]">
-		<div class="text-center lg:text-start">
-			<h2 class="text-2xl font-semibold md:text-3xl">
-				{capitalize($t('homepage.lapikit_the_best.title'))}
-			</h2>
-			<p>{capitalize($t('homepage.lapikit_the_best.paragraph'))}</p>
-		</div>
-		<div class="flex flex-col flex-wrap gap-5 text-start sm:flex-row">
-			{#each toolsLapikit as { title, href, external } (title)}
-				<Card
-					class="min-w-[40%] flex-1 text-start"
-					variant="outline"
-					{href}
-					target={external && '_blank'}
-				>
-					<div class="p-5">
-						<p class="mb-4 flex-1 text-xl font-semibold">
-							{title}
-						</p>
-					</div>
-				</Card>
-			{/each}
-		</div>
-	</div>
-</section>
-
-<section
-	class="mx-2.5 mt-11 mb-20 sm:mx-auto sm:max-w-[700px] lg:mt-24 lg:mb-40 lg:w-10/12 lg:max-w-[1036px]"
->
-	<Card class="p-4 text-center!">
-		<div class="mb-6">
-			<p class="text-2xl font-semibold md:text-3xl">
-				{capitalize($t('homepage.lapikit_discover.title'))}
-			</p>
-			<p>{capitalize($t('homepage.lapikit_discover.paragraph'))}</p>
-		</div>
-		<div>
-			<Button color="container" href="/docs/components">
-				{capitalize($t('homepage.lapikit_discover.cta'))}
-			</Button>
-		</div>
-	</Card>
-</section>
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section>
+{#if PUBLIC_DEV_MODE != 'true'}
+	<Legacy {data} />
+{:else}
+	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
@@ -287,6 +89,7 @@
 						background="accent-primary"
 						color="white"
 						size={{ base: 'md', md: 'lg' }}
+						rounded="full"
 					>
 						Get Started
 					</Button>
@@ -295,6 +98,7 @@
 						variant="outline"
 						color="accent-primary"
 						size={{ base: 'md', md: 'lg' }}
+						rounded="full"
 					>
 						Browse Components
 					</Button>
@@ -318,12 +122,12 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="lapikit-contains">
-		<div>
-			<div class="mx-auto grid max-w-[900px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+	<section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="px-4sm:gap-16 mx-auto flex w-full max-w-[90rem] flex-col gap-8 sm:px-6 lg:grid lg:px-8"
+		>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				<Card variant="outline">
 					<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 						<span class="text-xl font-bold">{formatNumber(data.counter?.components || 0)}</span>
@@ -360,26 +164,28 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="lapikit-possibility">
-		<div>
+	<section id="lapikit-possibility" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
 			<div>
-				<h2>Save time and simplify your code</h2>
-				<p>
+				<h2 class="text-2xl font-semibold lg:text-4xl">Save time and simplify your code</h2>
+				<p class="mt-6 text-left sm:text-lg">
 					With Lapikit, you can easily create and manage your components, making your development
 					process more efficient.
 				</p>
-				<div class="grid grid-cols-1 gap-4 md:grid-cols-[45%_1fr] lg:grid-cols-[35%_1fr]">
-					<div>
+				<div
+					class="mt-16 grid grid-cols-1 gap-4 md:grid-cols-[45%_1fr] lg:grid-cols-[35%_1fr] lg:items-stretch"
+				>
+					<div class="sm:text-lg">
 						<p>
 							Why reinvent the wheel for every component? With raw TailwindCSS, every button, every
 							card, every modal translates into repetitive lines of classes that are difficult to
 							maintain and often copied and pasted
 						</p>
-						<p>With Lapikit, you write less but build more:</p>
-						<ul>
+						<p class="mt-6">With Lapikit, you write less but build more:</p>
+						<ul class="mt-6!">
 							<li>
 								<Icon icon="mgc_check_circle_line" color="accent-success" /> Clearer, because your code
 								breathes
@@ -393,13 +199,38 @@
 								are consistent from one component to another
 							</li>
 						</ul>
-						<p class="italic">
+						<p class="mt-6 italic">
 							Instead of struggling with redundancy, you focus on the experience you want to offer
 						</p>
-						<Toolbar>
-							<Button onclick={() => (stepCode = 0)} active={stepCode === 0}>Button</Button>
-							<Button onclick={() => (stepCode = 1)} active={stepCode === 1}>Card</Button>
-							<Button onclick={() => (stepCode = 2)} active={stepCode === 2}>Modal</Button>
+						<Toolbar
+							class="mt-4"
+							classContent="lg:justify-start justify-center gap-3"
+							background="transparent"
+						>
+							<Button
+								onclick={() => (stepCode = 0)}
+								active={stepCode === 0}
+								rounded="full"
+								background="background-grouped-tertiary"
+							>
+								Button
+							</Button>
+							<Button
+								onclick={() => (stepCode = 1)}
+								active={stepCode === 1}
+								rounded="full"
+								background="background-grouped-tertiary"
+							>
+								Card
+							</Button>
+							<Button
+								onclick={() => (stepCode = 2)}
+								active={stepCode === 2}
+								rounded="full"
+								background="background-grouped-tertiary"
+							>
+								Modal
+							</Button>
 						</Toolbar>
 					</div>
 					<div>
@@ -434,29 +265,27 @@
 					</div>
 				</div>
 			</div>
-			<div>
-				<h3>Unlimited themes with one configuration</h3>
-				<p>
+			<div class="mt-16 text-center">
+				<h3 class="text-xl font-semibold lg:text-3xl">Unlimited themes with one configuration</h3>
+				<p class="mx-auto mt-6 max-w-4xl text-center sm:text-lg">
 					Lapikit supports multiple themes out of the box, allowing you to easily switch between
 					theming options with minimal configuration. Light and dark mode are both supported.
 				</p>
-				<div>
+				<div class="mt-16">
 					<HomePreview />
 				</div>
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="overview-components">
-		<div class="grid gap-6">
-			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
-				One library for your entire Svelte project
-			</h2>
+	<section id="overview-components" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
+			<h2 class="text-2xl font-semibold lg:text-4xl">One library for your entire Svelte project</h2>
 
 			<div
-				class="grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
+				class="mt-8 grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
 			>
 				<div>
 					<div class="mx-auto my-0 max-w-[650px]">
@@ -531,16 +360,14 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="discover-features">
+	<section id="discover-features" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div>
 				<div>
-					<h2 class="text-left text-3xl font-bold sm:text-4xl lg:text-5xl">
+					<h2 class="text-2xl font-semibold lg:text-4xl">
 						Discover the features available for your applications
 					</h2>
 					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
@@ -568,7 +395,7 @@
 				</div>
 				<div>
 					<div class="mt-16 flex justify-center">
-						<Button href="/docs" size="lg" color="white" background="accent-primary">
+						<Button href="/docs" size="lg" color="white" background="accent-primary" rounded="full">
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
@@ -580,11 +407,11 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="creator-lapikit">
-		<div class="grid items-center justify-center gap-4">
+	<section id="creator-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="mx-auto grid w-full max-w-[90rem] items-center justify-center gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
 			<div class="flex items-center gap-4">
 				<div>
 					<Icon icon="mgc_quote_left_line" style="--icon-multiplier-size: 16" />
@@ -613,11 +440,11 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="open-source-project">
-		<div>
+	<section id="open-source-project" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
 			<div class="flex flex-col gap-4 md:flex-row">
 				<div class="flex flex-col gap-4 md:w-1/4">
 					<Card variant="outline">
@@ -656,7 +483,7 @@
 							project, and report issues. We welcome contributions from the community to help us
 							make Lapikit even better.
 						</p>
-						<Button href={githubUrl} target="_blank">
+						<Button href={githubUrl} target="_blank" rounded="full">
 							Start contributing
 							{#snippet append()}
 								<Icon icon="mgc_github_line" />
@@ -687,49 +514,49 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="go-to-use-lapikit">
-		<div>
+	<section id="go-to-use-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+		<div
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+		>
 			<div class="grid justify-center gap-4 text-center">
-				<h2>Go further</h2>
-				<p>Explore our different starters with different presets.</p>
+				<h2 class="text-2xl font-semibold lg:text-4xl">Go further</h2>
+				<p class="sm:text-lg">Explore our different starters with different presets.</p>
 
 				<div class="mt-8 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
 					<Card href="/docs">
-						<div class="flex justify-between">
+						<div class="flex justify-between px-4 py-3">
 							<div>
-								<span>Docs</span>
+								<span class="font-semibold sm:text-lg">Docs</span>
 								<p>Find out how to install and use Lapikit in your SvelteKit project.</p>
 							</div>
 							<div>
-								<Icon icon="mgc_arrow_right_line" />
+								<Icon size="xl" icon="mgc_arrow_right_line" />
 							</div>
 						</div>
 					</Card>
 					<Card href={githubContributingUrl} target="_blank">
-						<div class="flex justify-between">
+						<div class="flex justify-between px-4 py-3">
 							<div>
-								<span>Contribute</span>
+								<span class="font-semibold sm:text-lg">Contribute</span>
 								<p>
 									Want to contribute to Lapikit? We provide a Contributor Guide to help you get
 									started.
 								</p>
 							</div>
 							<div>
-								<Icon icon="mgc_arrow_right_line" />
+								<Icon size="xl" icon="mgc_arrow_right_line" />
 							</div>
 						</div>
 					</Card>
 					<Card href={githubSponsorsUrl} target="_blank">
-						<div class="flex justify-between">
+						<div class="flex justify-between px-4 py-3">
 							<div>
-								<span>Sponsorship</span>
+								<span class="font-semibold sm:text-lg">Sponsorship</span>
 								<p>Support the development of Lapikit by becoming a sponsor.</p>
 							</div>
 							<div>
-								<Icon icon="mgc_arrow_right_line" />
+								<Icon size="xl" icon="mgc_arrow_right_line" />
 							</div>
 						</div>
 					</Card>
@@ -737,10 +564,8 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="support-lapikit">
+	<section id="support-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
 				class="mx-auto grid w-full max-w-(--ui-container) gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
@@ -750,46 +575,46 @@
 						You like <span>Lapikit</span>
 					</h2>
 					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
-						Lapikit is Free and Open Source under MIT License. You can help us develop Lapikit by
-						supporting us and becoming a sponsor of the project. Every contribution counts!
+						Lapikit is Free and Open Source under the MIT License. You can help us grow by
+						supporting the project and becoming a sponsor. Every contribution truly makes a
+						difference! As a Lapikit contributor, you’ll gain visibility into the roadmap, have a
+						voice in shaping the project’s direction, be recognized on our website, and enjoy
+						priority support.
 					</p>
-					<p class="sm:text-lg">Become a Lapikit contributor:</p>
-					<ul class="sm:text-lg">
-						<li>
-							<Icon icon="mgc_check_circle_line" color="accent-success" /> Visibility into the roadmap
-						</li>
-						<li>
-							<Icon icon="mgc_check_circle_line" color="accent-success" /> Influence over the direction
-							of the project
-						</li>
-						<li>
-							<Icon icon="mgc_check_circle_line" color="accent-success" /> Recognition on the website
-						</li>
-						<li>
-							<Icon icon="mgc_check_circle_line" color="accent-success" /> Priority support
-						</li>
-					</ul>
-					<p class="italic sm:text-lg">
+
+					<p class="mt-6 italic sm:text-lg">
 						All donations and sponsorships will be used exclusively for the development and
 						maintenance of Lapikit.
 					</p>
-					<div>
-						<Button>
+					<Toolbar class="mt-8" classContent="justify-start gap-3" background="transparent">
+						<Button
+							background="service-github"
+							color="service-on-github"
+							rounded="full"
+							href={githubSponsorsUrl}
+							target="_blank"
+						>
 							{#snippet prepend()}
 								<Icon icon="mgc_github_line" />
 							{/snippet}
-							Github Sponsor
+							Github Sponsors
 							{#snippet append()}
-								<Icon icon="mgc_heart_line" />
+								<Icon color="red" icon="mgc_heart_fill" />
 							{/snippet}
 						</Button>
-						<Button>
+						<Button
+							background="service-buy-me-a-coffee"
+							color="service-on-buy-me-a-coffee"
+							rounded="full"
+							href={buyMeACoffeeUrl}
+							target="_blank"
+						>
 							{#snippet prepend()}
 								<Icon icon="/icons/buymeacoffee.svg" />
 							{/snippet}
 							Buy me a coffee
 						</Button>
-					</div>
+					</Toolbar>
 				</div>
 				<div>
 					<img src="/images/material-cover.png" alt="Material Cover" />
@@ -797,20 +622,16 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="lapikit-is-lapikit">
+	<section id="lapikit-is-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div class="grid gap-4 text-center">
 				<p class="text-[1.75rem] font-bold opacity-15">It's not magic, it's Lapikit</p>
 			</div>
 		</div>
 	</section>
-{/if}
 
-{#if PUBLIC_DEV_MODE == 'true'}
-	<section id="lets-go-explore">
+	<section id="lets-go-explore" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
 				class="mx-auto w-full max-w-(--ui-container) px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-32"
@@ -858,16 +679,6 @@
 </BottomNavigation>
 
 <style>
-	#head-lapikit {
-		--opacity-pattern: 35%;
-		--pattern: color-mix(in oklab, var(--kit-label-primary) var(--opacity-pattern), transparent);
-		background-image: radial-gradient(var(--pattern) 1px, transparent 0);
-		background-size: 16px 16px;
-		background-repeat: repeat;
-		width: 100%;
-		min-height: 90vh;
-	}
-
 	ul {
 		list-style: none;
 		padding: 0;
@@ -890,5 +701,15 @@
 
 	.display-element {
 		display: initial;
+	}
+
+	/* overcharge css for preview code */
+	:global(#preview-lapikit) {
+		margin: 0;
+	}
+	:global(#preview-lapikit > div:last-child > div:last-child),
+	:global(#preview-lapikit > div:last-child > div:last-child > div) {
+		max-height: 400px !important;
+		min-height: 400px;
 	}
 </style>

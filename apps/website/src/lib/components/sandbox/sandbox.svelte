@@ -71,6 +71,9 @@
 			{actions}
 		/>
 		<div>
+			{#if code && (tab === 'code' || tab === 'code-only')}
+				<div style="background: #121212; position: absolute;height: 100%; width: 100%;"></div>
+			{/if}
 			{#if component && (tab === 'preview' || tab === 'preview-only')}
 				<div
 					class:kit-theme--dark={localColorScheme === 'dark'}

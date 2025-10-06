@@ -50,7 +50,7 @@
 {#if app}
 	<Appbar
 		class="sticky top-0 z-100"
-		classContent="items-center justify-between grid grid-cols-[auto_minmax(100px,_1fr)_auto]"
+		classContent=" mx-auto flex w-full max-w-[90rem] items-center justify-between grid md:grid-cols-3"
 		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
@@ -61,12 +61,10 @@
 				</div>
 			</a>
 
-			<Chip variant="outline" size="xs" color="accent-primary"
-				>{`v${data?.npm?.version || '0.0.0'}`}</Chip
-			>
-		</div>
+			<Chip variant="outline" size="xs" color="accent-primary" class="px-2!">
+				{`v${data?.npm?.version || '0.0.0'}`}
+			</Chip>
 
-		<div class="flex items-center justify-center gap-2">
 			{#if $viewport.innerWidth >= $breakpoints.md}
 				{#each navigationMain as { key, path, external } (key)}
 					<Button
@@ -85,15 +83,38 @@
 		</div>
 
 		<div class="flex items-center justify-end gap-2">
-			<Tooltip
-				label={capitalize($t('navigation.open-search')) +
-					($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
-				placement="bottom"
-			>
-				<Button icon onclick={() => (search = !search)} aria-label="Search">
-					<Icon icon="mgc_search_line" />
+			{#if $viewport.innerWidth >= $breakpoints.lg}
+				<Button
+					onclick={() => (search = !search)}
+					aria-label="Search"
+					background="background-tertiary"
+					rounded="full"
+				>
+					{#snippet prepend()}
+						<Icon icon="mgc_search_line" />
+					{/snippet}
+					{capitalize($t('navigation.search_bar.button'))}
+					{#snippet append()}
+						<Chip size="sm" density="compact" rounded="full">
+							{#if $deviceUsed === 'apple'}
+								(⌘ + K)
+							{:else}
+								(ctrl + K)
+							{/if}
+						</Chip>
+					{/snippet}
 				</Button>
-			</Tooltip>
+			{:else}
+				<Tooltip
+					label={capitalize($t('navigation.open-search')) +
+						($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
+					placement="bottom"
+				>
+					<Button icon onclick={() => (search = !search)} aria-label="Search">
+						<Icon icon="mgc_search_line" />
+					</Button>
+				</Tooltip>
+			{/if}
 
 			<ThemeToggle />
 

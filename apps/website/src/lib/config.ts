@@ -14,6 +14,7 @@ export const githubContributingUrl: string =
 export const githubSponsorsUrl: string = 'https://github.com/Nycolaide/lapikit';
 export const licenceUrl: string = 'https://github.com/Nycolaide/lapikit/blob/main/LICENSE';
 export const npmUrl: string = 'https://www.npmjs.com/package/lapikit';
+export const buyMeACoffeeUrl: string = 'https://www.buymeacoffee.com/nycolaide';
 
 export const packageManagers: { name: string; icon: string }[] = [
 	{
@@ -55,7 +56,30 @@ export const navigationMain: NavigationMain[] = [
 	}
 ];
 
-export const navigationFooter: NavigationMain[] = [...navigationMain];
+interface NavigationFooter {
+	name: string;
+	link: Array<NavigationMain | { key: string; path?: string; custom?: string }>;
+}
+
+export const navigationFooter: NavigationFooter[] = [
+	{
+		name: 'product',
+		link: [...navigationMain]
+	},
+	{
+		name: 'policies',
+		link: [
+			{
+				key: 'terms_and_privacy',
+				path: '/terms'
+			},
+			{
+				key: 'cookie',
+				custom: 'cookie-consent'
+			}
+		]
+	}
+];
 
 export const sectionDocs = [
 	{
