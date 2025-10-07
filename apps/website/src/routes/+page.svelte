@@ -725,13 +725,15 @@
 	}
 
 	/* overcharge css for preview code */
-	:global(#preview-lapikit) {
-		margin: 0;
-	}
-	:global(#preview-lapikit > div:last-child > div:last-child),
-	:global(#preview-lapikit > div:last-child > div:last-child > div) {
-		max-height: 400px !important;
-		min-height: 400px;
+	@media (min-width: 768px) {
+		:global(#preview-lapikit) {
+			margin: 0;
+		}
+		:global(#preview-lapikit > div:last-child > div:last-child),
+		:global(#preview-lapikit > div:last-child > div:last-child > div) {
+			max-height: 400px !important;
+			min-height: 400px;
+		}
 	}
 
 	:global(.animate-star-yolo) {
