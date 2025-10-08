@@ -13,7 +13,7 @@
 	import Search from './search/search.svelte';
 
 	// assets
-	import LapikitLogo from '$lib/images/lapikit.webp?enhanced';
+	import LapikitLogo from '$lib/images/lapikit_logo.webp?enhanced';
 	import { githubUrl, navigationMain } from '$lib/config';
 
 	interface Props {
@@ -96,11 +96,11 @@
 					{/snippet}
 					{capitalize($t('navigation.search_bar.button'))}
 					{#snippet append()}
-						<Chip size="sm" density="compact" rounded="full">
+						<Chip size="sm" density="compact" rounded="full" class="px-2!">
 							{#if $deviceUsed === 'apple'}
-								(⌘ + K)
+								⌘ + K
 							{:else}
-								(ctrl + K)
+								ctrl + K
 							{/if}
 						</Chip>
 					{/snippet}
@@ -117,7 +117,7 @@
 				</Tooltip>
 			{/if}
 
-			<ThemeToggle />
+			<ThemeToggle icon class="hidden! md:inline-flex!" />
 
 			<Button href={githubUrl} target="_blank" aria-label="GitHub">
 				<Icon icon="mgc_github_line" />
@@ -156,7 +156,7 @@
 				</Button>
 			</Tooltip>
 
-			<ThemeToggle />
+			<ThemeToggle icon />
 
 			<Button
 				href={githubUrl}

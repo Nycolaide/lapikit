@@ -11,7 +11,7 @@
 	let { data }: GlobalProps = $props();
 
 	// assets
-	import LapikitLogo from '$lib/images/lapikit.webp?enhanced';
+	import LapikitLogo from '$lib/images/lapikit_logo.webp?enhanced';
 
 	import IndicatorBar from './indicator-bar.svelte';
 	import { githubUrl } from '$lib/config';

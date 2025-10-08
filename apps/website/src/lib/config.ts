@@ -58,7 +58,13 @@ export const navigationMain: NavigationMain[] = [
 
 interface NavigationFooter {
 	name: string;
-	link: Array<NavigationMain | { key: string; path?: string; custom?: string }>;
+	link: Array<{
+		key: string;
+		path: string;
+		external?: boolean;
+		icon?: string;
+		custom?: string;
+	}>;
 }
 
 export const navigationFooter: NavigationFooter[] = [
@@ -223,5 +229,36 @@ export const stepperToUseComponent = [
 			"Customize the appearance of the components to match your project's design and branding.",
 		icon: 'mgc_paint_brush_ai_line',
 		color: 'accent-success'
+	}
+];
+
+export const SocialLinks = [
+	{
+		name: 'GitHub',
+		icon: 'mgc_github_fill',
+		color: 'service-github',
+		href: githubUrl,
+		footer: true
+	},
+	{
+		name: 'Discord',
+		icon: 'mgc_discord_fill',
+		color: 'service-discord',
+		href: discordUrl,
+		footer: true
+	},
+	{
+		name: 'NPM',
+		icon: '/icons/npm-color.svg',
+		color: 'service-npm',
+		href: npmUrl,
+		footer: true
+	},
+	{
+		name: 'Buy Me A Coffee',
+		icon: 'mgc_coffee_line',
+		color: 'service-buy-me-a-coffee',
+		href: buyMeACoffeeUrl,
+		footer: false
 	}
 ];

@@ -24,7 +24,9 @@ export default createLapikit({
 						'buy-me-a-coffee': '#FFDD00',
 						'on-buy-me-a-coffee': '#000000',
 						discord: '#5661ec',
-						'on-discord': '#ffffff'
+						'on-discord': '#ffffff',
+						npm: '#CB3837',
+						'on-npm': '#ffffff'
 					}
 				}
 			},
@@ -37,7 +39,9 @@ export default createLapikit({
 						'buy-me-a-coffee': '#FFDD00',
 						'on-buy-me-a-coffee': '#000000',
 						discord: '#5661ec',
-						'on-discord': '#ffffff'
+						'on-discord': '#ffffff',
+						npm: '#CB3837',
+						'on-npm': '#ffffff'
 					}
 				}
 			}

@@ -29,3 +29,10 @@ body,
 :root {
 	--ui-container: 90rem;
 }
+
+.no-select {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
