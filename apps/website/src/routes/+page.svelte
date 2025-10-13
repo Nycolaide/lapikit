@@ -487,6 +487,7 @@
 								size="xl"
 								style="--icon-multiplier-size: 16"
 								color="red"
+								class="no-select"
 							/>
 							<div>
 								<span class="text-highlighted text-xl font-semibold"
@@ -645,7 +646,7 @@
 						priority support.
 					</p>
 
-					<p class="mt-6 italic sm:text-lg">
+					<p class="mt-6 italic opacity-50 sm:text-lg">
 						All donations and sponsorships will be used exclusively for the development and
 						maintenance of Lapikit.
 					</p>
@@ -675,7 +676,7 @@
 							class="px-4!"
 						>
 							{#snippet prepend()}
-								<Icon icon="/icons/buymeacoffee.svg" />
+								<Icon icon="/icons/buymeacoffee.svg" class="no-select" />
 							{/snippet}
 							Buy me a coffee
 						</Button>
