@@ -15,6 +15,7 @@ export const githubSponsorsUrl: string = 'https://github.com/Nycolaide/lapikit';
 export const licenceUrl: string = 'https://github.com/Nycolaide/lapikit/blob/main/LICENSE';
 export const npmUrl: string = 'https://www.npmjs.com/package/lapikit';
 export const buyMeACoffeeUrl: string = 'https://www.buymeacoffee.com/nycolaide';
+export const xUrl: string = 'https://x.com/lapikit';
 
 export const packageManagers: { name: string; icon: string }[] = [
 	{

@@ -4,12 +4,15 @@
 	import { Button, Icon, Chip, Separator, Card, Toolbar } from 'lapikit/components';
 	import {
 		buyMeACoffeeUrl,
+		discordUrl,
 		enableFeatures,
 		githubContributingUrl,
 		githubSponsorsUrl,
 		githubUrl,
 		navigationMain,
-		stepperToUseComponent
+		npmUrl,
+		stepperToUseComponent,
+		xUrl
 	} from '$lib/config';
 	import { page } from '$app/state';
 	import { capitalize, copyToClipboard, formatNumber } from 'site-kit/actions';
@@ -468,10 +471,10 @@
 		>
 			<div class="flex flex-col gap-4 md:flex-row">
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card variant="outline">
+					<Card variant="outline" href={npmUrl} target="_blank">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<Icon
-								icon="/icons/npm.svg"
+								icon="/icons/npm-color.svg"
 								size="xl"
 								style="--icon-multiplier-size: 16"
 								color="red"
@@ -484,9 +487,14 @@
 							</div>
 						</div>
 					</Card>
-					<Card variant="outline">
+					<Card variant="outline" href={githubUrl} target="_blank">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<Icon
+								icon="mgc_github_line"
+								size="xl"
+								style="--icon-multiplier-size: 16"
+								color="service-github"
+							/>
 							<div>
 								<span class="text-highlighted text-xl font-semibold">
 									{formatNumber(data?.github?.stargazers_count || 0)}
@@ -513,20 +521,30 @@
 					</Card>
 				</div>
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card variant="outline">
+					<Card variant="outline" href={xUrl} target="_blank">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<Icon
+								icon="mgc_social_x_line"
+								size="xl"
+								style="--icon-multiplier-size: 16"
+								color="service-x"
+							/>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">0K</span>
+								<span class="text-highlighted text-xl font-semibold">0</span>
 								<p class="text-sm">Followers</p>
 							</div>
 						</div>
 					</Card>
-					<Card variant="outline">
+					<Card variant="outline" href={discordUrl} target="_blank">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-							<Icon icon="mgc_github_line" size="xl" style="--icon-multiplier-size: 16" />
+							<Icon
+								icon="mgc_discord_fill"
+								size="xl"
+								style="--icon-multiplier-size: 16"
+								color="service-discord"
+							/>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">0K</span>
+								<span class="text-highlighted text-xl font-semibold">0</span>
 								<p class="text-sm">Members</p>
 							</div>
 						</div>

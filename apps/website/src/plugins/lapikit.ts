@@ -26,7 +26,8 @@ export default createLapikit({
 						discord: '#5661ec',
 						'on-discord': '#ffffff',
 						npm: '#CB3837',
-						'on-npm': '#ffffff'
+						'on-npm': '#ffffff',
+						x: 'oklch(23.166% .0107 242.2)'
 					}
 				}
 			},
@@ -41,7 +42,8 @@ export default createLapikit({
 						discord: '#5661ec',
 						'on-discord': '#ffffff',
 						npm: '#CB3837',
-						'on-npm': '#ffffff'
+						'on-npm': '#ffffff',
+						x: 'oklch(97.913% 0 89.88)'
 					}
 				}
 			}
