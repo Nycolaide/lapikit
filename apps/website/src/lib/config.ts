@@ -178,7 +178,7 @@ export const enableFeatures = [
 		}
 	},
 	{
-		icon: 'mgc_flashlight_line',
+		icon: '/icons/typescript-primary.svg',
 		title: {
 			en: 'Typescript support'
 		},
@@ -187,7 +187,7 @@ export const enableFeatures = [
 		}
 	},
 	{
-		icon: 'mgc_flashlight_line',
+		icon: '/icons/svelte-primary.svg',
 		title: {
 			en: 'SvelteKit friendly'
 		},

@@ -46,6 +46,7 @@
 	import Legacy from './(pages)/legacy.svelte';
 	import { BackgroundAnimationStars, scrollAnimation } from '../animations';
 	import LapikitYoloLogo from '$lib/images/lapikit-yolo.webp?enhanced';
+	import NycolaideAvatar from '$lib/images/nycolaide.png?enhanced';
 </script>
 
 <Head
@@ -406,7 +407,7 @@
 							<li>
 								<div>
 									<div>
-										<Icon {icon} size="xl" color="accent-primary" />
+										<Icon {icon} size="xl" color="accent-primary" class="no-select" />
 									</div>
 									<div>
 										<p class="font-semibold">{title[$locale as 'en']}</p>
@@ -419,7 +420,14 @@
 				</div>
 				<div>
 					<div class="mt-16 flex justify-center">
-						<Button href="/docs" size="lg" color="white" background="accent-primary" rounded="full">
+						<Button
+							href="/docs"
+							size="lg"
+							class="px-4!"
+							color="white"
+							background="accent-primary"
+							rounded="full"
+						>
 							{capitalize(`It's not over yet!`)}
 
 							{#snippet append()}
@@ -451,11 +459,11 @@
 			</div>
 
 			<div class="flex items-center justify-center gap-4">
-				<img
-					src="/images/cover-250x250.png"
+				<enhanced:img
+					src={NycolaideAvatar}
 					alt="Creator Lapikit"
 					width="40"
-					class="rounded-full"
+					class="no-select rounded-full"
 				/>
 				<div>
 					<span>Nycolaide</span>
@@ -469,9 +477,10 @@
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
-			<div class="flex flex-col gap-4 md:flex-row">
+			<div class="flex flex-col gap-4 md:flex-row md:items-stretch">
+				<!-- Colonne gauche -->
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card variant="outline" href={npmUrl} target="_blank">
+					<Card href={npmUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<Icon
 								icon="/icons/npm-color.svg"
@@ -480,14 +489,15 @@
 								color="red"
 							/>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">
-									{formatNumber(data?.npm?.downloads || 0)}
-								</span>
+								<span class="text-highlighted text-xl font-semibold"
+									>{formatNumber(data?.npm?.downloads || 0)}</span
+								>
 								<p class="text-sm">Monthly downloads</p>
 							</div>
 						</div>
 					</Card>
-					<Card variant="outline" href={githubUrl} target="_blank">
+
+					<Card href={githubUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<Icon
 								icon="mgc_github_line"
@@ -496,32 +506,45 @@
 								color="service-github"
 							/>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">
-									{formatNumber(data?.github?.stargazers_count || 0)}
-								</span>
+								<span class="text-highlighted text-xl font-semibold"
+									>{formatNumber(data?.github?.stargazers_count || 0)}</span
+								>
 								<p class="text-sm">GitHub Stars</p>
 							</div>
 						</div>
 					</Card>
 				</div>
-				<div class="md:w-1/2">
-					<Card variant="outline" class="flex h-full flex-col items-center justify-around">
-						<p class="text-xl font-semibold">Open source</p>
-						<p class="text-center">
-							Lapikit is 100% open source. You can find the source code on GitHub, contribute to the
-							project, and report issues. We welcome contributions from the community to help us
-							make Lapikit even better.
-						</p>
-						<Button href={githubUrl} target="_blank" rounded="full">
-							Start contributing
-							{#snippet append()}
-								<Icon icon="mgc_github_line" />
-							{/snippet}
-						</Button>
+
+				<!-- Colonne centrale -->
+				<div class="flex md:w-1/2">
+					<Card class="flex-1" background="background-tertiary">
+						<div class="flex h-full flex-col items-center justify-around gap-y-4 p-4 sm:p-6">
+							<p class="text-xl font-semibold">Open source</p>
+							<p class="text-center">
+								Lapikit is 100% open source. You can find the source code on GitHub, contribute to
+								the project, and report issues. We welcome contributions from the community to help
+								us make Lapikit even better.
+							</p>
+							<Button
+								href={githubUrl}
+								target="_blank"
+								rounded="full"
+								class="px-4!"
+								color="service-on-github"
+								background="service-github"
+							>
+								Start contributing
+								{#snippet append()}
+									<Icon icon="mgc_github_line" />
+								{/snippet}
+							</Button>
+						</div>
 					</Card>
 				</div>
+
+				<!-- Colonne droite -->
 				<div class="flex flex-col gap-4 md:w-1/4">
-					<Card variant="outline" href={xUrl} target="_blank">
+					<Card href={xUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<Icon
 								icon="mgc_social_x_line"
@@ -535,7 +558,8 @@
 							</div>
 						</div>
 					</Card>
-					<Card variant="outline" href={discordUrl} target="_blank">
+
+					<Card href={discordUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 							<Icon
 								icon="mgc_discord_fill"
@@ -632,6 +656,7 @@
 							rounded="full"
 							href={githubSponsorsUrl}
 							target="_blank"
+							class="px-4!"
 						>
 							{#snippet prepend()}
 								<Icon icon="mgc_github_line" />
@@ -647,6 +672,7 @@
 							rounded="full"
 							href={buyMeACoffeeUrl}
 							target="_blank"
+							class="px-4!"
 						>
 							{#snippet prepend()}
 								<Icon icon="/icons/buymeacoffee.svg" />
