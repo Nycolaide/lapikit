@@ -47,6 +47,7 @@
 	import { BackgroundAnimationStars, scrollAnimation } from '../animations';
 	import LapikitYoloLogo from '$lib/images/lapikit-yolo.webp?enhanced';
 	import NycolaideAvatar from '$lib/images/nycolaide.png?enhanced';
+	import Rabbit from '../animations/rabbit.svelte';
 </script>
 
 <Head
@@ -59,6 +60,10 @@
 {:else}
 	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<BackgroundAnimationStars />
+		<div class="absolute z-0 overflow-visible max-lg:hidden">
+			<Rabbit />
+		</div>
+
 		<div
 			class="relative mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
@@ -75,11 +80,11 @@
 				<Icon class="animate-star-yolo absolute  mt-[70px] mr-[55px] " icon="mgc_sparkles_fill" />
 			</div>
 
-			<div
+			<!-- <div
 				class="absolute top-0 left-0 mt-[150px] ml-[20px] max-sm:hidden lg:mt-[262px] xl:ml-[104px]"
 			>
 				<Icon class="animate-cursor absolute -scale-x-[1] text-[2rem]!" icon="mgc_cursor_fill" />
-			</div>
+			</div> -->
 
 			<div>
 				<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
@@ -768,6 +773,16 @@
 	.display-element {
 		display: initial;
 	}
+
+	/* #space-fuse {
+		position: absolute;
+		overflow: visible;
+		z-index: 0;
+		bottom: -8%;
+		width: 140px;
+		left: -100px;
+		width: 100px;
+	} */
 
 	/* overcharge css for preview code */
 	@media (min-width: 768px) {
