@@ -153,6 +153,22 @@
 		</div>
 	</section>
 
+	<div class="scene">
+		<div class="planet" aria-hidden="true"></div>
+		<div class="moon" aria-hidden="true"></div>
+		<div
+			id="lapinosaur-to-the-moon"
+			class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[30px] lg:w-[45px]"
+		>
+			<enhanced:img
+				class="absolute -scale-x-[1] rotate-10 sm:rotate-7 lg:rotate-5"
+				id="lapikit-logo"
+				src={LapikitYoloLogo}
+				alt="Lapikit logo"
+			/>
+		</div>
+	</div>
+
 	<section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 sm:gap-16 sm:px-6 lg:grid lg:px-8"
@@ -836,5 +852,58 @@
 		50% {
 			transform: scale(1.5);
 		}
+	}
+
+	.scene {
+		position: relative;
+		height: 30vh;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.planet {
+		border-radius: 50%;
+		background: transparent;
+		z-index: 1;
+		overflow: visible;
+	}
+
+	.moon {
+		border-radius: 50%;
+		background: var(--kit-background-primary);
+		z-index: 2;
+		overflow: visible;
+	}
+
+	.planet,
+	.moon {
+		position: absolute;
+		top: 60px;
+		width: 300vw;
+		height: 100vh;
+		transform: translateX(calc(-100vw));
+	}
+
+	@media (min-width: 640px) {
+		.planet,
+		.moon {
+			width: 200vw;
+			height: 100vh;
+			transform: translateX(-50vw);
+		}
+	}
+
+	.planet::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: var(--kit-accent-primary);
+		filter: blur(40px);
+		opacity: 0.95;
+		pointer-events: none;
+		z-index: 1;
+		mix-blend-mode: screen;
 	}
 </style>
