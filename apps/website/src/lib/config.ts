@@ -37,13 +37,32 @@ interface NavigationMain {
 	path: string;
 	external?: boolean;
 	icon?: string;
+	items?: Array<{ key: string; path: string; external?: boolean; icon?: string }>;
 }
 
 export const navigationMain: NavigationMain[] = [
 	{
 		key: 'docs',
 		path: '/docs/introduction',
-		icon: 'mgc_album_2_line'
+		icon: 'mgc_album_2_line',
+		items: [
+			{
+				key: 'introduction',
+				path: '/docs/introduction'
+			},
+			{
+				key: 'components',
+				path: '/docs/components'
+			},
+			{
+				key: 'actions',
+				path: '/docs/actions'
+			},
+			{
+				key: 'stores',
+				path: '/docs/stores'
+			}
+		]
 	},
 	{
 		key: 'components',

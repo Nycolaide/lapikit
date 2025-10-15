@@ -1,26 +1,20 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { browser } from '$app/environment';
-
-	// assets
+	import { onMount } from 'svelte';
 	import RocketRabbit from '$lib/images/lapikit-yolo.webp';
 	import Bulle from '$lib/images/assets/bulle.webp';
-
-	// states
 
 	let outerContainer: HTMLDivElement;
 	let innerContainer: HTMLDivElement;
 	let angle = 0;
 	let duration = 4000;
 	let showBubble = false;
-	let isAnimating = false;
-	let currentState: 'idle' | 'fly' = 'idle';
 
 	function randomize() {
+		//angle = 25 + Math.random() * 10;
 		duration = 3500 + Math.random() * 1500;
 	}
 
-	async function initialAnimation() {
+	async function animate() {
 		const inner = innerContainer;
 
 		await inner.animate(
@@ -35,64 +29,24 @@
 		showBubble = true;
 		await new Promise((r) => setTimeout(r, 3000));
 		showBubble = false;
-	}
-
-	async function flyAway() {
-		if (isAnimating || currentState === 'fly') return;
-		isAnimating = true;
-		currentState = 'fly';
-		const inner = innerContainer;
 
 		await inner.animate(
 			[
 				{ transform: `translate(0, -30vh) scale(0.8) rotate(0deg)` },
 				{ transform: `translate(0, -150vh) scale(0.5) rotate(0deg)` }
 			],
-			{ duration: duration, easing: 'ease-in-out', fill: 'forwards' }
+			{ duration: duration / 2, easing: 'ease-in-out', fill: 'forwards' }
 		).finished;
 
-		isAnimating = false;
-	}
-
-	async function returnToIdle() {
-		if (isAnimating || currentState === 'idle') return;
-		isAnimating = true;
-		currentState = 'idle';
-		const inner = innerContainer;
-
-		await inner.animate(
-			[
-				{ transform: `translate(0, -150vh) scale(0.5) rotate(0deg)` },
-				{ transform: `translate(0, -30vh) scale(0.8) rotate(0deg)` }
-			],
-			{ duration: duration, easing: 'ease-in-out', fill: 'forwards' }
-		).finished;
-
-		isAnimating = false;
-	}
-
-	function handleScroll() {
-		const scrollY = window.scrollY;
-		if (scrollY > 50) {
-			flyAway();
-		} else {
-			returnToIdle();
-		}
+		setTimeout(() => {
+			randomize();
+			animate();
+		}, 500);
 	}
 
 	onMount(() => {
 		randomize();
-		initialAnimation();
-
-		if (browser) {
-			window.addEventListener('scroll', handleScroll);
-		}
-	});
-
-	onDestroy(() => {
-		if (browser) {
-			window.removeEventListener('scroll', handleScroll);
-		}
+		animate();
 	});
 </script>
 
@@ -112,14 +66,18 @@
 <style>
 	.wrapper {
 		position: relative;
-		width: 180px;
+		width: 100vw;
 		height: 100vh;
+		/* height: 100%;
+        width: 100%; */
 		overflow: hidden;
+		/* background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000 100%); */
 	}
 
 	.outer-container {
 		position: absolute;
 		bottom: -10%;
+		/* left: 10%; */
 		width: 150px;
 		animation: floatXY 2s ease-in-out infinite alternate;
 	}

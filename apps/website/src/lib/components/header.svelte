@@ -8,12 +8,21 @@
 	import { deviceUsed } from '$lib/stores/app.js';
 
 	//components
-	import { Appbar, Button, Chip, Icon, Tooltip } from 'lapikit/components';
+	import {
+		Appbar,
+		Button,
+		Chip,
+		Dropdown,
+		Icon,
+		List,
+		ListItem,
+		Tooltip
+	} from 'lapikit/components';
 	import ThemeToggle from './theme-toggle.svelte';
 	import Search from './search/search.svelte';
 
 	// assets
-	import LapikitLogo from '$lib/images/lapikit_logo.webp?enhanced';
+	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
 	import { githubUrl, navigationMain } from '$lib/config';
 
 	interface Props {
@@ -26,16 +35,20 @@
 
 	// states
 	let search: boolean = $state(false);
+	let scrolled: boolean = $state(false);
+	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
 
 	onMount(() => {
 		if (browser) {
 			window.addEventListener('keydown', handleKeyDown);
+			window.addEventListener('scroll', handleScroll);
 		}
 	});
 
 	onDestroy(() => {
 		if (browser) {
 			window.removeEventListener('keydown', handleKeyDown);
+			window.removeEventListener('scroll', handleScroll);
 		}
 	});
 
@@ -45,13 +58,17 @@
 			search = true;
 		}
 	}
+
+	function handleScroll() {
+		scrolled = window.scrollY > 20;
+	}
 </script>
 
 {#if app}
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent=" mx-auto flex w-full max-w-[90rem] items-center justify-between grid md:grid-cols-3"
-		background="background-primary"
+		background={scrolled ? 'background-primary' : 'transparent'}
 		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
@@ -62,23 +79,60 @@
 				</div>
 			</a>
 
-			<Chip variant="outline" size="xs" color="accent-primary" class="px-2!">
+			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
 				{`v${data?.npm?.version || '0.0.0'}`}
-			</Chip>
+			</a>
 
 			{#if $viewport.innerWidth >= $breakpoints.md}
-				{#each navigationMain as { key, path, external } (key)}
-					<Button
-						href={path}
-						target={external && '_blank'}
-						active={page.url.pathname === path}
-						rounded="full"
-						variant="text"
-					>
-						<span class="font-semibold">
-							{capitalize($t(`navigation.${key}`))}
-						</span>
-					</Button>
+				{#each navigationMain as { key, path, external, items }, index (key)}
+					{#if items}
+						<Dropdown openOnHover>
+							{#snippet activator(model, handleMouseEvent)}
+								<Button
+									bind:ref={dropdownRefs[index]}
+									onclick={() => model.toggle(dropdownRefs[index])}
+									onmouseover={() => handleMouseEvent('open', dropdownRefs[index])}
+									onmouseleave={() => handleMouseEvent('close', dropdownRefs[index])}
+									rounded="full"
+									variant="text"
+									active={model.open}
+								>
+									<span class="font-semibold">
+										{capitalize($t(`navigation.${key}`))}
+									</span>
+
+									{#snippet append()}
+										<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
+									{/snippet}
+								</Button>
+							{/snippet}
+
+							<List rounded="xl">
+								{#each items as { key, path, external } (key)}
+									<ListItem
+										href={path}
+										target={external ? '_blank' : '_self'}
+										variant="text"
+										active={page.url.pathname === path}
+									>
+										{capitalize($t(`navigation.${key}`))}
+									</ListItem>
+								{/each}
+							</List>
+						</Dropdown>
+					{:else}
+						<Button
+							href={path}
+							target={external && '_blank'}
+							active={page.url.pathname === path}
+							rounded="full"
+							variant="text"
+						>
+							<span class="font-semibold">
+								{capitalize($t(`navigation.${key}`))}
+							</span>
+						</Button>
+					{/if}
 				{/each}
 			{/if}
 		</div>

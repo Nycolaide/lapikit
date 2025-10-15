@@ -60,13 +60,13 @@
 {:else}
 	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<BackgroundAnimationStars />
-		<div class="absolute z-0 overflow-visible max-lg:hidden">
-			<Rabbit />
-		</div>
 
 		<div
 			class="relative mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
+			<div class="absolute bottom-[2%] left-[5%] z-0 overflow-visible max-lg:hidden">
+				<Rabbit />
+			</div>
 			<div
 				id="lapinosaur-yolo"
 				class="absolute right-0 mt-[130px] mr-20 h-fit w-[135px] max-lg:hidden"
@@ -113,7 +113,7 @@
 				</p>
 			</div>
 			<div>
-				<div>
+				<div class="flex justify-center gap-3 sm:gap-6">
 					<Button
 						href="/docs/getting-started"
 						background="accent-primary"
