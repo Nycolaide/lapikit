@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix bad variables for component **Separator** color
-- Fix **critical crash** if _esm-env_ not working on SSR environment, remove import BROWSER from 'esm-env' ( Scroll function and App component )
+- Fix **critical crash** if _esm-env_ not working on SSR environment, remove import BROWSER from 'esm-env' ( Scroll function and App component ).
 
 ## [0.2.6] - 2025-10-01
 

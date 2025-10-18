@@ -26,7 +26,7 @@ jobs:
       contents: write
     outputs:
       version_release: ${{ steps.set_version.outputs.version_release }}
-      sha_short: ${{ steps.get_sha_version.outputs.version_release }}
+      sha_short: ${{ steps.get_sha_version.outputs.sha_version }}
 
     steps:
       - uses: actions/checkout@v4
@@ -34,13 +34,11 @@ jobs:
       - name: resolve version
         id: get_sha_version
         run: |
-          cd packages/${{ env.PACKAGE_NAME }}
           echo "sha_version=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: generate version
         id: set_version
         run: |
-          cd packages/${{ env.PACKAGE_NAME }}
           sha_version="${{ steps.get_sha_version.outputs.sha_version }}"
           echo "version_release=${VERSION}-${RELEASE_CHANNEL}.${sha_version}" >> $GITHUB_OUTPUT
 
@@ -90,6 +88,6 @@ jobs:
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           echo "Publishing version ${{ env.version_release }}"
-          npm publish --tag ${{ env.RELEASE_CHANNEL }} --provenance
+          npm publish --tag ${{ env.RELEASE_CHANNEL }} --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
