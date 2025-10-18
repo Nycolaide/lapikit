@@ -72,7 +72,7 @@ jobs:
       - name: install dependencies
         run: bun install
 
-      - name: set insiders version in package.json
+      - name: set github actions bot
         run: |
           cd packages/${{ env.PACKAGE_NAME }}
           git config user.name "github-actions[bot]"
