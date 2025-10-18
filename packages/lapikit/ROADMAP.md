@@ -29,7 +29,3 @@ published: true
 
 - [x] Popover
 - [x] Modal
-
-## FUTURE PLANS
-
-?
