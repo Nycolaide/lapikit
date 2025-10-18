@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { BROWSER } from 'esm-env';
+	const BROWSER = typeof window !== 'undefined';
 	import type { Snippet } from 'svelte';
 	import { useTheme } from '$lib/actions/use-theme.js';
 	import { modalOpen, setOpenModal } from '$lib/stores/components.js';

@@ -20,7 +20,14 @@ export default createLapikit({
 					service: {
 						github: 'oklch(23.166% .0107 242.2)',
 						'on-github': 'oklch(97.913% 0 89.88)',
-						svelte: '#ff3e00'
+						svelte: '#ff3e00',
+						'buy-me-a-coffee': '#FFDD00',
+						'on-buy-me-a-coffee': '#000000',
+						discord: '#5661ec',
+						'on-discord': '#ffffff',
+						npm: '#CB3837',
+						'on-npm': '#ffffff',
+						x: 'oklch(23.166% .0107 242.2)'
 					}
 				}
 			},
@@ -29,7 +36,14 @@ export default createLapikit({
 					service: {
 						github: 'oklch(97.913% 0 89.88)',
 						'on-github': 'oklch(23.166% .0107 242.2)',
-						svelte: '#ff3e00'
+						svelte: '#ff3e00',
+						'buy-me-a-coffee': '#FFDD00',
+						'on-buy-me-a-coffee': '#000000',
+						discord: '#5661ec',
+						'on-discord': '#ffffff',
+						npm: '#CB3837',
+						'on-npm': '#ffffff',
+						x: 'oklch(97.913% 0 89.88)'
 					}
 				}
 			}

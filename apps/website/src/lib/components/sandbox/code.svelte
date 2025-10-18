@@ -4,7 +4,7 @@
 	import { copyToClipboard } from 'site-kit/actions';
 	import { Button, Icon } from 'lapikit/components';
 
-	let { code, expanded = $bindable() }: SandboxCodeProps = $props();
+	let { code, expanded = $bindable(), noCopy }: SandboxCodeProps = $props();
 
 	let ref: null | HTMLElement = $state(null);
 	let codeHTML = $state('');
@@ -39,17 +39,17 @@
 	});
 </script>
 
-<Button
-	class="absolute! right-[1rem] z-2 mt-[0.5rem]"
-	icon
-	size="sm"
-	onclick={() => (copy = true)}
-	active={copy}
-	variant="text"
-	light
->
-	<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
-</Button>
+{#if !noCopy}
+	<Button
+		class="absolute! right-[1rem] z-2 mt-[0.5rem]"
+		icon
+		size="sm"
+		onclick={() => (copy = true)}
+		active={copy}
+	>
+		<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
+	</Button>
+{/if}
 
 <div
 	class="lapikit-sandbox--code overflow-auto"

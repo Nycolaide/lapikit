@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { BROWSER } from 'esm-env';
+	import { browser } from '$app/environment';
 	import { t } from '$lib/i18n';
 	import { page as url } from '$app/state';
 	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
@@ -32,7 +32,7 @@
 	});
 
 	function disabledScroll(state: boolean) {
-		if (BROWSER) {
+		if (browser) {
 			document.body.style.overflow = state ? 'hidden' : '';
 		}
 	}
@@ -57,7 +57,7 @@
 
 <svelte:window bind:innerWidth={sizeWidthScreen} />
 
-<Appbar density={{ base: 'default', md: 'comfortable' }} class="sticky top-0 z-100 w-full">
+<Appbar density={{ base: 'default', md: 'comfortable' }} class="z-100 sticky top-0 w-full">
 	<a href="/">
 		<p class="text-2xl font-bold">Lapikit</p>
 	</a>
@@ -176,7 +176,7 @@
 		size="xl"
 		density="comfortable"
 		rounded="lg"
-		class="kit-device--h-desktop fixed! right-[0.75rem] bottom-[0.75rem] z-1100"
+		class="kit-device--h-desktop fixed! z-1100 bottom-[0.75rem] right-[0.75rem]"
 		background="on-container"
 		color="container"
 	>

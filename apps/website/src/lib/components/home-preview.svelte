@@ -62,7 +62,6 @@
 </script>
 
 <div id="hero-media-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
-	<div class="effect-animation--focus"></div>
 	<div
 		class="container-drag-drop-hero"
 		bind:this={containerRef}
@@ -106,23 +105,11 @@
 	#hero-media-lapikit {
 		--radius-effect: var(--kit-radius-3xl);
 		display: flex;
-		width: 90%;
+		width: 100%;
 		max-width: 1272px;
 		margin: 0 auto;
 		position: relative;
 		height: 100%;
-	}
-
-	/* preview */
-	.effect-animation--focus {
-		width: 100%;
-		filter: blur(0.3rem);
-		background: linear-gradient(var(--gradient-angle), blue, purple, red, orange);
-		animation: rotation 5s linear infinite;
-		position: absolute;
-		z-index: 0;
-		height: 100%;
-		border-radius: var(--radius-effect);
 	}
 
 	.container-drag-drop-hero {
