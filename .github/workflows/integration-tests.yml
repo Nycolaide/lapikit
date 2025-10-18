@@ -17,18 +17,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1.2.2
-      - run: bun install
-
-      - name: install dependencies
-        run: bun install
 
       - name: cache node_modules
         uses: actions/cache@v4
+        id: bun-cache
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
+
+      - name: install dependencies
+        if: steps.bun-cache.outputs.cache-hit != 'true'
+        run: bun install --frozen-lockfile
 
   lapikit-vitest:
     name: lapikit vitest
@@ -49,8 +52,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: test lapikit with vitest
-        run: cd packages/lapikit && bun test
+        run: bun --cwd packages/lapikit test
 
   lapikit-lint:
     name: lapikit lint
@@ -71,8 +77,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: linter on lapikit
-        run: cd packages/lapikit && bun lint
+        run: bun --cwd packages/lapikit lint
 
   lapikit-build:
     name: build lapikit
@@ -93,8 +102,38 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
+      - name: debug before build
+        run: |
+          echo "=== Checking workspace ==="
+          ls -la packages/lapikit/
+          echo "=== Checking node_modules ==="
+          ls -la node_modules/ | head -5
+          echo "=== Checking bun version ==="
+          bun --version
+
       - name: build
-        run: cd packages/lapikit && bun run build
+        run: |
+          echo "=== Installing lapikit dependencies ==="
+          cd packages/lapikit
+          bun install
+          echo "=== Running lapikit build ==="
+          bun run build
+
+      - name: verify lapikit build
+        run: |
+          if [ -d "packages/lapikit/dist/" ]; then
+            ls -la packages/lapikit/dist/
+            echo "Build files found:"
+            find packages/lapikit/dist/ -type f | head -10
+          else
+            echo "ERROR: dist/ directory not found!"
+            echo "Contents of packages/lapikit/:"
+            ls -la packages/lapikit/
+            exit 1
+          fi
 
       - name: upload lapikit build
         uses: actions/upload-artifact@v4
@@ -121,8 +160,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: test site-kit with vitest
-        run: cd packages/site-kit && bun test
+        run: bun --cwd packages/site-kit test
 
   site-kit-lint:
     name: site-kit lint
@@ -143,8 +185,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: linter on site-kit
-        run: cd packages/site-kit && bun lint
+        run: bun --cwd packages/site-kit lint
 
   site-kit-build:
     name: site-kit build
@@ -165,8 +210,38 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
+      - name: debug before build
+        run: |
+          echo "=== Checking workspace ==="
+          ls -la packages/site-kit/
+          echo "=== Checking node_modules ==="
+          ls -la node_modules/ | head -5
+          echo "=== Checking bun version ==="
+          bun --version
+
       - name: build
-        run: cd packages/site-kit && bun run build
+        run: |
+          echo "=== Installing site-kit dependencies ==="
+          cd packages/site-kit
+          bun install
+          echo "=== Running site-kit build ==="
+          bun run build
+
+      - name: verify site-kit build
+        run: |
+          if [ -d "packages/site-kit/dist/" ]; then
+            ls -la packages/site-kit/dist/
+            echo "Build files found:"
+            find packages/site-kit/dist/ -type f | head -10
+          else
+            echo "ERROR: dist/ directory not found!"
+            echo "Contents of packages/site-kit/:"
+            ls -la packages/site-kit/
+            exit 1
+          fi
 
       - name: Upload Site-Kit Build
         uses: actions/upload-artifact@v4
@@ -193,6 +268,9 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-node_modules
+
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
 
       - name: download lapikit build
         uses: actions/download-artifact@v4
