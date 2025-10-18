@@ -50,7 +50,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: test lapikit with vitest
-        run: cd packages/lapikit && bun test
+        run: bun --filter lapikit test
 
   lapikit-lint:
     name: lapikit lint
@@ -72,7 +72,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: linter on lapikit
-        run: cd packages/lapikit && bun lint
+        run: bun --filter lapikit lint
 
   lapikit-build:
     name: build lapikit
@@ -94,7 +94,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: build
-        run: cd packages/lapikit && bun run build
+        run: bun --filter lapikit run build
 
       - name: upload lapikit build
         uses: actions/upload-artifact@v4
@@ -122,7 +122,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: test site-kit with vitest
-        run: cd packages/site-kit && bun test
+        run: bun --filter site-kit test
 
   site-kit-lint:
     name: site-kit lint
@@ -144,7 +144,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: linter on site-kit
-        run: cd packages/site-kit && bun lint
+        run: bun --filter site-kit lint
 
   site-kit-build:
     name: site-kit build
@@ -166,7 +166,7 @@ jobs:
             ${{ runner.os }}-node_modules
 
       - name: build
-        run: cd packages/site-kit && bun run build
+        run: bun --filter site-kit run build
 
       - name: Upload Site-Kit Build
         uses: actions/upload-artifact@v4
