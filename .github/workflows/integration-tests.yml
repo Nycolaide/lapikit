@@ -93,8 +93,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: build
         run: bun --cwd packages/lapikit run build
+
+      - name: verify lapikit build
+        run: |
+          ls -la packages/lapikit/dist/
+          echo "Build files found:"
+          find packages/lapikit/dist/ -type f | head -10
 
       - name: upload lapikit build
         uses: actions/upload-artifact@v4
@@ -165,8 +174,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node_modules
 
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
+
       - name: build
         run: bun --cwd packages/site-kit run build
+
+      - name: verify site-kit build
+        run: |
+          ls -la packages/site-kit/dist/
+          echo "Build files found:"
+          find packages/site-kit/dist/ -type f | head -10
 
       - name: Upload Site-Kit Build
         uses: actions/upload-artifact@v4
@@ -193,6 +211,9 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-node_modules
+
+      - name: Install dependencies if cache miss
+        run: bun install --frozen-lockfile
 
       - name: download lapikit build
         uses: actions/download-artifact@v4
