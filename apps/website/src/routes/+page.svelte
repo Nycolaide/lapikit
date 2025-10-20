@@ -50,7 +50,8 @@
 	import Rabbit from '../animations/rabbit.svelte';
 	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
 	import StarMedium from '$lib/images/assets/star-medium.webp?enhanced';
-	import LapinosaureFirstOnTheMoon from '$lib/images/lapinosaure/lapinosaure-first-on-the-moon.webp?enhanced';
+	import Moon from './moon.svelte';
+	// import LapinosaureFirstOnTheMoon from '$lib/images/lapinosaure/lapinosaure-first-on-the-moon.webp?enhanced';
 </script>
 
 <Head
@@ -62,7 +63,7 @@
 	<Legacy {data} />
 {:else}
 	<section>
-		<div class="flex h-[100vh] flex-col">
+		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-72px)]">
 			<!-- <BackgroundAnimationStars /> -->
 
 			<div
@@ -82,13 +83,13 @@
 					</Chip>
 				</div>
 				<div class="grid gap-4">
-					<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
+					<h1 class="text-balance text-4xl font-semibold leading-[102%] lg:max-w-4xl lg:text-7xl">
 						Simple, optimized components for <span style="color: var(--kit-service-svelte);">
 							Svelte
 						</span>
 					</h1>
 					<p
-						class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+						class="mx-auto font-medium leading-[144%] sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
 					>
 						A library of accessible, high-performance, versatile components that let you develop
 						fast, fully customizable interfaces.
@@ -117,7 +118,7 @@
 					</div>
 					<Button
 						id="install-lapikit-command-line"
-						class="mt-2 px-2!"
+						class="px-2! mt-2"
 						variant="text"
 						density="compact"
 						size={{ base: 'sm', md: 'md' }}
@@ -133,22 +134,24 @@
 					</Button>
 				</div>
 			</div>
-			<div class="planet-container">
-				<div class="halo" aria-hidden="true"></div>
-				<div class="planet" aria-hidden="true"></div>
+			<Moon />
+			<!-- <div class="planet-container">
+				<div class="planet" aria-hidden="true"> -->
+			<!-- <div
+						id="lapinosaur-to-the-moon"
+						class="z-3 absolute left-[80vw] top-[40px] h-fit w-[25px] sm:top-[40px] sm:w-[35px] md:-top-[12px] lg:-top-[32px] lg:w-[65px]"
+					> -->
+			<!-- <div id="lapinosaur-to-the-moon">
+						<enhanced:img
+							class="rotate-10 sm:rotate-7 lg:rotate-5 absolute"
+							id="lapikit-on-the-moon"
+							src={LapinosaureFirstOnTheMoon}
+							alt="Lapikit logo on the moon"
+						/>
+					</div>
+				</div>
 				<div class="planet-content" aria-hidden="true"></div>
-				<!-- <div
-					id="lapinosaur-to-the-moon"
-					class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[40px] lg:w-[65px]"
-				>
-					<enhanced:img
-						class="absolute rotate-10 sm:rotate-7 lg:rotate-5"
-						id="lapikit-on-the-moon"
-						src={LapinosaureFirstOnTheMoon}
-						alt="Lapikit logo on the moon"
-					/>
-				</div> -->
-			</div>
+			</div> -->
 		</div>
 	</section>
 	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
@@ -160,7 +163,7 @@
 			</div>
 			<div
 				id="lapinosaure-yolo"
-				class="absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden"
+				class="absolute right-0 mr-20 mt-[130px] h-fit w-[115px] max-lg:hidden"
 			>
 				<!-- <enhanced:img
 					class="absolute -scale-x-[1] rotate-15"
@@ -169,13 +172,13 @@
 					alt="Lapikit logo"
 				/> -->
 				<enhanced:img
-					class="absolute rotate-15"
+					class="rotate-15 absolute"
 					id="lapikit-face-star"
 					src={LapinosaureFace}
 					alt="star on lapikit logo"
 				/>
 				<enhanced:img
-					class="animate-star-yolo absolute top-[80px] -right-[15px] w-[40px] -scale-x-[1] rotate-15"
+					class="animate-star-yolo rotate-15 absolute -right-[15px] top-[80px] w-[40px] -scale-x-[1]"
 					src={StarMedium}
 					alt="star on lapikit logo"
 				/>
@@ -202,13 +205,13 @@
 				</Chip>
 			</div>
 			<div class="grid gap-4">
-				<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
+				<h1 class="text-balance text-4xl font-semibold leading-[102%] lg:max-w-4xl lg:text-7xl">
 					Simple, optimized components for <span style="color: var(--kit-service-svelte);">
 						Svelte
 					</span>
 				</h1>
 				<p
-					class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+					class="mx-auto font-medium leading-[144%] sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
 				>
 					A library of accessible, high-performance, versatile components that let you develop fast,
 					fully customizable interfaces.
@@ -237,7 +240,7 @@
 				</div>
 				<Button
 					id="install-lapikit-command-line"
-					class="mt-2 px-2!"
+					class="px-2! mt-2"
 					variant="text"
 					density="compact"
 					size={{ base: 'sm', md: 'md' }}
@@ -481,7 +484,7 @@
 								<Icon icon={step.icon} />
 							</Button>
 							<p
-								class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto"
+								class="lg:block! absolute hidden w-[50vw] sm:text-lg lg:relative lg:w-auto"
 								class:display-element={stepTimeline === index}
 							>
 								<strong class="font-semibold">{step.title}</strong>
@@ -518,7 +521,7 @@
 					<h2 class="text-2xl font-semibold lg:text-4xl">
 						Discover the features available for your applications
 					</h2>
-					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
+					<p class="text-muted mt-6 text-balance text-left text-base sm:text-lg">
 						Lapikit is a component library that offers a wide range of features to help you build
 						beautiful and functional web applications. Here are some of the features you can take
 						advantage of:
@@ -755,13 +758,13 @@
 	<section id="support-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
-				class="mx-auto grid w-full max-w-(--ui-container) gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
+				class="max-w-(--ui-container) mx-auto grid w-full gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
 			>
 				<div>
 					<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
 						You like <span>Lapikit</span>
 					</h2>
-					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
+					<p class="text-muted mt-6 text-balance text-left text-base sm:text-lg">
 						Lapikit is Free and Open Source under the MIT License. You can help us grow by
 						supporting the project and becoming a sponsor. Every contribution truly makes a
 						difference! As a Lapikit contributor, you’ll gain visibility into the roadmap, have a
@@ -823,7 +826,7 @@
 	<section id="lets-go-explore" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
-				class="mx-auto w-full max-w-(--ui-container) px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-32"
+				class="max-w-(--ui-container) mx-auto w-full px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-32"
 			>
 				<p class="text-2xl font-bold sm:text-3xl lg:text-4xl">Start exploring Lapikit</p>
 				<p class="mt-6 sm:text-lg">Design system, themes, components, all in one lib</p>
@@ -960,6 +963,7 @@
 		position: relative;
 		height: 80px;
 		background: transparent;
+		bottom: 0;
 		/* overflow: hidden; */
 	}
 
@@ -1019,5 +1023,19 @@
 		height: 100vh;
 		min-height: 200px;
 		position: relative;
+	}
+
+	@media (min-width: 1024px) {
+		.planet::before {
+			opacity: 0.35;
+			bottom: -6px;
+		}
+	}
+
+	@media (min-width: 1600px) {
+		.planet::before {
+			opacity: 0.2;
+			bottom: -12px;
+		}
 	}
 </style>
