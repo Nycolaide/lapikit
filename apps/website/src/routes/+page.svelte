@@ -48,6 +48,9 @@
 	import LapikitYoloLogo from '$lib/images/lapikit-yolo.webp?enhanced';
 	import NycolaideAvatar from '$lib/images/nycolaide.png?enhanced';
 	import Rabbit from '../animations/rabbit.svelte';
+	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
+	import StarMedium from '$lib/images/assets/star-medium.webp?enhanced';
+	import LapinosaureFirstOnTheMoon from '$lib/images/lapinosaure/lapinosaure-first-on-the-moon.webp?enhanced';
 </script>
 
 <Head
@@ -58,9 +61,97 @@
 {#if PUBLIC_DEV_MODE != 'true'}
 	<Legacy {data} />
 {:else}
-	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
-		<BackgroundAnimationStars />
+	<section>
+		<div class="flex h-[100vh] flex-col">
+			<!-- <BackgroundAnimationStars /> -->
 
+			<div
+				class="relative mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			>
+				<div>
+					<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
+						{#snippet prepend()}
+							<Chip background="accent-success" density="compact" color="white"
+								><span class="px-2">New 🎉</span></Chip
+							>
+						{/snippet}
+						Lapikit v0.2 is launch
+						{#snippet append()}
+							<Icon size="xl" icon="mgc_arrow_right_line" />
+						{/snippet}
+					</Chip>
+				</div>
+				<div class="grid gap-4">
+					<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
+						Simple, optimized components for <span style="color: var(--kit-service-svelte);">
+							Svelte
+						</span>
+					</h1>
+					<p
+						class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+					>
+						A library of accessible, high-performance, versatile components that let you develop
+						fast, fully customizable interfaces.
+					</p>
+				</div>
+				<div>
+					<div class="flex justify-center gap-3 sm:gap-6">
+						<Button
+							href="/docs/getting-started"
+							background="accent-primary"
+							color="white"
+							size={{ base: 'md', md: 'lg' }}
+							rounded="full"
+						>
+							Get Started
+						</Button>
+						<Button
+							href="/docs/components"
+							variant="outline"
+							color="accent-primary"
+							size={{ base: 'md', md: 'lg' }}
+							rounded="full"
+						>
+							Browse Components
+						</Button>
+					</div>
+					<Button
+						id="install-lapikit-command-line"
+						class="mt-2 px-2!"
+						variant="text"
+						density="compact"
+						size={{ base: 'sm', md: 'md' }}
+						onclick={() => copyToClipboard('npm install -D lapikit')}
+					>
+						{#snippet prepend()}
+							<span>~ </span>
+						{/snippet}
+						<span> npm install -D lapikit </span>
+						{#snippet append()}
+							<Icon class="copy-icon" icon="mgc_copy_2_line" />
+						{/snippet}
+					</Button>
+				</div>
+			</div>
+			<div class="planet-container">
+				<div class="halo" aria-hidden="true"></div>
+				<div class="planet" aria-hidden="true"></div>
+				<div class="planet-content" aria-hidden="true"></div>
+				<!-- <div
+					id="lapinosaur-to-the-moon"
+					class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[40px] lg:w-[65px]"
+				>
+					<enhanced:img
+						class="absolute rotate-10 sm:rotate-7 lg:rotate-5"
+						id="lapikit-on-the-moon"
+						src={LapinosaureFirstOnTheMoon}
+						alt="Lapikit logo on the moon"
+					/>
+				</div> -->
+			</div>
+		</div>
+	</section>
+	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="relative mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
@@ -68,16 +159,27 @@
 				<Rabbit />
 			</div>
 			<div
-				id="lapinosaur-yolo"
-				class="absolute right-0 mt-[130px] mr-20 h-fit w-[135px] max-lg:hidden"
+				id="lapinosaure-yolo"
+				class="absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden"
 			>
-				<enhanced:img
+				<!-- <enhanced:img
 					class="absolute -scale-x-[1] rotate-15"
 					id="lapikit-logo"
 					src={LapikitYoloLogo}
 					alt="Lapikit logo"
+				/> -->
+				<enhanced:img
+					class="absolute rotate-15"
+					id="lapikit-face-star"
+					src={LapinosaureFace}
+					alt="star on lapikit logo"
 				/>
-				<Icon class="animate-star-yolo absolute  mt-[70px] mr-[55px] " icon="mgc_sparkles_fill" />
+				<enhanced:img
+					class="animate-star-yolo absolute top-[80px] -right-[15px] w-[40px] -scale-x-[1] rotate-15"
+					src={StarMedium}
+					alt="star on lapikit logo"
+				/>
+				<!-- <Icon class="animate-star-yolo absolute  mt-[70px] mr-[55px] " icon="mgc_sparkles_fill" /> -->
 			</div>
 
 			<!-- <div
@@ -151,23 +253,23 @@
 				</Button>
 			</div>
 		</div>
-	</section>
 
-	<div class="scene">
-		<div class="planet" aria-hidden="true"></div>
-		<div class="moon" aria-hidden="true"></div>
-		<div
-			id="lapinosaur-to-the-moon"
-			class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[30px] lg:w-[45px]"
-		>
-			<enhanced:img
-				class="absolute -scale-x-[1] rotate-10 sm:rotate-7 lg:rotate-5"
-				id="lapikit-logo"
-				src={LapikitYoloLogo}
-				alt="Lapikit logo"
-			/>
-		</div>
-	</div>
+		<!-- <div class="scene">
+			<div class="planet" aria-hidden="true"></div>
+			<div class="moon" aria-hidden="true"></div>
+			<div
+				id="lapinosaur-to-the-moon"
+				class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[40px] lg:w-[65px]"
+			>
+				<enhanced:img
+					class="absolute rotate-10 sm:rotate-7 lg:rotate-5"
+					id="lapikit-on-the-moon"
+					src={LapinosaureFirstOnTheMoon}
+					alt="Lapikit logo on the moon"
+				/>
+			</div>
+		</div> -->
+	</section>
 
 	<section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
@@ -854,56 +956,68 @@
 		}
 	}
 
-	.scene {
+	.planet-container {
 		position: relative;
-		height: 30vh;
-		width: 100%;
-		overflow: hidden;
+		height: 80px;
+		background: transparent;
+		/* overflow: hidden; */
 	}
+
+	/* .halo {
+		position: absolute;
+		border-radius: 50%;
+		background-color: var(--kit-accent-primary);
+		filter: blur(40px);
+		opacity: 1;
+		pointer-events: none;
+		aspect-ratio: 12 / 1;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 12 / 1;
+	} */
 
 	.planet {
-		border-radius: 50%;
-		background: transparent;
-		z-index: 1;
-		overflow: visible;
+		position: relative;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
 	}
 
-	.moon {
-		border-radius: 50%;
-		background: var(--kit-background-primary);
-		z-index: 2;
-		overflow: visible;
-	}
-
-	.planet,
-	.moon {
+	.planet::after {
+		content: '';
 		position: absolute;
-		top: 60px;
-		width: 300vw;
-		height: 100vh;
-		transform: translateX(calc(-100vw));
-	}
-
-	@media (min-width: 640px) {
-		.planet,
-		.moon {
-			width: 200vw;
-			height: 100vh;
-			transform: translateX(-50vw);
-		}
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		aspect-ratio: 12 / 1;
+		background: var(--kit-background-primary);
+		mask: url('data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none">\<path d="M0,10 C25,0 75,0 100,10 Z" fill="white"/>\</svg>')
+			no-repeat center / cover;
 	}
 
 	.planet::before {
 		content: '';
 		position: absolute;
-		width: 100%;
-		height: 100%;
 		border-radius: 50%;
 		background-color: var(--kit-accent-primary);
 		filter: blur(40px);
-		opacity: 0.95;
+
+		opacity: 0.5;
 		pointer-events: none;
-		z-index: 1;
-		mix-blend-mode: screen;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		aspect-ratio: 12 / 1;
+	}
+
+	.planet-content {
+		background-color: var(--kit-background-primary);
+		width: 100%;
+		height: 100vh;
+		min-height: 200px;
+		position: relative;
 	}
 </style>

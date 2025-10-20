@@ -3,16 +3,13 @@
 	import { browser } from '$app/environment';
 
 	// assets
-	import RocketRabbit from '$lib/images/lapikit-yolo.webp';
-	import Bulle from '$lib/images/assets/bulle.webp';
+	import RocketRabbit from '$lib/images/lapinosaure/lapinosaure-ariane-space.webp';
 
 	// states
-
 	let outerContainer: HTMLDivElement;
 	let innerContainer: HTMLDivElement;
-	let angle = 0;
-	let duration = 4000;
-	let showBubble = false;
+	let angle = $state(0);
+	let duration = $state(4000);
 	let isAnimating = false;
 	let currentState: 'idle' | 'fly' = 'idle';
 
@@ -32,9 +29,7 @@
 		).finished;
 
 		inner.style.transform = `translate(0, -30vh) scale(0.8) rotate(0deg)`;
-		showBubble = true;
 		await new Promise((r) => setTimeout(r, 3000));
-		showBubble = false;
 	}
 
 	async function flyAway() {
@@ -100,11 +95,8 @@
 	<div class="outer-container" bind:this={outerContainer}>
 		<div class="inner-container" bind:this={innerContainer}>
 			<img src={RocketRabbit} alt="Lapin fusée Lapikit" />
-			<div class="trail"></div>
-			<div class="flame"></div>
-			{#if showBubble}
-				<img src={Bulle} alt="Bulle Hello World" class="bubble" />
-			{/if}
+			<div class="flame-left"></div>
+			<div class="flame-right"></div>
 		</div>
 	</div>
 </div>
@@ -152,10 +144,9 @@
 		display: block;
 	}
 
-	.flame {
+	.flame-left,
+	.flame-right {
 		position: absolute;
-		bottom: -20px;
-		left: 50%;
 		width: 12px;
 		height: 40px;
 		background: linear-gradient(to bottom, #ffdc73, #ff930f, #ff3c00);
@@ -163,6 +154,15 @@
 		filter: blur(3px);
 		transform: translateX(-50%);
 		animation: flamePulse 0.5s ease-in-out infinite alternate;
+	}
+	.flame-left {
+		bottom: -48px;
+		left: 18%;
+	}
+
+	.flame-right {
+		left: 53%;
+		bottom: -48px;
 	}
 
 	@keyframes flamePulse {
@@ -178,25 +178,5 @@
 			transform: translateX(-50%) scaleY(1) scaleX(1);
 			opacity: 0.8;
 		}
-	}
-
-	.trail {
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		width: 2px;
-		height: 150px;
-		background: linear-gradient(to top, rgba(255, 255, 255, 0.4), transparent);
-		filter: blur(1px);
-		transform: translateX(-50%);
-	}
-
-	.bubble {
-		position: absolute;
-		top: -50px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 120px;
-		pointer-events: none;
 	}
 </style>
