@@ -774,7 +774,7 @@
 					</Toolbar>
 				</div>
 				<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
-					<enhanced:img src={LapikitLikeYou} alt="Lapikit Like you" class="x-sc" />
+					<enhanced:img src={LapikitLikeYou} alt="Lapikit Like you" class="scale-x-[-1]" />
 				</div>
 			</div>
 		</div>
