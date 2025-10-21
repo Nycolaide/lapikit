@@ -37,11 +37,14 @@
 	import { PUBLIC_DEV_MODE } from '$env/static/public';
 	import HomePreview from '$lib/components/home-preview.svelte';
 
-	import HomepageButtonLapikit from '$lib/components/docs/homepage-button.svelte?raw';
+	import HomepageButtonSvelte from '$lib/components/docs/homepage-button.svelte?raw';
+	import HomepageButtonLapikit from '$lib/components/docs/homepage-button-lapikit.svelte?raw';
 	import HomepageButtonTailwind from '$lib/components/docs/homepage-button-tailwind.svelte?raw';
-	import HomepageCardLapikit from '$lib/components/docs/homepage-card.svelte?raw';
+	import HomepageCardSvelte from '$lib/components/docs/homepage-card.svelte?raw';
+	import HomepageCardLapikit from '$lib/components/docs/homepage-card-lapikit.svelte?raw';
 	import HomepageCardTailwind from '$lib/components/docs/homepage-card-tailwind.svelte?raw';
-	import HomepageModalLapikit from '$lib/components/docs/homepage-modal.svelte?raw';
+	import HomepageModalSvelte from '$lib/components/docs/homepage-modal.svelte?raw';
+	import HomepageModalLapikit from '$lib/components/docs/homepage-modal-lapikit.svelte?raw';
 	import HomepageModalTailwind from '$lib/components/docs/homepage-modal-tailwind.svelte?raw';
 	import Legacy from './(pages)/legacy.svelte';
 	import { BackgroundAnimationStars, scrollAnimation } from '../animations';
@@ -51,7 +54,16 @@
 	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
 	import StarMedium from '$lib/images/assets/star-medium.webp?enhanced';
 	import Moon from './moon.svelte';
+
+	import HomeLapikitComponents from '$lib/images/home/cards/lapikit-components-large.webp?enhanced';
+	import SvelteLapikitIcon from '$lib/images/buttons/svelte-lapikit.webp?enhanced';
+	import SvelteTailwindIcon from '$lib/images/buttons/svelte-tailwindcss.webp?enhanced';
+	import SvelteIcon from '$lib/images/buttons/svelte.webp?enhanced';
 	// import LapinosaureFirstOnTheMoon from '$lib/images/lapinosaure/lapinosaure-first-on-the-moon.webp?enhanced';
+	import StepperCustomizeYourApp from '$lib/images/home/stepper/customize-your-app.webp?enhanced';
+	import StepperImportsComponents from '$lib/images/home/stepper/imports-components.webp?enhanced';
+	import StepperInstallLapikit from '$lib/images/home/stepper/install-lapikit.webp?enhanced';
+	import LapikitLikeYou from '$lib/images/lapinosaure/lapinosaure-like-you.webp?enhanced';
 </script>
 
 <Head
@@ -62,13 +74,34 @@
 {#if PUBLIC_DEV_MODE != 'true'}
 	<Legacy {data} />
 {:else}
-	<section>
+	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-72px)]">
-			<!-- <BackgroundAnimationStars /> -->
+			<BackgroundAnimationStars />
 
 			<div
 				class="relative mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 			>
+				<div class="no-select absolute top-0 mx-auto w-full max-w-[85rem] max-lg:hidden">
+					<Rabbit />
+				</div>
+
+				<div
+					id="lapinosaure-yolo"
+					class="no-select absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden"
+				>
+					<enhanced:img
+						class="absolute -rotate-15"
+						id="lapikit-face-star"
+						src={LapinosaureFace}
+						alt="star on lapikit logo"
+					/>
+					<enhanced:img
+						class="animate-star-yolo absolute top-[80px] -right-[15px] w-[40px] -rotate-30"
+						src={StarMedium}
+						alt="star on lapikit logo"
+					/>
+				</div>
+
 				<div>
 					<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
 						{#snippet prepend()}
@@ -83,13 +116,13 @@
 					</Chip>
 				</div>
 				<div class="grid gap-4">
-					<h1 class="text-balance text-4xl font-semibold leading-[102%] lg:max-w-4xl lg:text-7xl">
+					<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
 						Simple, optimized components for <span style="color: var(--kit-service-svelte);">
 							Svelte
 						</span>
 					</h1>
 					<p
-						class="mx-auto font-medium leading-[144%] sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
+						class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
 					>
 						A library of accessible, high-performance, versatile components that let you develop
 						fast, fully customizable interfaces.
@@ -118,7 +151,7 @@
 					</div>
 					<Button
 						id="install-lapikit-command-line"
-						class="px-2! mt-2"
+						class="mt-2 px-2!"
 						variant="text"
 						density="compact"
 						size={{ base: 'sm', md: 'md' }}
@@ -135,158 +168,27 @@
 				</div>
 			</div>
 			<Moon />
-			<!-- <div class="planet-container">
-				<div class="planet" aria-hidden="true"> -->
-			<!-- <div
-						id="lapinosaur-to-the-moon"
-						class="z-3 absolute left-[80vw] top-[40px] h-fit w-[25px] sm:top-[40px] sm:w-[35px] md:-top-[12px] lg:-top-[32px] lg:w-[65px]"
-					> -->
-			<!-- <div id="lapinosaur-to-the-moon">
-						<enhanced:img
-							class="rotate-10 sm:rotate-7 lg:rotate-5 absolute"
-							id="lapikit-on-the-moon"
-							src={LapinosaureFirstOnTheMoon}
-							alt="Lapikit logo on the moon"
-						/>
-					</div>
-				</div>
-				<div class="planet-content" aria-hidden="true"></div>
-			</div> -->
 		</div>
 	</section>
-	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
-		<div
-			class="relative mx-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
-		>
-			<div class="absolute bottom-[2%] left-[5%] z-0 overflow-visible max-lg:hidden">
-				<Rabbit />
-			</div>
-			<div
-				id="lapinosaure-yolo"
-				class="absolute right-0 mr-20 mt-[130px] h-fit w-[115px] max-lg:hidden"
-			>
-				<!-- <enhanced:img
-					class="absolute -scale-x-[1] rotate-15"
-					id="lapikit-logo"
-					src={LapikitYoloLogo}
-					alt="Lapikit logo"
-				/> -->
-				<enhanced:img
-					class="rotate-15 absolute"
-					id="lapikit-face-star"
-					src={LapinosaureFace}
-					alt="star on lapikit logo"
-				/>
-				<enhanced:img
-					class="animate-star-yolo rotate-15 absolute -right-[15px] top-[80px] w-[40px] -scale-x-[1]"
-					src={StarMedium}
-					alt="star on lapikit logo"
-				/>
-				<!-- <Icon class="animate-star-yolo absolute  mt-[70px] mr-[55px] " icon="mgc_sparkles_fill" /> -->
-			</div>
 
-			<!-- <div
-				class="absolute top-0 left-0 mt-[150px] ml-[20px] max-sm:hidden lg:mt-[262px] xl:ml-[104px]"
-			>
-				<Icon class="animate-cursor absolute -scale-x-[1] text-[2rem]!" icon="mgc_cursor_fill" />
-			</div> -->
-
-			<div>
-				<Chip href="/docs/changelog" variant="outline" density="comfortable" size="lg">
-					{#snippet prepend()}
-						<Chip background="accent-success" density="compact" color="white"
-							><span class="px-2">New 🎉</span></Chip
-						>
-					{/snippet}
-					Lapikit v0.2 is launch
-					{#snippet append()}
-						<Icon size="xl" icon="mgc_arrow_right_line" />
-					{/snippet}
-				</Chip>
-			</div>
-			<div class="grid gap-4">
-				<h1 class="text-balance text-4xl font-semibold leading-[102%] lg:max-w-4xl lg:text-7xl">
-					Simple, optimized components for <span style="color: var(--kit-service-svelte);">
-						Svelte
-					</span>
-				</h1>
-				<p
-					class="mx-auto font-medium leading-[144%] sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg"
-				>
-					A library of accessible, high-performance, versatile components that let you develop fast,
-					fully customizable interfaces.
-				</p>
-			</div>
-			<div>
-				<div class="flex justify-center gap-3 sm:gap-6">
-					<Button
-						href="/docs/getting-started"
-						background="accent-primary"
-						color="white"
-						size={{ base: 'md', md: 'lg' }}
-						rounded="full"
-					>
-						Get Started
-					</Button>
-					<Button
-						href="/docs/components"
-						variant="outline"
-						color="accent-primary"
-						size={{ base: 'md', md: 'lg' }}
-						rounded="full"
-					>
-						Browse Components
-					</Button>
-				</div>
-				<Button
-					id="install-lapikit-command-line"
-					class="px-2! mt-2"
-					variant="text"
-					density="compact"
-					size={{ base: 'sm', md: 'md' }}
-					onclick={() => copyToClipboard('npm install -D lapikit')}
-				>
-					{#snippet prepend()}
-						<span>~ </span>
-					{/snippet}
-					<span> npm install -D lapikit </span>
-					{#snippet append()}
-						<Icon class="copy-icon" icon="mgc_copy_2_line" />
-					{/snippet}
-				</Button>
-			</div>
-		</div>
-
-		<!-- <div class="scene">
-			<div class="planet" aria-hidden="true"></div>
-			<div class="moon" aria-hidden="true"></div>
-			<div
-				id="lapinosaur-to-the-moon"
-				class="absolute top-[40px] left-[80vw] z-3 h-fit w-[25px] sm:top-[40px] sm:w-[35px] lg:top-[40px] lg:w-[65px]"
-			>
-				<enhanced:img
-					class="absolute rotate-10 sm:rotate-7 lg:rotate-5"
-					id="lapikit-on-the-moon"
-					src={LapinosaureFirstOnTheMoon}
-					alt="Lapikit logo on the moon"
-				/>
-			</div>
-		</div> -->
-	</section>
-
-	<section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+	<!-- <section id="lapikit-contains" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 sm:gap-16 sm:px-6 lg:grid lg:px-8"
 		>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-				<Card variant="outline">
-					<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-						<span class="text-xl font-bold">{formatNumber(data.counter?.components || 0)}</span>
-						<div class="grid grid-cols-[1fr_auto] gap-2 text-xl font-light">
-							<p>Components</p>
-							<Button icon>
-								<Icon icon="mgc_arrow_right_line" />
-							</Button>
+				<Card background="red" rounded="xl">
+					<div class="grid grid-cols-2 gap-4 p-4 sm:p-6">
+						<div>
+							<enhanced:img src={HomeLapikitComponents} alt="Creator Lapikit" width="150" />
+						</div>
+						<div class="justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
+							<span class="text-xl font-bold">{formatNumber(data.counter?.components || 0)}</span>
+							<div class="grid grid-cols-[1fr_auto] gap-2 text-xl font-light">
+								<p>Components</p>
+								<Button icon>
+									<Icon icon="mgc_arrow_right_line" />
+								</Button>
+							</div>
 						</div>
 					</div>
 				</Card>
@@ -314,9 +216,13 @@
 				</Card>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
-	<section id="lapikit-possibility" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+	<section
+		id="lapikit-possibility"
+		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
+		class="relative z-1"
+	>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
@@ -355,32 +261,38 @@
 						</p>
 						<Toolbar
 							class="mt-4"
-							classContent="lg:justify-start justify-center gap-3"
+							classContent="md:justify-start justify-center gap-3"
 							background="transparent"
 						>
 							<Button
 								onclick={() => (stepCode = 0)}
 								active={stepCode === 0}
 								rounded="full"
-								background="background-grouped-tertiary"
+								background="accent-primary"
+								color="white"
+								size={{ base: 'sm', md: 'md' }}
 							>
-								Button
+								View Button
 							</Button>
 							<Button
 								onclick={() => (stepCode = 1)}
 								active={stepCode === 1}
 								rounded="full"
-								background="background-grouped-tertiary"
+								background="accent-primary"
+								color="white"
+								size={{ base: 'sm', md: 'md' }}
 							>
-								Card
+								Discover Card
 							</Button>
 							<Button
 								onclick={() => (stepCode = 2)}
 								active={stepCode === 2}
 								rounded="full"
-								background="background-grouped-tertiary"
+								background="accent-primary"
+								color="white"
+								size={{ base: 'sm', md: 'md' }}
 							>
-								Modal
+								Explore Modal
 							</Button>
 						</Toolbar>
 					</div>
@@ -393,24 +305,41 @@
 									: stepCode === 1
 										? HomepageCardLapikit
 										: HomepageButtonLapikit
-								: stepCode === 2
-									? HomepageModalTailwind
-									: stepCode === 1
-										? HomepageCardTailwind
-										: HomepageButtonTailwind}
+								: displayCode === 'tailwindcss'
+									? stepCode === 2
+										? HomepageModalTailwind
+										: stepCode === 1
+											? HomepageCardTailwind
+											: HomepageButtonTailwind
+									: stepCode === 2
+										? HomepageModalSvelte
+										: stepCode === 1
+											? HomepageCardSvelte
+											: HomepageButtonSvelte}
 							noExpandedButton
 							noCopy
 						>
 							{#snippet actions()}
-								<Button
-									onclick={() => (displayCode = 'lapikit')}
-									active={displayCode === 'lapikit'}
-								>
-									Lapikit + Svelte
-								</Button>
-								<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
-									Svelte only
-								</Button>
+								<div class="ml-2 flex gap-2">
+									<Button
+										onclick={() => (displayCode = 'lapikit')}
+										active={displayCode === 'lapikit'}
+									>
+										<enhanced:img src={SvelteLapikitIcon} alt="Lapikit Logo" width="55" />
+									</Button>
+									<Button
+										onclick={() => (displayCode = 'tailwindcss')}
+										active={displayCode === 'tailwindcss'}
+									>
+										<enhanced:img src={SvelteTailwindIcon} alt="TailwindCSS Logo" width="55" />
+									</Button>
+									<Button
+										onclick={() => (displayCode = 'svelte')}
+										active={displayCode === 'svelte'}
+									>
+										<enhanced:img src={SvelteIcon} alt="Svelte Logo" width="20" />
+									</Button>
+								</div>
 							{/snippet}
 						</Sandbox>
 					</div>
@@ -439,15 +368,23 @@
 				class="mt-8 grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
 			>
 				<div>
-					<div class="mx-auto my-0 max-w-[650px]">
+					<div class="mx-auto my-0 max-w-[650px] rounded-lg">
 						{#if stepTimeline === 0}
-							<img src="/images/material-cover.png" alt="Material Cover" />
+							<enhanced:img src={StepperInstallLapikit} alt="Install lapikit" class="rounded-xl" />
 						{/if}
 						{#if stepTimeline === 1}
-							<img src="/images/open-source.webp" alt="Open Source" />
+							<enhanced:img
+								src={StepperImportsComponents}
+								alt="Imports Components"
+								class="rounded-xl"
+							/>
 						{/if}
 						{#if stepTimeline === 2}
-							<img src="/images/preview-component.webp" alt="Preview Component" />
+							<enhanced:img
+								src={StepperCustomizeYourApp}
+								alt="Customize Your App"
+								class="rounded-xl"
+							/>
 						{/if}
 					</div>
 				</div>
@@ -457,11 +394,11 @@
 					<div class="absolute flex gap-7 lg:hidden">
 						{#each stepperToUseComponent as step, index (step)}
 							<Button
-								variant="outline"
 								rounded="full"
 								active={stepTimeline === index}
 								onclick={() => (stepTimeline = index)}
-								background={step.color}
+								background="accent-primary"
+								color="white"
 								icon
 							>
 								<Icon icon={step.icon} />
@@ -474,20 +411,22 @@
 						<li class="align-center flex justify-center lg:flex-col">
 							<Button
 								class="absolute! -mt-[85px]! hidden! lg:mt-0! lg:-ml-[85px]! lg:inline-flex!"
-								variant="outline"
 								rounded="full"
 								active={stepTimeline === index}
 								onclick={() => (stepTimeline = index)}
-								background={step.color}
+								background="accent-primary"
+								color="white"
 								icon
 							>
 								<Icon icon={step.icon} />
 							</Button>
 							<p
-								class="lg:block! absolute hidden w-[50vw] sm:text-lg lg:relative lg:w-auto"
+								class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto"
 								class:display-element={stepTimeline === index}
 							>
-								<strong class="font-semibold">{step.title}</strong>
+								<strong class="font-semibold" style={`color: var(--kit-accent-primary)`}
+									>{step.title}</strong
+								>
 								{step.description}
 							</p>
 						</li>
@@ -498,11 +437,25 @@
 				<div></div>
 				<div></div>
 				<div>
-					<Button density="comfortable" size="lg" href="/docs/components" rounded="full">
+					<Button
+						density="comfortable"
+						size={{ base: 'sm', sm: 'md', md: 'lg' }}
+						href="/docs/components"
+						rounded="full"
+						background="accent-primary"
+						color="white"
+						class="max-sm:flex-col max-sm:p-[36px_29px]!"
+					>
 						Start Building with Lapikit
 
 						{#snippet append()}
-							<Chip class="!px-2" background="accent-info" size="sm" density="compact">
+							<Chip
+								class="!px-2 "
+								size={{ base: 'xs', md: 'sm' }}
+								density="compact"
+								background="white"
+								color="black"
+							>
 								{data.counter?.components || 0} components
 							</Chip>
 						{/snippet}
@@ -521,7 +474,7 @@
 					<h2 class="text-2xl font-semibold lg:text-4xl">
 						Discover the features available for your applications
 					</h2>
-					<p class="text-muted mt-6 text-balance text-left text-base sm:text-lg">
+					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
 						Lapikit is a component library that offers a wide range of features to help you build
 						beautiful and functional web applications. Here are some of the features you can take
 						advantage of:
@@ -572,7 +525,11 @@
 		>
 			<div class="flex items-center gap-4">
 				<div>
-					<Icon icon="mgc_quote_left_line" style="--icon-multiplier-size: 16" />
+					<Icon
+						icon="mgc_quote_left_fill"
+						style="--icon-multiplier-size: 16"
+						color="accent-primary"
+					/>
 				</div>
 				<p class="max-w-[780px] text-center md:text-lg">
 					Lapikit is designed to simplify and streamline the work of front-end developers by
@@ -580,7 +537,11 @@
 					features.
 				</p>
 				<div>
-					<Icon icon="mgc_quote_right_line" style="--icon-multiplier-size: 16" />
+					<Icon
+						icon="mgc_quote_right_fill"
+						style="--icon-multiplier-size: 16"
+						color="accent-primary"
+					/>
 				</div>
 			</div>
 
@@ -695,7 +656,7 @@
 								color="service-discord"
 							/>
 							<div>
-								<span class="text-highlighted text-xl font-semibold">0</span>
+								<span class="text-highlighted text-xl font-semibold">2</span>
 								<p class="text-sm">Members</p>
 							</div>
 						</div>
@@ -758,13 +719,13 @@
 	<section id="support-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
-				class="max-w-(--ui-container) mx-auto grid w-full gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
+				class="mx-auto grid w-full max-w-(--ui-container) gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
 			>
 				<div>
 					<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
 						You like <span>Lapikit</span>
 					</h2>
-					<p class="text-muted mt-6 text-balance text-left text-base sm:text-lg">
+					<p class="text-muted mt-6 text-center text-base text-balance sm:text-lg md:text-left">
 						Lapikit is Free and Open Source under the MIT License. You can help us grow by
 						supporting the project and becoming a sponsor. Every contribution truly makes a
 						difference! As a Lapikit contributor, you’ll gain visibility into the roadmap, have a
@@ -776,7 +737,11 @@
 						All donations and sponsorships will be used exclusively for the development and
 						maintenance of Lapikit.
 					</p>
-					<Toolbar class="mt-8" classContent="justify-start gap-3" background="transparent">
+					<Toolbar
+						class="mt-8"
+						classContent="max-sm:flex-col! sm:justify-center md:justify-start gap-3"
+						background="transparent"
+					>
 						<Button
 							background="service-github"
 							color="service-on-github"
@@ -808,8 +773,8 @@
 						</Button>
 					</Toolbar>
 				</div>
-				<div>
-					<img src="/images/material-cover.png" alt="Material Cover" />
+				<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
+					<enhanced:img src={LapikitLikeYou} alt="Lapikit Like you" class="x-sc" />
 				</div>
 			</div>
 		</div>
@@ -818,7 +783,9 @@
 	<section id="lapikit-is-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div class="grid gap-4 text-center">
-				<p class="text-[1.75rem] font-bold opacity-15">It's not magic, it's Lapikit</p>
+				<p class="text-[1rem] font-bold opacity-15 sm:text-[1.25rem] md:text-[1.75rem]">
+					It's not magic, it's Lapikit
+				</p>
 			</div>
 		</div>
 	</section>
@@ -826,7 +793,7 @@
 	<section id="lets-go-explore" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
-				class="max-w-(--ui-container) mx-auto w-full px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-32"
+				class="mx-auto w-full max-w-(--ui-container) px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-32"
 			>
 				<p class="text-2xl font-bold sm:text-3xl lg:text-4xl">Start exploring Lapikit</p>
 				<p class="mt-6 sm:text-lg">Design system, themes, components, all in one lib</p>
@@ -846,9 +813,9 @@
 			</div>
 		</div>
 	</section>
-{/if}
 
-<Footer />
+	<Footer />
+{/if}
 
 <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}
@@ -860,14 +827,14 @@
 			target={external && '_blank'}
 		>
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
-			{capitalize($t(`navigation.${key}`))}
+			{capitalize(`${key}`)}
 		</BottomNavigationItem>
 	{/each}
 
-	<BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
+	<!-- <BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
 		<Icon icon="mgc_search_2_line" size="xl" />
 		{capitalize($t('navigation.search_bar.button'))}
-	</BottomNavigationItem>
+	</BottomNavigationItem> -->
 </BottomNavigation>
 
 <style>

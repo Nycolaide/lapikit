@@ -4,9 +4,7 @@
 	let path;
 </script>
 
-<div id="moon-section"></div>
-
-<div class="planet-container">
+<div class="planet-container no-select">
 	<!-- SVG Planète -->
 	<div class="wrapper">
 		<svg
@@ -17,8 +15,8 @@
 		>
 			<defs>
 				<filter id="blue-glow" x="-50%" y="-50%" width="200%" height="200%">
-					<feGaussianBlur stdDeviation="1.5" result="blur" />
-					<feFlood flood-color="rgba(0,150,255,0.5)" />
+					<feGaussianBlur stdDeviation="1.8" result="blur" />
+					<feFlood flood-color="rgba(0,150,255,0.8)" />
 					<feComposite in2="blur" operator="in" />
 					<feMerge>
 						<feMergeNode />
@@ -30,6 +28,8 @@
 			<path bind:this={path} d="M0,10 C25,0 75,0 100,10 Z" filter="url(#blue-glow)" />
 		</svg>
 	</div>
+
+	<div class="planet-padding no-select"></div>
 
 	<!-- Lapinosaur -->
 	<div id="lapinosaur-to-the-moon">
@@ -66,7 +66,14 @@
 	}
 
 	.planet-svg path {
-		fill: var(--kit-background-secondary); /* ta couleur de planète */
+		fill: var(--kit-background-primary); /* ta couleur de planète */
+	}
+
+	.planet-padding {
+		position: relative;
+		background-color: var(--kit-background-primary);
+		width: 100%;
+		height: 100px;
 	}
 
 	#lapinosaur-to-the-moon {

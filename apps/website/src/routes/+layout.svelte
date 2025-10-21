@@ -15,8 +15,15 @@
 	import { DevelopmentBar } from '$lib/components';
 	import Header from '$lib/components/header.svelte';
 	import { PUBLIC_DEV_MODE } from '$env/static/public';
+	import { page } from '$app/state';
 
 	let { data, children } = $props();
+
+	let isHome = $state(false);
+
+	$effect(() => {
+		isHome = page.url.pathname === '/';
+	});
 
 	$effect(() => {
 		console.log('API data', data);
@@ -27,7 +34,7 @@
 	<DevelopmentBar />
 
 	{#if PUBLIC_DEV_MODE == 'true'}
-		<Header {data} app />
+		<Header {data} app home={isHome} />
 	{/if}
 
 	{@render children()}

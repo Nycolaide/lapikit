@@ -41,38 +41,58 @@ interface NavigationMain {
 }
 
 export const navigationMain: NavigationMain[] = [
+	// {
+	// 	key: 'docs',
+	// 	path: '/docs/introduction',
+	// 	icon: 'mgc_album_2_line',
+	// 	items: [
+	// 		{
+	// 			key: 'introduction',
+	// 			path: '/docs/introduction'
+	// 		},
+	// 		{
+	// 			key: 'components',
+	// 			path: '/docs/components'
+	// 		},
+	// 		{
+	// 			key: 'actions',
+	// 			path: '/docs/actions'
+	// 		},
+	// 		{
+	// 			key: 'stores',
+	// 			path: '/docs/stores'
+	// 		}
+	// 	]
+	// },
+	// {
+	// 	key: 'components',
+	// 	path: '/docs/components',
+	// 	icon: 'mgc_album_2_line'
+	// },
+	// {
+	// 	key: 'changelog',
+	// 	path: '/docs/changelog',
+	// 	icon: 'mgc_album_2_line'
+	// }
 	{
 		key: 'docs',
 		path: '/docs/introduction',
-		icon: 'mgc_album_2_line',
-		items: [
-			{
-				key: 'introduction',
-				path: '/docs/introduction'
-			},
-			{
-				key: 'components',
-				path: '/docs/components'
-			},
-			{
-				key: 'actions',
-				path: '/docs/actions'
-			},
-			{
-				key: 'stores',
-				path: '/docs/stores'
-			}
-		]
+		icon: 'mgc_package_2_line'
 	},
 	{
 		key: 'components',
 		path: '/docs/components',
-		icon: 'mgc_album_2_line'
+		icon: 'mgc_cube_line'
 	},
 	{
-		key: 'changelog',
-		path: '/docs/changelog',
-		icon: 'mgc_album_2_line'
+		key: 'stores',
+		path: '/docs/stores',
+		icon: 'mgc_restore_line'
+	},
+	{
+		key: 'hooks',
+		path: '/docs/actions',
+		icon: 'mgc_webhook_line'
 	}
 ];
 

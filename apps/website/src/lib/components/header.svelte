@@ -27,11 +27,12 @@
 
 	interface Props {
 		app?: boolean;
+		home?: boolean;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		data?: any;
 	}
 
-	let { app, data, ...rest }: Props = $props();
+	let { app, home, data, ...rest }: Props = $props();
 
 	// states
 	let search: boolean = $state(false);
@@ -98,7 +99,7 @@
 									active={model.open}
 								>
 									<span class="font-semibold">
-										{capitalize($t(`navigation.${key}`))}
+										{capitalize(`${key}`)}
 									</span>
 
 									{#snippet append()}
@@ -115,7 +116,7 @@
 										variant="text"
 										active={page.url.pathname === path}
 									>
-										{capitalize($t(`navigation.${key}`))}
+										{capitalize(`${key}`)}
 									</ListItem>
 								{/each}
 							</List>
@@ -129,7 +130,7 @@
 							variant="text"
 						>
 							<span class="font-semibold">
-								{capitalize($t(`navigation.${key}`))}
+								{capitalize(`${key}`)}
 							</span>
 						</Button>
 					{/if}
@@ -171,7 +172,9 @@
 				</Tooltip>
 			{/if}
 
-			<ThemeToggle icon class="hidden! md:inline-flex!" />
+			{#if !home}
+				<ThemeToggle icon class="hidden! md:inline-flex!" />
+			{/if}
 
 			<Button href={githubUrl} target="_blank" aria-label="GitHub">
 				<Icon icon="mgc_github_line" />

@@ -59,11 +59,14 @@
 			dragPosition = percentage;
 		}
 	}
+
+	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?enhanced';
+	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?enhanced';
 </script>
 
 <div id="hero-media-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 	<div
-		class="container-drag-drop-hero"
+		class="container-drag-drop-hero rounded-lg"
 		bind:this={containerRef}
 		onmousedown={handleMouseDown}
 		ontouchstart={handleTouchStart}
@@ -77,11 +80,12 @@
 		tabindex="0"
 	>
 		<div class="image-background">
-			<img src="/images/material-cover.png" alt="Material cover preview" />
+			<!-- <img src="/images/material-cover.png" alt="Material cover preview" /> -->
+			<enhanced:img src={CarrotMailDark} alt="star on lapikit logo" />
 		</div>
 
 		<div class="image-overlay" style="clip-path: inset(0 {100 - dragPosition}% 0 0);">
-			<img src="/images/videoframe_6051.png" alt="Video frame preview" />
+			<enhanced:img src={CarrotMailLight} alt="star on lapikit logo" />
 		</div>
 
 		<div class="drag-handle" class:dragging={isDragging} style="left: {dragPosition}%;">
@@ -103,13 +107,14 @@
 
 <style>
 	#hero-media-lapikit {
-		--radius-effect: var(--kit-radius-3xl);
 		display: flex;
 		width: 100%;
 		max-width: 1272px;
 		margin: 0 auto;
 		position: relative;
 		height: 100%;
+		border-radius: 30px;
+		overflow: hidden;
 	}
 
 	.container-drag-drop-hero {
@@ -120,7 +125,7 @@
 		cursor: grab;
 		user-select: none;
 		overflow: hidden;
-		border-radius: var(--radius-effect);
+		/* border-radius: 30px; */
 	}
 
 	.container-drag-drop-hero:active {
@@ -138,6 +143,7 @@
 
 	.image-background {
 		z-index: 1;
+		/* border: 3px solid var(--kit-background-primary); */
 	}
 
 	.image-overlay {
@@ -145,8 +151,8 @@
 		overflow: hidden;
 	}
 
-	.image-background img,
-	.image-overlay img {
+	.image-background :global(img),
+	.image-overlay :global(img) {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;

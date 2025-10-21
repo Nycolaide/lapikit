@@ -75,7 +75,7 @@
 											variant="text"
 											active={page.url.pathname === path}
 										>
-											{capitalize($t(`navigation.${key}`))}
+											{capitalize(`${key}`)}
 										</Button>
 									</li>
 								{/if}
