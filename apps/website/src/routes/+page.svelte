@@ -75,11 +75,14 @@
 	<Legacy {data} />
 {:else}
 	<section use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
-		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-72px)]">
+		<div class="flex h-[calc(100vh-72px-30px)] flex-col md:h-[calc(100vh-100px-72px)]">
 			<BackgroundAnimationStars />
 
-			<div
+			<!-- <div
 				class="relative mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 py-16 text-center sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			> -->
+			<div
+				class="relative z-1 mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 text-center sm:gap-16 lg:grid lg:px-8"
 			>
 				<div class="no-select absolute top-0 mx-auto w-full max-w-[85rem] max-lg:hidden">
 					<Rabbit />
@@ -90,13 +93,13 @@
 					class="no-select absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden"
 				>
 					<enhanced:img
-						class="absolute -rotate-15"
+						class="no-select absolute -rotate-15"
 						id="lapikit-face-star"
 						src={LapinosaureFace}
 						alt="star on lapikit logo"
 					/>
 					<enhanced:img
-						class="animate-star-yolo absolute top-[80px] -right-[15px] w-[40px] -rotate-30"
+						class="animate-star-yolo no-select absolute top-[80px] -right-[15px] w-[40px] -rotate-30"
 						src={StarMedium}
 						alt="star on lapikit logo"
 					/>
@@ -227,7 +230,7 @@
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div>
-				<h2 class="text-2xl font-semibold lg:text-4xl">Save time and simplify your code</h2>
+				<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Save time and simplify your code</h2>
 				<p class="mt-6 text-left sm:text-lg">
 					With Lapikit, you can easily create and manage your components, making your development
 					process more efficient.
@@ -256,7 +259,7 @@
 								are consistent from one component to another
 							</li>
 						</ul>
-						<p class="mt-6 italic">
+						<p class="mt-6 italic md:mb-10">
 							Instead of struggling with redundancy, you focus on the experience you want to offer
 						</p>
 						<Toolbar
@@ -325,19 +328,29 @@
 										onclick={() => (displayCode = 'lapikit')}
 										active={displayCode === 'lapikit'}
 									>
-										<enhanced:img src={SvelteLapikitIcon} alt="Lapikit Logo" width="55" />
+										<enhanced:img
+											src={SvelteLapikitIcon}
+											alt="Lapikit Logo"
+											width="55"
+											class="no-select"
+										/>
 									</Button>
 									<Button
 										onclick={() => (displayCode = 'tailwindcss')}
 										active={displayCode === 'tailwindcss'}
 									>
-										<enhanced:img src={SvelteTailwindIcon} alt="TailwindCSS Logo" width="55" />
+										<enhanced:img
+											src={SvelteTailwindIcon}
+											alt="TailwindCSS Logo"
+											width="55"
+											class="no-select"
+										/>
 									</Button>
 									<Button
 										onclick={() => (displayCode = 'svelte')}
 										active={displayCode === 'svelte'}
 									>
-										<enhanced:img src={SvelteIcon} alt="Svelte Logo" width="20" />
+										<enhanced:img src={SvelteIcon} alt="Svelte Logo" width="20" class="no-select" />
 									</Button>
 								</div>
 							{/snippet}
@@ -362,7 +375,9 @@
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
-			<h2 class="text-2xl font-semibold lg:text-4xl">One library for your entire Svelte project</h2>
+			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
+				One library for your entire Svelte project
+			</h2>
 
 			<div
 				class="mt-8 grid grid-cols-1 grid-rows-[1fr_100px_max-content] gap-4 lg:grid-cols-[55%_100px_1fr] lg:grid-rows-1"
@@ -370,20 +385,24 @@
 				<div>
 					<div class="mx-auto my-0 max-w-[650px] rounded-lg">
 						{#if stepTimeline === 0}
-							<enhanced:img src={StepperInstallLapikit} alt="Install lapikit" class="rounded-xl" />
+							<enhanced:img
+								src={StepperInstallLapikit}
+								alt="Install lapikit"
+								class="no-select rounded-xl"
+							/>
 						{/if}
 						{#if stepTimeline === 1}
 							<enhanced:img
 								src={StepperImportsComponents}
 								alt="Imports Components"
-								class="rounded-xl"
+								class="no-select rounded-xl"
 							/>
 						{/if}
 						{#if stepTimeline === 2}
 							<enhanced:img
 								src={StepperCustomizeYourApp}
 								alt="Customize Your App"
-								class="rounded-xl"
+								class="no-select rounded-xl"
 							/>
 						{/if}
 					</div>
@@ -471,7 +490,7 @@
 		>
 			<div>
 				<div>
-					<h2 class="text-2xl font-semibold lg:text-4xl">
+					<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
 						Discover the features available for your applications
 					</h2>
 					<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
@@ -519,9 +538,13 @@
 		</div>
 	</section>
 
-	<section id="creator-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
+	<section
+		id="creator-lapikit"
+		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
+		style="background-color: var(--kit-background-secondary);"
+	>
 		<div
-			class="mx-auto grid w-full max-w-[90rem] items-center justify-center gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto grid w-full max-w-[90rem] items-center justify-center gap-8 px-4 py-16 pb-10! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="flex items-center gap-4">
 				<div>
@@ -558,14 +581,11 @@
 				</div>
 			</div>
 		</div>
-	</section>
 
-	<section id="open-source-project" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
-			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 pt-8! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="flex flex-col gap-4 md:flex-row md:items-stretch">
-				<!-- Colonne gauche -->
 				<div class="flex flex-col gap-4 md:w-1/4">
 					<Card href={npmUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
@@ -603,7 +623,6 @@
 					</Card>
 				</div>
 
-				<!-- Colonne centrale -->
 				<div class="flex md:w-1/2">
 					<Card class="flex-1" background="background-tertiary">
 						<div class="flex h-full flex-col items-center justify-around gap-y-4 p-4 sm:p-6">
@@ -630,7 +649,6 @@
 					</Card>
 				</div>
 
-				<!-- Colonne droite -->
 				<div class="flex flex-col gap-4 md:w-1/4">
 					<Card href={xUrl} target="_blank" background="background-tertiary" class="flex-1">
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
@@ -666,12 +684,18 @@
 		</div>
 	</section>
 
+	<section
+		id="open-source-project"
+		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
+		style="background-color: var(--kit-background-secondary);"
+	></section>
+
 	<section id="go-to-use-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div
 			class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 		>
 			<div class="grid justify-center gap-4 text-center">
-				<h2 class="text-2xl font-semibold lg:text-4xl">Go further</h2>
+				<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Go further</h2>
 				<p class="sm:text-lg">Explore our different starters with different presets.</p>
 
 				<div class="mt-8 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
@@ -719,7 +743,7 @@
 	<section id="support-lapikit" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
 		<div>
 			<div
-				class="mx-auto grid w-full max-w-(--ui-container) gap-8 px-4 py-16 text-center sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
+				class="mx-auto grid w-full max-w-(--ui-container) gap-14 px-4 py-16 text-center sm:gap-8 sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
 			>
 				<div>
 					<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
@@ -774,7 +798,11 @@
 					</Toolbar>
 				</div>
 				<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
-					<enhanced:img src={LapikitLikeYou} alt="Lapikit Like you" class="scale-x-[-1]" />
+					<enhanced:img
+						src={LapikitLikeYou}
+						alt="Lapikit Like you"
+						class="no-select scale-x-[-1]"
+					/>
 				</div>
 			</div>
 		</div>
@@ -817,7 +845,7 @@
 	<Footer />
 {/if}
 
-<BottomNavigation>
+<!-- <BottomNavigation>
 	{#each navigationMain as { key, path, external, icon } (key)}
 		<BottomNavigationItem
 			is="a"
@@ -829,13 +857,13 @@
 			<Icon {icon} size="xl" {path} target={external && '_blank'} />
 			{capitalize(`${key}`)}
 		</BottomNavigationItem>
-	{/each}
+	{/each} -->
 
-	<!-- <BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
+<!-- <BottomNavigationItem is="button" onclick={() => (openSearch = true)} active={openSearch}>
 		<Icon icon="mgc_search_2_line" size="xl" />
 		{capitalize($t('navigation.search_bar.button'))}
 	</BottomNavigationItem> -->
-</BottomNavigation>
+<!-- </BottomNavigation> -->
 
 <style>
 	ul {

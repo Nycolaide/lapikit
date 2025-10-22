@@ -1,46 +1,12 @@
 <script lang="ts">
 	import Head from '$lib/components/head.svelte';
-	import { Appbar, Button } from 'lapikit/components';
-	import { navigationMain } from '$lib/config';
-	import { page } from '$app/state';
-	import { capitalize } from 'site-kit/actions';
-	import { t } from '$lib/i18n';
-	import { ThemeToggle, Footer } from '$lib/components/index.js';
+	import { Footer } from '$lib/components/index.js';
 </script>
 
 <Head
 	title="Terms of Service"
 	description="Read the legal notices and terms of service for using the Lapikit website and services."
 />
-
-<Appbar
-	classContent="flex items-center justify-between lg:grid! lg:grid-cols-3!"
-	density={{ base: 'default', md: 'comfortable' }}
-	background="transparent"
->
-	<p class="text-2xl font-bold">
-		<a href="/">Lapikit</a>
-	</p>
-	<div class="kit-device--h-mobile mr-0 ml-auto flex gap-2 lg:mr-auto">
-		{#each navigationMain as { key, path, external } (key)}
-			<Button
-				href={path}
-				target={external && '_blank'}
-				active={page.url.pathname === path}
-				rounded="full"
-			>
-				{capitalize($t(`navigation.${key}`))}
-			</Button>
-		{/each}
-	</div>
-	<div class="flex justify-end gap-3">
-		<ThemeToggle app />
-
-		<Button href="/docs/getting-started" density="comfortable" id="btn-getstarted-lapikit">
-			{capitalize($t('homepage.top_cta'))}
-		</Button>
-	</div>
-</Appbar>
 
 <div class="markdown mx-auto w-full min-w-0 px-4 py-12 md:max-w-[760px]">
 	<h1 class="title">Legal notices</h1>

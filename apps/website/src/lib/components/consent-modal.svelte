@@ -8,7 +8,7 @@
 		PUBLIC_GOOGLE_TAG_MANAGER_ID
 	} from '$env/static/public';
 	import { t } from '$lib/i18n';
-	import { Button, Icon, Modal, Separator } from 'lapikit/components';
+	import { Button, Icon, Modal } from 'lapikit/components';
 	import { RGPD } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
 
@@ -30,29 +30,44 @@
 	bingID={PUBLIC_BING_WEBMASTER_TOOLS_ID}
 >
 	{#snippet dialog(model: Model)}
-		<Modal bind:open={model.open} size="sm" persistent aria-labelledby="dialog-consent-mode-title">
-			<div class="flex items-center justify-between">
-				<p class="text-lg" id="dialog-consent-mode-title">{capitalize($t('common.gdpr.title'))}</p>
-				<Button onclick={() => model.action('refuse')} size="sm" variant="text">
-					{capitalize($t('common.gdpr.button.decline'))}
-				</Button>
-			</div>
-			<Separator />
-			<div class="mt-4 text-start">
-				<p>{capitalize($t('common.gdpr.description'))}</p>
-			</div>
-			<Separator />
-			<div class="mt-4 flex items-center justify-end gap-2">
-				<Button
-					onclick={() => model.action('accept')}
-					background="on-container"
-					color="container"
-					rounded="full"
-					density="comfortable"
-				>
-					{capitalize($t('common.gdpr.button.accept'))}
-					<Icon icon="mgc_cookie_line" />
-				</Button>
+		<Modal
+			bind:open={model.open}
+			size="sm"
+			persistent
+			aria-labelledby="dialog-consent-mode-title"
+			rounded="xl"
+		>
+			<div class="p-4">
+				<div class="flex items-center justify-between">
+					<p class="text-lg" id="dialog-consent-mode-title">
+						{capitalize($t('common.gdpr.title'))}
+					</p>
+					<Button
+						onclick={() => model.action('refuse')}
+						size="sm"
+						rounded="full"
+						background="background-tertiary"
+					>
+						{capitalize($t('common.gdpr.button.decline'))}
+					</Button>
+				</div>
+
+				<div class="mt-4 text-start">
+					<p>{capitalize($t('common.gdpr.description'))}</p>
+				</div>
+
+				<div class="mt-4 flex items-center justify-end gap-2">
+					<Button
+						onclick={() => model.action('accept')}
+						background="accent-primary"
+						color="white"
+						rounded="full"
+						density="comfortable"
+					>
+						{capitalize($t('common.gdpr.button.accept'))}
+						<Icon icon="mgc_cookie_line" />
+					</Button>
+				</div>
 			</div>
 		</Modal>
 	{/snippet}

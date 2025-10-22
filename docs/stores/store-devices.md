@@ -7,7 +7,6 @@ head:
 state:
   section: stores
   published: true
-  status: "new"
 github:
   url: /stores/store-devices.md
 ---

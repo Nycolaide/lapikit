@@ -10,7 +10,6 @@ style:
 state:
   section: components
   published: true
-  status: "new"
 github:
   url: /components/textfield.md
 ---

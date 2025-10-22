@@ -7,7 +7,6 @@ head:
 state:
   section: actions
   published: true
-  status: "new"
 github:
   url: /actions/use-theme.md
 ---

@@ -75,7 +75,7 @@
 											variant="text"
 											active={page.url.pathname === path}
 										>
-											{capitalize(`${key}`)}
+											{capitalize(`${key}`).replaceAll('_', ' ')}
 										</Button>
 									</li>
 								{/if}

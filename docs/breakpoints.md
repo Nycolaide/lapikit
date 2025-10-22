@@ -11,7 +11,6 @@ state:
   published: true
   recommended: true
   order: 2
-  status: "updated"
 github:
   url: /breakpoints.md
 keywords:

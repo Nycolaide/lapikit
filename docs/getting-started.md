@@ -12,7 +12,6 @@ state:
   published: true
   recommended: true
   order: 1
-  status: "updated"
 github:
   url: /getting-started.md
 keywords:

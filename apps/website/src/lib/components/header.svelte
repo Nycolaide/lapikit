@@ -16,25 +16,30 @@
 		Icon,
 		List,
 		ListItem,
+		Separator,
+		Toolbar,
 		Tooltip
 	} from 'lapikit/components';
 	import ThemeToggle from './theme-toggle.svelte';
-	import Search from './search/search.svelte';
+	import Search from './search.svelte';
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
 	import { githubUrl, navigationMain } from '$lib/config';
+	import { DrawerNavigation } from 'site-kit';
 
 	interface Props {
 		app?: boolean;
 		home?: boolean;
+		docs?: boolean;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		data?: any;
 	}
 
-	let { app, home, data, ...rest }: Props = $props();
+	let { app, home, data, docs, ...rest }: Props = $props();
 
 	// states
+	let openDrawer: boolean = $state(false);
 	let search: boolean = $state(false);
 	let scrolled: boolean = $state(false);
 	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
@@ -63,19 +68,36 @@
 	function handleScroll() {
 		scrolled = window.scrollY > 20;
 	}
+
+	function handleDrawerToggle() {
+		openDrawer = !openDrawer;
+		if (browser) {
+			document.body.style.overflow = openDrawer ? 'hidden' : '';
+		}
+	}
+
+	$effect(() => {
+		if ($viewport.innerWidth >= $breakpoints.md) {
+			if (browser && openDrawer) {
+				document.body.style.overflow = '';
+			}
+
+			openDrawer = false;
+		}
+	});
 </script>
 
 {#if app}
 	<Appbar
 		class="sticky top-0 z-100"
-		classContent=" mx-auto flex w-full max-w-[90rem] items-center justify-between grid md:grid-cols-3"
+		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
 		background={scrolled ? 'background-primary' : 'transparent'}
 		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
 			<a href="/">
 				<div class="flex items-center gap-2">
-					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" />
+					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" class="no-select" />
 					<h1 class="text-2xl font-bold">Lapikit</h1>
 				</div>
 			</a>
@@ -180,6 +202,10 @@
 				<Icon icon="mgc_github_line" />
 				{formatNumber(data?.npm?.downloads || 0)}
 			</Button>
+
+			<Button class="md:hidden!" onclick={() => handleDrawerToggle()} icon>
+				<Icon icon="mgc_menu_line" />
+			</Button>
 		</div>
 	</Appbar>
 {:else}
@@ -191,7 +217,7 @@
 		<div class="flex items-center justify-start gap-2">
 			<a href="/">
 				<div class="flex items-center gap-2">
-					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" />
+					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" class="no-select" />
 					<h1 class="text-2xl font-bold">Lapikit</h1>
 					<span class="text-2xl font-bold" style="color: var(--kit-accent-primary)">Docs</span>
 				</div>
@@ -230,6 +256,57 @@
 {/if}
 
 <Search bind:open={search} />
+
+<DrawerNavigation bind:open={openDrawer}>
+	<Toolbar background="transparent" density="comfortable" classContent="justify-between gap-4">
+		<a href="/">
+			<div class="flex items-center gap-2">
+				<enhanced:img src={LapikitLogo} alt="Lapikit logo" class="no-select w-[30px]" />
+				<h1 class="text-1xl font-bold">Lapikit</h1>
+			</div>
+		</a>
+
+		<div>
+			<Button icon onclick={() => (openDrawer = false)}>
+				<Icon icon="mgc_close_line" />
+			</Button>
+		</div>
+	</Toolbar>
+	<Separator />
+	<div>
+		{#each navigationMain as { key, path, external, items } (key)}
+			{#if items}
+				<List nav density="compact" variant="text">
+					<ListItem class="font-semibold">
+						{capitalize(`${key}`)}
+					</ListItem>
+
+					{#each items as { key, path, external } (key)}
+						<ListItem
+							href={path}
+							target={external ? '_blank' : ''}
+							onclick={() => handleDrawerToggle()}
+							active={page.url.pathname === path}
+						>
+							{capitalize(`${key}`)}
+						</ListItem>
+					{/each}
+				</List>
+			{:else}
+				<List nav density="compact" variant="text">
+					<ListItem
+						href={path}
+						target={external ? '_blank' : ''}
+						onclick={() => handleDrawerToggle()}
+						active={page.url.pathname === path}
+					>
+						{capitalize(`${key}`)}
+					</ListItem>
+				</List>
+			{/if}
+		{/each}
+	</div>
+</DrawerNavigation>
 
 <style>
 	#lapikit-logo {

@@ -35,7 +35,7 @@
 	<div id="lapinosaur-to-the-moon">
 		<!-- style={`transform: translate(${lapinX}px, ${lapinY}px) rotate(${lapinAngle}deg);`} -->
 		<enhanced:img
-			class="lapin"
+			class="lapin no-select"
 			id="lapikit-on-the-moon"
 			src={LapinosaureFirstOnTheMoon}
 			alt="Lapinosaur on the moon"
@@ -50,23 +50,24 @@
 	}
 
 	.planet-container {
-		position: relative;
+		position: absolute;
 		width: 100%;
 		height: 100px;
+		bottom: 0;
 	}
 
 	.planet-svg {
 		width: 110%;
 		min-width: 1024px;
-		height: 100px; /* ou 100% du parent */
-		position: relative; /* plus absolute */
-		display: block; /* évite les marges inline */
+		height: 100px;
+		position: relative;
+		display: block;
 		transform: translateX(-50%);
 		left: 50%;
 	}
 
 	.planet-svg path {
-		fill: var(--kit-background-primary); /* ta couleur de planète */
+		fill: var(--kit-background-primary);
 	}
 
 	.planet-padding {

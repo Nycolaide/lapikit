@@ -20,9 +20,11 @@
 	let { data, children } = $props();
 
 	let isHome = $state(false);
+	let isDocs = $state(false);
 
 	$effect(() => {
 		isHome = page.url.pathname === '/';
+		isDocs = page.url.pathname.startsWith('/docs/');
 	});
 
 	$effect(() => {
@@ -30,12 +32,21 @@
 	});
 </script>
 
-<App>
-	<DevelopmentBar />
+<div class:kit-theme--dark={isHome}>
+	<App>
+		<DevelopmentBar />
 
-	{#if PUBLIC_DEV_MODE == 'true'}
-		<Header {data} app home={isHome} />
-	{/if}
+		{#if PUBLIC_DEV_MODE == 'true'}
+			<Header {data} app home={isHome} docs={isDocs} />
+		{/if}
 
-	{@render children()}
-</App>
+		{@render children()}
+	</App>
+</div>
+
+<style>
+	div {
+		background-color: var(--kit-background-primary);
+		color: var(--kit-label-primary);
+	}
+</style>

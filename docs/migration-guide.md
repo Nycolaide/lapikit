@@ -11,7 +11,6 @@ state:
   published: true
   recommended: false
   order: 4
-  status: new
 github:
   url: /migration-guide.md
 ---

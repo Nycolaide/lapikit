@@ -2,19 +2,18 @@
 	import { browser } from '$app/environment';
 	import { t } from '$lib/i18n';
 	import { page as url } from '$app/state';
-	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
+	import { Button, Chip, Icon, List, ListItem } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
 
 	// modules
-	import { SearchBar, Search, ThemeToggle, ReturnTopPage } from '$lib/components/index.js';
+	import { ReturnTopPage } from '$lib/components/index.js';
 	import { PageTransition } from '../../animations/index.js';
 
 	let { children, data } = $props();
 
 	// states
 	let open = $state(false);
-	let openSearch = $state(false);
 	let sizeWidthScreen = $state(0);
 	let selectedSection = $state<number | null>(null);
 	let navigationRoutes = $state(data.routes || []);
@@ -56,30 +55,6 @@
 </script>
 
 <svelte:window bind:innerWidth={sizeWidthScreen} />
-
-<Appbar density={{ base: 'default', md: 'comfortable' }} class="z-100 sticky top-0 w-full">
-	<a href="/">
-		<p class="text-2xl font-bold">Lapikit</p>
-	</a>
-
-	<Spacer />
-
-	<div>
-		<SearchBar bind:open={openSearch} />
-		<ThemeToggle />
-		<Button
-			icon
-			background="service-github"
-			color="service-on-github"
-			href="https://github.com/Nycolaide/lapikit"
-			target="_blank"
-		>
-			<Icon icon="mgc_github_line" />
-		</Button>
-	</div>
-</Appbar>
-
-<Search bind:open={openSearch} />
 
 <Drawer bind:open>
 	{#snippet navigation()}
@@ -176,7 +151,7 @@
 		size="xl"
 		density="comfortable"
 		rounded="lg"
-		class="kit-device--h-desktop fixed! z-1100 bottom-[0.75rem] right-[0.75rem]"
+		class="kit-device--h-desktop fixed! right-[0.75rem] bottom-[0.75rem] z-1100"
 		background="on-container"
 		color="container"
 	>

@@ -81,7 +81,7 @@
 	>
 		<div class="image-background">
 			<!-- <img src="/images/material-cover.png" alt="Material cover preview" /> -->
-			<enhanced:img src={CarrotMailDark} alt="star on lapikit logo" />
+			<enhanced:img src={CarrotMailDark} alt="star on lapikit logo" class="no-select" />
 		</div>
 
 		<div class="image-overlay" style="clip-path: inset(0 {100 - dragPosition}% 0 0);">
