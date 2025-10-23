@@ -17,6 +17,7 @@
 		List,
 		ListItem,
 		Separator,
+		Spacer,
 		Toolbar,
 		Tooltip
 	} from 'lapikit/components';
@@ -25,7 +26,7 @@
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
-	import { githubUrl, navigationMain, packageManagers } from '$lib/config';
+	import { githubDiscussionsUrl, githubUrl, navigationMain, packageManagers } from '$lib/config';
 	import { DrawerNavigation } from 'site-kit';
 
 	interface Props {
@@ -99,7 +100,7 @@
 
 {#if app && !docs}
 	<Appbar
-		class="sticky top-0 z-100"
+		class="z-100 sticky top-0"
 		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
 		background={scrolled ? 'background-primary' : 'transparent'}
 		{...rest}
@@ -220,9 +221,9 @@
 	</Appbar>
 {:else if docs}
 	<Appbar
-		class="sticky top-0 z-100"
+		class="z-100 sticky top-0"
 		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
-		background={scrolled ? 'background-primary' : 'transparent'}
+		background="background-primary"
 		{...rest}
 	>
 		<div class="flex items-center justify-start gap-2">
@@ -348,9 +349,10 @@
 		</div>
 	</Appbar>
 	<Toolbar
-		class="sticky top-[64px] z-100 hidden! lg:flex!"
+		class="z-95 hidden! lg:flex! sticky top-[64px]"
 		classContent="mx-auto mx-1! gap-2"
 		rounded="0"
+		background="background-primary"
 	>
 		{#if $viewport.innerWidth >= $breakpoints.md}
 			{#each navigationMain as { key, path, external, icon } (key)}
@@ -369,10 +371,19 @@
 				</Button>
 			{/each}
 		{/if}
+
+		<Spacer />
+
+		<Button href={githubDiscussionsUrl} target="_blank" variant="text">
+			Feedback
+			{#snippet prepend()}
+				<Icon icon="mgc_light_line" class="rotate-180" />
+			{/snippet}
+		</Button>
 	</Toolbar>
 {:else}
 	<Appbar
-		class="sticky top-0 z-100"
+		class="z-100 sticky top-0"
 		classContent="items-center justify-between grid grid-cols-[auto_auto]"
 		{...rest}
 	>
