@@ -20,15 +20,15 @@ export const xUrl: string = 'https://x.com/lapikit';
 export const packageManagers: { name: string; icon: string }[] = [
 	{
 		name: 'npm',
-		icon: 'mdi:npm'
+		icon: '/icons/npm-color.svg'
 	},
 	{
 		name: 'yarn',
-		icon: 'mdi:yarn'
+		icon: '/icons/yarn-color.svg'
 	},
 	{
 		name: 'bun',
-		icon: 'mdi:bun'
+		icon: '/icons/bun-color.svg'
 	}
 ];
 

@@ -78,29 +78,42 @@
 	});
 </script>
 
-<Modal bind:open closeWithEsc position="top" rounded="xl" classContent="top-8! sm:top-16!">
-	<Textfield bind:value={searchQuery} clearable placeholder={capitalize('search...')}>
+<Modal
+	bind:open
+	closeWithEsc
+	position="top"
+	rounded="xl"
+	classContent="top-8! sm:top-16! min-h-[72px]!"
+>
+	<Textfield
+		id="search-input"
+		bind:value={searchQuery}
+		clearable
+		placeholder={capitalize('search...')}
+	>
 		{#snippet appendInner()}
 			<Icon icon="mgc_search_line" />
 		{/snippet}
 	</Textfield>
 
-	<div class="mt-[-23px] mb-2 flex items-center justify-between">
-		<div class="ml-2 text-sm opacity-50">
-			{#if searchQuery !== '' && searchQuery}
-				{$results.length} results
+	{#if searchQuery || historyResults.length > 0}
+		<div class="mb-2 flex items-center justify-between">
+			<div class="ml-2 text-sm opacity-50">
+				{#if searchQuery !== '' && searchQuery}
+					{$results.length} results
+				{/if}
+			</div>
+
+			{#if historyResults.length > 0 && (searchQuery === '' || !searchQuery)}
+				<Chip onclick={() => clearHistory()} size="sm" class="px-2!">
+					{#snippet prepend()}
+						<Icon icon="mgc_delete_3_line" />
+					{/snippet}
+					Clear
+				</Chip>
 			{/if}
 		</div>
-
-		{#if historyResults.length > 0 && (searchQuery === '' || !searchQuery)}
-			<Chip onclick={() => clearHistory()} size="sm" class="px-2!">
-				{#snippet prepend()}
-					<Icon icon="mgc_delete_3_line" />
-				{/snippet}
-				Clear
-			</Chip>
-		{/if}
-	</div>
+	{/if}
 
 	<div class="max-h-[40vh] w-full overflow-y-auto">
 		<List>
@@ -137,3 +150,9 @@
 		</List>
 	</div>
 </Modal>
+
+<style>
+	:global(#search-input .kit-textfield-message) {
+		display: none;
+	}
+</style>

@@ -4,6 +4,7 @@ import { writable, readable } from 'svelte/store';
 
 // internal
 export const developmentMode = writable(PUBLIC_DEV_MODE == 'true' ? true : false);
+export const packageManager = writable('npm');
 
 // user device
 export const deviceUsed = readable('other', (set) => {

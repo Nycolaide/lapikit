@@ -5,7 +5,7 @@
 	import { browser } from '$app/environment';
 	import { breakpoints, viewport } from 'lapikit/stores';
 	import { capitalize, formatNumber } from 'site-kit/actions';
-	import { deviceUsed } from '$lib/stores/app.js';
+	import { deviceUsed, packageManager } from '$lib/stores/app.js';
 
 	//components
 	import {
@@ -25,7 +25,7 @@
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
-	import { githubUrl, navigationMain } from '$lib/config';
+	import { githubUrl, navigationMain, packageManagers } from '$lib/config';
 	import { DrawerNavigation } from 'site-kit';
 
 	interface Props {
@@ -43,6 +43,10 @@
 	let search: boolean = $state(false);
 	let scrolled: boolean = $state(false);
 	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
+
+	let settingsDropdownRef: HTMLDivElement | null = $state(null);
+	let settingsDropdownOpen: boolean = $state(false);
+	let settingsDropdownSection: string | undefined = $state(undefined);
 
 	onMount(() => {
 		if (browser) {
@@ -85,9 +89,15 @@
 			openDrawer = false;
 		}
 	});
+
+	$effect(() => {
+		if (settingsDropdownOpen === false) {
+			settingsDropdownSection = undefined;
+		}
+	});
 </script>
 
-{#if app}
+{#if app && !docs}
 	<Appbar
 		class="sticky top-0 z-100"
 		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
@@ -208,6 +218,158 @@
 			</Button>
 		</div>
 	</Appbar>
+{:else if docs}
+	<Appbar
+		class="sticky top-0 z-100"
+		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
+		background={scrolled ? 'background-primary' : 'transparent'}
+		{...rest}
+	>
+		<div class="flex items-center justify-start gap-2">
+			<a href="/">
+				<div class="flex items-center gap-2">
+					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" class="no-select" />
+					<h1 class="text-2xl font-bold">Lapikit</h1>
+				</div>
+			</a>
+
+			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
+				{`v${data?.npm?.version || '0.0.0'}`}
+			</a>
+		</div>
+
+		<div>
+			{#if $viewport.innerWidth >= $breakpoints.lg}
+				<Button
+					onclick={() => (search = !search)}
+					aria-label="Search"
+					background="background-tertiary"
+					rounded="full"
+					class="grid! min-w-[320px] grid-cols-[auto_1fr_auto] gap-2"
+				>
+					{#snippet prepend()}
+						<Icon icon="mgc_search_line" />
+
+						{capitalize($t('navigation.search_bar.button'))}
+					{/snippet}
+
+					{#snippet append()}
+						<Chip size="sm" density="compact" rounded="full" class="px-2!">
+							{#if $deviceUsed === 'apple'}
+								⌘ + K
+							{:else}
+								ctrl + K
+							{/if}
+						</Chip>
+					{/snippet}
+				</Button>
+			{/if}
+		</div>
+
+		<div class="flex items-center justify-end gap-2">
+			{#if $viewport.innerWidth < $breakpoints.lg}
+				<Tooltip
+					label={capitalize($t('navigation.open-search')) +
+						($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
+					placement="bottom"
+				>
+					<Button icon onclick={() => (search = !search)} aria-label="Search">
+						<Icon icon="mgc_search_line" />
+					</Button>
+				</Tooltip>
+			{/if}
+
+			<ThemeToggle icon class="hidden! md:inline-flex!" />
+
+			<Dropdown open={settingsDropdownOpen}>
+				{#snippet activator(model)}
+					<Button
+						bind:ref={settingsDropdownRef}
+						onclick={() => model.toggle(settingsDropdownRef)}
+						icon
+					>
+						<Icon icon={model.open ? 'mgc_settings_3_fill' : 'mgc_settings_3_line'} />
+					</Button>
+				{/snippet}
+				<List>
+					{#if settingsDropdownSection === 'packageManager'}
+						{#each packageManagers as pm (pm.name)}
+							<ListItem
+								onclick={() => {
+									packageManager.set(pm.name);
+									settingsDropdownSection = undefined;
+								}}
+							>
+								{capitalize(pm.name)}
+
+								{#snippet prepend()}
+									{#if $packageManager === pm.name}
+										<Icon icon="mgc_round_fill" color="accent-success" />
+									{:else}
+										<Icon icon="mgc_round_line" />
+									{/if}
+								{/snippet}
+
+								{#snippet append()}
+									<Icon icon={pm.icon} />
+								{/snippet}
+							</ListItem>
+						{/each}
+					{:else}
+						<ListItem onclick={() => (settingsDropdownSection = 'packageManager')}>
+							{#snippet append()}
+								{#each packageManagers as pm (pm.name)}
+									{#if $packageManager === pm.name}
+										<Icon icon={pm.icon} />
+									{/if}
+								{/each}
+							{/snippet}
+							{#each packageManagers as pm (pm.name)}
+								{#if $packageManager === pm.name}
+									{capitalize(pm.name)}
+								{/if}
+							{/each}
+							{#snippet prepend()}
+								<Icon icon="mgc_right_line" />
+							{/snippet}
+						</ListItem>
+					{/if}
+				</List>
+			</Dropdown>
+
+			<Button href={githubUrl} target="_blank" aria-label="GitHub">
+				<Icon icon="mgc_github_line" />
+				{formatNumber(data?.npm?.downloads || 0)}
+			</Button>
+
+			<Button class="md:hidden!" onclick={() => handleDrawerToggle()} icon>
+				<Icon icon="mgc_menu_line" />
+			</Button>
+		</div>
+	</Appbar>
+	<Toolbar
+		class="sticky top-[64px] z-100 hidden! lg:flex!"
+		classContent="mx-auto mx-1! gap-2"
+		rounded="0"
+	>
+		{#if $viewport.innerWidth >= $breakpoints.md}
+			{#each navigationMain as { key, path, external, icon } (key)}
+				<Button
+					href={path}
+					target={external && '_blank'}
+					active={page.url.pathname === path}
+					variant="text"
+				>
+					{#snippet prepend()}
+						<Icon {icon} />
+					{/snippet}
+					<span>
+						{capitalize(`${key}`)}
+					</span>
+				</Button>
+			{/each}
+		{/if}
+	</Toolbar>
 {:else}
 	<Appbar
 		class="sticky top-0 z-100"
