@@ -5,7 +5,7 @@
 	import { browser } from '$app/environment';
 	import { breakpoints, viewport } from 'lapikit/stores';
 	import { capitalize, formatNumber } from 'site-kit/actions';
-	import { deviceUsed, packageManager } from '$lib/stores/app.js';
+	import { deviceUsed } from '$lib/stores/app.js';
 
 	//components
 	import {
@@ -26,7 +26,7 @@
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
-	import { githubDiscussionsUrl, githubUrl, navigationMain, packageManagers } from '$lib/config';
+	import { githubDiscussionsUrl, githubUrl, navigationMain } from '$lib/config';
 	import { DrawerNavigation } from 'site-kit';
 
 	interface Props {
@@ -45,9 +45,9 @@
 	let scrolled: boolean = $state(false);
 	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
 
-	let settingsDropdownRef: HTMLDivElement | null = $state(null);
-	let settingsDropdownOpen: boolean = $state(false);
-	let settingsDropdownSection: string | undefined = $state(undefined);
+	// let settingsDropdownRef: HTMLDivElement | null = $state(null);
+	// let settingsDropdownOpen: boolean = $state(false);
+	// let settingsDropdownSection: string | undefined = $state(undefined);
 
 	onMount(() => {
 		if (browser) {
@@ -91,16 +91,16 @@
 		}
 	});
 
-	$effect(() => {
-		if (settingsDropdownOpen === false) {
-			settingsDropdownSection = undefined;
-		}
-	});
+	// $effect(() => {
+	// 	if (settingsDropdownOpen === false) {
+	// 		settingsDropdownSection = undefined;
+	// 	}
+	// });
 </script>
 
 {#if app && !docs}
 	<Appbar
-		class="z-100 sticky top-0"
+		class="sticky top-0 z-100"
 		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
 		background={scrolled ? 'background-primary' : 'transparent'}
 		{...rest}
@@ -221,7 +221,7 @@
 	</Appbar>
 {:else if docs}
 	<Appbar
-		class="z-100 sticky top-0"
+		class="sticky top-0 z-100"
 		classContent={`mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 ${!docs && 'max-w-[95%]'}`}
 		background="background-primary"
 		{...rest}
@@ -282,7 +282,7 @@
 
 			<ThemeToggle icon class="hidden! md:inline-flex!" />
 
-			<Dropdown open={settingsDropdownOpen}>
+			<!-- <Dropdown open={settingsDropdownOpen}>
 				{#snippet activator(model)}
 					<Button
 						bind:ref={settingsDropdownRef}
@@ -336,7 +336,7 @@
 						</ListItem>
 					{/if}
 				</List>
-			</Dropdown>
+			</Dropdown> -->
 
 			<Button href={githubUrl} target="_blank" aria-label="GitHub">
 				<Icon icon="mgc_github_line" />
@@ -349,7 +349,7 @@
 		</div>
 	</Appbar>
 	<Toolbar
-		class="z-95 hidden! lg:flex! sticky top-[64px]"
+		class="sticky top-[64px] z-95 hidden! lg:flex!"
 		classContent="mx-auto mx-1! gap-2"
 		rounded="0"
 		background="background-primary"
@@ -383,7 +383,7 @@
 	</Toolbar>
 {:else}
 	<Appbar
-		class="z-100 sticky top-0"
+		class="sticky top-0 z-100"
 		classContent="items-center justify-between grid grid-cols-[auto_auto]"
 		{...rest}
 	>

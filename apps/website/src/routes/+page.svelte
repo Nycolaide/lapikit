@@ -48,7 +48,6 @@
 	import HomepageModalTailwind from '$lib/components/docs/homepage-modal-tailwind.svelte?raw';
 	import Legacy from './(pages)/legacy.svelte';
 	import { BackgroundAnimationStars, scrollAnimation } from '../animations';
-	import LapikitYoloLogo from '$lib/images/lapikit-yolo.webp?enhanced';
 	import NycolaideAvatar from '$lib/images/nycolaide.png?enhanced';
 	import Rabbit from '../animations/rabbit.svelte';
 	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
@@ -64,6 +63,7 @@
 	import StepperImportsComponents from '$lib/images/home/stepper/imports-components.webp?enhanced';
 	import StepperInstallLapikit from '$lib/images/home/stepper/install-lapikit.webp?enhanced';
 	import LapikitLikeYou from '$lib/images/lapinosaure/lapinosaure-like-you.webp?enhanced';
+	import LapinosaureExpertLapikit from '$lib/images/lapinosaure/lapinosaure-expert-lapikit.webp?enhanced';
 </script>
 
 <Head
@@ -95,7 +95,7 @@
 					<enhanced:img
 						class="no-select absolute -rotate-15"
 						id="lapikit-face-star"
-						src={LapinosaureFace}
+						src={LapinosaureExpertLapikit}
 						alt="star on lapikit logo"
 					/>
 					<enhanced:img
