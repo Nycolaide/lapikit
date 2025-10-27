@@ -12,6 +12,7 @@
 		"build:navigation": "node src/lib/scripts/build-navigation-data.mjs",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
+		"prepare:docs": "node --import tsx scripts/sync-docs/index.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
