@@ -1,4 +1,20 @@
 import { PUBLIC_CALL_API_ENABLED } from '$env/static/public';
+import type { NavigationLink, NavDocsData } from '$lib/types';
+import { buildNavigationFromDocs } from '$lib/utils/navigation';
+
+// datas
+import navDocsRaw from '$lib/data/nav-docs.json';
+
+export const prerender = true;
+
+const navDocs = navDocsRaw as NavDocsData;
+
+const docsNavigation = buildNavigationFromDocs(navDocs.files);
+
+const nav_links: NavigationLink[] = [
+	{ title: 'Home', slug: '/' },
+	{ title: 'Docs', slug: '/docs', sections: docsNavigation }
+];
 
 export async function load({ fetch }) {
 	const res = await fetch('/api/content/counter');
@@ -22,6 +38,7 @@ export async function load({ fetch }) {
 	}
 
 	return {
+		nav_links,
 		counter,
 		...responseExternalAPI
 	};

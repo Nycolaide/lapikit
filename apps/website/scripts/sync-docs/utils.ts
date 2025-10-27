@@ -153,7 +153,7 @@ export function processMarkdownFiles(dirPath: string, manifestOutputPath: string
 	// Write the manifest.json file
 	fs.writeFileSync(manifestOutputPath, JSON.stringify(manifest, null, 2), 'utf-8');
 
-	console.log(`\n📦 Manifest created: ${manifestOutputPath}`);
+	console.log(`\n📦 Navigation docs file created: ${manifestOutputPath}`);
 	console.log(`📊 Total files processed: ${manifest.totalFiles}`);
 	console.log('✨ Metadata extraction completed!');
 }

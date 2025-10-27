@@ -9,6 +9,8 @@ node_modules
 /.svelte-kit
 /build
 /src/content
+/src/lib/data
+
 
 # OS
 .DS_Store
