@@ -1,3 +1,14 @@
+#kit-app,
+.kit-application {
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+	line-height: 1.5;
+	box-sizing: border-box;
+	font-family: var(--kit-font-sans);
+	background-color: var(--kit-background-primary);
+	color: var(--kit-label-primary);
+}
+
 .kit-overlay {
 	position: fixed;
 	top: 0;
