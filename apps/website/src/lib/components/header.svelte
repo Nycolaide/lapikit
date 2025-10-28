@@ -5,7 +5,7 @@
 	import { browser } from '$app/environment';
 	import { breakpoints, viewport } from 'lapikit/stores';
 	import { capitalize, formatNumber } from 'site-kit/actions';
-	import { deviceUsed } from '$lib/stores/app.js';
+	import { deviceUsed, search } from '$lib/stores/app.js';
 
 	//components
 	import {
@@ -22,7 +22,7 @@
 		Tooltip
 	} from 'lapikit/components';
 	import ThemeToggle from './theme-toggle.svelte';
-	import Search from './search.svelte';
+	// import Search from './search.svelte';
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
@@ -41,7 +41,6 @@
 
 	// states
 	let openDrawer: boolean = $state(false);
-	let search: boolean = $state(false);
 	let scrolled: boolean = $state(false);
 	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
 
@@ -66,7 +65,7 @@
 	function handleKeyDown(event: KeyboardEvent) {
 		if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
 			event.preventDefault();
-			search = true;
+			search.set(true);
 		}
 	}
 
@@ -174,7 +173,7 @@
 		<div class="flex items-center justify-end gap-2">
 			{#if $viewport.innerWidth >= $breakpoints.lg}
 				<Button
-					onclick={() => (search = !search)}
+					onclick={() => search.set(!$search)}
 					aria-label="Search"
 					background="background-tertiary"
 					rounded="full"
@@ -199,7 +198,7 @@
 						($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
 					placement="bottom"
 				>
-					<Button icon onclick={() => (search = !search)} aria-label="Search">
+					<Button icon onclick={() => search.set(!$search)} aria-label="Search">
 						<Icon icon="mgc_search_line" />
 					</Button>
 				</Tooltip>
@@ -242,7 +241,7 @@
 		<div>
 			{#if $viewport.innerWidth >= $breakpoints.lg}
 				<Button
-					onclick={() => (search = !search)}
+					onclick={() => search.set(!$search)}
 					aria-label="Search"
 					background="background-tertiary"
 					rounded="full"
@@ -274,7 +273,7 @@
 						($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
 					placement="bottom"
 				>
-					<Button icon onclick={() => (search = !search)} aria-label="Search">
+					<Button icon onclick={() => search.set(!$search)} aria-label="Search">
 						<Icon icon="mgc_search_line" />
 					</Button>
 				</Tooltip>
@@ -407,7 +406,7 @@
 					($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
 				placement="bottom"
 			>
-				<Button icon onclick={() => (search = !search)} aria-label="Search">
+				<Button icon onclick={() => search.set(!$search)} aria-label="Search">
 					<Icon icon="mgc_search_line" />
 				</Button>
 			</Tooltip>
@@ -428,7 +427,7 @@
 	</Appbar>
 {/if}
 
-<Search bind:open={search} />
+<!-- <Search bind:open={search} /> -->
 
 <DrawerNavigation bind:open={openDrawer}>
 	<Toolbar background="transparent" density="comfortable" classContent="justify-between gap-4">

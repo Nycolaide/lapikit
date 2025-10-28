@@ -1,14 +1,15 @@
-import { PUBLIC_CALL_API_ENABLED } from '$env/static/public';
-import type { NavigationLink, NavDocsData } from '$lib/types';
+import { PUBLIC_API } from '$env/static/public';
 import { buildNavigationFromDocs } from '$lib/utils/navigation';
+import type { NavigationLink, NavDocsData } from '$lib/types';
 
-// datas
-import navDocsRaw from '$lib/data/nav-docs.json';
+import navRaw from '$lib/data/nav-docs.json';
+import counterRaw from '$lib/data/counter-lapikit.json';
+import searchRaw from '$lib/data/search.json';
 
 export const prerender = true;
+const authCallAPI = PUBLIC_API === 'true';
 
-const navDocs = navDocsRaw as NavDocsData;
-
+const navDocs = navRaw as NavDocsData;
 const docsNavigation = buildNavigationFromDocs(navDocs.files);
 
 const nav_links: NavigationLink[] = [
@@ -17,21 +18,18 @@ const nav_links: NavigationLink[] = [
 ];
 
 export async function load({ fetch }) {
-	const res = await fetch('/api/content/counter');
-	const counter = await res.json();
+	let api = {};
 
-	let responseExternalAPI = {};
-
-	if (PUBLIC_CALL_API_ENABLED === 'true') {
-		const githubRes = await fetch('/api/github/repository?name=Nycolaide/lapikit');
-		const npmRes = await fetch('/api/npm?name=lapikit');
+	if (authCallAPI) {
+		const githubApi = await fetch('/api/github/repository?name=Nycolaide/lapikit');
+		const npmApi = await fetch('/api/npm?name=lapikit');
 
 		const [github, npm] = await Promise.all([
-			githubRes.ok ? githubRes.json() : null,
-			npmRes.ok ? npmRes.json() : null
+			githubApi.ok ? githubApi.json() : null,
+			npmApi.ok ? npmApi.json() : null
 		]);
 
-		responseExternalAPI = {
+		api = {
 			github,
 			npm
 		};
@@ -39,7 +37,8 @@ export async function load({ fetch }) {
 
 	return {
 		nav_links,
-		counter,
-		...responseExternalAPI
+		search_data: searchRaw,
+		counter: counterRaw.categories,
+		...api
 	};
 }

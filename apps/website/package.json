@@ -13,6 +13,8 @@
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepare:docs": "node --import tsx scripts/sync-docs/index.ts",
+		"prepare:search": "node --import tsx scripts/get-search-pages.ts",
+		"prepare:counter": "node --import tsx scripts/get-counter.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",

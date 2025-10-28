@@ -1,52 +1,41 @@
 <script lang="ts">
-	// css
 	import '../styles/app.css';
-
-	// //plugins
 	import '../plugins/lapikit.ts';
-
-	// icons
 	import 'mingcute_icon/font/Mingcute.css';
-	// fonts
 	import '@fontsource/roboto';
 	import '@fontsource/press-start-2p';
-
-	import { App } from 'lapikit/components';
-	import { DevelopmentBar } from '$lib/components';
-	import Header from '$lib/components/header.svelte';
-	import { PUBLIC_DEV_MODE } from '$env/static/public';
+	import { PUBLIC_ENV } from '$env/static/public';
 	import { page } from '$app/state';
+	import { mode, search } from '$lib/stores/app';
+	import { App } from 'lapikit/components';
+	import { Header, Footer, Search } from '$lib/components';
+
+	mode.set(PUBLIC_ENV);
 
 	let { data, children } = $props();
-
-	let isHome = $state(false);
-	let isDocs = $state(false);
-
-	$effect(() => {
-		isHome = page.url.pathname === '/';
-		isDocs = page.url.pathname.startsWith('/docs/');
-	});
-
-	$effect(() => {
-		console.log('API data', data);
-	});
 </script>
 
-<div class:kit-theme--dark={isHome}>
-	<App>
-		<DevelopmentBar />
+<svelte:head>
+	<meta name="robots" content={$mode === 'production' ? 'index,follow' : 'noindex,nofollow'} />
+	<meta name="author" content="Nycolaide" />
+	<link rel="canonical" href={page.url.href} />
+	<link rel="alternate" hreflang="x-default" href={page.url.href} />
+	<meta name="color-scheme" content="light dark" />
+</svelte:head>
 
-		{#if PUBLIC_DEV_MODE == 'true'}
-			<Header {data} app home={isHome} docs={isDocs} />
-		{/if}
+<App dark={page.url.pathname === '/'}>
+	<Header
+		{data}
+		app
+		home={page.url.pathname === '/'}
+		docs={page.url.pathname.startsWith('/docs/')}
+	/>
 
-		{@render children()}
-	</App>
-</div>
+	{@render children()}
 
-<style>
-	div {
-		background-color: var(--kit-background-primary);
-		color: var(--kit-label-primary);
-	}
-</style>
+	<Footer />
+
+	{#if $search}
+		<Search bind:open={$search} />
+	{/if}
+</App>

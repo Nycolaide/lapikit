@@ -95,6 +95,7 @@ export function processMarkdownFiles(dirPath: string, manifestOutputPath: string
 	console.log('\n📖 Extracting metadata from Markdown files...');
 
 	const manifestEntries: ManifestEntry[] = [];
+	const isProduction = process.env.PUBLIC_ENV === 'production';
 
 	function processDirectory(currentPath: string): void {
 		const items = fs.readdirSync(currentPath);
@@ -121,17 +122,23 @@ export function processMarkdownFiles(dirPath: string, manifestOutputPath: string
 					breadcrumbs.push(fileNameWithoutExt);
 				}
 
-				manifestEntries.push({
-					path: docsPath,
-					slug: slug,
-					breadcrumbs: breadcrumbs,
-					metadata: frontMatter
-				});
+				const shouldInclude = !isProduction || frontMatter?.state?.published === true;
 
-				if (frontMatter) {
-					console.log(`\n📄 File: ${relativePath} ✅`);
+				if (shouldInclude) {
+					manifestEntries.push({
+						path: docsPath,
+						slug: slug,
+						breadcrumbs: breadcrumbs,
+						metadata: frontMatter
+					});
+
+					if (frontMatter) {
+						console.log(`\n📄 File: ${relativePath} ✅`);
+					} else {
+						console.log(`\n📄 File: ${relativePath} (no front matter)`);
+					}
 				} else {
-					console.log(`\n📄 File: ${relativePath} (no front matter)`);
+					console.log(`\n📄 File: ${relativePath} (skipped - not published in production)`);
 				}
 			}
 		}
