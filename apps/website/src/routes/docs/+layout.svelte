@@ -5,10 +5,11 @@
 	import { Button, Chip, Icon, List, ListItem } from 'lapikit/components';
 	import { Drawer } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
+	import { PageTransition } from '$animations';
 
 	// modules
-	import { ReturnTopPage } from '$lib/components/index.js';
-	import { PageTransition } from '../../animations/index.js';
+	import { DocNav } from '$components';
+	import ReturnTopPage from './_modules/return-top-page.svelte';
 
 	let { children, data } = $props();
 
@@ -55,6 +56,8 @@
 </script>
 
 <svelte:window bind:innerWidth={sizeWidthScreen} />
+
+<DocNav url={data.url_internal} npm={data.npm} />
 
 <Drawer bind:open>
 	{#snippet navigation()}

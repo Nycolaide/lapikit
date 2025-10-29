@@ -4,15 +4,15 @@ import type { NavDocsStructure, SearchItem } from './types';
 
 function generateSearchData() {
 	const dataDir = join(process.cwd(), 'src/lib/data');
-	const navDocsPath = join(dataDir, 'nav-docs.json');
-	const searchPath = join(dataDir, 'search.json');
+	const navDocsPath = join(dataDir, 'api-nav-docs.json');
+	const searchPath = join(dataDir, 'api-search.json');
 
 	if (!existsSync(navDocsPath)) {
-		console.error('❌ File nav-docs.json not found in src/lib/data');
+		console.error('❌ File api-nav-docs.json not found in src/lib/data');
 		process.exit(1);
 	}
 
-	console.log('✅ File nav-docs.json found, generating search.json...');
+	console.log('✅ File api-nav-docs.json found, generating api-search.json...');
 
 	try {
 		const navDocsContent = readFileSync(navDocsPath, 'utf-8');
@@ -44,7 +44,7 @@ function generateSearchData() {
 			console.log('   ♻️  Existing file has been replaced');
 		}
 	} catch (error) {
-		console.error('❌ Error generating search.json file:', error);
+		console.error('❌ Error generating api-search.json file:', error);
 		process.exit(1);
 	}
 }

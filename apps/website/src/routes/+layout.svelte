@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onDestroy, onMount } from 'svelte';
 	import '../styles/app.css';
 	import '../plugins/lapikit.ts';
 	import 'mingcute_icon/font/Mingcute.css';
@@ -6,13 +7,33 @@
 	import '@fontsource/press-start-2p';
 	import { PUBLIC_ENV } from '$env/static/public';
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 	import { mode, search } from '$lib/stores/app';
 	import { App } from 'lapikit/components';
-	import { Header, Footer, Search } from '$lib/components';
+	import { Search } from '$lib/components';
 
 	mode.set(PUBLIC_ENV);
 
-	let { data, children } = $props();
+	let { children } = $props();
+
+	onMount(() => {
+		if (browser) {
+			window.addEventListener('keydown', handleKeyDown);
+		}
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
+	});
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+			event.preventDefault();
+			search.set(true);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -24,16 +45,7 @@
 </svelte:head>
 
 <App dark={page.url.pathname === '/'}>
-	<Header
-		{data}
-		app
-		home={page.url.pathname === '/'}
-		docs={page.url.pathname.startsWith('/docs/')}
-	/>
-
 	{@render children()}
-
-	<Footer />
 
 	{#if $search}
 		<Search bind:open={$search} />

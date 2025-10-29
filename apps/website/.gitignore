@@ -9,7 +9,7 @@ node_modules
 /.svelte-kit
 /build
 /src/content
-/src/lib/data
+/src/lib/data/api-*.json
 
 
 # OS

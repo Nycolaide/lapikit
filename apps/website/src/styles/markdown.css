@@ -1,0 +1,104 @@
+.markdown h1.title {
+	color: color-mix(in oklab, var(--kit-on-base) 40%, transparent);
+	font-weight: var(--font-weight-semibold);
+	font-size: var(--text-xl);
+	line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
+}
+
+.markdown p.subtitle {
+	font-weight: var(--font-weight-semibold);
+	font-size: var(--text-5xl);
+	line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
+}
+
+.markdown p.description {
+	margin-top: calc(var(--system-spacing) * 6) !important;
+	font-size: 21px;
+	line-height: calc(var(--system-spacing) * 14) !important;
+	font-weight: var(--font-weight-semibold);
+	text-wrap: balance;
+	color: color-mix(in oklab, var(--kit-on-base) 70%, transparent);
+}
+
+@media screen and (max-width: 48rem) {
+	.markdown h2 {
+		margin-top: calc(var(--system-spacing) * 16);
+		font-size: 27px;
+		font-weight: var(--font-weight-semibold);
+	}
+
+	.markdown h3 {
+		margin-top: calc(var(--system-spacing) * 16);
+		font-size: var(--text-xl);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	.markdown p {
+		margin-top: calc(var(--system-spacing) * 7);
+		line-height: calc(var(--system-spacing) * 12);
+	}
+
+	.markdown img {
+		margin-top: calc(var(--system-spacing) * 12);
+		margin-bottom: calc(var(--system-spacing) * -6);
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.markdown ul {
+		list-style-type: disc;
+		margin-left: calc(var(--system-spacing) * 12);
+		margin-block: calc(var(--system-spacing) * 8);
+	}
+
+	.markdown ul > li {
+		line-height: calc(var(--system-spacing) * 14);
+		margin-top: calc(var(--system-spacing) * 3);
+	}
+
+	.markdown a {
+		text-underline-offset: 4px;
+		text-decoration-line: underline;
+		font-weight: 500;
+	}
+}
+
+@media screen and (min-width: 48rem) {
+	.markdown h2 {
+		margin-top: calc(var(--system-spacing) * 24);
+		font-size: 27px;
+		font-weight: var(--font-weight-semibold);
+	}
+
+	.markdown h3 {
+		margin-top: calc(var(--system-spacing) * 24);
+		font-size: var(--text-xl);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	.markdown p {
+		margin-top: calc(var(--system-spacing) * 12);
+		line-height: calc(var(--system-spacing) * 14);
+	}
+
+	.markdown img {
+		margin-top: calc(var(--system-spacing) * 12);
+		margin-bottom: calc(var(--system-spacing) * -12);
+	}
+
+	.markdown ul {
+		list-style-type: disc;
+		margin-left: calc(var(--system-spacing) * 12);
+		margin-block: calc(var(--system-spacing) * 8);
+	}
+
+	.markdown ul > li {
+		line-height: calc(var(--system-spacing) * 16);
+		margin-top: calc(var(--system-spacing) * 5);
+	}
+	.markdown a {
+		text-underline-offset: 4px;
+		text-decoration-line: underline;
+		font-weight: 500;
+	}
+}

@@ -3,9 +3,9 @@
 	import type { Snippet } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { page } from '$app/state';
-
 	import { capitalize } from 'site-kit/actions';
-	import { discordUrl, licenceUrl, navigationFooter, SocialLinks } from '$lib/config';
+	import { navigationFooter, SocialLinks } from '$lib/config';
+	import type { UrlInternal } from '$lib/types/internal';
 
 	// components
 	import { Button, Card, Icon, Separator, Toolbar } from 'lapikit/components';
@@ -16,7 +16,7 @@
 	import Lapikit from '$lib/images/lapikit.webp?enhanced';
 	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
 
-	let { children, ...rest }: { children?: Snippet } = $props();
+	let { url, children, ...rest }: { url: UrlInternal; children?: Snippet } = $props();
 
 	// states
 	let year: number = new Date().getFullYear();
@@ -99,7 +99,7 @@
 					<p class="my-2 sm:text-lg">News, updates, and discussions await you!</p>
 					<div>
 						<Button
-							href={discordUrl}
+							href={url.discord.invite}
 							target="_blank"
 							size={{ base: 'md', sm: 'lg' }}
 							rounded="full"
@@ -121,7 +121,7 @@
 			>
 				<p>
 					Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit. -
-					<a href={licenceUrl} target="_blank">MIT License</a>
+					<a href={url.package.licence} target="_blank">MIT License</a>
 				</p>
 				<div class="order-first flex gap-2 md:order-last">
 					<span class="text-sm">
@@ -150,7 +150,7 @@
 					{capitalize($t('common.hero.made_with'))}
 					<Icon icon="mgc_heart_fill" color="red" />
 					{$t('common.hero.by')}
-					<a href="https://nycolaide.dev" target="_blank">Nycolaide</a>
+					<a href={url.nycolaide.website} target="_blank">Nycolaide</a>
 				</span>
 
 				<Separator orientation="vertical" />

@@ -7,6 +7,8 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+@import './markdown.css';
+
 /* @layer components {
 	@import 'lapikit/css';
 } */

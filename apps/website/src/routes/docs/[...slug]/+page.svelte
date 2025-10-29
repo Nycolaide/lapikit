@@ -4,7 +4,6 @@
 	import { t } from '$lib/i18n';
 	import { Card, Icon, List, ListItem, Separator } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
-	import { Footer } from '$lib/components/index.js';
 	import { Breadcrumbs } from 'site-kit';
 
 	let { data } = $props();
@@ -44,8 +43,6 @@
 			<Breadcrumbs {page} ld={data?.breadcrumbJsonLd} />
 			<data.content />
 		</div>
-
-		<Footer />
 	</div>
 	<aside class="max-xl:hidden">
 		<Card class="sticky! top-[4.5rem]">
@@ -90,91 +87,4 @@
 </div>
 
 <style>
-	@media screen and (max-width: 48rem) {
-		.markdown {
-			:global(h2) {
-				margin-top: calc(var(--system-spacing) * 16);
-				font-size: 27px;
-				font-weight: var(--font-weight-semibold);
-			}
-
-			:global(h3) {
-				margin-top: calc(var(--system-spacing) * 16);
-				font-size: var(--text-xl);
-				font-weight: var(--font-weight-semibold);
-			}
-
-			:global(p) {
-				margin-top: calc(var(--system-spacing) * 7);
-				line-height: calc(var(--system-spacing) * 12);
-			}
-
-			:global(img) {
-				margin-top: calc(var(--system-spacing) * 12);
-				margin-bottom: calc(var(--system-spacing) * -6);
-				margin-right: auto;
-				margin-left: auto;
-			}
-
-			:global(ul) {
-				list-style-type: disc;
-				margin-left: calc(var(--system-spacing) * 12);
-				margin-block: calc(var(--system-spacing) * 8);
-			}
-
-			:global(ul > li) {
-				line-height: calc(var(--system-spacing) * 14);
-				margin-top: calc(var(--system-spacing) * 3);
-			}
-
-			:global(a) {
-				text-underline-offset: 4px;
-				text-decoration-line: underline;
-				font-weight: 500;
-			}
-		}
-	}
-
-	@media screen and (min-width: 48rem) {
-		.markdown {
-			:global(h2) {
-				margin-top: calc(var(--system-spacing) * 24);
-				font-size: 27px;
-				font-weight: var(--font-weight-semibold);
-			}
-
-			:global(h3) {
-				margin-top: calc(var(--system-spacing) * 24);
-				font-size: var(--text-xl);
-				font-weight: var(--font-weight-semibold);
-			}
-
-			:global(p) {
-				margin-top: calc(var(--system-spacing) * 12);
-				line-height: calc(var(--system-spacing) * 14);
-			}
-
-			:global(img) {
-				margin-top: calc(var(--system-spacing) * 12);
-				margin-bottom: calc(var(--system-spacing) * -12);
-			}
-
-			:global(ul) {
-				list-style-type: disc;
-				margin-left: calc(var(--system-spacing) * 12);
-				margin-block: calc(var(--system-spacing) * 8);
-			}
-
-			:global(ul > li) {
-				line-height: calc(var(--system-spacing) * 14);
-				margin-top: calc(var(--system-spacing) * 5);
-			}
-
-			:global(a) {
-				text-underline-offset: 4px;
-				text-decoration-line: underline;
-				font-weight: 500;
-			}
-		}
-	}
 </style>

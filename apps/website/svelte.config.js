@@ -16,7 +16,11 @@ const config = {
 			out: 'build',
 			precompress: true,
 			envPrefix: ''
-		})
+		}),
+		alias: {
+			$animations: 'src/animations',
+			$components: 'src/lib/components'
+		}
 	},
 	extensions: ['.svelte', '.md']
 };

@@ -41,39 +41,6 @@ interface NavigationMain {
 }
 
 export const navigationMain: NavigationMain[] = [
-	// {
-	// 	key: 'docs',
-	// 	path: '/docs/introduction',
-	// 	icon: 'mgc_album_2_line',
-	// 	items: [
-	// 		{
-	// 			key: 'introduction',
-	// 			path: '/docs/introduction'
-	// 		},
-	// 		{
-	// 			key: 'components',
-	// 			path: '/docs/components'
-	// 		},
-	// 		{
-	// 			key: 'actions',
-	// 			path: '/docs/actions'
-	// 		},
-	// 		{
-	// 			key: 'stores',
-	// 			path: '/docs/stores'
-	// 		}
-	// 	]
-	// },
-	// {
-	// 	key: 'components',
-	// 	path: '/docs/components',
-	// 	icon: 'mgc_album_2_line'
-	// },
-	// {
-	// 	key: 'changelog',
-	// 	path: '/docs/changelog',
-	// 	icon: 'mgc_album_2_line'
-	// }
 	{
 		key: 'docs',
 		path: '/docs/introduction',
@@ -170,72 +137,6 @@ export interface MetaDataPages {
 	};
 }
 
-export const enableFeatures = [
-	{
-		icon: 'mgc_sparkles_line',
-		title: {
-			en: 'Lightweight & fast'
-		},
-		description: {
-			en: 'Lapikit is designed to be lightweight and fast, ensuring optimal performance for your applications.'
-		}
-	},
-	{
-		icon: 'mgc_ease_in_out_control_point_line',
-		title: {
-			en: 'Transition & animations'
-		},
-		description: {
-			en: 'Easily add transitions and animations to your components with built-in support for popular animation libraries.'
-		}
-	},
-	{
-		icon: 'mgc_pic_ai_line',
-		title: {
-			en: 'Scoped styles'
-		},
-		description: {
-			en: 'All styles are scoped to their respective components, preventing style leakage and ensuring consistent design across your application.'
-		}
-	},
-	{
-		icon: 'mgc_package_2_line',
-		title: {
-			en: 'Components'
-		},
-		description: {
-			en: 'A comprehensive library of pre-built, accessible, and customizable UI components to accelerate your development process.'
-		}
-	},
-	{
-		icon: 'mgc_palette_2_line',
-		title: {
-			en: 'Themes & customization'
-		},
-		description: {
-			en: 'Includes light and dark themes, with easy customization options to match your brand colors.'
-		}
-	},
-	{
-		icon: '/icons/typescript-primary.svg',
-		title: {
-			en: 'Typescript support'
-		},
-		description: {
-			en: 'Written in TypeScript, Lapikit provides type definitions out of the box for a better developer experience.'
-		}
-	},
-	{
-		icon: '/icons/svelte-primary.svg',
-		title: {
-			en: 'SvelteKit friendly'
-		},
-		description: {
-			en: 'Lapikit is built with SvelteKit and fully supports its features like routing, server-side rendering, and static site generation.'
-		}
-	}
-];
-
 export const previewComponents = [
 	{
 		image: '/',
@@ -246,29 +147,6 @@ export const previewComponents = [
 			en: 'demo desc'
 		},
 		url: '/'
-	}
-];
-
-export const stepperToUseComponent = [
-	{
-		title: 'Install Lapikit',
-		description: 'In five minutes, install Lapikit and configure it in your SvelteKit project.',
-		icon: 'mgc_rocket_line',
-		color: 'accent-destructive'
-	},
-	{
-		title: 'Add components to your project',
-		description:
-			'Explore the wide range of components available in Lapikit and choose the ones that fit your needs.',
-		icon: 'mgc_package_line',
-		color: 'accent-warning'
-	},
-	{
-		title: 'Adapte all components to your design',
-		description:
-			"Customize the appearance of the components to match your project's design and branding.",
-		icon: 'mgc_paint_brush_ai_line',
-		color: 'accent-success'
 	}
 ];
 

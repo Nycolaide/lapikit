@@ -1,10 +1,11 @@
 import { PUBLIC_API } from '$env/static/public';
 import { buildNavigationFromDocs } from '$lib/utils/navigation';
-import type { NavigationLink, NavDocsData } from '$lib/types';
+import type { NavigationLink, NavDocsData } from '$lib/types/navigation';
+import type { GitHubRepositoryData, NpmPackageData } from '$lib/types/api';
 
-import navRaw from '$lib/data/nav-docs.json';
-import counterRaw from '$lib/data/counter-lapikit.json';
-import searchRaw from '$lib/data/search.json';
+import navRaw from '$lib/data/api-nav-docs.json';
+import counterRaw from '$lib/data/api-counter-lapikit.json';
+import urlInternal from '$lib/data/url.json';
 
 export const prerender = true;
 const authCallAPI = PUBLIC_API === 'true';
@@ -18,7 +19,7 @@ const nav_links: NavigationLink[] = [
 ];
 
 export async function load({ fetch }) {
-	let api = {};
+	let api: { github?: GitHubRepositoryData | null; npm?: NpmPackageData | null } = {};
 
 	if (authCallAPI) {
 		const githubApi = await fetch('/api/github/repository?name=Nycolaide/lapikit');
@@ -30,15 +31,15 @@ export async function load({ fetch }) {
 		]);
 
 		api = {
-			github,
-			npm
+			github: github as GitHubRepositoryData | null,
+			npm: npm as NpmPackageData | null
 		};
 	}
 
 	return {
 		nav_links,
-		search_data: searchRaw,
 		counter: counterRaw.categories,
+		url_internal: urlInternal,
 		...api
 	};
 }

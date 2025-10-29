@@ -5,11 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"dev:content": "npm run build:content && npm run build:search && npm run build:navigation && vite dev",
-		"build": "npm run build:content && npm run build:search && npm run build:navigation && vite build",
-		"build:content": "node src/lib/scripts/build-docs.mjs",
-		"build:search": "node src/lib/scripts/build-search-data.mjs",
-		"build:navigation": "node src/lib/scripts/build-navigation-data.mjs",
+		"build": "vite build",
+		"initialize": "npm run prepare:docs && npm run prepare:search && npm run prepare:counter",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepare:docs": "node --import tsx scripts/sync-docs/index.ts",

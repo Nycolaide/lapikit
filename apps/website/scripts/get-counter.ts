@@ -4,15 +4,15 @@ import type { CategoryCounter, CounterData, NavDocsStructure } from './types';
 
 function generateCounterData() {
 	const dataDir = join(process.cwd(), 'src/lib/data');
-	const navDocsPath = join(dataDir, 'nav-docs.json');
-	const counterPath = join(dataDir, 'counter-lapikit.json');
+	const navDocsPath = join(dataDir, 'api-nav-docs.json');
+	const counterPath = join(dataDir, 'api-counter-lapikit.json');
 
 	if (!existsSync(navDocsPath)) {
-		console.error('❌ The file nav-docs.json was not found in src/lib/data');
+		console.error('❌ The file api-nav-docs.json was not found in src/lib/data');
 		process.exit(1);
 	}
 
-	console.log('✅ The file nav-docs.json was found, generating counter-lapikit.json...');
+	console.log('✅ The file api-nav-docs.json was found, generating api-counter-lapikit.json...');
 
 	try {
 		const navDocsContent = readFileSync(navDocsPath, 'utf-8');
@@ -53,7 +53,7 @@ function generateCounterData() {
 			console.log('   ♻️  The existing file was replaced');
 		}
 	} catch (error) {
-		console.error('❌ Error generating the counter-lapikit.json file:', error);
+		console.error('❌ Error generating the api-counter-lapikit.json file:', error);
 		process.exit(1);
 	}
 }
