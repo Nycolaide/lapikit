@@ -8,9 +8,11 @@ style:
   icon: mgc_layout_10_line
 state:
   section: base
+  category: core
   published: true
   recommended: true
   order: 2
+  status: new
 github:
   url: /breakpoints.md
 keywords:

@@ -9,9 +9,11 @@ style:
   icon: mgc_compass_line
 state:
   section: base
+  category: configuration
   published: true
   recommended: true
   order: 1
+  status: deprecate
 github:
   url: /getting-started.md
 keywords:

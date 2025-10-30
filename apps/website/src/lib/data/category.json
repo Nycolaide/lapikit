@@ -1,0 +1,31 @@
+{
+	"base": [
+		{
+			"key": "core",
+			"title": "core",
+			"style": {
+				"color": "blue",
+				"icon": "mgc_book_line"
+			}
+		},
+		{
+			"key": "configuration",
+			"title": "Configuration",
+			"style": {
+				"color": "green",
+				"icon": "mgc_rocket_line"
+			}
+		},
+		{
+			"key": "system",
+			"title": "system",
+			"style": {
+				"color": "purple",
+				"icon": "mgc_palette_line"
+			}
+		}
+	],
+	"components": [],
+	"actions": [],
+	"stores": []
+}

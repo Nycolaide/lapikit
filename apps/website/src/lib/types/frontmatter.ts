@@ -16,9 +16,11 @@ export interface DocFile {
 		};
 		state?: {
 			section?: string;
+			category?: string;
 			published?: boolean;
 			recommended?: boolean;
 			order?: number;
+			status?: string;
 		};
 		github?: {
 			url?: string;

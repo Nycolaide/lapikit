@@ -1,22 +1,23 @@
 import { PUBLIC_API } from '$env/static/public';
 import { buildNavigationFromDocs } from '$lib/utils/navigation';
-import type { NavigationLink, NavDocsData } from '$lib/types/navigation';
+import type { NavigationLinks, NavDocsData } from '$lib/types/navigation';
 import type { GitHubRepositoryData, NpmPackageData } from '$lib/types/api';
 
 import navRaw from '$lib/data/api-nav-docs.json';
 import counterRaw from '$lib/data/api-counter-lapikit.json';
 import urlInternal from '$lib/data/url.json';
+import category from '$lib/data/category.json';
 
 export const prerender = true;
 const authCallAPI = PUBLIC_API === 'true';
 
 const navDocs = navRaw as NavDocsData;
-const docsNavigation = buildNavigationFromDocs(navDocs.files);
+const docsNavigation = buildNavigationFromDocs(navDocs.files, category);
 
-const nav_links: NavigationLink[] = [
-	{ title: 'Home', slug: '/' },
-	{ title: 'Docs', slug: '/docs', sections: docsNavigation }
-];
+const nav_links: NavigationLinks = {
+	home: { title: 'home', slug: '/' },
+	docs: { title: 'docs', slug: '/docs', sections: docsNavigation }
+};
 
 export async function load({ fetch }) {
 	let api: { github?: GitHubRepositoryData | null; npm?: NpmPackageData | null } = {};

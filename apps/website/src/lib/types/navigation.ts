@@ -1,5 +1,15 @@
 import type { DocFile } from '$lib/types/frontmatter';
 
+export interface CategoryWithPages {
+	key: string;
+	title: string;
+	style: {
+		color: string;
+		icon: string;
+	};
+	pages?: DocFile[];
+}
+
 export interface NavDocsData {
 	generatedAt: string;
 	totalFiles: number;
@@ -9,7 +19,16 @@ export interface NavDocsData {
 export interface NavigationLink {
 	title: string;
 	slug: string;
-	sections?: NavigationSection[];
+	sections?: Record<string, CategoryWithPages[]>;
+}
+
+export interface NavigationSectionDirect {
+	title: string;
+	items: DocFile[];
+}
+
+export interface NavigationLinks {
+	[key: string]: NavigationLink | NavigationSectionDirect;
 }
 
 export interface NavigationSection {
@@ -23,4 +42,42 @@ export interface NavigationItem {
 	path: string;
 	badge?: string;
 	order?: number;
+}
+
+export interface CategoryConfig {
+	key: string;
+	title: string;
+	style?: {
+		color?: string;
+		icon?: string;
+	};
+}
+
+export interface OrganizedSection {
+	key: string;
+	title: string;
+	categories: Array<{
+		key: string;
+		title: string;
+		style?: { color?: string; icon?: string };
+		items: DocFile[];
+	}>;
+	uncategorizedItems: DocFile[];
+}
+
+export interface OrganizedDocs {
+	orderedSections: OrganizedSection[];
+}
+
+export interface DisplayItem {
+	type: 'category' | 'item';
+	key?: string;
+	title?: string;
+	style?: { color?: string; icon?: string };
+	items?: DocFile[];
+	path?: string;
+	slug?: string;
+	breadcrumbs?: string[];
+	metadata?: DocFile['metadata'];
+	category?: string | null;
 }

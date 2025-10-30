@@ -26,7 +26,7 @@
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
 
-	let { url, npm, ...rest } = $props();
+	let { url, npm, availableSections = [], ...rest } = $props();
 
 	// states
 	let open: boolean = $state(false);
@@ -132,19 +132,12 @@
 	background="background-primary"
 >
 	{#if $viewport.innerWidth >= $breakpoints.md}
-		{#each navigationMain as { key, path, external, icon } (key)}
-			<Button
-				href={path}
-				target={external && '_blank'}
-				active={page.url.pathname === path}
-				variant="text"
-			>
-				{#snippet prepend()}
-					<Icon {icon} />
-				{/snippet}
-				<span>
-					{capitalize(`${key}`)}
-				</span>
+		{#each availableSections as section (section.key)}
+			<Button href={`/docs/${section.key}`} variant="text" class="capitalize">
+				{section.title}
+				<Chip size="xs" density="compact" class="ml-1">
+					{section.count}
+				</Chip>
 			</Button>
 		{/each}
 	{/if}

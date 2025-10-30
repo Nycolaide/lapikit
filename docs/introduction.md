@@ -9,9 +9,11 @@ style:
   icon: mgc_sticker_line
 state:
   section: base
+  category: system
   published: true
   recommended: true
   order: 0
+  status: preview
 github:
   url: /introduction.md
 keywords:

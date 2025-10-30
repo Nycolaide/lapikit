@@ -9,9 +9,11 @@ style:
   icon: mgc_settings_6_line
 state:
   section: base
+  category: core
   published: true
   recommended: true
   order: 3
+  status: update
 github:
   url: /customize.md
 keywords:
