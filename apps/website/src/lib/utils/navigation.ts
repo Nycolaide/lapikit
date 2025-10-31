@@ -1,8 +1,7 @@
 import type { DocFile } from '$lib/types/frontmatter';
-import type { CategoryWithPages } from '$lib/types/navigation';
+import type { NavigationData } from '$lib/types/navigation';
 
-type NavigationSection = CategoryWithPages[];
-type Navigation = Record<string, NavigationSection>;
+type Navigation = NavigationData;
 
 interface CategoryConfig {
 	key: string;
@@ -13,18 +12,37 @@ interface CategoryConfig {
 	};
 }
 
-type CategoryData = Record<string, CategoryConfig[]>;
+interface SectionConfig {
+	key: string;
+	title: string;
+	order: number;
+	slug: string;
+	style: {
+		color: string;
+		icon: string;
+	};
+	categories: CategoryConfig[];
+}
+
+type CategoryData = Record<string, SectionConfig>;
 
 export function buildNavigationFromDocs(files: DocFile[], categoryData: CategoryData) {
 	const navigation: Navigation = {};
 
 	Object.keys(categoryData).forEach((sectionKey) => {
-		navigation[sectionKey] = categoryData[sectionKey as keyof typeof categoryData].map(
-			(category: CategoryConfig) => ({
+		const sectionConfig = categoryData[sectionKey as keyof typeof categoryData];
+		navigation[sectionKey] = {
+			key: sectionConfig.key,
+			title: sectionConfig.title,
+			order: sectionConfig.order,
+			style: sectionConfig.style,
+			slug: sectionConfig.slug,
+			categories: sectionConfig.categories.map((category: CategoryConfig) => ({
 				...category,
-				pages: []
-			})
-		);
+				order: 0,
+				items: []
+			}))
+		};
 	});
 
 	Object.keys(navigation).forEach((sectionKey) => {
@@ -35,37 +53,40 @@ export function buildNavigationFromDocs(files: DocFile[], categoryData: Category
 			const fileCategory = file.metadata?.state?.category || 'uncategorized';
 
 			if (fileSection === sectionKey) {
-				const hasCategory = section.some((item) => item.key === fileCategory);
+				const hasCategory = section.categories.some((item) => item.key === fileCategory);
 
 				if (hasCategory) {
-					const categoryItem = section.find((item) => item.key === fileCategory);
+					const categoryItem = section.categories.find((item) => item.key === fileCategory);
 					if (categoryItem) {
-						if (!categoryItem.pages) {
-							categoryItem.pages = [];
+						if (!categoryItem.items) {
+							categoryItem.items = [];
 						}
-						categoryItem.pages.push(file);
+						categoryItem.items.push(file);
 					}
 				} else {
-					let uncategorizedCategory = section.find((item) => item.key === 'uncategorized');
+					let uncategorizedCategory = section.categories.find(
+						(item) => item.key === 'uncategorized'
+					);
 
 					if (!uncategorizedCategory) {
 						uncategorizedCategory = {
 							key: 'uncategorized',
 							title: 'uncategorized',
+							order: 999,
 							style: {
 								color: 'gray',
 								icon: 'mgc_folder_line'
 							},
-							pages: []
+							items: []
 						};
-						section.push(uncategorizedCategory);
+						section.categories.push(uncategorizedCategory);
 					}
 
-					if (!uncategorizedCategory.pages) {
-						uncategorizedCategory.pages = [];
+					if (!uncategorizedCategory.items) {
+						uncategorizedCategory.items = [];
 					}
 
-					uncategorizedCategory.pages.push(file);
+					uncategorizedCategory.items.push(file);
 				}
 			}
 		});
@@ -74,9 +95,9 @@ export function buildNavigationFromDocs(files: DocFile[], categoryData: Category
 	Object.keys(navigation).forEach((sectionKey) => {
 		const section = navigation[sectionKey];
 
-		section.forEach((category) => {
-			if (category.pages && category.pages.length > 0) {
-				category.pages.sort((a: DocFile, b: DocFile) => {
+		section.categories.forEach((category) => {
+			if (category.items && category.items.length > 0) {
+				category.items.sort((a: DocFile, b: DocFile) => {
 					const orderA = a.metadata?.state?.order;
 					const orderB = b.metadata?.state?.order;
 
@@ -92,5 +113,11 @@ export function buildNavigationFromDocs(files: DocFile[], categoryData: Category
 		});
 	});
 
-	return navigation;
+	const sortedNavigation = Object.values(navigation).sort((a, b) => a.order - b.order);
+
+	const sortedNavigationRecord: Navigation = Object.fromEntries(
+		sortedNavigation.map((section) => [section.key, section])
+	);
+
+	return sortedNavigationRecord;
 }

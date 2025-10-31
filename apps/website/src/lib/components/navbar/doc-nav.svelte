@@ -19,6 +19,7 @@
 	import { capitalize, formatNumber } from 'site-kit/actions';
 	import { navigationMain } from '$lib/config';
 	import { DrawerNavigation } from 'site-kit';
+	import type { DocNavProps } from '$lib/types/navigation';
 
 	// modules
 	import ThemeToggle from '$components/theme-toggle.svelte';
@@ -26,7 +27,7 @@
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
 
-	let { url, npm, availableSections = [], ...rest } = $props();
+	let { url, npm, navigation, ...rest }: DocNavProps = $props();
 
 	// states
 	let open: boolean = $state(false);
@@ -47,10 +48,14 @@
 			open = false;
 		}
 	});
+
+	$effect(() => {
+		console.log('Available sections:', navigation);
+	});
 </script>
 
 <Appbar
-	class="sticky top-0 z-100"
+	class="z-100 sticky top-0"
 	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3"
 	background="background-primary"
 	{...rest}
@@ -126,18 +131,15 @@
 	</div>
 </Appbar>
 <Toolbar
-	class="sticky top-[64px] z-95 hidden! lg:flex!"
+	class="z-95 hidden! lg:flex! sticky top-[64px]"
 	classContent="mx-auto mx-1! gap-2"
 	rounded="0"
 	background="background-primary"
 >
 	{#if $viewport.innerWidth >= $breakpoints.md}
-		{#each availableSections as section (section.key)}
-			<Button href={`/docs/${section.key}`} variant="text" class="capitalize">
-				{section.title}
-				<Chip size="xs" density="compact" class="ml-1">
-					{section.count}
-				</Chip>
+		{#each Object.entries(navigation) as [keyNav, sectionData] (keyNav)}
+			<Button href={`${sectionData.slug}`} variant="text" class="capitalize">
+				{sectionData.title}
 			</Button>
 		{/each}
 	{/if}

@@ -7,6 +7,7 @@ export interface CategoryWithPages {
 		color: string;
 		icon: string;
 	};
+	slug: string;
 	pages?: DocFile[];
 }
 
@@ -19,7 +20,7 @@ export interface NavDocsData {
 export interface NavigationLink {
 	title: string;
 	slug: string;
-	sections?: Record<string, CategoryWithPages[]>;
+	sections?: NavigationData;
 }
 
 export interface NavigationSectionDirect {
@@ -80,4 +81,55 @@ export interface DisplayItem {
 	breadcrumbs?: string[];
 	metadata?: DocFile['metadata'];
 	category?: string | null;
+}
+
+export interface UrlConfig {
+	github: {
+		repository: string;
+		discussions: string;
+	};
+}
+
+export interface NpmData {
+	name?: string;
+	version?: string;
+	description?: string;
+	homepage?: string;
+	license?: string;
+	repository?: string;
+	lastPublished?: string;
+	downloads?: number;
+}
+
+export interface NavigationSectionWithCategories {
+	key: string;
+	title: string;
+	order: number;
+	slug: string;
+	style?: {
+		color?: string;
+		icon?: string;
+	};
+	categories: Array<{
+		key: string;
+		title: string;
+		order: number;
+		style?: {
+			color?: string;
+			icon?: string;
+		};
+		items?: DocFile[];
+	}>;
+}
+
+export interface NavigationData {
+	[key: string]: NavigationSectionWithCategories;
+}
+
+export interface DocNavProps {
+	url: UrlConfig;
+	npm?: NpmData;
+	navigation: NavigationData;
+	class?: string;
+	[key: string]: unknown;
 }
