@@ -19,7 +19,8 @@ const config = {
 		}),
 		alias: {
 			$animations: 'src/animations',
-			$components: 'src/lib/components'
+			$components: 'src/lib/components',
+			$data: 'src/data'
 		}
 	},
 	extensions: ['.svelte', '.md']

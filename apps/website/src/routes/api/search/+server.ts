@@ -67,12 +67,12 @@ export const GET: RequestHandler = async ({ url }) => {
 			);
 		}
 
-		const searchFilePath = join(process.cwd(), 'src/lib/data/api-search.json');
+		const searchFilePath = join(process.cwd(), 'src/data/api/search.json');
 
 		if (!existsSync(searchFilePath)) {
 			return json(
 				{
-					error: 'File api-search.json not found. Please generate it using the appropriate script.',
+					error: 'File search.json not found. Please generate it using the appropriate script.',
 					results: [],
 					total: 0
 				},

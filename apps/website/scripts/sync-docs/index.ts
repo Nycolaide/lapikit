@@ -44,7 +44,7 @@ async function syncDocs(): Promise<void> {
 		copyRecursive(sourceDir, destDir);
 
 		console.log('✨ Synchronization completed successfully!');
-		const navDocsPath = path.resolve(process.cwd(), 'src/lib/data/api-nav-docs.json');
+		const navDocsPath = path.resolve(process.cwd(), 'src/data/api/docs.json');
 		processMarkdownFiles(destDir, navDocsPath);
 	} catch (error: unknown) {
 		const errorMessage = error instanceof Error ? error.message : 'Unknown error';
