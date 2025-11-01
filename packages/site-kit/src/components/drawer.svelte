@@ -50,12 +50,13 @@
 		height: 100%;
 		position: fixed;
 		color: transparent;
-		background-color: color-mix(in oklab, var(--kit-state-shadow) 45%, transparent);
+		background-color: color-mix(in oklab, black 45%, transparent);
 		z-index: 900;
 		user-select: none;
 	}
 
-	@media screen and (min-width: 40rem) {
+	/* @media screen and (min-width: 40rem) { */
+	@media screen and (min-width: 0.1rem) {
 		#drawer {
 			--drawer-height: calc(100dvh - 0px - var(--drawer-top));
 			--drawer-top: calc(0px + 64px + 48px);

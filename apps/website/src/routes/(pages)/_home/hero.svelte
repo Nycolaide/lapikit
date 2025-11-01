@@ -16,20 +16,20 @@
 	<BackgroundAnimationStars />
 
 	<div
-		class="relative z-1 mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 text-center sm:gap-16 lg:grid lg:px-8"
+		class="z-1 relative mx-auto my-auto flex w-full max-w-[90rem] flex-col justify-center gap-8 px-4 text-center sm:gap-16 lg:grid lg:px-8"
 	>
 		<div class="no-select absolute top-0 mx-auto w-full max-w-[85rem] max-lg:hidden">
 			<LapinosaureOnSpace />
 		</div>
 
-		<div class="no-select absolute right-0 mt-[130px] mr-20 h-fit w-[115px] max-lg:hidden">
+		<div class="no-select absolute right-0 mr-20 mt-[130px] h-fit w-[115px] max-lg:hidden">
 			<enhanced:img
-				class="no-select absolute -rotate-15"
+				class="no-select -rotate-15 absolute"
 				src={LapinosaureExpertLapikit}
 				alt="lapinosaure expert lapikit"
 			/>
 			<enhanced:img
-				class="animate-star-yolo no-select absolute top-[80px] -right-[15px] w-[40px] -rotate-30"
+				class="animate-star-yolo no-select -rotate-30 absolute -right-[15px] top-[80px] w-[40px]"
 				src={StarMedium}
 				alt="star medium"
 			/>
@@ -50,12 +50,12 @@
 		</div>
 
 		<div class="grid gap-4">
-			<h1 class="text-4xl leading-[102%] font-semibold text-balance lg:max-w-4xl lg:text-7xl">
+			<h1 class="text-balance text-4xl font-semibold leading-[102%] lg:max-w-4xl lg:text-7xl">
 				Simple, optimized components for <span style="color: var(--kit-service-svelte);">
 					Svelte
 				</span>
 			</h1>
-			<p class="mx-auto leading-[144%] font-medium sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg">
+			<p class="mx-auto font-medium leading-[144%] sm:max-w-2xl md:w-9/12 md:max-w-2xl md:text-lg">
 				A library of accessible, high-performance, versatile components that let you develop fast,
 				fully customizable interfaces.
 			</p>
@@ -83,7 +83,7 @@
 			</div>
 			<Button
 				id="install-lapikit-command-line"
-				class="mt-2 px-2!"
+				class="px-2! mt-2"
 				variant="text"
 				density="compact"
 				size={{ base: 'sm', md: 'md' }}

@@ -67,7 +67,7 @@ export interface NavigationData {
 export interface DocNavProps {
 	url: UrlConfig;
 	npm?: NpmData;
-	navigation: NavigationData;
+	// navigation: NavigationData;
 	class?: string;
 	[key: string]: unknown;
 }

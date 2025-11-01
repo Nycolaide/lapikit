@@ -1,39 +1,14 @@
 {
 	"base": {
 		"key": "base",
-		"title": "Base",
+		"title": "Environment",
 		"order": 0,
 		"slug": "/docs/introduction",
 		"style": {
 			"color": "red",
 			"icon": "mgc_home_line"
 		},
-		"categories": [
-			{
-				"key": "core",
-				"title": "core",
-				"style": {
-					"color": "blue",
-					"icon": "mgc_book_line"
-				}
-			},
-			{
-				"key": "configuration",
-				"title": "Configuration",
-				"style": {
-					"color": "green",
-					"icon": "mgc_rocket_line"
-				}
-			},
-			{
-				"key": "system",
-				"title": "system",
-				"style": {
-					"color": "purple",
-					"icon": "mgc_palette_line"
-				}
-			}
-		]
+		"categories": []
 	},
 	"components": {
 		"key": "components",
@@ -46,22 +21,12 @@
 		},
 		"categories": []
 	},
-	"actions": {
-		"key": "actions",
-		"title": "Actions",
+	"hooks": {
+		"key": "hooks",
+		"title": "Hooks",
 		"order": 2,
-		"slug": "/docs/actions",
-		"style": {
-			"color": "red",
-			"icon": "mgc_home_line"
-		},
-		"categories": []
-	},
-	"stores": {
-		"key": "stores",
-		"title": "Stores",
-		"order": 3,
-		"slug": "/docs/stores",
+		"slug": "/docs/hooks",
+		"whitelist": ["actions", "stores"],
 		"style": {
 			"color": "red",
 			"icon": "mgc_home_line"

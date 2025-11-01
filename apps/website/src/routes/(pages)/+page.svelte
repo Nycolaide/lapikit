@@ -31,7 +31,7 @@
 	<section
 		id="discover-lapikit-integration"
 		use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}
-		class="relative z-1"
+		class="z-1 relative"
 	>
 		<Integration />
 	</section>

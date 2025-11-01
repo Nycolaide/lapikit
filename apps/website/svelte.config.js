@@ -18,7 +18,7 @@ const config = {
 			envPrefix: ''
 		}),
 		alias: {
-			$animations: 'src/animations',
+			$animations: 'src/lib/animations',
 			$components: 'src/lib/components',
 			$data: 'src/data'
 		}

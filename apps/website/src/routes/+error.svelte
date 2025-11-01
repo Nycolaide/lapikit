@@ -5,7 +5,7 @@
 	import { Button, Icon } from 'lapikit/components';
 
 	// modules
-	import { Nav, Footer } from '$components';
+	import { Header, Footer } from '$components';
 
 	// assets
 	import LapinosaureSad from '$lib/images/lapinosaure/lapinosaure-sad.webp?enhanced';
@@ -21,7 +21,7 @@
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<Nav npm={data.npm} isHome={false} />
+<Header npm={data.npm} isHome={false} />
 
 <div
 	class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
@@ -32,7 +32,7 @@
 		<enhanced:img
 			src={LapinosaureVerySad}
 			alt="lapinosaure"
-			class="absolute top-[5.5rem] -left-8 z-10 w-[50px] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
+			class="absolute -left-8 top-[5.5rem] z-10 w-[50px] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
 		/>
 
 		<RainingAnimation
@@ -48,7 +48,7 @@
 		<enhanced:img
 			src={LapinosaureSad}
 			alt="lapinosaure"
-			class="absolute top-[5.5rem] right-0 z-10 w-[50px] scale-x-[-1] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
+			class="absolute right-0 top-[5.5rem] z-10 w-[50px] scale-x-[-1] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
 		/>
 		<enhanced:img
 			src={Puddle}
@@ -68,13 +68,13 @@
 				<p>{page?.error?.message}</p>
 			</div>
 		{/if}
-		<div class="flex flex-col! justify-center sm:flex-row! sm:gap-4">
+		<div class="flex-col! sm:flex-row! flex justify-center sm:gap-4">
 			<Button
 				onclick={() => history.back()}
 				background="accent-primary"
 				color="white"
 				rounded="full"
-				class="mt-4 px-6!"
+				class="px-6! mt-4"
 				size={{ base: 'md', md: 'lg' }}
 			>
 				{#snippet prepend()}
@@ -87,7 +87,7 @@
 				href="/"
 				color="accent-primary"
 				rounded="full"
-				class="mt-4 px-6!"
+				class="px-6! mt-4"
 				size={{ base: 'md', md: 'lg' }}
 				variant="outline"
 			>

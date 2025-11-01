@@ -1,0 +1,71 @@
+{
+	"base": {
+		"key": "base",
+		"title": "Base",
+		"order": 0,
+		"slug": "/docs/introduction",
+		"style": {
+			"color": "red",
+			"icon": "mgc_home_line"
+		},
+		"categories": [
+			{
+				"key": "core",
+				"title": "core",
+				"style": {
+					"color": "blue",
+					"icon": "mgc_book_line"
+				}
+			},
+			{
+				"key": "configuration",
+				"title": "Configuration",
+				"style": {
+					"color": "green",
+					"icon": "mgc_rocket_line"
+				}
+			},
+			{
+				"key": "system",
+				"title": "system",
+				"style": {
+					"color": "purple",
+					"icon": "mgc_palette_line"
+				}
+			}
+		]
+	},
+	"components": {
+		"key": "components",
+		"title": "Components",
+		"order": 1,
+		"slug": "/docs/components",
+		"style": {
+			"color": "red",
+			"icon": "mgc_home_line"
+		},
+		"categories": []
+	},
+	"actions": {
+		"key": "actions",
+		"title": "Actions",
+		"order": 2,
+		"slug": "/docs/actions",
+		"style": {
+			"color": "red",
+			"icon": "mgc_home_line"
+		},
+		"categories": []
+	},
+	"stores": {
+		"key": "stores",
+		"title": "Stores",
+		"order": 3,
+		"slug": "/docs/stores",
+		"style": {
+			"color": "red",
+			"icon": "mgc_home_line"
+		},
+		"categories": []
+	}
+}
