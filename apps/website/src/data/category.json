@@ -31,6 +31,23 @@
 			"color": "red",
 			"icon": "mgc_home_line"
 		},
-		"categories": []
+		"categories": [
+			{
+				"key": "actions",
+				"title": "Actions",
+				"style": {
+					"color": "purple",
+					"icon": "mgc_palette_line"
+				}
+			},
+			{
+				"key": "stores",
+				"title": "Stores",
+				"style": {
+					"color": "purple",
+					"icon": "mgc_palette_line"
+				}
+			}
+		]
 	}
 }

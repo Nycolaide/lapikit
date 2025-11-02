@@ -4,9 +4,6 @@ import { capitalize } from 'site-kit/actions';
 export const load = async ({ url }) => {
 	const segments = url.pathname.split('/').filter(Boolean);
 
-	// const res = await fetch('/api/content/navigation');
-	// const routes = await res.json();
-
 	const items = [
 		{
 			'@type': 'ListItem',

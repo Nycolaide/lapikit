@@ -5,10 +5,11 @@ head:
   title: theme stored
   description: "Learn how to use the theme store in Lapikit for responsive design."
 state:
-  section: stores
+  section: hooks
+  category: stores
   published: true
 github:
-  url: /stores/store-theme.md
+  url: /hooks/store-theme.md
 ---
 
 <script>

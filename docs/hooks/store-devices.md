@@ -5,10 +5,11 @@ head:
   title: devices stored
   description: "Learn how to use the devices store in Lapikit for responsive design."
 state:
-  section: stores
+  section: hooks
+  category: stores
   published: true
 github:
-  url: /stores/store-devices.md
+  url: /hooks/store-devices.md
 ---
 
 <script>

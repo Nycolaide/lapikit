@@ -5,10 +5,11 @@ head:
   title: breakpoints stored
   description: "Learn how to use the breakpoints store in Lapikit for responsive design."
 state:
-  section: stores
+  section: hooks
+  category: stores
   published: true
 github:
-  url: /stores/store-breakpoints.md
+  url: /hooks/store-breakpoints.md
 ---
 
 <script>

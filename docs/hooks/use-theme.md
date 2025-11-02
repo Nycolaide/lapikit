@@ -5,10 +5,11 @@ head:
   title: useTheme action
   description: "Learn how to use the useTheme action in Lapikit for dynamic theming."
 state:
-  section: actions
+  section: hooks
+  category: actions
   published: true
 github:
-  url: /actions/use-theme.md
+  url: /hooks/use-theme.md
 ---
 
 <script>

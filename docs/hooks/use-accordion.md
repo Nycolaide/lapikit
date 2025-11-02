@@ -5,10 +5,11 @@ head:
   title: useAccordion action
   description: "Learn how to use the useAccordion action in Lapikit for managing accordion state."
 state:
-  section: actions
+  section: hooks
+  category: actions
   published: true
 github:
-  url: /actions/use-accordion.md
+  url: /hooks/use-accordion.md
 ---
 
 <script>
