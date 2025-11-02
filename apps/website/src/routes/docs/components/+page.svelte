@@ -5,6 +5,10 @@
 	import { capitalize } from 'site-kit/actions';
 
 	let { data } = $props();
+
+	$effect(() => {
+		console.log('Data received:', data);
+	});
 </script>
 
 <svelte:head>
@@ -37,8 +41,8 @@
 						class="mb-4 grid grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-1"
 					>
 						<img
-							src={page.style?.cover
-								? `/images/${page.style.cover}?v=1`
+							src={page.metadata?.style?.cover
+								? `/images/${page.metadata.style.cover}?v=1`
 								: '/images/preview-component.webp?v=1'}
 							alt={`${page.metadata.title} cover`}
 							class="max-sm:max-h-38"

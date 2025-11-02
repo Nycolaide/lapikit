@@ -26,7 +26,6 @@
 		"title": "Hooks",
 		"order": 2,
 		"slug": "/docs/hooks",
-		"whitelist": ["actions", "stores"],
 		"style": {
 			"color": "red",
 			"icon": "mgc_home_line"

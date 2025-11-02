@@ -1,3 +1,5 @@
+import type { SvelteComponent } from 'svelte';
+
 export interface DocFile {
 	path: string;
 	slug: string;
@@ -28,4 +30,14 @@ export interface DocFile {
 		keywords?: string[];
 		[key: string]: unknown;
 	} | null;
+}
+
+export interface Frontmatter {
+	title: string;
+	headings: { id: string; text: string; level: number }[];
+}
+
+export interface MarkdownModule {
+	default: typeof SvelteComponent;
+	metadata: Frontmatter;
 }

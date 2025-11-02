@@ -13,7 +13,7 @@
 
 	mode.set(PUBLIC_ENV);
 
-	let { children } = $props();
+	let { data, children } = $props();
 
 	onMount(() => {
 		if (browser) {
@@ -33,6 +33,10 @@
 			search.set(true);
 		}
 	}
+
+	$effect(() => {
+		console.log('Parent Layout data:', data);
+	});
 </script>
 
 <svelte:head>

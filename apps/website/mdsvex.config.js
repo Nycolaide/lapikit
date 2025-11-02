@@ -12,7 +12,7 @@ import { dirname } from 'node:path';
 export const mdsvexOptions = {
 	extensions: ['.md'],
 	layout: {
-		_: dirname(fileURLToPath(import.meta.url)) + '/src/templates/mdsvex.svelte'
+		_: dirname(fileURLToPath(import.meta.url)) + '/src/lib/templates/page.mdsvex.svelte'
 	},
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
