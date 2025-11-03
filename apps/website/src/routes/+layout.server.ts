@@ -33,15 +33,40 @@ const footer_links = {
 		items: [
 			{
 				key: 'terms_and_privacy',
-				path: '/terms'
+				title: 'terms & privacy',
+				slug: '/terms'
 			},
 			{
 				key: 'cookie',
+				title: 'cookie consent',
 				custom: 'cookie-consent'
 			}
 		]
 	}
 };
+
+const social_links = [
+	{
+		title: 'gitHub',
+		href: urlInternal.github.repository,
+		icon: 'mgc_github_fill',
+		color: 'service-github'
+	},
+	{
+		name: 'discord',
+		icon: 'mgc_discord_fill',
+		color: 'service-discord',
+		href: urlInternal.discord.invite,
+		footer: true
+	},
+	{
+		name: 'NPM',
+		icon: '/icons/npm-color.svg',
+		color: 'service-npm',
+		href: urlInternal.npm.package,
+		footer: true
+	}
+];
 
 export async function load({ fetch }) {
 	let api: { github?: GitHubRepositoryData | null; npm?: NpmPackageData | null } = {};
@@ -65,6 +90,7 @@ export async function load({ fetch }) {
 		nav_links,
 		header_links,
 		footer_links,
+		social_links,
 		counter: counterRaw.categories,
 		url_internal: urlInternal,
 		...api

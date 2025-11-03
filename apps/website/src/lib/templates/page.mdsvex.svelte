@@ -5,15 +5,19 @@
 </script>
 
 <script lang="ts">
-	let props = $props();
+	import { capitalize } from 'site-kit/actions';
 
-	$effect(() => {
-		console.log('Props data:', props);
-	});
+	let props = $props();
 </script>
 
-{props?.subtitle}
-{props?.title}
-{props?.description}
+{#if props?.title}
+	<h1 class="title opacity-75">{capitalize(props?.title)}</h1>
+{/if}
+{#if props?.subtitle}
+	<h2 class="subtitle mt-2!">{capitalize(props?.subtitle)}</h2>
+{/if}
+{#if props?.description}
+	<p class="description">{props?.description}</p>
+{/if}
 
 {@render props?.children?.()}

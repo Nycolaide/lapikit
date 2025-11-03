@@ -21,7 +21,7 @@
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<Header npm={data.npm} isHome={false} />
+<Header navigation={data.header_links} npm={data.npm} url={data.url_internal} isHome={false} />
 
 <div
 	class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
@@ -97,4 +97,4 @@
 	</div>
 </div>
 
-<Footer url={data.url_internal} />
+<Footer url={data.url_internal} navigation={data.footer_links} socials={data.social_links} />
