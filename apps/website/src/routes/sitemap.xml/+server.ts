@@ -1,4 +1,3 @@
-import { staticPages, url } from '$lib/config';
 export const prerender = true;
 
 export type Categories = 'sveltekit' | 'svelte';
@@ -13,20 +12,13 @@ export type Post = {
 };
 
 export async function GET({ fetch }) {
-	const contents = await fetch('api/content');
-	const responseApiContent: Post[] = await contents.json();
-	const pages = [...staticPages, ...responseApiContent.map((page) => page.slug)];
+	// const contents = await fetch('api/content');
+	// const responseApiContent: Post[] = await contents.json();
+	// const pages = [...responseApiContent.map((page) => page.slug)];
 
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        ${pages
-					.map(
-						(page) => `
-            <url>
-                <loc>${url}/${page}</loc>
-            </url>`
-					)
-					.join('')}
+       
     </urlset>`;
 
 	return new Response(body, {
@@ -35,3 +27,12 @@ export async function GET({ fetch }) {
 		}
 	});
 }
+
+//  ${pages
+// 					.map(
+// 						(page) => `
+//             <url>
+//                 <loc>/${page}</loc>
+//             </url>`
+// 					)
+// 					.join('')}

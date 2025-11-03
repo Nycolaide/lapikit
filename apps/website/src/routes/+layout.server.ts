@@ -7,7 +7,7 @@ import categoriesRaw from '$data/category.json';
 import counterRaw from '$data/api/counter-lapikit.json';
 import urlInternal from '$data/url.json';
 
-export const prerender = true;
+export const prerender = false;
 const authCallAPI = PUBLIC_API === 'true';
 
 const nav_links: NavigationLinks = {
