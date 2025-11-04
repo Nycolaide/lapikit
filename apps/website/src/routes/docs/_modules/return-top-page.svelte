@@ -24,7 +24,7 @@
 	density="comfortable"
 	rounded="full"
 	icon
-	class={`fixed! right-[12rem] bottom-[0.75rem] z-1100 lg:right-[0.75rem] ${show ? 'visible' : 'invisible'}`}
+	class={`fixed! right-[0.75rem] bottom-[0.75rem] z-1100 ${show ? 'visible' : 'invisible'}`}
 	onclick={scrollToTop}
 >
 	<Icon icon="mgc_arrow_up_fill" />

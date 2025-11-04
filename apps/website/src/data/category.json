@@ -6,7 +6,7 @@
 		"slug": "/docs/introduction",
 		"style": {
 			"color": "red",
-			"icon": "mgc_home_line"
+			"icon": "mgc_settings_5_line"
 		},
 		"categories": []
 	},
@@ -17,7 +17,7 @@
 		"slug": "/docs/components",
 		"style": {
 			"color": "red",
-			"icon": "mgc_home_line"
+			"icon": "mgc_cube_3d_line"
 		},
 		"categories": []
 	},
@@ -28,7 +28,7 @@
 		"slug": "/docs/hooks",
 		"style": {
 			"color": "red",
-			"icon": "mgc_home_line"
+			"icon": "mgc_webhook_line"
 		},
 		"categories": [
 			{

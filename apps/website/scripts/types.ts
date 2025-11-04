@@ -129,3 +129,22 @@ export interface SearchItem {
 	style?: DocumentStyle;
 	keywords?: string[];
 }
+
+export interface HeadingItem {
+	id: string;
+	text: string;
+	level: number;
+}
+
+export interface PageSummary {
+	slug: string;
+	path: string;
+	title: string;
+	headings: HeadingItem[];
+}
+
+export interface SummariesData {
+	generatedAt: string;
+	totalPages: number;
+	summaries: PageSummary[];
+}

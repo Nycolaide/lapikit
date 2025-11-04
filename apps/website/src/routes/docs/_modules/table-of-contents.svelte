@@ -1,0 +1,31 @@
+<script lang="ts">
+	import { Icon, Toolbar } from 'lapikit/components';
+
+	let { headings, ...rest } = $props();
+</script>
+
+<div class="bg-background-primary sticky top-[112px] z-10 text-sm" {...rest}>
+	<Toolbar classContent="opacity-70" class="p-0!">
+		<Icon icon="mgc_floating_dust_line" class="mr-2" />
+		<span>On this page</span>
+	</Toolbar>
+	<div class="max-h-[calc(100vh_-_200px)] overflow-y-auto">
+		<ul class="opacity-70">
+			{#each headings as heading (heading.id)}
+				<li class="mb-2" class:mr-2={heading.level === 2} class:ml-4={heading.level === 3}>
+					<a href={`#${heading.id}`} class="hover:underline">
+						{heading.text}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
+</div>
+
+<style>
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+</style>

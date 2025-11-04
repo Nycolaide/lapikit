@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { Button, Card, Icon } from 'lapikit/components';
-	import { Breadcrumbs } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
 
 	let { data } = $props();
@@ -12,10 +10,7 @@
 	<meta name="description" content="Find out more about Lapikit's hooks." />
 </svelte:head>
 
-<div
-	class="mx-auto grid w-full min-w-0 pb-6 pl-4 pr-4 pt-16 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]"
->
-	<Breadcrumbs {page} ld={data?.breadcrumbJsonLd} />
+<div class="mx-auto grid w-full min-w-0 pr-4 pb-6 pl-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]">
 	<div class="mb-16 text-center">
 		<h1 class="text-xl font-bold md:text-2xl lg:text-3xl">
 			{capitalize('Discover all hooks of Lapikit')}

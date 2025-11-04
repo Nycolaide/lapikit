@@ -12,6 +12,9 @@
 	import { HeaderDocs, NavDocs } from '$components';
 	import SubHeader from './_modules/sub-header.svelte';
 	import ReturnTopPage from './_modules/return-top-page.svelte';
+	import TableOfContents from './_modules/table-of-contents.svelte';
+	import Breadcrumbs from './_modules/breadcrumbs.svelte';
+	import FooterDocs from '$components/footer-docs.svelte';
 
 	let { children, data } = $props();
 
@@ -69,10 +72,12 @@
 <HeaderDocs url={data.url_internal} npm={data.npm || undefined} />
 
 <SubHeader
+	class="sticky top-[64px] z-95 max-lg:hidden!"
 	bind:open
 	navigation={data.nav_links}
 	url={data.url_internal}
 	npm={data.npm || undefined}
+	sectionActive={currentSection}
 />
 
 <Drawer bind:open>
@@ -81,8 +86,33 @@
 	{/snippet}
 
 	<PageTransition url={data.url}>
-		{@render children?.()}
-	</PageTransition>
+		<div
+			class={`grid pr-4 pb-6 pl-4 lg:pl-0 ${data.summary?.data?.headings?.length > 0 ? 'xl:grid-cols-[1fr_220px]' : ''} mx-auto w-full min-w-0 gap-8`}
+		>
+			<div>
+				<Breadcrumbs
+					url={data.url}
+					bind:open
+					class="z-95 max-lg:sticky max-lg:top-[64px] max-lg:-ml-[15px] max-lg:w-[calc(100%_+_30px)]! lg:mx-auto lg:max-w-[760px]"
+				/>
 
-	<ReturnTopPage />
+				<div class="markdown mx-auto w-full min-w-0 pt-8 md:max-w-[760px]">
+					{@render children?.()}
+				</div>
+
+				<FooterDocs
+					class="mx-auto mt-16 md:max-w-[760px]"
+					url={data.url_internal}
+					socials={data.social_links}
+				/>
+			</div>
+			{#if data.summary?.data?.headings && data.summary?.data?.headings.length > 0}
+				<aside class="max-xl:hidden">
+					<TableOfContents headings={data.summary?.data?.headings || []} />
+				</aside>
+			{/if}
+		</div>
+	</PageTransition>
 </Drawer>
+
+<ReturnTopPage />

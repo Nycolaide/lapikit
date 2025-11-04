@@ -18,7 +18,7 @@
 	let open: boolean = $state(false);
 </script>
 
-<footer {...rest} class="max-sm:mb-[6rem]">
+<footer {...rest}>
 	<div class="align-center flex h-px w-full flex-row items-center text-center">
 		<Separator opacity="0.2" />
 		<div class="mx-4 flex items-center gap-2">
@@ -101,7 +101,7 @@
 			<Card
 				background="service-discord"
 				color="service-on-discord"
-				class="rounded-lg! p-6! text-center! md:text-start! mt-6 sm:mx-auto sm:max-w-[350px]"
+				class="mt-6 rounded-lg! p-6! text-center! sm:mx-auto sm:max-w-[350px] md:text-start!"
 			>
 				<p class="text-xl font-semibold">Join our community on Discord</p>
 				<p class="my-2 sm:text-lg">News, updates, and discussions await you!</p>
@@ -129,7 +129,7 @@
 		>
 			<p>
 				Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit. -
-				<a href={url.package.licence} target="_blank">MIT License</a>
+				<a href={url.package.licence} target="_blank" class="hover:underline">MIT License</a>
 			</p>
 			<div class="order-first flex gap-2 md:order-last">
 				<span class="text-sm">
