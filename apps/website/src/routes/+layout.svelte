@@ -50,7 +50,5 @@
 <App dark={page.url.pathname === '/'}>
 	{@render children()}
 
-	{#if $search}
-		<Search bind:open={$search} />
-	{/if}
+	<Search bind:open={$search} />
 </App>
