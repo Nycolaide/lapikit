@@ -5,15 +5,13 @@ description: Integrate your style and design system into Lapikit components
 head:
   title: customize
   description: "Customize your Svelte Lapikit components via the lapikit.config.js file: themes, styles, breakpoints. Fluid styling guaranteed."
-style:
-  icon: mgc_settings_6_line
 state:
   section: base
   category: core
   published: true
   recommended: true
   order: 3
-  status: update
+  status: deprecate
 github:
   url: /customize.md
 keywords:

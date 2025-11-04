@@ -4,8 +4,6 @@ subtitle: Learn how to migrate to legacy version to current lapikit
 head:
   title: migration guide
   description: "Discover the Lapikit 0.2.3 to 0.2.4 migration guide. Learn how to easily update your configuration, breakpoints, themes, and CLI with this comprehensive tutorial."
-style:
-  icon: mgc_union_line
 state:
   section: base
   published: true

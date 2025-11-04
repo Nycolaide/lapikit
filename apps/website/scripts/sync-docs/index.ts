@@ -43,6 +43,25 @@ async function syncDocs(): Promise<void> {
 
 		copyRecursive(sourceDir, destDir);
 
+		// Copier les fichiers supplémentaires depuis packages/lapikit
+		const lapikitDir: string = path.resolve(process.cwd(), '../../packages/lapikit');
+		const additionalFiles: { src: string; dest: string }[] = [
+			{ src: 'ROADMAP.md', dest: 'roadmap.md' },
+			{ src: 'CHANGELOG.md', dest: 'changelog.md' }
+		];
+
+		additionalFiles.forEach(({ src, dest }) => {
+			const srcPath: string = path.join(lapikitDir, src);
+			const destPath: string = path.join(destDir, dest);
+
+			if (fs.existsSync(srcPath)) {
+				fs.copyFileSync(srcPath, destPath);
+				console.log(`✅ Copy: ${src} -> ${dest}`);
+			} else {
+				console.warn(`⚠️ Warning: File not found: ${srcPath}`);
+			}
+		});
+
 		console.log('✨ Synchronization completed successfully!');
 		const navDocsPath = path.resolve(process.cwd(), 'src/data/api/docs.json');
 		processMarkdownFiles(destDir, navDocsPath);

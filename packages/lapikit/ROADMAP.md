@@ -1,11 +1,18 @@
 ---
 title: Roadmap
-description: description.
-section: 'package'
-published: true
+subtitle: 'Lapikit roadmap: upcoming features and improvements'
+description: Find all the planned changes in the lapikit release notes
+head:
+  title: roadmap
+  description: 'Discover the future developments and enhancements planned for Lapikit. Stay informed about upcoming features and improvements to our component library.'
+state:
+  section: base
+  published: true
+  order: -1
+keywords:
+  - lapikit
+  - planned
 ---
-
-# ROADMAP
 
 ## COMPONENTS
 

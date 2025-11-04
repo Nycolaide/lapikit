@@ -1,38 +1,42 @@
+import { staticPages } from '$lib/config.js';
+import { convertDocsToSitemapPages, generateSitemapXml } from './hook.js';
+import type { DocsData } from '$lib/types/sitemap.js';
+
+// api datas
+import docsRaw from '$data/api/docs.json';
+
 export const prerender = true;
 
-export type Categories = 'sveltekit' | 'svelte';
+export async function GET() {
+	try {
+		const docsData = docsRaw as DocsData;
+		const docsPages = convertDocsToSitemapPages(docsData);
+		const allPages = [...staticPages, ...docsPages];
 
-export type Post = {
-	title: string;
-	slug: string;
-	description: string;
-	date: string;
-	categories: Categories[];
-	published: boolean;
-};
+		const body = generateSitemapXml(allPages);
 
-export async function GET({ fetch }) {
-	// const contents = await fetch('api/content');
-	// const responseApiContent: Post[] = await contents.json();
-	// const pages = [...responseApiContent.map((page) => page.slug)];
+		return new Response(body, {
+			headers: {
+				'Content-Type': 'application/xml'
+			}
+		});
+	} catch (error) {
+		console.error('Error generating sitemap:', error);
 
-	const body = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-       
-    </urlset>`;
+		const fallbackBody = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://lapikit.dev/</loc>
+        <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>`;
 
-	return new Response(body, {
-		headers: {
-			'Content-Type': 'application/xml'
-		}
-	});
+		return new Response(fallbackBody, {
+			headers: {
+				'Content-Type': 'application/xml'
+			}
+		});
+	}
 }
-
-//  ${pages
-// 					.map(
-// 						(page) => `
-//             <url>
-//                 <loc>/${page}</loc>
-//             </url>`
-// 					)
-// 					.join('')}
