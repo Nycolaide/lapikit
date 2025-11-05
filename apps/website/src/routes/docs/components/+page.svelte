@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { Card } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
+	import { hasNavSections } from '$lib/types/guards';
 
 	let { data } = $props();
+
+	const docsSection = $derived(data.nav_links['docs']);
+	const componentsSection = $derived(
+		hasNavSections(docsSection) ? docsSection.sections['components'] : null
+	);
 </script>
 
 <svelte:head>
@@ -18,10 +24,10 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 xl:grid-cols-4">
-		{#if data.nav_links['docs'].sections['components'].categories.length === 0}
+		{#if !componentsSection || componentsSection.categories.length === 0}
 			<p>{capitalize('No Components found')}</p>
 		{:else}
-			{#each data.nav_links['docs'].sections['components'].categories as category (category.key)}
+			{#each componentsSection.categories as category (category.key)}
 				{#if category.title !== 'uncategorized'}
 					<p>{capitalize(category.title)}</p>
 				{/if}
@@ -35,12 +41,14 @@
 							src={page.metadata?.style?.cover
 								? `/images/${page.metadata.style.cover}?v=1`
 								: '/images/preview-component.webp?v=1'}
-							alt={`${page.metadata.title} cover`}
+							alt={`${page.metadata?.title || 'Component'} cover`}
 							class="max-sm:max-h-38"
 						/>
 						<div>
-							<p class="text-lg font-bold md:text-xl">{capitalize(page.metadata.title)}</p>
-							<p class="opacity-75">{capitalize(page?.metadata.introduction || '')}</p>
+							<p class="text-lg font-bold md:text-xl">
+								{capitalize(page.metadata?.title || 'Component')}
+							</p>
+							<p class="opacity-75">{capitalize((page?.metadata?.introduction as string) || '')}</p>
 						</div>
 					</Card>
 				{/each}

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { Button, Card, Icon } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
+	import { hasNavSections } from '$lib/types/guards';
 
 	let { data } = $props();
+
+	const docsSection = $derived(data.nav_links['docs']);
+	const hooksSection = $derived(hasNavSections(docsSection) ? docsSection.sections['hooks'] : null);
 </script>
 
 <svelte:head>
@@ -18,17 +22,21 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-4">
-		{#if data.nav_links['docs'].sections['hooks'].categories.length === 0}
+		{#if !hooksSection || hooksSection.categories.length === 0}
 			<p>{capitalize('No Hooks found')}</p>
 		{:else}
-			{#each data.nav_links['docs'].sections['hooks'].categories as category (category.key)}
+			{#each hooksSection.categories as category (category.key)}
 				{#if category.key === 'stores'}
 					{#each category.items as page, index (index)}
 						<Card href={`${page.slug}`} class="mb-4 items-start gap-4 ">
 							<div class="grid grid-cols-[1fr_auto] gap-4 p-5">
 								<div>
-									<p class="text-lg font-bold md:text-xl">{capitalize(page.metadata.title)}</p>
-									<p class="opacity-75">{capitalize(page?.metadata.introduction || '')}</p>
+									<p class="text-lg font-bold md:text-xl">
+										{capitalize(page.metadata?.title || 'Hook')}
+									</p>
+									<p class="opacity-75">
+										{capitalize((page?.metadata?.introduction as string) || '')}
+									</p>
 								</div>
 								<div>
 									<Button href={`${page.slug}`} icon rounded="full">
@@ -41,17 +49,21 @@
 				{/if}
 			{/each}
 
-			{#each data.nav_links['docs'].sections['hooks'].categories as category (category.key)}
+			{#each hooksSection.categories as category (category.key)}
 				{#if category.key === 'actions'}
 					{#each category.items as page, index (index)}
-						<Card href={`/docs${page.metadata.slug}`} class="mb-4 items-start gap-4 ">
+						<Card href={`/docs${page.metadata?.slug || ''}`} class="mb-4 items-start gap-4 ">
 							<div class="grid grid-cols-[1fr_auto] gap-4 p-5">
 								<div>
-									<p class="text-lg font-bold md:text-xl">{capitalize(page.metadata.title)}</p>
-									<p class="opacity-75">{capitalize(page?.metadata.introduction || '')}</p>
+									<p class="text-lg font-bold md:text-xl">
+										{capitalize(page.metadata?.title || 'Hook')}
+									</p>
+									<p class="opacity-75">
+										{capitalize((page?.metadata?.introduction as string) || '')}
+									</p>
 								</div>
 								<div>
-									<Button href={`/docs${page.metadata.slug}`} icon rounded="full">
+									<Button href={`/docs${page.metadata?.slug || ''}`} icon rounded="full">
 										<Icon icon="mgc_arrow_right_fill" />
 									</Button>
 								</div>

@@ -35,6 +35,10 @@ export interface DocFile {
 export interface Frontmatter {
 	title: string;
 	headings: { id: string; text: string; level: number }[];
+	head?: {
+		title?: string;
+		description?: string;
+	};
 }
 
 export interface MarkdownModule {

@@ -35,10 +35,6 @@
 			search.set(true);
 		}
 	}
-
-	$effect(() => {
-		console.log('Parent Layout data:', data);
-	});
 </script>
 
 <svelte:head>

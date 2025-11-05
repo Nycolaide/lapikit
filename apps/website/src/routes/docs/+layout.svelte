@@ -67,10 +67,6 @@
 			currentSection = result.section;
 		}
 	});
-
-	$effect(() => {
-		console.log('Current Section:', data);
-	});
 </script>
 
 <HeaderDocs url={data.url_internal} npm={data.npm || undefined} />

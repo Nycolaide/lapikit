@@ -1,4 +1,3 @@
-// Types pour les summaries générés
 export interface HeadingItem {
 	id: string;
 	text: string;
@@ -18,7 +17,6 @@ export interface SummariesData {
 	summaries: PageSummary[];
 }
 
-// Utilitaires pour travailler avec les summaries
 export class SummariesManager {
 	private summaries: PageSummary[] = [];
 	private summariesMap = new Map<string, PageSummary>();

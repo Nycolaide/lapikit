@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { capitalize } from 'site-kit/actions';
 	import { consentManaged } from '$lib/stores/app';
+	import type { FooterNavigation, SocialLink, UrlInternal } from '$lib/types/footer';
 
 	// components
 	import { Button, Card, Icon, Separator, Toolbar } from 'lapikit/components';
@@ -11,7 +12,15 @@
 	import Lapikit from '$lib/images/lapikit.webp?enhanced';
 	import LapinosaureFace from '$lib/images/lapinosaure/lapinosaure-face.webp?enhanced';
 
-	let { url, navigation, socials, ...rest } = $props();
+	interface Props {
+		url: UrlInternal;
+		navigation: FooterNavigation;
+		socials: SocialLink[];
+		class?: string;
+		[key: string]: unknown;
+	}
+
+	let { url, navigation, socials, ...rest }: Props = $props();
 
 	// states
 	let year: number = new Date().getFullYear();

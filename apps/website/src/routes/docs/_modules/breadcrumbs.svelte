@@ -1,18 +1,24 @@
 <script lang="ts">
 	import { Button, Icon, Toolbar } from 'lapikit/components';
+	interface Props {
+		url: string;
+		open?: boolean;
+		class?: string;
+		[key: string]: unknown;
+	}
 
-	let { url, open = $bindable(), ...rest } = $props();
+	let { url, open = $bindable(), ...rest }: Props = $props();
 
-	interface BreadcrumbItem {
+	interface InternalBreadcrumbItem {
 		label: string;
 		href: string;
 		isCurrentPage: boolean;
 	}
 
-	function generateBreadcrumbs(url: string): BreadcrumbItem[] {
+	function generateBreadcrumbs(url: string): InternalBreadcrumbItem[] {
 		const segments = url.replace(/\/$/, '').split('/').filter(Boolean);
 
-		const breadcrumbs: BreadcrumbItem[] = [
+		const breadcrumbs: InternalBreadcrumbItem[] = [
 			{
 				label: 'Home',
 				href: '/',
@@ -44,18 +50,6 @@
 	}
 
 	const breadcrumbs = $derived(generateBreadcrumbs(url));
-	const structuredData = $derived({
-		'@context': 'https://schema.org',
-		'@type': 'BreadcrumbList',
-		itemListElement: breadcrumbs.map((item, index) => ({
-			'@type': 'ListItem',
-			position: index + 1,
-			name: item.label,
-			item: item.isCurrentPage
-				? undefined
-				: `${typeof window !== 'undefined' ? window.location.origin : ''}${item.href}`
-		}))
-	});
 </script>
 
 <svelte:head>
@@ -88,7 +82,7 @@
 								<span itemprop="name">{item.label}</span>
 							</a>
 						{/if}
-						<meta itemprop="position" content={index + 1} />
+						<meta itemprop="position" content={(index + 1).toString()} />
 						{#if index < breadcrumbs.length - 1}
 							<span aria-hidden="true" class="flex">
 								<Icon icon="mgc_right_line" />

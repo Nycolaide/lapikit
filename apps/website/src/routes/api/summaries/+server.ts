@@ -15,12 +15,6 @@ interface Summary {
 	}>;
 }
 
-interface SummariesData {
-	generatedAt: string;
-	totalPages: number;
-	summaries: Summary[];
-}
-
 export const GET: RequestHandler = async ({ url }) => {
 	try {
 		// const summaries: SummariesData = summariesRawData;
@@ -38,8 +32,6 @@ export const GET: RequestHandler = async ({ url }) => {
 		const foundSummary = summariesRawData.summaries.find(
 			(summary: Summary) => summary.slug === slug
 		);
-
-		console.log('GW1 :', summariesRawData.summaries, slug);
 
 		if (foundSummary) {
 			return json(

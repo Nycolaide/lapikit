@@ -6,10 +6,6 @@
 	import { page } from '$app/state';
 
 	let { sectionActive, url, navigation, open = $bindable(), ...rest } = $props();
-
-	$effect(() => {
-		console.log(url);
-	});
 </script>
 
 <Toolbar classContent="mx-auto mx-1! gap-2" rounded="0" background="background-primary" {...rest}>

@@ -3,7 +3,7 @@
 	import type { UrlInternal } from '$lib/types/internal';
 
 	// assets
-	import NycolaideAvatar from '$lib/images/nycolaide.png?enhanced';
+	import NycolaideAvatar from '$lib/images/nycolaide.webp?enhanced';
 
 	let { url }: { url: UrlInternal } = $props();
 </script>

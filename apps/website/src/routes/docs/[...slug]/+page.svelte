@@ -5,8 +5,10 @@
 </script>
 
 <svelte:head>
-	<title>{capitalize(data.page.meta.head.title)} • Lapikit</title>
-	<meta name="description" content={data.page.meta.head.description} />
+	<title
+		>{capitalize(data.page.meta.head?.title || data.page.meta.title || 'Lapikit')} • Lapikit</title
+	>
+	<meta name="description" content={data.page.meta.head?.description || 'Lapikit documentation'} />
 </svelte:head>
 
 <data.page.content />

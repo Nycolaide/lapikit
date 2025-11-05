@@ -11,8 +11,12 @@ export interface NavigationSectionDirect {
 	items: DocFile[];
 }
 
+export interface NavigationLinkWithSections extends NavigationLink {
+	sections: NavigationData;
+}
+
 export interface NavigationLinks {
-	[key: string]: NavigationLink | NavigationSectionDirect;
+	[key: string]: NavigationLink | NavigationSectionDirect | NavigationLinkWithSections;
 }
 
 export interface NavigationSection {
