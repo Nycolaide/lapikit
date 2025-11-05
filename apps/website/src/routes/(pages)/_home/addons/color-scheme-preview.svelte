@@ -60,7 +60,11 @@
 		}
 	}
 
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-expect-error
 	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?w=400;800;1272&enhanced';
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-expect-error
 	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?w=400;800;1272&enhanced';
 </script>
 
@@ -84,7 +88,7 @@
 				src={CarrotMailDark}
 				alt="star on lapikit logo"
 				class="no-select"
-				sizes="(max-width: 1272px) 100vw, 1272px"
+				sizes="(max-width: 768px) 400px, (max-width: 1272px) 800px, 1272px"
 			/>
 		</div>
 
@@ -93,7 +97,7 @@
 				src={CarrotMailLight}
 				alt="star on lapikit logo"
 				class="no-select"
-				sizes="(max-width: 1272px) 100vw, 1272px"
+				sizes="(max-width: 768px) 400px, (max-width: 1272px) 800px, 1272px"
 			/>
 		</div>
 
