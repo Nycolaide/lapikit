@@ -91,6 +91,7 @@
 					<Button
 						class="absolute! -mt-[85px]! hidden! lg:mt-0! lg:-ml-[85px]! lg:inline-flex!"
 						rounded="full"
+						aria-label={`Display ${step.title}`}
 						active={stepTimeline === index}
 						onclick={() => (stepTimeline = index)}
 						background={stepTimeline === index ? 'accent-primary' : 'label-secondary'}

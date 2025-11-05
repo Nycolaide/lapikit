@@ -3,6 +3,7 @@
 	import { capitalize } from 'site-kit/actions';
 	import { useSearch } from './search.svelte.js';
 	import { onDestroy } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	const { results, callResults } = useSearch();
 
@@ -17,6 +18,7 @@
 	let historyResults: { title: string; slug: string; date: string }[] = $state([]);
 	let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 	let textfieldElement = $state<HTMLElement>();
+	let selectedIndex = $state(-1);
 
 	$effect(() => {
 		if (open && textfieldElement) {
@@ -27,20 +29,32 @@
 		}
 	});
 
+	// Load history when modal opens or search is cleared
 	$effect(() => {
-		if (searchQuery === '' || !searchQuery) {
-			let storageBrowser = localStorage.getItem('@lapikit/recent-searches');
-			historyResults = storageBrowser ? JSON.parse(storageBrowser) : [];
+		if (open) {
+			if (!searchQuery || searchQuery === '') {
+				let storageBrowser = localStorage.getItem('@lapikit/recent-searches');
+				const newHistoryResults = storageBrowser ? JSON.parse(storageBrowser) : [];
+				historyResults = newHistoryResults;
+			}
 		}
 	});
 
+	// Handle search with debounce
 	$effect(() => {
-		if (searchQuery !== undefined && searchQuery !== '') {
+		if (searchQuery && searchQuery !== '') {
 			if (debounceTimeout) clearTimeout(debounceTimeout);
 			debounceTimeout = setTimeout(() => {
 				callResults(searchQuery!);
 			}, 300);
 		}
+	});
+
+	// Set selected index based on current mode and available results
+	$effect(() => {
+		const isSearchMode = searchQuery && searchQuery !== '';
+		const currentResults = isSearchMode ? $results : historyResults;
+		selectedIndex = currentResults.length > 0 ? 0 : -1;
 	});
 
 	function saveOnHistory(search: { title: string; slug?: string }) {
@@ -77,6 +91,31 @@
 		historyResults = [];
 	}
 
+	function handleKeydown(event: KeyboardEvent) {
+		const currentResults = searchQuery === '' || !searchQuery ? historyResults : $results;
+		const maxIndex = currentResults.length - 1;
+
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			selectedIndex = selectedIndex < maxIndex ? selectedIndex + 1 : 0;
+		} else if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : maxIndex;
+		} else if (
+			event.key === 'Enter' &&
+			selectedIndex >= 0 &&
+			selectedIndex < currentResults.length
+		) {
+			event.preventDefault();
+			const selectedItem = currentResults[selectedIndex];
+			if (selectedItem) {
+				saveOnHistory({ title: selectedItem.title, slug: selectedItem.slug });
+				goto(`${selectedItem.slug}`);
+				open = false;
+			}
+		}
+	}
+
 	onDestroy(() => {
 		if (debounceTimeout) clearTimeout(debounceTimeout);
 	});
@@ -95,6 +134,7 @@
 		bind:value={searchQuery}
 		clearable
 		placeholder={capitalize('search...')}
+		onkeydown={handleKeydown}
 	>
 		{#snippet appendInner()}
 			<Icon icon="mgc_search_line" />
@@ -130,7 +170,8 @@
 							saveOnHistory({ title: item.title, slug: item.slug });
 						}}
 						href={`${item.slug}`}
-						class="cursor-pointer"
+						class="cursor-pointer rounded-sm!"
+						style={`${selectedIndex === index ? 'background:var(--kit-background-tertiary);' : ''}`}
 					>
 						{#snippet prepend()}
 							<Icon icon="mgc_history_line" />
@@ -146,7 +187,8 @@
 							saveOnHistory({ title: item.title, slug: item.slug });
 						}}
 						href={`${item.slug}`}
-						class="cursor-pointer"
+						class="cursor-pointer rounded-sm!"
+						style={`${selectedIndex === index ? 'background:var(--kit-background-tertiary);' : ''}`}
 					>
 						{#snippet prepend()}
 							{#if item.style?.icon}

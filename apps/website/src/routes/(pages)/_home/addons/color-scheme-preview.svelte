@@ -80,12 +80,21 @@
 		tabindex="0"
 	>
 		<div class="image-background">
-			<!-- <img src="/images/material-cover.png" alt="Material cover preview" /> -->
-			<enhanced:img src={CarrotMailDark} alt="star on lapikit logo" class="no-select" />
+			<enhanced:img
+				src={CarrotMailDark}
+				alt="star on lapikit logo"
+				class="no-select"
+				sizes="min(380px, 100vw)"
+			/>
 		</div>
 
 		<div class="image-overlay" style="clip-path: inset(0 {100 - dragPosition}% 0 0);">
-			<enhanced:img src={CarrotMailLight} alt="star on lapikit logo" />
+			<enhanced:img
+				src={CarrotMailLight}
+				alt="star on lapikit logo"
+				class="no-select"
+				sizes="min(380px, 100vw)"
+			/>
 		</div>
 
 		<div class="drag-handle" class:dragging={isDragging} style="left: {dragPosition}%;">

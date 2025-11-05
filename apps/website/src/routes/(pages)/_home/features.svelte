@@ -50,6 +50,7 @@
 		},
 		{
 			icon: '/icons/typescript-primary.svg',
+			altIcon: 'TypeScript Logo',
 			title: {
 				en: 'Typescript support'
 			},
@@ -59,6 +60,7 @@
 		},
 		{
 			icon: '/icons/svelte-primary.svg',
+			altIcon: 'Svelte Logo',
 			title: {
 				en: 'SvelteKit friendly'
 			},
@@ -84,11 +86,11 @@
 		</div>
 		<div class="mt-16">
 			<ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
-				{#each enableFeatures as { title, description, icon } (title)}
+				{#each enableFeatures as { title, description, icon, altIcon } (title)}
 					<li>
 						<div>
 							<div>
-								<Icon {icon} size="xl" color="accent-primary" class="no-select" />
+								<Icon {icon} size="xl" color="accent-primary" class="no-select" alt={altIcon} />
 							</div>
 							<div>
 								<p class="my-1 font-semibold">{title['en']}</p>

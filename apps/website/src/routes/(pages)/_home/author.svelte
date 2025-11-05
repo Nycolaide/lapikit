@@ -32,7 +32,7 @@
 			class="no-select rounded-full"
 		/>
 		<div>
-			<a href={url.nycolaide.github} target="_blank"><span>Nycolaide</span></a>
+			<a href={url.nycolaide.website} target="_blank"><span>Nycolaide</span></a>
 			<p class="text-sm">Creator of Lapikit</p>
 		</div>
 	</div>

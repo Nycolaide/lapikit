@@ -79,12 +79,12 @@
 											{capitalize(`${title}`)}
 										</Button>
 									</li>
-								{/if}
-
-								{#if custom === 'cookie-consent'}
-									<Button onclick={() => consentManaged.set(true)} rounded="full" variant="text">
-										{capitalize(`${title}`)}
-									</Button>
+								{:else if custom === 'cookie-consent'}
+									<li>
+										<Button onclick={() => consentManaged.set(true)} rounded="full" variant="text">
+											{capitalize(`${title}`)}
+										</Button>
+									</li>
 								{/if}
 							{/each}
 						{:else}

@@ -57,7 +57,7 @@
 </script>
 
 <Appbar
-	class="z-100 sticky top-0"
+	class="sticky top-0 z-100"
 	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
 	background={scrolled ? 'background-primary' : 'transparent'}
 	{...rest}
@@ -144,6 +144,7 @@
 					bind:ref={dropdownRef}
 					onclick={() => model.toggle(dropdownRef)}
 					class="md:hidden!"
+					aria-label="Open navigation menu"
 					icon
 				>
 					<Icon icon={model.open ? 'mgc_close_line' : 'mgc_menu_line'} />

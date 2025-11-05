@@ -37,6 +37,7 @@
 					href={url.github.sponsors}
 					target="_blank"
 					class="px-4!"
+					aria-label="Open GitHub Sponsors"
 				>
 					{#snippet prepend()}
 						<Icon icon="mgc_github_line" />
@@ -55,7 +56,7 @@
 					class="px-4!"
 				>
 					{#snippet prepend()}
-						<Icon icon="/icons/buymeacoffee.svg" class="no-select" />
+						<Icon icon="/icons/buymeacoffee.svg" class="no-select" alt="Buy me a coffee icon" />
 					{/snippet}
 					Buy me a coffee
 				</Button>

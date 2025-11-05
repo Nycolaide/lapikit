@@ -31,6 +31,7 @@
 						style="--icon-multiplier-size: 16"
 						color="red"
 						class="no-select"
+						alt="NPM Logo"
 					/>
 					<div>
 						<span class="text-highlighted text-xl font-semibold"
