@@ -47,7 +47,7 @@ const footer_links = {
 
 const social_links = [
 	{
-		title: 'github',
+		name: 'github',
 		href: urlInternal.github.repository,
 		icon: 'mgc_github_fill',
 		color: 'service-github'
