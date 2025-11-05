@@ -60,8 +60,8 @@
 		}
 	}
 
-	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?enhanced';
-	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?enhanced';
+	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?w=400;800;1272&enhanced';
+	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?w=400;800;1272&enhanced';
 </script>
 
 <div id="color-scheme-preview" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
@@ -84,7 +84,7 @@
 				src={CarrotMailDark}
 				alt="star on lapikit logo"
 				class="no-select"
-				sizes="min(380px, 100vw)"
+				sizes="(max-width: 1272px) 100vw, 1272px"
 			/>
 		</div>
 
@@ -93,7 +93,7 @@
 				src={CarrotMailLight}
 				alt="star on lapikit logo"
 				class="no-select"
-				sizes="min(380px, 100vw)"
+				sizes="(max-width: 1272px) 100vw, 1272px"
 			/>
 		</div>
 
