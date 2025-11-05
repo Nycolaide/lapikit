@@ -133,7 +133,7 @@
 			<ThemeToggle icon class="hidden! md:inline-flex!" />
 		{/if}
 
-		<Button href={url.github.repository} target="_blank" aria-label="GitHub">
+		<Button href={url.github.repository} target="_blank" aria-label="GitHub Counter">
 			<Icon icon="mgc_github_line" />
 			{formatNumber(npm?.downloads || 0)}
 		</Button>

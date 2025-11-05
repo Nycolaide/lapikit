@@ -16,7 +16,7 @@
 </script>
 
 <Appbar
-	class="z-100 sticky top-0"
+	class="sticky top-0 z-100"
 	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3"
 	background="background-primary"
 	{...rest}
@@ -81,7 +81,7 @@
 
 		<ThemeToggle icon class="hidden! md:inline-flex!" />
 
-		<Button href={url.github.repository} target="_blank" aria-label="GitHub">
+		<Button href={url.github.repository} target="_blank" aria-label="GitHub Counter">
 			<Icon icon="mgc_github_line" />
 			{formatNumber(npm?.downloads || 0)}
 		</Button>

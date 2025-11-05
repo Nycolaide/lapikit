@@ -69,6 +69,7 @@
 			onclick={() => ((pkgManager = packageManager.name), updateCommand())}
 			active={pkgManager === packageManager.name}
 			size="sm"
+			aria-label={`Use ${packageManager.name} package manager`}
 		>
 			{packageManager.name}
 		</Button>

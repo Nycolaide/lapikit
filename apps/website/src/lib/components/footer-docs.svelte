@@ -30,7 +30,7 @@
 		<div class="align-center order-first flex gap-2 md:order-last">
 			{#each socials as { name, icon, href, color } (name)}
 				<Button icon {href} target="_blank" {color} variant="text" size="sm" aria-label={name}>
-					<Icon {icon} class="no-select" style="--icon-multiplier-size: 10;" />
+					<Icon {icon} class="no-select" style="--icon-multiplier-size: 10;" alt={name} />
 				</Button>
 			{/each}
 
