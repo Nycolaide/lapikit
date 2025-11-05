@@ -1,7 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { readFileSync, existsSync } from 'fs';
-import { join } from 'path';
+
+// data
+import searchRawData from '../../../data/api/search.json';
 
 interface SearchItem {
 	slug: string;
@@ -67,23 +68,7 @@ export const GET: RequestHandler = async ({ url }) => {
 			);
 		}
 
-		const searchFilePath = join(process.cwd(), 'src/data/api/search.json');
-
-		if (!existsSync(searchFilePath)) {
-			return json(
-				{
-					error: 'File search.json not found. Please generate it using the appropriate script.',
-					results: [],
-					total: 0
-				},
-				{ status: 404 }
-			);
-		}
-
-		const searchContent = readFileSync(searchFilePath, 'utf-8');
-		const searchData: SearchItem[] = JSON.parse(searchContent);
-
-		const results: SearchResult[] = searchData
+		const results: SearchResult[] = searchRawData
 			.map((item) => ({
 				...item,
 				score: calculateScore(item, query.trim())

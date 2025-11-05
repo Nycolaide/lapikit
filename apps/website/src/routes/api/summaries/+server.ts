@@ -1,7 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+
+// data
+import summariesRawData from '../../../data/api/summaries.json';
 
 interface Summary {
 	slug: string;
@@ -22,9 +23,7 @@ interface SummariesData {
 
 export const GET: RequestHandler = async ({ url }) => {
 	try {
-		const summariesPath = join(process.cwd(), 'src/data/api/summaries.json');
-		const data = readFileSync(summariesPath, 'utf-8');
-		const summaries: SummariesData = JSON.parse(data);
+		const summaries: SummariesData = summariesRawData;
 
 		const slug = url.searchParams.get('slug');
 
