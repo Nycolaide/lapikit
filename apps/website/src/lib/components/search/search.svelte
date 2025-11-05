@@ -16,10 +16,14 @@
 	let searchQuery: string | undefined = $state(undefined);
 	let historyResults: { title: string; slug: string; date: string }[] = $state([]);
 	let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
+	let textfieldElement = $state<HTMLElement>();
 
 	$effect(() => {
-		if (!open) {
-			searchQuery = undefined;
+		if (open && textfieldElement) {
+			setTimeout(() => {
+				const input = textfieldElement?.querySelector('input') as HTMLInputElement;
+				input?.focus();
+			}, 100);
 		}
 	});
 
@@ -87,6 +91,7 @@
 >
 	<Textfield
 		id="search-input"
+		bind:ref={textfieldElement}
 		bind:value={searchQuery}
 		clearable
 		placeholder={capitalize('search...')}

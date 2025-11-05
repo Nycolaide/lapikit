@@ -67,6 +67,10 @@
 			currentSection = result.section;
 		}
 	});
+
+	$effect(() => {
+		console.log('Current Section:', data);
+	});
 </script>
 
 <HeaderDocs url={data.url_internal} npm={data.npm || undefined} />
@@ -108,7 +112,7 @@
 			</div>
 			{#if data.summary?.data?.headings && data.summary?.data?.headings.length > 0}
 				<aside class="max-xl:hidden">
-					<TableOfContents headings={data.summary?.data?.headings || []} />
+					<TableOfContents url={data.url} headings={data.summary?.data?.headings || []} />
 				</aside>
 			{/if}
 		</div>

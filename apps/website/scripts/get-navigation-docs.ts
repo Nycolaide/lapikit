@@ -3,20 +3,20 @@ import { join } from 'path';
 import type { DocFile, NavigationData, CategoryConfig } from './types.js';
 
 function generateNavigationDocuments() {
-	const dataDir = join(process.cwd(), 'src/data');
-	const dataDirApi = join(process.cwd(), 'src/data/api');
+	const dataDir = join(process.cwd(), 'src/content/data');
+	const dataDirApi = join(process.cwd(), 'src/content/data/api');
 	const rawDocsPath = join(dataDirApi, 'docs.json');
 	const categoryDocsPath = join(dataDir, 'category.json');
 
 	const navPath = join(dataDirApi, 'nav-docs.json');
 
 	if (!existsSync(rawDocsPath)) {
-		console.error('❌ File docs.json not found in src/data/api');
+		console.error('❌ File docs.json not found in src/content/data/api');
 		process.exit(1);
 	}
 
 	if (!existsSync(categoryDocsPath)) {
-		console.error('❌ File category.json not found in src/data');
+		console.error('❌ File category.json not found in src/content/data');
 		process.exit(1);
 	}
 

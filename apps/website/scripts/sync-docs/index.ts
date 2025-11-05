@@ -6,7 +6,7 @@ async function syncDocs(): Promise<void> {
 	console.log('🔄 Synchronization of documentation files...');
 
 	const sourceDir: string = path.resolve(process.cwd(), '../../docs');
-	const destDir: string = path.resolve(process.cwd(), 'src/content');
+	const destDir: string = path.resolve(process.cwd(), 'src/content/docs');
 
 	try {
 		if (!fs.existsSync(sourceDir)) {
@@ -63,7 +63,7 @@ async function syncDocs(): Promise<void> {
 		});
 
 		console.log('✨ Synchronization completed successfully!');
-		const navDocsPath = path.resolve(process.cwd(), 'src/data/api/docs.json');
+		const navDocsPath = path.resolve(process.cwd(), 'src/content/data/api/docs.json');
 		processMarkdownFiles(destDir, navDocsPath);
 	} catch (error: unknown) {
 		const errorMessage = error instanceof Error ? error.message : 'Unknown error';

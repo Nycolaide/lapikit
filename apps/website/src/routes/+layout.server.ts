@@ -2,10 +2,10 @@ import { PUBLIC_API } from '$env/static/public';
 import type { NavigationLinks } from '$lib/types/navigation';
 import type { GitHubRepositoryData, NpmPackageData } from '$lib/types/api';
 
-import navRaw from '$data/api/nav-docs.json';
-import categoriesRaw from '$data/category.json';
-import counterRaw from '$data/api/counter-lapikit.json';
-import urlInternal from '$data/url.json';
+import navRaw from '$content/data/api/nav-docs.json';
+import categoriesRaw from '$content/data/category.json';
+import counterRaw from '$content/data/api/counter-lapikit.json';
+import urlInternal from '$content/data/url.json';
 
 export const prerender = false;
 const authCallAPI = PUBLIC_API === 'true';
@@ -68,6 +68,18 @@ const social_links = [
 	}
 ];
 
+const banner = {
+	id: 'lapikit-v0.3-update',
+	start: new Date('31 November, 2025 00:00:00 UTC'),
+	end: new Date('15 December, 2025 23:59:59 UTC'),
+	arrow: true,
+	content: {
+		lg: 'Discover the new Lapikit v0.3 with exciting features and improvements!',
+		sm: 'New Lapikit v0.3 is here!'
+	},
+	href: '/docs/changelog'
+};
+
 export async function load({ fetch }) {
 	let api: { github?: GitHubRepositoryData | null; npm?: NpmPackageData | null } = {};
 
@@ -93,6 +105,7 @@ export async function load({ fetch }) {
 		social_links,
 		counter: counterRaw.categories,
 		url_internal: urlInternal,
+		banner,
 		...api
 	};
 }

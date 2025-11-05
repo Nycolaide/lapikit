@@ -2,9 +2,15 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSy
 import { join, extname } from 'path';
 import type { HeadingItem, PageSummary, SummariesData } from './types';
 
-function extractHeadingsFromMarkdown(content: string): HeadingItem[] {
+// Whitelist des slugs qui ne doivent afficher que les H2 (niveau 2)
+const H2_ONLY_WHITELIST = ['/docs/changelog'];
+
+function extractHeadingsFromMarkdown(content: string, slug?: string): HeadingItem[] {
 	const headings: HeadingItem[] = [];
 	const lines = content.split('\n');
+
+	// Vérifier si ce slug est dans la whitelist H2 uniquement
+	const isH2Only = slug && H2_ONLY_WHITELIST.includes(slug);
 
 	for (const line of lines) {
 		const trimmedLine = line.trim();
@@ -13,6 +19,11 @@ function extractHeadingsFromMarkdown(content: string): HeadingItem[] {
 		if (headingMatch && headingMatch[1] && headingMatch[2]) {
 			const level = headingMatch[1].length;
 			const text = headingMatch[2].trim();
+
+			// Si slug est dans la whitelist, ne garder que les H2 (niveau 2)
+			if (isH2Only && level !== 2) {
+				continue;
+			}
 
 			if (text) {
 				const id = text
@@ -98,11 +109,11 @@ function extractSlugFromPath(filePath: string): string {
 		.replace(/\.md$/, '')
 		.replace(/^\//, '');
 
-	return `/docs/${slug}`;
+	return `/${slug}`;
 }
 
 async function generateSummaries() {
-	const dataDir = join(process.cwd(), 'src/data/api');
+	const dataDir = join(process.cwd(), 'src/content/data/api');
 	const summariesPath = join(dataDir, 'summaries.json');
 
 	console.log('🔍 Search markdown files...');
@@ -129,7 +140,7 @@ async function generateSummaries() {
 			const slug = extractSlugFromPath(filePath);
 			const title = frontmatter.title || slug.split('/').pop() || 'Untitled';
 
-			const headings = extractHeadingsFromMarkdown(markdownContent);
+			const headings = extractHeadingsFromMarkdown(markdownContent, slug);
 
 			summaries.push({
 				slug,
@@ -141,7 +152,6 @@ async function generateSummaries() {
 			console.error(`❌ Error processing ${filePath}:`, error);
 		}
 	}
-
 	summaries.sort((a, b) => a.slug.localeCompare(b.slug));
 
 	const summariesData: SummariesData = {

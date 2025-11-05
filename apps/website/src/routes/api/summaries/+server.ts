@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
 // data
-import summariesRawData from '../../../data/api/summaries.json';
+import summariesRawData from '../../../content/data/api/summaries.json';
 
 interface Summary {
 	slug: string;
@@ -23,24 +23,28 @@ interface SummariesData {
 
 export const GET: RequestHandler = async ({ url }) => {
 	try {
-		const summaries: SummariesData = summariesRawData;
+		// const summaries: SummariesData = summariesRawData;
 
 		const slug = url.searchParams.get('slug');
 
 		if (!slug) {
-			return json(summaries, {
+			return json(summariesRawData, {
 				headers: {
 					'Cache-Control': 'public, max-age=3600'
 				}
 			});
 		}
 
-		const foundSummary = summaries.summaries.find((summary: Summary) => summary.slug === slug);
+		const foundSummary = summariesRawData.summaries.find(
+			(summary: Summary) => summary.slug === slug
+		);
+
+		console.log('GW1 :', summariesRawData.summaries, slug);
 
 		if (foundSummary) {
 			return json(
 				{
-					generatedAt: summaries.generatedAt,
+					generatedAt: summariesRawData.generatedAt,
 					data: foundSummary
 				},
 				{
@@ -53,7 +57,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
 		return json(
 			{
-				generatedAt: summaries.generatedAt,
+				generatedAt: summariesRawData.generatedAt,
 				data: {}
 			},
 			{

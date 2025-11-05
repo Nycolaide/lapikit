@@ -4,6 +4,7 @@ import { writable, readable } from 'svelte/store';
 export const mode = writable('development');
 export const search = writable(false);
 export const sectionSelected = writable<string>('base');
+export const consentManaged = writable(false);
 
 export const packageManager = writable('npm');
 

@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
 // data
-import searchRawData from '../../../data/api/search.json';
+import searchRawData from '../../../content/data/api/search.json';
 
 interface SearchItem {
 	slug: string;

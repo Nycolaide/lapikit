@@ -3,12 +3,12 @@ import { join } from 'path';
 import type { CategoryCounter, CounterData, NavDocsStructure } from './types';
 
 function generateCounterData() {
-	const dataDir = join(process.cwd(), 'src/data/api');
+	const dataDir = join(process.cwd(), 'src/content/data/api');
 	const rawDocsPath = join(dataDir, 'docs.json');
 	const counterPath = join(dataDir, 'counter-lapikit.json');
 
 	if (!existsSync(rawDocsPath)) {
-		console.error('❌ The file docs.json was not found in src/data/api');
+		console.error('❌ The file docs.json was not found in src/content/data/api');
 		process.exit(1);
 	}
 

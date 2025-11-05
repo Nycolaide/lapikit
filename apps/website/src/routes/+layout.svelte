@@ -7,9 +7,11 @@
 	import { PUBLIC_ENV } from '$env/static/public';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
-	import { mode, search } from '$lib/stores/app';
+	import { consentManaged, mode, search } from '$lib/stores/app';
 	import { App } from 'lapikit/components';
 	import { Search } from '$lib/components';
+	import Banner from '$components/banner.svelte';
+	import ConsentModal from '$components/consent-modal.svelte';
 
 	mode.set(PUBLIC_ENV);
 
@@ -48,7 +50,11 @@
 </svelte:head>
 
 <App dark={page.url.pathname === '/'}>
+	<Banner banner={data.banner} />
+
 	{@render children()}
 
 	<Search bind:open={$search} />
+
+	<ConsentModal bind:open={$consentManaged} />
 </App>

@@ -3,7 +3,7 @@ import { convertDocsToSitemapPages, generateSitemapXml } from './hook.js';
 import type { DocsData } from '$lib/types/sitemap.js';
 
 // api datas
-import docsRaw from '$data/api/docs.json';
+import docsRaw from '$content/data/api/docs.json';
 
 export const prerender = true;
 

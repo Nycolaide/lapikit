@@ -1,7 +1,7 @@
 import type { MarkdownModule } from '$lib/types/frontmatter';
 import { error } from '@sveltejs/kit';
 
-const pages = import.meta.glob('../../../content/**/*.md', { eager: true });
+const pages = import.meta.glob('../../../content/docs/**/*.md', { eager: true });
 
 export async function load({ params }) {
 	try {

@@ -3,12 +3,12 @@ import { join } from 'path';
 import type { NavDocsStructure, SearchItem } from './types';
 
 function generateSearchData() {
-	const dataDir = join(process.cwd(), 'src/data/api');
+	const dataDir = join(process.cwd(), 'src/content/data/api');
 	const rawDocsPath = join(dataDir, 'docs.json');
 	const searchPath = join(dataDir, 'search.json');
 
 	if (!existsSync(rawDocsPath)) {
-		console.error('❌ File docs.json not found in src/data/api');
+		console.error('❌ File docs.json not found in src/content/data/api');
 		process.exit(1);
 	}
 

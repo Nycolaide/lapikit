@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { capitalize } from 'site-kit/actions';
+	import { consentManaged } from '$lib/stores/app';
 
 	// components
 	import { Button, Card, Icon, Separator, Toolbar } from 'lapikit/components';
-	import ConsentModal from './consent-modal.svelte';
 	import ThemeToggle from './theme-toggle.svelte';
 
 	// assets
@@ -15,7 +15,6 @@
 
 	// states
 	let year: number = new Date().getFullYear();
-	let open: boolean = $state(false);
 </script>
 
 <footer {...rest}>
@@ -74,7 +73,7 @@
 								{/if}
 
 								{#if custom === 'cookie-consent'}
-									<Button onclick={() => (open = true)} rounded="full" variant="text">
+									<Button onclick={() => consentManaged.set(true)} rounded="full" variant="text">
 										{capitalize(`${title}`)}
 									</Button>
 								{/if}
@@ -145,8 +144,6 @@
 		</Toolbar>
 	</div>
 </footer>
-
-<ConsentModal bind:open />
 
 <style>
 	ul {

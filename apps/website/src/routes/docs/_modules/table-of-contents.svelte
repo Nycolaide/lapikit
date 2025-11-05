@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Icon, Toolbar } from 'lapikit/components';
 
-	let { headings, ...rest } = $props();
+	let { url, headings, ...rest } = $props();
 </script>
 
 <div class="bg-background-primary sticky top-[112px] z-10 text-sm" {...rest}>
-	<Toolbar classContent="opacity-70" class="p-0!">
+	<Toolbar classContent="opacity-70" class="p-0!" background="transparent">
 		<Icon icon="mgc_floating_dust_line" class="mr-2" />
 		<span>On this page</span>
 	</Toolbar>
@@ -14,7 +14,15 @@
 			{#each headings as heading (heading.id)}
 				<li class="mb-2" class:mr-2={heading.level === 2} class:ml-4={heading.level === 3}>
 					<a href={`#${heading.id}`} class="hover:underline">
-						{heading.text}
+						{#if url === '/docs/changelog'}
+							{#if !heading.text.includes('-')}
+								{heading.text.replaceAll('[', 'v').replaceAll(']', '')} - In development
+							{:else}
+								{heading.text.replaceAll('[', 'v').replaceAll(']', '')}
+							{/if}
+						{:else}
+							{heading.text}
+						{/if}
 					</a>
 				</li>
 			{/each}
