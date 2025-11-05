@@ -32,19 +32,19 @@
 		},
 		"categories": [
 			{
-				"key": "actions",
-				"title": "Actions",
-				"style": {
-					"color": "purple",
-					"icon": "mgc_palette_line"
-				}
-			},
-			{
 				"key": "stores",
 				"title": "Stores",
 				"style": {
-					"color": "purple",
-					"icon": "mgc_palette_line"
+					"color": "accent-primary",
+					"icon": "mgc_store_line"
+				}
+			},
+			{
+				"key": "actions",
+				"title": "Actions",
+				"style": {
+					"color": "accent-primary",
+					"icon": "mgc_magic_2_line"
 				}
 			}
 		]

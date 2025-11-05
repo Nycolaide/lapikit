@@ -12,24 +12,22 @@
 
 	const stepperToUseComponent = [
 		{
-			title: 'Install Lapikit',
-			description: 'In five minutes, install Lapikit and configure it in your SvelteKit project.',
-			icon: 'mgc_rocket_line',
-			color: 'accent-destructive'
+			title: 'Install Lapikit.',
+			description:
+				'Add Lapikit to your SvelteKit project in minutes. Read the <a href="/docs/getting-started">Getting Started</a> guide',
+			icon: 'mgc_rocket_line'
 		},
 		{
-			title: 'Add components to your project',
+			title: 'Add components.',
 			description:
-				'Explore the wide range of components available in Lapikit and choose the ones that fit your needs.',
-			icon: 'mgc_package_line',
-			color: 'accent-warning'
+				'Choose from around {{componentCount}} components in an accessible and customizable Svelte library',
+			icon: 'mgc_package_line'
 		},
 		{
-			title: 'Adapte all components to your design',
+			title: 'Adapt to your design.',
 			description:
-				"Customize the appearance of the components to match your project's design and branding.",
-			icon: 'mgc_paint_brush_ai_line',
-			color: 'accent-success'
+				'Adjust spacing, colors, variants, or density to match your brand. Lapikit is fully style-aware',
+			icon: 'mgc_paint_brush_ai_line'
 		}
 	];
 </script>
@@ -95,20 +93,31 @@
 						rounded="full"
 						active={stepTimeline === index}
 						onclick={() => (stepTimeline = index)}
-						background="accent-primary"
+						background={stepTimeline === index ? 'accent-primary' : 'label-secondary'}
 						color="white"
 						icon
 					>
 						<Icon icon={step.icon} />
 					</Button>
 					<p
-						class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto"
+						class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto lg:text-start"
 						class:display-element={stepTimeline === index}
 					>
 						<strong class="font-semibold" style="color: var(--kit-accent-primary)">
 							{step.title}
 						</strong>
-						{step.description}
+
+						{#if index === 0}
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+							{@html step.description}
+						{:else if index === 1}
+							{step.description.replace(
+								'{{componentCount}}',
+								counter?.components ? counter.components.toString() : '0'
+							)}
+						{:else}
+							{step.description}
+						{/if}
 					</p>
 				</li>
 			{/each}

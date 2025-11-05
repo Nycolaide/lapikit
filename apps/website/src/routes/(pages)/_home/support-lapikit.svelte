@@ -13,19 +13,17 @@
 		class="mx-auto grid w-full max-w-(--ui-container) gap-14 px-4 py-16 text-center sm:gap-8 sm:px-6 sm:py-24 md:grid-cols-2 md:text-left lg:px-8 lg:py-32"
 	>
 		<div>
-			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
-				You like <span>Lapikit</span>
-			</h2>
+			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">You enjoy Lapikit, and I do, too</h2>
 			<p class="text-muted mt-6 text-center text-base text-balance sm:text-lg md:text-left">
-				Lapikit is Free and Open Source under the MIT License. You can help us grow by supporting
-				the project and becoming a sponsor. Every contribution truly makes a difference! As a
-				Lapikit contributor, you’ll gain visibility into the roadmap, have a voice in shaping the
-				project’s direction, be recognized on our website, and enjoy priority support.
+				Lapikit is free and open source software distributed under the MIT License. You may help us
+				grow by contributing to the project and becoming a sponsor. Every gift actually counts! As a
+				Lapikit contributor, you will gain visibility into the roadmap, have a say in the project's
+				development, be recognized on our website, and receive priority support
 			</p>
 
 			<p class="mt-6 italic opacity-50 sm:text-lg">
-				All donations and sponsorships will be used exclusively for the development and maintenance
-				of Lapikit.
+				All donations and sponsorships will be utilized solely to support the development and
+				maintenance of Lapikit
 			</p>
 			<Toolbar
 				class="mt-8"
@@ -62,6 +60,10 @@
 					Buy me a coffee
 				</Button>
 			</Toolbar>
+
+			<Button variant="text" href="/docs/roadmap" class="mt-3 underline! opacity-70"
+				>Explore Lapikit's roadmap 2025</Button
+			>
 		</div>
 		<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
 			<enhanced:img src={LapikitLikeYou} alt="lapikit love you" class="no-select scale-x-[-1]" />

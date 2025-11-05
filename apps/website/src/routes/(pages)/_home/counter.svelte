@@ -18,7 +18,12 @@
 >
 	<div class="flex flex-col gap-4 md:flex-row md:items-stretch">
 		<div class="flex flex-col gap-4 md:w-1/4">
-			<Card href={url.npm.package} target="_blank" background="background-tertiary" class="flex-1">
+			<Card
+				href={url.npm.package}
+				target="_blank"
+				background="background-tertiary"
+				class="flex flex-1 justify-center"
+			>
 				<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 					<Icon
 						icon="/icons/npm-color.svg"
@@ -40,7 +45,7 @@
 				href={url.github.repository}
 				target="_blank"
 				background="background-tertiary"
-				class="flex-1"
+				class="flex flex-1 justify-center"
 			>
 				<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 					<Icon
@@ -60,13 +65,19 @@
 		</div>
 
 		<div class="flex md:w-1/2">
-			<Card class="flex-1" background="background-tertiary">
+			<Card class="flex flex-1 justify-center" background="background-tertiary">
 				<div class="flex h-full flex-col items-center justify-around gap-y-4 p-4 sm:p-6">
-					<p class="text-xl font-semibold">Open source</p>
+					<p class="text-center text-xl font-semibold">
+						Open Source and built by developers, for developers
+					</p>
 					<p class="text-center">
-						Lapikit is 100% open source. You can find the source code on GitHub, contribute to the
-						project, and report issues. We welcome contributions from the community to help us make
-						Lapikit even better.
+						Lapikit is 100% open source, created and maintained by Nycolaide and a growing community
+						of frontend developers. You can contribute on GitHub, report issues, or suggest new
+						components.
+					</p>
+					<p class="text-center">
+						Every contribution helps improve the developer experience for the entire Svelte
+						community.
 					</p>
 					<Button
 						href={url.github.repository}
@@ -76,7 +87,7 @@
 						color="service-on-github"
 						background="service-github"
 					>
-						Start contributing
+						Contribute to Lapikit on GitHub
 						{#snippet append()}
 							<Icon icon="mgc_github_line" />
 						{/snippet}
@@ -90,7 +101,7 @@
 				href={url.social_network.x}
 				target="_blank"
 				background="background-tertiary"
-				class="flex-1"
+				class="flex flex-1 justify-center"
 			>
 				<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 					<Icon
@@ -110,7 +121,7 @@
 				href={url.discord.invite}
 				target="_blank"
 				background="background-tertiary"
-				class="flex-1"
+				class="flex flex-1 justify-center"
 			>
 				<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
 					<Icon

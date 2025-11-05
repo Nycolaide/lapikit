@@ -100,7 +100,7 @@
 
 <style>
 	.lapikit-sandbox {
-		border: 1px solid var(--kit-state-shadow);
+		border: 1px solid var(--kit-label-tertiary);
 	}
 
 	.lapikit-sandbox :global(p) {

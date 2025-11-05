@@ -30,31 +30,35 @@
 	class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 >
 	<div>
-		<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Save time and simplify your code</h2>
+		<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">Build faster, write cleaner code</h2>
 		<p class="mt-6 text-left sm:text-lg">
 			With Lapikit, you can easily create and manage your components, making your development
-			process more efficient.
+			process more efficient
 		</p>
 		<div
-			class="mt-16 grid grid-cols-1 gap-4 md:grid-cols-[45%_1fr] lg:grid-cols-[35%_1fr] lg:items-stretch"
+			class="mt-14 grid grid-cols-1 gap-4 md:grid-cols-[45%_1fr] lg:grid-cols-[45%_1fr] lg:items-stretch"
 		>
 			<div class="sm:text-lg">
 				<p>
-					Why reinvent the wheel for every component? With raw TailwindCSS, every button, every
-					card, every modal translates into repetitive lines of classes that are difficult to
-					maintain and often copied and pasted
+					Why waste time developing the same UI components on each project? With raw TailwindCSS,
+					every button, card, and modal becomes a collection of repeating class blocks that clutter
+					your codebase and complicate maintenance. Lapikit allows you to focus on what matters
+					most: developing exceptional user experiences by delivering ready-to-use, customisable,
+					and type-safe Svelte components
 				</p>
 				<p class="mt-6">With Lapikit, you write less but build more:</p>
 				<ul class="mt-6!">
 					<li>
-						<Icon icon="mgc_check_circle_line" color="accent-success" /> Clearer, because your code breathes
+						<Icon icon="mgc_check_circle_line" color="accent-success" /> Your code will be cleaner, with
+						simpler and more legible syntax
 					</li>
 					<li>
-						<Icon icon="mgc_check_circle_line" color="accent-success" /> Faster, because you save time
+						<Icon icon="mgc_check_circle_line" color="accent-success" /> Faster, thanks to reuse components
+						and uniform styling
 					</li>
 					<li>
-						<Icon icon="mgc_check_circle_line" color="accent-success" /> More reliable, because styles
-						are consistent from one component to another
+						<Icon icon="mgc_check_circle_line" color="accent-success" /> More consistently, with pre-optimized
+						Svelte + TypeScript integration
 					</li>
 				</ul>
 				<p class="mt-6 italic md:mb-10">
@@ -69,7 +73,7 @@
 						onclick={() => (stepCode = 0)}
 						active={stepCode === 0}
 						rounded="full"
-						background="accent-primary"
+						background={stepCode === 0 ? 'accent-primary' : 'label-secondary'}
 						color="white"
 						size={{ base: 'sm', md: 'md' }}
 					>
@@ -79,7 +83,7 @@
 						onclick={() => (stepCode = 1)}
 						active={stepCode === 1}
 						rounded="full"
-						background="accent-primary"
+						background={stepCode === 1 ? 'accent-primary' : 'label-secondary'}
 						color="white"
 						size={{ base: 'sm', md: 'md' }}
 					>
@@ -89,7 +93,7 @@
 						onclick={() => (stepCode = 2)}
 						active={stepCode === 2}
 						rounded="full"
-						background="accent-primary"
+						background={stepCode === 2 ? 'accent-primary' : 'label-secondary'}
 						color="white"
 						size={{ base: 'sm', md: 'md' }}
 					>
@@ -151,10 +155,13 @@
 		</div>
 	</div>
 	<div class="mt-16 text-center">
-		<h3 class="text-xl font-semibold lg:text-3xl">Unlimited themes with one configuration</h3>
+		<h3 class="text-xl font-semibold lg:text-3xl">
+			There are an infinite amount of themes with just one configuration
+		</h3>
 		<p class="mx-auto mt-6 max-w-4xl text-center sm:text-lg">
-			Lapikit supports multiple themes out of the box, allowing you to easily switch between theming
-			options with minimal configuration. Light and dark mode are both supported.
+			Lapikit supports several themes out of the box, allowing you to quickly swap between theming
+			options with minimal setup.Light and dark modes are also supported. Switching themes or
+			changing your design system takes seconds rather than hours
 		</p>
 		<div class="mt-16">
 			<ColorSchemePreview />

@@ -6,19 +6,19 @@
 		{
 			icon: 'mgc_sparkles_line',
 			title: {
-				en: 'Lightweight & fast'
+				en: 'Lightweight and fast'
 			},
 			description: {
-				en: 'Lapikit is designed to be lightweight and fast, ensuring optimal performance for your applications.'
+				en: 'Lapikit is designed to be lightweight and fast, ensuring optimal performance for your applications'
 			}
 		},
 		{
 			icon: 'mgc_ease_in_out_control_point_line',
 			title: {
-				en: 'Transition & animations'
+				en: 'Transition and animations'
 			},
 			description: {
-				en: 'Easily add transitions and animations to your components with built-in support for popular animation libraries.'
+				en: 'You can easily add transitions and animations to your components thanks to built-in support for major animation libraries'
 			}
 		},
 		{
@@ -27,25 +27,25 @@
 				en: 'Scoped styles'
 			},
 			description: {
-				en: 'All styles are scoped to their respective components, preventing style leakage and ensuring consistent design across your application.'
+				en: 'All styles are scoped to their specific components, preventing style leakage and maintaining consistent design throughout the application'
 			}
 		},
 		{
 			icon: 'mgc_package_2_line',
 			title: {
-				en: 'Components'
+				en: 'Reusable components'
 			},
 			description: {
-				en: 'A comprehensive library of pre-built, accessible, and customizable UI components to accelerate your development process.'
+				en: 'A comprehensive library of pre-built, accessible, and customisable UI components to accelerate your development process'
 			}
 		},
 		{
 			icon: 'mgc_palette_2_line',
 			title: {
-				en: 'Themes & customization'
+				en: 'Customizable themes'
 			},
 			description: {
-				en: 'Includes light and dark themes, with easy customization options to match your brand colors.'
+				en: "Includes light and dark themes that may be easily customized to match your brand's colors"
 			}
 		},
 		{
@@ -54,7 +54,7 @@
 				en: 'Typescript support'
 			},
 			description: {
-				en: 'Written in TypeScript, Lapikit provides type definitions out of the box for a better developer experience.'
+				en: 'Lapikit, which is written in TypeScript, comes pre-loaded with type definitions for a better developer experience'
 			}
 		},
 		{
@@ -63,7 +63,7 @@
 				en: 'SvelteKit friendly'
 			},
 			description: {
-				en: 'Lapikit is built with SvelteKit and fully supports its features like routing, server-side rendering, and static site generation.'
+				en: 'Lapikit is built on SvelteKit and fully supports it’s capabilities such as routing, server-side rendering, and static site generation'
 			}
 		}
 	];
@@ -75,12 +75,11 @@
 	<div>
 		<div>
 			<h2 class="text-3xl font-bold sm:text-4xl lg:text-5xl">
-				Discover the features available for your applications
+				Discover what functionalities are available for your application
 			</h2>
 			<p class="text-muted mt-6 text-left text-base text-balance sm:text-lg">
-				Lapikit is a component library that offers a wide range of features to help you build
-				beautiful and functional web applications. Here are some of the features you can take
-				advantage of:
+				Lapikit is a component library with a variety of features to help you create beautiful and
+				functional web applications. Here are some of the features you can make use of:
 			</p>
 		</div>
 		<div class="mt-16">
@@ -92,7 +91,7 @@
 								<Icon {icon} size="xl" color="accent-primary" class="no-select" />
 							</div>
 							<div>
-								<p class="font-semibold">{title['en']}</p>
+								<p class="my-1 font-semibold">{title['en']}</p>
 								<p>{description['en']}</p>
 							</div>
 						</div>

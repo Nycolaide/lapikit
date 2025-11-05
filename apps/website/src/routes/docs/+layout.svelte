@@ -86,9 +86,7 @@
 	{/snippet}
 
 	<PageTransition url={data.url}>
-		<div
-			class={`grid pr-4 pb-6 pl-4 lg:pl-0 ${data.summary?.data?.headings?.length > 0 ? 'xl:grid-cols-[1fr_220px]' : ''} mx-auto w-full min-w-0 gap-8`}
-		>
+		<div class="mx-auto grid w-full min-w-0 gap-8 pr-4 pb-6 pl-4 lg:pl-0 xl:grid-cols-[1fr_220px]">
 			<div>
 				<Breadcrumbs
 					url={data.url}
@@ -106,11 +104,10 @@
 					socials={data.social_links}
 				/>
 			</div>
-			{#if data.summary?.data?.headings && data.summary?.data?.headings.length > 0}
-				<aside class="max-xl:hidden">
-					<TableOfContents url={data.url} headings={data.summary?.data?.headings || []} />
-				</aside>
-			{/if}
+
+			<aside class="max-xl:hidden">
+				<TableOfContents url={data.url} headings={data.summary?.data?.headings || []} />
+			</aside>
 		</div>
 	</PageTransition>
 </Drawer>
