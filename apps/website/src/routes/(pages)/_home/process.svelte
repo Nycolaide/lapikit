@@ -76,6 +76,7 @@
 						rounded="full"
 						active={stepTimeline === index}
 						onclick={() => (stepTimeline = index)}
+						aria-label={`Display ${step.title}`}
 						background="accent-primary"
 						color="white"
 						icon
