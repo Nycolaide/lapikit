@@ -86,18 +86,18 @@
 		<div class="image-background">
 			<enhanced:img
 				src={CarrotMailDark}
-				alt="star on lapikit logo"
+				alt="Lapikit on dark mode"
 				class="no-select"
-				sizes="(max-width: 768px) 380px, (max-width: 1272px) 800px, 1272px"
+				sizes="(max-width: 640px) 100vw, (max-width: 1272px) 90vw, 1272px"
 			/>
 		</div>
 
 		<div class="image-overlay" style="clip-path: inset(0 {100 - dragPosition}% 0 0);">
 			<enhanced:img
 				src={CarrotMailLight}
-				alt="star on lapikit logo"
+				alt="Lapikit on light mode"
 				class="no-select"
-				sizes="(max-width: 768px) 380px, (max-width: 1272px) 800px, 1272px"
+				sizes="(max-width: 640px) 100vw, (max-width: 1272px) 90vw, 1272px"
 			/>
 		</div>
 
