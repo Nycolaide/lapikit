@@ -2,12 +2,12 @@
 
 @font-face {
 	font-family: 'MingCute';
-	src: url('fonts/Mingcute/MingCute.eot?bysiq1');
+	src: url('/fonts/Mingcute/MingCute.eot?bysiq1');
 	src:
-		url('fonts/Mingcute/MingCute.eot?bysiq1#iefix') format('embedded-opentype'),
-		url('fonts/Mingcute/MingCute.ttf?bysiq1') format('truetype'),
-		url('fonts/Mingcute/MingCute.woff?bysiq1') format('woff'),
-		url('fonts/Mingcute/MingCute.svg?bysiq1#MingCute') format('svg');
+		url('/fonts/Mingcute/MingCute.eot?bysiq1#iefix') format('embedded-opentype'),
+		url('/fonts/Mingcute/MingCute.ttf?bysiq1') format('truetype'),
+		url('/fonts/Mingcute/MingCute.woff?bysiq1') format('woff'),
+		url('/fonts/Mingcute/MingCute.svg?bysiq1#MingCute') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
