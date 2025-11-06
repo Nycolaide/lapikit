@@ -62,10 +62,10 @@
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-expect-error
-	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?w=380;800;1272&enhanced';
+	import CarrotMailLight from '$lib/images/home/compar/carrot-mail-light.webp?w=400;800;1272&enhanced';
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-expect-error
-	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?w=380;800;1272&enhanced';
+	import CarrotMailDark from '$lib/images/home/compar/carrot-mail-dark.webp?w=400;800;1272&enhanced';
 </script>
 
 <div id="color-scheme-preview" use:scrollAnimation={{ animation: 'fade-up', delay: 100 }}>
@@ -88,7 +88,7 @@
 				src={CarrotMailDark}
 				alt="Lapikit on dark mode"
 				class="no-select"
-				sizes="(max-width: 640px) 380px, (max-width: 1024px) 800px, 1272px"
+				sizes="(max-width: 720px) 400px, (max-width: 1024px) 800px, 1272px"
 			/>
 		</div>
 
@@ -97,7 +97,7 @@
 				src={CarrotMailLight}
 				alt="Lapikit on light mode"
 				class="no-select"
-				sizes="(max-width: 640px) 380px, (max-width: 1024px) 800px, 1272px"
+				sizes="(max-width: 720px) 400px, (max-width: 1024px) 800px, 1272px"
 			/>
 		</div>
 

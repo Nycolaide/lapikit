@@ -200,7 +200,7 @@
 						<div class="flex flex-col">
 							<span>{capitalize(item.title)}</span>
 							{#if item.subtitle}
-								<span class="text-sm opacity-70">{item.subtitle}</span>
+								<span class="text-sm opacity-70">{capitalize(item.subtitle)}</span>
 							{/if}
 						</div>
 					</ListItem>

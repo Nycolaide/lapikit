@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix bad color shadow for overlay **Modal** and **Dialog** component
+- Fix **ripple** effect not heriting shape border radius on component all components used ripple effect
 
 ## [0.2.7] - 2025-10-18
 
