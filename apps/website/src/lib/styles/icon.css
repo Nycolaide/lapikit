@@ -1,0 +1,40 @@
+@import './icons/Mingcute.css';
+
+@font-face {
+	font-family: 'MingCute';
+	src: url('fonts/Mingcute/MingCute.eot?bysiq1');
+	src:
+		url('fonts/Mingcute/MingCute.eot?bysiq1#iefix') format('embedded-opentype'),
+		url('fonts/Mingcute/MingCute.ttf?bysiq1') format('truetype'),
+		url('fonts/Mingcute/MingCute.woff?bysiq1') format('woff'),
+		url('fonts/Mingcute/MingCute.svg?bysiq1#MingCute') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+[class^='mgc_'],
+[class*=' mgc_'] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'MingCute' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/** 
+	config mgc
+	@link https://github.com/Richard9394/MingCute
+**/
+
+[class^='mgc_']::before,
+[class*=' mgc_']::before {
+	color: inherit !important;
+}
