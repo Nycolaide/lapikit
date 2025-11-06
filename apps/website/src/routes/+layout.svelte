@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
+	import 'mingcute_icon/font/Mingcute.css';
 	import '../lib/styles/app.css';
 	import '../plugins/lapikit.ts';
-	import 'mingcute_icon/font/Mingcute.css';
 	import '@fontsource/roboto';
 	import { PUBLIC_ENV } from '$env/static/public';
 	import { page } from '$app/state';
