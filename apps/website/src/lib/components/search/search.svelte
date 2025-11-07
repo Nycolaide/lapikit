@@ -110,6 +110,7 @@
 			const selectedItem = currentResults[selectedIndex];
 			if (selectedItem) {
 				saveOnHistory({ title: selectedItem.title, slug: selectedItem.slug });
+				// eslint-disable-next-line svelte/no-navigation-without-resolve
 				goto(`${selectedItem.slug}`);
 				open = false;
 			}
@@ -170,7 +171,7 @@
 							saveOnHistory({ title: item.title, slug: item.slug });
 						}}
 						href={`${item.slug}`}
-						class="cursor-pointer rounded-sm!"
+						class="rounded-sm! cursor-pointer"
 						style={`${selectedIndex === index ? 'background:var(--kit-background-tertiary);' : ''}`}
 					>
 						{#snippet prepend()}
@@ -187,7 +188,7 @@
 							saveOnHistory({ title: item.title, slug: item.slug });
 						}}
 						href={`${item.slug}`}
-						class="cursor-pointer rounded-sm!"
+						class="rounded-sm! cursor-pointer"
 						style={`${selectedIndex === index ? 'background:var(--kit-background-tertiary);' : ''}`}
 					>
 						{#snippet prepend()}

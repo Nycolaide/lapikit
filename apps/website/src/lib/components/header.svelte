@@ -15,6 +15,7 @@
 		ListItem,
 		Tooltip
 	} from 'lapikit/components';
+	import type { NavigationData, NpmData, UrlConfig } from '$lib/types/navigation';
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
@@ -22,7 +23,19 @@
 	// modules
 	import ThemeToggle from '$components/theme-toggle.svelte';
 
-	let { url, npm, isHome, navigation, ...rest } = $props();
+	let {
+		url,
+		npm,
+		isHome,
+		navigation,
+		...rest
+	}: {
+		url: UrlConfig;
+		npm?: NpmData;
+		isHome: boolean;
+		navigation: NavigationData;
+		[key: string]: unknown;
+	} = $props();
 
 	// states
 	let open: boolean = $state(false);
@@ -57,12 +70,13 @@
 </script>
 
 <Appbar
-	class="sticky top-0 z-100"
+	class="z-100 sticky top-0"
 	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
 	background={scrolled ? 'background-primary' : 'transparent'}
 	{...rest}
 >
 	<div class="flex items-center justify-start gap-2">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href="/">
 			<div class="flex items-center gap-2">
 				<enhanced:img
@@ -74,6 +88,7 @@
 			</div>
 		</a>
 
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
 			{`v${npm?.version || '0.0.0'}`}
 		</a>
@@ -82,7 +97,6 @@
 			{#each Object.entries(navigation || {}) as [sectionKey, sectionValue] (sectionKey)}
 				<Button
 					href={sectionValue.slug}
-					target={sectionValue?.external && '_blank'}
 					active={page.url.pathname === sectionValue.slug}
 					rounded="full"
 					variant="text"
@@ -153,11 +167,7 @@
 			<div>
 				<List>
 					{#each Object.entries(navigation || {}) as [sectionKey, sectionValue] (sectionKey)}
-						<ListItem
-							href={sectionValue.slug}
-							target={sectionValue?.external && '_blank'}
-							active={page.url.pathname === sectionValue.slug}
-						>
+						<ListItem href={sectionValue.slug} active={page.url.pathname === sectionValue.slug}>
 							{capitalize(`${sectionValue.title}`)}
 						</ListItem>
 					{/each}

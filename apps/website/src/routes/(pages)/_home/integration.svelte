@@ -131,6 +131,7 @@
 									src={SvelteLapikitIcon}
 									alt="Lapikit Logo"
 									width="55"
+									height="28.51"
 									class="no-select"
 								/>
 							</Button>
@@ -142,11 +143,18 @@
 									src={SvelteTailwindIcon}
 									alt="TailwindCSS Logo"
 									width="55"
+									height="21.79"
 									class="no-select"
 								/>
 							</Button>
 							<Button onclick={() => (displayCode = 'svelte')} active={displayCode === 'svelte'}>
-								<enhanced:img src={SvelteIcon} alt="Svelte Logo" width="20" class="no-select" />
+								<enhanced:img
+									src={SvelteIcon}
+									alt="Svelte Logo"
+									width="20"
+									height="24"
+									class="no-select"
+								/>
 							</Button>
 						</div>
 					{/snippet}

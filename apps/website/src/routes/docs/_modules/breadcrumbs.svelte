@@ -78,6 +78,7 @@
 								{item.label}
 							</span>
 						{:else}
+							<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 							<a href={item.href} itemprop="item" title={item.label} class="hover:underline">
 								<span itemprop="name">{item.label}</span>
 							</a>

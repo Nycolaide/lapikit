@@ -16,12 +16,13 @@
 </script>
 
 <Appbar
-	class="sticky top-0 z-100"
+	class="z-100 sticky top-0"
 	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3"
 	background="background-primary"
 	{...rest}
 >
 	<div class="flex items-center justify-start gap-2">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href="/">
 			<div class="flex items-center gap-2">
 				<enhanced:img
@@ -34,6 +35,7 @@
 			</div>
 		</a>
 
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
 			{`v${npm?.version || '0.0.0'}`}
 		</a>

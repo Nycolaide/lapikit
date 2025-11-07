@@ -1,6 +1,4 @@
-@import './icons/Mingcute.css';
-
-@font-face {
+/* @font-face {
 	font-family: 'MingCute';
 	src: url('/fonts/Mingcute/MingCute.eot?bysiq1');
 	src:
@@ -11,23 +9,7 @@
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
-}
-
-[class^='mgc_'],
-[class*=' mgc_'] {
-	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'MingCute' !important;
-	speak: never;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
+} */
 
 /** 
 	config mgc

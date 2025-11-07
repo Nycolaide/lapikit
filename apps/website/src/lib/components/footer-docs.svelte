@@ -25,6 +25,7 @@
 	>
 		<p class="text-sm">
 			Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit. -
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href={url.package.licence} target="_blank" class="hover:underline">MIT License</a>
 		</p>
 		<div class="align-center order-first flex gap-2 md:order-last">
@@ -36,12 +37,9 @@
 
 			<Separator orientation="vertical" />
 			<span class="flex items-center text-sm">
-				Developed by <a
-					href={url.nycolaide.website}
-					target="_blank"
-					style:color="var(--kit-service-svelte)"
-					class="ml-1"
-				>
+				<span class="mr-1">Developed by</span>
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href={url.nycolaide.website} target="_blank" style:color="var(--kit-service-svelte)">
 					Nycolaide
 				</a>
 			</span>

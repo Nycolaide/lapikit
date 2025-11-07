@@ -52,8 +52,7 @@ export default createLapikit({
 	typography: {
 		fonts: {
 			default: {
-				sans: ['Roboto Variable', 'sans-serif'],
-				game: ['Press Start 2P', 'system-ui']
+				sans: ['Roboto Variable', 'sans-serif']
 			}
 		}
 	}

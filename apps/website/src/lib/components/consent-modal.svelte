@@ -7,6 +7,7 @@
 		PUBLIC_GOOGLE_TAG_MANAGER_ENABLED,
 		PUBLIC_GOOGLE_TAG_MANAGER_ID
 	} from '$env/static/public';
+
 	import { t } from '$lib/i18n';
 	import { Button, Icon, Modal } from 'lapikit/components';
 	import { RGPD } from 'site-kit';

@@ -37,6 +37,7 @@
 
 	<div class="mx-auto flex w-full max-w-[90rem] flex-col px-4 py-16 sm:px-6 sm:py-10 lg:px-8">
 		<div class="mb-6 grid gap-3 sm:grid-cols-2 sm:gap-6">
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href="/" class="order-first">
 				<div class="flex items-center gap-4">
 					<enhanced:img
@@ -109,7 +110,7 @@
 			<Card
 				background="service-discord"
 				color="service-on-discord"
-				class="mt-6 rounded-lg! p-6! text-center! sm:mx-auto sm:max-w-[350px] md:text-start!"
+				class="rounded-lg! p-6! text-center! md:text-start! mt-6 sm:mx-auto sm:max-w-[350px]"
 			>
 				<p class="text-xl font-semibold">Join our community on Discord</p>
 				<p class="my-2 sm:text-lg">News, updates, and discussions await you!</p>
@@ -137,18 +138,15 @@
 		>
 			<p>
 				Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit. -
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href={url.package.licence} target="_blank" class="hover:underline">MIT License</a>
 			</p>
-			<div class="order-first flex gap-2 md:order-last">
-				<span class="text-sm">
-					Developed by <a
-						href={url.nycolaide.website}
-						target="_blank"
-						style:color="var(--kit-service-svelte)"
-					>
-						Nycolaide
-					</a>
-				</span>
+			<div class="order-first flex gap-2 text-sm md:order-last">
+				<span class="mr-1">Developed by</span>
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+				<a href={url.nycolaide.website} target="_blank" style:color="var(--kit-service-svelte)">
+					Nycolaide
+				</a>
 			</div>
 		</Toolbar>
 	</div>

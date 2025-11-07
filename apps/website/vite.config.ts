@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 // plugins
 import { lapikit } from 'lapikit/vite';
@@ -10,8 +10,11 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 
 export default defineConfig({
 	plugins: [
+		// @ts-expect-error - Plugin type mismatch due to multiple Vite versions in monorepo
 		tailwindcss(),
+		// @ts-expect-error - Plugin type mismatch due to multiple Vite versions in monorepo
 		enhancedImages(),
+		// @ts-expect-error - Plugin type mismatch due to multiple Vite versions in monorepo
 		sveltekit(),
 		lapikit({ config: 'src/plugins/lapikit.ts' })
 	],
@@ -19,7 +22,10 @@ export default defineConfig({
 		workspace: [
 			{
 				extends: './vite.config.ts',
-				plugins: [svelteTesting()],
+				plugins: [
+					// @ts-expect-error - Plugin type mismatch due to multiple Vite versions in monorepo
+					svelteTesting()
+				],
 				test: {
 					name: 'client',
 					environment: 'jsdom',
