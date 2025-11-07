@@ -62,8 +62,14 @@
 		"./core/colors": {
 			"default": "./dist/internal/core/standard-colors.js"
 		},
-		"./styles": "./dist/styles.css",
-		"./themes": "./dist/themes.css"
+		"./styles": {
+			"types": "./dist/styles.css.d.ts",
+			"default": "./dist/styles.css"
+		},
+		"./themes": {
+			"types": "./dist/themes.css.d.ts",
+			"default": "./dist/themes.css"
+		}
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"

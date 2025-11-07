@@ -298,7 +298,7 @@ jobs:
           echo "PUBLIC_BING_WEBMASTER_TOOLS_ID=XXXXXXXXXX" >> .env
 
       - name: build
-        run: cd apps/website && bun prepare:all && bun run build
+        run: cd apps/website && bun initialize && bun run build
 
   deploy-to-vps-alpha:
     name: deploy [ALPHA] lapikit.dev
