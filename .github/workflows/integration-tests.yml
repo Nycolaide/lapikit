@@ -47,10 +47,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -72,10 +74,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -97,10 +101,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -155,10 +161,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -180,10 +188,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -205,10 +215,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -264,10 +276,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
