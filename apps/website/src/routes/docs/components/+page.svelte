@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Card } from 'lapikit/components';
+	import { Card } from 'lapikit/components';
 	import { capitalize } from 'site-kit/actions';
 	import { hasNavSections } from '$lib/types/guards';
 
@@ -26,8 +26,6 @@
 		system defined by Lapikit.
 	</p>
 </div>
-
-<Button rounded="full">Hello World</Button>
 
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 xl:grid-cols-4">
 	{#if !componentsSection || componentsSection.categories.length === 0}
