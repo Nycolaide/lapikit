@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Icon, Toolbar } from 'lapikit/components';
+	import { Button, Chip, Icon, Toolbar } from 'lapikit/components';
 	import type { UrlInternal } from '$lib/types/internal';
 
 	// assets
@@ -26,8 +26,8 @@
 				maintenance of Lapikit
 			</p>
 			<Toolbar
-				class="mt-8"
-				classContent="max-sm:flex-col! sm:justify-center md:justify-start gap-3"
+				class="mt-10 max-md:mb-4 md:mt-8"
+				classContent="max-sm:flex-col! sm:justify-center md:justify-start gap-6 md:gap-3"
 				background="transparent"
 			>
 				<Button
@@ -38,6 +38,7 @@
 					target="_blank"
 					class="px-4!"
 					aria-label="Open GitHub Sponsors"
+					disabled
 				>
 					{#snippet prepend()}
 						<Icon icon="mgc_github_line" />
@@ -45,6 +46,16 @@
 					Github Sponsors
 					{#snippet append()}
 						<Icon color="red" icon="mgc_heart_fill" />
+
+						<Chip
+							background="accent-primary"
+							color="white"
+							class="absolute! px-2! bottom-[-16px] right-[10px]"
+							density="compact"
+							size="sm"
+						>
+							Coming soon
+						</Chip>
 					{/snippet}
 				</Button>
 				<Button

@@ -24,7 +24,7 @@
 		background="transparent"
 	>
 		<p class="text-sm">
-			Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit. -
+			Copyright © {year === 2025 ? year : `2025 - ${year}`} Lapikit -
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href={url.package.licence} target="_blank" class="hover:underline">MIT License</a>
 		</p>

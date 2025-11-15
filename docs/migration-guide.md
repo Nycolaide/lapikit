@@ -1,6 +1,6 @@
 ---
 title: migration guide
-subtitle: Move from Legacy Lapikit to the latest version
+subtitle: Migration guide for move from Legacy Lapikit to the Latest Version
 head:
   title: Lapikit migration guide
   description: "Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit."
