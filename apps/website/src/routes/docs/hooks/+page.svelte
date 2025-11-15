@@ -10,8 +10,11 @@
 </script>
 
 <svelte:head>
-	<title>Lapikit • Hooks</title>
-	<meta name="description" content="Find out more about Lapikit's hooks." />
+	<title>Hooks stores and actions • Lapikit Svelte Library</title>
+	<meta
+		name="description"
+		content="Built-in stores and actions with Lapikit: connect components and stores in Svelte with minimal boilerplate, manage state, transitions and logic fluently."
+	/>
 </svelte:head>
 
 <div class="mx-auto grid w-full min-w-0 pb-6 pl-4 pr-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]">

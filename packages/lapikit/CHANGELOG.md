@@ -1,7 +1,7 @@
 ---
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
-description: Find all the changes in the lapikit release notes
+description: Find all the changes in the Lapikit release notes
 head:
   title: changelog
   description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'

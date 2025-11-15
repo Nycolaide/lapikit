@@ -4,7 +4,11 @@
 	import '../lib/styles/app.css';
 	import '../plugins/lapikit.ts';
 	import '@fontsource/roboto';
-	import { PUBLIC_ENV } from '$env/static/public';
+	import {
+		PUBLIC_ENV,
+		PUBLIC_GOOGLE_TAG_MANAGER_ENABLED,
+		PUBLIC_GOOGLE_TAG_MANAGER_ID
+	} from '$env/static/public';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { consentManaged, mode, search } from '$lib/stores/app';
@@ -12,6 +16,9 @@
 	import { Search } from '$lib/components';
 	import Banner from '$components/banner.svelte';
 	import ConsentModal from '$components/consent-modal.svelte';
+
+	// TEMPS
+	import Gtm from '$components/gtm.svelte';
 
 	mode.set(PUBLIC_ENV);
 
@@ -44,6 +51,8 @@
 	<link rel="alternate" hreflang="x-default" href={page.url.href} />
 	<meta name="color-scheme" content="light dark" />
 </svelte:head>
+
+<Gtm gtm={PUBLIC_GOOGLE_TAG_MANAGER_ENABLED} gtmID={PUBLIC_GOOGLE_TAG_MANAGER_ID} />
 
 <App dark={page.url.pathname === '/'}>
 	<Banner banner={data.banner} />
