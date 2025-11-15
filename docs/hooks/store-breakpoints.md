@@ -1,6 +1,7 @@
 ---
 title: $breakpoints
 subtitle: breakpoints store in lapikit
+introduction: Tracks viewport sizes for responsive layouts
 head:
   title: breakpoints stored
   description: "Learn how to use the breakpoints store in Lapikit for responsive design."

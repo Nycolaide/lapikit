@@ -2,7 +2,7 @@
 title: migration guide
 subtitle: Learn how to migrate to legacy version to current lapikit
 head:
-  title: migration guide
+  title: Lapikit migration guide
   description: "Discover the Lapikit 0.2.3 to 0.2.4 migration guide. Learn how to easily update your configuration, breakpoints, themes, and CLI with this comprehensive tutorial."
 state:
   section: base
@@ -77,17 +77,13 @@ Utility classes for devices have changed.
 **Before:**
 
 ```css
-.hidden-mobile
-.display-tablet
-.display-laptop
+.hidden-mobile .display-tablet .display-laptop;
 ```
 
 **Now:**
 
 ```css
-.kit-device--d-mobile
-.kit-device--h-tablet
-.kit-device--h-desktop
+.kit-device--d-mobile .kit-device--h-tablet .kit-device--h-desktop;
 ```
 
 - d = display

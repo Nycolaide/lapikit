@@ -1,6 +1,7 @@
 ---
 title: useAccordion
 subtitle: One action to manage accordion state
+introduction: Controls accordion open/close states and syncs sections automatically
 head:
   title: useAccordion action
   description: "Learn how to use the useAccordion action in Lapikit for managing accordion state."

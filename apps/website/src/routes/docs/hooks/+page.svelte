@@ -14,10 +14,10 @@
 	<meta name="description" content="Find out more about Lapikit's hooks." />
 </svelte:head>
 
-<div class="mx-auto grid w-full min-w-0 pr-4 pb-6 pl-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]">
+<div class="mx-auto grid w-full min-w-0 pb-6 pl-4 pr-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]">
 	<div class="markdown">
-		<h1 class="title opacity-75">Hooks</h1>
-		<h2 class="subtitle mt-2!">Explore all Lapikit hooks</h2>
+		<p class="title opacity-75">Hooks</p>
+		<h1 class="subtitle mt-2!">Discover the Lapikit hooks</h1>
 
 		<p>
 			Lapikit hooks integrate additional features directly onto your Svelte workflow. They manage

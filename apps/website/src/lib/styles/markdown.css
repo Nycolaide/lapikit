@@ -1,11 +1,11 @@
-.markdown h1.title {
+.markdown .title {
 	color: color-mix(in oklab, var(--kit-on-base) 40%, transparent);
 	font-weight: var(--font-weight-semibold);
 	font-size: var(--text-xl);
 	line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
 }
 
-.markdown p.subtitle {
+.markdown .subtitle {
 	font-weight: var(--font-weight-semibold);
 	font-size: var(--text-5xl);
 	line-height: var(--tw-leading, var(--text-5xl--line-height)) !important;
@@ -21,7 +21,8 @@
 }
 
 @media screen and (max-width: 48rem) {
-	.markdown h2 {
+	.markdown h2,
+	.markdown .subtitle {
 		margin-top: calc(var(--system-spacing) * 16);
 		font-size: 27px;
 		font-weight: var(--font-weight-semibold);
@@ -64,7 +65,8 @@
 }
 
 @media screen and (min-width: 48rem) {
-	.markdown h2 {
+	.markdown h2,
+	.markdown .subtitle {
 		margin-top: calc(var(--system-spacing) * 24);
 		font-size: 27px;
 		font-weight: var(--font-weight-semibold);

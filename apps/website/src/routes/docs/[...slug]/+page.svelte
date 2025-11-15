@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<title
-		>{capitalize(data.page.meta.head?.title || data.page.meta.title || 'Lapikit')} • Lapikit</title
+		>{capitalize(data.page.meta.head?.title || data.page.meta.title || 'Lapikit')} • Lapikit Svelte Components</title
 	>
 	<meta name="description" content={data.page.meta.head?.description || 'Lapikit documentation'} />
 </svelte:head>

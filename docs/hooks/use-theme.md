@@ -1,6 +1,7 @@
 ---
 title: useTheme
 subtitle: Discover the useTheme action in Lapikit
+introduction: Manages theme switching and keeps dark/light modes in sync across the app
 head:
   title: useTheme action
   description: "Learn how to use the useTheme action in Lapikit for dynamic theming."

@@ -1,6 +1,7 @@
 ---
 title: $theme
 subtitle: theme in lapikit
+introduction: Stores and syncs the active theme and color scheme
 head:
   title: theme stored
   description: "Learn how to use the theme store in Lapikit for responsive design."

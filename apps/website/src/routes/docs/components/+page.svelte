@@ -17,8 +17,8 @@
 </svelte:head>
 
 <div class="markdown mb-8">
-	<h1 class="title opacity-75">Components</h1>
-	<h2 class="subtitle mt-2!">Discover the Lapikit components</h2>
+	<p class="title opacity-75">Components</p>
+	<h1 class="subtitle mt-2!">Discover the Lapikit components</h1>
 
 	<p>
 		Components are the core of Lapikit. Without them, the library wouldn’t exist. Each component is

@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Terms of Service • Lapikit</title>
+	<title>Terms of Service • Lapikit Svelte Components</title>
 	<meta
 		name="description"
 		content="Read the terms of service for using Lapikit, the Svelte component library."

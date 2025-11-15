@@ -1,6 +1,7 @@
 ---
 title: $devices
 subtitle: devices store in lapikit
+introduction: Detects active device type (mobile, tablet, desktop)
 head:
   title: devices stored
   description: "Learn how to use the devices store in Lapikit for responsive design."
