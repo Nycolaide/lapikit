@@ -3,7 +3,7 @@
 	import StepperInstallLapikit from '$lib/images/home/stepper/install-lapikit.webp?enhanced';
 	import StepperImportsComponents from '$lib/images/home/stepper/imports-components.webp?enhanced';
 	import StepperCustomizeYourApp from '$lib/images/home/stepper/customize-your-app.webp?enhanced';
-	import { Button, Chip, Icon, Separator } from 'lapikit/components';
+	import { Button, Chip, Icon } from 'lapikit/components';
 
 	let { counter } = $props();
 
@@ -68,8 +68,6 @@
 			</div>
 		</div>
 		<div class="timeline flex items-center justify-center">
-			<Separator orientation={{ base: 'horizontal', lg: 'vertical' }} color="red" />
-
 			<div class="absolute flex gap-7 lg:hidden">
 				{#each stepperToUseComponent as step, index (step)}
 					<Button
@@ -77,7 +75,7 @@
 						active={stepTimeline === index}
 						onclick={() => (stepTimeline = index)}
 						aria-label={`Display ${step.title}`}
-						background="accent-primary"
+						background={stepTimeline === index ? 'accent-primary' : 'label-secondary'}
 						color="white"
 						icon
 					>
@@ -102,7 +100,7 @@
 						<Icon icon={step.icon} />
 					</Button>
 					<p
-						class="absolute hidden w-[50vw] sm:text-lg lg:relative lg:block! lg:w-auto lg:text-start"
+						class="lg:block! absolute hidden w-[50vw] sm:text-lg lg:relative lg:w-auto lg:text-start"
 						class:display-element={stepTimeline === index}
 					>
 						<strong class="font-semibold" style="color: var(--kit-accent-primary)">
@@ -136,7 +134,7 @@
 				rounded="full"
 				background="accent-primary"
 				color="white"
-				class="max-sm:flex-col max-sm:p-[36px_29px]!"
+				class="max-sm:p-[36px_29px]! max-sm:flex-col"
 			>
 				Start Building with Lapikit
 

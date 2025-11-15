@@ -14,7 +14,7 @@
 </script>
 
 <div
-	class="mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 pt-8! sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
+	class="pt-8! mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-4 py-16 sm:gap-16 sm:px-6 sm:py-24 lg:grid lg:px-8 lg:py-32"
 >
 	<div class="flex flex-col gap-4 md:flex-row md:items-stretch">
 		<div class="flex flex-col gap-4 md:w-1/4">
@@ -99,20 +99,28 @@
 
 		<div class="flex flex-col gap-4 md:w-1/4">
 			<Card
-				href={url.social_network.x}
+				href={url.social_network.instagram}
 				target="_blank"
 				background="background-tertiary"
 				class="flex flex-1 justify-center"
 			>
 				<div class="grid grid-cols-[auto_1fr] justify-center gap-x-8 gap-y-4 p-4 sm:p-6">
-					<Icon
-						icon="mgc_social_x_line"
-						size="xl"
-						style="--icon-multiplier-size: 16"
-						color="service-x"
-					/>
+					<div class="flex items-center">
+						<div
+							class="inline-flex h-fit items-center justify-center"
+							style="background: var(--kit-service-instagram); border-radius: 8px;"
+						>
+							<Icon
+								icon="mgc_instagram_line"
+								size="xl"
+								style="--icon-multiplier-size: 16"
+								color="service-on-instagram"
+							/>
+						</div>
+					</div>
+
 					<div>
-						<span class="text-highlighted text-xl font-semibold">0</span>
+						<span class="text-highlighted text-xl font-semibold">2</span>
 						<p class="text-sm">Followers</p>
 					</div>
 				</div>

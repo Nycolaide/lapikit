@@ -1,7 +1,6 @@
 ---
 title: introduction
 subtitle: introducing Lapikit Svelte UI Components
-description: simple, optimized components for Svelte
 head:
   title: introduction
   description: "Learn why Lapikit was created: a component library designed by front-end developers for projects built with Svelte."

@@ -19,26 +19,27 @@ The goal stays the same: keep Lapikit simple, fast, and built for you developers
 
 ## Components in progress
 
-Lapikit is expanding its set of UI components while staying consistent and lightweight.
+Lapikit is expanding its set of UI components while maintaining consistency and simplicity.
+
 Here’s what’s on the way:
 
-- [x] **Alert**:
-- [x] **App**:
-- [x] **Button**:
-- [x] **Card**:
-- [x] **Chip**:
-- [x] **Dialog**:
-- [x] **Separator**:
-- [x] **Accordion**:
-- [x] **Icon**:
-- [x] **List**:
-- [x] **Dropdown**:
-- [x] **AspectRatio**:
-- [x] **Toolbar**:
-- [x] **Tooltip**:
-- [x] **Avatar**:
-- [x] **Popover**:
-- [x] **Modal**:
+- [x] **Alert** are display important messages on your application
+- [x] **App** are define the structure and integration of lapikit tools in your application
+- [x] **Button** are offer link and action management in your application
+- [x] **Card** are display blocks to format your content
+- [x] **Chip** are other types of actions and labeling
+- [x] **Dialog** are display dialog boxes via lapikit (ISO HTML5 dialog element)
+- [x] **Separator** are simple layout divider with more utility
+- [x] **Accordion** are accordion content display management with aria support
+- [x] **Icon** are extended icon library with lighter imports
+- [x] **List** are better variants for menus and structured data
+- [x] **Dropdown** are contextual menu for your application
+- [x] **AspectRatio** are more responsive scaling options
+- [x] **Toolbar** are toolbar to display actions within your application
+- [x] **Tooltip** are when a user hovers over or clicks on a ui element a tiny information message boxes appear
+- [x] **Avatar** are display user profiles via letters or images
+- [x] **Popover** are advanced context menu for greater customization freedom
+- [x] **Modal** are advanced dialog box, with multiple dialog box management and new customization options
 
 ## What’s next steps
 

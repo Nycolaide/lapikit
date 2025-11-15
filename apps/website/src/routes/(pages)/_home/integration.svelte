@@ -60,6 +60,10 @@
 						<Icon icon="mgc_check_circle_line" color="accent-success" /> More consistently, with pre-optimized
 						Svelte + TypeScript integration
 					</li>
+					<li>
+						<Icon icon="mgc_check_circle_line" color="accent-success" />Stop copying and duplicating
+						CSS classes and start shipping better user interfaces
+					</li>
 				</ul>
 				<p class="mt-6 italic md:mb-10">
 					Instead of struggling with redundancy, you focus on the experience you want to offer
