@@ -10,11 +10,11 @@
 	let props = $props();
 </script>
 
-{#if props?.title}
-	<p class="title opacity-75">{capitalize(props?.title)}</p>
-{/if}
 {#if props?.subtitle}
-	<h1 class="subtitle mt-2!">{capitalize(props?.subtitle)}</h1>
+	<h1 class="subtitle opacity-75">{capitalize(props?.subtitle)}</h1>
+{/if}
+{#if props?.title}
+	<p class="title mt-2!">{capitalize(props?.title)}</p>
 {/if}
 {#if props?.description}
 	<p class="description">{props?.description}</p>
