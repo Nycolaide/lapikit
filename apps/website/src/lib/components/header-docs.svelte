@@ -31,7 +31,7 @@
 					alt="Lapikit logo"
 					class="no-select w-[38px] min-w-[38px]"
 				/>
-				<h1 class="text-2xl font-bold">Lapikit</h1>
+				<p class="text-2xl font-bold">Lapikit</p>
 			</div>
 		</a>
 
