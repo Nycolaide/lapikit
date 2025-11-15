@@ -24,7 +24,7 @@ Here’s what’s on the way:
 
 - [x] **Alert**:
 - [x] **App**:
-- [x] **Btn**:
+- [x] **Button**:
 - [x] **Card**:
 - [x] **Chip**:
 - [x] **Dialog**:
