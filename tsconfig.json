@@ -24,5 +24,11 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  "references": [
+    { "path": "./packages/site-kit/tsconfig.build.json" },
+    { "path": "./packages/lapikit/tsconfig.build.json" },
+    { "path": "./apps/website/tsconfig.build.json" }
+  ],
+  "files": []
 }
