@@ -1,0 +1,39 @@
+typography: {
+  defaultTypography: "default",
+  fonts: {
+    default: {
+      sans: [
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol"
+      ],
+      mono: [
+        "SFMono-Regular",
+        "ui-monospace",
+        "SF Mono",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace"
+      ],
+      serif: [
+        "Merriweather",
+        "Georgia",
+        "Cambria",
+        "Times New Roman",
+        "Times",
+        "serif"
+      ]
+    }
+  }
+}

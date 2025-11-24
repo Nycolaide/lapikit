@@ -1,0 +1,3 @@
+animation: {
+  "ripple-duration": "0.4s"
+}

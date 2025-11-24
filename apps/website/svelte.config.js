@@ -20,7 +20,8 @@ const config = {
 		alias: {
 			$animations: 'src/lib/animations',
 			$components: 'src/lib/components',
-			$content: 'src/content'
+			$content: 'src/content',
+			$examples: 'src/content/examples'
 		}
 	},
 	extensions: ['.svelte', '.md']

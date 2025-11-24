@@ -1,0 +1,177 @@
+{
+    breakpoints: {
+        devices: {
+            desktop: 1024,
+            tablet: 768,
+            mobile: 640,
+        },
+        thresholds: {
+            base: 0,
+            xs: 448,
+            sm: 640,
+            md: 768,
+            lg: 1024,
+            xl: 1280,
+            "2xl": 1536,
+            "3xl": 1792,
+        },
+    },
+    theme: {
+    defaultTheme: "light",
+    colorScheme: true,
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          label: {
+            primary: "#000000",
+            secondary: "#8E8E93",
+            tertiary: "#C7C7CC",
+            quaternary: "#D1D1D6",
+          },
+          accent: {
+            primary: "#007AFF",
+            success: "#34C759",
+            warning: "#FF9500",
+            destructive: "#FF3B30",
+            info: "#5AC8FA",
+          },
+          separator: {
+            default: "#C6C6C8",
+            opaque: "#E5E5EA",
+          },
+          state: {
+            placeholder: "#C7C7CC",
+            disabled: "#8E8E93",
+            link: "#007AFF",
+            highlight: "#E5E5EA",
+            shadow: "#00000033",
+          },
+          background: {
+            primary: "#FFFFFF",
+            secondary: "#F2F2F7",
+            tertiary: "#FFFFFF",
+            grouped: {
+              primary: "#F2F2F7",
+              secondary: "#FFFFFF",
+              tertiary: "#F2F2F7",
+            },
+          },
+        },
+        variables: {
+          "test-variable": "1rem",
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          label: {
+            primary: "#FFFFFF",
+            secondary: "#EBEBF5",
+            tertiary: "#EBEBF5",
+            quaternary: "#D1D1D6",
+          },
+          accent: {
+            primary: "#0A84FF",
+            success: "#30D158",
+            warning: "#FF9F0A",
+            destructive: "#FF453A",
+            info: "#64D2FF",
+          },
+          separator: {
+            default: "#38383A",
+            opaque: "#545458",
+          },
+          state: {
+            placeholder: "#3A3A3C",
+            disabled: "#545458",
+            link: "#0A84FF",
+            highlight: "#3A3A3C",
+            shadow: "#00000066",
+          },
+          background: {
+            primary: "#000000",
+            secondary: "#1C1C1E",
+            tertiary: "#2C2C2E",
+            grouped: {
+              primary: "#1C1C1E",
+              secondary: "#2C2C2E",
+              tertiary: "#3A3A3C",
+            },
+          },
+        },
+        variables: {
+          "test-variable": "1rem",
+        },
+      },
+    },
+  },
+  typography: {
+    defaultTypography: "default",
+    fonts: {
+      default: {
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+        ],
+        mono: [
+          "SFMono-Regular",
+          "ui-monospace",
+          "SF Mono",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "Liberation Mono",
+          "Courier New",
+          "monospace",
+        ],
+        serif: [
+          "Merriweather",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+      },
+    },
+  },
+  styles: {
+    spacing: "0.125rem",
+    shape: {
+      sm: "0.125rem",
+      md: "0.25rem",
+      lg: "0.5rem",
+      xl: "0.75rem",
+      "2xl": "1rem",
+      "3xl": "1.5rem",
+      full: "9999px",
+    },
+    dialog: {
+      xs: "18.75rem",
+      sm: "25rem",
+      md: "37.5rem",
+      lg: "53.125rem",
+      xl: "75rem",
+    },
+    modal: {
+      xs: "18.75rem",
+      sm: "25rem",
+      md: "37.5rem",
+      lg: "53.125rem",
+      xl: "75rem",
+    },
+    animation: {
+      "ripple-duration": "0.4s",
+    },
+  },
+}
