@@ -11,6 +11,17 @@
 		"url": "git+https://github.com/Nycolaide/lapikit.git",
 		"directory": "packages/lapikit"
 	},
+	"author": {
+		"name": "Nycolaide",
+		"email": "contact@lapikit.dev"
+	},
+	"bugs": {
+		"url": "https://github.com/Nycolaide/lapikit/issues"
+	},
+	"funding": {
+		"type": "buymeacoffee",
+		"url": "https://buymeacoffee.com/nycolaide"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -99,7 +110,24 @@
 		"vitest": "^3.0.0"
 	},
 	"keywords": [
-		"svelte"
+		"svelte",
+		"sveltekit",
+		"components",
+		"ui",
+		"library",
+		"ui-library",
+		"design system",
+		"lapikit",
+		"material components",
+		"component library",
+		"frontend",
+		"svelte library",
+		"tailwindcss",
+		"unocss",
+		"component",
+		"theme",
+		"css",
+		"typescript"
 	],
 	"dependencies": {
 		"prompts": "^2.4.2"
