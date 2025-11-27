@@ -4,5 +4,4 @@
 
 # Lapikit - Svelte components library
 
-
 [logo]: https://raw.githubusercontent.com/nycolaide/lapikit/main/apps/website/src/lib/images/lapinosaure/lapinosaure.webp
