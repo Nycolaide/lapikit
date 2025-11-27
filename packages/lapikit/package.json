@@ -15,13 +15,8 @@
 		"name": "Nycolaide",
 		"email": "contact@lapikit.dev"
 	},
-	"bugs": {
-		"url": "https://github.com/Nycolaide/lapikit/issues"
-	},
-	"funding": {
-		"type": "buymeacoffee",
-		"url": "https://buymeacoffee.com/nycolaide"
-	},
+	"funding": "https://buymeacoffee.com/nycolaide",
+	"bugs": "https://github.com/Nycolaide/lapikit/issues",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
