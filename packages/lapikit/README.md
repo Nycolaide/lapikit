@@ -102,6 +102,6 @@ We are proud supporters of the open-source community and contribute to several p
 [license]: https://badgen.net/github/license/nycolaide/lapikit?label=License&color=cc5640
 [installs]: https://badgen.net/npm/dt/lapikit?label=NPM%20installs&color=40ba12
 [installs-this-month]: https://badgen.net/npm/dm/lapikit?label=NPM%20installs&color=40ba12
-[discord]: https://img.shields.io/discord/1093887038991896717?color=5865F2&label=Discord&logo=discord&logoColor=white
+[discord]: https://img.shields.io/discord/1383879204671721492?color=5865F2&label=Discord&logo=discord&logoColor=white
 [w3c]: https://github.com/Nycolaide/lapikit/tree/main/.github/W3C.svg
 [humantxt]: https://github.com/Nycolaide/lapikit/tree/main/.github/humans.png
