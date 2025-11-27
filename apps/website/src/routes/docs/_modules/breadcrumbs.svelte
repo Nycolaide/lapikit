@@ -64,7 +64,7 @@
 	</Button>
 
 	<div class="w-full overflow-x-auto">
-		<nav class="ml-2 w-max" aria-label="Fil d'Ariane">
+		<nav class="ml-2 w-max lg:ml-0" aria-label="Fil d'Ariane">
 			<ol class="breadcrumbs-list text-sm!" itemscope itemtype="https://schema.org/BreadcrumbList">
 				{#each breadcrumbs as item, index (item.href)}
 					<li

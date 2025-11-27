@@ -9,7 +9,8 @@ style:
   cover: "docs/components/textfield.webp"
 state:
   section: components
-  published: true
+  published: true,
+  status: new
 github:
   url: /components/textfield.md
 ---

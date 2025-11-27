@@ -10,6 +10,7 @@ state:
   category: configuration
   published: true
   recommended: true
+  status: update
   order: 1
 github:
   url: /getting-started.md
@@ -27,11 +28,17 @@ keywords:
     import ConfigureViteConfigJS from "$lib/components/docs/configure-vite.config.js?raw";
     import AddDefaultConfigLapikit from "$lib/components/docs/add-default-config-lapikit.ts?raw";
     import AddLayerTailwindCSSStyle from "$lib/components/docs/tailwindcss-layer-style.txt?raw";
+    import PathImport from "$examples/getting-started/path-import.txt?raw";
+    import UseTypescript from "$examples/getting-started/use-typescript.txt?raw";
+    import PathCssImport from "$examples/getting-started/path-css-import.txt?raw";
+    import LaunchInstall from "$examples/getting-started/launch-install.txt?raw";
+    import CssFormat from "$examples/getting-started/css-format.txt?raw";
 
 
     // components
     import ButtonBase from "$lib/components/docs/button/button-base.svelte";
     import ButtonBaseCode from "$lib/components/docs/button/button-base.svelte?raw";
+    
 
     // command line
     const commandInstall = [
@@ -73,40 +80,28 @@ Install Lapikit on your project quickly with your package manager.
 
    **Launch installation**
 
-   ```
-   Launch install Lapikit on your project? (Yes / No)
-   ```
+   <Sandbox name="launch-install" code={LaunchInstall}/>
 
    - If you choose **No**, the process stops immediately.
    - If you choose **Yes**, the wizard continues.
 
    **Path for configuration files**
 
-   ```
-   Where would you like to install the lapikit configuration files?
-   (default: src/plugins)
-   ```
+   <Sandbox name="path-import" code={PathImport}/>
 
    - By default, Lapikit will create **src/plugins/lapikit.(ts|js)**.
    - You can change this path, but it must start with `src/`.
 
    **Use TypeScript**
 
-   ```
-   Use TypeScript? (Yes / No)
-   ```
+   <Sandbox name="use-typescript" code={UseTypescript}/>
 
    - Select **Yes** if your project uses TS (`.ts` files).
    - Select **No** to generate plain JavaScript configuration.
 
    **CSS format**
 
-   ```
-   What is your CSS format used on your app?
-   > Basic (classic import)
-   > TailwindCSS (v4)
-   > UnoCSS
-   ```
+   <Sandbox name="css-format" code={CssFormat}/>
 
    - Basic → standard import **'lapikit/themes'** and **'lapikit/styles'**' directly on lapikit.(js|ts).
    - TailwindCSS v4 → integrates with Tailwind’s layer system.
@@ -114,10 +109,7 @@ Install Lapikit on your project quickly with your package manager.
 
    **Path for CSS import**
 
-   ```
-   Where would you like to import the lapikit CSS files?
-   (default: src/app.css)
-   ```
+   <Sandbox name="path-css-import" code={PathCssImport}/>
 
    - Only asked if you chose TailwindCSS or UnoCSS.
    - Define where Lapikit styles should be injected.

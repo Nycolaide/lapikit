@@ -1,0 +1,2 @@
+Where would you like to install the lapikit configuration files?
+(default: src/plugins)
