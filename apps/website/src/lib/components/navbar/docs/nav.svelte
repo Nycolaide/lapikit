@@ -26,7 +26,7 @@
 				bind:ref
 				onclick={() => model.toggle(ref)}
 				variant="outline"
-				class="justify-between! m-[10px] w-[calc(100%-20px)]"
+				class="sticky! top-[10px] z-10 m-[10px] w-[calc(100%-20px)] justify-between!"
 			>
 				{elements?.title || 'Select Section'}
 

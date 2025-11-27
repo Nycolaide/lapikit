@@ -8,6 +8,9 @@ import extractHeadings from './remark-extract-headings.js';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 
+// Cache pour l'instance Shiki (singleton)
+let highlighter;
+
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
 	extensions: ['.md'],
@@ -16,11 +19,13 @@ export const mdsvexOptions = {
 	},
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const highlighter = await createHighlighter({
-				themes: ['poimandres'],
-				langs: ['javascript', 'typescript', 'svelte']
-			});
-			await highlighter.loadLanguage('javascript', 'typescript');
+			// Créer l'highlighter une seule fois et le réutiliser
+			if (!highlighter) {
+				highlighter = await createHighlighter({
+					themes: ['poimandres'],
+					langs: ['javascript', 'typescript', 'svelte']
+				});
+			}
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'poimandres' }));
 			return `{@html \`${html}\` }`;
 		}

@@ -1,3 +1,51 @@
 {
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+
+  // TypeScript configuration
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // ESLint configuration pour monorepo
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte"
+  ],
+
+  // Enable project references support
+  "typescript.disableAutomaticTypeAcquisition": false,
+
+  // Editor improvements
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+
+  // File associations
+  "files.associations": {
+    "*.css": "css",
+    "*.md": "markdown"
+  },
+
+  // Search exclusions (better performance)
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.svelte-kit": true,
+    "**/dist": true,
+    "**/.git": true,
+    "**/bun.lock": true,
+    "**/*.tsbuildinfo": true
+  },
+
+  // Files exclusions in explorer
+  "files.exclude": {
+    "**/.svelte-kit": true,
+    "**/*.tsbuildinfo": true
+  }
 }

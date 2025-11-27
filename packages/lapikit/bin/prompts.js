@@ -18,7 +18,7 @@ export async function initPrompts() {
 	}
 
 	// Preview install
-	let settings = await prompts([
+	const settings = await prompts([
 		{
 			type: 'text',
 			name: 'pathConfig',

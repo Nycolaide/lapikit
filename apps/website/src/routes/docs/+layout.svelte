@@ -30,7 +30,7 @@
 		items: Array<{
 			key: string;
 			title: string;
-			order: number;
+			order?: number;
 			style?: {
 				color?: string;
 				icon?: string;
