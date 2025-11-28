@@ -1,0 +1,15 @@
+/* TEAM */                  
+        Maintainer: Nycolaide
+        Contact: laurent [at] nycolaide.dev
+        Twitter: @nycolaide
+        From: French
+
+        Trafic Manager: Simone
+        Linkedin: simone-de-sousa-fernandes
+        From: French
+
+/* SITE */                     
+        Last update: 2025/11/28                  
+        Standards: HTML5, CSS3, JS   
+        Components: Svelte, Sveltekit, Lapikit, TailwindCSS, Vite.js
+        Software: VS Code, Figma, Affinity Suite

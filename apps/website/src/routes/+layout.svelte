@@ -46,7 +46,6 @@
 
 <svelte:head>
 	<meta name="robots" content={$mode === 'production' ? 'index,follow' : 'noindex,nofollow'} />
-	<meta name="author" content="Nycolaide" />
 	<link rel="canonical" href={page.url.href} />
 	<link rel="alternate" hreflang="x-default" href={page.url.href} />
 	<meta name="color-scheme" content="light dark" />
