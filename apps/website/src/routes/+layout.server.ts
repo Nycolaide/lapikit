@@ -70,8 +70,8 @@ const social_links = [
 
 const banner = {
 	id: 'lapikit-v0.3-update',
-	start: new Date('31 November, 2025 00:00:00 UTC'),
-	end: new Date('15 December, 2025 23:59:59 UTC'),
+	start: new Date('04 December, 2025 00:00:00 UTC'),
+	end: new Date('23 December, 2025 23:59:59 UTC'),
 	arrow: true,
 	content: {
 		lg: 'Discover the new Lapikit v0.3 with exciting features and improvements!',
