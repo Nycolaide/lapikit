@@ -1,4 +1,6 @@
-[![][logo]](https://lapikit.dev)
+<a href="https://lapikit.dev">
+  <img src="https://raw.githubusercontent.com/Nycolaide/lapikit/main/.github/lapikit.svg" alt="Lapikit Logo" width="125">
+</a>
 
 # Lapikit - Svelte components library
 
@@ -90,11 +92,21 @@ Copyright © 2025 Nycolaide
 
 We are proud supporters of the open-source community and contribute to several projects that help make the web a better place. Here are some of the projects we support:
 
-|                                 |                                         |
-| ------------------------------- | --------------------------------------- |
-| [![][w3c]](https://www.w3.org/) | [![][humantxt]](https://humanstxt.org/) |
+<table>
+  <tr>
+    <td>
+      <a href="https://www.w3.org/">
+        <img src="https://raw.githubusercontent.com/Nycolaide/lapikit/main/.github/w3c.svg" alt="W3C" width="75">
+      </a>
+    </td>
+    <td>
+      <a href="https://humanstxt.org/">
+        <img src="https://raw.githubusercontent.com/Nycolaide/lapikit/main/.github/humans.png" alt="Humans.txt" width="115">
+      </a>
+    </td>
+  </tr>
+</table>
 
-[logo]: https://github.com/Nycolaide/lapikit/tree/main/.github/lapikit.svg
 [discover-lapikit-npm]: https://img.shields.io/badge/Lapikit-black.svg?style=for-the-badge&logo=NPM
 [join-discord-lapikit]: https://img.shields.io/badge/Join%20the%20community-black.svg?style=for-the-badge&logo=Discord
 [subscribe-to-instagram]: https://img.shields.io/badge/Follow%20@Lapikit-black.svg?style=for-the-badge&logo=Instagram
@@ -103,5 +115,3 @@ We are proud supporters of the open-source community and contribute to several p
 [installs]: https://badgen.net/npm/dt/lapikit?label=NPM%20installs&color=40ba12
 [installs-this-month]: https://badgen.net/npm/dm/lapikit?label=NPM%20installs&color=40ba12
 [discord]: https://img.shields.io/discord/1383879204671721492?color=5865F2&label=Discord&logo=discord&logoColor=white
-[w3c]: https://github.com/Nycolaide/lapikit/tree/main/.github/W3C.svg
-[humantxt]: https://github.com/Nycolaide/lapikit/tree/main/.github/humans.png
