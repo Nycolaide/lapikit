@@ -22,10 +22,10 @@ To check out the documentation, visit [lapikit.dev](https://lapikit.dev)
 
 Getting started with Lapikit is easy. After create you SvelteKit project, you can install Lapikit using your preferred package manager:
 
-Using [pnpm](https://pnpm.io/):
+Usage [bun](https://bun.sh/):
 
 ```bash
-pnpm add -D lapikit
+bun add -d lapikit
 npx lapikit
 ```
 
@@ -43,10 +43,10 @@ yarn add -D lapikit
 npx lapikit
 ```
 
-Usage [bun](https://bun.sh/):
+Using [pnpm](https://pnpm.io/):
 
 ```bash
-bun add -d lapikit
+pnpm add -D lapikit
 npx lapikit
 ```
 
