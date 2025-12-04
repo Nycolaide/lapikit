@@ -18,7 +18,13 @@
 </script>
 
 {#if display}
-	<Toolbar classContent="justify-center" {...rest} background="accent-primary" color="white">
+	<Toolbar
+		classContent="justify-center"
+		{...rest}
+		background="accent-primary"
+		color="white"
+		rounded="0"
+	>
 		<div class="text-sm">
 			<span class="max-md:hidden">{banner.content.lg}</span>
 			<span class="min-md:hidden">{banner.content.sm}</span>
