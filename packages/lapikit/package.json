@@ -1,6 +1,6 @@
 {
 	"name": "lapikit",
-	"version": "0.2.7",
+	"version": "0.2.8",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
@@ -11,6 +11,12 @@
 		"url": "git+https://github.com/Nycolaide/lapikit.git",
 		"directory": "packages/lapikit"
 	},
+	"author": {
+		"name": "Nycolaide",
+		"email": "contact@lapikit.dev"
+	},
+	"funding": "https://buymeacoffee.com/nycolaide",
+	"bugs": "https://github.com/Nycolaide/lapikit/issues",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -62,8 +68,14 @@
 		"./core/colors": {
 			"default": "./dist/internal/core/standard-colors.js"
 		},
-		"./styles": "./dist/styles.css",
-		"./themes": "./dist/themes.css"
+		"./styles": {
+			"types": "./dist/styles.css.d.ts",
+			"default": "./dist/styles.css"
+		},
+		"./themes": {
+			"types": "./dist/themes.css.d.ts",
+			"default": "./dist/themes.css"
+		}
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
@@ -93,7 +105,24 @@
 		"vitest": "^3.0.0"
 	},
 	"keywords": [
-		"svelte"
+		"svelte",
+		"sveltekit",
+		"components",
+		"ui",
+		"library",
+		"ui-library",
+		"design system",
+		"lapikit",
+		"material components",
+		"component library",
+		"frontend",
+		"svelte library",
+		"tailwindcss",
+		"unocss",
+		"component",
+		"theme",
+		"css",
+		"typescript"
 	],
 	"dependencies": {
 		"prompts": "^2.4.2"

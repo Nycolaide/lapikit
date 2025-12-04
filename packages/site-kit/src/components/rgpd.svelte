@@ -5,7 +5,7 @@
 
 	// components
 	import Analytics from './analytics/gtag.svelte';
-	import GoogleTagManager from './analytics/gtm.svelte';
+	// import GoogleTagManager from './analytics/gtm.svelte';
 
 	let { dialog, gta, gtaID, gtm, gtmID, bing, bingID, open = $bindable() } = $props();
 
@@ -50,6 +50,6 @@
 
 <Analytics {gta} {gtaID} />
 
-<GoogleTagManager {gtm} {gtmID} />
+<!-- <GoogleTagManager {gtm} {gtmID} /> -->
 
 {@render dialog?.(model)}

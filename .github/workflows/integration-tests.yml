@@ -47,10 +47,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -72,10 +74,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -97,10 +101,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -155,10 +161,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -180,10 +188,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -205,10 +215,12 @@ jobs:
       - name: Restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -264,10 +276,12 @@ jobs:
       - name: restore node_modules cache
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('bun.lock') }}
+          path: |
+            node_modules
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies if cache miss
         run: bun install --frozen-lockfile
@@ -287,18 +301,18 @@ jobs:
       - name: create .env file
         run: |
           cd apps/website
-          echo "PUBLIC_DEV_MODE=false" >> .env
+          echo "PUBLIC_ENV=development" >> .env
           echo "PUBLIC_BASE_URL=http://localhost:5173" >> .env
+          echo "PUBLIC_API=true" >> .env
           echo "PUBLIC_GOOGLE_ANALYTICS_ENABLED=true" >> .env
           echo "PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX" >> .env
           echo "PUBLIC_GOOGLE_TAG_MANAGER_ENABLED=true" >> .env
           echo "PUBLIC_GOOGLE_TAG_MANAGER_ID=GTM-XXXXXX" >> .env
           echo "PUBLIC_BING_WEBMASTER_TOOLS_ENABLED=true" >> .env
           echo "PUBLIC_BING_WEBMASTER_TOOLS_ID=XXXXXXXXXX" >> .env
-          echo "PUBLIC_CALL_API_ENABLED=true" >> .env
 
       - name: build
-        run: cd apps/website && bun run build
+        run: cd apps/website && bun initialize && bun run build
 
   deploy-to-vps-alpha:
     name: deploy [ALPHA] lapikit.dev

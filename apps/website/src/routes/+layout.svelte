@@ -1,34 +1,64 @@
 <script lang="ts">
-	// css
-	import '../styles/app.css';
-
-	// //plugins
-	import '../plugins/lapikit.ts';
-
-	// icons
+	import { onDestroy, onMount } from 'svelte';
 	import 'mingcute_icon/font/Mingcute.css';
-	// fonts
+	import '../lib/styles/app.css';
+	import '../plugins/lapikit.ts';
 	import '@fontsource/roboto';
-	import '@fontsource/press-start-2p';
-
+	import {
+		PUBLIC_ENV,
+		PUBLIC_GOOGLE_TAG_MANAGER_ENABLED,
+		PUBLIC_GOOGLE_TAG_MANAGER_ID
+	} from '$env/static/public';
+	import { page } from '$app/state';
+	import { browser } from '$app/environment';
+	import { consentManaged, mode, search } from '$lib/stores/app';
 	import { App } from 'lapikit/components';
-	import { DevelopmentBar } from '$lib/components';
-	import Header from '$lib/components/header.svelte';
-	import { PUBLIC_DEV_MODE } from '$env/static/public';
+	import { Search } from '$lib/components';
+	import Banner from '$components/banner.svelte';
+	import ConsentModal from '$components/consent-modal.svelte';
+
+	// TEMPS
+	import Gtm from '$components/gtm.svelte';
+
+	mode.set(PUBLIC_ENV);
 
 	let { data, children } = $props();
 
-	$effect(() => {
-		console.log('API data', data);
+	onMount(() => {
+		if (browser) {
+			window.addEventListener('keydown', handleKeyDown);
+		}
 	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('keydown', handleKeyDown);
+		}
+	});
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+			event.preventDefault();
+			search.set(true);
+		}
+	}
 </script>
 
-<App>
-	<DevelopmentBar />
+<svelte:head>
+	<meta name="robots" content={$mode === 'production' ? 'index,follow' : 'noindex,nofollow'} />
+	<link rel="canonical" href={page.url.href} />
+	<link rel="alternate" hreflang="x-default" href={page.url.href} />
+	<meta name="color-scheme" content="light dark" />
+</svelte:head>
 
-	{#if PUBLIC_DEV_MODE == 'true'}
-		<Header {data} app />
-	{/if}
+<Gtm gtm={PUBLIC_GOOGLE_TAG_MANAGER_ENABLED} gtmID={PUBLIC_GOOGLE_TAG_MANAGER_ID} />
+
+<App dark={page.url.pathname === '/'}>
+	<Banner banner={data.banner} />
 
 	{@render children()}
+
+	<Search bind:open={$search} />
+
+	<ConsentModal bind:open={$consentManaged} />
 </App>

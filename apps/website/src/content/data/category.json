@@ -1,0 +1,52 @@
+{
+	"base": {
+		"key": "base",
+		"title": "Environment",
+		"order": 0,
+		"slug": "/docs/introduction",
+		"style": {
+			"color": "red",
+			"icon": "mgc_settings_5_line"
+		},
+		"categories": []
+	},
+	"components": {
+		"key": "components",
+		"title": "Components",
+		"order": 1,
+		"slug": "/docs/components",
+		"style": {
+			"color": "red",
+			"icon": "mgc_cube_3d_line"
+		},
+		"categories": []
+	},
+	"hooks": {
+		"key": "hooks",
+		"title": "Hooks",
+		"order": 2,
+		"slug": "/docs/hooks",
+		"style": {
+			"color": "red",
+			"icon": "mgc_webhook_line"
+		},
+		"categories": [
+			{
+				"key": "stores",
+				"title": "Stores",
+				"style": {
+					"color": "accent-primary",
+					"icon": "mgc_store_line"
+				}
+			},
+			{
+				"key": "actions",
+				"title": "Actions",
+				"style": {
+					"color": "accent-primary",
+					"icon": "mgc_magic_2_line"
+				}
+			}
+		]
+	}
+}

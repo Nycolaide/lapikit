@@ -40,6 +40,7 @@
 					itemscope
 					itemtype="https://schema.org/ListItem"
 				>
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					<a href="/" itemprop="item" class="breadcrumb-link">
 						<span itemprop="name">Home</span>
 					</a>
@@ -55,6 +56,7 @@
 				itemtype="https://schema.org/ListItem"
 			>
 				{#if index < segments.length - 1}
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					<a href={getPath(index)} itemprop="item" class="breadcrumb-link">
 						<span itemprop="name">{capitalize(item.replaceAll('-', ' '))}</span>
 					</a>

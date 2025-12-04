@@ -1,192 +1,115 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { t } from '$lib/i18n';
-	import { page as url } from '$app/state';
-	import { Appbar, Button, Chip, Icon, List, ListItem, Spacer } from 'lapikit/components';
+	import { PageTransition } from '$animations';
 	import { Drawer } from 'site-kit';
-	import { capitalize } from 'site-kit/actions';
+	import type {
+		NavigationLink,
+		NavigationData,
+		NavigationSectionWithCategories
+	} from '$lib/types/navigation';
+	import type { DocFile } from '$lib/types/frontmatter';
 
-	// modules
-	import { SearchBar, Search, ThemeToggle, ReturnTopPage } from '$lib/components/index.js';
-	import { PageTransition } from '../../animations/index.js';
+	//modules
+	import { HeaderDocs, NavDocs } from '$components';
+	import SubHeader from './_modules/sub-header.svelte';
+	import ReturnTopPage from './_modules/return-top-page.svelte';
+	import TableOfContents from './_modules/table-of-contents.svelte';
+	import Breadcrumbs from './_modules/breadcrumbs.svelte';
+	import FooterDocs from '$components/footer-docs.svelte';
 
 	let { children, data } = $props();
 
 	// states
 	let open = $state(false);
-	let openSearch = $state(false);
-	let sizeWidthScreen = $state(0);
-	let selectedSection = $state<number | null>(null);
-	let navigationRoutes = $state(data.routes || []);
+	let currentSection: string = $state('base');
 
-	$effect(() => {
-		if (open === false) {
-			selectedSection = null;
+	function getCurrentSectionFromUrl(
+		url: string,
+		navigation: NavigationData
+	): {
+		section: string;
+		items: Array<{
+			key: string;
+			title: string;
+			order?: number;
+			style?: {
+				color?: string;
+				icon?: string;
+			};
+			items?: DocFile[];
+		}>;
+	} {
+		const urlSegments = url.split('/').filter(Boolean);
+		const docsIndex = urlSegments.indexOf('docs');
+		if (docsIndex !== -1) {
+			urlSegments.splice(docsIndex, 1);
 		}
-	});
 
-	$effect(() => {
-		if (data.routes) {
-			navigationRoutes = data.routes;
-		}
-	});
+		let detectedSection = 'base';
 
-	function disabledScroll(state: boolean) {
-		if (browser) {
-			document.body.style.overflow = state ? 'hidden' : '';
+		if (urlSegments.length > 0) {
+			const firstSegment = urlSegments[0];
+			if (navigation[firstSegment]) {
+				detectedSection = firstSegment;
+			}
 		}
+
+		const section: NavigationSectionWithCategories = navigation[detectedSection];
+		if (!section) {
+			return { section: detectedSection, items: [] };
+		}
+		return { section: detectedSection, items: section.categories || [] };
 	}
 
-	const handleNavigation = () => {
-		if (open) {
-			if (sizeWidthScreen < 1024) {
-				disabledScroll(true);
-			}
-		} else {
-			if (sizeWidthScreen < 1024) {
-				disabledScroll(false);
-			}
-		}
-	};
-
 	$effect(() => {
-		handleNavigation();
-		if (sizeWidthScreen >= 640) selectedSection = null;
+		const docsNav = data.nav_links?.docs as NavigationLink;
+		if (docsNav?.sections && data.url) {
+			const result = getCurrentSectionFromUrl(data.url, docsNav.sections);
+			currentSection = result.section;
+		}
 	});
 </script>
 
-<svelte:window bind:innerWidth={sizeWidthScreen} />
+<HeaderDocs url={data.url_internal} npm={data.npm || undefined} />
 
-<Appbar density={{ base: 'default', md: 'comfortable' }} class="z-100 sticky top-0 w-full">
-	<a href="/">
-		<p class="text-2xl font-bold">Lapikit</p>
-	</a>
-
-	<Spacer />
-
-	<div>
-		<SearchBar bind:open={openSearch} />
-		<ThemeToggle />
-		<Button
-			icon
-			background="service-github"
-			color="service-on-github"
-			href="https://github.com/Nycolaide/lapikit"
-			target="_blank"
-		>
-			<Icon icon="mgc_github_line" />
-		</Button>
-	</div>
-</Appbar>
-
-<Search bind:open={openSearch} />
+<SubHeader
+	class="sticky top-[64px] z-95 max-lg:hidden!"
+	bind:open
+	navigation={data.nav_links}
+	url={data.url_internal}
+	npm={data.npm || undefined}
+	sectionActive={currentSection}
+/>
 
 <Drawer bind:open>
 	{#snippet navigation()}
-		{#each navigationRoutes as section, index (section.key)}
-			<List class="kit-device--oh-mobile" nav density="compact" variant="text">
-				{#if section.submenu}
-					<ListItem class="font-semibold">
-						{capitalize(section.key)}
-					</ListItem>
-				{/if}
-
-				{#each section.pages as page (page.metadata?.slug)}
-					<ListItem
-						href={`/docs${page.metadata?.slug}`}
-						onclick={() => (open = false)}
-						active={url.url.pathname === `/docs${page.metadata?.slug}`}
-					>
-						{#if page.style?.icon}
-							<Icon icon={page.style.icon} />
-						{/if}
-						{capitalize(page.title)}
-
-						{#if page.state?.status}
-							<Chip
-								rounded="sm"
-								size="xs"
-								success={page.state.status === 'new'}
-								warning={page.state.status === 'updated'}
-								error={page.state.status === 'deprecated'}
-								info={page.state.status === 'preview'}
-							>
-								{capitalize($t(`navigation.state.${page.state.status}`))}
-							</Chip>
-						{/if}
-					</ListItem>
-				{/each}
-			</List>
-
-			<List class="kit-device--od-mobile" nav>
-				{#if selectedSection === null}
-					{#if section.submenu}
-						<ListItem onclick={() => (selectedSection = index)}>
-							{#if section.icon}
-								<Icon icon={section.icon} />
-							{/if}
-							{capitalize(section.key)}
-						</ListItem>
-					{:else}
-						{#each section.pages as page (page.metadata?.slug)}
-							<ListItem href={`/docs${page.metadata?.slug}`} onclick={() => (open = false)}>
-								{#if page.style?.icon}
-									<Icon icon={page.style.icon} />
-								{/if}
-								{capitalize(page.title)}
-
-								{#if page.state?.status}
-									<Chip
-										rounded="sm"
-										size="xs"
-										success={page.state.status === 'new'}
-										warning={page.state.status === 'updated'}
-										error={page.state.status === 'deprecated'}
-										info={page.state.status === 'preview'}
-									>
-										{capitalize($t(`navigation.state.${page.state.status}`))}
-									</Chip>
-								{/if}
-							</ListItem>
-						{/each}
-					{/if}
-				{:else if section.key === navigationRoutes[selectedSection].key}
-					<ListItem onclick={() => (selectedSection = null)}>
-						{#snippet append()}
-							<Icon icon="mgc_left_line" size="lg" />
-						{/snippet}
-						{capitalize($t('navigation.back_to_sections'))}
-					</ListItem>
-
-					{#each navigationRoutes[selectedSection].pages as page (page.metadata?.slug)}
-						<ListItem href={`/docs${page.metadata?.slug}`} onclick={() => (open = false)}>
-							{#if page.style?.icon}
-								<Icon icon={page.style.icon} />
-							{/if}
-							{capitalize(page.title)}
-						</ListItem>
-					{/each}
-				{/if}
-			</List>
-		{/each}
+		<NavDocs bind:open bind:currentSection navigation={data.nav_links} />
 	{/snippet}
 
-	<Button
-		onclick={() => (open = !open)}
-		size="xl"
-		density="comfortable"
-		rounded="lg"
-		class="kit-device--h-desktop fixed! z-1100 bottom-[0.75rem] right-[0.75rem]"
-		background="on-container"
-		color="container"
-	>
-		<Icon icon={open ? 'mgc_close_line' : 'mgc_menu_line'} />
-		{capitalize(open ? $t('navigation.close') : $t('navigation.open'))}
-	</Button>
-
-	<ReturnTopPage />
-
 	<PageTransition url={data.url}>
-		{@render children?.()}
+		<div class="mx-auto grid w-full min-w-0 gap-8 pr-4 pb-6 pl-4 lg:pl-0 xl:grid-cols-[1fr_220px]">
+			<div>
+				<Breadcrumbs
+					url={data.url}
+					bind:open
+					class="z-95 max-lg:sticky max-lg:top-[64px] max-lg:-ml-[15px] max-lg:w-[calc(100%_+_30px)]! lg:mx-auto lg:max-w-[760px]"
+				/>
+
+				<div class="markdown mx-auto w-full min-w-0 pt-8 md:max-w-[760px]">
+					{@render children?.()}
+				</div>
+
+				<FooterDocs
+					class="mx-auto mt-16 md:max-w-[760px]"
+					url={data.url_internal}
+					socials={data.social_links}
+				/>
+			</div>
+
+			<aside class="max-xl:hidden">
+				<TableOfContents url={data.url} headings={data.summary?.data?.headings || []} />
+			</aside>
+		</div>
 	</PageTransition>
 </Drawer>
+
+<ReturnTopPage />

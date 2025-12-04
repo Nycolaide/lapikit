@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { capitalize } from 'site-kit/actions';
 	import { onMount } from 'svelte';
-	import { t } from '$lib/i18n';
 
 	let props = $props();
 	let ref: HTMLTableElement | null = $state(null);
@@ -32,7 +31,7 @@
 
 					if (customTable) {
 						if (text.toLowerCase() === 'props') {
-							return capitalize($t('datatable.props'));
+							return capitalize('properties');
 						}
 						if (text.toLowerCase() === 'type_extend') {
 							typeExtendIndex = index;
@@ -44,15 +43,15 @@
 						}
 						if (['desc', 'description'].includes(text.toLowerCase())) {
 							descIndex = index;
-							return capitalize($t('datatable.description'));
+							return capitalize('description');
 						}
 						if (['type', 'types'].includes(text.toLowerCase())) {
 							typeIndex = index;
-							return capitalize($t('datatable.types'));
+							return capitalize('types');
 						}
 					}
 
-					return capitalize($t(`datatable.${text}`));
+					return capitalize(text);
 				})
 				.filter((text) => text !== '');
 		}

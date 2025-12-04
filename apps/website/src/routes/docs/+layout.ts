@@ -1,6 +1,8 @@
-export async function load({ data, url }) {
+export async function load({ url, fetch }) {
+	const summaries = await fetch(`/api/summaries?slug=${url.pathname}`);
+
 	return {
-		...data,
-		url: url.pathname
+		url: url.pathname,
+		summary: await summaries.json()
 	};
 }

@@ -16,8 +16,8 @@
 
 <style>
 	#drawer {
-		--drawer-height: calc(100dvh - 0px - 4.5rem);
-		--drawer-top: calc(0px + 4.5rem + 0px);
+		--drawer-height: calc(100dvh - 0px - 64px);
+		--drawer-top: calc(0px + 64px + 0);
 		display: grid;
 		grid-template-columns: 1fr;
 		/* position: relative; */
@@ -50,12 +50,17 @@
 		height: 100%;
 		position: fixed;
 		color: transparent;
-		background-color: color-mix(in oklab, var(--kit-state-shadow) 45%, transparent);
+		background-color: color-mix(in oklab, black 45%, transparent);
 		z-index: 900;
 		user-select: none;
 	}
 
-	@media screen and (min-width: 40rem) {
+	/* @media screen and (min-width: 40rem) { */
+	@media screen and (min-width: 0.1rem) {
+		#drawer {
+			--drawer-height: calc(100dvh - 0px - var(--drawer-top));
+			--drawer-top: calc(0px + 64px + 48px);
+		}
 		#drawer .drawer-navigation > div {
 			width: 300px;
 			height: 100dvh;

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
 	import { Button, Icon, Separator } from 'lapikit/components';
 	import type { SandboxActionsProps } from './types';
 	import ThemeToggleComponent from './theme-toggle-component.svelte';
@@ -26,12 +25,12 @@
 		{#if !presentation && !tab?.includes('only')}
 			<Button onclick={() => handleTab('preview')} active={tab === 'preview'}>
 				<Icon icon="mgc_eye_2_line" />
-				{capitalize($t('docs.sandbox.actions.preview'))}
+				{capitalize('preview')}
 			</Button>
 
 			<Button onclick={() => handleTab('code')} active={tab === 'code'}>
 				<Icon icon="mgc_code_line" />
-				{capitalize($t('docs.sandbox.actions.code'))}
+				{capitalize('code')}
 			</Button>
 		{/if}
 
@@ -43,10 +42,10 @@
 			<Button onclick={() => handleExpand(expanded ? false : true)} active={expanded}>
 				{#if !expanded}
 					<Icon icon="mgc_down_line" />
-					{capitalize($t('docs.sandbox.actions.expand'))}
+					{capitalize('expand')}
 				{:else}
 					<Icon icon="mgc_up_line" />
-					{capitalize($t('docs.sandbox.actions.collapse'))}
+					{capitalize('collapse')}
 				{/if}
 			</Button>
 		{/if}

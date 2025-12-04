@@ -10,6 +10,7 @@ style:
 state:
   section: components
   published: true
+  status: update
 github:
   url: /components/dropdown.md
 keywords:

@@ -9,8 +9,8 @@ style:
   cover: "docs/components/textfield.webp"
 state:
   section: components
-  published: true
-  status: "new"
+  published: true,
+  status: new
 github:
   url: /components/textfield.md
 ---
@@ -42,13 +42,17 @@ github:
     import TextfieldVariantCode from "$lib/components/docs/textfield/textfield-variant.svelte?raw";
 </script>
 
-The Textfield component provides a versatile input solution for capturing user data. It supports various input types, validation states, and enhanced features like character counting and clearable functionality. Designed with accessibility and user experience in mind.
+The Textfield component provides a versatile input solution for capturing user data. It supports various input types, validation states, and enhanced features like character counting and clearable functionality. Designed for i increase accessibility and user experience in mind in your interphase.
+
+Instead of reinventing textfield logic, Lapikit Textfield enables you to focus on behavior and data flow.
 
 <Sandbox name="textfield-sandbox" code={TextfieldBaseCode} presentation>
     {#snippet component()}
         <TextfieldBase/>
     {/snippet}
 </Sandbox>
+
+You can quickly create complete form layouts, from login screens to profile editors, by applying the same consistent design logic. Combine text fields with buttons for submission, icons for contextual cues, or validation states for real-time feedback.
 
 ## Examples of textfield
 

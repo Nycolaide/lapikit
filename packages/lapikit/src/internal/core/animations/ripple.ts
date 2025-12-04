@@ -45,7 +45,7 @@ export function ripple(el: HTMLElement, options: RippleOptions = {}) {
 		if (options.component) {
 			rippleContainer.style.setProperty(
 				'--system-ripple-radius',
-				`var(--${options.component}-radius)`
+				`var(--${options.component}-shape)`
 			);
 		}
 

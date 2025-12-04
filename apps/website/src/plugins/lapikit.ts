@@ -27,7 +27,9 @@ export default createLapikit({
 						'on-discord': '#ffffff',
 						npm: '#CB3837',
 						'on-npm': '#ffffff',
-						x: 'oklch(23.166% .0107 242.2)'
+						x: 'oklch(23.166% .0107 242.2)',
+						instagram: 'linear-gradient(45deg, #833AB4 0%, #C13584 25%, #F56040 50%, #FCAF45 100%)',
+						'on-instagram': '#ffffff'
 					}
 				}
 			},
@@ -43,7 +45,9 @@ export default createLapikit({
 						'on-discord': '#ffffff',
 						npm: '#CB3837',
 						'on-npm': '#ffffff',
-						x: 'oklch(97.913% 0 89.88)'
+						x: 'oklch(97.913% 0 89.88)',
+						instagram: 'linear-gradient(45deg, #833AB4 0%, #C13584 25%, #F56040 50%, #FCAF45 100%)',
+						'on-instagram': '#ffffff'
 					}
 				}
 			}
@@ -52,8 +56,7 @@ export default createLapikit({
 	typography: {
 		fonts: {
 			default: {
-				sans: ['Roboto Variable', 'sans-serif'],
-				game: ['Press Start 2P', 'system-ui']
+				sans: ['Roboto Variable', 'sans-serif']
 			}
 		}
 	}

@@ -1,0 +1,30 @@
+{
+	"discord": {
+		"invite": "https://discord.gg/gn9ZGtDtK4"
+	},
+	"github": {
+		"repository": "https://github.com/Nycolaide/lapikit",
+		"issues": "https://github.com/Nycolaide/lapikit/issues",
+		"edit_page": "https://github.com/Nycolaide/lapikit/edit/main",
+		"discussions": "https://github.com/Nycolaide/lapikit/discussions",
+		"contributing": "https://github.com/Nycolaide/lapikit/blob/main/CONTRIBUTING.md",
+		"sponsors": "https://github.com/Nycolaide/lapikit"
+	},
+	"package": {
+		"licence": "https://github.com/Nycolaide/lapikit/blob/main/LICENSE"
+	},
+	"npm": {
+		"package": "https://www.npmjs.com/package/lapikit"
+	},
+	"buymeacoffee": {
+		"page": "https://www.buymeacoffee.com/nycolaide"
+	},
+	"social_network": {
+		"x": "https://x.com/lapikit",
+		"instagram": "https://www.instagram.com/lapikit"
+	},
+	"nycolaide": {
+		"website": "https://nycolaide.dev",
+		"github": "https://github.com/Nycolaide"
+	}
+}

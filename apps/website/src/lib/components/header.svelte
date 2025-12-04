@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import { page } from '$app/state';
-	import { t } from '$lib/i18n';
 	import { browser } from '$app/environment';
 	import { breakpoints, viewport } from 'lapikit/stores';
 	import { capitalize, formatNumber } from 'site-kit/actions';
-	import { deviceUsed } from '$lib/stores/app.js';
-
-	//components
+	import { deviceUsed, search } from '$lib/stores/app';
 	import {
 		Appbar,
 		Button,
@@ -18,219 +15,164 @@
 		ListItem,
 		Tooltip
 	} from 'lapikit/components';
-	import ThemeToggle from './theme-toggle.svelte';
-	import Search from './search/search.svelte';
+	import type { NavigationData, NpmData, UrlConfig } from '$lib/types/navigation';
 
 	// assets
 	import LapikitLogo from '$lib/images/lapinosaure/lapinosaure.webp?enhanced';
-	import { githubUrl, navigationMain } from '$lib/config';
 
-	interface Props {
-		app?: boolean;
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		data?: any;
-	}
+	// modules
+	import ThemeToggle from '$components/theme-toggle.svelte';
 
-	let { app, data, ...rest }: Props = $props();
+	let {
+		url,
+		npm,
+		isHome,
+		navigation,
+		...rest
+	}: {
+		url: UrlConfig;
+		npm?: NpmData | null;
+		isHome: boolean;
+		navigation: NavigationData;
+		[key: string]: unknown;
+	} = $props();
 
 	// states
-	let search: boolean = $state(false);
+	let open: boolean = $state(false);
 	let scrolled: boolean = $state(false);
-	let dropdownRefs: (HTMLDivElement | null)[] = $state([]);
+	let dropdownRef: HTMLDivElement | null = $state(null);
+
+	function handleScroll() {
+		scrolled = window.scrollY > 20;
+	}
 
 	onMount(() => {
 		if (browser) {
-			window.addEventListener('keydown', handleKeyDown);
 			window.addEventListener('scroll', handleScroll);
+		}
+	});
+
+	$effect(() => {
+		if ($viewport.innerWidth >= $breakpoints.md) {
+			if (browser && open) {
+				document.body.style.overflow = '';
+			}
+
+			open = false;
 		}
 	});
 
 	onDestroy(() => {
 		if (browser) {
-			window.removeEventListener('keydown', handleKeyDown);
 			window.removeEventListener('scroll', handleScroll);
 		}
 	});
-
-	function handleKeyDown(event: KeyboardEvent) {
-		if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
-			event.preventDefault();
-			search = true;
-		}
-	}
-
-	function handleScroll() {
-		scrolled = window.scrollY > 20;
-	}
 </script>
 
-{#if app}
-	<Appbar
-		class="sticky top-0 z-100"
-		classContent=" mx-auto flex w-full max-w-[90rem] items-center justify-between grid md:grid-cols-3"
-		background={scrolled ? 'background-primary' : 'transparent'}
-		{...rest}
-	>
-		<div class="flex items-center justify-start gap-2">
-			<a href="/">
-				<div class="flex items-center gap-2">
-					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" />
-					<h1 class="text-2xl font-bold">Lapikit</h1>
-				</div>
-			</a>
+<Appbar
+	class="sticky top-0 z-100"
+	classContent="mx-auto flex w-full  items-center justify-between grid md:grid-cols-3 max-w-[95%]"
+	background={scrolled ? 'background-primary' : 'transparent'}
+	{...rest}
+>
+	<div class="flex items-center justify-start gap-2">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href="/">
+			<div class="flex items-center gap-2">
+				<enhanced:img
+					src={LapikitLogo}
+					alt="Lapikit logo"
+					class="no-select w-[38px] min-w-[38px]"
+				/>
+				<p class="text-2xl font-bold">Lapikit</p>
+			</div>
+		</a>
 
-			<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
-				{`v${data?.npm?.version || '0.0.0'}`}
-			</a>
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href="/docs/changelog" class="text-xs opacity-70 hover:opacity-100">
+			{`v${npm?.version || '0.0.0'}`}
+		</a>
 
-			{#if $viewport.innerWidth >= $breakpoints.md}
-				{#each navigationMain as { key, path, external, items }, index (key)}
-					{#if items}
-						<Dropdown openOnHover>
-							{#snippet activator(model, handleMouseEvent)}
-								<Button
-									bind:ref={dropdownRefs[index]}
-									onclick={() => model.toggle(dropdownRefs[index])}
-									onmouseover={() => handleMouseEvent('open', dropdownRefs[index])}
-									onmouseleave={() => handleMouseEvent('close', dropdownRefs[index])}
-									rounded="full"
-									variant="text"
-									active={model.open}
-								>
-									<span class="font-semibold">
-										{capitalize($t(`navigation.${key}`))}
-									</span>
-
-									{#snippet append()}
-										<Icon icon={model.open ? 'mgc_up_fill' : 'mgc_down_fill'} />
-									{/snippet}
-								</Button>
-							{/snippet}
-
-							<List rounded="xl">
-								{#each items as { key, path, external } (key)}
-									<ListItem
-										href={path}
-										target={external ? '_blank' : '_self'}
-										variant="text"
-										active={page.url.pathname === path}
-									>
-										{capitalize($t(`navigation.${key}`))}
-									</ListItem>
-								{/each}
-							</List>
-						</Dropdown>
-					{:else}
-						<Button
-							href={path}
-							target={external && '_blank'}
-							active={page.url.pathname === path}
-							rounded="full"
-							variant="text"
-						>
-							<span class="font-semibold">
-								{capitalize($t(`navigation.${key}`))}
-							</span>
-						</Button>
-					{/if}
-				{/each}
-			{/if}
-		</div>
-
-		<div class="flex items-center justify-end gap-2">
-			{#if $viewport.innerWidth >= $breakpoints.lg}
+		{#if $viewport.innerWidth >= $breakpoints.md}
+			{#each Object.entries(navigation || {}) as [sectionKey, sectionValue] (sectionKey)}
 				<Button
-					onclick={() => (search = !search)}
-					aria-label="Search"
-					background="background-tertiary"
+					href={sectionValue.slug}
+					active={page.url.pathname === sectionValue.slug}
 					rounded="full"
+					variant="text"
+					class="px-3!"
 				>
-					{#snippet prepend()}
-						<Icon icon="mgc_search_line" />
-					{/snippet}
-					{capitalize($t('navigation.search_bar.button'))}
-					{#snippet append()}
-						<Chip size="sm" density="compact" rounded="full" class="px-2!">
-							{#if $deviceUsed === 'apple'}
-								⌘ + K
-							{:else}
-								ctrl + K
-							{/if}
-						</Chip>
-					{/snippet}
+					<span class="font-semibold">
+						{capitalize(`${sectionValue.title}`)}
+					</span>
 				</Button>
-			{:else}
-				<Tooltip
-					label={capitalize($t('navigation.open-search')) +
-						($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
-					placement="bottom"
-				>
-					<Button icon onclick={() => (search = !search)} aria-label="Search">
-						<Icon icon="mgc_search_line" />
-					</Button>
-				</Tooltip>
-			{/if}
+			{/each}
+		{/if}
+	</div>
 
-			<ThemeToggle icon class="hidden! md:inline-flex!" />
-
-			<Button href={githubUrl} target="_blank" aria-label="GitHub">
-				<Icon icon="mgc_github_line" />
-				{formatNumber(data?.npm?.downloads || 0)}
-			</Button>
-		</div>
-	</Appbar>
-{:else}
-	<Appbar
-		class="sticky top-0 z-100"
-		classContent="items-center justify-between grid grid-cols-[auto_auto]"
-		{...rest}
-	>
-		<div class="flex items-center justify-start gap-2">
-			<a href="/">
-				<div class="flex items-center gap-2">
-					<enhanced:img id="lapikit-logo" src={LapikitLogo} alt="Lapikit logo" />
-					<h1 class="text-2xl font-bold">Lapikit</h1>
-					<span class="text-2xl font-bold" style="color: var(--kit-accent-primary)">Docs</span>
-				</div>
-			</a>
-
-			<Chip variant="outline" size="xs" color="accent-primary"
-				>{`v${data?.npm?.version || '0.0.0'}`}</Chip
+	<div class="flex items-center justify-end gap-2">
+		{#if $viewport.innerWidth >= $breakpoints.lg}
+			<Button
+				onclick={() => search.set(!$search)}
+				aria-label="Search"
+				background="background-tertiary"
+				rounded="full"
 			>
-		</div>
-
-		<div class="flex items-center justify-end gap-2">
+				{#snippet prepend()}
+					<Icon icon="mgc_search_line" />
+				{/snippet}
+				{capitalize('search...')}
+				{#snippet append()}
+					<Chip size="sm" density="compact" rounded="full" class="px-2!">
+						{#if $deviceUsed === 'apple'}
+							⌘ + K
+						{:else}
+							ctrl + K
+						{/if}
+					</Chip>
+				{/snippet}
+			</Button>
+		{:else}
 			<Tooltip
-				label={capitalize($t('navigation.open-search')) +
-					($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
+				label={capitalize('Open search') + ($deviceUsed === 'apple' ? ' (⌘ + K)' : ' (ctrl + K)')}
 				placement="bottom"
 			>
-				<Button icon onclick={() => (search = !search)} aria-label="Search">
+				<Button icon onclick={() => search.set(!$search)} aria-label="Search">
 					<Icon icon="mgc_search_line" />
 				</Button>
 			</Tooltip>
+		{/if}
 
-			<ThemeToggle icon />
+		{#if !isHome}
+			<ThemeToggle icon class="hidden! md:inline-flex!" />
+		{/if}
 
-			<Button
-				href={githubUrl}
-				target="_blank"
-				aria-label="GitHub"
-				background="service-github"
-				color="service-on-github"
-			>
-				<Icon icon="mgc_github_line" />
-				{formatNumber(data?.npm?.downloads || 0)}
-			</Button>
-		</div>
-	</Appbar>
-{/if}
+		<Button href={url.github.repository} target="_blank" aria-label="GitHub Counter">
+			<Icon icon="mgc_github_line" />
+			{formatNumber(npm?.downloads || 0)}
+		</Button>
 
-<Search bind:open={search} />
-
-<style>
-	#lapikit-logo {
-		width: 38px;
-		min-width: 38px;
-	}
-</style>
+		<Dropdown closeOnClick>
+			{#snippet activator(model)}
+				<Button
+					bind:ref={dropdownRef}
+					onclick={() => model.toggle(dropdownRef)}
+					class="md:hidden!"
+					aria-label="Open navigation menu"
+					icon
+				>
+					<Icon icon={model.open ? 'mgc_close_line' : 'mgc_menu_line'} />
+				</Button>
+			{/snippet}
+			<div>
+				<List>
+					{#each Object.entries(navigation || {}) as [sectionKey, sectionValue] (sectionKey)}
+						<ListItem href={sectionValue.slug} active={page.url.pathname === sectionValue.slug}>
+							{capitalize(`${sectionValue.title}`)}
+						</ListItem>
+					{/each}
+				</List>
+			</div>
+		</Dropdown>
+	</div>
+</Appbar>

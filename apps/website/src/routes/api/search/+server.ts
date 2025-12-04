@@ -1,72 +1,94 @@
+import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import search from './manifest.json' with { type: 'json' };
+
+// data
+import searchRawData from '../../../content/data/api/search.json';
 
 interface SearchItem {
-	title?: string;
+	slug: string;
+	path: string;
+	title: string;
+	subtitle?: string;
 	description?: string;
-	keywords?: string | string[];
+	section: string;
+	style?: {
+		icon?: string;
+		cover?: string;
+	};
+	keywords?: string[];
 }
 
-function scoreItem(
-	item: SearchItem,
-	terms: string[]
-): { score: number; type: 'match' | 'recommandation' } {
-	const title = item.title?.toLowerCase() || '';
-	const description = item.description?.toLowerCase() || '';
-	const rawKeywords = item.keywords;
-	const keywords: string[] = Array.isArray(rawKeywords)
-		? rawKeywords.map((k) => k.toLowerCase())
-		: rawKeywords
-			? [rawKeywords.toLowerCase()]
-			: [];
+interface SearchResult extends SearchItem {
+	score: number;
+}
 
+function calculateScore(item: SearchItem, query: string): number {
+	const queryLower = query.toLowerCase();
 	let score = 0;
-	let hasMatchInTitle = false;
 
-	for (const term of terms) {
-		if (title.includes(term)) {
-			score += 100;
-			hasMatchInTitle = true;
-		}
-		if (description.includes(term)) {
-			score += 50;
-		}
-		if (keywords.some((kw) => kw.includes(term))) {
-			score += 25;
+	if (item.title.toLowerCase().includes(queryLower)) {
+		score += 10;
+	}
+
+	if (item.subtitle && item.subtitle.toLowerCase().includes(queryLower)) {
+		score += 5;
+	}
+
+	if (item.description && item.description.toLowerCase().includes(queryLower)) {
+		score += 1;
+	}
+
+	if (item.keywords) {
+		for (const keyword of item.keywords) {
+			if (keyword.toLowerCase().includes(queryLower)) {
+				score += 2;
+			}
 		}
 	}
 
-	const type = hasMatchInTitle ? 'match' : 'recommandation';
+	if (item.section.toLowerCase().includes(queryLower)) {
+		score += 3;
+	}
 
-	return { score, type };
+	return score;
 }
 
 export const GET: RequestHandler = async ({ url }) => {
-	const q = url.searchParams.get('q')?.trim().toLowerCase() || '';
-	if (!q) {
-		return Response.json([]);
-	}
-	const terms = q.split(/\s+/).filter(Boolean);
-	const results = search
-		.map((item) => {
-			const normalizedItem = {
+	try {
+		const query = url.searchParams.get('q');
+
+		if (!query || query.trim() === '') {
+			return json(
+				{
+					error: 'The search query is missing or empty',
+					results: [],
+					total: 0
+				},
+				{ status: 400 }
+			);
+		}
+
+		const results: SearchResult[] = searchRawData
+			.map((item) => ({
 				...item,
-				keywords: item.state.keywords === null ? undefined : item.state.keywords
-			};
-			const result = scoreItem(normalizedItem, terms);
-			return result.score > 0
-				? { item: { ...item, type: result.type }, score: result.score }
-				: undefined;
-		})
-		.filter(
-			(
-				entry
-			): entry is {
-				item: (typeof search)[0] & { type: 'match' | 'recommandation' };
-				score: number;
-			} => entry !== undefined
-		)
-		.sort((a, b) => b.score - a.score)
-		.map((entry) => entry.item);
-	return Response.json(results);
+				score: calculateScore(item, query.trim())
+			}))
+			.filter((result) => result.score > 0)
+			.sort((a, b) => b.score - a.score);
+		return json({
+			query: query.trim(),
+			results,
+			total: results.length
+		});
+	} catch (error) {
+		console.error('Error during search:', error);
+		return json(
+			{
+				error: 'Error on server during search processing',
+				results: [],
+				total: 0
+			},
+			{ status: 500 }
+		);
+	}
 };

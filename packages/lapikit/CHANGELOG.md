@@ -1,12 +1,10 @@
 ---
 title: Changelog
 subtitle: 'Lapikit changelog: latest added, fixes and improvements'
-description: Find all the changes in the lapikit release notes
+description: Find all the changes in the Lapikit release notes
 head:
   title: changelog
   description: 'Follow the latest Lapikit developments, updates and fixes. Transparency and continuous improvement for your components.'
-style:
-  icon: mgc_version_line
 state:
   section: base
   published: true
@@ -20,6 +18,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.8] - 2025-12-04
+
+### Fixed
+
+- Fix bad color shadow for overlay **Modal** and **Dialog** component
+- Fix **ripple** effect not heriting shape border radius on component all components used ripple effect
+- Fix bad import types for _styles_ and _themes_ on Lapikit configuration
 
 ## [0.2.7] - 2025-10-18
 

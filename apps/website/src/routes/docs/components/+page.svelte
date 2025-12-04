@@ -1,59 +1,93 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import type { MarkdownHead, MarkdownWithMetadata, SectionPages } from '$lib';
-	import Head from '$lib/components/head.svelte';
-	import { t } from '$lib/i18n';
 	import { Card } from 'lapikit/components';
-	import { Breadcrumbs } from 'site-kit';
 	import { capitalize } from 'site-kit/actions';
+	import { hasNavSections } from '$lib/types/guards';
 
 	let { data } = $props();
 
-	let componentPages = $state<MarkdownWithMetadata[]>([]);
-
-	$effect(() => {
-		if (data && data.routes) {
-			const list = data.routes.filter((section: SectionPages) => section.key === 'components');
-			componentPages = list[0].pages.sort((a: MarkdownHead, b: MarkdownHead) =>
-				a.title.localeCompare(b.title)
-			);
-		}
-	});
+	const docsSection = $derived(data.nav_links['docs']);
+	const componentsSection = $derived(
+		hasNavSections(docsSection) ? docsSection.sections['components'] : null
+	);
 </script>
 
-<Head title="all components" description="Find out more about Lapikit's Svelte composents." />
+<svelte:head>
+	<title>Lapikit • Components</title>
+	<meta name="description" content="Find out more about Lapikit's Svelte components." />
+</svelte:head>
 
-<div
-	class="mx-auto grid w-full min-w-0 pt-16 pr-4 pb-6 pl-4 md:max-w-[760px] md:pl-0 xl:max-w-[1024px]"
->
-	<Breadcrumbs {page} ld={data?.breadcrumbJsonLd} />
-	<div class="mb-16 text-center">
-		<h1 class="text-xl font-bold md:text-2xl lg:text-3xl">
-			{capitalize($t('docs.landing-page.components.title'))}
-		</h1>
-	</div>
+<div class="markdown mb-8">
+	<p class="title opacity-75">Components</p>
+	<h1 class="subtitle mt-2!">Discover the Lapikit components</h1>
 
-	<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 xl:grid-cols-4">
-		{#if componentPages.length === 0}
-			<p>{capitalize($t('docs.landing-page.components.no-pages'))}</p>
-		{/if}
-		{#each componentPages as page, index (index)}
-			<Card
-				href={`/docs${page.metadata.slug}`}
-				class="mb-4 grid grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-1"
-			>
-				<img
-					src={page.style?.cover
-						? `/images/${page.style.cover}?v=1`
-						: '/images/preview-component.webp?v=1'}
-					alt={`${page.title} cover`}
-					class="max-sm:max-h-38"
-				/>
-				<div>
-					<p class="text-lg font-bold md:text-xl">{capitalize(page.title)}</p>
-					<p class="opacity-75">{capitalize(page?.introduction || '')}</p>
-				</div>
-			</Card>
+	<p>
+		Components are the core of Lapikit. Without them, the library wouldn’t exist. Each component is
+		a reusable block of code that manages a complete UI element, fully aligned with the design
+		system defined by Lapikit.
+	</p>
+</div>
+
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 xl:grid-cols-4">
+	{#if !componentsSection || componentsSection.categories.length === 0}
+		<p>{capitalize('No Components found')}</p>
+	{:else}
+		{#each componentsSection.categories as category (category.key)}
+			{#if category.title !== 'uncategorized'}
+				<p>{capitalize(category.title)}</p>
+			{/if}
+
+			{#each category.items as page, index (index)}
+				<Card
+					href={`${page.slug}`}
+					class="mb-4 grid grid-cols-[auto_1fr] items-center gap-4 sm:grid-cols-1"
+				>
+					<img
+						src={page.metadata?.style?.cover
+							? `/images/${page.metadata.style.cover}?v=1`
+							: '/images/preview-component.webp?v=1'}
+						alt={`${page.metadata?.title || 'Component'} cover`}
+						class="max-sm:max-h-38"
+					/>
+					<div>
+						<p class="text-lg font-bold md:text-xl">
+							{capitalize(page.metadata?.title || 'Component')}
+						</p>
+						<p class="opacity-75">{capitalize((page?.metadata?.introduction as string) || '')}</p>
+					</div>
+				</Card>
+			{/each}
 		{/each}
-	</div>
+	{/if}
+</div>
+
+<div class="markdown mt-2">
+	<p>
+		Every component receives props (parameters) that allow you to customize its appearance and
+		behavior.
+	</p>
+
+	<p>
+		A concrete example: the Button component. It displays an interactive button that can receive
+		text, an icon, a link, or combinations of these. It automatically inherits Lapikit’s styles
+		while remaining fully customizable (size, color, variant, states, and more).
+	</p>
+
+	<p>
+		Components can also be nested. For instance, a Card can contain a Button, images, text, or any
+		other components. This nesting respects the Lapikit global configuration, ensuring visual
+		consistency and accessibility across your app.
+	</p>
+
+	<p>
+		Lapikit provides a complete library of Svelte components built for speed, clarity, and
+		maintainability. Buttons, cards, dialogs, toolbars, and more are ready to use, so you spend less
+		time reinventing UI elements and more time focusing on user experience.
+	</p>
+
+	<p>
+		All components follow the same design logic and naming conventions, keeping your code clean,
+		readable, and scalable. The principle is simple: write less boilerplate, build faster, and
+		maintain full control over your interface. Lapikit empowers you to prototype smarter, implement
+		consistently, and ship reliable, polished Svelte applications.
+	</p>
 </div>

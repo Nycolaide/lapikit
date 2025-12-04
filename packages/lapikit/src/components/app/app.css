@@ -1,10 +1,21 @@
+#kit-app,
+.kit-application {
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+	line-height: 1.5;
+	box-sizing: border-box;
+	font-family: var(--kit-font-sans);
+	background-color: var(--kit-background-primary);
+	color: var(--kit-label-primary);
+}
+
 .kit-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: color-mix(in oklab, var(--kit-state-shadow) 70%, transparent);
+	background-color: color-mix(in oklab, black 70%, transparent);
 	z-index: 9000;
 	cursor: default;
 }

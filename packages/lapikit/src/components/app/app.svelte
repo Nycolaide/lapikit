@@ -1,16 +1,20 @@
 <script lang="ts">
 	const BROWSER = typeof window !== 'undefined';
-	import type { Snippet } from 'svelte';
 	import { useTheme } from '$lib/actions/use-theme.js';
 	import { modalOpen, setOpenModal } from '$lib/stores/components.js';
 
 	import { viewport } from '$lib/stores/viewport.js';
+	import type { AppProps } from './types.js';
 
 	let {
+		ref = $bindable(),
 		children,
 		themes,
-		storageKey = '@lapikit/theme'
-	}: { children: Snippet; themes?: string | string[]; storageKey?: string } = $props();
+		storageKey = '@lapikit/theme',
+		light,
+		dark,
+		...rest
+	}: AppProps = $props();
 
 	$effect.pre(() => {
 		if (!BROWSER) return;
@@ -49,13 +53,27 @@
 	});
 </script>
 
-{@render children?.()}
+<div
+	id="kit-app"
+	bind:this={ref}
+	{...rest}
+	class={[
+		'kit-application',
+		light && 'light',
+		dark && 'dark',
+		light && 'kit-theme--light',
+		dark && 'kit-theme--dark',
+		rest.class
+	]}
+>
+	{@render children?.()}
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-{#if $modalOpen}
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<div
-		class={['kit-overlay', $modalOpen === 'persistent' && 'kit-overlay--persistent']}
-		onclick={() => $modalOpen !== 'persistent' && setOpenModal(false)}
-	></div>
-{/if}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	{#if $modalOpen}
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<div
+			class={['kit-overlay', $modalOpen === 'persistent' && 'kit-overlay--persistent']}
+			onclick={() => $modalOpen !== 'persistent' && setOpenModal(false)}
+		></div>
+	{/if}
+</div>

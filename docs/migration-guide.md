@@ -1,123 +1,98 @@
 ---
 title: migration guide
-subtitle: Learn how to migrate to legacy version to current lapikit
+subtitle: Migration guide for move from Legacy Lapikit to the Latest Version
 head:
-  title: migration guide
-  description: "Discover the Lapikit 0.2.3 to 0.2.4 migration guide. Learn how to easily update your configuration, breakpoints, themes, and CLI with this comprehensive tutorial."
-style:
-  icon: mgc_union_line
+  title: Lapikit migration guide
+  description: "Migrate from older Lapikit to recent versions. Find all the steps for updating. If necessary, contact the team Lapikit."
 state:
   section: base
   published: true
   recommended: false
   order: 4
-  status: new
 github:
   url: /migration-guide.md
 ---
 
 <script>
-    import { Sandbox, CommandLine } from '$lib/components/index.js';
+    import { Sandbox } from '$lib/components/index.js';
     // codes
     import ExampleConfigurationLapikit from "$lib/components/docs/example-configuration-lapikit.js?raw";
 </script>
 
-Lapikit **0.2.4** introduces major improvements to the configuration system, theming, and CLI.
+Learn how to migrate from older Lapikit versions to the latest release.
+Lapikit **v0.2.4** introduces major changes to configuration, theming, and the CLI.
 
-This guide explains all breaking changes and new features so you can migrate smoothly.
+This guide explains what changed, why it matters, and how to update your setup step by step.
 
 ## CLI changes
 
-**Before (≤ 0.2.3):**
+| Before (≤ 0.2.3)   | After (≥ 0.2.4) |
+| ------------------ | --------------- |
+| `npx lapikit init` | `npx lapikit`   |
 
-<CommandLine name="legacy-intall-lapikit" command="npx lapikit init"/>
+The CLI no longer needs init.
 
-**Now (≥ 0.2.4):**
+Running `npx lapikit` will guide you through setup and automatically create your configuration files.
 
-<CommandLine name="new-intall-lapikit" command="npx lapikit"/>
+By default, a config file is generated at: `src/plugins/lapikit.(js|ts)`.
 
-The command no longer requires init.
-Running it will prompt you with options to customize the installation and generate configuration files automatically.
-
-By default, a config file will be created at: `src/plugins/lapikit.(js|ts)`
+This makes installation faster and ensures a consistent structure across projects.
 
 ## New configuration format
 
-Lapikit now uses the `createLapikit()` function for configuration.
-This centralizes customization for:
+Lapikit now uses a single entry point: `createLapikit()`.
 
-- themes
-- variables
-- breakpoints
-- store integration
+This simplifies customization and centralizes everything in one place: themes, variables, breakpoints, and store integration.
 
  <Sandbox name="example-configuration-theme" code={ExampleConfigurationLapikit}/>
 
-## Breakpoints & runes
+## Breakpoints and Hooks
 
-mobileBreakpoint, tabletBreakpoint, laptopBreakpoint → replaced by a devices object.
+Breakpoints have been restructured for clarity and consistency.
 
-Breakpoint values are now in px instead of rem strings.
+| Before (≤ 0.2.3)                                           | After (≥ 0.2.4)                        |
+| ---------------------------------------------------------- | -------------------------------------- |
+| `mobileBreakpoint`, `tabletBreakpoint`, `laptopBreakpoint` | `devices: { mobile, tablet, desktop }` |
 
-You can now use Lapikit runes to access breakpoints directly in your code (JS/TS) without relying solely on CSS.
-
-**Example: use breakpoint runes in components to dynamically show/hide elements.**
+- Breakpoints are now in px instead of rem.
+- Lapikit now exposes runes to access breakpoints directly in JS/TS.
+- Use them to show or hide elements dynamically, without relying only on CSS
 
 ## Theming system
 
-Themes have been redesigned:
+The theme system is now more modular:
 
-Each theme is now independent, making it easier to create multiple styles.
+- Each theme is independent and can override colors, tokens, and variables.
+- You can define custom **font themes**.
+- Light and dark modes can be toggled globally or per component.
 
-You can override colors, variables, and design tokens per theme.
+This approach gives full control without increasing complexity.
 
-Font theming is now supported, allowing custom typography settings.
+## Device utility classes
 
-## Device classes
+Device visibility classes have been updated for better naming consistency.
 
-Utility classes for devices have changed.
-
-**Before:**
-
-```css
-.hidden-mobile
-.display-tablet
-.display-laptop
-```
-
-**Now:**
-
-```css
-.kit-device--d-mobile
-.kit-device--h-tablet
-.kit-device--h-desktop
-```
+| Before (≤ 0.2.3)                                       | After (≥ 0.2.4)                                                            |
+| ------------------------------------------------------ | -------------------------------------------------------------------------- |
+| `.hidden-mobile`, `.display-tablet`, `.display-laptop` | `.kit-device--d-mobile`, `.kit-device--h-tablet`, `.kit-device--h-desktop` |
 
 - d = display
 - h = hide
 
 ## Component CSS scope
 
-All component CSS is now scoped by default.
-This means:
+All component styles are now **scoped by default**.
+This prevents global overrides and keeps each component visually isolated from your app’s global CSS.
 
-Component styles are isolated from global CSS.
+## Migration steps summary
 
-No more accidental overrides from your project’s CSS files.
-
-## Summary of migration steps
-
-Replace npx lapikit init with npx lapikit.
-
-Move your config to **src/plugins/lapikit.(js|ts)** and wrap it in **createLapikit()**.
-
-Update breakpoints to the new structure (devices + thresholds).
-
-Replace old utility classes (hidden-_, display-_) with the new `kit-device--*` format.
-
-Migrate themes and fonts into the new independent theme structure.
-
-Restart your dev environment after changes.
+1. Replace `npx lapikit init` with `npx lapikit`.
+2. Move your config to `src/plugins/lapikit.(js|ts)`.
+3. Wrap it in `createLapikit()`.
+4. Update breakpoints to use **devices** and **thresholds**.
+5. Replace hidden- and display- classes with `kit-device--*`.
+6. Update your theme and font structure.
+7. **Restart your dev server**.
 
 ## Migration Cheat Sheet
 
@@ -135,3 +110,10 @@ Here’s a quick before/after comparison to help you migrate from Lapikit 0.2.3 
 | **Themes**                   | One global theme object                                    | Multiple independent themes (`themes.light`, `themes.dark`, etc.)          |
 | **Fonts**                    | Global font settings                                       | Independent **font themes** (per theme configuration)                      |
 | **Component CSS**            | Global styles, risk of override                            | **Scoped CSS** per component, isolated from global styles                  |
+
+## Need help?
+
+You can find detailed release notes and discussions on [Lapikit GitHub Releases](https://lapikit/docs/changelog).
+
+If something doesn’t work after migration, open an issue or join the discussion on [Discord](https://discord.gg/gn9ZGtDtK4).
+The community is active and always open to feedback.

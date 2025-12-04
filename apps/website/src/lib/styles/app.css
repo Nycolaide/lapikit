@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@theme {
+	--breakpoint-lg: 64rem;
+}
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@import './markdown.css';
+@import './icon.css';
+
+/* @layer components {
+	@import 'lapikit/css';
+} */
+
+/* html,
+body,
+* {
+	cursor: none !important;
+} */
+
+:root {
+	--ui-container: 90rem;
+}
+
+.no-select {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
