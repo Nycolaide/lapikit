@@ -23,7 +23,10 @@ export default ts.config(
 				tsconfigRootDir: fileURLToPath(new URL('.', import.meta.url))
 			}
 		},
-		rules: { 'no-undef': 'off' }
+		rules: {
+			'no-undef': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off'
+		}
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
@@ -35,6 +38,10 @@ export default ts.config(
 				parser: ts.parser,
 				svelteConfig
 			}
+		},
+		rules: {
+			'svelte/@html-no-target-blank': 'off',
+			'svelte/no-at-html-tags': 'off'
 		}
 	},
 	{

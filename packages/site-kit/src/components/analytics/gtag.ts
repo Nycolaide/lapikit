@@ -4,6 +4,7 @@ export function setDefaultConsent() {
 	window.dataLayer = window.dataLayer || [];
 	if (!window.gtag) {
 		window.gtag = function gtag() {
+			// eslint-disable-next-line prefer-rest-params
 			window.dataLayer.push(arguments);
 		};
 	}
