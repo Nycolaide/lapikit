@@ -28,7 +28,8 @@
   "references": [
     { "path": "./packages/site-kit/tsconfig.build.json" },
     { "path": "./packages/lapikit/tsconfig.build.json" },
-    { "path": "./apps/website/tsconfig.build.json" }
+    { "path": "./apps/website/tsconfig.build.json" },
+    { "path": "./apps/sandbox/tsconfig.build.json" }
   ],
   "files": []
 }

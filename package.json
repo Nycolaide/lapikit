@@ -1,33 +1,35 @@
 {
-  "name": "lapikit-monorepo",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "build": "npm run build:packages:site-kit && npm run build:packages:lapikit && npm run build:website",
-    "build:website": "cd ./apps/website && npm run build",
-    "build:packages": "npm run build:packages:site-kit && npm run build:packages:lapikit",
-    "build:packages:site-kit": "cd ./packages/site-kit && npm run build",
-    "build:packages:lapikit": "cd ./packages/lapikit && npm run build",
-    "build:types": "tsc --build --force",
-    "clean:types": "tsc --build --clean",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
-  "devDependencies": {
-    "@eslint/compat": "^2.0.0",
-    "@eslint/js": "^9.39.1",
-    "@types/bun": "latest",
-    "eslint": "^9.39.1",
-    "eslint-config-prettier": "^10.1.8",
-    "globals": "^16.5.0",
-    "typescript-eslint": "^8.47.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+	"name": "lapikit-monorepo",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "npm run build:packages:site-kit && npm run build:packages:lapikit && npm run build:website",
+		"build:website": "cd ./apps/website && npm run build",
+		"build:packages": "npm run build:packages:site-kit && npm run build:packages:lapikit",
+		"build:packages:site-kit": "cd ./packages/site-kit && npm run build",
+		"build:packages:lapikit": "cd ./packages/lapikit && npm run build",
+		"build:types": "tsc --build --force",
+		"clean:types": "tsc --build --clean",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
+	"devDependencies": {
+		"@eslint/compat": "^2.0.0",
+		"@eslint/js": "^9.39.1",
+		"@types/bun": "latest",
+		"eslint": "^9.39.1",
+		"eslint-config-prettier": "^10.1.8",
+		"globals": "^16.5.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"typescript-eslint": "^8.47.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
 }
