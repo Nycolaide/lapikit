@@ -26,7 +26,7 @@
 		rounded="0"
 	>
 	 {#if banner?.href}
-		<a href={banner?.href} target={!banner.href.includes('lapikit') && '_blank'}>
+		<a href={banner?.href} target={!banner?.href.includes('lapikit') && '_blank'} class="flex items-center">
 			<div class="text-sm">
 				<span class="max-md:hidden">{banner.content.lg}</span>
 				<span class="min-md:hidden">{banner.content.sm}</span>
