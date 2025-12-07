@@ -26,8 +26,9 @@
 	onclick={() => (active = !active)}
 	background="lightblue"
 >
-	Elephant</kit:btn
->
+	Elephant
+	<kit:btn href="https://example.com">Demo child component</kit:btn>
+</kit:btn>
 <kit:btn
 	s-class="class-class"
 	s-class_gnomy="item1"
