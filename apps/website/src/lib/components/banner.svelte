@@ -25,21 +25,30 @@
 		color="white"
 		rounded="0"
 	>
-		<div class="text-sm">
-			<span class="max-md:hidden">{banner.content.lg}</span>
-			<span class="min-md:hidden">{banner.content.sm}</span>
-		</div>
-		<Button
-			icon
-			density="compact"
-			href={banner.href}
-			target={!banner.href.includes('lapikit') && '_blank'}
-			rounded="full"
-			variant="text"
-			size="sm"
-			class="ml-2"
-		>
-			<Icon icon="mgc_arrow_right_fill" />
-		</Button>
+	 {#if banner?.href}
+		<a href={banner?.href} target={!banner.href.includes('lapikit') && '_blank'}>
+			<div class="text-sm">
+				<span class="max-md:hidden">{banner.content.lg}</span>
+				<span class="min-md:hidden">{banner.content.sm}</span>
+			</div>
+			<Button
+				icon
+				density="compact"
+				href={banner.href}
+				target={!banner.href.includes('lapikit') && '_blank'}
+				rounded="full"
+				variant="text"
+				size="sm"
+				class="ml-2"
+			>
+				<Icon icon="mgc_arrow_right_fill" />
+			</Button>
+		</a>
+		{:else}
+			<div class="text-sm">
+				<span class="max-md:hidden">{banner.content.lg}</span>
+				<span class="min-md:hidden">{banner.content.sm}</span>
+			</div>
+		{/if}
 	</Toolbar>
 {/if}
