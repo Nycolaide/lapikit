@@ -75,6 +75,13 @@
 		"./themes": {
 			"types": "./dist/themes.css.d.ts",
 			"default": "./dist/themes.css"
+		},
+		"./labs/vite": {
+			"default": "./dist/labs/entry.js"
+		},
+		"./labs/components": {
+			"svelte": "./dist/labs/components/index.js",
+			"default": "./dist/labs/components/index.js"
 		}
 	},
 	"peerDependencies": {
@@ -94,6 +101,7 @@
 		"eslint-plugin-svelte": "^3.0.0",
 		"globals": "^16.0.0",
 		"jsdom": "^26.0.0",
+		"magic-string": "^0.30.21",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"publint": "^0.3.2",
