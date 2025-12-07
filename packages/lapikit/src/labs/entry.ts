@@ -1,5 +1,3 @@
-import MagicString from 'magic-string';
-
 const AVAILABLE_COMPONENTS = ['btn'] as const;
 
 function toComponentName(shortName: string): string {
@@ -13,43 +11,67 @@ export function lapikitPreprocessor() {
 
 			if (!hasKitComponent) return;
 
-			const s = new MagicString(content);
+			let processedContent = content;
 			const importedComponents = new Set<string>();
 
-			for (const shortName of AVAILABLE_COMPONENTS) {
-				const componentName = toComponentName(shortName);
+			let hasChanges = true;
+			while (hasChanges) {
+				hasChanges = false;
 
-				const regex = new RegExp(
-					`<kit:${shortName}([\\s\\S]*?)>([\\s\\S]*?)<\\/kit:${shortName}\\s*>`,
-					'g'
-				);
+				for (const shortName of AVAILABLE_COMPONENTS) {
+					const componentName = toComponentName(shortName);
 
-				let match;
-				while ((match = regex.exec(content)) !== null) {
-					const [fullMatch, attrs, children] = match;
-					const replacement = `<${componentName}${attrs}>${children}</${componentName}>`;
-					s.overwrite(match.index, match.index + fullMatch.length, replacement);
-					importedComponents.add(componentName);
+					const regex = new RegExp(
+						`<kit:${shortName}([\\s\\S]*?)>([\\s\\S]*?)<\\/kit:${shortName}\\s*>`,
+						'g'
+					);
+
+					const newContent = processedContent.replace(regex, (fullMatch, attrs, children) => {
+						hasChanges = true;
+						importedComponents.add(componentName);
+						return `<${componentName}${attrs}>${children}</${componentName}>`;
+					});
+
+					if (newContent !== processedContent) {
+						processedContent = newContent;
+					}
 				}
 			}
 
+			if (processedContent === content) return;
+
 			if (importedComponents.size > 0) {
 				const imports = Array.from(importedComponents).join(', ');
-				const scriptMatch = content.match(/<script([^>]*)>/);
+
+				const scriptRegex = /<script(?![^>]*\bmodule\b)([^>]*)>/;
+				const scriptMatch = processedContent.match(scriptRegex);
 
 				if (scriptMatch && scriptMatch.index !== undefined) {
 					const insertPos = scriptMatch.index + scriptMatch[0].length;
-					s.appendLeft(insertPos, `\n\timport { ${imports} } from 'lapikit/labs/components';`);
+					processedContent =
+						processedContent.slice(0, insertPos) +
+						`\n\timport { ${imports} } from 'lapikit/labs/components';` +
+						processedContent.slice(insertPos);
 				} else {
-					s.prepend(
-						`<script>\n\timport { ${imports} } from 'lapikit/labs/components';\n</script>\n\n`
-					);
+					const moduleScriptMatch = processedContent.match(/<script[^>]*\bmodule\b[^>]*>/);
+
+					if (moduleScriptMatch && moduleScriptMatch.index !== undefined) {
+						const moduleScriptEnd =
+							processedContent.indexOf('</script>', moduleScriptMatch.index) + '</script>'.length;
+						processedContent =
+							processedContent.slice(0, moduleScriptEnd) +
+							`\n\n<script>\n\timport { ${imports} } from 'lapikit/labs/components';\n</script>` +
+							processedContent.slice(moduleScriptEnd);
+					} else {
+						processedContent =
+							`<script>\n\timport { ${imports} } from 'lapikit/labs/components';\n</script>\n\n` +
+							processedContent;
+					}
 				}
 			}
 
 			return {
-				code: s.toString(),
-				map: s.generateMap({ hires: true })
+				code: processedContent
 			};
 		}
 	};
