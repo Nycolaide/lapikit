@@ -49,7 +49,7 @@
 </script>
 
 {#if href}
-	<a {...regularProps} {href} class={finalClass} style={finalStyle} style:background>
+	<a {...regularProps} class={finalClass} style={finalStyle} style:background>
 		{@render children()}
 	</a>
 {:else}

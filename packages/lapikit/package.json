@@ -76,8 +76,8 @@
 			"types": "./dist/themes.css.d.ts",
 			"default": "./dist/themes.css"
 		},
-		"./labs/vite": {
-			"default": "./dist/labs/entry.js"
+		"./labs/preprocess": {
+			"default": "./dist/entry-bundler.js"
 		},
 		"./labs/components": {
 			"svelte": "./dist/labs/components/index.js",
