@@ -120,7 +120,7 @@
 					</div>
 
 					<div>
-						<span class="text-highlighted text-xl font-semibold">2</span>
+						<span class="text-highlighted text-xl font-semibold">3</span>
 						<p class="text-sm">Followers</p>
 					</div>
 				</div>
