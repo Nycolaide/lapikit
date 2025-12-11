@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getCookie, setCookie } from '../actions/index.js';
+	import { getCookie, setCookie } from '$lib/actions/index.js';
 	import { updateConsent } from './analytics/gtm.js';
 	import { setDefaultConsent as setDefaultConsentGtag } from './analytics/gtag.js';
 

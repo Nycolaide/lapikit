@@ -10,13 +10,7 @@ const config = {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-		adapter: undefined, // it's a library, so we don't need an adapter
-		alias: {
-			$lib: './src/'
-		},
-		files: {
-			lib: 'src'
-		}
+		adapter: undefined // it's a library, so we don't need an adapter
 	}
 };
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { capitalize } from '$lib/actions/capitalize.js';
+	import { capitalize } from '$lib/actions/index.js';
 
 	let { page, ld } = $props();
 
