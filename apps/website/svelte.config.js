@@ -2,9 +2,10 @@ import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvexOptions } from './mdsvex.config.js';
+import { lili } from 'lapikit/labs/preprocess';
 
 const config = {
-	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions), lili()],
 	onwarn: (warning, handler) => {
 		const { code } = warning;
 		if (code === 'css_unused_selector') return;
