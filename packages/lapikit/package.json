@@ -75,6 +75,9 @@
 		"./themes": {
 			"types": "./dist/themes.css.d.ts",
 			"default": "./dist/themes.css"
+		},
+		"./labs/preprocess": {
+			"default": "./dist/entry-bundler.js"
 		}
 	},
 	"peerDependencies": {
