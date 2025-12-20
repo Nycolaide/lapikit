@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { t } from '$lib/i18n';
 	import { RainingAnimation } from '$animations';
 	import { Button, Icon } from 'lapikit/components';
 
@@ -32,7 +31,7 @@
 		<enhanced:img
 			src={LapinosaureVerySad}
 			alt="lapinosaure"
-			class="absolute -left-8 top-[5.5rem] z-10 w-[50px] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
+			class="absolute top-[5.5rem] -left-8 z-10 w-[50px] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
 		/>
 
 		<RainingAnimation
@@ -48,7 +47,7 @@
 		<enhanced:img
 			src={LapinosaureSad}
 			alt="lapinosaure"
-			class="absolute right-0 top-[5.5rem] z-10 w-[50px] scale-x-[-1] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
+			class="absolute top-[5.5rem] right-0 z-10 w-[50px] scale-x-[-1] sm:top-[8.5rem] sm:w-[90px] lg:top-[11.5rem] lg:w-[120px]"
 		/>
 		<enhanced:img
 			src={Puddle}
@@ -68,30 +67,30 @@
 				<p>{page?.error?.message}</p>
 			</div>
 		{/if}
-		<div class="flex-col! sm:flex-row! flex justify-center sm:gap-4">
+		<div class="flex flex-col! justify-center sm:flex-row! sm:gap-4">
 			<Button
 				onclick={() => history.back()}
 				background="accent-primary"
 				color="white"
 				rounded="full"
-				class="px-6! mt-4"
+				class="mt-4 px-6!"
 				size={{ base: 'md', md: 'lg' }}
 			>
 				{#snippet prepend()}
 					<Icon icon="mgc_left_fill" />
 				{/snippet}
 
-				{$t('error.back')}
+				Return to previous page
 			</Button>
 			<Button
 				href="/"
 				color="accent-primary"
 				rounded="full"
-				class="px-6! mt-4"
+				class="mt-4 px-6!"
 				size={{ base: 'md', md: 'lg' }}
 				variant="outline"
 			>
-				{$t('error.return')}
+				Return to Home
 			</Button>
 		</div>
 	</div>

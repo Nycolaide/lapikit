@@ -1,6 +1,6 @@
 {
 	"name": "lapikit",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
@@ -75,6 +75,9 @@
 		"./themes": {
 			"types": "./dist/themes.css.d.ts",
 			"default": "./dist/themes.css"
+		},
+		"./labs/preprocess": {
+			"default": "./dist/entry-bundler.js"
 		}
 	},
 	"peerDependencies": {

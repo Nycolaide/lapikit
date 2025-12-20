@@ -1,22 +1,22 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-
-Disallow: /.git/
-Disallow: /.env
-Disallow: /Dockerfile
-Disallow: /docker-compose.yml
-Disallow: /node_modules/
-Disallow: /.svelte-kit/
-Disallow: /temp/
-Disallow: /scripts/
-Disallow: /dist/
-Disallow: /tools/
-Disallow: /build/
-Disallow: /app/
-Disallow: /private/
-Disallow: /config/
-Disallow: /tmp/
-Disallow: /__MACOSX/
-Allow: /
-
 Sitemap: https://lapikit.dev/sitemap.xml
+Disallow: *.md
+Disallow: /.git/*
+Disallow: /.env*
+Disallow: /Dockerfile*
+Disallow: /docker-compose.yml*
+Disallow: /node_modules/*
+Disallow: /.svelte-kit/*
+Disallow: /temp/*
+Disallow: /scripts/*
+Disallow: /dist/*
+Disallow: /tools/*
+Disallow: /build/*
+Disallow: /app/*
+Disallow: /private/*
+Disallow: /config/*
+Disallow: /tmp/*
+Disallow: /__MACOSX/*
+
+
