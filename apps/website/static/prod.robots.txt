@@ -1,6 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 
+# Bloquer les URLs avec extension .md (anciennes URLs)
+Disallow: *.md
+
 Disallow: /.git/
 Disallow: /.env
 Disallow: /Dockerfile
