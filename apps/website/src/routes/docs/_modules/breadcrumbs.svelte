@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button, Icon, Toolbar } from 'lapikit/components';
+	import type { StructuredDataBreadcrumb } from '$lib/types/breadcrumbs';
 	interface Props {
 		url: string;
 		open?: boolean;
@@ -50,12 +51,27 @@
 	}
 
 	const breadcrumbs = $derived(generateBreadcrumbs(url));
+
+	const structuredData = $derived<StructuredDataBreadcrumb>({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: breadcrumbs.map((item, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			name: item.label,
+			item: item.href
+		}))
+	});
+
+	const structuredDataJson = $derived(JSON.stringify(structuredData));
+	const structuredDataScript = $derived(
+		`<script type="application/ld+json">${structuredDataJson}<` + `/script>`
+	);
 </script>
 
 <svelte:head>
-	<script type="application/ld+json">
-		{JSON.stringify(structuredData)}
-	</script>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html structuredDataScript}
 </svelte:head>
 
 <Toolbar {...rest} background="background-primary">
