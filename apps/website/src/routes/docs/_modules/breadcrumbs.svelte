@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button, Icon, Toolbar } from 'lapikit/components';
 	import type { StructuredDataBreadcrumb } from '$lib/types/breadcrumbs';
+	import { PUBLIC_BASE_URL } from '$env/static/public';
 	interface Props {
 		url: string;
 		open?: boolean;
@@ -59,7 +60,7 @@
 			'@type': 'ListItem',
 			position: index + 1,
 			name: item.label,
-			item: item.href
+			item: `${PUBLIC_BASE_URL}${item.href === '/' ? '' : item.href}`
 		}))
 	});
 
