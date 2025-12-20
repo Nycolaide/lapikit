@@ -69,15 +69,15 @@ const social_links = [
 ];
 
 const banner = {
-	id: 'lapikit-v0.3-update',
-	start: new Date('04 December, 2025 00:00:00 UTC'),
-	end: new Date('23 December, 2025 23:59:59 UTC'),
-	arrow: true,
+	id: 'lapikit-happy-new-year-2026',
+	start: new Date('22 December, 2025 00:00:00 UTC'),
+	end: new Date('08 January, 2026 23:59:59 UTC'),
+	arrow: false,
 	content: {
-		lg: 'Discover the new Lapikit v0.3 with exciting features and improvements!',
-		sm: 'New Lapikit v0.3 is here!'
-	},
-	href: '/docs/changelog'
+		lg: 'The Lapikit team wishes you a happy holiday season 🎉',
+		sm: 'The Lapikit team wishes you a happy holiday season 🎉'
+	}
+	// href: '/docs/changelog'
 };
 
 export async function load({ fetch }) {
