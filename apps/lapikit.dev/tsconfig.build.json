@@ -1,0 +1,18 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"noEmit": false,
+		"outDir": "./dist",
+		"rootDir": "./src"
+	},
+	"references": [
+		{ "path": "../../packages/site-kit/tsconfig.build.json" },
+		{ "path": "../../packages/lapikit/tsconfig.build.json" }
+	],
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", "**/demo.spec.ts", ".svelte-kit"]
+}

@@ -4,7 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvexOptions } from './mdsvex.config.js';
 
 const config = {
-	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	preprocess: [mdsvex(mdsvexOptions), vitePreprocess()],
 	onwarn: (warning, handler) => {
 		const { code } = warning;
 		if (code === 'css_unused_selector') return;
