@@ -6,5 +6,11 @@
 	console.log('layout lapikit.dev loaded');
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<title>Lapikit</title>
+</svelte:head>
+
+<main>
+	{@render children()}
+</main>
