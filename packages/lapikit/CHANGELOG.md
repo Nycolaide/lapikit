@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed all conflict to vite-plugin-svelte 5.* > 6.*
+- Fixed all conflict to vite-plugin-svelte 5.x to 6.x
 
 ## [0.3.2] - 2025-12-20
 
