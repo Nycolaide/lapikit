@@ -1,0 +1,24 @@
+{
+	"name": "Lapikit",
+	"short_name": "Lapikit",
+	"description": "Lapikit.dev - The ultimate SvelteKit component library for building modern web applications with ease.",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#0f172a",
+	"theme_color": "#0f172a",
+	"icons": [
+		{
+			"src": "/icons/pwa-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/icons/pwa-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	]
+}
