@@ -70,12 +70,12 @@ const social_links = [
 
 const banner = {
 	id: 'lapikit-happy-new-year-2026',
-	start: new Date('22 December, 2025 00:00:00 UTC'),
-	end: new Date('08 January, 2026 23:59:59 UTC'),
+	start: new Date('01 January, 2026 00:00:00 UTC'),
+	end: new Date('10 January, 2026 23:59:59 UTC'),
 	arrow: false,
 	content: {
-		lg: 'The Lapikit team wishes you a happy holiday season 🎉',
-		sm: 'The Lapikit team wishes you a happy holiday season 🎉'
+		lg: 'Happy New Year 2026! 🎉',
+		sm: 'Happy New Year 2026! 🎉'
 	}
 	// href: '/docs/changelog'
 };
