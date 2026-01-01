@@ -25,6 +25,6 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd ~/${{ secrets.DEPLOY_PATH_NEXT }}
-            git pull origin upgrade-env
+            git pull origin develop
             docker compose build
             docker compose up -d
