@@ -1,0 +1,30 @@
+name: CI Next
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "apps/lapikit.dev/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: deploy on next environment
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          passphrase: ${{ secrets.DEPLOY_KEY_PASSPHRASE }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            cd ~/${{ secrets.DEPLOY_PATH_NEXT }}
+            git pull origin upgrade-env
+            docker compose build
+            docker compose up -d
