@@ -78,6 +78,10 @@
 		},
 		"./labs/preprocess": {
 			"default": "./dist/entry-bundler.js"
+		},
+		"./labs/components": {
+			"svelte": "./dist/labs/components/index.js",
+			"default": "./dist/labs/components/index.js"
 		}
 	},
 	"peerDependencies": {
