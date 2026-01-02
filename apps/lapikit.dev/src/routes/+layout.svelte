@@ -9,10 +9,10 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<title>Lapikit</title>
+	<link rel="preconnect" href={PUBLIC_BASE_URL} crossorigin="anonymous">
 </svelte:head>
 
 
 <main>
-	<p>{PUBLIC_BASE_URL}</p>
 	{@render children()}
 </main>
