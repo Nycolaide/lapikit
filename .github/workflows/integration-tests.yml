@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "**"
+    paths-ignore:
+      - "apps/lapikit.dev/**"
 
 env:
   NODE_VERSION: "20"

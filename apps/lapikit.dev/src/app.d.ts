@@ -8,14 +8,6 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-
-	namespace svelteHTML {
-		interface IntrinsicElements {
-			'lpk:btn': import('svelte/elements').HTMLButtonAttributes & {
-				children?: import('svelte').Snippet;
-			};
-		}
-	}
 }
 
 export {};
