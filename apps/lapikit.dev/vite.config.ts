@@ -1,10 +1,37 @@
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import { sveltekit } from '@sveltejs/kit/vite';
 
+// tailwindcss plugin
+import tailwindcss from '@tailwindcss/vite';
+
+// compression plugin
+import { enhancedImages } from '@sveltejs/enhanced-img';
+
+import viteCompression from 'vite-plugin-compression';
+import browserslist from 'browserslist';
+import { browserslistToTargets } from 'lightningcss';
+
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()],
+	plugins: [
+		enhancedImages(),
+		tailwindcss(),
+		sveltekit(),
+		viteCompression({ algorithm: 'brotliCompress' })
+	],
+
+	css: {
+		transformer: 'lightningcss',
+
+		lightningcss: {
+			targets: browserslistToTargets(browserslist(['>0.2%', 'not dead']))
+		}
+	},
+
+	build: { cssMinify: 'lightningcss' },
+	optimizeDeps: { exclude: ['lapikit'] },
+	ssr: { noExternal: ['lapikit'] },
+
 	test: {
 		expect: { requireAssertions: true },
 
