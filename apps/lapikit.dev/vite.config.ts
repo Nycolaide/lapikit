@@ -29,8 +29,6 @@ export default defineConfig({
 	},
 
 	build: { cssMinify: 'lightningcss' },
-	optimizeDeps: { exclude: ['lapikit'] },
-	ssr: { noExternal: ['lapikit'] },
 
 	test: {
 		expect: { requireAssertions: true },

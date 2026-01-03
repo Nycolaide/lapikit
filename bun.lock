@@ -39,6 +39,7 @@
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-svelte": "^3.13.1",
         "globals": "^16.5.0",
+        "lapikit": "*",
         "lightningcss": "^1.30.2",
         "mdsvex": "^0.12.6",
         "playwright": "^1.57.0",
@@ -105,7 +106,7 @@
     },
     "packages/lapikit": {
       "name": "lapikit",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "bin": {
         "lapikit": "bin/index.js",
       },

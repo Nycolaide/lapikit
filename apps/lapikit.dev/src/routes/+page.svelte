@@ -10,3 +10,7 @@
 <ul>
 	<li>Downloads : {data.stats.downloads.toLocaleString()}</li>
 </ul>
+
+<h2>Components Lab</h2>
+
+<lpk:btn>Demo</lpk:btn>
