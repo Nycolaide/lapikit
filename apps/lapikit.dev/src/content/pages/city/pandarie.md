@@ -4,7 +4,7 @@ description: 'Discover Pandarie, a mystical land known for its serene landscapes
 date: '2026-01-02'
 author: 'Nycolaide'
 tags: ['city', 'travel', 'culture', 'pandarie', 'nature']
-image: '/images/pandarie.webp'
+image: '/images/pandarie.jpg'
 published: true
 ---
 

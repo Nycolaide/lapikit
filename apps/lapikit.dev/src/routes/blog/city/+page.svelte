@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 
 	let { data }: { data: PageData } = $props();
 </script>
@@ -34,7 +35,7 @@
 				<article>
 					<a href="/blog/{post.slug}">
 						{#if post.image}
-							<img src={post.image} alt={post.title}/>
+							<OptimizedImage src={post.image} alt={post.title} />
 						{/if}
 						<div>
 							<h2>{post.title}</h2>

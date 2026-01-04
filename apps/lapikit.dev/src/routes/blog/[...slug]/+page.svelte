@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -86,7 +87,7 @@
 	</header>
 
 	{#if data.metadata.image}
-		<img src={data.metadata.image} alt={data.metadata.title} />
+		<OptimizedImage src={data.metadata.image} alt={data.metadata.title} class="featured-image" />
 	{/if}
 
 	<div>

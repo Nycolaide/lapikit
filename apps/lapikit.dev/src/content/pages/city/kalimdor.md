@@ -4,7 +4,7 @@ description: 'Discover Kalimdor, a vast continent known for its diverse landscap
 date: '2026-01-01'
 author: 'Nycolaide'
 tags: ['city', 'travel', 'culture', 'kalimdor']
-image: '/images/kalimdor.webp'
+image: '/images/kalimdor.jpg'
 published: true
 ---
 
