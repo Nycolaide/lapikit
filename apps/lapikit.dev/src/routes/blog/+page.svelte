@@ -31,11 +31,15 @@
 	</header>
 
 	<div>
-		{#each data.posts as post (post.slug)}
+		{#each data.posts as post, index (post.slug)}
 			<article>
 				<a href="/blog/{post.slug}">
 					{#if post.image}
-						<OptimizedImage src={post.image} alt={post.title} />
+						<OptimizedImage 
+							src={post.image} 
+							alt={post.title}
+							priority={index === 0}
+						/>
 					{/if}
 					<div>
 						<h2>{post.title}</h2>

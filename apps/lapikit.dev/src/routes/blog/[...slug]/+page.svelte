@@ -87,7 +87,12 @@
 	</header>
 
 	{#if data.metadata.image}
-		<OptimizedImage src={data.metadata.image} alt={data.metadata.title} class="featured-image" />
+		<OptimizedImage 
+			src={data.metadata.image} 
+			alt={data.metadata.title} 
+			class="featured-image"
+			priority={true}
+		/>
 	{/if}
 
 	<div>

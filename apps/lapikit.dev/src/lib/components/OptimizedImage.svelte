@@ -3,9 +3,10 @@
 		src: string;
 		alt: string;
 		class?: string;
+		priority?: boolean;
 	}
 
-	let { src, alt, class: className = '' }: Props = $props();
+	let { src, alt, class: className = '', priority = false }: Props = $props();
 
 	function getImagePaths(imagePath: string) {
 		const pathWithoutExt = imagePath.replace(/\.[^.]+$/, '');
@@ -34,7 +35,8 @@
 		src={paths.fallback}
 		alt={alt}
 		class={className}
-		loading="lazy"
+		loading={priority ? 'eager' : 'lazy'}
+		fetchpriority={priority ? 'high' : 'auto'}
 		decoding="async"
 		width="700"
 		height="500"
