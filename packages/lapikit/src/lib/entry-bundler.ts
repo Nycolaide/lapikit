@@ -1,4 +1,4 @@
-import { components } from '$lib/labs/components/index.js';
+const components: readonly string[] = ['btn'] as const;
 
 function componentName(shortName: string): string {
 	return 'Kit' + shortName.charAt(0).toUpperCase() + shortName.slice(1);
