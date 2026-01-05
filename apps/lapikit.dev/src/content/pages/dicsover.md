@@ -23,3 +23,5 @@ Explore the diverse and vibrant cities around the world. Each city has its own u
 - **Zandalar**: Renowned for its exotic culture and stunning natural beauty.
 - **Kul Tiras**: A city with a rich maritime history and vibrant coastal life.
 - **Argus**: A city that offers a glimpse into a futuristic world with advanced technology.
+
+<repl:code>demo</repl:code>

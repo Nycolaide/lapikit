@@ -13,3 +13,4 @@
 <h2>Components Lab</h2>
 
 <lpk:btn>Demo</lpk:btn>
+<repl:code>demo</repl:code>

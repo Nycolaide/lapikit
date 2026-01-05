@@ -37,6 +37,7 @@
 		"eslint-plugin-svelte": "^3.13.1",
 		"globals": "^16.5.0",
 		"lapikit": "*",
+		"@lapikit/repl": "*",
 		"lightningcss": "^1.30.2",
 		"mdsvex": "^0.12.6",
 		"playwright": "^1.57.0",
