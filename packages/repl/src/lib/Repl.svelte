@@ -49,6 +49,7 @@
 			<img src={currentIcon} alt="{typeContent} icon" class="toolbar-icon" />
 			<span>REPL Toolbar</span>
 		</div>
+
 		<div>
 			<button
 				title={viewMode === 'editor' ? 'Code' : 'Playground'}
@@ -65,6 +66,8 @@
 			</button>
 		</div>
 	</div>
+
+	<hr />
 
 	<div class="repl-content">
 		{#if viewMode === 'editor'}
@@ -127,5 +130,14 @@
 		padding-bottom: calc(4 * var(--spacing));
 		padding-top: calc(3 * var(--spacing));
 		position: relative;
+	}
+
+	hr {
+		max-width: calc(100% - 4.5rem);
+		margin-inline-start: calc(4.5rem / 2);
+		display: block;
+		border: thin solid #ebebeb;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 </style>
