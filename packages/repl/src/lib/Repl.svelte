@@ -11,7 +11,13 @@
 	import HtmlIcon from '$lib/assets/languages/html.svg';
 	import { getHighlighterSingleton } from '$lib/shiki.js';
 
-	let { title, content, ...rest } = $props();
+	interface FileItem {
+		name: string;
+		content: string;
+		lang?: string;
+	}
+
+	let { title, content, children, ...rest } = $props();
 	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');
@@ -19,6 +25,41 @@
 
 	let ref: null | HTMLElement = $state(null);
 	let typeContent = $state('code');
+
+	// multiple content types
+	let files = $derived.by<FileItem[]>(() => {
+		if (typeof content === 'object' && content !== null && 'code' in content) {
+			return [
+				{
+					name: title || 'code',
+					content: content.code,
+					lang: content.lang || 'javascript'
+				}
+			];
+		}
+
+		if (typeof content === 'object' && content !== null && !Array.isArray(content)) {
+			return Object.entries(content).map(([name, fileContent]) => ({
+				name,
+				content: typeof fileContent === 'string' ? fileContent : (fileContent as any).code || '',
+				lang: typeof fileContent === 'object' ? (fileContent as any).lang : 'javascript'
+			}));
+		}
+
+		if (Array.isArray(content)) {
+			return content.map((item) => ({
+				name: item.name,
+				content: item.content || item.code || '',
+				lang: item.lang || 'javascript'
+			}));
+		}
+
+		return [{ name: 'code', content: content || '', lang: 'javascript' }];
+	});
+
+	let activeFileIndex = $state(0);
+	let activeFile = $derived(files[activeFileIndex]);
+	let hasMultipleFiles = $derived(files.length > 1);
 
 	$effect(() => {
 		console.log('Props rest', rest);
@@ -49,14 +90,17 @@
 	});
 
 	$effect(() => {
-		if (content) {
+		const file = activeFile;
+		const theme = themeMode;
+
+		if (file?.content) {
 			(async () => {
-				console.log('content', content);
+				console.log('Rendering file:', file);
 				const highlighter = await getHighlighterSingleton();
 
-				const html = highlighter.codeToHtml(content!, {
-					theme: 'github-light',
-					lang: 'json'
+				const html = highlighter.codeToHtml(file.content, {
+					theme: theme === 'light' ? 'github-light' : 'github-dark',
+					lang: file.lang || 'javascript'
 				});
 
 				codeHTML = html;
@@ -107,12 +151,33 @@
 
 	<hr />
 
+	{#if hasMultipleFiles && viewMode === 'editor'}
+		<div class="sub-toolbar">
+			{#each files as file, index (index)}
+				<button
+					class="file-tab"
+					class:active={activeFileIndex === index}
+					onclick={() => (activeFileIndex = index)}
+					title={file.name}
+				>
+					<img
+						src={iconMap[file.lang as keyof typeof iconMap] || CodeIcon}
+						alt="{file.lang} icon"
+						class="file-icon"
+					/>
+					<span>{file.name}</span>
+				</button>
+			{/each}
+		</div>
+		<hr />
+	{/if}
+
 	<div class="repl-content">
 		{#if viewMode === 'editor'}
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
 		{:else}
-			<div bind:this={ref}>This is the REPL component.</div>
+			<div>{@render children?.()}</div>
 		{/if}
 	</div>
 </div>
@@ -189,5 +254,41 @@
 		tab-size: var(--repl-shiki-tab-size);
 		white-space: pre-wrap;
 		word-break: break-word;
+	}
+
+	.sub-toolbar {
+		display: flex;
+		gap: calc(var(--repl-spacing) * 2);
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-right: calc(5 * var(--repl-spacing));
+		padding-block: calc(var(--repl-spacing) * 2);
+		overflow-x: auto;
+	}
+
+	.file-tab {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--repl-spacing) * 2);
+		padding: calc(var(--repl-spacing) * 2) calc(var(--repl-spacing) * 3);
+		border-radius: 0.375rem;
+		font-size: 0.875rem;
+		transition: all 0.2s ease;
+		border: 1px solid transparent;
+		white-space: nowrap;
+	}
+
+	.file-tab:hover {
+		background-color: #f5f5f5;
+	}
+
+	.file-tab.active {
+		background-color: #f0f0f0;
+		border-color: #d0d0d0;
+	}
+
+	.file-icon {
+		width: 16px;
+		height: 16px;
+		object-fit: contain;
 	}
 </style>
