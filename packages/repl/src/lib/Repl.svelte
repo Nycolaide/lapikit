@@ -9,7 +9,10 @@
 	import SvelteIcon from '$lib/assets/languages/svelte.svg';
 	import CssIcon from '$lib/assets/languages/css.svg';
 	import HtmlIcon from '$lib/assets/languages/html.svg';
+	import { getHighlighterSingleton } from '$lib/shiki.js';
 
+	let { content } = $props();
+	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');
 
@@ -37,6 +40,21 @@
 					copyState = false;
 				}, 1500);
 			}
+		}
+	});
+
+	$effect(() => {
+		if (content) {
+			(async () => {
+				const highlighter = await getHighlighterSingleton();
+
+				const html = highlighter.codeToHtml(content!, {
+					theme: 'github-dark',
+					lang: 'json'
+				});
+
+				codeHTML = html;
+			})();
 		}
 	});
 </script>
@@ -73,7 +91,8 @@
 
 	<div class="repl-content">
 		{#if viewMode === 'editor'}
-			<div bind:this={ref}>This is the Code view.</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
 		{:else}
 			<div bind:this={ref}>This is the REPL component.</div>
 		{/if}
@@ -141,5 +160,13 @@
 		border: thin solid #ebebeb;
 		margin-top: 0;
 		margin-bottom: 0;
+	}
+
+	div.repl-container .wrapper-highlight :global(pre code) {
+		font-size: 1rem;
+		-moz-tab-size: 2;
+		tab-size: 2;
+		white-space: pre-wrap;
+		word-break: break-word;
 	}
 </style>
