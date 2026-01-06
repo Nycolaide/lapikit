@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { copyToClipboard } from '$lib/utils.js';
 
-	import { Copy, Check, Code, Codesandbox } from '@lucide/svelte';
+	import { Copy, Check, Code, Codesandbox, Moon, Sun } from '@lucide/svelte';
 
 	import CodeIcon from '$lib/assets/languages/code.svg';
 	import JavaScriptIcon from '$lib/assets/languages/javascript.svg';
@@ -15,6 +15,7 @@
 	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');
+	let themeMode = $state('light');
 
 	let ref: null | HTMLElement = $state(null);
 	let typeContent = $state('code');
@@ -46,10 +47,11 @@
 	$effect(() => {
 		if (content) {
 			(async () => {
+				console.log('content', content);
 				const highlighter = await getHighlighterSingleton();
 
 				const html = highlighter.codeToHtml(content!, {
-					theme: 'github-dark',
+					theme: 'github-light',
 					lang: 'json'
 				});
 
@@ -67,6 +69,18 @@
 		</div>
 
 		<div>
+			{#if viewMode !== 'editor'}
+				<button
+					onclick={() => (themeMode = themeMode === 'light' ? 'dark' : 'light')}
+					title="Toggle Theme"
+				>
+					{#if themeMode === 'light'}
+						<Moon class="toolbar-icon" />
+					{:else}
+						<Sun class="toolbar-icon" />
+					{/if}
+				</button>
+			{/if}
 			<button
 				title={viewMode === 'editor' ? 'Code' : 'Playground'}
 				onclick={() => (viewMode = viewMode === 'editor' ? 'playground' : 'editor')}
@@ -101,10 +115,13 @@
 
 <style>
 	div.repl-container {
-		--spacing: 0.25rem;
-		--radius: 1rem;
+		--repl-spacing: 0.25rem;
+		--repl-radius: 1rem;
+		--repl-shiki-size: 1rem;
+		--repl-shiki-tab-size: 2;
+
 		background-color: #fff;
-		border-radius: var(--radius);
+		border-radius: var(--repl-radius);
 		border: 2px solid #ebebeb;
 	}
 
@@ -112,12 +129,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: calc(var(--spacing) * 3);
-		padding-left: calc(5 * var(--spacing));
-		padding-right: calc(var(--spacing) * 2);
-		padding-block: calc(var(--spacing) * 1.5);
-		border-top-left-radius: var(--radius);
-		border-top-right-radius: var(--radius);
+		gap: calc(var(--repl-spacing) * 3);
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-right: calc(var(--repl-spacing) * 2);
+		padding-block: calc(var(--repl-spacing) * 1.5);
+		border-top-left-radius: var(--repl-radius);
+		border-top-right-radius: var(--repl-radius);
 		min-height: 36px;
 	}
 
@@ -134,7 +151,7 @@
 	.toolbar-title {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--spacing) * 2);
+		gap: calc(var(--repl-spacing) * 2);
 	}
 
 	.toolbar-icon {
@@ -145,11 +162,11 @@
 
 	.repl-content {
 		display: flow-root;
-		margin-top: calc(var(--spacing) * 0);
-		padding-right: calc(10 * var(--spacing));
-		padding-left: calc(5 * var(--spacing));
-		padding-bottom: calc(4 * var(--spacing));
-		padding-top: calc(3 * var(--spacing));
+		margin-top: calc(var(--repl-spacing) * 0);
+		padding-right: calc(10 * var(--repl-spacing));
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-bottom: calc(4 * var(--repl-spacing));
+		padding-top: calc(3 * var(--repl-spacing));
 		position: relative;
 	}
 
@@ -163,9 +180,9 @@
 	}
 
 	div.repl-container .wrapper-highlight :global(pre code) {
-		font-size: 1rem;
-		-moz-tab-size: 2;
-		tab-size: 2;
+		font-size: var(--repl-shiki-size);
+		-moz-tab-size: var(--repl-shiki-tab-size);
+		tab-size: var(--repl-shiki-tab-size);
 		white-space: pre-wrap;
 		word-break: break-word;
 	}

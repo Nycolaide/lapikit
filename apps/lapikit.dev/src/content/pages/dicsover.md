@@ -8,6 +8,10 @@ image: '/images/cities.jpg'
 published: true
 ---
 
+<script>
+    import sample from './sample.json';
+</script>
+
 # Discover all citys
 
 Explore the diverse and vibrant cities around the world. Each city has its own unique culture, history, and attractions waiting to be discovered. Whether you're looking for bustling urban centers or charming small towns, there's something for everyone.
@@ -24,4 +28,4 @@ Explore the diverse and vibrant cities around the world. Each city has its own u
 - **Kul Tiras**: A city with a rich maritime history and vibrant coastal life.
 - **Argus**: A city that offers a glimpse into a futuristic world with advanced technology.
 
-<repl:code>demo</repl:code>
+<repl:code content={sample}>demo</repl:code>
