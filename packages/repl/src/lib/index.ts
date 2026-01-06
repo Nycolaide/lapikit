@@ -21,12 +21,22 @@ function replPreprocess() {
 				for (const shortName of components) {
 					const componentNameStr = componentName(shortName);
 
-					const regex = new RegExp(
-						`<repl:${shortName}([\\s\\S]*?)>([\\s\\S]*?)<\\/repl:${shortName}\\s*>`,
+					const attrPattern = `(?:[^>"']|"[^"]*"|'[^']*')*?`;
+
+					const selfClosingRegex = new RegExp(`<repl:${shortName}(${attrPattern})\\s*/>`, 'g');
+
+					const pairRegex = new RegExp(
+						`<repl:${shortName}(${attrPattern})>([\\s\\S]*?)<\\/repl:${shortName}\\s*>`,
 						'g'
 					);
 
-					const newContent = processedContent.replace(regex, (fullMatch, attrs, children) => {
+					let newContent = processedContent.replace(selfClosingRegex, (fullMatch, attrs) => {
+						hasChanges = true;
+						importedComponents.add(componentNameStr);
+						return `<${componentNameStr}${attrs} />`;
+					});
+
+					newContent = newContent.replace(pairRegex, (fullMatch, attrs, children) => {
 						hasChanges = true;
 						importedComponents.add(componentNameStr);
 						return `<${componentNameStr}${attrs}>${children}</${componentNameStr}>`;

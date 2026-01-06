@@ -11,7 +11,7 @@
 	import HtmlIcon from '$lib/assets/languages/html.svg';
 	import { getHighlighterSingleton } from '$lib/shiki.js';
 
-	let { content } = $props();
+	let { title, content, ...rest } = $props();
 	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');
@@ -19,6 +19,10 @@
 
 	let ref: null | HTMLElement = $state(null);
 	let typeContent = $state('code');
+
+	$effect(() => {
+		console.log('Props rest', rest);
+	});
 
 	let iconMap = {
 		code: CodeIcon,
@@ -65,7 +69,7 @@
 	<div class="repl-toolbar">
 		<div class="toolbar-title">
 			<img src={currentIcon} alt="{typeContent} icon" class="toolbar-icon" />
-			<span>REPL Toolbar</span>
+			<span>{title || 'REPL Toolbar'}</span>
 		</div>
 
 		<div>

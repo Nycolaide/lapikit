@@ -9,7 +9,7 @@ published: true
 ---
 
 <script>
-    import sample from './sample.json';
+    import sample from './sample.json?raw';
 </script>
 
 # Discover all citys
@@ -28,4 +28,6 @@ Explore the diverse and vibrant cities around the world. Each city has its own u
 - **Kul Tiras**: A city with a rich maritime history and vibrant coastal life.
 - **Argus**: A city that offers a glimpse into a futuristic world with advanced technology.
 
-<repl:code content={sample}>demo</repl:code>
+<div>
+    <repl:code title='Sample JSON' content={sample} />
+</div>
