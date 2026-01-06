@@ -57,6 +57,7 @@
 		"vitest-browser-svelte": "^2.0.1"
 	},
 	"dependencies": {
+		"@lucide/svelte": "^0.562.0",
 		"@unpic/svelte": "^1.0.1"
 	}
 }

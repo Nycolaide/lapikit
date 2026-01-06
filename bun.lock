@@ -21,6 +21,7 @@
       "name": "lapikit.dev",
       "version": "0.0.1",
       "dependencies": {
+        "@lucide/svelte": "^0.562.0",
         "@unpic/svelte": "^1.0.1",
       },
       "devDependencies": {
@@ -112,7 +113,7 @@
     },
     "packages/lapikit": {
       "name": "lapikit",
-      "version": "0.3.3",
+      "version": "0.3.4",
       "bin": {
         "lapikit": "bin/index.js",
       },
@@ -150,6 +151,9 @@
     "packages/repl": {
       "name": "@lapikit/repl",
       "version": "0.0.1",
+      "dependencies": {
+        "@lucide/svelte": "^0.562.0",
+      },
       "devDependencies": {
         "@eslint/compat": "^1.4.0",
         "@eslint/js": "^9.39.1",
@@ -380,6 +384,8 @@
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.25", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ=="],
 
     "@lapikit/repl": ["@lapikit/repl@workspace:packages/repl"],
+
+    "@lucide/svelte": ["@lucide/svelte@0.562.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-wDMULwtTFN2Sc/TFBm6gfuVCNb4Y5P9LDrwxNnUbV52+IEU7NXZmvxwXoz+vrrpad6Xupq+Hw5eUlqIHEGhouw=="],
 
     "@nodelib/fs.scandir": ["@nodelib/fs.scandir@2.1.5", "", { "dependencies": { "@nodelib/fs.stat": "2.0.5", "run-parallel": "^1.1.9" } }, "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="],
 

@@ -1,16 +1,14 @@
 <script lang="ts">
 	import { copyToClipboard } from '$lib/utils.js';
+
+	import { Copy, Check, Code, Codesandbox } from '@lucide/svelte';
+
 	import CodeIcon from '$lib/assets/languages/code.svg';
 	import JavaScriptIcon from '$lib/assets/languages/javascript.svg';
 	import TypeScriptIcon from '$lib/assets/languages/typescript.svg';
 	import SvelteIcon from '$lib/assets/languages/svelte.svg';
 	import CssIcon from '$lib/assets/languages/css.svg';
 	import HtmlIcon from '$lib/assets/languages/html.svg';
-
-	import CopyIcon from '$lib/assets/icons/copy.svg';
-	import CheckIcon from '$lib/assets/icons/check.svg';
-	import CodeViewIcon from '$lib/assets/icons/code.svg';
-	import CodeSandboxIcon from '$lib/assets/icons/codesandbox.svg';
 
 	let copyState = $state(false);
 	let viewMode = $state('editor');
@@ -55,14 +53,18 @@
 				title={viewMode === 'editor' ? 'Code' : 'Playground'}
 				onclick={() => (viewMode = viewMode === 'editor' ? 'playground' : 'editor')}
 			>
-				<img
-					src={viewMode === 'editor' ? CodeViewIcon : CodeSandboxIcon}
-					alt="View mode icon"
-					class="toolbar-icon"
-				/>
+				{#if viewMode === 'editor'}
+					<Code class="toolbar-icon" />
+				{:else}
+					<Codesandbox class="toolbar-icon" />
+				{/if}
 			</button>
 			<button onclick={() => (copyState = true)} title={copyState ? 'Copied!' : 'Copy'}>
-				<img src={copyState ? CheckIcon : CopyIcon} alt="Copy icon" class="toolbar-icon" />
+				{#if copyState}
+					<Check class="toolbar-icon" />
+				{:else}
+					<Copy class="toolbar-icon" />
+				{/if}
 			</button>
 		</div>
 	</div>
