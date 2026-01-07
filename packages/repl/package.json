@@ -5,6 +5,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"author": {
+		"name": "Nycolaide",
+		"email": "contact@lapikit.dev"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
