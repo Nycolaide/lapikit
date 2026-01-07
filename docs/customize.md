@@ -11,7 +11,6 @@ state:
   published: true
   recommended: true
   order: 3
-  status: update
 github:
   url: /customize.md
 keywords:

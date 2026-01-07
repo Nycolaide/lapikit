@@ -39,11 +39,8 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"default": "./dist/index.js"
-		},
-		"./components": {
-			"types": "./dist/components.d.ts",
-			"svelte": "./dist/components.js"
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
 		}
 	},
 	"peerDependencies": {

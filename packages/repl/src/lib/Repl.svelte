@@ -61,10 +61,6 @@
 	let activeFile = $derived(files[activeFileIndex]);
 	let hasMultipleFiles = $derived(files.length > 1);
 
-	$effect(() => {
-		console.log('Props rest', rest);
-	});
-
 	let iconMap = {
 		code: CodeIcon,
 		javascript: JavaScriptIcon,

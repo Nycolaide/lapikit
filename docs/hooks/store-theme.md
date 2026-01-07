@@ -9,7 +9,6 @@ state:
   section: hooks
   category: stores
   published: true
-  status: new
 github:
   url: /hooks/store-theme.md
 ---

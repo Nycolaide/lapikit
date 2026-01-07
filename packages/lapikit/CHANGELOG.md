@@ -19,6 +19,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.5] - 2026-01-07
+
+### Added
+
+- Evolution to new Lapikit Preprocess with dynamic import for all components
+- Support fort external components with plugins system
+- Add new entry bundler for lapikit preprocess
+- Integrate new component Code with prefix `lpk:code` ( preview )
+- Add new path for repl features
+- Create new package @lapikit/repl for lapikit repl components
+
 ## [0.3.4] - 2026-01-05
 
 ### Fixed
