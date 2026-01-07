@@ -1,6 +1,10 @@
 {
 	"name": "@lapikit/repl",
 	"version": "0.0.1",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",

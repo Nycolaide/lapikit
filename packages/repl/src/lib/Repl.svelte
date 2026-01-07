@@ -111,14 +111,15 @@
 
 <div class="repl-container">
 	<div class="repl-toolbar">
-		<div class="toolbar-title">
+		<div class="repl-toolbar--title">
 			<img src={currentIcon} alt="{typeContent} icon" class="toolbar-icon" />
 			<span>{title || 'REPL Toolbar'}</span>
 		</div>
 
-		<div>
+		<div class="repl-toolbar--actions">
 			{#if viewMode !== 'editor'}
 				<button
+					class="repl-btn--icon"
 					onclick={() => (themeMode = themeMode === 'light' ? 'dark' : 'light')}
 					title="Toggle Theme"
 				>
@@ -130,6 +131,7 @@
 				</button>
 			{/if}
 			<button
+				class="repl-btn--icon"
 				title={viewMode === 'editor' ? 'Code' : 'Playground'}
 				onclick={() => (viewMode = viewMode === 'editor' ? 'playground' : 'editor')}
 			>
@@ -139,7 +141,11 @@
 					<Codesandbox class="toolbar-icon" />
 				{/if}
 			</button>
-			<button onclick={() => (copyState = true)} title={copyState ? 'Copied!' : 'Copy'}>
+			<button
+				class="repl-btn--icon"
+				onclick={() => (copyState = true)}
+				title={copyState ? 'Copied!' : 'Copy'}
+			>
 				{#if copyState}
 					<Check class="toolbar-icon" />
 				{:else}
@@ -189,9 +195,19 @@
 		--repl-shiki-size: 1rem;
 		--repl-shiki-tab-size: 2;
 
-		background-color: #fff;
+		--repl-background: #f9f9f9;
+		--repl-border-color: #ebebeb;
+
+		--repl-primary: #0d0d34;
+		--repl-secondary: #8f8f8f;
+
+		background-color: var(--repl-background);
 		border-radius: var(--repl-radius);
-		border: 2px solid #ebebeb;
+		border: 2px solid var(--repl-border-color);
+	}
+
+	div.repl-container :global(pre) {
+		background-color: var(--repl-background) !important;
 	}
 
 	div.repl-toolbar {
@@ -207,26 +223,59 @@
 		min-height: 36px;
 	}
 
-	div.repl-container button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		font-size: 0.875rem;
-		padding: 0.25rem 0.5rem;
-		border-radius: 0.375rem;
-		transition: background-color 0.2s ease;
-	}
-
-	.toolbar-title {
+	div.repl-toolbar--actions {
 		display: flex;
 		align-items: center;
 		gap: calc(var(--repl-spacing) * 2);
 	}
 
-	.toolbar-icon {
+	.sub-toolbar button {
+	}
+
+	div button.repl-btn--icon {
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-self: center;
+		justify-content: center;
+		font-size: 0.875rem;
+		border-radius: 0.375rem;
+		transition: background-color 0.2s ease;
+		padding: 8px;
+		color: var(--repl-secondary);
+	}
+
+	div button.repl-btn--icon:hover {
+		color: var(--repl-primary);
+	}
+
+	div button.repl-btn--icon :global(svg) {
+		height: 20px;
+		width: 20px;
+	}
+
+	.repl-toolbar--title {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--repl-spacing) * 2);
+		font-weight: 600;
+		color: var(--repl-secondary);
+		max-width: 80%;
+		min-width: 0;
+	}
+
+	.repl-toolbar--title span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.repl-toolbar--title .toolbar-icon {
 		width: 20px;
 		height: 20px;
 		object-fit: contain;
+		flex-shrink: 0;
 	}
 
 	.repl-content {
@@ -243,7 +292,7 @@
 		max-width: calc(100% - 4.5rem);
 		margin-inline-start: calc(4.5rem / 2);
 		display: block;
-		border: thin solid #ebebeb;
+		border: thin solid var(--repl-border-color);
 		margin-top: 0;
 		margin-bottom: 0;
 	}
