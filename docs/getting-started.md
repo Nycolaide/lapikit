@@ -10,7 +10,6 @@ state:
   category: configuration
   published: true
   recommended: true
-  status: update
   order: 1
 github:
   url: /getting-started.md
@@ -49,6 +48,8 @@ keywords:
 
     const commandCI = [
         {pkg: "npm", command: "npx lapikit"},
+        {pkg: "yarn", command: ["npx lapikit"]},
+        {pkg: "bun", command: ["npx lapikit"]},
     ];
 
 </script>
@@ -81,28 +82,24 @@ Install Lapikit on your project quickly with your package manager.
    **Launch installation**
 
    <Sandbox name="launch-install" code={LaunchInstall}/>
-
    - If you choose **No**, the process stops immediately.
    - If you choose **Yes**, the wizard continues.
 
    **Path for configuration files**
 
    <Sandbox name="path-import" code={PathImport}/>
-
    - By default, Lapikit will create **src/plugins/lapikit.(ts|js)**.
    - You can change this path, but it must start with `src/`.
 
    **Use TypeScript**
 
    <Sandbox name="use-typescript" code={UseTypescript}/>
-
    - Select **Yes** if your project uses TS (`.ts` files).
    - Select **No** to generate plain JavaScript configuration.
 
    **CSS format**
 
    <Sandbox name="css-format" code={CssFormat}/>
-
    - Basic → standard import **'lapikit/themes'** and **'lapikit/styles'**' directly on lapikit.(js|ts).
    - TailwindCSS v4 → integrates with Tailwind’s layer system.
    - UnoCSS → generates Lapikit utilities for UnoCSS.
@@ -110,7 +107,6 @@ Install Lapikit on your project quickly with your package manager.
    **Path for CSS import**
 
    <Sandbox name="path-css-import" code={PathCssImport}/>
-
    - Only asked if you chose TailwindCSS or UnoCSS.
    - Define where Lapikit styles should be injected.
    - Must start with src/.

@@ -1,6 +1,18 @@
 {
 	"name": "@lapikit/repl",
 	"version": "0.0.1",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"author": {
+		"name": "Nycolaide",
+		"email": "contact@lapikit.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Nycolaide/lapikit.git"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -27,11 +39,8 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"default": "./dist/index.js"
-		},
-		"./components": {
-			"types": "./dist/components.d.ts",
-			"svelte": "./dist/components.js"
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
 		}
 	},
 	"peerDependencies": {
@@ -64,5 +73,9 @@
 	},
 	"keywords": [
 		"svelte"
-	]
+	],
+	"dependencies": {
+		"@lucide/svelte": "^0.562.0",
+		"shiki": "^3.20.0"
+	}
 }

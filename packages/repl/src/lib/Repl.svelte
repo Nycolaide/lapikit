@@ -1,22 +1,65 @@
 <script lang="ts">
 	import { copyToClipboard } from '$lib/utils.js';
+
+	import { Copy, Check, Code, Codesandbox, Moon, Sun } from '@lucide/svelte';
+
 	import CodeIcon from '$lib/assets/languages/code.svg';
 	import JavaScriptIcon from '$lib/assets/languages/javascript.svg';
 	import TypeScriptIcon from '$lib/assets/languages/typescript.svg';
 	import SvelteIcon from '$lib/assets/languages/svelte.svg';
 	import CssIcon from '$lib/assets/languages/css.svg';
 	import HtmlIcon from '$lib/assets/languages/html.svg';
+	import { getHighlighterSingleton } from '$lib/shiki.js';
 
-	import CopyIcon from '$lib/assets/icons/copy.svg';
-	import CheckIcon from '$lib/assets/icons/check.svg';
-	import CodeViewIcon from '$lib/assets/icons/code.svg';
-	import CodeSandboxIcon from '$lib/assets/icons/codesandbox.svg';
+	interface FileItem {
+		name: string;
+		content: string;
+		lang?: string;
+	}
 
+	let { title, content, children } = $props();
+	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');
+	let themeMode = $state('light');
 
 	let ref: null | HTMLElement = $state(null);
 	let typeContent = $state('code');
+
+	// multiple content types
+	let files = $derived.by<FileItem[]>(() => {
+		if (typeof content === 'object' && content !== null && 'code' in content) {
+			return [
+				{
+					name: title || 'code',
+					content: content.code,
+					lang: content.lang || 'javascript'
+				}
+			];
+		}
+
+		if (typeof content === 'object' && content !== null && !Array.isArray(content)) {
+			return Object.entries(content).map(([name, fileContent]) => ({
+				name,
+				content: typeof fileContent === 'string' ? fileContent : (fileContent as any).code || '',
+				lang: typeof fileContent === 'object' ? (fileContent as any).lang : 'javascript'
+			}));
+		}
+
+		if (Array.isArray(content)) {
+			return content.map((item) => ({
+				name: item.name,
+				content: item.content || item.code || '',
+				lang: item.lang || 'javascript'
+			}));
+		}
+
+		return [{ name: 'code', content: content || '', lang: 'javascript' }];
+	});
+
+	let activeFileIndex = $state(0);
+	let activeFile = $derived(files[activeFileIndex]);
+	let hasMultipleFiles = $derived(files.length > 1);
 
 	let iconMap = {
 		code: CodeIcon,
@@ -41,94 +84,203 @@
 			}
 		}
 	});
+
+	$effect(() => {
+		const file = activeFile;
+		const theme = themeMode;
+
+		if (file?.content) {
+			(async () => {
+				console.log('Rendering file:', file);
+				const highlighter = await getHighlighterSingleton();
+
+				const html = highlighter.codeToHtml(file.content, {
+					theme: theme === 'light' ? 'github-light' : 'github-dark',
+					lang: file.lang || 'javascript'
+				});
+
+				codeHTML = html;
+			})();
+		}
+	});
 </script>
 
 <div class="repl-container">
 	<div class="repl-toolbar">
-		<div class="toolbar-title">
+		<div class="repl-toolbar--title">
 			<img src={currentIcon} alt="{typeContent} icon" class="toolbar-icon" />
-			<span>REPL Toolbar</span>
+			<span>{title || 'REPL Toolbar'}</span>
 		</div>
 
-		<div>
+		<div class="repl-toolbar--actions">
+			{#if viewMode !== 'editor'}
+				<button
+					class="repl-btn--icon"
+					onclick={() => (themeMode = themeMode === 'light' ? 'dark' : 'light')}
+					title="Toggle Theme"
+				>
+					{#if themeMode === 'light'}
+						<Moon class="toolbar-icon" />
+					{:else}
+						<Sun class="toolbar-icon" />
+					{/if}
+				</button>
+			{/if}
 			<button
+				class="repl-btn--icon"
 				title={viewMode === 'editor' ? 'Code' : 'Playground'}
 				onclick={() => (viewMode = viewMode === 'editor' ? 'playground' : 'editor')}
 			>
-				<img
-					src={viewMode === 'editor' ? CodeViewIcon : CodeSandboxIcon}
-					alt="View mode icon"
-					class="toolbar-icon"
-				/>
+				{#if viewMode === 'editor'}
+					<Code class="toolbar-icon" />
+				{:else}
+					<Codesandbox class="toolbar-icon" />
+				{/if}
 			</button>
-			<button onclick={() => (copyState = true)} title={copyState ? 'Copied!' : 'Copy'}>
-				<img src={copyState ? CheckIcon : CopyIcon} alt="Copy icon" class="toolbar-icon" />
+			<button
+				class="repl-btn--icon"
+				onclick={() => (copyState = true)}
+				title={copyState ? 'Copied!' : 'Copy'}
+			>
+				{#if copyState}
+					<Check class="toolbar-icon" />
+				{:else}
+					<Copy class="toolbar-icon" />
+				{/if}
 			</button>
 		</div>
 	</div>
 
 	<hr />
 
+	{#if hasMultipleFiles && viewMode === 'editor'}
+		<div class="sub-toolbar">
+			{#each files as file, index (index)}
+				<button
+					class="file-tab"
+					class:active={activeFileIndex === index}
+					onclick={() => (activeFileIndex = index)}
+					title={file.name}
+				>
+					<img
+						src={iconMap[file.lang as keyof typeof iconMap] || CodeIcon}
+						alt="{file.lang} icon"
+						class="file-icon"
+					/>
+					<span>{file.name}</span>
+				</button>
+			{/each}
+		</div>
+		<hr />
+	{/if}
+
 	<div class="repl-content">
 		{#if viewMode === 'editor'}
-			<div bind:this={ref}>This is the Code view.</div>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
 		{:else}
-			<div bind:this={ref}>This is the REPL component.</div>
+			<div>{@render children?.()}</div>
 		{/if}
 	</div>
 </div>
 
 <style>
 	div.repl-container {
-		--spacing: 0.25rem;
-		--radius: 1rem;
-		background-color: #fff;
-		border-radius: var(--radius);
-		border: 2px solid #ebebeb;
+		--repl-spacing: 0.25rem;
+		--repl-radius: 1rem;
+		--repl-shiki-size: 1rem;
+		--repl-shiki-tab-size: 2;
+
+		--repl-background: #f9f9f9;
+		--repl-border-color: #ebebeb;
+
+		--repl-primary: #0d0d34;
+		--repl-secondary: #8f8f8f;
+
+		background-color: var(--repl-background);
+		border-radius: var(--repl-radius);
+		border: 2px solid var(--repl-border-color);
+	}
+
+	div.repl-container :global(pre) {
+		background-color: var(--repl-background) !important;
 	}
 
 	div.repl-toolbar {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: calc(var(--spacing) * 3);
-		padding-left: calc(5 * var(--spacing));
-		padding-right: calc(var(--spacing) * 2);
-		padding-block: calc(var(--spacing) * 1.5);
-		border-top-left-radius: var(--radius);
-		border-top-right-radius: var(--radius);
+		gap: calc(var(--repl-spacing) * 3);
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-right: calc(var(--repl-spacing) * 2);
+		padding-block: calc(var(--repl-spacing) * 1.5);
+		border-top-left-radius: var(--repl-radius);
+		border-top-right-radius: var(--repl-radius);
 		min-height: 36px;
 	}
 
-	div.repl-container button {
+	div.repl-toolbar--actions {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--repl-spacing) * 2);
+	}
+
+	.sub-toolbar button {
+	}
+
+	div button.repl-btn--icon {
 		background: none;
 		border: none;
 		cursor: pointer;
+		display: flex;
+		align-self: center;
+		justify-content: center;
 		font-size: 0.875rem;
-		padding: 0.25rem 0.5rem;
 		border-radius: 0.375rem;
 		transition: background-color 0.2s ease;
+		padding: 8px;
+		color: var(--repl-secondary);
 	}
 
-	.toolbar-title {
+	div button.repl-btn--icon:hover {
+		color: var(--repl-primary);
+	}
+
+	div button.repl-btn--icon :global(svg) {
+		height: 20px;
+		width: 20px;
+	}
+
+	.repl-toolbar--title {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--spacing) * 2);
+		gap: calc(var(--repl-spacing) * 2);
+		font-weight: 600;
+		color: var(--repl-secondary);
+		max-width: 80%;
+		min-width: 0;
 	}
 
-	.toolbar-icon {
+	.repl-toolbar--title span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.repl-toolbar--title .toolbar-icon {
 		width: 20px;
 		height: 20px;
 		object-fit: contain;
+		flex-shrink: 0;
 	}
 
 	.repl-content {
 		display: flow-root;
-		margin-top: calc(var(--spacing) * 0);
-		padding-right: calc(10 * var(--spacing));
-		padding-left: calc(5 * var(--spacing));
-		padding-bottom: calc(4 * var(--spacing));
-		padding-top: calc(3 * var(--spacing));
+		margin-top: calc(var(--repl-spacing) * 0);
+		padding-right: calc(10 * var(--repl-spacing));
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-bottom: calc(4 * var(--repl-spacing));
+		padding-top: calc(3 * var(--repl-spacing));
 		position: relative;
 	}
 
@@ -136,8 +288,52 @@
 		max-width: calc(100% - 4.5rem);
 		margin-inline-start: calc(4.5rem / 2);
 		display: block;
-		border: thin solid #ebebeb;
+		border: thin solid var(--repl-border-color);
 		margin-top: 0;
 		margin-bottom: 0;
+	}
+
+	div.repl-container .wrapper-highlight :global(pre code) {
+		font-size: var(--repl-shiki-size);
+		-moz-tab-size: var(--repl-shiki-tab-size);
+		tab-size: var(--repl-shiki-tab-size);
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	.sub-toolbar {
+		display: flex;
+		gap: calc(var(--repl-spacing) * 2);
+		padding-left: calc(5 * var(--repl-spacing));
+		padding-right: calc(5 * var(--repl-spacing));
+		padding-block: calc(var(--repl-spacing) * 2);
+		overflow-x: auto;
+	}
+
+	.file-tab {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--repl-spacing) * 2);
+		padding: calc(var(--repl-spacing) * 2) calc(var(--repl-spacing) * 3);
+		border-radius: 0.375rem;
+		font-size: 0.875rem;
+		transition: all 0.2s ease;
+		border: 1px solid transparent;
+		white-space: nowrap;
+	}
+
+	.file-tab:hover {
+		background-color: #f5f5f5;
+	}
+
+	.file-tab.active {
+		background-color: #f0f0f0;
+		border-color: #d0d0d0;
+	}
+
+	.file-icon {
+		width: 16px;
+		height: 16px;
+		object-fit: contain;
 	}
 </style>

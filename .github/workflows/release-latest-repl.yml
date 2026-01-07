@@ -1,0 +1,103 @@
+name: Release Latest @lapikit/repl
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/repl/**"
+env:
+  NODE_VERSION: "20"
+  RELEASE_CHANNEL: public
+  PACKAGE_NAME: repl
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  prerelease:
+    name: verify version
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    permissions:
+      contents: write
+    outputs:
+      should_publish: ${{ steps.check.outputs.should_publish }}
+      version_release: ${{ steps.get_version.outputs.version_release }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: get local package version
+        id: get_version
+        run: |
+          echo "PACKAGE_VERSION=$(jq -r .version packages/${{ env.PACKAGE_NAME }}/package.json)" >> $GITHUB_ENV
+          echo "version_release=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: check if version exists on npm
+        id: check
+        run: |
+          if npm view ${{ env.PACKAGE_NAME }}@$PACKAGE_VERSION version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists on NPM."
+            echo "should_publish=false" >> $GITHUB_OUTPUT
+          else
+            echo "Version $PACKAGE_VERSION is new. Valid to publish."
+            echo "should_publish=true" >> $GITHUB_OUTPUT
+          fi
+
+  publish:
+    name: build and publish
+    runs-on: ubuntu-latest
+    needs: prerelease
+    if: needs.prerelease.outputs.should_publish == 'true'
+    env:
+      version_release: ${{ needs.prerelease.outputs.version_release }}
+    timeout-minutes: 4
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1.2.2
+
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: update .npmrc
+        run: |
+          echo "engine-strict=false" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+
+      - name: install dependencies
+        run: bun install
+
+      - name: set github actions bot
+        run: |
+          cd packages/${{ env.PACKAGE_NAME }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: build package
+        run: |
+          cd packages/${{ env.PACKAGE_NAME }}
+          bun run build
+
+      - name: verify package
+        run: |
+          cd packages/${{ env.PACKAGE_NAME }}
+          npm pack --dry-run
+
+      - name: publish to npm
+        run: |
+          cd packages/${{ env.PACKAGE_NAME }}
+          echo "Publishing version ${{ env.version_release }}"
+          npm publish --access ${{ env.RELEASE_CHANNEL }} --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  generate-release-notes:
+    name: write release notes
+    needs: publish
+    uses: ./.github/workflows/release-notes-repl.yml
+    secrets: inherit

@@ -89,7 +89,7 @@
 			<Icon icon={copy ? 'mgc_task_line' : 'mgc_clipboard_line'} />
 		</Button>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div bind:this={ref}>{@html commandHTML}</div>
+		<div bind:this={ref} style:min-height="48px">{@html commandHTML}</div>
 	</div>
 </div>
 

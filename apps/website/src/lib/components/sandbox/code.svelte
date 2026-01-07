@@ -54,6 +54,7 @@
 <div
 	class="lapikit-sandbox--code overflow-auto"
 	style:max-height={expanded ? 'fit-content' : '300px'}
+	style:min-height="48px"
 >
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	<div class="sm:text-md text-sm" bind:this={ref}>{@html codeHTML}</div>
