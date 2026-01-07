@@ -17,7 +17,7 @@
 		lang?: string;
 	}
 
-	let { title, content, children, ...rest } = $props();
+	let { title, content, children } = $props();
 	let codeHTML = $state('');
 	let copyState = $state(false);
 	let viewMode = $state('editor');

@@ -4,6 +4,7 @@ function componentName(shortName: string): string {
 	return 'Kit' + shortName.charAt(0).toUpperCase() + shortName.slice(1);
 }
 
+// plugins lapikit
 const lapikitPlugins = {
 	repl: {
 		components: ['code'],
