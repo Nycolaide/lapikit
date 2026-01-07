@@ -9,6 +9,10 @@
 		"name": "Nycolaide",
 		"email": "contact@lapikit.dev"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Nycolaide/lapikit.git"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
