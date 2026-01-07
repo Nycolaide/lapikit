@@ -11,7 +11,7 @@ env:
   NODE_VERSION: "20"
   RELEASE_CHANNEL: insiders
   VERSION: 0.0.0
-  PACKAGE_NAME: "@lapikit/repl"
+  PACKAGE_NAME: repl
 
 permissions:
   id-token: write
