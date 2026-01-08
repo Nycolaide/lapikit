@@ -13,7 +13,8 @@ declare global {
 			'repl:code': import('svelte/elements').HTMLButtonAttributes & {
 				children?: import('svelte').Snippet;
 				title?: string;
-				content?: string;
+				content?: string | Record<string, string | Record<string, unknown>>;
+				presentation?: boolean;
 			};
 		}
 	}

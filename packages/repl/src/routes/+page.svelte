@@ -17,6 +17,26 @@
 <!-- <Repl title="Sample code" content={sampleJson} /> -->
 <!-- <Repl content={{ lang: 'svelte', code: 'console.log("hello")' }} /> -->
 
+<Repl content="console.log('hello')" />
+
+<Repl presentation content={sampleCounter}>
+	<Counter />
+</Repl>
+
+<Repl
+	presentation
+	content={{
+		'Counter.svelte': { code: sampleCounter, lang: 'svelte' },
+		'file.json': { code: sampleJson, lang: 'json' },
+		'Styles.css': { code: sampleCss, lang: 'css' },
+		'file.json content': { code: sampleJson, lang: 'json' },
+		'Counter.svelte dsqd': { code: sampleCounter, lang: 'svelte' },
+		'Styles.css sqd sq': { code: sampleCss, lang: 'css' }
+	}}
+>
+	<Counter />
+</Repl>
+
 <Repl
 	title="Multi sample extra long title REPL for testing large titles on toolbar ! it's working or not working? it's a very long title"
 	content={{
