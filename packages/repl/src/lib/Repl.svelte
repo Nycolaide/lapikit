@@ -1,32 +1,28 @@
 <script lang="ts">
 	import { copyToClipboard } from '$lib/utils.js';
-
-	import { Copy, Check, Code, Codesandbox, Moon, Sun } from '@lucide/svelte';
-
-	import CodeIcon from '$lib/assets/languages/code.svg';
-	import JavaScriptIcon from '$lib/assets/languages/javascript.svg';
-	import TypeScriptIcon from '$lib/assets/languages/typescript.svg';
-	import SvelteIcon from '$lib/assets/languages/svelte.svg';
-	import CssIcon from '$lib/assets/languages/css.svg';
-	import HtmlIcon from '$lib/assets/languages/html.svg';
 	import { getHighlighterSingleton } from '$lib/shiki.js';
+	import type { FileItem, ReplProps } from '$lib/types.js';
 
-	interface FileItem {
-		name: string;
-		content: string;
-		lang?: string;
-	}
+	// components
+	import Toolbar from '$lib/Toolbar.svelte';
+	import Files from '$lib/Files.svelte';
 
-	let { title, content, children } = $props();
-	let codeHTML = $state('');
-	let copyState = $state(false);
-	let viewMode = $state('editor');
-	let themeMode = $state('light');
+	let { title, content, children, presentation }: ReplProps = $props();
 
+	// refs
 	let ref: null | HTMLElement = $state(null);
-	let typeContent = $state('code');
 
-	// multiple content types
+	// states
+	let language = $state('javascript');
+
+	let modeState: 'code' | 'playground' | 'mixed' = $state('code');
+	let copyState = $state(false);
+	let viewState: 'code' | 'preview' = $state('code');
+	let themeState: 'light' | 'dark' = $state('light');
+
+	let codeHTML = $state('');
+	let activeFileIndex = $state(0);
+
 	let files = $derived.by<FileItem[]>(() => {
 		if (typeof content === 'object' && content !== null && 'code' in content) {
 			return [
@@ -41,8 +37,14 @@
 		if (typeof content === 'object' && content !== null && !Array.isArray(content)) {
 			return Object.entries(content).map(([name, fileContent]) => ({
 				name,
-				content: typeof fileContent === 'string' ? fileContent : (fileContent as any).code || '',
-				lang: typeof fileContent === 'object' ? (fileContent as any).lang : 'javascript'
+				content:
+					typeof fileContent === 'string'
+						? fileContent
+						: (fileContent as Record<string, unknown>).code || '',
+				lang:
+					typeof fileContent === 'object'
+						? ((fileContent as Record<string, unknown>).lang as string)
+						: 'javascript'
 			}));
 		}
 
@@ -56,21 +58,23 @@
 
 		return [{ name: 'code', content: content || '', lang: 'javascript' }];
 	});
-
-	let activeFileIndex = $state(0);
 	let activeFile = $derived(files[activeFileIndex]);
-	let hasMultipleFiles = $derived(files.length > 1);
 
-	let iconMap = {
-		code: CodeIcon,
-		javascript: JavaScriptIcon,
-		typescript: TypeScriptIcon,
-		svelte: SvelteIcon,
-		css: CssIcon,
-		html: HtmlIcon
-	} as const;
-
-	let currentIcon = $derived(iconMap[typeContent as keyof typeof iconMap] || CodeIcon);
+	$effect.pre(() => {
+		if (children && content && !presentation) {
+			modeState = 'mixed';
+			viewState = 'preview';
+		} else if (presentation) {
+			modeState = 'mixed';
+			viewState = 'code';
+		} else if (children && !content) {
+			modeState = 'playground';
+			viewState = 'preview';
+		} else {
+			modeState = 'code';
+			viewState = 'code';
+		}
+	});
 
 	$effect(() => {
 		if (copyState) {
@@ -87,16 +91,16 @@
 
 	$effect(() => {
 		const file = activeFile;
-		const theme = themeMode;
+		const theme = themeState;
 
 		if (file?.content) {
 			(async () => {
-				console.log('Rendering file:', file);
 				const highlighter = await getHighlighterSingleton();
 
+				language = file.lang || 'javascript';
 				const html = highlighter.codeToHtml(file.content, {
 					theme: theme === 'light' ? 'github-light' : 'github-dark',
-					lang: file.lang || 'javascript'
+					lang: file.lang || language
 				});
 
 				codeHTML = html;
@@ -106,76 +110,32 @@
 </script>
 
 <div class="repl-container">
-	<div class="repl-toolbar">
-		<div class="repl-toolbar--title">
-			<img src={currentIcon} alt="{typeContent} icon" class="toolbar-icon" />
-			<span>{title || 'REPL Toolbar'}</span>
-		</div>
+	<Toolbar
+		{title}
+		{language}
+		{presentation}
+		bind:copyState
+		bind:viewState
+		bind:themeState
+		bind:modeState
+	/>
 
-		<div class="repl-toolbar--actions">
-			{#if viewMode !== 'editor'}
-				<button
-					class="repl-btn--icon"
-					onclick={() => (themeMode = themeMode === 'light' ? 'dark' : 'light')}
-					title="Toggle Theme"
-				>
-					{#if themeMode === 'light'}
-						<Moon class="toolbar-icon" />
-					{:else}
-						<Sun class="toolbar-icon" />
-					{/if}
-				</button>
-			{/if}
-			<button
-				class="repl-btn--icon"
-				title={viewMode === 'editor' ? 'Code' : 'Playground'}
-				onclick={() => (viewMode = viewMode === 'editor' ? 'playground' : 'editor')}
-			>
-				{#if viewMode === 'editor'}
-					<Code class="toolbar-icon" />
-				{:else}
-					<Codesandbox class="toolbar-icon" />
-				{/if}
-			</button>
-			<button
-				class="repl-btn--icon"
-				onclick={() => (copyState = true)}
-				title={copyState ? 'Copied!' : 'Copy'}
-			>
-				{#if copyState}
-					<Check class="toolbar-icon" />
-				{:else}
-					<Copy class="toolbar-icon" />
-				{/if}
-			</button>
-		</div>
-	</div>
-
-	<hr />
-
-	{#if hasMultipleFiles && viewMode === 'editor'}
-		<div class="sub-toolbar">
-			{#each files as file, index (index)}
-				<button
-					class="file-tab"
-					class:active={activeFileIndex === index}
-					onclick={() => (activeFileIndex = index)}
-					title={file.name}
-				>
-					<img
-						src={iconMap[file.lang as keyof typeof iconMap] || CodeIcon}
-						alt="{file.lang} icon"
-						class="file-icon"
-					/>
-					<span>{file.name}</span>
-				</button>
-			{/each}
-		</div>
+	{#if modeState !== 'code'}
 		<hr />
 	{/if}
 
+	{#if presentation}
+		<div class="repl-content">
+			<div>{@render children?.()}</div>
+		</div>
+
+		<hr />
+	{/if}
+
+	<Files {files} bind:activeIndex={activeFileIndex} />
+
 	<div class="repl-content">
-		{#if viewMode === 'editor'}
+		{#if viewState === 'code'}
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
 		{:else}
@@ -206,74 +166,6 @@
 		background-color: var(--repl-background) !important;
 	}
 
-	div.repl-toolbar {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: calc(var(--repl-spacing) * 3);
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-right: calc(var(--repl-spacing) * 2);
-		padding-block: calc(var(--repl-spacing) * 1.5);
-		border-top-left-radius: var(--repl-radius);
-		border-top-right-radius: var(--repl-radius);
-		min-height: 36px;
-	}
-
-	div.repl-toolbar--actions {
-		display: flex;
-		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
-	}
-
-	.sub-toolbar button {
-	}
-
-	div button.repl-btn--icon {
-		background: none;
-		border: none;
-		cursor: pointer;
-		display: flex;
-		align-self: center;
-		justify-content: center;
-		font-size: 0.875rem;
-		border-radius: 0.375rem;
-		transition: background-color 0.2s ease;
-		padding: 8px;
-		color: var(--repl-secondary);
-	}
-
-	div button.repl-btn--icon:hover {
-		color: var(--repl-primary);
-	}
-
-	div button.repl-btn--icon :global(svg) {
-		height: 20px;
-		width: 20px;
-	}
-
-	.repl-toolbar--title {
-		display: flex;
-		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
-		font-weight: 600;
-		color: var(--repl-secondary);
-		max-width: 80%;
-		min-width: 0;
-	}
-
-	.repl-toolbar--title span {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
-	.repl-toolbar--title .toolbar-icon {
-		width: 20px;
-		height: 20px;
-		object-fit: contain;
-		flex-shrink: 0;
-	}
-
 	.repl-content {
 		display: flow-root;
 		margin-top: calc(var(--repl-spacing) * 0);
@@ -299,41 +191,5 @@
 		tab-size: var(--repl-shiki-tab-size);
 		white-space: pre-wrap;
 		word-break: break-word;
-	}
-
-	.sub-toolbar {
-		display: flex;
-		gap: calc(var(--repl-spacing) * 2);
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-right: calc(5 * var(--repl-spacing));
-		padding-block: calc(var(--repl-spacing) * 2);
-		overflow-x: auto;
-	}
-
-	.file-tab {
-		display: flex;
-		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
-		padding: calc(var(--repl-spacing) * 2) calc(var(--repl-spacing) * 3);
-		border-radius: 0.375rem;
-		font-size: 0.875rem;
-		transition: all 0.2s ease;
-		border: 1px solid transparent;
-		white-space: nowrap;
-	}
-
-	.file-tab:hover {
-		background-color: #f5f5f5;
-	}
-
-	.file-tab.active {
-		background-color: #f0f0f0;
-		border-color: #d0d0d0;
-	}
-
-	.file-icon {
-		width: 16px;
-		height: 16px;
-		object-fit: contain;
 	}
 </style>
