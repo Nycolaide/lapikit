@@ -20,6 +20,8 @@ export interface ToolbarProps {
 export interface FilesProps {
 	files?: FileItem[];
 	activeIndex: number;
+	viewState: 'code' | 'preview';
+	modeState: 'code' | 'playground' | 'mixed';
 }
 
 export interface FileItem {

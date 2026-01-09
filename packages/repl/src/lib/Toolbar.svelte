@@ -20,7 +20,11 @@
 </script>
 
 <div class="lpk-repl--toolbar">
-	<div class="lpk-repl--toolbar-title">
+	<div
+		class="lpk-repl--toolbar-title"
+		class:lpk-repl--toolbar-title--language={!title && language}
+		class:lpk-repl--toolbar-title--title={title}
+	>
 		{#if title}
 			<span>{title}</span>
 		{:else if language}
@@ -79,10 +83,22 @@
 		display: flex;
 		align-items: center;
 		gap: calc(var(--repl-spacing) * 2);
-		font-weight: 600;
-		color: var(--repl-secondary);
 		max-width: 80%;
 		min-width: 0;
+	}
+
+	.lpk-repl--toolbar-title--language {
+		font-size: 0.875rem;
+		line-height: 16px;
+		font-weight: 400;
+		color: #5d5d5d;
+	}
+
+	.lpk-repl--toolbar-title--title {
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 20px;
+		color: #8f8f8f;
 	}
 
 	.lpk-repl--toolbar .lpk-repl--toolbar-actions {
