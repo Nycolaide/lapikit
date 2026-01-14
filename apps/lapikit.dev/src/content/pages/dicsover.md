@@ -31,3 +31,8 @@ Explore the diverse and vibrant cities around the world. Each city has its own u
 <div>
     <lpk:code title='Sample JSON' content={{ lang: 'svelte', code: 'console.log("hello")' }} />
 </div>
+
+
+<div>
+    <lpk:code content={{ lang: 'sh', code: 'console.log("world")' }} />
+</div>
