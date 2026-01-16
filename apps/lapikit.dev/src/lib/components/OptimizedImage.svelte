@@ -19,7 +19,7 @@
 		};
 	}
 
-	const paths = getImagePaths(src);
+	const paths = $derived(getImagePaths(src));
 </script>
 
 <picture>

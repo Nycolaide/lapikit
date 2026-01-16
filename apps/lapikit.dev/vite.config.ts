@@ -10,8 +10,6 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { imagetools } from 'vite-imagetools';
 
 import viteCompression from 'vite-plugin-compression';
-import browserslist from 'browserslist';
-import { browserslistToTargets } from 'lightningcss';
 
 export default defineConfig({
 	plugins: [
@@ -29,14 +27,6 @@ export default defineConfig({
 		sveltekit(),
 		viteCompression({ algorithm: 'brotliCompress' })
 	],
-
-	css: {
-		transformer: 'lightningcss',
-
-		lightningcss: {
-			targets: browserslistToTargets(browserslist(['>0.2%', 'not dead']))
-		}
-	},
 
 	build: { cssMinify: 'lightningcss' },
 

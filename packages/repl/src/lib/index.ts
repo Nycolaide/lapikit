@@ -1,2 +1,2 @@
 // components
-export { default as KitCode } from './Repl.svelte';
+export { default as KitRepl } from './Repl.svelte';
