@@ -19,8 +19,12 @@
 	);
 </script>
 
-<div class="lpk-repl--toolbar">
-	<div class="lpk-repl--toolbar-title">
+<div class="kit-repl--toolbar">
+	<div
+		class="kit-repl--toolbar-title"
+		class:kit-repl--toolbar-title--language={!title && language}
+		class:kit-repl--toolbar-title--title={title}
+	>
 		{#if title}
 			<span>{title}</span>
 		{:else if language}
@@ -28,9 +32,13 @@
 		{/if}
 	</div>
 
-	<div class="lpk-repl--toolbar-actions">
+	<div class="kit-repl--toolbar-actions">
 		{#if (modeState !== 'code' && viewState === 'preview') || presentation}
-			<Button onclick={() => (themeState = themeState === 'light' ? 'dark' : 'light')}>
+			<Button
+				aria-label={themeState === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+				aria-pressed={themeState === 'dark'}
+				onclick={() => (themeState = themeState === 'light' ? 'dark' : 'light')}
+			>
 				{#if themeState === 'light'}
 					<Moon />
 				{:else}
@@ -40,7 +48,11 @@
 		{/if}
 
 		{#if modeState === 'mixed' && !presentation}
-			<Button onclick={() => (viewState = viewState === 'code' ? 'preview' : 'code')}>
+			<Button
+				aria-label={viewState === 'code' ? 'Show preview' : 'Show code'}
+				aria-pressed={viewState === 'preview'}
+				onclick={() => (viewState = viewState === 'code' ? 'preview' : 'code')}
+			>
 				{#if viewState === 'code'}
 					<Code />
 				{:else}
@@ -50,7 +62,10 @@
 		{/if}
 
 		{#if modeState !== 'playground'}
-			<Button onclick={() => (copyState = true)}>
+			<Button
+				aria-label={copyState ? 'Code copied' : 'Copy code'}
+				onclick={() => (copyState = true)}
+			>
 				{#if copyState}
 					<Check />
 				{:else}
@@ -62,32 +77,44 @@
 </div>
 
 <style>
-	.lpk-repl--toolbar {
+	.kit-repl--toolbar {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: calc(var(--repl-spacing) * 3);
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-right: calc(var(--repl-spacing) * 2);
-		padding-block: calc(var(--repl-spacing) * 1.5);
-		border-top-left-radius: var(--repl-radius);
-		border-top-right-radius: var(--repl-radius);
+		gap: calc(var(--kit-repl-spacing) * 3);
+		padding-left: calc(5 * var(--kit-repl-spacing));
+		padding-right: calc(var(--kit-repl-spacing) * 2);
+		padding-block: calc(var(--kit-repl-spacing) * 1.5);
+		border-top-left-radius: var(--kit-repl-radius);
+		border-top-right-radius: var(--kit-repl-radius);
 		min-height: 36px;
 	}
 
-	.lpk-repl--toolbar .lpk-repl--toolbar-title {
+	.kit-repl--toolbar .kit-repl--toolbar-title {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
-		font-weight: 600;
-		color: var(--repl-secondary);
+		gap: calc(var(--kit-repl-spacing) * 2);
 		max-width: 80%;
 		min-width: 0;
 	}
 
-	.lpk-repl--toolbar .lpk-repl--toolbar-actions {
+	.kit-repl--toolbar-title--language {
+		font-size: 0.875rem;
+		line-height: 16px;
+		font-weight: 400;
+		color: #5d5d5d;
+	}
+
+	.kit-repl--toolbar-title--title {
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 20px;
+		color: #8f8f8f;
+	}
+
+	.kit-repl--toolbar .kit-repl--toolbar-actions {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
+		gap: calc(var(--kit-repl-spacing) * 2);
 	}
 </style>

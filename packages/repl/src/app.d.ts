@@ -10,7 +10,7 @@ declare global {
 	}
 	namespace svelteHTML {
 		interface IntrinsicElements {
-			'repl:code': import('svelte/elements').HTMLButtonAttributes & {
+			'kit:repl': import('svelte/elements').HTMLButtonAttributes & {
 				children?: import('svelte').Snippet;
 				title?: string;
 				content?: string | Record<string, string | Record<string, unknown>>;

@@ -12,7 +12,7 @@
 	let { items, baseUrl }: Props = $props();
 
 	// Schema JSON-LD for Google
-	const breadcrumbSchema = {
+	const breadcrumbSchema = $derived({
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
 		itemListElement: items.map((item, index) => ({
@@ -21,7 +21,7 @@
 			name: item.label,
 			item: `${baseUrl}${item.url}`
 		}))
-	};
+	});
 </script>
 
 <svelte:head>

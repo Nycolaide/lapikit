@@ -2,13 +2,20 @@
 	import type { FilesProps } from '$lib/types.js';
 	import { dictionaryIcons } from '$lib/utils.js';
 
-	let { files, activeIndex = $bindable() }: FilesProps = $props();
+	let { files, activeIndex = $bindable(), modeState, viewState }: FilesProps = $props();
 </script>
 
-{#if files && files.length > 1}
-	<div>
+{#if modeState !== 'playground' && viewState === 'code' && files && files.length > 1}
+	<div role="tablist" aria-label="Files">
 		{#each files as file, index (index)}
-			<button class:active={activeIndex === index} onclick={() => (activeIndex = index)}>
+			<button
+				type="button"
+				role="tab"
+				aria-selected={activeIndex === index}
+				aria-label="Select {file.name}"
+				class:active={activeIndex === index}
+				onclick={() => (activeIndex = index)}
+			>
 				{#if file.lang && dictionaryIcons[file.lang]}
 					<img src={dictionaryIcons[file.lang]} alt="{file.lang} icon" />
 				{/if}
@@ -16,30 +23,30 @@
 			</button>
 		{/each}
 	</div>
-
-	<hr />
 {/if}
 
 <style>
 	div {
 		display: flex;
-		gap: calc(var(--repl-spacing) * 2);
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-right: calc(5 * var(--repl-spacing));
-		padding-block: calc(var(--repl-spacing) * 2);
+		gap: calc(var(--kit-repl-spacing) * 2);
+		padding-left: calc(5 * var(--kit-repl-spacing));
+		padding-right: calc(5 * var(--kit-repl-spacing));
+		padding-block: calc(var(--kit-repl-spacing) * 2);
 		overflow-x: auto;
 	}
 
 	button {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--repl-spacing) * 2);
-		padding: calc(var(--repl-spacing) * 2) calc(var(--repl-spacing) * 3);
-		border-radius: 0.375rem;
+		gap: calc(var(--kit-repl-spacing) * 2);
+		padding: calc(var(--kit-repl-spacing) * 2) calc(var(--kit-repl-spacing) * 3);
 		font-size: 0.875rem;
 		transition: all 0.2s ease;
-		border: 1px solid transparent;
+		border: 0;
 		white-space: nowrap;
+		background-color: transparent;
+		border-bottom: 2px solid transparent;
+		cursor: pointer;
 	}
 
 	button img {
@@ -48,20 +55,10 @@
 	}
 
 	button:hover {
-		background-color: #f5f5f5;
+		border-color: #cfcfcf;
 	}
 
 	button.active {
-		background-color: #f0f0f0;
-		border-color: #d0d0d0;
-	}
-
-	hr {
-		max-width: calc(100% - 4.5rem);
-		margin-inline-start: calc(4.5rem / 2);
-		display: block;
-		border: thin solid var(--repl-border-color);
-		margin-top: 0;
-		margin-bottom: 0;
+		border-color: #000000;
 	}
 </style>

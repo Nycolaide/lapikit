@@ -13,7 +13,7 @@
 	let ref: null | HTMLElement = $state(null);
 
 	// states
-	let language = $state('javascript');
+	let language = $state('sh');
 
 	let modeState: 'code' | 'playground' | 'mixed' = $state('code');
 	let copyState = $state(false);
@@ -29,7 +29,7 @@
 				{
 					name: title || 'code',
 					content: content.code,
-					lang: content.lang || 'javascript'
+					lang: content.lang || 'sh'
 				}
 			];
 		}
@@ -44,7 +44,7 @@
 				lang:
 					typeof fileContent === 'object'
 						? ((fileContent as Record<string, unknown>).lang as string)
-						: 'javascript'
+						: 'sh'
 			}));
 		}
 
@@ -52,11 +52,11 @@
 			return content.map((item) => ({
 				name: item.name,
 				content: item.content || item.code || '',
-				lang: item.lang || 'javascript'
+				lang: item.lang || 'sh'
 			}));
 		}
 
-		return [{ name: 'code', content: content || '', lang: 'javascript' }];
+		return [{ name: 'code', content: content || '', lang: 'sh' }];
 	});
 	let activeFile = $derived(files[activeFileIndex]);
 
@@ -97,7 +97,7 @@
 			(async () => {
 				const highlighter = await getHighlighterSingleton();
 
-				language = file.lang || 'javascript';
+				language = file.lang || 'sh';
 				const html = highlighter.codeToHtml(file.content, {
 					theme: theme === 'light' ? 'github-light' : 'github-dark',
 					lang: file.lang || language
@@ -109,87 +109,121 @@
 	});
 </script>
 
-<div class="repl-container">
-	<Toolbar
-		{title}
-		{language}
-		{presentation}
-		bind:copyState
-		bind:viewState
-		bind:themeState
-		bind:modeState
-	/>
-
-	{#if modeState !== 'code'}
-		<hr />
-	{/if}
-
+<div class="kit-repl">
 	{#if presentation}
-		<div class="repl-content">
-			<div>{@render children?.()}</div>
+		<div class="kit-repl-content" class:kit-repl-content--playground={presentation}>
+			<div
+				class="wrapper-playground"
+				class:dark={themeState === 'dark'}
+				class:light={themeState === 'light'}
+			>
+				{@render children?.()}
+			</div>
 		</div>
-
-		<hr />
 	{/if}
 
-	<Files {files} bind:activeIndex={activeFileIndex} />
+	<div class="kit-repl-container">
+		<Toolbar
+			{title}
+			{language}
+			{presentation}
+			bind:copyState
+			bind:viewState
+			bind:themeState
+			bind:modeState
+		/>
 
-	<div class="repl-content">
-		{#if viewState === 'code'}
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
-		{:else}
-			<div>{@render children?.()}</div>
+		{#if modeState !== 'code'}
+			<hr />
 		{/if}
+
+		<Files {files} bind:activeIndex={activeFileIndex} {modeState} {viewState} />
+
+		<div
+			class="kit-repl-content"
+			class:kit-repl-content--code={viewState === 'code' && !presentation}
+		>
+			{#if viewState === 'code'}
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				<div class="kit-repl-wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
+			{:else}
+				<div
+					class="kit-repl-wrapper-playground"
+					class:dark={themeState === 'dark'}
+					class:light={themeState === 'light'}
+				>
+					{@render children?.()}
+				</div>
+			{/if}
+		</div>
 	</div>
 </div>
 
 <style>
-	div.repl-container {
-		--repl-spacing: 0.25rem;
-		--repl-radius: 1rem;
-		--repl-shiki-size: 1rem;
-		--repl-shiki-tab-size: 2;
+	.kit-repl {
+		/* ui */
+		--kit-repl-spacing: 0.25rem;
+		--kit-repl-radius: 1rem;
 
-		--repl-background: #f9f9f9;
-		--repl-border-color: #ebebeb;
+		/* shiki override */
+		--kit-repl-shiki-size: 0.875rem;
+		--kit-repl-shiki-tab-size: 2;
 
-		--repl-primary: #0d0d34;
-		--repl-secondary: #8f8f8f;
-
-		background-color: var(--repl-background);
-		border-radius: var(--repl-radius);
-		border: 2px solid var(--repl-border-color);
+		/* colors */
+		--kit-repl-background: #f9f9f9;
+		--kit-repl-border-color: #ebebeb;
+		--kit-repl-primary: #0d0d34;
+		--kit-repl-secondary: #8f8f8f;
+	}
+	.kit-repl-container {
+		background-color: var(--kit-repl-background);
+		border-radius: var(--kit-repl-radius);
+		border: 2px solid var(--kit-repl-border-color);
 	}
 
-	div.repl-container :global(pre) {
-		background-color: var(--repl-background) !important;
+	.kit-repl-container :global(pre) {
+		background-color: var(--kit-repl-background) !important;
 	}
 
-	.repl-content {
+	.kit-repl-content {
 		display: flow-root;
-		margin-top: calc(var(--repl-spacing) * 0);
-		padding-right: calc(10 * var(--repl-spacing));
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-bottom: calc(4 * var(--repl-spacing));
-		padding-top: calc(3 * var(--repl-spacing));
+		margin-top: calc(var(--kit-repl-spacing) * 0);
+		padding-right: calc(10 * var(--kit-repl-spacing));
+		padding-left: calc(5 * var(--kit-repl-spacing));
+		padding-bottom: calc(4 * var(--kit-repl-spacing));
+		padding-top: calc(3 * var(--kit-repl-spacing));
 		position: relative;
 	}
 
+	.kit-repl-content--code {
+		padding-top: 0;
+	}
+
+	.kit-repl-content--playground {
+		padding-top: calc(4 * var(--kit-repl-spacing));
+		padding-bottom: calc(10 * var(--kit-repl-spacing));
+	}
+
 	hr {
-		max-width: calc(100% - 4.5rem);
-		margin-inline-start: calc(4.5rem / 2);
+		max-width: calc(100% - 2.5rem);
+		margin-inline-start: calc(2.5rem / 2);
 		display: block;
-		border: thin solid var(--repl-border-color);
+		border: thin solid var(--kit-repl-border-color);
 		margin-top: 0;
 		margin-bottom: 0;
 	}
 
-	div.repl-container .wrapper-highlight :global(pre code) {
-		font-size: var(--repl-shiki-size);
-		-moz-tab-size: var(--repl-shiki-tab-size);
-		tab-size: var(--repl-shiki-tab-size);
+	div.kit-repl-container .kit-repl-wrapper-highlight :global(pre code) {
+		font-size: var(--kit-repl-shiki-size);
+		-moz-tab-size: var(--kit-repl-shiki-tab-size);
+		tab-size: var(--kit-repl-shiki-tab-size);
 		white-space: pre-wrap;
 		word-break: break-word;
+	}
+
+	div.kit-repl-container .kit-repl-wrapper-playground {
+		background-color: var(--kit-repl-background);
+		border-radius: var(--kit-repl-radius);
+		padding: calc(4 * var(--kit-repl-spacing));
 	}
 </style>
