@@ -1,8 +1,17 @@
 <script lang="ts">
-	let { children, ...rest } = $props();
+	import type { Snippet } from 'svelte';
+
+	let { children, type = 'button', disabled = false, ...rest }: PropsTypeButton = $props();
+
+	type PropsTypeButton = {
+		children?: Snippet;
+		type?: 'button' | 'submit' | 'reset';
+		disabled?: boolean;
+		[rest: string]: unknown;
+	};
 </script>
 
-<button {...rest}>
+<button {type} {disabled} {...rest}>
 	{@render children?.()}
 </button>
 
@@ -18,11 +27,11 @@
 		border-radius: 0.375rem;
 		transition: background-color 0.2s ease;
 		padding: 8px;
-		color: var(--repl-secondary);
+		color: var(--kit-repl-secondary);
 	}
 
 	button:hover {
-		color: var(--repl-primary);
+		color: var(--kit-repl-primary);
 	}
 
 	button :global(svg) {

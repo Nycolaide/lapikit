@@ -7,7 +7,7 @@ function componentName(shortName: string): string {
 // plugins lapikit
 const lapikitPlugins = {
 	repl: {
-		components: ['code'],
+		components: ['repl'],
 		ref: '@lapikit/repl'
 	}
 } as const;
@@ -41,7 +41,7 @@ function lapikitPreprocess(options?: LapikitPreprocessOptions) {
 				});
 			}
 
-			const hasComponent = allComponents.some((comp) => content.includes(`<lpk:${comp}`));
+			const hasComponent = allComponents.some((comp) => content.includes(`<kit:${comp}`));
 
 			if (!hasComponent) return;
 
@@ -57,10 +57,10 @@ function lapikitPreprocess(options?: LapikitPreprocessOptions) {
 
 					const attrPattern = `(?:[^>"']|"[^"]*"|'[^']*')*?`;
 
-					const selfClosingRegex = new RegExp(`<lpk:${shortName}(${attrPattern})\\s*/>`, 'g');
+					const selfClosingRegex = new RegExp(`<kit:${shortName}(${attrPattern})\\s*/>`, 'g');
 
 					const pairRegex = new RegExp(
-						`<lpk:${shortName}(${attrPattern})>([\\s\\S]*?)<\\/lpk:${shortName}\\s*>`,
+						`<kit:${shortName}(${attrPattern})>([\\s\\S]*?)<\\/kit:${shortName}\\s*>`,
 						'g'
 					);
 

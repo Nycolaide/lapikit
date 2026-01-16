@@ -29,10 +29,10 @@ Explore the diverse and vibrant cities around the world. Each city has its own u
 - **Argus**: A city that offers a glimpse into a futuristic world with advanced technology.
 
 <div>
-    <lpk:code title='Sample JSON' content={{ lang: 'svelte', code: 'console.log("hello")' }} />
+    <kit:code title='Sample JSON' content={{ lang: 'svelte', code: 'console.log("hello")' }} />
 </div>
 
 
 <div>
-    <lpk:code content={{ lang: 'sh', code: 'console.log("world")' }} />
+    <kit:code content={{ lang: 'sh', code: 'console.log("world")' }} />
 </div>

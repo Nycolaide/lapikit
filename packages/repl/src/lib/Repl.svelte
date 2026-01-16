@@ -109,9 +109,9 @@
 	});
 </script>
 
-<div class="lpk-repl">
+<div class="kit-repl">
 	{#if presentation}
-		<div class="repl-content" class:repl-content--playground={presentation}>
+		<div class="kit-repl-content" class:kit-repl-content--playground={presentation}>
 			<div
 				class="wrapper-playground"
 				class:dark={themeState === 'dark'}
@@ -122,7 +122,7 @@
 		</div>
 	{/if}
 
-	<div class="repl-container">
+	<div class="kit-repl-container">
 		<Toolbar
 			{title}
 			{language}
@@ -139,13 +139,16 @@
 
 		<Files {files} bind:activeIndex={activeFileIndex} {modeState} {viewState} />
 
-		<div class="repl-content" class:repl-content--code={viewState === 'code' && !presentation}>
+		<div
+			class="kit-repl-content"
+			class:kit-repl-content--code={viewState === 'code' && !presentation}
+		>
 			{#if viewState === 'code'}
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<div class="wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
+				<div class="kit-repl-wrapper-highlight" bind:this={ref}>{@html codeHTML}</div>
 			{:else}
 				<div
-					class="wrapper-playground"
+					class="kit-repl-wrapper-playground"
 					class:dark={themeState === 'dark'}
 					class:light={themeState === 'light'}
 				>
@@ -157,70 +160,70 @@
 </div>
 
 <style>
-	.lpk-repl {
+	.kit-repl {
 		/* ui */
-		--repl-spacing: 0.25rem;
-		--repl-radius: 1rem;
+		--kit-repl-spacing: 0.25rem;
+		--kit-repl-radius: 1rem;
 
 		/* shiki override */
-		--repl-shiki-size: 0.875rem;
-		--repl-shiki-tab-size: 2;
+		--kit-repl-shiki-size: 0.875rem;
+		--kit-repl-shiki-tab-size: 2;
 
 		/* colors */
-		--repl-background: #f9f9f9;
-		--repl-border-color: #ebebeb;
-		--repl-primary: #0d0d34;
-		--repl-secondary: #8f8f8f;
+		--kit-repl-background: #f9f9f9;
+		--kit-repl-border-color: #ebebeb;
+		--kit-repl-primary: #0d0d34;
+		--kit-repl-secondary: #8f8f8f;
 	}
-	.repl-container {
-		background-color: var(--repl-background);
-		border-radius: var(--repl-radius);
-		border: 2px solid var(--repl-border-color);
-	}
-
-	.repl-container :global(pre) {
-		background-color: var(--repl-background) !important;
+	.kit-repl-container {
+		background-color: var(--kit-repl-background);
+		border-radius: var(--kit-repl-radius);
+		border: 2px solid var(--kit-repl-border-color);
 	}
 
-	.repl-content {
+	.kit-repl-container :global(pre) {
+		background-color: var(--kit-repl-background) !important;
+	}
+
+	.kit-repl-content {
 		display: flow-root;
-		margin-top: calc(var(--repl-spacing) * 0);
-		padding-right: calc(10 * var(--repl-spacing));
-		padding-left: calc(5 * var(--repl-spacing));
-		padding-bottom: calc(4 * var(--repl-spacing));
-		padding-top: calc(3 * var(--repl-spacing));
+		margin-top: calc(var(--kit-repl-spacing) * 0);
+		padding-right: calc(10 * var(--kit-repl-spacing));
+		padding-left: calc(5 * var(--kit-repl-spacing));
+		padding-bottom: calc(4 * var(--kit-repl-spacing));
+		padding-top: calc(3 * var(--kit-repl-spacing));
 		position: relative;
 	}
 
-	.repl-content--code {
+	.kit-repl-content--code {
 		padding-top: 0;
 	}
 
-	.repl-content--playground {
-		padding-top: calc(4 * var(--repl-spacing));
-		padding-bottom: calc(10 * var(--repl-spacing));
+	.kit-repl-content--playground {
+		padding-top: calc(4 * var(--kit-repl-spacing));
+		padding-bottom: calc(10 * var(--kit-repl-spacing));
 	}
 
 	hr {
 		max-width: calc(100% - 2.5rem);
 		margin-inline-start: calc(2.5rem / 2);
 		display: block;
-		border: thin solid var(--repl-border-color);
+		border: thin solid var(--kit-repl-border-color);
 		margin-top: 0;
 		margin-bottom: 0;
 	}
 
-	div.repl-container .wrapper-highlight :global(pre code) {
-		font-size: var(--repl-shiki-size);
-		-moz-tab-size: var(--repl-shiki-tab-size);
-		tab-size: var(--repl-shiki-tab-size);
+	div.kit-repl-container .kit-repl-wrapper-highlight :global(pre code) {
+		font-size: var(--kit-repl-shiki-size);
+		-moz-tab-size: var(--kit-repl-shiki-tab-size);
+		tab-size: var(--kit-repl-shiki-tab-size);
 		white-space: pre-wrap;
 		word-break: break-word;
 	}
 
-	div.repl-container .wrapper-playground {
-		background-color: var(--repl-background);
-		border-radius: var(--repl-radius);
-		padding: calc(4 * var(--repl-spacing));
+	div.kit-repl-container .kit-repl-wrapper-playground {
+		background-color: var(--kit-repl-background);
+		border-radius: var(--kit-repl-radius);
+		padding: calc(4 * var(--kit-repl-spacing));
 	}
 </style>
