@@ -32,15 +32,15 @@ Objectives :
 
 More details will be shared as it develops.
 
-1. **New components** 
+1. **New components**
 
 Strengthening form components, essential for real-world applications :
 
-  - **Radio** manages exclusive choices in forms with accessible radio buttons.
-  - **Select** is a simple and customizable selection component for drop-down lists.
-  - **Checkbox** allows you to enable or disable options via clear and consistent checkboxes.
-  - **Input files** selects and manages files with complete style control.
-  - **Input textarea** is a multi-line input field for long content and advanced forms.
+- **Radio** manages exclusive choices in forms with accessible radio buttons.
+- **Select** is a simple and customizable selection component for drop-down lists.
+- **Checkbox** allows you to enable or disable options via clear and consistent checkboxes.
+- **Input files** selects and manages files with complete style control.
+- **Input textarea** is a multi-line input field for long content and advanced forms.
 
 Simple, accessible components that are consistent with the rest of Lapikit.
 
@@ -58,7 +58,7 @@ The goal is not to replace a utility library, but to cover common cases.
 Improvement of internal tools for greater consistency and maintainability:
 
 - ClassName helper will be as close as possible to Svelte class management
-- Centralized style management that will offer the same possibilities as Svelte's style props 
+- Centralized style management that will offer the same possibilities as Svelte's style props
 
 **Continuous development**
 
@@ -73,26 +73,26 @@ After these updates, the focus will shift to: You can track progress on GitHub a
 
 Lapikit is open source and built for the community. If you want to help, open a pull request, suggest an idea, or report an issue. Every contribution helps make Svelte development faster and cleaner for everyone. Your feedback is important!
 
- ## History roadmap to Lapikit
+## History roadmap to Lapikit
 
 **2025**
 
- ### Composants développé en 2025
+### Composants développé en 2025
 
- - **Alert** are display important messages on your application
- - **App** are define the structure and integration of lapikit tools in your application
- - **Button** are offer link and action management in your application
- - **Card** are display blocks to format your content
- - **Chip** are other types of actions and labeling
- - **Dialog** are display dialog boxes via lapikit (ISO HTML5 dialog element)
- - **Separator** are simple layout divider with more utility
- - **Accordion** are accordion content display management with aria support
- - **Icon** are extended icon library with lighter imports
- - **List** are better variants for menus and structured data
- - **Dropdown** are contextual menu for your application
- - **AspectRatio** are more responsive scaling options
- - **Toolbar** are toolbar to display actions within your application
- - **Tooltip** are when a user hovers over or clicks on a ui element a tiny information message boxes appear
- - **Avatar** are display user profiles via letters or images
- - **Popover** are advanced context menu for greater customization freedom
- - **Modal** are advanced dialog box, with multiple dialog box management and new customization options
+- **Alert** are display important messages on your application
+- **App** are define the structure and integration of lapikit tools in your application
+- **Button** are offer link and action management in your application
+- **Card** are display blocks to format your content
+- **Chip** are other types of actions and labeling
+- **Dialog** are display dialog boxes via lapikit (ISO HTML5 dialog element)
+- **Separator** are simple layout divider with more utility
+- **Accordion** are accordion content display management with aria support
+- **Icon** are extended icon library with lighter imports
+- **List** are better variants for menus and structured data
+- **Dropdown** are contextual menu for your application
+- **AspectRatio** are more responsive scaling options
+- **Toolbar** are toolbar to display actions within your application
+- **Tooltip** are when a user hovers over or clicks on a ui element a tiny information message boxes appear
+- **Avatar** are display user profiles via letters or images
+- **Popover** are advanced context menu for greater customization freedom
+- **Modal** are advanced dialog box, with multiple dialog box management and new customization options
