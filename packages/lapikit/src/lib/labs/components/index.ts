@@ -1,2 +1,2 @@
 // components
-export { default as KitBtn } from './button/button.svelte';
+export { default as KitBtn } from './btn/btn.svelte';

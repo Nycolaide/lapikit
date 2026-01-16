@@ -74,7 +74,7 @@
 			</Toolbar>
 
 			<Button variant="text" href="/docs/roadmap" class="underline! mt-3 opacity-70"
-				>Explore Lapikit roadmap 2025</Button
+				>Explore Lapikit roadmap 2026</Button
 			>
 		</div>
 		<div class="mx-auto my-auto flex w-full max-w-[200px] justify-center md:max-w-[450px]">
