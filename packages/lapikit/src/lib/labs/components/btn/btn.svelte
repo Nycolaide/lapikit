@@ -1,8 +1,47 @@
 <script lang="ts">
-	let { children, ...rest } = $props();
+	import { useClassName, useStyles } from '$lib/labs/components/btn/btn.svelte.js';
+	import { type SClassProp, type SStyleProp, splitSyntheticProps } from '$lib/labs/utils/index.js';
+
+	interface Btn {
+		id?: string;
+		class?: string;
+		style?: string;
+		[rest: string]: any;
+		className?: string | undefined | null | Array<string | undefined | null>;
+	}
+
+	let {
+		class: className,
+		style: styleAttr,
+		children,
+		's-class': sClass,
+		's-style': sStyle,
+		...rest
+	} = $props();
+
+	let { classDirectiveProps, styleDirectiveProps, regularProps } = $derived(
+		splitSyntheticProps(rest as Record<string, unknown>)
+	);
+
+	let finalClass = $derived(
+		useClassName({
+			baseClass: 'kit-button',
+			className,
+			sClass,
+			classDirectiveProps
+		}).value
+	);
+
+	let finalStyle = $derived(
+		useStyles({
+			styleAttr,
+			sStyle,
+			styleDirectiveProps
+		}).value
+	);
 </script>
 
-<button class="kit-btn" {...rest}>
+<button class={finalClass} style={finalStyle} {...regularProps}>
 	{@render children()}
 </button>
 
