@@ -24,15 +24,15 @@ Improve integration, strengthen fundamentals, and enrich the ecosystem without c
 
 Lapikit will introduce **Lili v1**, a new preprocessor Svelte.
 
-Objectives :
+Objectives:
 
 - Facilitate the integration of components into existing projects
 - Offer greater flexibility in terms of styles and composition
-- Open the door to new possibilities in terms of tooling
+- Open the door to new possibilities in terms of tooling.
 
 More details will be shared as it develops.
 
-1. **New components**
+<p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">New components</p>
 
 Strengthening form components, essential for real-world applications :
 
@@ -44,7 +44,7 @@ Strengthening form components, essential for real-world applications :
 
 Simple, accessible components that are consistent with the rest of Lapikit.
 
-2. **Helpers**
+<p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">Helpers</p>
 
 Added lightweight helpers to avoid repetition in projects:
 
@@ -53,7 +53,7 @@ Added lightweight helpers to avoid repetition in projects:
 
 The goal is not to replace a utility library, but to cover common cases.
 
-3. **Internal Helpers**
+<p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">Internal Helpers</p>
 
 Improvement of internal tools for greater consistency and maintainability:
 
@@ -63,21 +63,21 @@ Improvement of internal tools for greater consistency and maintainability:
 **Continuous development**
 
 Other features may be added during the year.
-Ideas, suggestions, and contributions are welcome. Suggest a feature, start a discussion, or contribute directly on GitHub.
+Ideas, suggestions, and contributions are welcome. Suggest a feature, start a discussion, or contribute directly on [GitHub](https://github.com/nycolaide/lapikit).
 
-## What’s next steps
+**What’s next steps**
 
-After these updates, the focus will shift to: You can track progress on GitHub and join discussions about what’s next on Discord.
+After these updates, the focus will shift to: you can track progress on [GitHub](https://github.com/nycolaide/lapikit) and join discussions about what’s next on [Discord](https://discord.gg/gn9ZGtDtK4).
 
-## Contribute and support Lapikit
+## Contribute to the Lapikit library and it's development
 
-Lapikit is open source and built for the community. If you want to help, open a pull request, suggest an idea, or report an issue. Every contribution helps make Svelte development faster and cleaner for everyone. Your feedback is important!
+Lapikit is 100% open source. If you want to help out, open a feature request, suggest an idea, or report an issue, you can participate on [GitHub](https://github.com/nycolaide/lapikit). Every contribution helps make Svelte's development faster and cleaner for everyone. Your feedback is important!
 
 ## History roadmap to Lapikit
 
 **2025**
 
-### Composants développé en 2025
+### Components developed in 2025
 
 - **Alert** are display important messages on your application
 - **App** are define the structure and integration of lapikit tools in your application
