@@ -8,6 +8,7 @@ state:
   section: base
   published: true
   order: -1
+  status: update
 keywords:
   - lapikit
   - planned
@@ -60,12 +61,12 @@ Improvement of internal tools for greater consistency and maintainability:
 - ClassName helper will be as close as possible to Svelte class management
 - Centralized style management that will offer the same possibilities as Svelte's style props
 
-**Continuous development**
+<p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">Continuous development</p>
 
 Other features may be added during the year.
 Ideas, suggestions, and contributions are welcome. Suggest a feature, start a discussion, or contribute directly on [GitHub](https://github.com/nycolaide/lapikit).
 
-**What’s next steps**
+<p style="font-weight: bold; font-size: 1.2em; margin-top: 1em; display: block;">What’s next steps</p>
 
 After these updates, the focus will shift to: you can track progress on [GitHub](https://github.com/nycolaide/lapikit) and join discussions about what’s next on [Discord](https://discord.gg/gn9ZGtDtK4).
 
