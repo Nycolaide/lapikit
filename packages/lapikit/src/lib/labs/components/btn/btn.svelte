@@ -1,14 +1,6 @@
 <script lang="ts">
 	import { useClassName, useStyles } from '$lib/labs/components/btn/btn.svelte.js';
-	import { type SClassProp, type SStyleProp, splitSyntheticProps } from '$lib/labs/utils/index.js';
-
-	interface Btn {
-		id?: string;
-		class?: string;
-		style?: string;
-		[rest: string]: any;
-		className?: string | undefined | null | Array<string | undefined | null>;
-	}
+	import { splitSyntheticProps } from '$lib/labs/utils/index.js';
 
 	let {
 		class: className,
