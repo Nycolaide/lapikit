@@ -69,15 +69,15 @@ const social_links = [
 ];
 
 const banner = {
-	id: 'lapikit-happy-new-year-2026',
-	start: new Date('01 January, 2026 00:00:00 UTC'),
-	end: new Date('10 January, 2026 23:59:59 UTC'),
+	id: 'lapikit-roadmap-2026',
+	start: new Date('25 January, 2026 00:00:00 UTC'),
+	end: new Date('10 February, 2026 23:59:59 UTC'),
 	arrow: false,
 	content: {
-		lg: 'Happy New Year 2026! 🎉',
-		sm: 'Happy New Year 2026! 🎉'
-	}
-	// href: '/docs/changelog'
+		lg: 'Discover Lapikit Roadmap 2026! 🚀',
+		sm: 'Lapikit Roadmap 2026! 🚀'
+	},
+	href: '/docs/roadmap'
 };
 
 export async function load({ fetch }) {
