@@ -1,4 +1,5 @@
-import type { SClassProp, SStyleProp } from '$lib/labs/compiler/types/dom.js';
+import type { SClassProp, SStyleProp } from '$lib/labs/compiler/types/index.js';
+import type { PropValue } from '$lib/labs/utils/types/index.js';
 
 /**
  * Computes a string of class names based on the provided sClass and classDirectiveProps.
@@ -86,14 +87,18 @@ export function computeSStyles(
  * @param props The original props object containing all props.
  * @returns An object containing separated classProps, styleProps, and restProps.
  */
-export function makeComponentProps(props: Record<string, unknown>) {
+export function makeComponentProps(props: Record<string, unknown>): {
+	classProps: Record<string, PropValue>;
+	styleProps: Record<string, PropValue>;
+	restProps: Record<string, unknown>;
+} {
 	const classProps = Object.fromEntries(
 		Object.entries(props).filter(([key]) => key.startsWith('s-class_'))
-	);
+	) as Record<string, PropValue>;
 
 	const styleProps = Object.fromEntries(
 		Object.entries(props).filter(([key]) => key.startsWith('s-style_'))
-	);
+	) as Record<string, PropValue>;
 
 	const restProps = Object.fromEntries(
 		Object.entries(props).filter(

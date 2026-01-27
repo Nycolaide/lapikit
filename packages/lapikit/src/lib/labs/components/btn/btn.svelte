@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { useClassName, useStyles } from '$lib/labs/components/btn/btn.svelte.js';
-	import { splitSyntheticProps } from '$lib/labs/utils/index.js';
+	import { useClassName, useStyles } from '$lib/labs/utils/index.js';
+	import { makeComponentProps } from '$lib/labs/compiler/mapped-code.js';
 
 	let {
 		class: className,
@@ -11,16 +11,16 @@
 		...rest
 	} = $props();
 
-	let { classDirectiveProps, styleDirectiveProps, regularProps } = $derived(
-		splitSyntheticProps(rest as Record<string, unknown>)
+	let { classProps, styleProps, restProps } = $derived(
+		makeComponentProps(rest as Record<string, unknown>)
 	);
 
 	let finalClass = $derived(
 		useClassName({
-			baseClass: 'kit-button',
+			baseClass: 'kit-btn',
 			className,
 			sClass,
-			classDirectiveProps
+			classProps
 		}).value
 	);
 
@@ -28,12 +28,12 @@
 		useStyles({
 			styleAttr,
 			sStyle,
-			styleDirectiveProps
+			styleProps
 		}).value
 	);
 </script>
 
-<button class={finalClass} style={finalStyle} {...regularProps}>
+<button class={finalClass} style={finalStyle} {...restProps}>
 	{@render children()}
 </button>
 

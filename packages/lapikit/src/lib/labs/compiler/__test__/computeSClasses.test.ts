@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { computeSClasses } from '../mapped-code.js';
-import type { SClassProp } from '../types/dom.js';
+import type { SClassProp } from '../types/index.js';
 
 describe('computeSClasses', () => {
 	describe('sClass as string', () => {

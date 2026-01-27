@@ -1,16 +1,19 @@
-import type { SClassProp, SStyleProp } from '../../utils/index.js';
+import type { useClassNameProps, useStylesProps } from '$lib/labs/utils/types/index.js';
 
+/**
+ * useClassName - Utility to compute class names for a component.
+ * @param baseClass - The base class name for the component.
+ * @param className - Additional class names as a string.
+ * @param sClass - The s-class property which can be a string, array, or object.
+ * @param classProps - An object containing s-class_xxx directives.
+ * @returns
+ */
 export function useClassName({
 	baseClass = '',
 	className,
 	sClass,
-	classDirectiveProps
-}: {
-	baseClass?: string;
-	className?: string;
-	sClass?: SClassProp;
-	classDirectiveProps?: Record<string, unknown>;
-} = {}) {
+	classProps
+}: useClassNameProps = {}) {
 	return {
 		get value() {
 			const classes: string[] = [];
@@ -41,8 +44,8 @@ export function useClassName({
 				});
 			}
 
-			if (classDirectiveProps) {
-				Object.entries(classDirectiveProps).forEach(([key, value]) => {
+			if (classProps) {
+				Object.entries(classProps).forEach(([key, value]) => {
 					const base = key.replace('s-class_', '');
 
 					if (value === true) {
@@ -62,15 +65,14 @@ export function useClassName({
 	};
 }
 
-export function useStyles({
-	styleAttr,
-	sStyle,
-	styleDirectiveProps
-}: {
-	styleAttr?: string;
-	sStyle?: SStyleProp;
-	styleDirectiveProps?: Record<string, unknown>;
-} = {}) {
+/**
+ * useStyles - Utility to compute style declarations for a component.
+ * @param styleAttr - Inline style attribute as a string.
+ * @param sStyle - The s-style property which is an object of style key-value pairs.
+ * @param styleProps - An object containing s-style_xxx directives.
+ * @returns
+ */
+export function useStyles({ styleAttr, sStyle, styleProps }: useStylesProps = {}) {
 	return {
 		get value() {
 			const styles: string[] = [];
@@ -83,8 +85,8 @@ export function useStyles({
 				});
 			}
 
-			if (styleDirectiveProps) {
-				Object.entries(styleDirectiveProps).forEach(([key, value]) => {
+			if (styleProps) {
+				Object.entries(styleProps).forEach(([key, value]) => {
 					const base = key.replace('s-style_', '');
 					if (value) {
 						styles.push(`${base}: ${value}`);

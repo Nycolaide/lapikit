@@ -1,1 +1,1 @@
-export * from './props.js';
+export * from './components.js';
