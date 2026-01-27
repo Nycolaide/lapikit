@@ -15,25 +15,25 @@
 		makeComponentProps(rest as Record<string, unknown>)
 	);
 
-	let finalClass = $derived(
+	let componentClass = $derived(
 		useClassName({
 			baseClass: 'kit-btn',
 			className,
 			sClass,
 			classProps
-		}).value
+		})
 	);
 
-	let finalStyle = $derived(
+	let componentStyle = $derived(
 		useStyles({
 			styleAttr,
 			sStyle,
 			styleProps
-		}).value
+		})
 	);
 </script>
 
-<button class={finalClass} style={finalStyle} {...restProps}>
+<button class={componentClass} style={componentStyle} {...restProps}>
 	{@render children()}
 </button>
 

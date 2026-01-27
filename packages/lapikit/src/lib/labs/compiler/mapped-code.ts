@@ -29,25 +29,32 @@ export function computeSClasses(
 
 	// s-class object
 	if (sClass && typeof sClass === 'object' && !Array.isArray(sClass)) {
-		Object.entries(sClass).forEach(([key, value]) => {
-			if (value === true) {
-				classes.push(key);
-			} else if (typeof value === 'string' && value) {
-				classes.push(value);
+		const entries = Object.entries(sClass);
+		if (entries.length > 0) {
+			for (const [key, value] of entries) {
+				if (value === true) {
+					classes.push(key);
+				} else if (typeof value === 'string' && value) {
+					classes.push(value);
+				}
 			}
-		});
+		}
 	}
 
 	// s-class_xxx
-	Object.entries(classDirectiveProps).forEach(([key, value]) => {
-		const base = key.replace('s-class_', '');
+	const classEntries = Object.entries(classDirectiveProps);
+	if (classEntries.length > 0) {
+		for (const [key, value] of classEntries) {
+			// Use slice instead of replace for better performance (8 = 's-class_'.length)
+			const base = key.slice(8);
 
-		if (value === true) {
-			classes.push(base);
-		} else if (typeof value === 'string' && value) {
-			classes.push(`${base}${value}`);
+			if (value === true) {
+				classes.push(base);
+			} else if (typeof value === 'string' && value) {
+				classes.push(`${base}${value}`);
+			}
 		}
-	});
+	}
 
 	return classes.join(' ');
 }
@@ -65,25 +72,33 @@ export function computeSStyles(
 	const styles: string[] = [];
 
 	if (sStyle && typeof sStyle === 'object') {
-		Object.entries(sStyle).forEach(([key, value]) => {
-			if (value) {
-				styles.push(`${key}: ${value}`);
+		const entries = Object.entries(sStyle);
+		if (entries.length > 0) {
+			for (const [key, value] of entries) {
+				if (value) {
+					styles.push(`${key}: ${value}`);
+				}
 			}
-		});
+		}
 	}
 
-	Object.entries(styleDirectiveProps).forEach(([key, value]) => {
-		const base = key.replace('s-style_', '');
-		if (value) {
-			styles.push(`${base}: ${value}`);
+	const styleEntries = Object.entries(styleDirectiveProps);
+	if (styleEntries.length > 0) {
+		for (const [key, value] of styleEntries) {
+			// Use slice instead of replace for better performance (8 = 's-style_'.length)
+			const base = key.slice(8);
+			if (value) {
+				styles.push(`${base}: ${value}`);
+			}
 		}
-	});
+	}
 
 	return styles.join('; ');
 }
 
 /**
  * Makes component props by separating s-class and s-style directives from other props.
+ * Optimized to use a single pass instead of three separate iterations.
  * @param props The original props object containing all props.
  * @returns An object containing separated classProps, styleProps, and restProps.
  */
@@ -92,19 +107,19 @@ export function makeComponentProps(props: Record<string, unknown>): {
 	styleProps: Record<string, PropValue>;
 	restProps: Record<string, unknown>;
 } {
-	const classProps = Object.fromEntries(
-		Object.entries(props).filter(([key]) => key.startsWith('s-class_'))
-	) as Record<string, PropValue>;
+	const classProps: Record<string, PropValue> = {};
+	const styleProps: Record<string, PropValue> = {};
+	const restProps: Record<string, unknown> = {};
 
-	const styleProps = Object.fromEntries(
-		Object.entries(props).filter(([key]) => key.startsWith('s-style_'))
-	) as Record<string, PropValue>;
-
-	const restProps = Object.fromEntries(
-		Object.entries(props).filter(
-			([key]) => !key.startsWith('s-class') && !key.startsWith('s-style')
-		)
-	);
+	for (const [key, value] of Object.entries(props)) {
+		if (key.startsWith('s-class_')) {
+			classProps[key] = value as PropValue;
+		} else if (key.startsWith('s-style_')) {
+			styleProps[key] = value as PropValue;
+		} else if (!key.startsWith('s-class') && !key.startsWith('s-style')) {
+			restProps[key] = value;
+		}
+	}
 
 	return { classProps, styleProps, restProps };
 }
