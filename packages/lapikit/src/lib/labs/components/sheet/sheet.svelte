@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Sheet component
+	 * @description A simple sheet component for experimentation for developers Lapikit. Please don't use it in production.
+	 */
+
 	import { useClassName, useStyles } from '$lib/labs/utils/index.js';
 	import { makeComponentProps } from '$lib/labs/compiler/mapped-code.js';
 
@@ -17,7 +22,7 @@
 
 	let componentClass = $derived(
 		useClassName({
-			baseClass: 'kit-btn',
+			baseClass: 'kit-sheet',
 			className,
 			sClass,
 			classProps
@@ -33,12 +38,12 @@
 	);
 </script>
 
-<button class={componentClass} style={componentStyle} {...restProps}>
+<div class={componentClass} style={componentStyle} {...restProps}>
 	{@render children()}
-</button>
+</div>
 
 <style>
-	.kit-btn {
+	.kit-sheet {
 		border: 1px solid rgb(0, 0, 0);
 	}
 </style>
