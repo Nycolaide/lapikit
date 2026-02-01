@@ -1,5 +1,5 @@
 <script lang="ts">
-    let { data } = $props();
+	let { data } = $props();
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -15,4 +15,10 @@
 <kit:repl>demo</kit:repl>
 
 <h3>Labs merge Class and Styles Core</h3>
-<kit:btn id="demo-btn" class="my-custom-class" style="color: red;" s-class="additional-class" s-class_new-additional-class={true}>Demo</kit:btn>
+<kit:sheet
+	id="demo-sheet"
+	class="my-custom-class"
+	style="color: red;"
+	s-class="additional-class"
+	s-class_new-additional-class={true}>Demo</kit:sheet
+>
