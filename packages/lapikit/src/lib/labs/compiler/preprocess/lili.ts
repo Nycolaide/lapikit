@@ -1,5 +1,6 @@
-import type { LapikitPreprocessOptions } from '$lib/labs/compiler/types/index.js';
+import type { ComponentInfo, LapikitPreprocessOptions } from '$lib/labs/compiler/types/index.js';
 import { componentName, lapikitImportsRef } from '$lib/labs/compiler/preprocess/source-import.js';
+import { decodeSourceMap } from '$lib/labs/compiler/preprocess/decode-sourcemap.js';
 
 // imports components and plugins
 import lapikitComponents from '$lib/labs/compiler/components.js';
@@ -30,50 +31,22 @@ export function liliCore(options?: LapikitPreprocessOptions) {
 				});
 			}
 
-			const hasComponent = allComponents.some((comp) => content.includes(`<kit:${comp}`));
+			if (!content.includes('<kit:')) return;
 
-			if (!hasComponent) return;
-
-			let processedContent = content;
-			const importedComponents = new Map<string, string>();
-
-			let hasChanges = true;
-			while (hasChanges) {
-				hasChanges = false;
-
-				for (const shortName of allComponents) {
-					const componentNameStr = componentName(shortName);
-
-					const attrPattern = `(?:[^>"']|"[^"]*"|'[^']*')*?`;
-
-					const selfClosingRegex = new RegExp(`<kit:${shortName}(${attrPattern})\\s*/>`, 'g');
-
-					const pairRegex = new RegExp(
-						`<kit:${shortName}(${attrPattern})>([\\s\\S]*?)<\\/kit:${shortName}\\s*>`,
-						'g'
-					);
-
-					let newContent = processedContent.replace(selfClosingRegex, (fullMatch, attrs) => {
-						hasChanges = true;
-						const ref = componentToRef.get(shortName) || lapikitImportsRef;
-						importedComponents.set(componentNameStr, ref);
-						return `<${componentNameStr}${attrs} />`;
-					});
-
-					newContent = newContent.replace(pairRegex, (fullMatch, attrs, children) => {
-						hasChanges = true;
-						const ref = componentToRef.get(shortName) || lapikitImportsRef;
-						importedComponents.set(componentNameStr, ref);
-						return `<${componentNameStr}${attrs}>${children}</${componentNameStr}>`;
-					});
-
-					if (newContent !== processedContent) {
-						processedContent = newContent;
-					}
-				}
+			const componentInfo = new Map<string, ComponentInfo>();
+			for (const shortName of allComponents) {
+				componentInfo.set(shortName, {
+					name: componentName(shortName),
+					ref: componentToRef.get(shortName) || lapikitImportsRef
+				});
 			}
 
-			if (processedContent === content) return;
+			const scanResult = decodeSourceMap(content, componentInfo);
+
+			if (!scanResult.changed) return;
+
+			let processedContent = scanResult.code;
+			const importedComponents = scanResult.importedComponents;
 
 			if (importedComponents.size > 0) {
 				const importsByRef = new Map<string, string[]>();
